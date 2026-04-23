@@ -14,7 +14,6 @@ import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
-import { Route as AuthApplyRouteImport } from './routes/_auth/apply'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -38,19 +37,12 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AuthRoute,
 } as any)
-const AuthApplyRoute = AuthApplyRouteImport.update({
-  id: '/apply',
-  path: '/apply',
-  getParentRoute: () => AuthRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
-  '/apply': typeof AuthApplyRoute
   '/login': typeof AuthLoginRoute
   '/': typeof PublicIndexRoute
 }
 export interface FileRoutesByTo {
-  '/apply': typeof AuthApplyRoute
   '/login': typeof AuthLoginRoute
   '/': typeof PublicIndexRoute
 }
@@ -59,21 +51,19 @@ export interface FileRoutesById {
   '/_auth': typeof AuthRouteWithChildren
   '/_authenticated': typeof AuthenticatedRoute
   '/_public': typeof PublicRouteWithChildren
-  '/_auth/apply': typeof AuthApplyRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_public/': typeof PublicIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/apply' | '/login' | '/'
+  fullPaths: '/login' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/apply' | '/login' | '/'
+  to: '/login' | '/'
   id:
     | '__root__'
     | '/_auth'
     | '/_authenticated'
     | '/_public'
-    | '/_auth/apply'
     | '/_auth/login'
     | '/_public/'
   fileRoutesById: FileRoutesById
@@ -121,23 +111,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof AuthRoute
     }
-    '/_auth/apply': {
-      id: '/_auth/apply'
-      path: '/apply'
-      fullPath: '/apply'
-      preLoaderRoute: typeof AuthApplyRouteImport
-      parentRoute: typeof AuthRoute
-    }
   }
 }
 
 interface AuthRouteChildren {
-  AuthApplyRoute: typeof AuthApplyRoute
   AuthLoginRoute: typeof AuthLoginRoute
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
-  AuthApplyRoute: AuthApplyRoute,
   AuthLoginRoute: AuthLoginRoute,
 }
 

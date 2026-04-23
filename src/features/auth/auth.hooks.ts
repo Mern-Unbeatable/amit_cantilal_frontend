@@ -73,7 +73,6 @@ export function useLogin() {
 // =============================================================================
 export function useRegister() {
   const { setAuth } = useAuthStore()
-  const navigate = useNavigate()
 
   return useMutation({
     mutationFn: (payload: ApplyPayload) => authService.register(payload),
@@ -91,10 +90,6 @@ export function useRegister() {
         window.location.href = redirectTo // hard nav preserves the full path
         return
       }
-
-      const plan = search.get('plan')
-
-      navigate({ to: plan ? '/enroll' : '/student/dashboard', search: plan ? { plan } : undefined })
 
 
     },

@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import LoginForm from '@/features/auth/login-form.tsx'
 
@@ -23,7 +23,7 @@ function RouteComponent() {
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Don't have an account?{' '}
             <Link
-              to="/enroll"
+              to="/"
               className="text-orange-500 font-medium hover:text-orange-600 transition-colors"
             >
               Create account

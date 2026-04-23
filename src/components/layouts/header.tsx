@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import {Link} from "@tanstack/react-router";
+import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button.tsx'
-import LogoIcon from '@/components/logo-icon.tsx'
+import ApplicationLogo from '@/components/application-logo.tsx'
 
 interface NavLinkProps {
   to: string
@@ -9,15 +9,15 @@ interface NavLinkProps {
   isActive?: boolean
 }
 
-interface navItem {
-  id: number,
-  name: string,
+interface NavItem {
+  id: number
+  name: string
   to: string
 }
 
 interface MobileMenuProps {
   isOpen: boolean
-  navItems: Array<navItem>
+  navItems: Array<NavItem>
 }
 
 const MenuIcon: React.FC = () => (
@@ -61,7 +61,7 @@ const NavLink: React.FC<NavLinkProps> = ({
 }) => (
   <Link
     to={to}
-    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
+    className={`text-lg xl:text-xl font-semibold text-primary hover:text-primary-light transition-smooth animate-fade-in relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-gold after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left whitespace-nowrap ${
       isActive
         ? 'text-primary'
         : 'text-gray-600 dark:text-gray-300 hover:text-primary'
@@ -103,55 +103,40 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, navItems }) => (
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeLink] = useState('Home')
-  const navItems: Array<navItem> = [
-    {
-      id: 1,
-      name: 'Home',
-      to: '/',
-    },
-    {
-      id: 2,
-      name: 'About',
-      to: '/about',
-    },
-    {
-      id: 3,
-      name: 'Contact',
-      to: '/contact',
-    },
-    {
-      id: 4,
-      name: 'Pricing',
-      to: '/pricing',
-    }
+  const navItems: Array<NavItem> = [
+    { id: 1, name: 'Home', to: '/' },
+    { id: 2, name: 'Book Now', to: '/book-now' },
+    { id: 3, name: 'Transfers', to: '/transfers' },
+    { id: 4, name: 'Hourly Service', to: '/hourly-service' },
+    { id: 5, name: 'Tours', to: '/tours' },
+    { id: 6, name: 'B2B', to: '/b2b' },
+    { id: 7, name: 'Partnerships', to: '/partnerships' },
+    { id: 8, name: 'FAQ', to: '/faq' },
+    { id: 9, name: 'Blog', to: '/blog' },
   ]
-
   return (
-    <header className="relative z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="relative z-20 bg-black">
+      <div className="container mx-auto px-4 py-1 md:py-4">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0 flex items-center gap-2">
-            <LogoIcon />
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
-              LearnifyDev
-            </span>
+           <Link to="/">
+             <ApplicationLogo/>
+           </Link>
           </div>
-          <nav className="hidden md:flex items-center space-x-1 bg-gray-100/50 dark:bg-gray-800/50 p-1 rounded-full">
-            {navItems.map(({to, name, id}) => (
-              <NavLink
-                key={id}
-                to={to}
-                isActive={activeLink === name}
-              >
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-12 bg-black/50 px-6 py-3 rounded-lg border border-primary/20">
+            {navItems.map(({ to, name, id }) => (
+              <NavLink key={id} to={to} isActive={activeLink === name}>
                 {name}
               </NavLink>
             ))}
           </nav>
           <div className="hidden md:block">
-            <Button variant="outline" asChild className="border-primary rounded-3xl px-6 h-11 hover:bg-primary hover:text-white">
-              <Link to="/apply">
-                Get Started
-              </Link>
+            <Button
+              variant="outline"
+              asChild
+              className="border-primary rounded-3xl px-6 h-11 hover:bg-primary hover:text-white"
+            >
+              <Link to="/">Get Started</Link>
             </Button>
           </div>
           <div className="md:hidden">
