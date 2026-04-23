@@ -10,9 +10,9 @@ interface AppConfigProps {
 const currentYear = new Date().getFullYear();
 
 export const appConfig: AppConfigProps = {
-  name: "Learnifydev-app",
+  name: "Elite-ride-app",
   version: packageJson.version,
   developer: "Demmy",
-  copyright: `© ${currentYear}, Flourish Portal.`,
+  copyright: `© ${currentYear}.`,
 }
 
