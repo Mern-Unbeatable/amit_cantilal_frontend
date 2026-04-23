@@ -14,12 +14,12 @@ const ApplicationLogo = ({
 }: ApplicationLogoProps) => {
   return (
     <Image
-      src="/118dab1d-996a-4565-bc16-7c458b7d64c5.png"
+      src="/dec694ac-4884-4c39-b971-6ec08ef86146-1920w.webp"
       layout="constrained"
       width={width}
       height={height}
       alt="Company Logo"
-      className={cn('h-7 md:h-20 lg:h-24 object-contain',className)}
+      className={cn('h-8 md:h-20 lg:h-24 object-contain',className)}
     />
   )
 }

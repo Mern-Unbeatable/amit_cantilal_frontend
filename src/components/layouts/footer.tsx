@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
             <div>
               <img
-                src="/logo-footer-D7buDSbs.webp"
+                src="/dec694ac-4884-4c39-b971-6ec08ef86146-1920w.webp"
                 alt="VIP On Wheels"
                 className="h-20 mb-4"
                 width="180"
@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
                 Locations
               </h4>
               <p className="text-sm text-foreground/80">
-                Lisboa • Porto • Algarve
+                Rua Dom João V, N°24 - 1.03 1250-091 Lisboa - Portugal
               </p>
             </div>
             <div>
@@ -225,6 +225,24 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+      <a
+        href="https://wa.me/351914578214"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group"
+        aria-label="WhatsApp"
+      >
+        <span className="hidden sm:block bg-background/90 backdrop-blur-sm border border-border text-foreground text-sm font-medium px-4 py-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+          Questions? Contact us
+        </span>
+        <div className="w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#1DA851] shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 p-3">
+          <img
+            src="/whatsapp-icon--Q7vUWyy.webp"
+            alt="WhatsApp"
+            className="w-10 h-10 object-contain"
+          />
+        </div>
+      </a>
     </footer>
   )
 }
