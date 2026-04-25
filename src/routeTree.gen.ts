@@ -13,7 +13,17 @@ import { Route as PublicRouteImport } from './routes/_public'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as PublicTransfersRouteImport } from './routes/_public/transfers'
+import { Route as PublicPartnershipsRouteImport } from './routes/_public/partnerships'
+import { Route as PublicHourlyServiceRouteImport } from './routes/_public/hourly-service'
+import { Route as PublicFaqRouteImport } from './routes/_public/faq'
+import { Route as PublicBookingRouteImport } from './routes/_public/booking'
+import { Route as PublicB2bRouteImport } from './routes/_public/b2b'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
+import { Route as PublicToursIndexRouteImport } from './routes/_public/tours/index'
+import { Route as PublicBlogIndexRouteImport } from './routes/_public/blog/index'
+import { Route as PublicToursSlugRouteImport } from './routes/_public/tours/$slug'
+import { Route as PublicBlogSlugRouteImport } from './routes/_public/blog/$slug'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -32,19 +42,89 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PublicRoute,
 } as any)
+const PublicTransfersRoute = PublicTransfersRouteImport.update({
+  id: '/transfers',
+  path: '/transfers',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPartnershipsRoute = PublicPartnershipsRouteImport.update({
+  id: '/partnerships',
+  path: '/partnerships',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicHourlyServiceRoute = PublicHourlyServiceRouteImport.update({
+  id: '/hourly-service',
+  path: '/hourly-service',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicFaqRoute = PublicFaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicBookingRoute = PublicBookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicB2bRoute = PublicB2bRouteImport.update({
+  id: '/b2b',
+  path: '/b2b',
+  getParentRoute: () => PublicRoute,
+} as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => AuthRoute,
 } as any)
+const PublicToursIndexRoute = PublicToursIndexRouteImport.update({
+  id: '/tours/',
+  path: '/tours/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicBlogIndexRoute = PublicBlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicToursSlugRoute = PublicToursSlugRouteImport.update({
+  id: '/tours/$slug',
+  path: '/tours/$slug',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicBlogSlugRoute = PublicBlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => PublicRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/login': typeof AuthLoginRoute
+  '/b2b': typeof PublicB2bRoute
+  '/booking': typeof PublicBookingRoute
+  '/faq': typeof PublicFaqRoute
+  '/hourly-service': typeof PublicHourlyServiceRoute
+  '/partnerships': typeof PublicPartnershipsRoute
+  '/transfers': typeof PublicTransfersRoute
   '/': typeof PublicIndexRoute
+  '/blog/$slug': typeof PublicBlogSlugRoute
+  '/tours/$slug': typeof PublicToursSlugRoute
+  '/blog': typeof PublicBlogIndexRoute
+  '/tours': typeof PublicToursIndexRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof AuthLoginRoute
+  '/b2b': typeof PublicB2bRoute
+  '/booking': typeof PublicBookingRoute
+  '/faq': typeof PublicFaqRoute
+  '/hourly-service': typeof PublicHourlyServiceRoute
+  '/partnerships': typeof PublicPartnershipsRoute
+  '/transfers': typeof PublicTransfersRoute
   '/': typeof PublicIndexRoute
+  '/blog/$slug': typeof PublicBlogSlugRoute
+  '/tours/$slug': typeof PublicToursSlugRoute
+  '/blog': typeof PublicBlogIndexRoute
+  '/tours': typeof PublicToursIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -52,20 +132,64 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRoute
   '/_public': typeof PublicRouteWithChildren
   '/_auth/login': typeof AuthLoginRoute
+  '/_public/b2b': typeof PublicB2bRoute
+  '/_public/booking': typeof PublicBookingRoute
+  '/_public/faq': typeof PublicFaqRoute
+  '/_public/hourly-service': typeof PublicHourlyServiceRoute
+  '/_public/partnerships': typeof PublicPartnershipsRoute
+  '/_public/transfers': typeof PublicTransfersRoute
   '/_public/': typeof PublicIndexRoute
+  '/_public/blog/$slug': typeof PublicBlogSlugRoute
+  '/_public/tours/$slug': typeof PublicToursSlugRoute
+  '/_public/blog/': typeof PublicBlogIndexRoute
+  '/_public/tours/': typeof PublicToursIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/'
+  fullPaths:
+    | '/login'
+    | '/b2b'
+    | '/booking'
+    | '/faq'
+    | '/hourly-service'
+    | '/partnerships'
+    | '/transfers'
+    | '/'
+    | '/blog/$slug'
+    | '/tours/$slug'
+    | '/blog'
+    | '/tours'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/'
+  to:
+    | '/login'
+    | '/b2b'
+    | '/booking'
+    | '/faq'
+    | '/hourly-service'
+    | '/partnerships'
+    | '/transfers'
+    | '/'
+    | '/blog/$slug'
+    | '/tours/$slug'
+    | '/blog'
+    | '/tours'
   id:
     | '__root__'
     | '/_auth'
     | '/_authenticated'
     | '/_public'
     | '/_auth/login'
+    | '/_public/b2b'
+    | '/_public/booking'
+    | '/_public/faq'
+    | '/_public/hourly-service'
+    | '/_public/partnerships'
+    | '/_public/transfers'
     | '/_public/'
+    | '/_public/blog/$slug'
+    | '/_public/tours/$slug'
+    | '/_public/blog/'
+    | '/_public/tours/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -104,12 +228,82 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/transfers': {
+      id: '/_public/transfers'
+      path: '/transfers'
+      fullPath: '/transfers'
+      preLoaderRoute: typeof PublicTransfersRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/partnerships': {
+      id: '/_public/partnerships'
+      path: '/partnerships'
+      fullPath: '/partnerships'
+      preLoaderRoute: typeof PublicPartnershipsRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/hourly-service': {
+      id: '/_public/hourly-service'
+      path: '/hourly-service'
+      fullPath: '/hourly-service'
+      preLoaderRoute: typeof PublicHourlyServiceRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/faq': {
+      id: '/_public/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof PublicFaqRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/booking': {
+      id: '/_public/booking'
+      path: '/booking'
+      fullPath: '/booking'
+      preLoaderRoute: typeof PublicBookingRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/b2b': {
+      id: '/_public/b2b'
+      path: '/b2b'
+      fullPath: '/b2b'
+      preLoaderRoute: typeof PublicB2bRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_auth/login': {
       id: '/_auth/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof AuthRoute
+    }
+    '/_public/tours/': {
+      id: '/_public/tours/'
+      path: '/tours'
+      fullPath: '/tours'
+      preLoaderRoute: typeof PublicToursIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/blog/': {
+      id: '/_public/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof PublicBlogIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/tours/$slug': {
+      id: '/_public/tours/$slug'
+      path: '/tours/$slug'
+      fullPath: '/tours/$slug'
+      preLoaderRoute: typeof PublicToursSlugRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/blog/$slug': {
+      id: '/_public/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof PublicBlogSlugRouteImport
+      parentRoute: typeof PublicRoute
     }
   }
 }
@@ -125,11 +319,31 @@ const AuthRouteChildren: AuthRouteChildren = {
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface PublicRouteChildren {
+  PublicB2bRoute: typeof PublicB2bRoute
+  PublicBookingRoute: typeof PublicBookingRoute
+  PublicFaqRoute: typeof PublicFaqRoute
+  PublicHourlyServiceRoute: typeof PublicHourlyServiceRoute
+  PublicPartnershipsRoute: typeof PublicPartnershipsRoute
+  PublicTransfersRoute: typeof PublicTransfersRoute
   PublicIndexRoute: typeof PublicIndexRoute
+  PublicBlogSlugRoute: typeof PublicBlogSlugRoute
+  PublicToursSlugRoute: typeof PublicToursSlugRoute
+  PublicBlogIndexRoute: typeof PublicBlogIndexRoute
+  PublicToursIndexRoute: typeof PublicToursIndexRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
+  PublicB2bRoute: PublicB2bRoute,
+  PublicBookingRoute: PublicBookingRoute,
+  PublicFaqRoute: PublicFaqRoute,
+  PublicHourlyServiceRoute: PublicHourlyServiceRoute,
+  PublicPartnershipsRoute: PublicPartnershipsRoute,
+  PublicTransfersRoute: PublicTransfersRoute,
   PublicIndexRoute: PublicIndexRoute,
+  PublicBlogSlugRoute: PublicBlogSlugRoute,
+  PublicToursSlugRoute: PublicToursSlugRoute,
+  PublicBlogIndexRoute: PublicBlogIndexRoute,
+  PublicToursIndexRoute: PublicToursIndexRoute,
 }
 
 const PublicRouteWithChildren =
