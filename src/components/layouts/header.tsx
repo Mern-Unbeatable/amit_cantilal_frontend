@@ -3,8 +3,6 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { ChevronDown, Globe } from 'lucide-react'
 import ApplicationLogo from '@/components/application-logo.tsx'
 
-// ─── Types ───────────────────────────────────────────────────────────────────
-
 interface NavItem {
   id: number
   name: string
@@ -22,8 +20,6 @@ interface Language {
   label: string
   flag: string
 }
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
 
 const standaloneLinks: Array<NavItem> = [
   { id: 1, name: 'Home', to: '/' },
@@ -262,7 +258,7 @@ const Header: React.FC = () => {
     group.items.some((item) => item.to === activePath)
 
   return (
-    <header className="relative z-20 bg-[#0B0B0B] border-b border-[#C9A84C]/10">
+    <header className="fixed top-0 right-0 left-0 z-20 bg-[#0B0B0B] border-b  border-[#C9A84C]/10">
       <div className="container mx-auto px-4 py-1 md:py-4">
         <div className="flex items-center justify-between h-20">
 

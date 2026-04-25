@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon } from '@iconify/react'
+import { Link } from '@tanstack/react-router'
 
 const Footer: React.FC = () => {
   const socialIcons = [
@@ -147,13 +148,12 @@ const Footer: React.FC = () => {
           </div>
           <div className="border-t border-border pt-6">
             <div className="mb-6 flex flex-wrap gap-4 text-xs text-foreground/60">
-              <a href="#" className="hover:text-primary transition-smooth">
+              <Link
+                to="/privacy-policy"
+                className="hover:text-primary transition-smooth"
+              >
                 Privacy Policy
-              </a>
-              <span>|</span>
-              <a href="#" className="hover:text-primary transition-smooth">
-                Arbitration Center
-              </a>
+              </Link>
               <span>|</span>
               <a
                 href="https://www.livroreclamacoes.pt"
