@@ -19,7 +19,7 @@ const ApplicationLogo = ({
       width={width}
       height={height}
       alt="Company Logo"
-      className={cn('h-8 md:h-20 lg:h-24 object-contain',className)}
+      className={cn('h-16 md:h-20 lg:h-24 object-contain',className)}
     />
   )
 }

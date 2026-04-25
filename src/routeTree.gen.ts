@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicTransfersRouteImport } from './routes/_public/transfers'
+import { Route as PublicPrivacyPolicyRouteImport } from './routes/_public/privacy-policy'
 import { Route as PublicPartnershipsRouteImport } from './routes/_public/partnerships'
 import { Route as PublicHourlyServiceRouteImport } from './routes/_public/hourly-service'
 import { Route as PublicFaqRouteImport } from './routes/_public/faq'
@@ -45,6 +46,11 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
 const PublicTransfersRoute = PublicTransfersRouteImport.update({
   id: '/transfers',
   path: '/transfers',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPrivacyPolicyRoute = PublicPrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicPartnershipsRoute = PublicPartnershipsRouteImport.update({
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof PublicFaqRoute
   '/hourly-service': typeof PublicHourlyServiceRoute
   '/partnerships': typeof PublicPartnershipsRoute
+  '/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/transfers': typeof PublicTransfersRoute
   '/': typeof PublicIndexRoute
   '/blog/$slug': typeof PublicBlogSlugRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/faq': typeof PublicFaqRoute
   '/hourly-service': typeof PublicHourlyServiceRoute
   '/partnerships': typeof PublicPartnershipsRoute
+  '/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/transfers': typeof PublicTransfersRoute
   '/': typeof PublicIndexRoute
   '/blog/$slug': typeof PublicBlogSlugRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/_public/faq': typeof PublicFaqRoute
   '/_public/hourly-service': typeof PublicHourlyServiceRoute
   '/_public/partnerships': typeof PublicPartnershipsRoute
+  '/_public/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/_public/transfers': typeof PublicTransfersRoute
   '/_public/': typeof PublicIndexRoute
   '/_public/blog/$slug': typeof PublicBlogSlugRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/hourly-service'
     | '/partnerships'
+    | '/privacy-policy'
     | '/transfers'
     | '/'
     | '/blog/$slug'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/hourly-service'
     | '/partnerships'
+    | '/privacy-policy'
     | '/transfers'
     | '/'
     | '/blog/$slug'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/_public/faq'
     | '/_public/hourly-service'
     | '/_public/partnerships'
+    | '/_public/privacy-policy'
     | '/_public/transfers'
     | '/_public/'
     | '/_public/blog/$slug'
@@ -233,6 +245,13 @@ declare module '@tanstack/react-router' {
       path: '/transfers'
       fullPath: '/transfers'
       preLoaderRoute: typeof PublicTransfersRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/privacy-policy': {
+      id: '/_public/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PublicPrivacyPolicyRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/partnerships': {
@@ -324,6 +343,7 @@ interface PublicRouteChildren {
   PublicFaqRoute: typeof PublicFaqRoute
   PublicHourlyServiceRoute: typeof PublicHourlyServiceRoute
   PublicPartnershipsRoute: typeof PublicPartnershipsRoute
+  PublicPrivacyPolicyRoute: typeof PublicPrivacyPolicyRoute
   PublicTransfersRoute: typeof PublicTransfersRoute
   PublicIndexRoute: typeof PublicIndexRoute
   PublicBlogSlugRoute: typeof PublicBlogSlugRoute
@@ -338,6 +358,7 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicFaqRoute: PublicFaqRoute,
   PublicHourlyServiceRoute: PublicHourlyServiceRoute,
   PublicPartnershipsRoute: PublicPartnershipsRoute,
+  PublicPrivacyPolicyRoute: PublicPrivacyPolicyRoute,
   PublicTransfersRoute: PublicTransfersRoute,
   PublicIndexRoute: PublicIndexRoute,
   PublicBlogSlugRoute: PublicBlogSlugRoute,
