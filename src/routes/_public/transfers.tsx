@@ -27,7 +27,7 @@ const transferCards = [
   {
     icon: Car,
     title: 'Premium Fleet',
-    description: 'Mercedes-Benz and Tesla vehicles with immaculate interiors.',
+    description: 'Mercedes-Benz vehicles with immaculate interiors.',
   },
 ]
 

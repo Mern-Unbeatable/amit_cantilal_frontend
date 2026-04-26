@@ -1,22 +1,31 @@
-import { Link } from "@tanstack/react-router";
-import { ArrowRight, Clock, MapPin, MessageCircle } from "lucide-react";
-import type {Tour} from "@/features/tour/tour.types.ts";
+import { Link } from '@tanstack/react-router'
+import { ArrowRight, Clock, MapPin, MessageCircle } from 'lucide-react'
+import Autoplay from 'embla-carousel-autoplay'
+import { useRef } from 'react'
+import type { Tour } from '@/features/tour/tour.types.ts'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from '@/components/ui/carousel'
 
 export function TourCard({ tour }: { tour: Tour }) {
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false }),
+  )
+
   return (
     <div className="group bg-[#141414] border border-[#C9A84C]/12 hover:border-[#C9A84C]/35 transition-colors duration-200 flex flex-col h-full">
-
       {/* Image carousel */}
       <div className="relative h-36 md:h-56 flex-shrink-0 overflow-hidden">
         {tour.images.length > 1 ? (
-          <Carousel className="w-full h-full">
+          <Carousel
+            className="w-full h-full"
+            plugins={[autoplayPlugin.current]}
+            opts={{ loop: true }}
+          >
             <CarouselContent className="h-full ml-0">
               {tour.images.map((img, i) => (
                 <CarouselItem key={i} className="h-full pl-0">
@@ -49,7 +58,10 @@ export function TourCard({ tour }: { tour: Tour }) {
           </h3>
           <div className="flex flex-col gap-0.5">
             <p className="flex items-center gap-1.5 text-xs md:text-sm text-white/70">
-              <Clock className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" strokeWidth={1.5} />
+              <Clock
+                className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0"
+                strokeWidth={1.5}
+              />
               {tour.duration}
             </p>
             {tour.departureFrom && (
@@ -78,27 +90,27 @@ export function TourCard({ tour }: { tour: Tour }) {
 
           {/* CTA */}
           {tour.isOnDemand ? (
-
-              <a href="https://wa.me/351914578214"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 border border-[#C9A84C]/30 hover:border-[#C9A84C] hover:bg-[#C9A84C]/10 text-[#C9A84C] transition-colors duration-200 py-2 md:py-2.5 text-xs md:text-sm"
+            <a
+              href="https://wa.me/351914578214"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 border border-[#C9A84C]/30 hover:border-[#C9A84C] hover:bg-[#C9A84C]/10 text-[#C9A84C] transition-colors duration-200 py-2 md:py-2.5 text-xs md:text-sm"
             >
-            <MessageCircle className="w-3.5 h-3.5" strokeWidth={1.5} />
-            Chat on WhatsApp
+              <MessageCircle className="w-3.5 h-3.5" strokeWidth={1.5} />
+              Chat on WhatsApp
             </a>
-            ) : (
+          ) : (
             <Link
               to="/tours/$slug"
               params={{ slug: tour.slug }}
-             className="w-full flex items-center justify-center gap-2 bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0B0B0B] transition-colors duration-200 py-2 md:py-2.5 text-xs md:text-sm font-medium"
-        >
-          Book Now
-          <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
-        </Link>
-        )}
+              className="w-full flex items-center justify-center gap-2 bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0B0B0B] transition-colors duration-200 py-2 md:py-2.5 text-xs md:text-sm font-medium"
+            >
+              Book Now
+              <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
+            </Link>
+          )}
+        </div>
       </div>
     </div>
-</div>
-);
+  )
 }

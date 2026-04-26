@@ -15,9 +15,9 @@ import {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const PHONE = '+351 913 911 013'
-const EMAIL = 'booking@offwego.pt'
-const WHATSAPP = `https://wa.me/351913911013?text=${encodeURIComponent("Hi OffWeGo, I'd like to request a B2B partnership.")}`
+const PHONE = '+351 914 578 214'
+const EMAIL = 'partners@offwego.pt'
+const WHATSAPP = `https://wa.me/351914578214?text=${encodeURIComponent("Hi Off We Go Portugal, I'd like to request a B2B partnership.")}`
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -33,12 +33,12 @@ interface B2BFormData {
 // ─── Field wrapper ────────────────────────────────────────────────────────────
 
 function Field({
-                 id,
-                 label,
-                 required,
-                 error,
-                 children,
-               }: {
+  id,
+  label,
+  required,
+  error,
+  children,
+}: {
   id: string
   label: string
   required?: boolean
@@ -47,7 +47,10 @@ function Field({
 }) {
   return (
     <div className="space-y-1 md:space-y-2">
-      <Label htmlFor={id} className="text-xs md:text-base font-medium text-[#F5F0E8]">
+      <Label
+        htmlFor={id}
+        className="text-xs md:text-base font-medium text-[#F5F0E8]"
+      >
         {label} {required && <span className="text-[#C9A84C]">*</span>}
       </Label>
       {children}
@@ -76,7 +79,9 @@ export default function B2BRequestForm() {
       setSubmitted(true)
     } catch (err: any) {
       setError('root', {
-        message: err?.response?.data?.message ?? 'Something went wrong. Please try again.',
+        message:
+          err?.response?.data?.message ??
+          'Something went wrong. Please try again.',
       })
     }
   }
@@ -85,7 +90,6 @@ export default function B2BRequestForm() {
     <section id="apply" className="py-10 md:py-20 bg-[#141414]">
       <div className="container mx-auto px-4 md:px-12">
         <div className="max-w-2xl mx-auto">
-
           {/* Header */}
           <div className="text-center mb-6 md:mb-10">
             <div className="tag-gold mb-4">Get Started</div>
@@ -102,26 +106,50 @@ export default function B2BRequestForm() {
             {submitted ? (
               <div className="text-center py-12 space-y-4">
                 <div className="w-16 h-16 bg-[#C9A84C] flex items-center justify-center mx-auto">
-                  <svg className="w-8 h-8 text-[#0B0B0B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-8 h-8 text-[#0B0B0B]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
-                <h4 className="font-serif text-2xl font-light text-gradient-gold">Request Submitted</h4>
-                <p className="text-[#9A9182]">Our team will be in touch within 24 hours.</p>
+                <h4 className="font-serif text-2xl font-light text-gradient-gold">
+                  Request Submitted
+                </h4>
+                <p className="text-[#9A9182]">
+                  Our team will be in touch within 24 hours.
+                </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 md:space-y-6">
-
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-3 md:space-y-6"
+              >
                 {/* Partner type */}
                 <Field id="partnerType" label="Partner Type" required>
-                  <Select value={partnerType} onValueChange={setPartnerType} required>
+                  <Select
+                    value={partnerType}
+                    onValueChange={setPartnerType}
+                    required
+                  >
                     <SelectTrigger className="h-10 text-xs md:text-base">
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="hotel">Hotel</SelectItem>
-                      <SelectItem value="travel-agency">Travel Agency</SelectItem>
-                      <SelectItem value="concierge">Concierge Service</SelectItem>
+                      <SelectItem value="travel-agency">
+                        Travel Agency
+                      </SelectItem>
+                      <SelectItem value="concierge">
+                        Concierge Service
+                      </SelectItem>
                       <SelectItem value="corporate">Corporate</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
@@ -129,25 +157,43 @@ export default function B2BRequestForm() {
                 </Field>
 
                 {/* Company name */}
-                <Field id="companyName" label="Company Name" required error={errors.companyName?.message}>
+                <Field
+                  id="companyName"
+                  label="Company Name"
+                  required
+                  error={errors.companyName?.message}
+                >
                   <Input
                     id="companyName"
                     placeholder="Hotel or agency name"
                     className="h-10 text-xs md:text-base"
-                    {...register('companyName', { required: 'Company name is required' })}
+                    {...register('companyName', {
+                      required: 'Company name is required',
+                    })}
                   />
                 </Field>
 
                 {/* Name + Position */}
                 <div className="grid grid-cols-2 gap-3 md:gap-4">
-                  <Field id="contactName" label="Name" required error={errors.contactName?.message}>
+                  <Field
+                    id="contactName"
+                    label="Name"
+                    required
+                    error={errors.contactName?.message}
+                  >
                     <Input
                       id="contactName"
                       className="h-10 text-xs md:text-base"
-                      {...register('contactName', { required: 'Name is required' })}
+                      {...register('contactName', {
+                        required: 'Name is required',
+                      })}
                     />
                   </Field>
-                  <Field id="position" label="Position" error={errors.position?.message}>
+                  <Field
+                    id="position"
+                    label="Position"
+                    error={errors.position?.message}
+                  >
                     <Input
                       id="position"
                       className="h-10 text-xs md:text-base"
@@ -158,18 +204,31 @@ export default function B2BRequestForm() {
 
                 {/* Email + Phone */}
                 <div className="grid grid-cols-2 gap-3 md:gap-4">
-                  <Field id="email" label="Email" required error={errors.email?.message}>
+                  <Field
+                    id="email"
+                    label="Email"
+                    required
+                    error={errors.email?.message}
+                  >
                     <Input
                       id="email"
                       type="email"
                       className="h-10 text-xs md:text-base"
                       {...register('email', {
                         required: 'Email is required',
-                        pattern: { value: /^\S+@\S+\.\S+$/, message: 'Invalid email' },
+                        pattern: {
+                          value: /^\S+@\S+\.\S+$/,
+                          message: 'Invalid email',
+                        },
                       })}
                     />
                   </Field>
-                  <Field id="phone" label="Phone" required error={errors.phone?.message}>
+                  <Field
+                    id="phone"
+                    label="Phone"
+                    required
+                    error={errors.phone?.message}
+                  >
                     <Input
                       id="phone"
                       type="tel"
@@ -192,7 +251,9 @@ export default function B2BRequestForm() {
 
                 {/* Root error */}
                 {errors.root && (
-                  <p className="text-sm text-red-400 text-center">{errors.root.message}</p>
+                  <p className="text-sm text-red-400 text-center">
+                    {errors.root.message}
+                  </p>
                 )}
 
                 {/* Buttons */}
@@ -210,20 +271,25 @@ export default function B2BRequestForm() {
                     asChild
                     className="flex-1 h-10 rounded-none border-[#C9A84C]/30 text-[#F5F0E8] hover:bg-[#C9A84C]/10 hover:text-[#F5F0E8] text-sm md:text-base"
                   >
-                    <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={WHATSAPP}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <MessageCircle className="w-4 h-4 mr-2" />
                       WhatsApp
                     </a>
                   </Button>
                 </div>
-
               </form>
             )}
           </div>
 
           {/* Direct contact */}
           <div className="mt-6 md:mt-10 text-center space-y-2 md:space-y-4">
-            <p className="text-[#9A9182] text-xs md:text-sm">Or contact us directly:</p>
+            <p className="text-[#9A9182] text-xs md:text-sm">
+              Or contact us directly:
+            </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
               <a
                 href={`tel:${PHONE}`}
@@ -241,7 +307,6 @@ export default function B2BRequestForm() {
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>

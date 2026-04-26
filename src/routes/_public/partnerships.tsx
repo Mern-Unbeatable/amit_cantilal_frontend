@@ -34,7 +34,7 @@ function RouteComponent() {
               Partnerships
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed italic max-w-4xl drop-shadow-md">
-              Offwego understands the unique demands of corporate travel.
+              Off We Go Portugal understands the unique demands of corporate travel.
               Our B2B services are tailored to meet the expectations of business
               executives, event planners and travel managers.
             </p>
@@ -101,7 +101,7 @@ function RouteComponent() {
             <div className="text-center mb-8 md:mb-16">
               <div className="tag-gold mb-4">Why Partner With Us</div>
               <h2 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold mb-3 md:mb-6">
-                Why Choose <em className="italic">OffWeGo</em>
+                Why Choose <em className="italic">Off We Go Portugal</em>
               </h2>
               <p className="text-sm md:text-xl text-[#9A9182] max-w-3xl mx-auto">
                 Discover the advantages of partnering with us for your clients'
@@ -153,7 +153,7 @@ function RouteComponent() {
                     Ready to partner with us?
                   </p>
                   <p className="text-xs text-[#9A9182] mb-3">
-                    Join 50+ travel agencies, hotels and DMCs already working with OffWeGo.
+                    Join 50+ travel agencies, hotels and DMCs already working with Off We Go Portugal.
                   </p>
                   <a
                     href="#apply"
