@@ -5,7 +5,7 @@ const policies = [
     icon: Car,
     title: 'Sedan & Van',
     rules: [
-      { label: 'Less than 12 hours', charge: '100% charged', severity: 'high' },
+      { label: 'Less than 24 hours', charge: '100% charged', severity: 'high' },
       { label: 'Less than 48 hours', charge: '50% charged', severity: 'mid' },
       { label: 'More than 48 hours', charge: 'Full refund', severity: 'low' },
     ],
@@ -14,7 +14,7 @@ const policies = [
     icon: Bus,
     title: 'Sprinter',
     rules: [
-      { label: 'Less than 48 hours', charge: '100% charged', severity: 'high' },
+      { label: 'Less than 24 hours', charge: '100% charged', severity: 'high' },
       { label: 'Less than 4 days', charge: '50% charged', severity: 'mid' },
       { label: 'More than 4 days', charge: 'Full refund', severity: 'low' },
     ],

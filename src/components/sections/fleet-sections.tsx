@@ -6,26 +6,20 @@ import FleetCard from '@/features/fleet/fleet-card.tsx'
 
 const electricFleet: Array<FleetCardProps> = [
   {
-    name: 'Tesla Model S',
-    image: '/mercedes-v-class-C116sv8v.webp',
-    passengers: 2,
-    suitcases: 2,
-  },
-  {
     name: 'Mercedes-Benz EQE',
-    image: '/mercedes-v-class-C116sv8v.webp',
+    image: '/mercedes-eqe-hotel-clean-Bu__kXyP.webp',
     passengers: 2,
     suitcases: 2,
   },
   {
     name: 'Mercedes-Benz EQS',
-    image: '/mercedes-v-class-C116sv8v.webp',
+    image: '/mercedes-eqs-premium-CZqyaYaU.webp',
     passengers: 2,
     suitcases: 2,
   },
   {
     name: 'Mercedes-Benz EQV',
-    image: '/mercedes-v-class-C116sv8v.webp',
+    image: '/mercedes-eqv-luxury-clean-lg8pM9c8.webp',
     passengers: 6,
     suitcases: 6,
   },
@@ -34,13 +28,13 @@ const electricFleet: Array<FleetCardProps> = [
 const dieselFleet: Array<FleetCardProps> = [
   {
     name: 'Mercedes-Benz E-Class',
-    image: '/mercedes-v-class-C116sv8v.webp',
+    image: '/mercedes-e-class-BIO35KIp.webp',
     passengers: 2,
     suitcases: 2,
   },
   {
     name: 'Mercedes-Benz S-Class',
-    image: '/mercedes-v-class-C116sv8v.webp',
+    image: '/mercedes-s-class-B4viU9i3.webp',
     passengers: 2,
     suitcases: 2,
   },
@@ -52,7 +46,7 @@ const dieselFleet: Array<FleetCardProps> = [
   },
   {
     name: 'Mercedes-Benz Sprinter',
-    image: '/mercedes-v-class-C116sv8v.webp',
+    image: '/mercedes-sprinter-VcRR1Ns-.webp',
     passengers: 9,
     suitcases: 9,
   },

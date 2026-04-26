@@ -45,7 +45,7 @@ function RouteComponent() {
 
             {/* Subtext */}
             <p className="text-lg md:text-xl lg:text-2xl text-[#F5F0E8] leading-relaxed italic max-w-4xl drop-shadow-md">
-              OffWeGo understands the unique demands in B2B services for Travel
+              Off We Go Portugal understands the unique demands in B2B services for Travel
               Agencies, Hotels and Concierge Services — tailored to meet the
               expectations of your clients.
             </p>

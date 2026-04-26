@@ -1,8 +1,7 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import {useState} from "react";
 import {motion} from "framer-motion";
-import { ArrowLeft, Check, Clock, MapPin, Minus, Plus } from 'lucide-react'
-import type {Tour} from "@/features/tour/tour.types.ts";
+import { ArrowLeft, Check, Clock, Minus, Plus } from 'lucide-react'
 import {mainTransitionProps} from "@/lib/utils.ts";
 import {Button} from "@/components/ui/button.tsx";
 import {Input} from "@/components/ui/input.tsx";
@@ -15,29 +14,25 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel.tsx'
+import {getTourBySlug} from "@/data/tour.ts";
 
 export const Route = createFileRoute('/_public/tours/$slug')({
+  loader: ({ params }) => {
+    const tour = getTourBySlug(params.slug)
+    if (!tour) throw notFound()
+    return tour
+  },
   component: RouteComponent,
 })
-
-// Mock — replace with useQuery/loader when Laravel is ready
-const MOCK_TOUR: Tour = {
-  id: "2",
-  slug: "lisbon-porto",
-  title: "Tour Lisbon to/from Porto",
-  images: [
-    { src: "/sintra-tour-tS9PJJsU.webp", alt: "Douro Valley" },
-    { src: "/sintra-tour-tS9PJJsU.webp", alt: "Douro Tour" },
-  ],
-  duration: "Full Day",
-  departureFrom: "From Lisbon or Porto",
-  description: "Travel in luxury from Lisbon to Porto with stops at historic towns.",
-  price: 650,
-};
 
 const STEPS = ["Date & Guests", "Your Details", "Payment"];
 
 function RouteComponent() {
+
+  const TOUR = Route.useLoaderData()
+
+  // Parse price from "EUR 1440.00" → 1440
+  const price = parseFloat(TOUR.data.defaultPrice.replace(/[^0-9.]/g, ''))
 
   const [step, setStep] = useState(0);
   const [date, setDate] = useState<Date | undefined>();
@@ -49,7 +44,8 @@ function RouteComponent() {
     notes: "",
   });
 
-  const total = (MOCK_TOUR.price ?? 0) * adults;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  const total = (price ?? 0) * adults;
 
   const canProceedStep0 = !!date && adults >= 1;
   const canProceedStep1 =
@@ -57,6 +53,7 @@ function RouteComponent() {
     form.email.trim() !== "" &&
     form.phone.trim() !== "";
 
+  const images = TOUR.data.otherPhotos
 
   return (
     <motion.div {...mainTransitionProps}>
@@ -76,19 +73,13 @@ function RouteComponent() {
           <div className="mb-8 md:mb-12">
             <div className="tag-gold mb-3">Book Your Experience</div>
             <h1 className="font-serif text-2xl md:text-4xl font-light text-white leading-snug">
-              {MOCK_TOUR.title}
+              {TOUR.data.title}
             </h1>
             <div className="flex items-center gap-4 mt-2">
-            <span className="flex items-center gap-1.5 text-xs text-[#9A9182]">
-              <Clock className="w-3.5 h-3.5" strokeWidth={1.5} />
-              {MOCK_TOUR.duration}
-            </span>
-              {MOCK_TOUR.departureFrom && (
-                <span className="flex items-center gap-1.5 text-xs text-[#9A9182]">
-                <MapPin className="w-3.5 h-3.5" strokeWidth={1.5} />
-                  {MOCK_TOUR.departureFrom}
+              <span className="flex items-center gap-1.5 text-xs text-[#9A9182]">
+                <Clock className="w-3.5 h-3.5" strokeWidth={1.5} />
+                {TOUR.data.durationText}
               </span>
-              )}
             </div>
           </div>
 
@@ -113,8 +104,8 @@ function RouteComponent() {
                       i === step ? "text-white" : "text-[#9A9182]"
                     }`}
                   >
-                  {label}
-                </span>
+                    {label}
+                  </span>
                 </div>
                 {i < STEPS.length - 1 && (
                   <div className={`flex-1 h-px mx-3 md:mx-4 transition-colors duration-200 ${i < step ? "bg-[#C9A84C]" : "bg-[#C9A84C]/15"}`} />
@@ -132,7 +123,6 @@ function RouteComponent() {
               {/* ── Step 0: Date & Guests ── */}
               {step === 0 && (
                 <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-8">
-                  {/* Date picker */}
                   <div>
                     <p className="font-serif text-sm md:text-base text-[#C9A84C] mb-4">
                       Select a Date
@@ -146,7 +136,6 @@ function RouteComponent() {
                     />
                   </div>
 
-                  {/* Adults */}
                   <div className="border-t border-[#C9A84C]/10 pt-6">
                     <p className="font-serif text-sm md:text-base text-[#C9A84C] mb-4">
                       Guests
@@ -164,8 +153,8 @@ function RouteComponent() {
                           <Minus className="w-3.5 h-3.5" strokeWidth={2} />
                         </button>
                         <span className="text-white font-medium w-4 text-center tabular-nums">
-                        {adults}
-                      </span>
+                          {adults}
+                        </span>
                         <button
                           onClick={() => setAdults((a) => a + 1)}
                           className="w-8 h-8 border border-[#C9A84C]/30 hover:border-[#C9A84C] text-[#C9A84C] flex items-center justify-center transition-colors"
@@ -262,23 +251,20 @@ function RouteComponent() {
                     Payment
                   </p>
 
-                  {/* Stripe Elements mount point */}
                   <div className="space-y-4">
                     <div className="space-y-1.5">
                       <label className="text-xs text-[#9A9182]">Card Details</label>
-                      {/* Mount Stripe CardElement here */}
                       <div
                         id="stripe-card-element"
                         className="bg-[#0B0B0B] border border-[#C9A84C]/20 p-3.5 h-11 flex items-center"
                       >
-                      <span className="text-xs text-[#9A9182]/50">
-                        Stripe card element mounts here
-                      </span>
+                        <span className="text-xs text-[#9A9182]/50">
+                          Stripe card element mounts here
+                        </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Secure notice */}
                   <p className="text-[10px] text-[#9A9182]/60 flex items-center gap-1.5">
                     <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
@@ -296,7 +282,6 @@ function RouteComponent() {
                     </Button>
                     <Button
                       className="flex-1 bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0B0B0B] font-medium rounded-none h-11"
-                      // onClick={handleStripeSubmit} — wire up when integrating Stripe
                     >
                       Pay €{total.toLocaleString()}
                     </Button>
@@ -311,14 +296,15 @@ function RouteComponent() {
               <p className="font-serif text-sm text-[#C9A84C]">Booking Summary</p>
 
               <div className="relative flex-shrink-0 overflow-hidden">
-                {MOCK_TOUR.images.length > 1 ? (
+                {images.length > 1 ? (
                   <Carousel className="w-full h-full">
                     <CarouselContent className="h-full ml-0">
-                      {MOCK_TOUR.images.map((img, i) => (
+                      {images.map((img, i) => (
                         <CarouselItem key={i} className="h-full pl-0">
                           <img
-                            src={img.src}
-                            alt={img.alt}
+                            src={img.originalUrl}
+
+                            alt=""
                             loading="lazy"
                             className="w-full h-full object-cover"
                           />
@@ -330,28 +316,27 @@ function RouteComponent() {
                   </Carousel>
                 ) : (
                   <img
-                    src={MOCK_TOUR.images[0].src}
-                    alt={MOCK_TOUR.images[0].alt}
+                    src={images[0].originalUrl}
+                    alt=""
                     loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 )}
               </div>
 
-
               <div className="space-y-2 pt-1">
-                <p className="text-sm text-white/80 font-light leading-snug">{MOCK_TOUR.title}</p>
+                <p className="text-sm text-white/80 font-light leading-snug">{TOUR.data.title}</p>
 
                 {date && (
                   <div className="flex justify-between text-xs">
                     <span className="text-[#9A9182]">Date</span>
                     <span className="text-white/70">
-                    {date.toLocaleDateString("en-GB", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </span>
+                      {date.toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </span>
                   </div>
                 )}
 
@@ -360,10 +345,10 @@ function RouteComponent() {
                   <span className="text-white/70">{adults}</span>
                 </div>
 
-                {MOCK_TOUR.price && (
+                {price && (
                   <div className="flex justify-between text-xs">
                     <span className="text-[#9A9182]">Price per person</span>
-                    <span className="text-white/70">€{MOCK_TOUR.price}</span>
+                    <span className="text-white/70">€{price.toLocaleString()}</span>
                   </div>
                 )}
               </div>
@@ -371,8 +356,8 @@ function RouteComponent() {
               <div className="border-t border-[#C9A84C]/10 pt-3 flex justify-between items-center">
                 <span className="text-xs text-[#9A9182]">Total</span>
                 <span className="font-serif text-lg text-gradient-gold">
-                €{total.toLocaleString()}
-              </span>
+                  €{total.toLocaleString()}
+                </span>
               </div>
             </div>
 

@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import { ArrowRight } from 'lucide-react'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { fleet, services } from '@/data'
+import {ReviewsSection} from "@/components/sections/review-section.tsx";
 
 
 
@@ -182,10 +183,10 @@ const App: React.FC = () => {
       <section className="py-16 md:py-20 bg-muted/20">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-bold text-gradient-gold mb-6">
-            Why Choose VIP On Wheels
+            Why Choose Off We Go Portugal
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            VIP On Wheels is Portugal's premium chauffeur service, offering
+            Off We Go Portugal is Portugal's premium chauffeur service, offering
             luxury private transportation across Lisbon, Porto and the Algarve.
             With a fully electric Mercedes-Benz fleet, multilingual professional
             drivers and 24/7 availability, we deliver an unmatched travel
@@ -319,6 +320,8 @@ const App: React.FC = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-12">
             What our clients say
           </h2>
+
+          <ReviewsSection/>
         </div>
       </section>
 

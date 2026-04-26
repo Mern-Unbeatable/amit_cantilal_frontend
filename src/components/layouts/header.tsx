@@ -58,7 +58,7 @@ const languages: Array<Language> = [
   { code: 'EN', label: 'English', flag: '🇬🇧' },
   { code: 'PT', label: 'Português', flag: '🇵🇹' },
   { code: 'ES', label: 'Español', flag: '🇪🇸' },
-  { code: 'FR', label: 'Français', flag: '🇫🇷' },
+  { code: 'ZH', label: '中文', flag: '🇨🇳' },
 ]
 
 // ─── Dropdown ─────────────────────────────────────────────────────────────────
@@ -72,6 +72,7 @@ interface DropdownProps {
 const Dropdown: React.FC<DropdownProps> = ({ label, children, isActive }) => {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
+  const { location } = useRouterState()
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -80,6 +81,10 @@ const Dropdown: React.FC<DropdownProps> = ({ label, children, isActive }) => {
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
   }, [])
+
+  useEffect(() => {
+    setOpen(false)
+  }, [location.pathname])
 
   return (
     <div ref={ref} className="relative">

@@ -6,18 +6,18 @@ const Footer: React.FC = () => {
   const socialIcons = [
     {
       name: 'Instagram',
-      href: 'https://instagram.com/vip_on_wheels',
+      href: 'https://instagram.com/offwegoportugal',
       icon: 'mdi:instagram',
     },
     {
       name: 'Facebook',
-      href: '#',
+      href: 'https://facebook.com/offwegoportugal',
       icon: 'mdi:facebook',
     },
     {
-      name: 'LinkedIn',
-      href: '#',
-      icon: 'mdi:linkedin',
+      name: 'Email',
+      href: 'https://mailto:info@offwego.pt',
+      icon: 'mdi:email',
     },
   ]
   return (
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                 Locations
               </h4>
               <p className="text-sm text-foreground/80">
-                Rua Dom João V, N°24 - 1.03 1250-091 Lisboa - Portugal
+                <strong>Lisbon:</strong> Rua Dom João V, N°24 - 1.03 1250-091 Lisboa - Portugal
               </p>
             </div>
             <div>
@@ -81,10 +81,10 @@ const Footer: React.FC = () => {
                 Contact
               </h4>
               <a
-                href="tel:+351913911013"
+                href="tel:+351914578214"
                 className="text-sm text-foreground/80 hover:text-primary transition-smooth block mb-1"
               >
-                +351 913 911 013
+                +351 914 578 214
               </a>
               <p className="text-xs text-foreground/60 mb-4">
                 Call to national mobile
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-gradient-gold mb-3">
-                  footer.followUs
+                  Follow Us
                 </h4>
                 <div className="flex items-center gap-3">
                   {socialIcons.map((social) => (
@@ -138,10 +138,10 @@ const Footer: React.FC = () => {
                   Email
                 </h4>
                 <a
-                  href="mailto:booking@viponwheels.com"
+                  href="mailto:info@offwego.pt"
                   className="text-sm text-foreground/80 hover:text-primary transition-smooth"
                 >
-                  booking@viponwheels.com
+                  info@offwego.pt
                 </a>
               </div>
             </div>
@@ -187,39 +187,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-foreground/60">
-                <span>Registration RNAAT: 941/2022</span>
-                <span>Registration RNAVT: 11050</span>
-                <span>TVDE License: 100617/2022</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  className="lucide lucide-globe w-4 h-4 text-foreground/60 flex-shrink-0"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                  <path d="M2 12h20"></path>
-                </svg>
-                <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3 min-w-[60px]">
-                  EN
-                </button>
-                <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 min-w-[60px]">
-                  PT
-                </button>
-                <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 min-w-[60px]">
-                  ES
-                </button>
-                <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 min-w-[60px]">
-                  中文
-                </button>
+                <span>Registration RNAAT: 738/2023</span>
               </div>
             </div>
           </div>
