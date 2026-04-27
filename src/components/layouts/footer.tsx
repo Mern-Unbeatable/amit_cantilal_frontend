@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                 Locations
               </h4>
               <p className="text-sm text-foreground/80">
-                <strong>Lisbon:</strong> Rua Dom João V, N°24 - 1.03 1250-091 Lisboa - Portugal
+                <strong>Lisbon - Porto - Algarve</strong>
               </p>
             </div>
             <div>
