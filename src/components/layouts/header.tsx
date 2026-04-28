@@ -31,7 +31,7 @@ const navGroups: Array<NavGroup> = [
     id: 1,
     label: 'Services',
     items: [
-      // { id: 3, name: 'Transfers', to: '/transfers' },
+      { id: 3, name: 'Transfers', to: '/transfers' },
       { id: 4, name: 'Hourly Service', to: '/hourly-service' },
       { id: 5, name: 'Tours', to: '/tours' },
     ],

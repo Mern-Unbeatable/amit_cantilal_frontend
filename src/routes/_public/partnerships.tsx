@@ -65,7 +65,7 @@ function RouteComponent() {
                   Chat on WhatsApp
                   </a>
                 </Button>
-                <Button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:text-accent-foreground h-10 text-sm md:text-lg px-5 py-4 md:px-8 md:py-6 border-primary/30 hover:bg-primary/10">
+                <Button className="inline-flex text-white items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:text-accent-foreground h-10 text-sm md:text-lg px-5 py-4 md:px-8 md:py-6 border-primary/30 hover:bg-primary/10">
                   Request Partnership
                 </Button>
                 <Button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground h-10 text-sm md:text-lg px-5 py-4 md:px-8 md:py-6 hover:bg-primary/10">

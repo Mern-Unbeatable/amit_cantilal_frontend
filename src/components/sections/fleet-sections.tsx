@@ -46,7 +46,7 @@ const dieselFleet: Array<FleetCardProps> = [
   },
   {
     name: 'Mercedes-Benz Sprinter',
-    image: '/mercedes-sprinter-VcRR1Ns-.webp',
+    image: '/sprinter.jpg',
     passengers: 9,
     suitcases: 9,
   },
