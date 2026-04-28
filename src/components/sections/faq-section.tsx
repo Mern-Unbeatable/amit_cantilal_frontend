@@ -63,7 +63,7 @@ const DEFAULT_FAQ_DATA: Array<FaqCategory> = [
       {
         question: 'What is your cancellation policy?',
         answer:
-          'Cancellations more than 48 hours before your Sedan/Van transfer receive a full refund. Under 48 hours, 50% is charged; under 12 hours, 100% is charged. Sprinter bookings have extended windows — see our Booking Policies page for full details.',
+          'Cancellations more than 48 hours before your Sedan/Van transfer receive a full refund. Under 48 hours, 50% is charged; under 24 hours, 100% is charged. Sprinter bookings have extended windows — see our Booking Policies page for full details.',
       },
     ],
   },

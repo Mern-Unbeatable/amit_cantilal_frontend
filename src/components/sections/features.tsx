@@ -34,7 +34,7 @@ function Tag({
   )
 }
 
-function CheckList({ items, green }: { items: string[]; green?: boolean }) {
+function CheckList({ items, green }: { items: Array<string>; green?: boolean }) {
   return (
     <ul className="space-y-2">
       {items.map((item) => (
@@ -120,7 +120,6 @@ export default function B2BFeatures() {
               </p>
               <CheckList
                 items={[
-                  'Tesla Model S, Mercedes EQE, EQS, EQV',
                   'Mercedes E-Class, S-Class, Sprinter',
                   'Groups of 6 to 48 people',
                 ]}
