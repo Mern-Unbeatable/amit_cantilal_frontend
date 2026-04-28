@@ -1,9 +1,10 @@
+import { getToursByType } from '../../data/tour'
 import type {Tour} from "@/features/tour/tour.types.ts";
 import {TourCard} from "@/features/tour/tour-card.tsx";
 
-import { mapToTourCard, tours } from '@/data/tour'
+import { mapToTourCard } from '@/data/tour'
 
-const REAL_TOURS = tours.map(mapToTourCard)
+const REAL_TOURS = getToursByType('Day tour / activity').map(mapToTourCard)
 
 interface ToursSectionProps {
   tours?: Array<Tour>;

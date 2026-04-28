@@ -51,9 +51,9 @@ export function TourCard({ tour }: { tour: Tour }) {
         )}
 
         {/* Gradient + title overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/75 to-transparent pointer-events-none" />
         <div className="absolute bottom-2 md:bottom-4 left-3 md:left-4 right-3 md:right-4 pointer-events-none">
-          <h3 className="font-serif text-base md:text-2xl font-light text-gradient-gold mb-1 md:mb-2 line-clamp-2">
+          <h3 className="font-serif font-semibold text-base md:text-2xl text-gradient-gold mb-1 md:mb-2 line-clamp-2">
             {tour.title}
           </h3>
           <div className="flex flex-col gap-0.5">

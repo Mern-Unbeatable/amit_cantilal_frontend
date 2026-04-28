@@ -31,7 +31,7 @@ const navGroups: Array<NavGroup> = [
     id: 1,
     label: 'Services',
     items: [
-      { id: 3, name: 'Transfers', to: '/transfers' },
+      // { id: 3, name: 'Transfers', to: '/transfers' },
       { id: 4, name: 'Hourly Service', to: '/hourly-service' },
       { id: 5, name: 'Tours', to: '/tours' },
     ],
@@ -90,7 +90,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, children, isActive }) => {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 text-lg xl:text-xl font-semibold transition-colors duration-200 whitespace-nowrap ${
+        className={`flex items-center gap-1 text-sm xl:text-base font-bold font-[Montserrat] uppercase tracking-wide transition-colors duration-200 whitespace-nowrap ${
           isActive || open ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#C9A84C]'
         }`}
       >
@@ -136,7 +136,7 @@ const LanguageSwitcher: React.FC = () => {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 border border-[#C9A84C]/30 px-4 h-11 rounded-3xl text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-colors duration-200 text-sm font-medium"
+        className="flex items-center gap-2 border border-[#C9A84C]/30 px-4 h-11 rounded-3xl text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-colors duration-200 text-sm font-bold font-[Montserrat] uppercase tracking-wide"
       >
         <Globe className="w-4 h-4" />
         <span>{active.flag} {active.code}</span>
@@ -154,15 +154,15 @@ const LanguageSwitcher: React.FC = () => {
             <button
               key={lang.code}
               onClick={() => { setActive(lang); setOpen(false) }}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors duration-150 ${
+              className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors duration-150 font-bold font-[Montserrat] uppercase tracking-wide ${
                 active.code === lang.code
                   ? 'text-[#C9A84C] bg-[#C9A84C]/08'
                   : 'text-[#9A9182] hover:text-[#F5F0E8] hover:bg-[#1C1C1C]'
               }`}
             >
-              <span className="text-base">{lang.flag}</span>
+              <span className="text-base normal-case">{lang.flag}</span>
               <span className="font-medium">{lang.code}</span>
-              <span className="text-xs opacity-60 ml-auto">{lang.label}</span>
+              <span className="text-xs opacity-60 ml-auto normal-case">{lang.label}</span>
             </button>
           ))}
         </div>
@@ -194,7 +194,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
           <Link
             key={item.id}
             to={item.to}
-            className={`block px-3 py-2.5 text-sm font-medium transition-colors ${
+            className={`block px-3 py-2.5 text-sm font-bold font-[Montserrat] uppercase tracking-wide transition-colors ${
               activePath === item.to ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#F5F0E8]'
             }`}
           >
@@ -207,7 +207,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
           <div key={group.id}>
             <button
               onClick={() => setOpenGroup(openGroup === group.id ? null : group.id)}
-              className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium text-[#9A9182] hover:text-[#F5F0E8] transition-colors"
+              className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-bold font-[Montserrat] uppercase tracking-wide text-[#9A9182] hover:text-[#F5F0E8] transition-colors"
             >
               {group.label}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openGroup === group.id ? 'rotate-180' : ''}`} />
@@ -217,7 +217,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
                 <Link
                   key={item.id}
                   to={item.to}
-                  className={`block pl-6 pr-3 py-2 text-sm transition-colors border-l border-[#C9A84C]/20 ml-3 ${
+                  className={`block pl-6 pr-3 py-2 text-sm font-bold font-[Montserrat] uppercase tracking-wide transition-colors border-l border-[#C9A84C]/20 ml-3 ${
                     activePath === item.to ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#F5F0E8]'
                   }`}
                 >
@@ -236,7 +236,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
           {languages.map((lang) => (
             <button
               key={lang.code}
-              className="flex items-center gap-1.5 text-xs font-medium text-[#9A9182] hover:text-[#C9A84C] border border-[#C9A84C]/15 px-3 py-1.5 transition-colors"
+              className="flex items-center gap-1.5 text-xs font-bold font-[Montserrat] uppercase tracking-wide text-[#9A9182] hover:text-[#C9A84C] border border-[#C9A84C]/15 px-3 py-1.5 transition-colors"
             >
               {lang.flag} {lang.code}
             </button>
@@ -263,7 +263,7 @@ const Header: React.FC = () => {
     group.items.some((item) => item.to === activePath)
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-20 bg-[#0B0B0B] border-b  border-[#C9A84C]/10">
+    <header className="fixed top-0 right-0 left-0 z-20 bg-[#0B0B0B] border-b border-[#C9A84C]/10">
       <div className="container mx-auto px-4 py-1 md:py-4">
         <div className="flex items-center justify-between h-20">
 
@@ -280,7 +280,7 @@ const Header: React.FC = () => {
             {/* Standalone: Home */}
             <Link
               to="/"
-              className={`text-lg xl:text-xl font-semibold whitespace-nowrap transition-colors duration-200 ${
+              className={`text-sm xl:text-base font-bold font-[Montserrat] uppercase tracking-wide whitespace-nowrap transition-colors duration-200 ${
                 activePath === '/' ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#C9A84C]'
               }`}
             >
@@ -290,7 +290,7 @@ const Header: React.FC = () => {
             {/* Standalone: Book Now */}
             <Link
               to="/booking"
-              className={`text-lg xl:text-xl font-semibold whitespace-nowrap transition-colors duration-200 ${
+              className={`text-sm xl:text-base font-bold font-[Montserrat] uppercase tracking-wide whitespace-nowrap transition-colors duration-200 ${
                 activePath === '/booking' ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#C9A84C]'
               }`}
             >
@@ -304,7 +304,7 @@ const Header: React.FC = () => {
                   <Link
                     key={item.id}
                     to={item.to}
-                    className={`block px-4 py-2.5 text-sm font-medium transition-colors duration-150 ${
+                    className={`block px-4 py-2.5 text-sm font-bold font-[Montserrat] uppercase tracking-wide transition-colors duration-150 ${
                       activePath === item.to
                         ? 'text-[#C9A84C] bg-[#C9A84C]/08'
                         : 'text-[#9A9182] hover:text-[#F5F0E8] hover:bg-[#1C1C1C]'
