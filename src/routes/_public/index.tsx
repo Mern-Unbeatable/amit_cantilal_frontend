@@ -8,7 +8,6 @@ import { fleet, services } from '@/data'
 import {ReviewsSection} from "@/components/sections/review-section.tsx";
 
 
-
 const stats = [
   { num: '12+', label: 'Years of Service' },
   { num: '500+', label: 'Happy Clients' },
@@ -186,12 +185,7 @@ const App: React.FC = () => {
             Why Choose Off We Go Portugal
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Off We Go Portugal is Portugal's premium chauffeur service, offering
-            luxury private transportation across Lisbon, Porto and the Algarve.
-            With a fully electric Mercedes-Benz fleet, multilingual professional
-            drivers and 24/7 availability, we deliver an unmatched travel
-            experience for discerning travellers, business executives and
-            families.
+            Off We Go Portugal is a premium chauffeur service, offering luxury private transportation across Lisbon, Porto, and the Algarve. With a high-end Mercedes-Benz fleet, multilingual professional drivers, and 24/7 availability, we deliver an exceptional travel experience for discerning travellers, business executives, and families.
           </p>
         </div>
       </section>

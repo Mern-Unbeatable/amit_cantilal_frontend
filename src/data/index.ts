@@ -50,8 +50,8 @@ export const services: Array<ServiceItem> = [
 export const fleet: Array<FleetItem> = [
   {
     id: 1,
-    name: "Mercedes-Benz EQE & E-Class",
-    image: "/mercedes-eqe-hotel-clean-Bu__kXyP.webp",
+    name: "Mercedes-Benz E-Class & EQE",
+    image: "/e-class.png",
     tags: [
       { label: "Electric", icon: "mdi:flash", variant: "primary" },
       { label: "Diesel", icon: "mdi:fuel", variant: "dark" },
@@ -59,8 +59,8 @@ export const fleet: Array<FleetItem> = [
   },
   {
     id: 2,
-    name: "Mercedes-Benz EQS & S-Class",
-    image: "/mercedes-eqs-premium-CZqyaYaU.webp",
+    name: "Mercedes-Benz S-Class & EQS",
+    image: "/s-class.png",
     tags: [
       { label: "Electric", icon: "mdi:flash", variant: "primary" },
       { label: "Diesel", icon: "mdi:fuel", variant: "dark" },
@@ -68,8 +68,8 @@ export const fleet: Array<FleetItem> = [
   },
   {
     id: 3,
-    name: "Mercedes-Benz EQV & V-Class",
-    image: "/mercedes-eqv-luxury-clean-lg8pM9c8.webp",
+    name: "Mercedes-Benz V-Class & EQV",
+    image: "/v-class.png",
     tags: [
       { label: "Electric", icon: "mdi:flash", variant: "primary" },
       { label: "Diesel", icon: "mdi:fuel", variant: "dark" },

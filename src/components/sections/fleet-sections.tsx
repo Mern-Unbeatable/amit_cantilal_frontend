@@ -28,19 +28,19 @@ const electricFleet: Array<FleetCardProps> = [
 const dieselFleet: Array<FleetCardProps> = [
   {
     name: 'Mercedes-Benz E-Class',
-    image: '/mercedes-e-class-BIO35KIp.webp',
+    image: '/e-class.png',
     passengers: 2,
     suitcases: 2,
   },
   {
     name: 'Mercedes-Benz S-Class',
-    image: '/mercedes-s-class-B4viU9i3.webp',
+    image: '/s-class.png',
     passengers: 2,
     suitcases: 2,
   },
   {
     name: 'Mercedes-Benz V-Class',
-    image: '/mercedes-v-class-C116sv8v.webp',
+    image: '/v-class.png',
     passengers: 6,
     suitcases: 6,
   },
