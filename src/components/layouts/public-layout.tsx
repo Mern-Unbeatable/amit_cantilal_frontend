@@ -13,7 +13,7 @@ const PublicLayout = () => {
     <>
       <Header />
       <AnimatePresence mode="wait">
-          <Outlet key={nextMatch.id} />
+        <Outlet key={nextMatch.id} />
       </AnimatePresence>
       <Footer />
     </>

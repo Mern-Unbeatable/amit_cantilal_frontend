@@ -25,6 +25,7 @@ import { Route as PublicToursIndexRouteImport } from './routes/_public/tours/ind
 import { Route as PublicBlogIndexRouteImport } from './routes/_public/blog/index'
 import { Route as PublicToursSlugRouteImport } from './routes/_public/tours/$slug'
 import { Route as PublicBlogSlugRouteImport } from './routes/_public/blog/$slug'
+import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
 
 const PublicRoute = PublicRouteImport.update({
   id: '/_public',
@@ -103,6 +104,12 @@ const PublicBlogSlugRoute = PublicBlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => PublicRoute,
 } as any)
+const AuthenticatedAdminDashboardRoute =
+  AuthenticatedAdminDashboardRouteImport.update({
+    id: '/admin/dashboard',
+    path: '/admin/dashboard',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/login': typeof AuthLoginRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/transfers': typeof PublicTransfersRoute
   '/': typeof PublicIndexRoute
+  '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/blog/$slug': typeof PublicBlogSlugRoute
   '/tours/$slug': typeof PublicToursSlugRoute
   '/blog': typeof PublicBlogIndexRoute
@@ -129,6 +137,7 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/transfers': typeof PublicTransfersRoute
   '/': typeof PublicIndexRoute
+  '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/blog/$slug': typeof PublicBlogSlugRoute
   '/tours/$slug': typeof PublicToursSlugRoute
   '/blog': typeof PublicBlogIndexRoute
@@ -137,7 +146,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_auth': typeof AuthRouteWithChildren
-  '/_authenticated': typeof AuthenticatedRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
   '/_auth/login': typeof AuthLoginRoute
   '/_public/b2b': typeof PublicB2bRoute
@@ -148,6 +157,7 @@ export interface FileRoutesById {
   '/_public/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/_public/transfers': typeof PublicTransfersRoute
   '/_public/': typeof PublicIndexRoute
+  '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/_public/blog/$slug': typeof PublicBlogSlugRoute
   '/_public/tours/$slug': typeof PublicToursSlugRoute
   '/_public/blog/': typeof PublicBlogIndexRoute
@@ -165,6 +175,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/transfers'
     | '/'
+    | '/admin/dashboard'
     | '/blog/$slug'
     | '/tours/$slug'
     | '/blog'
@@ -180,6 +191,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/transfers'
     | '/'
+    | '/admin/dashboard'
     | '/blog/$slug'
     | '/tours/$slug'
     | '/blog'
@@ -198,6 +210,7 @@ export interface FileRouteTypes {
     | '/_public/privacy-policy'
     | '/_public/transfers'
     | '/_public/'
+    | '/_authenticated/admin/dashboard'
     | '/_public/blog/$slug'
     | '/_public/tours/$slug'
     | '/_public/blog/'
@@ -206,7 +219,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   AuthRoute: typeof AuthRouteWithChildren
-  AuthenticatedRoute: typeof AuthenticatedRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
 }
 
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicBlogSlugRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_authenticated/admin/dashboard': {
+      id: '/_authenticated/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AuthenticatedAdminDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
@@ -336,6 +356,18 @@ const AuthRouteChildren: AuthRouteChildren = {
 }
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
+interface AuthenticatedRouteChildren {
+  AuthenticatedAdminDashboardRoute: typeof AuthenticatedAdminDashboardRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedAdminDashboardRoute: AuthenticatedAdminDashboardRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
 
 interface PublicRouteChildren {
   PublicB2bRoute: typeof PublicB2bRoute
@@ -372,7 +404,7 @@ const PublicRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRouteWithChildren,
-  AuthenticatedRoute: AuthenticatedRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
 }
 export const routeTree = rootRouteImport

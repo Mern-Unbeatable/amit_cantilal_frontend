@@ -1,5 +1,5 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
-import { motion } from 'framer-motion'
+import { createFileRoute } from '@tanstack/react-router'
+import { Shield } from 'lucide-react'
 import LoginForm from '@/features/auth/login-form.tsx'
 
 export const Route = createFileRoute('/_auth/login')({
@@ -8,32 +8,21 @@ export const Route = createFileRoute('/_auth/login')({
 
 function RouteComponent() {
   return (
-    <div className="flex-1 flex items-center justify-center px-6 py-10 overflow-y-auto">
-      <motion.div
-        className="w-full max-w-3xl"
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {/* Header */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight mb-1.5 font-['Syne',sans-serif]">
-            Login your account
-          </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            Don't have an account?{' '}
-            <Link
-              to="/"
-              className="text-orange-500 font-medium hover:text-orange-600 transition-colors"
-            >
-              Create account
-            </Link>
-          </p>
+    <div className="bg-[#141414] border border-[#C9A84C]/12 p-8">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <div className="mx-auto w-12 h-12 bg-[#C9A84C] flex items-center justify-center mb-4">
+          <Shield className="w-5 h-5 text-[#0B0B0B]" strokeWidth={1.5} />
         </div>
+        <h1 className="font-serif text-2xl font-light text-gradient-gold">
+          Admin Login
+        </h1>
+        <p className="text-xs text-[#9A9182] mt-1">
+          Access the management panel
+        </p>
+      </div>
 
-        <LoginForm />
-
-      </motion.div>
+      <LoginForm/>
     </div>
   )
 }
