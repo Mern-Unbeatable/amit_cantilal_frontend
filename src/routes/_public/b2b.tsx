@@ -9,12 +9,15 @@ import B2BFeatures from '@/components/sections/features.tsx'
 import FleetSection from '@/components/sections/fleet-sections.tsx'
 import CoverageArea from '@/components/sections/coverage-area.tsx'
 import B2BRequestForm from '@/components/form/b2b-request-form.tsx'
+import { useFleet } from '@/features/fleet/fleet.hooks.ts'
 
 export const Route = createFileRoute('/_public/b2b')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const { data: fleet } = useFleet()
+
   return (
     <motion.div {...mainTransitionProps}>
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-end pb-12 md:pb-20">
@@ -96,7 +99,7 @@ function RouteComponent() {
 
       <B2BFeatures/>
 
-      <FleetSection/>
+      <FleetSection fleet={fleet} />
 
       <CoverageArea/>
 

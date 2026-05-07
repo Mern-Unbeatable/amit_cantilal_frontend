@@ -1,11 +1,12 @@
-import type { BookingState } from './booking.types'
+import type { BookingFormState } from './booking.types'
 
 interface Props {
-  state: BookingState
+  state: BookingFormState
   currentStep: number
+  amount: number | null
 }
 
-export default function BookingSummaryCard({ state, currentStep }: Props) {
+export default function BookingSummaryCard({ state, currentStep, amount }: Props) {
   const { trip, vehicle } = state
 
   return (
@@ -50,6 +51,13 @@ export default function BookingSummaryCard({ state, currentStep }: Props) {
           </div>
         )}
 
+        {trip.serviceType === 'transfer' && trip.distanceKm && (
+          <div className="flex justify-between">
+            <span className="text-[#9A9182]">Distance</span>
+            <span className="text-[#F5F0E8]">{trip.distanceKm.toFixed(1)} km</span>
+          </div>
+        )}
+
         {/* Hourly duration */}
         {trip.serviceType === 'hourly' && trip.hours && (
           <div className="flex justify-between">
@@ -72,10 +80,10 @@ export default function BookingSummaryCard({ state, currentStep }: Props) {
       </div>
 
       {/* Total */}
-      {vehicle && (
+      {vehicle && amount && (
         <div className="border-t border-[#C9A84C]/10 pt-3 flex justify-between items-center">
           <span className="text-xs text-[#9A9182]">Total</span>
-          <span className="font-serif text-lg text-gradient-gold">€{vehicle.price}.00</span>
+          <span className="font-serif text-lg text-gradient-gold">€{amount}.00</span>
         </div>
       )}
 

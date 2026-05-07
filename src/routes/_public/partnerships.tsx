@@ -9,12 +9,16 @@ import CorporateTaxReduction from '@/components/sections/cooperate-tax-reduction
 import SustainabilityImpact from '@/components/sections/sustainability-impact.tsx'
 import PartnerForm from '@/components/sections/partnership-form.tsx'
 import CoverageArea from '@/components/sections/coverage-area.tsx'
+import { useFleet } from '@/features/fleet/fleet.hooks.ts'
 
 export const Route = createFileRoute('/_public/partnerships')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+
+  const { data: fleet } = useFleet()
+
   return (
     <motion.div {...mainTransitionProps}>
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-end pb-12 md:pb-20">
@@ -220,7 +224,7 @@ function RouteComponent() {
 
       <CoverageArea/>
 
-      <FleetSection/>
+      <FleetSection fleet={fleet}/>
 
       <CorporateTaxReduction/>
 

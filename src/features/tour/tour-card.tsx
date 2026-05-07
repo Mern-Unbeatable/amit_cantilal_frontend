@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { ArrowRight, Clock, MapPin, MessageCircle } from 'lucide-react'
+import { ArrowRight, Clock, MessageCircle } from 'lucide-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { useRef } from 'react'
 import type { Tour } from '@/features/tour/tour.types.ts'
@@ -16,22 +16,24 @@ export function TourCard({ tour }: { tour: Tour }) {
     Autoplay({ delay: 4000, stopOnInteraction: false }),
   )
 
+  const images = tour.images ?? []
+
   return (
     <div className="group bg-[#141414] border border-[#C9A84C]/12 hover:border-[#C9A84C]/35 transition-colors duration-200 flex flex-col h-full">
       {/* Image carousel */}
       <div className="relative h-36 md:h-56 flex-shrink-0 overflow-hidden">
-        {tour.images.length > 1 ? (
+        {images.length > 1 ? (
           <Carousel
             className="w-full h-full"
             plugins={[autoplayPlugin.current]}
             opts={{ loop: true }}
           >
             <CarouselContent className="h-full ml-0">
-              {tour.images.map((img, i) => (
+              {images.map((img, i) => (
                 <CarouselItem key={i} className="h-full pl-0">
                   <img
-                    src={img.src}
-                    alt={img.alt}
+                    src={img.url}
+                    alt={img.alt ?? tour.title}
                     loading="lazy"
                     className="w-full h-full object-cover"
                   />
@@ -41,13 +43,15 @@ export function TourCard({ tour }: { tour: Tour }) {
             <CarouselPrevious className="left-2 h-7 w-7 border-0 bg-black/40 hover:bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
             <CarouselNext className="right-2 h-7 w-7 border-0 bg-black/40 hover:bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
           </Carousel>
-        ) : (
+        ) : images.length === 1 ? (
           <img
-            src={tour.images[0].src}
-            alt={tour.images[0].alt}
+            src={images[0].url}
+            alt={images[0].alt ?? tour.title}
             loading="lazy"
             className="w-full h-full object-cover"
           />
+        ) : (
+          <div className="w-full h-full bg-[#1C1C1C]" />
         )}
 
         {/* Gradient + title overlay */}
@@ -56,7 +60,7 @@ export function TourCard({ tour }: { tour: Tour }) {
           <h3 className="font-serif font-semibold text-base md:text-2xl text-gradient-gold mb-1 md:mb-2 line-clamp-2">
             {tour.title}
           </h3>
-          <div className="flex flex-col gap-0.5">
+          {tour.duration && (
             <p className="flex items-center gap-1.5 text-xs md:text-sm text-white/70">
               <Clock
                 className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0"
@@ -64,32 +68,26 @@ export function TourCard({ tour }: { tour: Tour }) {
               />
               {tour.duration}
             </p>
-            {tour.departureFrom && (
-              <p className="flex items-center gap-1.5 text-[10px] md:text-xs text-white/50">
-                <MapPin className="w-3 h-3 flex-shrink-0" strokeWidth={1.5} />
-                {tour.departureFrom}
-              </p>
-            )}
-          </div>
+          )}
         </div>
       </div>
 
       {/* Content */}
       <div className="p-3 md:p-6 flex flex-col flex-1">
         <p className="text-xs md:text-sm text-[#9A9182] leading-relaxed line-clamp-2 md:line-clamp-3 flex-1 mb-4">
-          {tour.description}
+          {tour.excerpt ?? tour.description}
         </p>
 
         <div className="mt-auto space-y-2 md:space-y-3">
           {/* Price */}
           {tour.price && (
             <p className="font-serif text-sm md:text-xl text-gradient-gold font-light">
-              From €{tour.price}
+              From €{(tour.price / 100).toLocaleString()}
             </p>
           )}
 
           {/* CTA */}
-          {tour.isOnDemand ? (
+          {tour.category === 'on_demand' ? (
             <a
               href="https://wa.me/351914578214"
               target="_blank"
@@ -102,7 +100,7 @@ export function TourCard({ tour }: { tour: Tour }) {
           ) : (
             <Link
               to="/tours/$slug"
-              params={{ slug: tour.slug }}
+              params={{ slug: tour.slug ?? '' }}
               className="w-full flex items-center justify-center gap-2 bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0B0B0B] transition-colors duration-200 py-2 md:py-2.5 text-xs md:text-sm font-medium"
             >
               Book Now

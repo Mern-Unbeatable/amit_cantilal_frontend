@@ -301,3 +301,48 @@
         border-color: rgba(245, 240, 232, 0.5);
     }
 }
+
+/* index.css */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px var(--background) inset !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+}
+
+/* index.css */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: oklch(0.2865 0.1565 267.95 / 0.3);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.2865 0.1565 267.95 / 0.6);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: oklch(0.5808 0.1795 279.24 / 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.5808 0.1795 279.24 / 0.6);
+}
