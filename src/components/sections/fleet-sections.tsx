@@ -1,56 +1,7 @@
 import { Car, Zap } from 'lucide-react'
-import type {FleetCardProps} from '@/features/fleet/fleet-card.tsx';
+import type { FleetVehicle } from '@/features/fleet/fleet.types.ts'
+import type { FleetCardProps } from '@/features/fleet/fleet-card.tsx'
 import FleetCard from '@/features/fleet/fleet-card.tsx'
-
-// ─── Static data (replace with useQuery call when backend is ready) ───────────
-
-const electricFleet: Array<FleetCardProps> = [
-  {
-    name: 'Mercedes-Benz EQE',
-    image: '/mercedes-eqe-hotel-clean-Bu__kXyP.webp',
-    passengers: 2,
-    suitcases: 2,
-  },
-  {
-    name: 'Mercedes-Benz EQS',
-    image: '/mercedes-eqs-premium-CZqyaYaU.webp',
-    passengers: 2,
-    suitcases: 2,
-  },
-  {
-    name: 'Mercedes-Benz EQV',
-    image: '/mercedes-eqv-luxury-clean-lg8pM9c8.webp',
-    passengers: 6,
-    suitcases: 6,
-  },
-]
-
-const dieselFleet: Array<FleetCardProps> = [
-  {
-    name: 'Mercedes-Benz E-Class',
-    image: '/e-class.png',
-    passengers: 2,
-    suitcases: 2,
-  },
-  {
-    name: 'Mercedes-Benz S-Class',
-    image: '/s-class.png',
-    passengers: 2,
-    suitcases: 2,
-  },
-  {
-    name: 'Mercedes-Benz V-Class',
-    image: '/v-class.png',
-    passengers: 6,
-    suitcases: 6,
-  },
-  {
-    name: 'Mercedes-Benz Sprinter',
-    image: '/sprinter.jpg',
-    passengers: 9,
-    suitcases: 9,
-  },
-]
 
 // ─── Sub-component ─────────────────────────────────────────────────────────────
 
@@ -83,7 +34,34 @@ function FleetGroup({ label, icon, vehicles }: FleetGroupProps) {
 
 // ─── Section ───────────────────────────────────────────────────────────────────
 
-export default function FleetSection() {
+interface FleetSectionProps {
+  fleet?: Array<FleetVehicle>
+}
+
+export default function FleetSection({ fleet = [] }: FleetSectionProps) {
+  const isElectricVehicle = (vehicle: FleetVehicle) =>
+    vehicle.fuel_type === 'electric' ||
+    vehicle.category === 'electric' ||
+    (vehicle.category == null && Boolean(vehicle.is_electric))
+
+  const electricFleet = fleet
+    .filter(isElectricVehicle)
+    .map(({ name, image, passengers, suitcases }) => ({
+      name,
+      image: image ?? '',
+      passengers,
+      suitcases,
+    }))
+
+  const dieselFleet = fleet
+    .filter((vehicle) => !isElectricVehicle(vehicle))
+    .map(({ name, image, passengers, suitcases }) => ({
+      name,
+      image: image ?? '',
+      passengers,
+      suitcases,
+    }))
+
   return (
     <section className="py-10 md:py-24 bg-[#141414] border-y border-[#C9A84C]/10">
       <div className="container mx-auto px-4 md:px-12">

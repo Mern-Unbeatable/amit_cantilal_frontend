@@ -5,6 +5,7 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import '@fontsource-variable/inter';
+import 'leaflet/dist/leaflet.css'
 
 import * as TanStackQueryProvider from './integrations/tanstack-query/root-provider.tsx'
 

@@ -1,27 +1,36 @@
 import { useState } from 'react'
+import { format } from 'date-fns'
+import { toast } from 'sonner'
 import { Check } from 'lucide-react'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 import type {
-  BookingState,
+  BookingFormState,
   ContactDetails,
+  CreateBookingPayload,
   TripDetails,
   Vehicle,
+  VehicleType,
 } from '@/features/booking/booking.types.ts'
 import Step1TripDetails from '@/features/booking/steps/trip-details.tsx'
 import Step2VehicleSelect from '@/features/booking/steps/vehicle-select.tsx'
 import Step3ContactInfo from '@/features/booking/steps/contact-info.tsx'
 import Step4Payment from '@/features/booking/steps/payment.tsx'
 import BookingSummaryCard from '@/features/booking/booking-summary-card.tsx'
+import { useCreateBooking } from '@/features/booking/booking.hooks.ts'
 
 const STEPS = ['Trip Details', 'Select Vehicle', 'Contact Info', 'Payment']
 
-const INITIAL_STATE: BookingState = {
+const INITIAL_STATE: BookingFormState = {
   trip: {
     serviceType: 'transfer',
     pickup: '',
     dropoff: '',
     stops: [],
+    passengers: 1,
     date: undefined,
     time: '',
+    distanceKm: undefined,
     hours: 3,
   },
   vehicle: null,
@@ -34,6 +43,8 @@ const INITIAL_STATE: BookingState = {
     flightNumber: '',
   },
 }
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
 
 // ─── Step indicator ───────────────────────────────────────────────────────────
 
@@ -55,8 +66,6 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
           />
         ))}
       </div>
-
-      {/* Step labels */}
       <div className="flex items-center gap-0 mt-6 md:mt-8">
         {STEPS.map((label, i) => (
           <div key={label} className="flex items-center flex-1 last:flex-none">
@@ -98,40 +107,133 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
 
 export default function BookingWidget() {
   const [step, setStep] = useState(0)
-  const [state, setState] = useState<BookingState>(INITIAL_STATE)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [state, setState] = useState<BookingFormState>(INITIAL_STATE)
+  const [stripeError, setStripeError] = useState<string | null>(null)
+  const [clientSecret, setClientSecret] = useState<string | null>(null)
+  const [isConfirming, setIsConfirming] = useState(false)
+  const createBooking = useCreateBooking()
 
   const updateTrip = (trip: TripDetails) => setState((s) => ({ ...s, trip }))
   const updateVehicle = (vehicle: Vehicle) => setState((s) => ({ ...s, vehicle }))
   const updateNotes = (notes: string) => setState((s) => ({ ...s, notes }))
   const updateContact = (contact: ContactDetails) => setState((s) => ({ ...s, contact }))
 
-  const handleSubmit = async () => {
-    setIsSubmitting(true)
+  const inferVehicleType = (vehicle: Vehicle | null): VehicleType | undefined => {
+    if (!vehicle) return undefined
+    const label = vehicle.name.toLowerCase()
+    if (label.includes('sprinter')) return 'sprinter'
+    if (label.includes('van')) return 'van'
+    if (label.includes('suv')) return 'suv'
+    if (label.includes('sedan')) return 'sedan'
+    if (vehicle.passengers > 8) return 'sprinter'
+    if (vehicle.passengers > 6) return 'van'
+    if (vehicle.passengers > 4) return 'suv'
+    return 'sedan'
+  }
+
+  const calculateAmount = (): number | null => {
+    if (!state.vehicle) return null
+    const baseRate = Number(state.vehicle.price)
+    if (!Number.isFinite(baseRate) || baseRate <= 0) return null
+    if (state.trip.serviceType === 'hourly') {
+      const hours = state.trip.hours ?? 3
+      return Math.max(1, Math.round(baseRate * hours))
+    }
+    const distanceKm = state.trip.distanceKm
+    if (!distanceKm || distanceKm <= 0) return null
+    return Math.max(1, Math.round(baseRate * distanceKm))
+  }
+
+  const buildPayload = (): CreateBookingPayload | null => {
+    if (!state.trip.date || !state.vehicle) return null
+    const amount = calculateAmount()
+    if (!amount) return null
+
+    const payload: CreateBookingPayload = {
+      service_type: state.trip.serviceType,
+      name: state.contact.fullName,
+      email: state.contact.email,
+      phone: `${state.contact.countryCode}${state.contact.phone}`,
+      passengers: state.trip.passengers,
+      date: format(state.trip.date, 'yyyy-MM-dd'),
+      pickup_time: state.trip.time || undefined,
+      notes: state.notes || undefined,
+      amount,
+      pickup_location: state.trip.pickup,
+      vehicle_type: inferVehicleType(state.vehicle),
+    }
+
+    if (state.trip.serviceType === 'transfer') {
+      payload.dropoff_location = state.trip.dropoff
+      payload.flight_number = state.contact.flightNumber || undefined
+    }
+
+    if (state.trip.serviceType === 'hourly') {
+      payload.hours = state.trip.hours ?? 3
+    }
+
+    return payload
+  }
+
+  // ── Called when user clicks Next on Step 3 (Contact Info) ──────────────────
+  // Creates the booking + PaymentIntent on the backend, stores the clientSecret,
+  // then advances to the payment step.
+  const handleContactNext = async () => {
+    const payload = buildPayload()
+    if (!payload) {
+      toast.error('Please complete your trip details before submitting.')
+      return
+    }
+
+    setStripeError(null)
+
     try {
-      // TODO: integrate Stripe + POST /api/bookings
-      await new Promise((r) => setTimeout(r, 1500)) // mock delay
-      setSubmitted(true)
-    } finally {
-      setIsSubmitting(false)
+      const response = await createBooking.mutateAsync(payload)
+      setClientSecret(response.client_secret)
+      setStep(3)
+    } catch {
+      toast.error('Failed to create booking. Please try again.')
     }
   }
 
-  if (submitted) {
-    return (
-      <div className="bg-[#141414] border border-[#C9A84C]/15 p-8 md:p-16 text-center space-y-4">
-        <div className="w-16 h-16 bg-[#C9A84C] flex items-center justify-center mx-auto">
-          <Check className="w-8 h-8 text-[#0B0B0B]" strokeWidth={2.5} />
-        </div>
-        <h2 className="font-serif text-2xl md:text-3xl font-light text-gradient-gold">
-          Booking Confirmed
-        </h2>
-        <p className="text-[#9A9182]">
-          Thank you, {state.contact.fullName}! Your booking has been received. You'll get a confirmation email at {state.contact.email}.
-        </p>
-      </div>
-    )
+  // ── Called by Step4Payment after the user fills in card details ─────────────
+  // Receives the stripe + elements instances from the child so confirmPayment
+  // can read the card details that were entered into the PaymentElement.
+  const handleSubmit = async (
+    stripe: ReturnType<typeof loadStripe> extends Promise<infer T> ? T : never,
+    // eslint-disable-next-line @typescript-eslint/consistent-type-imports
+    elements: import('@stripe/stripe-js').StripeElements,
+  ) => {
+    if (!stripe || !elements) return
+
+    setStripeError(null)
+    setIsConfirming(true)
+
+    try {
+      const { error } = await stripe.confirmPayment({
+        elements,                         // ← card details live here
+        confirmParams: {
+          return_url: `${window.location.origin}/booking/confirm`,
+          payment_method_data: {
+            billing_details: {
+              name: state.contact.fullName,
+              email: state.contact.email,
+              phone: `${state.contact.countryCode}${state.contact.phone}`,
+            },
+          },
+        },
+      })
+
+      // confirmPayment only returns here if it failed (successful payments
+      // redirect away via return_url).
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      if (error) {
+        setStripeError(error.message ?? 'Payment failed. Please try again.')
+        toast.error(error.message ?? 'Payment failed.')
+      }
+    } finally {
+      setIsConfirming(false)
+    }
   }
 
   return (
@@ -139,8 +241,6 @@ export default function BookingWidget() {
       <StepIndicator current={step} total={STEPS.length} />
 
       <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-start">
-
-        {/* Step content */}
         <div className="md:col-span-2">
           {step === 0 && (
             <Step1TripDetails
@@ -166,22 +266,51 @@ export default function BookingWidget() {
               trip={state.trip}
               vehicle={state.vehicle}
               onChange={updateContact}
-              onNext={() => setStep(3)}
+              onNext={handleContactNext}       // ← creates booking + moves to step 3
               onBack={() => setStep(1)}
+
             />
           )}
-          {step === 3 && state.vehicle && (
-            <Step4Payment
-              vehicle={state.vehicle}
-              onBack={() => setStep(2)}
-              onSubmit={handleSubmit}
-              isSubmitting={isSubmitting}
-            />
+
+          {/*
+            Step 4: wrap in a *new* Elements instance that's initialised with
+            the clientSecret. This is required for PaymentElement to render
+            the correct payment form for this specific PaymentIntent.
+          */}
+          {step === 3 && clientSecret && state.vehicle && (
+            <Elements
+              stripe={stripePromise}
+              options={{
+                clientSecret,
+                appearance: {
+                  theme: 'night',
+                  variables: {
+                    colorPrimary: '#C9A84C',
+                    colorBackground: '#111111',
+                    colorText: '#F5F0E8',
+                    colorDanger: '#E05C5C',
+                    fontFamily: 'inherit',
+                    borderRadius: '2px',
+                  },
+                },
+              }}
+            >
+              <Step4Payment
+                vehicle={state.vehicle}
+                onBack={() => setStep(2)}
+                onSubmit={handleSubmit}
+                isSubmitting={isConfirming}
+                stripeError={stripeError}
+              />
+            </Elements>
           )}
         </div>
 
-        {/* Sidebar */}
-        <BookingSummaryCard state={state} currentStep={step} />
+        <BookingSummaryCard
+          state={state}
+          currentStep={step}
+          amount={calculateAmount()}
+        />
       </div>
     </div>
   )

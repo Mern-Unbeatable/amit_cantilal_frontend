@@ -1,5 +1,3 @@
-import { Command } from "lucide-react";
-
 import React from "react";
 import { Link } from '@tanstack/react-router'
 import { NavMain } from "./nav-main";
@@ -15,7 +13,7 @@ import {
 } from "@/components/ui/sidebar";
 import {useSidebarItems} from "@/components/layouts/sidebar/sidebar-items.ts";
 import {useAuthStore} from "@/stores/user.ts";
-import { appConfig } from '@/config/app.ts'
+import ApplicationLogo from '@/components/application-logo.tsx'
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   
@@ -28,10 +26,9 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
-              <Link to="/student/dashboard">
-                <Command />
-                <span className="text-base font-semibold">{appConfig.name}</span>
+            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:p-1.5!">
+              <Link to="/admin/dashboard">
+                <ApplicationLogo/>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

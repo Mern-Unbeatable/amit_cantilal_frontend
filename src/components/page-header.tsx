@@ -43,7 +43,7 @@ const PageHeader = ({ pageTitle, pageSubtitle }: PageHeaderProps) => {
               className="font-medium uppercase text-xs text-muted-foreground dark:text-muted-foreground"
               asChild
             >
-              <Link to="/">Home</Link>
+              <Link to="/admin/dashboard">Home</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
 

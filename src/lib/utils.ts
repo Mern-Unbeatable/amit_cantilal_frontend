@@ -17,7 +17,7 @@ export function formatCurrency(
   },
 ) {
   const {
-    currency = 'NGN',
+    currency = 'EUR',
     locale = 'en-NG',
     minimumFractionDigits,
     maximumFractionDigits,

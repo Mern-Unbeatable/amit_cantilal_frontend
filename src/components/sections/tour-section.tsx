@@ -1,16 +1,11 @@
-import { getToursByType } from '../../data/tour'
 import type {Tour} from "@/features/tour/tour.types.ts";
 import {TourCard} from "@/features/tour/tour-card.tsx";
 
-import { mapToTourCard } from '@/data/tour'
-
-const REAL_TOURS = getToursByType('Day tour / activity').map(mapToTourCard)
-
 interface ToursSectionProps {
-  tours?: Array<Tour>;
+  tours: Array<Tour>;
 }
 
-export function ToursSection({ tours = REAL_TOURS }: ToursSectionProps) {
+export function ToursSection({ tours }: ToursSectionProps) {
   return (
     <section className="py-10 md:py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-4 md:px-12">
@@ -27,11 +22,19 @@ export function ToursSection({ tours = REAL_TOURS }: ToursSectionProps) {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
-          {tours.map((tour) => (
-            <TourCard key={tour.id} tour={tour} />
-          ))}
-        </div>
+        {tours.length > 0 ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 max-w-7xl mx-auto">
+            {tours.map((tour) => (
+              <TourCard key={tour.id} tour={tour} />
+            ))}
+          </div>
+        ) : (
+          <div className="max-w-3xl mx-auto border border-[#C9A84C]/20 bg-[#141414] px-6 py-8 text-center">
+            <p className="text-sm md:text-base text-[#9A9182]">
+              Tours are temporarily unavailable. Please try again in a moment.
+            </p>
+          </div>
+        )}
 
       </div>
     </section>

@@ -7,10 +7,10 @@ import {
   Zap,
 } from 'lucide-react'
 import type { TripDetails, Vehicle } from '../booking.types'
-import { FLEET } from '../booking.types'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
+import { useFleet } from '@/features/fleet/fleet.hooks.ts'
 
 interface Props {
   trip: TripDetails
@@ -43,7 +43,7 @@ function VehicleCard({
       {/* Image */}
       <div className="relative aspect-[16/10] overflow-hidden bg-[#1C1C1C]">
         <img
-          src={vehicle.image}
+          src={vehicle.image ?? ''}
           alt={vehicle.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
@@ -51,7 +51,7 @@ function VehicleCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
         {/* Electric badge */}
-        {vehicle.isElectric && (
+        {vehicle.is_electric && (
           <span className="absolute top-2 right-2 bg-green-500 text-white text-[10px] px-2 py-0.5 font-medium">
             Electric
           </span>
@@ -133,8 +133,13 @@ export default function Step2VehicleSelect({
   onNext,
   onBack,
 }: Props) {
-  const electric = FLEET.filter((v) => v.isElectric)
-  const combustion = FLEET.filter((v) => !v.isElectric)
+  const { data: fleet = [] } = useFleet()
+  const eligibleFleet = fleet.filter((vehicle) => vehicle.passengers >= trip.passengers)
+  const isElectricVehicle = (vehicle: Vehicle) =>
+    vehicle.fuel_type === 'electric' || vehicle.category === 'electric' || Boolean(vehicle.is_electric)
+
+  const electric = eligibleFleet.filter(isElectricVehicle)
+  const combustion = eligibleFleet.filter((v) => !isElectricVehicle(v))
 
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-8">
@@ -156,6 +161,7 @@ export default function Step2VehicleSelect({
           },
           { label: 'Pickup', value: trip.pickup },
           { label: 'Destination', value: trip.dropoff },
+          { label: 'Passengers', value: String(trip.passengers) },
           {
             label: 'Date',
             value:
@@ -229,6 +235,13 @@ export default function Step2VehicleSelect({
           ))}
         </div>
       </div>
+
+      {eligibleFleet.length === 0 && (
+        <p className="text-sm text-[#9A9182] border border-[#C9A84C]/15 bg-[#0B0B0B] p-4">
+          No vehicles are currently available for {trip.passengers} passengers.
+          Please reduce passenger count or try again later.
+        </p>
+      )}
 
       {/* Special requests */}
       <div className="space-y-2">

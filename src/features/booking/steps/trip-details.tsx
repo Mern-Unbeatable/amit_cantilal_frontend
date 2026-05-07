@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import {
   Calendar,
   ChevronRight,
@@ -10,6 +10,13 @@ import {
   X,
 } from 'lucide-react'
 import { format } from 'date-fns'
+import {
+  CircleMarker,
+  MapContainer,
+  Polyline,
+  TileLayer,
+} from 'react-leaflet'
+import { LatLngBounds } from 'leaflet'
 import type { Stop, TripDetails } from '@/features/booking/booking.types.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -29,6 +36,56 @@ interface Props {
 
 function generateId() {
   return Math.random().toString(36).slice(2, 8)
+}
+
+interface LocationSuggestion {
+  label: string
+  lat: number
+  lon: number
+}
+
+type Point = [number, number]
+
+function RoutePreview({
+  pickup,
+  dropoff,
+  route,
+}: {
+  pickup: Point | null
+  dropoff: Point | null
+  route: Array<Point>
+}) {
+  const points = useMemo(() => {
+    const all = [...route]
+
+    if (!all.length && pickup && dropoff) {
+      all.push(pickup, dropoff)
+    }
+
+    return all
+  }, [dropoff, pickup, route])
+
+  if (!pickup || !dropoff || !points.length) return null
+
+  const bounds = new LatLngBounds(points)
+
+  return (
+    <div className="border border-[#C9A84C]/20 bg-[#0B0B0B] h-64">
+      <MapContainer
+        bounds={bounds}
+        className="h-full w-full"
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Polyline positions={points} pathOptions={{ color: '#C9A84C', weight: 4 }} />
+        <CircleMarker center={pickup} pathOptions={{ color: '#C9A84C' }} radius={7} />
+        <CircleMarker center={dropoff} pathOptions={{ color: '#F5F0E8' }} radius={7} />
+      </MapContainer>
+    </div>
+  )
 }
 
 // ─── Time Picker ──────────────────────────────────────────────────────────────
@@ -188,6 +245,12 @@ function DatePicker({
 // ─── Main Step ────────────────────────────────────────────────────────────────
 
 export default function Step1TripDetails({ data, onChange, onNext }: Props) {
+  const [pickupSuggestions, setPickupSuggestions] = useState<Array<LocationSuggestion>>([])
+  const [dropoffSuggestions, setDropoffSuggestions] = useState<Array<LocationSuggestion>>([])
+  const [pickupPoint, setPickupPoint] = useState<Point | null>(null)
+  const [dropoffPoint, setDropoffPoint] = useState<Point | null>(null)
+  const [routePoints, setRoutePoints] = useState<Array<Point>>([])
+
   const update = (patch: Partial<TripDetails>) =>
     onChange({ ...data, ...patch })
 
@@ -205,8 +268,131 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
   const canProceed =
     data.pickup.trim() !== '' &&
     data.dropoff.trim() !== '' &&
+    data.passengers >= 1 &&
     !!data.date &&
     data.time !== ''
+
+  useEffect(() => {
+    const abort = new AbortController()
+    const query = data.pickup.trim()
+
+    if (query.length < 3) {
+      setPickupSuggestions([])
+      setPickupPoint(null)
+      return () => abort.abort()
+    }
+
+    const timeout = setTimeout(async () => {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`,
+          {
+            signal: abort.signal,
+            headers: {
+              Accept: 'application/json',
+            },
+          },
+        )
+
+        const result: Array<{ display_name: string; lat: string; lon: string }> =
+          await response.json()
+
+        setPickupSuggestions(
+          result.map((item) => ({
+            label: item.display_name,
+            lat: Number(item.lat),
+            lon: Number(item.lon),
+          })),
+        )
+      } catch {
+        setPickupSuggestions([])
+      }
+    }, 250)
+
+    return () => {
+      abort.abort()
+      clearTimeout(timeout)
+    }
+  }, [data.pickup])
+
+  useEffect(() => {
+    const abort = new AbortController()
+    const query = data.dropoff.trim()
+
+    if (query.length < 3) {
+      setDropoffSuggestions([])
+      setDropoffPoint(null)
+      return () => abort.abort()
+    }
+
+    const timeout = setTimeout(async () => {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`,
+          {
+            signal: abort.signal,
+            headers: {
+              Accept: 'application/json',
+            },
+          },
+        )
+
+        const result: Array<{ display_name: string; lat: string; lon: string }> =
+          await response.json()
+
+        setDropoffSuggestions(
+          result.map((item) => ({
+            label: item.display_name,
+            lat: Number(item.lat),
+            lon: Number(item.lon),
+          })),
+        )
+      } catch {
+        setDropoffSuggestions([])
+      }
+    }, 250)
+
+    return () => {
+      abort.abort()
+      clearTimeout(timeout)
+    }
+  }, [data.dropoff])
+
+  useEffect(() => {
+    const abort = new AbortController()
+
+    if (!pickupPoint || !dropoffPoint) {
+      setRoutePoints([])
+      return () => abort.abort()
+    }
+
+    const loadRoute = async () => {
+      try {
+        const response = await fetch(
+          `https://router.project-osrm.org/route/v1/driving/${pickupPoint[1]},${pickupPoint[0]};${dropoffPoint[1]},${dropoffPoint[0]}?overview=full&geometries=geojson`,
+          {
+            signal: abort.signal,
+            headers: {
+              Accept: 'application/json',
+            },
+          },
+        )
+
+        const payload: {
+          routes?: Array<{ geometry?: { coordinates?: Array<[number, number]> } }>
+        } = await response.json()
+
+        const coordinates = payload.routes?.[0]?.geometry?.coordinates ?? []
+        setRoutePoints(coordinates.map(([lon, lat]) => [lat, lon]))
+      } catch {
+        setRoutePoints([])
+      }
+    }
+
+    void loadRoute()
+
+    return () => abort.abort()
+  }, [dropoffPoint, pickupPoint])
 
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5">
@@ -239,7 +425,7 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
 
       {/* Route inputs */}
       <div className="relative space-y-0">
-        <div className="absolute left-[26px] top-7 bottom-7 w-px bg-[#C9A84C]/20 z-0" />
+        <div className="absolute left-6.5 top-7 bottom-7 w-px bg-[#C9A84C]/20 z-0" />
 
         {/* Pickup */}
         <div className="relative flex items-center gap-3 pb-2">
@@ -251,13 +437,36 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
             />
             <Input
               value={data.pickup}
-              onChange={(e) => update({ pickup: e.target.value })}
+              onChange={(e) => {
+                setPickupPoint(null)
+                update({ pickup: e.target.value })
+              }}
               placeholder="From: Address, airport, hotel..."
               className="pl-12 pr-12 h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50"
             />
             <button className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C9A84C] hover:text-[#E2C97E] transition-colors">
               <Navigation className="w-5 h-5" strokeWidth={1.5} />
             </button>
+
+            {pickupSuggestions.length > 0 && (
+              <div className="absolute z-30 mt-1 w-full max-h-56 overflow-y-auto border border-[#C9A84C]/20 bg-[#0B0B0B]">
+                {pickupSuggestions.map((suggestion) => (
+                  <button
+                    key={`${suggestion.lat}-${suggestion.lon}-${suggestion.label}`}
+                    type="button"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => {
+                      update({ pickup: suggestion.label })
+                      setPickupPoint([suggestion.lat, suggestion.lon])
+                      setPickupSuggestions([])
+                    }}
+                    className="w-full text-left px-4 py-2 text-sm text-[#F5F0E8] hover:bg-[#141414]"
+                  >
+                    {suggestion.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -296,16 +505,41 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
             />
             <Input
               value={data.dropoff}
-              onChange={(e) => update({ dropoff: e.target.value })}
+              onChange={(e) => {
+                setDropoffPoint(null)
+                update({ dropoff: e.target.value })
+              }}
               placeholder="To: Address, airport, hotel..."
               className="pl-12 pr-12 h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50"
             />
             <button className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C9A84C] hover:text-[#E2C97E] transition-colors">
               <Navigation className="w-5 h-5" strokeWidth={1.5} />
             </button>
+
+            {dropoffSuggestions.length > 0 && (
+              <div className="absolute z-30 mt-1 w-full max-h-56 overflow-y-auto border border-[#C9A84C]/20 bg-[#0B0B0B]">
+                {dropoffSuggestions.map((suggestion) => (
+                  <button
+                    key={`${suggestion.lat}-${suggestion.lon}-${suggestion.label}`}
+                    type="button"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => {
+                      update({ dropoff: suggestion.label })
+                      setDropoffPoint([suggestion.lat, suggestion.lon])
+                      setDropoffSuggestions([])
+                    }}
+                    className="w-full text-left px-4 py-2 text-sm text-[#F5F0E8] hover:bg-[#141414]"
+                  >
+                    {suggestion.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      <RoutePreview pickup={pickupPoint} dropoff={dropoffPoint} route={routePoints} />
 
       {/* Add stop */}
       <button
@@ -343,6 +577,18 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
           </div>
         </div>
       )}
+
+      <Input
+        type="number"
+        min={1}
+        max={20}
+        value={data.passengers}
+        onChange={(e) =>
+          update({ passengers: Math.max(1, Number(e.target.value) || 1) })
+        }
+        placeholder="Passengers"
+        className="h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50"
+      />
 
       {/* Date + Time */}
       <div className="grid grid-cols-2 gap-4">

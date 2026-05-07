@@ -1,6 +1,3 @@
-// ─── Types ────────────────────────────────────────────────────────────────────
-import type { Tour as TourCardTour } from '@/features/tour/tour.types'
-
 export interface TourPhoto {
   originalUrl: string
   alternateText: string | null
@@ -1223,24 +1220,4 @@ export function getToursByCategory(category: string): Array<Tour> {
  */
 export function parseTourPrice(price: string): number {
   return parseFloat(price.replace(/[^0-9.]/g, ''))
-}
-
-export function mapToTourCard(tour: Tour): TourCardTour {
-  return {
-    id: String(tour.data.id),
-    slug: tour.page_item_url,
-    title: tour.data.title,
-    images: [
-      { src: tour.data.keyPhoto, alt: tour.data.title },
-      ...tour.data.otherPhotos.slice(0, 2).map((p) => ({
-        src: p.originalUrl,
-        alt: p.description,
-      })),
-    ],
-    duration: tour.data.durationText,
-    departureFrom: tour.data.meetingType,
-    description: tour.data.excerpt || tour.data.description.replace(/<[^>]*>/g, '').slice(0, 120) + '…',
-    price: parseTourPrice(tour.data.defaultPrice),
-    isOnDemand: false,
-  }
 }

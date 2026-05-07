@@ -15,7 +15,36 @@ export const adminRoutes: Array<NavGroup> = [
     id: 2,
     label: 'Management',
     items: [
-
+      {
+        title: 'Fleet Vehicle',
+        url: '/admin/fleet-vehicle',
+        icon: 'material-symbols:travel-explore-rounded',
+      },
+      {
+        title: 'Tours',
+        url: '/admin/tours',
+        icon: 'material-symbols:travel-explore-rounded',
+      },
+      {
+        title: 'Bookings',
+        url: '/admin/bookings',
+        icon: 'material-symbols:calendar-month',
+      },
+      {
+        title: 'Posts',
+        url: '/admin/posts',
+        icon: 'material-symbols:article-outline-rounded',
+      },
+      {
+        title: 'FAQs',
+        url: '/admin/faqs',
+        icon: 'material-symbols:help-outline-rounded',
+      },
+      {
+        title: 'Partnerships',
+        url: '/admin/partnerships',
+        icon: 'material-symbols:handshake-outline-rounded',
+      },
     ],
   },
 ]
