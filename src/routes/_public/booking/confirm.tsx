@@ -215,9 +215,42 @@ function RouteComponent() {
   const search = new URLSearchParams(window.location.search)
   const paymentIntentId = search.get('payment_intent') ?? 0
   const redirectStatus = search.get('redirect_status') ?? 'failed'
+  const isSucceeded = redirectStatus === 'succeeded'
 
   const { data: booking, isLoading } =
     useGetBookingByPaymentIntent(paymentIntentId)
+
+  const handlePrint = () => {
+    window.print()
+  }
+
+  const handleDownload = () => {
+    if (!booking) return
+
+    const details = booking.details as Record<string, string> | null
+    const lines = [
+      'Elite Ride - Booking Confirmation',
+      `Reference: ${booking.reference}`,
+      `Status: ${capitalize(booking.status)}`,
+      `Service: ${capitalize(booking.service_type)}`,
+      `Date: ${new Date(booking.date).toLocaleDateString()}`,
+      details?.pickup ? `Pickup: ${details.pickup}` : null,
+      details?.dropoff ? `Drop-off: ${details.dropoff}` : null,
+      `Passengers: ${booking.passengers}`,
+      `Amount Paid: ${formatCurrency(booking.amount)}`,
+      `Contact: ${booking.name} (${booking.email})`,
+    ].filter(Boolean)
+
+    const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `booking-${booking.reference}.txt`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }
 
   if (isLoading)
     return (
@@ -291,14 +324,38 @@ function RouteComponent() {
                 Try Again
               </Link>
             ) : (
-              <Link
-                to="/"
-                className="flex-1 py-3 px-6 border border-[#C9A84C]/30 text-[#9A9182] text-sm
-                           text-center hover:border-[#C9A84C]/60 hover:text-[#F5F0E8]
-                           transition-colors duration-200"
-              >
-                Back to Home
-              </Link>
+              <>
+                {isSucceeded && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handlePrint}
+                      className="flex-1 py-3 px-6 border border-[#C9A84C]/30 text-[#9A9182] text-sm
+                                 text-center hover:border-[#C9A84C]/60 hover:text-[#F5F0E8]
+                                 transition-colors duration-200"
+                    >
+                      Print
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleDownload}
+                      className="flex-1 py-3 px-6 border border-[#C9A84C]/30 text-[#9A9182] text-sm
+                                 text-center hover:border-[#C9A84C]/60 hover:text-[#F5F0E8]
+                                 transition-colors duration-200"
+                    >
+                      Download
+                    </button>
+                  </>
+                )}
+                <Link
+                  to="/"
+                  className="flex-1 py-3 px-6 border border-[#C9A84C]/30 text-[#9A9182] text-sm
+                             text-center hover:border-[#C9A84C]/60 hover:text-[#F5F0E8]
+                             transition-colors duration-200"
+                >
+                  Back to Home
+                </Link>
+              </>
             )}
           </motion.div>
         </div>

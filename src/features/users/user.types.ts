@@ -1,6 +1,6 @@
 // src/features/users/user.types.ts
 
-import type { UserRole, UserStatus } from '@/types/user'
+import type { UserRole, UserStatus } from '@/@types/user'
 
 export interface AdminUser {
   id: number

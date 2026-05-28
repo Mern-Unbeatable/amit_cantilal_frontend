@@ -27,17 +27,22 @@ import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authentic
 import { Route as PublicToursSlugRouteImport } from './routes/_public/tours/$slug'
 import { Route as PublicBookingConfirmRouteImport } from './routes/_public/booking/confirm'
 import { Route as PublicBlogSlugRouteImport } from './routes/_public/blog/$slug'
-import { Route as AuthenticatedAdminPostsRouteImport } from './routes/_authenticated/admin/posts'
 import { Route as AuthenticatedAdminPartnershipsRouteImport } from './routes/_authenticated/admin/partnerships'
 import { Route as AuthenticatedAdminFaqsRouteImport } from './routes/_authenticated/admin/faqs'
 import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
+import { Route as AuthenticatedAdminUsersIndexRouteImport } from './routes/_authenticated/admin/users/index'
 import { Route as AuthenticatedAdminToursIndexRouteImport } from './routes/_authenticated/admin/tours/index'
+import { Route as AuthenticatedAdminPostsIndexRouteImport } from './routes/_authenticated/admin/posts/index'
 import { Route as AuthenticatedAdminFleetVehicleIndexRouteImport } from './routes/_authenticated/admin/fleet-vehicle/index'
 import { Route as AuthenticatedAdminBookingsIndexRouteImport } from './routes/_authenticated/admin/bookings/index'
+import { Route as AuthenticatedAdminUsersCreateRouteImport } from './routes/_authenticated/admin/users/create'
 import { Route as AuthenticatedAdminToursCreateRouteImport } from './routes/_authenticated/admin/tours/create'
+import { Route as AuthenticatedAdminPostsCreateRouteImport } from './routes/_authenticated/admin/posts/create'
 import { Route as AuthenticatedAdminFleetVehicleCreateRouteImport } from './routes/_authenticated/admin/fleet-vehicle/create'
 import { Route as AuthenticatedAdminBookingsIdRouteImport } from './routes/_authenticated/admin/bookings/$id'
+import { Route as AuthenticatedAdminUsersIdEditRouteImport } from './routes/_authenticated/admin/users/$id/edit'
 import { Route as AuthenticatedAdminToursTourIdEditRouteImport } from './routes/_authenticated/admin/tours/$tourId/edit'
+import { Route as AuthenticatedAdminPostsSlugEditRouteImport } from './routes/_authenticated/admin/posts/$slug/edit'
 import { Route as AuthenticatedAdminFleetVehicleFleetIdEditRouteImport } from './routes/_authenticated/admin/fleet-vehicle/$fleetId/edit'
 
 const PublicRoute = PublicRouteImport.update({
@@ -127,11 +132,6 @@ const PublicBlogSlugRoute = PublicBlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => PublicRoute,
 } as any)
-const AuthenticatedAdminPostsRoute = AuthenticatedAdminPostsRouteImport.update({
-  id: '/admin/posts',
-  path: '/admin/posts',
-  getParentRoute: () => AuthenticatedRoute,
-} as any)
 const AuthenticatedAdminPartnershipsRoute =
   AuthenticatedAdminPartnershipsRouteImport.update({
     id: '/admin/partnerships',
@@ -149,10 +149,22 @@ const AuthenticatedAdminDashboardRoute =
     path: '/admin/dashboard',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedAdminUsersIndexRoute =
+  AuthenticatedAdminUsersIndexRouteImport.update({
+    id: '/admin/users/',
+    path: '/admin/users/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAdminToursIndexRoute =
   AuthenticatedAdminToursIndexRouteImport.update({
     id: '/admin/tours/',
     path: '/admin/tours/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAdminPostsIndexRoute =
+  AuthenticatedAdminPostsIndexRouteImport.update({
+    id: '/admin/posts/',
+    path: '/admin/posts/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedAdminFleetVehicleIndexRoute =
@@ -167,10 +179,22 @@ const AuthenticatedAdminBookingsIndexRoute =
     path: '/admin/bookings/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedAdminUsersCreateRoute =
+  AuthenticatedAdminUsersCreateRouteImport.update({
+    id: '/admin/users/create',
+    path: '/admin/users/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAdminToursCreateRoute =
   AuthenticatedAdminToursCreateRouteImport.update({
     id: '/admin/tours/create',
     path: '/admin/tours/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAdminPostsCreateRoute =
+  AuthenticatedAdminPostsCreateRouteImport.update({
+    id: '/admin/posts/create',
+    path: '/admin/posts/create',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedAdminFleetVehicleCreateRoute =
@@ -185,10 +209,22 @@ const AuthenticatedAdminBookingsIdRoute =
     path: '/admin/bookings/$id',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedAdminUsersIdEditRoute =
+  AuthenticatedAdminUsersIdEditRouteImport.update({
+    id: '/admin/users/$id/edit',
+    path: '/admin/users/$id/edit',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAdminToursTourIdEditRoute =
   AuthenticatedAdminToursTourIdEditRouteImport.update({
     id: '/admin/tours/$tourId/edit',
     path: '/admin/tours/$tourId/edit',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAdminPostsSlugEditRoute =
+  AuthenticatedAdminPostsSlugEditRouteImport.update({
+    id: '/admin/posts/$slug/edit',
+    path: '/admin/posts/$slug/edit',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedAdminFleetVehicleFleetIdEditRoute =
@@ -210,7 +246,6 @@ export interface FileRoutesByFullPath {
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
   '/admin/partnerships': typeof AuthenticatedAdminPartnershipsRoute
-  '/admin/posts': typeof AuthenticatedAdminPostsRoute
   '/blog/$slug': typeof PublicBlogSlugRoute
   '/booking/confirm': typeof PublicBookingConfirmRoute
   '/tours/$slug': typeof PublicToursSlugRoute
@@ -220,12 +255,18 @@ export interface FileRoutesByFullPath {
   '/tours': typeof PublicToursIndexRoute
   '/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
+  '/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
   '/admin/tours/create': typeof AuthenticatedAdminToursCreateRoute
+  '/admin/users/create': typeof AuthenticatedAdminUsersCreateRoute
   '/admin/bookings': typeof AuthenticatedAdminBookingsIndexRoute
   '/admin/fleet-vehicle': typeof AuthenticatedAdminFleetVehicleIndexRoute
+  '/admin/posts': typeof AuthenticatedAdminPostsIndexRoute
   '/admin/tours': typeof AuthenticatedAdminToursIndexRoute
+  '/admin/users': typeof AuthenticatedAdminUsersIndexRoute
   '/admin/fleet-vehicle/$fleetId/edit': typeof AuthenticatedAdminFleetVehicleFleetIdEditRoute
+  '/admin/posts/$slug/edit': typeof AuthenticatedAdminPostsSlugEditRoute
   '/admin/tours/$tourId/edit': typeof AuthenticatedAdminToursTourIdEditRoute
+  '/admin/users/$id/edit': typeof AuthenticatedAdminUsersIdEditRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof AuthLoginRoute
@@ -239,7 +280,6 @@ export interface FileRoutesByTo {
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
   '/admin/partnerships': typeof AuthenticatedAdminPartnershipsRoute
-  '/admin/posts': typeof AuthenticatedAdminPostsRoute
   '/blog/$slug': typeof PublicBlogSlugRoute
   '/booking/confirm': typeof PublicBookingConfirmRoute
   '/tours/$slug': typeof PublicToursSlugRoute
@@ -249,12 +289,18 @@ export interface FileRoutesByTo {
   '/tours': typeof PublicToursIndexRoute
   '/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
+  '/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
   '/admin/tours/create': typeof AuthenticatedAdminToursCreateRoute
+  '/admin/users/create': typeof AuthenticatedAdminUsersCreateRoute
   '/admin/bookings': typeof AuthenticatedAdminBookingsIndexRoute
   '/admin/fleet-vehicle': typeof AuthenticatedAdminFleetVehicleIndexRoute
+  '/admin/posts': typeof AuthenticatedAdminPostsIndexRoute
   '/admin/tours': typeof AuthenticatedAdminToursIndexRoute
+  '/admin/users': typeof AuthenticatedAdminUsersIndexRoute
   '/admin/fleet-vehicle/$fleetId/edit': typeof AuthenticatedAdminFleetVehicleFleetIdEditRoute
+  '/admin/posts/$slug/edit': typeof AuthenticatedAdminPostsSlugEditRoute
   '/admin/tours/$tourId/edit': typeof AuthenticatedAdminToursTourIdEditRoute
+  '/admin/users/$id/edit': typeof AuthenticatedAdminUsersIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -272,7 +318,6 @@ export interface FileRoutesById {
   '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/_authenticated/admin/faqs': typeof AuthenticatedAdminFaqsRoute
   '/_authenticated/admin/partnerships': typeof AuthenticatedAdminPartnershipsRoute
-  '/_authenticated/admin/posts': typeof AuthenticatedAdminPostsRoute
   '/_public/blog/$slug': typeof PublicBlogSlugRoute
   '/_public/booking/confirm': typeof PublicBookingConfirmRoute
   '/_public/tours/$slug': typeof PublicToursSlugRoute
@@ -282,12 +327,18 @@ export interface FileRoutesById {
   '/_public/tours/': typeof PublicToursIndexRoute
   '/_authenticated/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/_authenticated/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
+  '/_authenticated/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
   '/_authenticated/admin/tours/create': typeof AuthenticatedAdminToursCreateRoute
+  '/_authenticated/admin/users/create': typeof AuthenticatedAdminUsersCreateRoute
   '/_authenticated/admin/bookings/': typeof AuthenticatedAdminBookingsIndexRoute
   '/_authenticated/admin/fleet-vehicle/': typeof AuthenticatedAdminFleetVehicleIndexRoute
+  '/_authenticated/admin/posts/': typeof AuthenticatedAdminPostsIndexRoute
   '/_authenticated/admin/tours/': typeof AuthenticatedAdminToursIndexRoute
+  '/_authenticated/admin/users/': typeof AuthenticatedAdminUsersIndexRoute
   '/_authenticated/admin/fleet-vehicle/$fleetId/edit': typeof AuthenticatedAdminFleetVehicleFleetIdEditRoute
+  '/_authenticated/admin/posts/$slug/edit': typeof AuthenticatedAdminPostsSlugEditRoute
   '/_authenticated/admin/tours/$tourId/edit': typeof AuthenticatedAdminToursTourIdEditRoute
+  '/_authenticated/admin/users/$id/edit': typeof AuthenticatedAdminUsersIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -303,7 +354,6 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/faqs'
     | '/admin/partnerships'
-    | '/admin/posts'
     | '/blog/$slug'
     | '/booking/confirm'
     | '/tours/$slug'
@@ -313,12 +363,18 @@ export interface FileRouteTypes {
     | '/tours'
     | '/admin/bookings/$id'
     | '/admin/fleet-vehicle/create'
+    | '/admin/posts/create'
     | '/admin/tours/create'
+    | '/admin/users/create'
     | '/admin/bookings'
     | '/admin/fleet-vehicle'
+    | '/admin/posts'
     | '/admin/tours'
+    | '/admin/users'
     | '/admin/fleet-vehicle/$fleetId/edit'
+    | '/admin/posts/$slug/edit'
     | '/admin/tours/$tourId/edit'
+    | '/admin/users/$id/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -332,7 +388,6 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/faqs'
     | '/admin/partnerships'
-    | '/admin/posts'
     | '/blog/$slug'
     | '/booking/confirm'
     | '/tours/$slug'
@@ -342,12 +397,18 @@ export interface FileRouteTypes {
     | '/tours'
     | '/admin/bookings/$id'
     | '/admin/fleet-vehicle/create'
+    | '/admin/posts/create'
     | '/admin/tours/create'
+    | '/admin/users/create'
     | '/admin/bookings'
     | '/admin/fleet-vehicle'
+    | '/admin/posts'
     | '/admin/tours'
+    | '/admin/users'
     | '/admin/fleet-vehicle/$fleetId/edit'
+    | '/admin/posts/$slug/edit'
     | '/admin/tours/$tourId/edit'
+    | '/admin/users/$id/edit'
   id:
     | '__root__'
     | '/_auth'
@@ -364,7 +425,6 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/dashboard'
     | '/_authenticated/admin/faqs'
     | '/_authenticated/admin/partnerships'
-    | '/_authenticated/admin/posts'
     | '/_public/blog/$slug'
     | '/_public/booking/confirm'
     | '/_public/tours/$slug'
@@ -374,12 +434,18 @@ export interface FileRouteTypes {
     | '/_public/tours/'
     | '/_authenticated/admin/bookings/$id'
     | '/_authenticated/admin/fleet-vehicle/create'
+    | '/_authenticated/admin/posts/create'
     | '/_authenticated/admin/tours/create'
+    | '/_authenticated/admin/users/create'
     | '/_authenticated/admin/bookings/'
     | '/_authenticated/admin/fleet-vehicle/'
+    | '/_authenticated/admin/posts/'
     | '/_authenticated/admin/tours/'
+    | '/_authenticated/admin/users/'
     | '/_authenticated/admin/fleet-vehicle/$fleetId/edit'
+    | '/_authenticated/admin/posts/$slug/edit'
     | '/_authenticated/admin/tours/$tourId/edit'
+    | '/_authenticated/admin/users/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -516,13 +582,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicBlogSlugRouteImport
       parentRoute: typeof PublicRoute
     }
-    '/_authenticated/admin/posts': {
-      id: '/_authenticated/admin/posts'
-      path: '/admin/posts'
-      fullPath: '/admin/posts'
-      preLoaderRoute: typeof AuthenticatedAdminPostsRouteImport
-      parentRoute: typeof AuthenticatedRoute
-    }
     '/_authenticated/admin/partnerships': {
       id: '/_authenticated/admin/partnerships'
       path: '/admin/partnerships'
@@ -544,11 +603,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminDashboardRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/users/': {
+      id: '/_authenticated/admin/users/'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AuthenticatedAdminUsersIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin/tours/': {
       id: '/_authenticated/admin/tours/'
       path: '/admin/tours'
       fullPath: '/admin/tours'
       preLoaderRoute: typeof AuthenticatedAdminToursIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/posts/': {
+      id: '/_authenticated/admin/posts/'
+      path: '/admin/posts'
+      fullPath: '/admin/posts'
+      preLoaderRoute: typeof AuthenticatedAdminPostsIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/admin/fleet-vehicle/': {
@@ -565,11 +638,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminBookingsIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/users/create': {
+      id: '/_authenticated/admin/users/create'
+      path: '/admin/users/create'
+      fullPath: '/admin/users/create'
+      preLoaderRoute: typeof AuthenticatedAdminUsersCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin/tours/create': {
       id: '/_authenticated/admin/tours/create'
       path: '/admin/tours/create'
       fullPath: '/admin/tours/create'
       preLoaderRoute: typeof AuthenticatedAdminToursCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/posts/create': {
+      id: '/_authenticated/admin/posts/create'
+      path: '/admin/posts/create'
+      fullPath: '/admin/posts/create'
+      preLoaderRoute: typeof AuthenticatedAdminPostsCreateRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/admin/fleet-vehicle/create': {
@@ -586,11 +673,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminBookingsIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/users/$id/edit': {
+      id: '/_authenticated/admin/users/$id/edit'
+      path: '/admin/users/$id/edit'
+      fullPath: '/admin/users/$id/edit'
+      preLoaderRoute: typeof AuthenticatedAdminUsersIdEditRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin/tours/$tourId/edit': {
       id: '/_authenticated/admin/tours/$tourId/edit'
       path: '/admin/tours/$tourId/edit'
       fullPath: '/admin/tours/$tourId/edit'
       preLoaderRoute: typeof AuthenticatedAdminToursTourIdEditRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/posts/$slug/edit': {
+      id: '/_authenticated/admin/posts/$slug/edit'
+      path: '/admin/posts/$slug/edit'
+      fullPath: '/admin/posts/$slug/edit'
+      preLoaderRoute: typeof AuthenticatedAdminPostsSlugEditRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/admin/fleet-vehicle/$fleetId/edit': {
@@ -617,36 +718,46 @@ interface AuthenticatedRouteChildren {
   AuthenticatedAdminDashboardRoute: typeof AuthenticatedAdminDashboardRoute
   AuthenticatedAdminFaqsRoute: typeof AuthenticatedAdminFaqsRoute
   AuthenticatedAdminPartnershipsRoute: typeof AuthenticatedAdminPartnershipsRoute
-  AuthenticatedAdminPostsRoute: typeof AuthenticatedAdminPostsRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
   AuthenticatedAdminBookingsIdRoute: typeof AuthenticatedAdminBookingsIdRoute
   AuthenticatedAdminFleetVehicleCreateRoute: typeof AuthenticatedAdminFleetVehicleCreateRoute
+  AuthenticatedAdminPostsCreateRoute: typeof AuthenticatedAdminPostsCreateRoute
   AuthenticatedAdminToursCreateRoute: typeof AuthenticatedAdminToursCreateRoute
+  AuthenticatedAdminUsersCreateRoute: typeof AuthenticatedAdminUsersCreateRoute
   AuthenticatedAdminBookingsIndexRoute: typeof AuthenticatedAdminBookingsIndexRoute
   AuthenticatedAdminFleetVehicleIndexRoute: typeof AuthenticatedAdminFleetVehicleIndexRoute
+  AuthenticatedAdminPostsIndexRoute: typeof AuthenticatedAdminPostsIndexRoute
   AuthenticatedAdminToursIndexRoute: typeof AuthenticatedAdminToursIndexRoute
+  AuthenticatedAdminUsersIndexRoute: typeof AuthenticatedAdminUsersIndexRoute
   AuthenticatedAdminFleetVehicleFleetIdEditRoute: typeof AuthenticatedAdminFleetVehicleFleetIdEditRoute
+  AuthenticatedAdminPostsSlugEditRoute: typeof AuthenticatedAdminPostsSlugEditRoute
   AuthenticatedAdminToursTourIdEditRoute: typeof AuthenticatedAdminToursTourIdEditRoute
+  AuthenticatedAdminUsersIdEditRoute: typeof AuthenticatedAdminUsersIdEditRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAdminDashboardRoute: AuthenticatedAdminDashboardRoute,
   AuthenticatedAdminFaqsRoute: AuthenticatedAdminFaqsRoute,
   AuthenticatedAdminPartnershipsRoute: AuthenticatedAdminPartnershipsRoute,
-  AuthenticatedAdminPostsRoute: AuthenticatedAdminPostsRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
   AuthenticatedAdminBookingsIdRoute: AuthenticatedAdminBookingsIdRoute,
   AuthenticatedAdminFleetVehicleCreateRoute:
     AuthenticatedAdminFleetVehicleCreateRoute,
+  AuthenticatedAdminPostsCreateRoute: AuthenticatedAdminPostsCreateRoute,
   AuthenticatedAdminToursCreateRoute: AuthenticatedAdminToursCreateRoute,
+  AuthenticatedAdminUsersCreateRoute: AuthenticatedAdminUsersCreateRoute,
   AuthenticatedAdminBookingsIndexRoute: AuthenticatedAdminBookingsIndexRoute,
   AuthenticatedAdminFleetVehicleIndexRoute:
     AuthenticatedAdminFleetVehicleIndexRoute,
+  AuthenticatedAdminPostsIndexRoute: AuthenticatedAdminPostsIndexRoute,
   AuthenticatedAdminToursIndexRoute: AuthenticatedAdminToursIndexRoute,
+  AuthenticatedAdminUsersIndexRoute: AuthenticatedAdminUsersIndexRoute,
   AuthenticatedAdminFleetVehicleFleetIdEditRoute:
     AuthenticatedAdminFleetVehicleFleetIdEditRoute,
+  AuthenticatedAdminPostsSlugEditRoute: AuthenticatedAdminPostsSlugEditRoute,
   AuthenticatedAdminToursTourIdEditRoute:
     AuthenticatedAdminToursTourIdEditRoute,
+  AuthenticatedAdminUsersIdEditRoute: AuthenticatedAdminUsersIdEditRoute,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(

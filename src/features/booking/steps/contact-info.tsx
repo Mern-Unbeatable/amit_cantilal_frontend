@@ -1,10 +1,8 @@
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
 import {
-  type ContactDetails,
-  COUNTRY_CODES,
-  type TripDetails,
-  type Vehicle,
+  COUNTRY_CODES
 } from '../booking.types'
+import type {ContactDetails, TripDetails, Vehicle} from '../booking.types';
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -23,6 +21,7 @@ interface Props {
   onChange: (data: ContactDetails) => void
   onNext: () => void
   onBack: () => void
+  isLoading?: boolean
 }
 
 function Field({
@@ -53,15 +52,13 @@ export default function Step3ContactInfo({
   onChange,
   onNext,
   onBack,
+  isLoading,
 }: Props) {
   const update = (patch: Partial<ContactDetails>) =>
     onChange({ ...data, ...patch })
-
-  const canProceed =
-    data.fullName.trim() !== '' &&
-    data.email.trim() !== '' &&
-    data.phone.trim() !== ''
-
+  data.fullName.trim() !== '' &&
+  data.email.trim() !== '' &&
+  data.phone.trim() !== ''
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5">
       <h2 className="font-serif text-2xl md:text-3xl font-light text-gradient-gold">
@@ -181,11 +178,20 @@ export default function Step3ContactInfo({
         </Button>
         <Button
           onClick={onNext}
-          disabled={!canProceed}
+          disabled={isLoading}
           className="flex-1 h-14 rounded-none bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium text-base tracking-[.08em] uppercase disabled:opacity-40"
         >
-          Next
-          <ChevronRight className="w-5 h-5 ml-2" />
+          {isLoading ? (
+            <>
+              <div className="w-4 h-4 border border-[#0B0B0B]/40 border-t-[#0B0B0B] rounded-full animate-spin mr-2" />
+              Processing...
+            </>
+          ) : (
+            <>
+              Next
+              <ChevronRight className="w-5 h-5 ml-2" />
+            </>
+          )}
         </Button>
       </div>
     </div>

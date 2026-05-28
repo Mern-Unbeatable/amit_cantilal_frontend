@@ -1,29 +1,17 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { BlogPost } from '@/features/blogs/blog.types.ts'
+import { motion } from 'framer-motion'
 import { PageHero } from '@/components/shared/page-hero.tsx'
 import BlogCard from '@/features/blogs/blog-card.tsx'
 import { mainTransitionProps } from '@/lib/utils.ts'
-import { motion } from 'framer-motion'
+import { usePosts } from '@/features/blogs/blog.hooks.ts'
 
 export const Route = createFileRoute('/_public/blog/')({
   component: RouteComponent,
 })
 
-// Replace with real API data later
-const MOCK_POSTS: Array<BlogPost> = [
-  {
-    slug: 'private-chauffeur-portugal',
-    title: 'Private Chauffeur in Portugal | VIP On Wheels',
-    date: '15 de março de 2026',
-    coverImage:
-      'https://oxfsueyteipbhutgofeg.supabase.co/storage/v1/object/public/blog-images/1773591971159-3f2jsxl5hha.jpg',
-    excerpt:
-      'What it is, advantages, and when it makes sense to choose a private chauffeur service in Portugal.',
-    content: '',
-  },
-]
-
 function RouteComponent() {
+  const { data, isLoading } = usePosts()
+
   return (
     <motion.div {...mainTransitionProps}>
       <PageHero
@@ -43,9 +31,14 @@ function RouteComponent() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {MOCK_POSTS.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
+            {isLoading
+              ? Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="h-64 bg-[#141414] animate-pulse" />
+              ))
+              : data?.posts.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))
+            }
           </div>
         </div>
       </section>

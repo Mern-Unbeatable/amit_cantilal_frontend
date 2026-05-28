@@ -1,18 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {motion} from "framer-motion";
-import {mainTransitionProps} from "@/lib/utils.ts";
-import {PageHero} from "@/components/shared/page-hero.tsx";
-import {ToursSection} from "@/components/sections/tour-section.tsx";
+import { motion } from 'framer-motion'
+import { mainTransitionProps } from '@/lib/utils.ts'
+import { PageHero } from '@/components/shared/page-hero.tsx'
+import { ToursSection } from '@/components/sections/tour-section.tsx'
 import { useTours } from '@/features/tour/tour.hooks.ts'
-import { Spinner } from '@/components/ui/spinner.tsx'
 
 export const Route = createFileRoute('/_public/tours/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-
-  const {data: tours, isFetching} = useTours()
+  const { data: tours, isFetching } = useTours()
 
   return (
     <motion.div {...mainTransitionProps}>
@@ -22,7 +20,11 @@ function RouteComponent() {
         subtitle="Discover Portugal through exclusive private experiences designed for comfort, authenticity, and elegance. Travel with our professional chauffeurs in premium Mercedes vehicles and enjoy unforgettable journeys tailored to your pace."
       />
 
-      {isFetching && <p>Loading tours <Spinner/> </p>}
+      {isFetching && (
+        <div className="flex items-center justify-center w-full h-screen bg-black">
+          <div className="w-12 h-12 border-4 border-gold/20 border-t-gold rounded-full animate-spin" />
+        </div>
+      )}
 
       {tours && !isFetching && <ToursSection tours={tours} />}
     </motion.div>

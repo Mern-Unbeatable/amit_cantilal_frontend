@@ -1,12 +1,11 @@
-import { Link, createFileRoute  } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Icon } from "@iconify/react";
+import { Icon } from '@iconify/react'
 import { ArrowRight } from 'lucide-react'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { fleet, services } from '@/data'
-import {ReviewsSection} from "@/components/sections/review-section.tsx";
-
+import { ReviewsSection } from '@/components/sections/review-section.tsx'
 
 const stats = [
   { num: '12+', label: 'Years of Service' },
@@ -17,133 +16,90 @@ const stats = [
 
 const App: React.FC = () => {
   return (
-    <motion.div {...mainTransitionProps}>
-      {/* <section className="relative min-h-[85svh] md:min-h-[100svh] flex items-center justify-center pt-0 bg-background overflow-hidden">*/}
-      {/*  <div className="absolute inset-0">*/}
-      {/*    <Image*/}
-      {/*      src="/services-hero-airport-Bn7uK8eL.webp"*/}
-      {/*      alt="Premium chauffeur service Portugal"*/}
-      {/*      className="w-full h-full object-cover object-center scale-x-[-1]"*/}
-      {/*      loading="eager"*/}
-      {/*      fetchpriority="high"*/}
-      {/*      layout="fullWidth"*/}
-      {/*    />*/}
-      {/*    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background"></div>*/}
-      {/*  </div>*/}
-      {/*  <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">*/}
-      {/*    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient-gold leading-tight mb-6 max-w-5xl mx-auto">*/}
-      {/*      Premium Chauffeur Service &amp; Private Tours in Portugal*/}
-      {/*    </h1>*/}
-      {/*    <p className="text-lg md:text-2xl text-foreground/90 leading-relaxed mb-10 max-w-3xl mx-auto">*/}
-      {/*      Luxury airport transfers &amp; exclusive tours in Lisbon, Porto and*/}
-      {/*      Algarve*/}
-      {/*    </p>*/}
-      {/*    <a href="/booking">*/}
-      {/*      <button className="inline-flex items-center justify-center whitespace-nowrap font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-14 bg-primary hover:bg-primary/90 text-primary-foreground text-lg md:text-xl px-10 py-6 rounded-xl shadow-gold gap-3 animate-[glow-pulse_2.5s_ease-in-out_infinite]">*/}
-      {/*        Book Now*/}
-      {/*        <svg*/}
-      {/*          xmlns="http://www.w3.org/2000/svg"*/}
-      {/*          width="24"*/}
-      {/*          height="24"*/}
-      {/*          viewBox="0 0 24 24"*/}
-      {/*          fill="none"*/}
-      {/*          stroke="currentColor"*/}
-      {/*          stroke-width="2"*/}
-      {/*          stroke-linecap="round"*/}
-      {/*          stroke-linejoin="round"*/}
-      {/*          className="lucide lucide-arrow-right w-5 h-5"*/}
-      {/*        >*/}
-      {/*          <path d="M5 12h14"></path>*/}
-      {/*          <path d="m12 5 7 7-7 7"></path>*/}
-      {/*        </svg>*/}
-      {/*      </button>*/}
-      {/*    </a>*/}
-      {/*  </div>*/}
-      {/* </section>*/}
+    <motion.div {...mainTransitionProps} >
+      <section className="relative min-h-[85svh] md:min-h-svh flex flex-col items-center justify-center pt-0 bg-black overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="/services-hero-airport-Bn7uK8eL.webp"
+            alt="Premium chauffeur service Portugal"
+            className="w-full h-full object-cover object-center scale-x-[-1]"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0B0B0B]" />
+        </div>
 
-
-      <section className="relative min-h-[85svh] md:min-h-[100svh] flex flex-col items-center justify-center pt-0 bg-[#0B0B0B] overflow-hidden">
-
-    {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src="/services-hero-airport-Bn7uK8eL.webp"
-          alt="Premium chauffeur service Portugal"
-          className="w-full h-full object-cover object-center scale-x-[-1]"
-          loading="eager"
-          fetchPriority="high"
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(90deg, rgba(201,168,76,0.04) 0px, rgba(201,168,76,0.04) 1px, transparent 1px, transparent 72px)',
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0B0B0B]" />
-      </div>
 
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: 'repeating-linear-gradient(90deg, rgba(201,168,76,0.04) 0px, rgba(201,168,76,0.04) 1px, transparent 1px, transparent 72px)',
-        }}
-      />
+        {/* Gold glow */}
+        <div
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full pointer-events-none"
+          style={{ background: 'rgba(201,168,76,0.06)', filter: 'blur(70px)' }}
+        />
 
-      {/* Gold glow */}
-      <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full pointer-events-none"
-        style={{ background: 'rgba(201,168,76,0.06)', filter: 'blur(70px)' }}
-      />
+        {/* Content */}
+        <div className="container mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
+          {/* Tag */}
+          <div className="inline-block text-[10px] font-medium tracking-[.3em] uppercase text-[#C9A84C] border border-[#C9A84C]/30 px-4 py-1.5 mb-8">
+            Luxury Chauffeur Service — Portugal
+          </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
+          {/* Heading */}
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] leading-[1.1] tracking-tight mb-6 max-w-4xl mx-auto">
+            Faith in <em className="italic text-[#C9A84C]">absolute</em>
+            <br />
+            comfort &amp; style
+          </h1>
 
-        {/* Tag */}
-        <div className="inline-block text-[10px] font-medium tracking-[.3em] uppercase text-[#C9A84C] border border-[#C9A84C]/30 px-4 py-1.5 mb-8">
-          Luxury Chauffeur Service — Portugal
-        </div>
+          {/* Subtext */}
+          <p className="text-[#9A9182] text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto tracking-wide">
+            Premium chauffeur service across Lisbon, Porto and the Algarve.
+            Professional drivers, executive fleet, available 24/7.
+          </p>
 
-        {/* Heading */}
-        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] leading-[1.1] tracking-tight mb-6 max-w-4xl mx-auto">
-          Travel in{' '}
-          <em className="italic text-[#C9A84C]">absolute</em>
-          <br />
-          comfort &amp; style
-        </h1>
-
-        {/* Subtext */}
-        <p className="text-[#9A9182] text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto tracking-wide">
-          Premium chauffeur service across Lisbon, Porto and the Algarve.
-          Professional drivers, executive fleet, available 24/7.
-        </p>
-
-        {/* Buttons */}
-        <div className="flex flex-wrap gap-3 justify-center">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[.18em] uppercase bg-[#C9A84C] text-[#0B0B0B] px-8 py-3.5 hover:bg-[#E2C97E] transition-colors duration-200"
-          >
-            Reserve Your Ride
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[.18em] uppercase bg-transparent text-[#F5F0E8] border border-[#F5F0E8]/25 px-8 py-3.5 hover:border-[#F5F0E8]/50 transition-colors duration-200"
-          >
-            View Our Fleet
-          </Link>
-        </div>
-
-        {/* Stats bar */}
-        <div className="mt-14 w-full max-w-2xl border border-[#C9A84C]/15 grid grid-cols-4">
-          {stats.map((stat, i) => (
-            <div
-              key={stat.label}
-              className={`py-4 px-2 text-center ${i < stats.length - 1 ? 'border-r border-[#C9A84C]/15' : ''}`}
+          {/* Buttons */}
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[.18em] uppercase bg-[#C9A84C] text-[#0B0B0B] px-8 py-3.5 hover:bg-[#E2C97E] transition-colors duration-200"
             >
-              <span className="font-serif text-2xl font-light text-[#C9A84C] block">{stat.num}</span>
-              <span className="text-[10px] tracking-[.18em] uppercase text-[#9A9182]">{stat.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+              Reserve Your Ride
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[.18em] uppercase bg-transparent text-[#F5F0E8] border border-[#F5F0E8]/25 px-8 py-3.5 hover:border-[#F5F0E8]/50 transition-colors duration-200"
+            >
+              View Our Fleet
+            </Link>
+          </div>
 
-    </section>
+          {/* Stats bar */}
+          <div className="mt-14 w-full max-w-2xl border border-[#C9A84C]/15 grid grid-cols-4">
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`py-4 px-2 text-center ${i < stats.length - 1 ? 'border-r border-[#C9A84C]/15' : ''}`}
+              >
+                <span className="font-serif text-2xl font-light text-[#C9A84C] block">
+                  {stat.num}
+                </span>
+                <span className="text-[10px] tracking-[.18em] uppercase text-[#9A9182]">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-6 md:px-12">
@@ -185,7 +141,11 @@ const App: React.FC = () => {
             Why Choose Off We Go Portugal
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Off We Go Portugal is a premium chauffeur service, offering luxury private transportation across Lisbon, Porto, and the Algarve. With a high-end Mercedes-Benz fleet, multilingual professional drivers, and 24/7 availability, we deliver an exceptional travel experience for discerning travellers, business executives, and families.
+            Off We Go Portugal is a premium chauffeur service, offering luxury
+            private transportation across Lisbon, Porto, and the Algarve. With a
+            high-end Mercedes-Benz fleet, multilingual professional drivers, and
+            24/7 availability, we deliver an exceptional travel experience for
+            discerning travellers, business executives, and families.
           </p>
         </div>
       </section>
@@ -315,7 +275,7 @@ const App: React.FC = () => {
             What our clients say
           </h2>
 
-          <ReviewsSection/>
+          <ReviewsSection />
         </div>
       </section>
 
@@ -346,14 +306,14 @@ const App: React.FC = () => {
                         key={index}
                         className={`text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1
                     ${
-                          tag.variant === "primary"
-                            ? "bg-primary/90 text-primary-foreground"
-                            : "bg-foreground/70 text-background"
-                        }`}
+                      tag.variant === 'primary'
+                        ? 'bg-primary/90 text-primary-foreground'
+                        : 'bg-foreground/70 text-background'
+                    }`}
                       >
-                  <Icon icon={tag.icon} className="w-3 h-3" />
+                        <Icon icon={tag.icon} className="w-3 h-3" />
                         {tag.label}
-                </span>
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -377,8 +337,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
-
-
     </motion.div>
   )
 }

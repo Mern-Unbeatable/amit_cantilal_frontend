@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   Calendar,
   ChevronRight,
@@ -11,12 +11,11 @@ import {
 } from 'lucide-react'
 import { format } from 'date-fns'
 import {
-  CircleMarker,
-  MapContainer,
-  Polyline,
-  TileLayer,
-} from 'react-leaflet'
-import { LatLngBounds } from 'leaflet'
+  AdvancedMarker,
+  Map,
+  useMap,
+  useMapsLibrary,
+} from '@vis.gl/react-google-maps'
 import type { Stop, TripDetails } from '@/features/booking/booking.types.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -38,52 +37,198 @@ function generateId() {
   return Math.random().toString(36).slice(2, 8)
 }
 
-interface LocationSuggestion {
-  label: string
-  lat: number
-  lon: number
+type LatLng = { lat: number; lng: number }
+
+// ─── Direction renderer ──────────────────────────────────────────────────────
+// Draws the route on the map and fits bounds when both points are known.
+
+function DirectionsLayer({
+  pickup,
+  dropoff,
+}: {
+  pickup: LatLng | null
+  dropoff: LatLng | null
+}) {
+  const map = useMap()
+  const routesLib = useMapsLibrary('routes')
+  const [directionsService, setDirectionsService] =
+    useState<google.maps.DirectionsService | null>(null)
+  const [directionsRenderer, setDirectionsRenderer] =
+    useState<google.maps.DirectionsRenderer | null>(null)
+
+  // Initialise service + renderer once the library is ready
+  useEffect(() => {
+    if (!routesLib || !map) return
+
+    const service = new routesLib.DirectionsService()
+    const renderer = new routesLib.DirectionsRenderer({
+      suppressMarkers: true, // we render our own AdvancedMarkers
+      polylineOptions: {
+        strokeColor: '#C9A84C',
+        strokeWeight: 4,
+        strokeOpacity: 0.9,
+      },
+    })
+    renderer.setMap(map)
+    setDirectionsService(service)
+    setDirectionsRenderer(renderer)
+
+    return () => renderer.setMap(null)
+  }, [routesLib, map])
+
+  // Request a new route whenever pickup/dropoff change
+  useEffect(() => {
+    if (!directionsService || !directionsRenderer || !pickup || !dropoff) {
+      directionsRenderer?.setDirections({ routes: [] } as never)
+      return
+    }
+
+    directionsService.route(
+      {
+        origin: pickup,
+        destination: dropoff,
+        travelMode: google.maps.TravelMode.DRIVING,
+      },
+      (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK && result) {
+          directionsRenderer.setDirections(result)
+        }
+      },
+    )
+  }, [directionsService, directionsRenderer, pickup, dropoff])
+
+  // Fit map bounds when both markers are present but no route yet
+  useEffect(() => {
+    if (!map || !pickup || !dropoff) return
+    const bounds = new google.maps.LatLngBounds()
+    bounds.extend(pickup)
+    bounds.extend(dropoff)
+    map.fitBounds(bounds, 80)
+  }, [map, pickup, dropoff])
+
+  return null
 }
 
-type Point = [number, number]
+// ─── Places Autocomplete input ────────────────────────────────────────────────
+
+interface AutocompleteInputProps {
+  value: string
+  onChange: (value: string) => void
+  onSelect: (place: { label: string; lat: number; lng: number }) => void
+  placeholder: string
+  icon?: React.ReactNode
+}
+
+function AutocompleteInput({
+  value,
+  onChange,
+  onSelect,
+  placeholder,
+  icon,
+}: AutocompleteInputProps) {
+  const placesLib = useMapsLibrary('places')
+  const inputRef = useRef<HTMLInputElement>(null)
+  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null)
+  const onSelectRef = useRef(onSelect)
+
+  useEffect(() => {
+    onSelectRef.current = onSelect
+  }, [onSelect])
+
+  useEffect(() => {
+    if (!placesLib || !inputRef.current || autocompleteRef.current) return
+
+
+    const autocomplete = new placesLib.Autocomplete(inputRef.current, {
+      fields: ['formatted_address', 'geometry', 'name'],
+      // Bias toward Portugal + nearby countries
+      componentRestrictions: undefined,
+      bounds: new google.maps.LatLngBounds(
+        { lat: 36.8, lng: -9.6 }, // SW — southern Portugal
+        { lat: 42.2, lng: -6.0 }, // NE — northern Portugal
+      ),
+      strictBounds: false,
+    })
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace()
+      if (!place.geometry?.location) return
+
+      const lat = place.geometry.location.lat()
+      const lng = place.geometry.location.lng()
+      const label = place.formatted_address ?? place.name ?? ''
+
+      onSelect({ label, lat, lng })
+      onSelectRef.current({ label, lat, lng })
+    })
+
+    autocompleteRef.current = autocomplete
+
+    return () => {
+      google.maps.event.clearInstanceListeners(autocomplete)
+      autocompleteRef.current = null
+    }
+  }, [placesLib])
+
+  return (
+    <div className="flex-1 relative">
+      {icon && (
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9A9182] z-10 pointer-events-none">
+          {icon}
+        </div>
+      )}
+      <input
+        ref={inputRef}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className={`
+          w-full h-14 text-base bg-[#0B0B0B] border border-[#C9A84C]/20
+          focus:border-[#C9A84C]/50 focus:outline-none
+          text-white placeholder:text-[#9A9182]/50
+          ${icon ? 'pl-12' : 'pl-4'} pr-12
+        `}
+      />
+    </div>
+  )
+}
+
+// ─── Route Preview (Google Map) ───────────────────────────────────────────────
 
 function RoutePreview({
   pickup,
   dropoff,
-  route,
 }: {
-  pickup: Point | null
-  dropoff: Point | null
-  route: Array<Point>
+  pickup: LatLng | null
+  dropoff: LatLng | null
 }) {
-  const points = useMemo(() => {
-    const all = [...route]
+  if (!pickup && !dropoff) return null
 
-    if (!all.length && pickup && dropoff) {
-      all.push(pickup, dropoff)
-    }
-
-    return all
-  }, [dropoff, pickup, route])
-
-  if (!pickup || !dropoff || !points.length) return null
-
-  const bounds = new LatLngBounds(points)
+  const center = pickup ?? dropoff ?? { lat: 38.7169, lng: -9.1399 }
 
   return (
-    <div className="border border-[#C9A84C]/20 bg-[#0B0B0B] h-64">
-      <MapContainer
-        bounds={bounds}
+    <div className="border border-[#C9A84C]/20 bg-[#0B0B0B] h-64 overflow-hidden">
+      <Map
+        defaultCenter={center}
+        defaultZoom={12}
+        mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID ?? 'offwego-map'}
+        disableDefaultUI
+        gestureHandling="cooperative"
         className="h-full w-full"
-        scrollWheelZoom={false}
+        colorScheme="DARK"
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Polyline positions={points} pathOptions={{ color: '#C9A84C', weight: 4 }} />
-        <CircleMarker center={pickup} pathOptions={{ color: '#C9A84C' }} radius={7} />
-        <CircleMarker center={dropoff} pathOptions={{ color: '#F5F0E8' }} radius={7} />
-      </MapContainer>
+        {pickup && (
+          <AdvancedMarker position={pickup}>
+            <div className="w-4 h-4 rounded-full bg-[#C9A84C] border-2 border-[#0B0B0B] shadow-lg" />
+          </AdvancedMarker>
+        )}
+        {dropoff && (
+          <AdvancedMarker position={dropoff}>
+            <div className="w-4 h-4 rounded-full bg-[#F5F0E8] border-2 border-[#0B0B0B] shadow-lg" />
+          </AdvancedMarker>
+        )}
+        <DirectionsLayer pickup={pickup} dropoff={dropoff} />
+      </Map>
     </div>
   )
 }
@@ -98,9 +243,7 @@ function TimePicker({
   onChange: (val: string) => void
 }) {
   const [open, setOpen] = useState(false)
-
   const [hour, minute] = value ? value.split(':').map(Number) : [null, null]
-
   const hours = Array.from({ length: 24 }, (_, i) => i)
   const minutes = [0, 15, 30, 45]
 
@@ -134,7 +277,6 @@ function TimePicker({
             Select Time
           </p>
           <div className="flex gap-2">
-            {/* Hours */}
             <div className="flex-1">
               <p className="text-[10px] text-[#9A9182] mb-1.5 text-center">
                 Hour
@@ -155,11 +297,7 @@ function TimePicker({
                 ))}
               </div>
             </div>
-
-            {/* Divider */}
             <div className="w-px bg-[#C9A84C]/15 self-stretch" />
-
-            {/* Minutes */}
             <div className="flex-1">
               <p className="text-[10px] text-[#9A9182] mb-1.5 text-center">
                 Min
@@ -245,14 +383,13 @@ function DatePicker({
 // ─── Main Step ────────────────────────────────────────────────────────────────
 
 export default function Step1TripDetails({ data, onChange, onNext }: Props) {
-  const [pickupSuggestions, setPickupSuggestions] = useState<Array<LocationSuggestion>>([])
-  const [dropoffSuggestions, setDropoffSuggestions] = useState<Array<LocationSuggestion>>([])
-  const [pickupPoint, setPickupPoint] = useState<Point | null>(null)
-  const [dropoffPoint, setDropoffPoint] = useState<Point | null>(null)
-  const [routePoints, setRoutePoints] = useState<Array<Point>>([])
+  const [pickupLatLng, setPickupLatLng] = useState<LatLng | null>(null)
+  const [dropoffLatLng, setDropoffLatLng] = useState<LatLng | null>(null)
 
-  const update = (patch: Partial<TripDetails>) =>
-    onChange({ ...data, ...patch })
+  const update = useCallback(
+    (patch: Partial<TripDetails>) => onChange({ ...data, ...patch }),
+    [data, onChange],
+  )
 
   const addStop = () =>
     update({ stops: [...data.stops, { id: generateId(), value: '' }] })
@@ -267,132 +404,10 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
 
   const canProceed =
     data.pickup.trim() !== '' &&
-    data.dropoff.trim() !== '' &&
+    (data.serviceType === 'hourly' || data.dropoff.trim() !== '') &&
     data.passengers >= 1 &&
     !!data.date &&
     data.time !== ''
-
-  useEffect(() => {
-    const abort = new AbortController()
-    const query = data.pickup.trim()
-
-    if (query.length < 3) {
-      setPickupSuggestions([])
-      setPickupPoint(null)
-      return () => abort.abort()
-    }
-
-    const timeout = setTimeout(async () => {
-      try {
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`,
-          {
-            signal: abort.signal,
-            headers: {
-              Accept: 'application/json',
-            },
-          },
-        )
-
-        const result: Array<{ display_name: string; lat: string; lon: string }> =
-          await response.json()
-
-        setPickupSuggestions(
-          result.map((item) => ({
-            label: item.display_name,
-            lat: Number(item.lat),
-            lon: Number(item.lon),
-          })),
-        )
-      } catch {
-        setPickupSuggestions([])
-      }
-    }, 250)
-
-    return () => {
-      abort.abort()
-      clearTimeout(timeout)
-    }
-  }, [data.pickup])
-
-  useEffect(() => {
-    const abort = new AbortController()
-    const query = data.dropoff.trim()
-
-    if (query.length < 3) {
-      setDropoffSuggestions([])
-      setDropoffPoint(null)
-      return () => abort.abort()
-    }
-
-    const timeout = setTimeout(async () => {
-      try {
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`,
-          {
-            signal: abort.signal,
-            headers: {
-              Accept: 'application/json',
-            },
-          },
-        )
-
-        const result: Array<{ display_name: string; lat: string; lon: string }> =
-          await response.json()
-
-        setDropoffSuggestions(
-          result.map((item) => ({
-            label: item.display_name,
-            lat: Number(item.lat),
-            lon: Number(item.lon),
-          })),
-        )
-      } catch {
-        setDropoffSuggestions([])
-      }
-    }, 250)
-
-    return () => {
-      abort.abort()
-      clearTimeout(timeout)
-    }
-  }, [data.dropoff])
-
-  useEffect(() => {
-    const abort = new AbortController()
-
-    if (!pickupPoint || !dropoffPoint) {
-      setRoutePoints([])
-      return () => abort.abort()
-    }
-
-    const loadRoute = async () => {
-      try {
-        const response = await fetch(
-          `https://router.project-osrm.org/route/v1/driving/${pickupPoint[1]},${pickupPoint[0]};${dropoffPoint[1]},${dropoffPoint[0]}?overview=full&geometries=geojson`,
-          {
-            signal: abort.signal,
-            headers: {
-              Accept: 'application/json',
-            },
-          },
-        )
-
-        const payload: {
-          routes?: Array<{ geometry?: { coordinates?: Array<[number, number]> } }>
-        } = await response.json()
-
-        const coordinates = payload.routes?.[0]?.geometry?.coordinates ?? []
-        setRoutePoints(coordinates.map(([lon, lat]) => [lat, lon]))
-      } catch {
-        setRoutePoints([])
-      }
-    }
-
-    void loadRoute()
-
-    return () => abort.abort()
-  }, [dropoffPoint, pickupPoint])
 
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5">
@@ -430,44 +445,22 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
         {/* Pickup */}
         <div className="relative flex items-center gap-3 pb-2">
           <div className="w-3 h-3 rounded-full bg-[#C9A84C] z-10 flex-shrink-0 ml-[17px]" />
-          <div className="flex-1 relative">
-            <MapPin
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9A9182] z-10"
-              strokeWidth={1.5}
-            />
-            <Input
-              value={data.pickup}
-              onChange={(e) => {
-                setPickupPoint(null)
-                update({ pickup: e.target.value })
-              }}
-              placeholder="From: Address, airport, hotel..."
-              className="pl-12 pr-12 h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50"
-            />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C9A84C] hover:text-[#E2C97E] transition-colors">
-              <Navigation className="w-5 h-5" strokeWidth={1.5} />
-            </button>
-
-            {pickupSuggestions.length > 0 && (
-              <div className="absolute z-30 mt-1 w-full max-h-56 overflow-y-auto border border-[#C9A84C]/20 bg-[#0B0B0B]">
-                {pickupSuggestions.map((suggestion) => (
-                  <button
-                    key={`${suggestion.lat}-${suggestion.lon}-${suggestion.label}`}
-                    type="button"
-                    onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => {
-                      update({ pickup: suggestion.label })
-                      setPickupPoint([suggestion.lat, suggestion.lon])
-                      setPickupSuggestions([])
-                    }}
-                    className="w-full text-left px-4 py-2 text-sm text-[#F5F0E8] hover:bg-[#141414]"
-                  >
-                    {suggestion.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          <AutocompleteInput
+            value={data.pickup}
+            onChange={(val) => {
+              setPickupLatLng(null)
+              update({ pickup: val, pickupCoords: undefined })
+            }}
+            onSelect={({ label, lat, lng }) => {
+              setPickupLatLng({ lat, lng })
+              update({ pickup: label, pickupCoords: [lat, lng] })
+            }}
+            placeholder="From: Address, airport, hotel..."
+            icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />}
+          />
+          <button className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C9A84C] hover:text-[#E2C97E] transition-colors pr-1">
+            <Navigation className="w-5 h-5" strokeWidth={1.5} />
+          </button>
         </div>
 
         {/* Stops */}
@@ -495,60 +488,43 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
           </div>
         ))}
 
-        {/* Dropoff */}
-        <div className="relative flex items-center gap-3 pt-2">
-          <div className="w-3 h-3 rounded-sm bg-[#C9A84C] z-10 flex-shrink-0 ml-[17px]" />
-          <div className="flex-1 relative">
-            <MapPin
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9A9182] z-10"
-              strokeWidth={1.5}
-            />
-            <Input
+        {/* Dropoff — hidden for hourly */}
+        {data.serviceType === 'transfer' && (
+          <div className="relative flex items-center gap-3 pt-2">
+            <div className="w-3 h-3 rounded-sm bg-[#C9A84C] z-10 flex-shrink-0 ml-[17px]" />
+            <AutocompleteInput
               value={data.dropoff}
-              onChange={(e) => {
-                setDropoffPoint(null)
-                update({ dropoff: e.target.value })
+              onChange={(val) => {
+                setDropoffLatLng(null)
+                update({ dropoff: val, dropoffCoords: undefined })
+              }}
+              onSelect={({ label, lat, lng }) => {
+                setDropoffLatLng({ lat, lng })
+                update({ dropoff: label, dropoffCoords: [lat, lng] })
               }}
               placeholder="To: Address, airport, hotel..."
-              className="pl-12 pr-12 h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50"
+              icon={<MapPin className="w-5 h-5" strokeWidth={1.5} />}
             />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C9A84C] hover:text-[#E2C97E] transition-colors">
+            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C9A84C] hover:text-[#E2C97E] transition-colors pr-1">
               <Navigation className="w-5 h-5" strokeWidth={1.5} />
             </button>
-
-            {dropoffSuggestions.length > 0 && (
-              <div className="absolute z-30 mt-1 w-full max-h-56 overflow-y-auto border border-[#C9A84C]/20 bg-[#0B0B0B]">
-                {dropoffSuggestions.map((suggestion) => (
-                  <button
-                    key={`${suggestion.lat}-${suggestion.lon}-${suggestion.label}`}
-                    type="button"
-                    onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => {
-                      update({ dropoff: suggestion.label })
-                      setDropoffPoint([suggestion.lat, suggestion.lon])
-                      setDropoffSuggestions([])
-                    }}
-                    className="w-full text-left px-4 py-2 text-sm text-[#F5F0E8] hover:bg-[#141414]"
-                  >
-                    {suggestion.label}
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
-        </div>
+        )}
       </div>
 
-      <RoutePreview pickup={pickupPoint} dropoff={dropoffPoint} route={routePoints} />
+      {/* Map */}
+      <RoutePreview pickup={pickupLatLng} dropoff={dropoffLatLng} />
 
-      {/* Add stop */}
-      <button
-        onClick={addStop}
-        className="flex items-center gap-2 text-sm text-[#C9A84C] hover:text-[#E2C97E] transition-colors ml-10"
-      >
-        <Plus className="w-3.5 h-3.5" />
-        Add Stop
-      </button>
+      {/* Add stop — transfer only */}
+      {data.serviceType === 'transfer' && (
+        <button
+          onClick={addStop}
+          className="flex items-center gap-2 text-sm text-[#C9A84C] hover:text-[#E2C97E] transition-colors ml-10"
+        >
+          <Plus className="w-3.5 h-3.5" />
+          Add Stop
+        </button>
+      )}
 
       {/* Hourly duration */}
       {data.serviceType === 'hourly' && (

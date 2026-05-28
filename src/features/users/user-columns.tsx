@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { useDeleteUser, useToggleUserStatus } from '@/features/users/user.hooks.ts'
 import { Button } from '@/components/ui/button.tsx'
-import { ROLE_LABELS } from '@/types/user'
+import { ROLE_LABELS } from '@/@types/user'
 
 function getUserStatusColor(isActive: boolean): 'default' | 'secondary' {
   return isActive ? 'secondary' : 'default'

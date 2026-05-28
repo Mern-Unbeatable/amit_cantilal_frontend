@@ -1,6 +1,6 @@
 import type { FleetVehicle } from '@/features/fleet/fleet.types.ts'
 
-export type ServiceType = 'transfer' | 'hourly'
+export type ServiceType = 'transfer' | 'hourly' | 'tour'
 export type VehicleType = 'sedan' | 'suv' | 'van' | 'sprinter'
 export type BookingStatus = 'pending' | 'confirmed' | 'cancelled'
 
@@ -27,6 +27,8 @@ export interface TripDetails {
   time: string
   distanceKm?: number
   hours?: number
+  pickupCoords?: [number, number]
+  dropoffCoords?: [number, number]
 }
 
 export interface ContactDetails {
@@ -86,6 +88,7 @@ export interface CreateBookingPayload {
   hours?: number
   flight_number?: string
   vehicle_type?: VehicleType
+  tour_id?: string
 }
 
 export interface CreateBookingResponse {

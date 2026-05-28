@@ -45,6 +45,11 @@ export const adminRoutes: Array<NavGroup> = [
         url: '/admin/partnerships',
         icon: 'material-symbols:handshake-outline-rounded',
       },
+      {
+        title: 'Users',
+        url: '/admin/users',
+        icon: 'material-symbols-outlined:group',
+      },
     ],
   },
 ]
