@@ -48,6 +48,16 @@ export const bookingService = {
       .get<{ data: BookingState }>(`/public/bookings/payment-intent/${id}`)
       .then(unwrap),
 
+  lookup: (reference: string, email: string): Promise<BookingState> =>
+    api
+      .get<{ data: BookingState }>(`/public/bookings/lookup`, { params: { reference, email } })
+      .then(unwrap),
+
+  refreshPaymentIntent: (reference: string, email: string): Promise<CreateBookingResponse> =>
+    api
+      .post<{ data: CreateBookingResponse }>(`/public/bookings/${reference}/payment-intent`, { email })
+      .then(unwrap),
+
   updateStatus: (
     id: number | string,
     status: BookingStatus,

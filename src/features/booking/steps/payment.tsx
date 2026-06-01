@@ -27,7 +27,7 @@ export default function Step4Payment({
   const ready = !!stripe && !!elements
 
   return (
-    <div className="space-y-6">
+    <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-6">
       <div>
         <h2 className="font-serif text-xl text-[#F5F0E8] font-light mb-1">
           Payment

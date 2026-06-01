@@ -56,9 +56,12 @@ export default function Step3ContactInfo({
 }: Props) {
   const update = (patch: Partial<ContactDetails>) =>
     onChange({ ...data, ...patch })
-  data.fullName.trim() !== '' &&
-  data.email.trim() !== '' &&
-  data.phone.trim() !== ''
+
+  const canProceed =
+    data.fullName.trim() !== '' &&
+    data.email.trim() !== '' &&
+    data.phone.trim() !== ''
+
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5">
       <h2 className="font-serif text-2xl md:text-3xl font-light text-gradient-gold">
@@ -74,7 +77,9 @@ export default function Step3ContactInfo({
         <div className="grid grid-cols-1 gap-1.5 text-xs">
           {[
             { label: 'From', value: trip.pickup },
-            { label: 'To', value: trip.dropoff },
+            ...(trip.serviceType === 'transfer'
+              ? [{ label: 'To', value: trip.dropoff }]
+              : [{ label: 'Duration', value: `${trip.hours ?? 1}h` }]),
             {
               label: 'When',
               value: `${trip.date?.toLocaleDateString('en-GB') ?? '—'} • ${trip.time}`,
@@ -178,7 +183,7 @@ export default function Step3ContactInfo({
         </Button>
         <Button
           onClick={onNext}
-          disabled={isLoading}
+          disabled={isLoading || !canProceed}
           className="flex-1 h-14 rounded-none bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium text-base tracking-[.08em] uppercase disabled:opacity-40"
         >
           {isLoading ? (

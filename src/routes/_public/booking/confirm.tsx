@@ -12,7 +12,6 @@ import {
 import type { BookingState } from '@/features/booking/booking.types.ts'
 import { capitalize, formatCurrency, mainTransitionProps } from '@/lib/utils.ts'
 import { useGetBookingByPaymentIntent } from '@/features/booking/booking.hooks.ts'
-import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
 
 export const Route = createFileRoute('/_public/booking/confirm')({
   component: RouteComponent,
@@ -197,23 +196,12 @@ function BookingCard({ booking }: { booking: BookingState }) {
   )
 }
 
-// ─── Skeleton ─────────────────────────────────────────────────────────────────
-
-function Skeleton() {
-  return (
-    <div className="space-y-3 animate-pulse">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <div key={i} className="h-10 bg-[#1C1C1C] rounded-sm" />
-      ))}
-    </div>
-  )
-}
 
 // ─── Route component ──────────────────────────────────────────────────────────
 
 function RouteComponent() {
   const search = new URLSearchParams(window.location.search)
-  const paymentIntentId = search.get('payment_intent') ?? 0
+  const paymentIntentId = search.get('payment_intent') ?? ''
   const redirectStatus = search.get('redirect_status') ?? 'failed'
   const isSucceeded = redirectStatus === 'succeeded'
 
@@ -254,15 +242,24 @@ function RouteComponent() {
 
   if (isLoading)
     return (
-      <AppWrapper>
-        <div className="p-8 text-muted-foreground">Loading...</div>
-      </AppWrapper>
+      <section className="min-h-screen flex items-center justify-center bg-[#0B0B0B]">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-10 h-10 rounded-full border-2 border-[#C9A84C]/20 border-t-[#C9A84C] animate-spin" />
+          <span className="text-sm text-[#9A9182]">Loading your booking...</span>
+        </div>
+      </section>
     )
   if (!booking)
     return (
-      <AppWrapper>
-        <div className="p-8 text-muted-foreground">Booking not found.</div>
-      </AppWrapper>
+      <section className="min-h-screen flex items-center justify-center bg-[#0B0B0B]">
+        <div className="text-center space-y-4">
+          <XCircle className="w-12 h-12 text-red-400 mx-auto" strokeWidth={1.5} />
+          <p className="text-[#9A9182]">Booking not found.</p>
+          <Link to="/booking" className="inline-block px-6 py-3 bg-[#C9A84C] text-[#0B0B0B] text-sm font-medium hover:bg-[#E2C97E] transition-colors">
+            Try Again
+          </Link>
+        </div>
+      </section>
     )
 
   return (
@@ -298,12 +295,7 @@ function RouteComponent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
           >
-            {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-            {isLoading && <Skeleton />}
-
-            {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-            {booking && !isLoading &&
-              redirectStatus === 'succeeded' && (
+              {redirectStatus === 'succeeded' && (
                 <BookingCard booking={booking} />
               )}
           </motion.div>

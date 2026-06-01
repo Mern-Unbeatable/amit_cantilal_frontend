@@ -124,7 +124,7 @@ function VehicleCard({
                 <span className="text-xs text-[#6B6460] font-normal"> /hr</span>
               </p>
               <p className="text-xs text-[#6B6460] mt-0.5 tabular-nums">
-                Est. total: €{(tripPrice * (hours ?? 3)).toFixed(2)}
+                Est. total: €{(tripPrice * (hours ?? 1)).toFixed(2)}
               </p>
             </>
           ) : (
@@ -274,7 +274,7 @@ export default function Step2VehicleSelect({
               : [
                   {
                     label: 'Duration',
-                    value: `${trip.hours ?? 3} hour${(trip.hours ?? 3) !== 1 ? 's' : ''}`,
+                    value: `${trip.hours ?? 1} hour${(trip.hours ?? 1) !== 1 ? 's' : ''}`,
                   },
                 ]),
             { label: 'Passengers', value: String(trip.passengers) },
@@ -297,8 +297,7 @@ export default function Step2VehicleSelect({
         </div>
 
         <p className="text-sm text-[#9A9182] pb-5 border-b border-[#C9A84C]/10">
-          Our fleet is primarily electric (Mercedes-Benz EQ series & Tesla).
-          Combustion vehicles available for long-distance journeys.
+          Select a vehicle that fits your group. All prices are fixed — no surprises.
         </p>
       </div>
 

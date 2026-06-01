@@ -33,7 +33,7 @@ const INITIAL_STATE: BookingFormState = {
     date: undefined,
     time: '',
     distanceKm: undefined,
-    hours: 3,
+    hours: 1,
   },
   vehicle: null,
   notes: '',
@@ -160,7 +160,7 @@ export default function BookingWidget() {
     if (state.trip.serviceType === 'hourly') {
       const rate = getHourlyRate(state.vehicle.name)
       if (!rate) return null
-      const hours = state.trip.hours ?? 3
+      const hours = state.trip.hours ?? 1
       return rate * hours
     }
 
@@ -197,7 +197,7 @@ export default function BookingWidget() {
     }
 
     if (state.trip.serviceType === 'hourly') {
-      payload.hours = state.trip.hours ?? 3
+      payload.hours = state.trip.hours ?? 1
     }
 
     return payload

@@ -7,6 +7,7 @@ import {
   Minus,
   Navigation,
   Plus,
+  Users,
   X,
 } from 'lucide-react'
 import { format } from 'date-fns'
@@ -533,18 +534,18 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
           <div className="flex items-center gap-4">
             <button
               onClick={() =>
-                update({ hours: Math.max(3, (data.hours ?? 3) - 1) })
+                update({ hours: Math.max(1, (data.hours ?? 1) - 1) })
               }
               className="w-8 h-8 border border-[#C9A84C]/30 hover:border-[#C9A84C] text-[#C9A84C] flex items-center justify-center transition-colors"
             >
               <Minus className="w-3.5 h-3.5" />
             </button>
             <span className="text-white font-medium w-6 text-center tabular-nums">
-              {data.hours ?? 3}
+              {data.hours ?? 1}
             </span>
             <button
               onClick={() =>
-                update({ hours: Math.min(24, (data.hours ?? 3) + 1) })
+                update({ hours: Math.min(24, (data.hours ?? 1) + 1) })
               }
               className="w-8 h-8 border border-[#C9A84C]/30 hover:border-[#C9A84C] text-[#C9A84C] flex items-center justify-center transition-colors"
             >
@@ -554,17 +555,26 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
         </div>
       )}
 
+      <div className="relative">
+        <Users
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9A9182] pointer-events-none z-10"
+          strokeWidth={1.5}
+        />
       <Input
-        type="number"
-        min={1}
-        max={20}
-        value={data.passengers}
-        onChange={(e) =>
-          update({ passengers: Math.max(1, Number(e.target.value) || 1) })
-        }
+        type="text"
+        inputMode="numeric"
+        value={data.passengers === 0 ? '' : data.passengers}
+        onChange={(e) => {
+          const raw = e.target.value.replace(/\D/g, '')
+          update({ passengers: raw === '' ? 0 : Math.min(20, Number(raw)) })
+        }}
+        onBlur={() => {
+          if (!data.passengers) update({ passengers: 1 })
+        }}
         placeholder="Passengers"
-        className="h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50"
+        className="h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50 pl-12"
       />
+      </div>
 
       {/* Date + Time */}
       <div className="grid grid-cols-2 gap-4">
