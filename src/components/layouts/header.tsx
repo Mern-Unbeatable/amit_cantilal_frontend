@@ -34,6 +34,9 @@ const navGroups: Array<NavGroup> = [
       { id: 3, name: 'Transfers', to: '/transfers' },
       { id: 4, name: 'Hourly Service', to: '/hourly-service' },
       { id: 5, name: 'Tours', to: '/tours' },
+      { id: 10, name: 'VIP Concierge', to: '/vip-concierge' },
+      { id: 11, name: 'Corporate Mobility', to: '/corporate-mobility' },
+      { id: 12, name: 'Special Events', to: '/special-events' },
     ],
   },
   {
@@ -212,7 +215,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
               {group.label}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openGroup === group.id ? 'rotate-180' : ''}`} />
             </button>
-            <div className={`overflow-hidden transition-all duration-200 ${openGroup === group.id ? 'max-h-48' : 'max-h-0'}`}>
+            <div className={`overflow-hidden transition-all duration-200 ${openGroup === group.id ? 'max-h-96' : 'max-h-0'}`}>
               {group.items.map((item) => (
                 <Link
                   key={item.id}

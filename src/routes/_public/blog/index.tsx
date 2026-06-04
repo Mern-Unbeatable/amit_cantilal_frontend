@@ -15,6 +15,7 @@ function RouteComponent() {
   return (
     <motion.div {...mainTransitionProps}>
       <PageHero
+        image="/blog-banner.png"
         title="Blog"
         subtitle="News, tips and stories from our journeys"
       />

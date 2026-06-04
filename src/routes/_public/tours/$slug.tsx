@@ -1,7 +1,7 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, Clock } from 'lucide-react'
+import { ArrowLeft, Check, CheckCircle, Clock, MapPin, XCircle } from 'lucide-react'
 import { format } from 'date-fns'
 import { toast } from 'sonner'
 import { loadStripe } from '@stripe/stripe-js'
@@ -19,6 +19,7 @@ import { StripeCheckoutForm } from '@/features/tour/public/stripe-checkout-form.
 
 interface TourFormState {
   date: Date | undefined
+  time: string
   adults: number
   contact: {
     name: string
@@ -30,6 +31,7 @@ interface TourFormState {
 
 const INITIAL_STATE: TourFormState = {
   date: undefined,
+  time: '',
   adults: 1,
   contact: {
     name: '',
@@ -38,6 +40,8 @@ const INITIAL_STATE: TourFormState = {
     notes: '',
   },
 }
+
+type TourTab = 'description' | 'itinerary' | 'pickup'
 
 // ─── Stripe ───────────────────────────────────────────────────────────────────
 
@@ -138,16 +142,22 @@ function RouteComponent() {
   const tour = Route.useLoaderData()
   const createBooking = useCreateBooking()
 
-  const price = Number(tour.price)
+  // Price is stored in cents — divide by 100 for display only
+  const priceInCents = Number(tour.price)
+  const price = priceInCents / 100
 
   const [step, setStep] = useState(0)
   const [state, setState] = useState<TourFormState>(INITIAL_STATE)
   const [clientSecret, setClientSecret] = useState<string | null>(null)
+  const [activeTab, setActiveTab] = useState<TourTab>('description')
 
   // ── State updaters ──────────────────────────────────────────────────────────
 
   const updateDate = (date: Date | undefined) =>
-    setState((s) => ({ ...s, date }))
+    setState((s) => ({ ...s, date, time: '' })) // reset time when date changes
+
+  const updateTime = (time: string) =>
+    setState((s) => ({ ...s, time }))
 
   const updateAdults = (adults: number) =>
     setState((s) => ({ ...s, adults }))
@@ -160,7 +170,8 @@ function RouteComponent() {
 
   // ── Derived values ──────────────────────────────────────────────────────────
 
-  const total = price // extend here if you want per-guest pricing
+  const total = price          // display value (euros)
+  const totalCents = priceInCents  // payment amount (cents)
 
   const tourImages = tour.images ?? []
   const images =
@@ -189,8 +200,9 @@ function RouteComponent() {
         phone: state.contact.phone.trim(),
         passengers: state.adults,
         date: format(state.date, 'yyyy-MM-dd'),
+        pickup_time: state.time || undefined,
         notes: state.contact.notes.trim() || undefined,
-        amount: Math.max(1, Math.round(total)),
+        amount: Math.max(1, Math.round(totalCents)),
         pickup_location: `Tour booking: ${tour.title}`,
         hours: 1,
       })
@@ -206,20 +218,20 @@ function RouteComponent() {
 
   return (
     <motion.div {...mainTransitionProps}>
-      <div className="min-h-screen bg-[#0B0B0B] pt-20 md:pt-24 pb-16 md:pb-24">
+      <div className="min-h-screen bg-black pt-20 md:pt-24 pb-16 md:pb-24">
         <div className="container mx-auto px-4 md:px-12 max-w-5xl">
 
           {/* Back */}
           <Link
             to="/tours"
-            className="inline-flex items-center gap-2 text-xs text-[#9A9182] hover:text-[#C9A84C] transition-colors mb-8 md:mb-12"
+            className="inline-flex items-center gap-2 text-xs text-white-dim hover:text-gold transition-colors mb-8 md:mb-12"
           >
             <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1.5} />
             Back to Tours
           </Link>
 
           {/* Page title */}
-          <div className="mb-8 md:mb-12">
+          <div className="mb-8 md:mb-10">
             <div className="tag-gold mb-3">Book Your Experience</div>
             <h1 className="font-serif text-2xl md:text-4xl font-light text-white leading-snug">
               {tour.title}
@@ -229,6 +241,73 @@ function RouteComponent() {
                 <Clock className="w-3.5 h-3.5" strokeWidth={1.5} />
                 {tour.duration}
               </span>
+            </div>
+          </div>
+
+          {/* Info tabs */}
+          <div className="mb-10 md:mb-14">
+            {/* Tab nav */}
+            <div className="flex border-b border-[#C9A84C]/15">
+              {(['description', 'itinerary', 'pickup'] as TourTab[]).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-5 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-colors border-b-2 -mb-px ${
+                    activeTab === tab
+                      ? 'border-[#C9A84C] text-[#C9A84C]'
+                      : 'border-transparent text-[#9A9182] hover:text-[#F5F0E8]'
+                  }`}
+                >
+                  {tab === 'pickup' ? 'Pick-up' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab content */}
+            <div className="py-6 text-sm text-[#F5F0E8]/70 font-light leading-relaxed">
+              {activeTab === 'description' && (
+                <p>{tour.description}</p>
+              )}
+
+              {activeTab === 'itinerary' && (
+                <div className="space-y-6">
+                  {/* Inclusions */}
+                  {tour.inclusions && tour.inclusions.length > 0 && (
+                    <div>
+                      <p className="text-xs tracking-[0.15em] uppercase text-[#C9A84C] mb-3">Included</p>
+                      <ul className="space-y-2">
+                        {tour.inclusions.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle className="w-4 h-4 text-[#C9A84C] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                            <span>{typeof item === 'string' ? item : item.label}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {/* Exclusions */}
+                  {tour.exclusions && tour.exclusions.length > 0 && (
+                    <div>
+                      <p className="text-xs tracking-[0.15em] uppercase text-[#C9A84C] mb-3">Not Included</p>
+                      <ul className="space-y-2">
+                        {tour.exclusions.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <XCircle className="w-4 h-4 text-[#9A9182] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                            <span>{typeof item === 'string' ? item : item.label}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {activeTab === 'pickup' && (
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-[#C9A84C] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                  <p>{tour.pickup_info ?? 'Your driver will meet you at your hotel lobby or accommodation at the agreed time. Please provide your full address at booking.'}</p>
+                </div>
+              )}
             </div>
           </div>
 
@@ -245,8 +324,11 @@ function RouteComponent() {
               {step === 0 && (
                 <BookingDateStep
                   date={state.date}
+                  time={state.time}
                   adults={state.adults}
+                  startTimes={tour.start_times}
                   onDateChange={updateDate}
+                  onTimeChange={updateTime}
                   onAdultsChange={updateAdults}
                   onContinue={() => setStep(1)}
                 />
@@ -297,6 +379,7 @@ function RouteComponent() {
             <BookingSummary
               title={tour.title}
               date={state.date}
+              time={state.time}
               adults={state.adults}
               price={price}
               total={total}

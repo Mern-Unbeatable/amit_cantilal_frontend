@@ -21,9 +21,9 @@ const App: React.FC = () => {
         {/* Background image */}
         <div className="absolute inset-0">
           <img
-            src="/services-hero-airport-Bn7uK8eL.webp"
+            src="/homepage.png"
             alt="Premium chauffeur service Portugal"
-            className="w-full h-full object-cover object-center scale-x-[-1]"
+            className="w-full h-full object-cover object-top md:object-center"
             loading="eager"
             fetchPriority="high"
           />

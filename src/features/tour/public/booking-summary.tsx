@@ -15,6 +15,7 @@ type BookingSummaryImage = {
 type BookingSummaryProps = {
   title?: string
   date?: Date
+  time?: string
   adults: number
   price: number
   total: number
@@ -24,6 +25,7 @@ type BookingSummaryProps = {
 export function BookingSummary({
   title,
   date,
+  time,
   adults,
   price,
   total,
@@ -72,26 +74,25 @@ export function BookingSummary({
         {date && (
           <div className="flex justify-between text-xs">
             <span className="text-white-dim">Date</span>
-
             <span className="text-white/70">
-              {date.toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric',
-              })}
+              {date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
             </span>
+          </div>
+        )}
+        {time && (
+          <div className="flex justify-between text-xs">
+            <span className="text-white-dim">Time</span>
+            <span className="text-white/70">{time}</span>
           </div>
         )}
 
         <div className="flex justify-between text-xs">
           <span className="text-white-dim">Adults</span>
-
           <span className="text-white/70">{adults}</span>
         </div>
 
         <div className="flex justify-between text-xs">
-          <span className="text-white-dim">Price per person</span>
-
+          <span className="text-white-dim">Tour Price</span>
           <span className="text-white/70">{formatCurrency(price)}</span>
         </div>
       </div>

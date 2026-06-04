@@ -1,23 +1,29 @@
-import { Minus, Plus } from 'lucide-react'
+import { Clock, Minus, Plus } from 'lucide-react'
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
 
 type BookingDateStepProps = {
   date?: Date
+  time?: string
   adults: number
+  startTimes?: Array<string>
   onDateChange: (date: Date | undefined) => void
+  onTimeChange: (time: string) => void
   onAdultsChange: (value: number) => void
   onContinue: () => void
 }
 
 export function BookingDateStep({
   date,
+  time,
   adults,
+  startTimes = ['07:00', '08:00', '09:00'],
   onDateChange,
+  onTimeChange,
   onAdultsChange,
   onContinue,
 }: BookingDateStepProps) {
-  const canContinue = !!date && adults >= 1
+  const canContinue = !!date && !!time && adults >= 1
 
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-8">
@@ -26,7 +32,6 @@ export function BookingDateStep({
         <p className="font-serif text-sm md:text-base text-[#C9A84C] mb-4">
           Select a Date
         </p>
-
         <Calendar
           mode="single"
           selected={date}
@@ -36,19 +41,42 @@ export function BookingDateStep({
         />
       </div>
 
+      {/* Time — shown after date is selected */}
+      {date && (
+        <div className="border-t border-[#C9A84C]/10 pt-6">
+          <p className="font-serif text-sm md:text-base text-[#C9A84C] mb-4 flex items-center gap-2">
+            <Clock className="w-4 h-4" strokeWidth={1.5} />
+            Select a Start Time
+          </p>
+          <div className="grid grid-cols-3 gap-2">
+            {startTimes.map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => onTimeChange(t)}
+                className={`h-11 text-sm font-medium border transition-all duration-200 ${
+                  time === t
+                    ? 'bg-[#C9A84C] text-[#0B0B0B] border-[#C9A84C]'
+                    : 'bg-transparent text-[#F5F0E8] border-[#C9A84C]/20 hover:border-[#C9A84C]/60'
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Guests */}
       <div className="border-t border-[#C9A84C]/10 pt-6">
         <p className="font-serif text-sm md:text-base text-[#C9A84C] mb-4">
           Guests
         </p>
-
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm text-white/80">Adults</p>
-
             <p className="text-xs text-[#9A9182]">Age 18+</p>
           </div>
-
           <div className="flex items-center gap-4">
             <button
               type="button"
@@ -57,11 +85,9 @@ export function BookingDateStep({
             >
               <Minus className="w-3.5 h-3.5" strokeWidth={2} />
             </button>
-
             <span className="text-white font-medium w-4 text-center tabular-nums">
               {adults}
             </span>
-
             <button
               type="button"
               onClick={() => onAdultsChange(adults + 1)}

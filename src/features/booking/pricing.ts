@@ -329,6 +329,11 @@ function resolveHub(
 // Priority: exact name → partial name → null.
 // Zone matching is intentionally excluded here; it lives in resolveHub().
 
+// Street/road prefixes to skip during partial matching.
+// A segment like "R. de Leiria" would otherwise match the city "Leiria".
+const STREET_PREFIX_RE =
+  /^(r\.|rua|av\.|avda\.|avenida|est\.|estrada|tv\.|travessa|lg\.|largo|pr\.|praça|beco|calçada|alameda|campo|estr\.)\s/i
+
 function resolveDestinationKey(
   placeName: string,
   hubTable: Record<string, DestinationPricing>,
@@ -340,12 +345,18 @@ function resolveDestinationKey(
   // 2. Split "Sintra, Lisbon, Portugal" into segments and try each one.
   //    Match the FIRST (most specific) segment that hits a pricing key.
   //    This prevents "Lisbon" in segment 2 from shadowing "Sintra" in segment 1.
+  //    Street segments (e.g. "R. de Leiria") are skipped for partial matching
+  //    to avoid a street name containing a city name (e.g. "Leiria") being
+  //    mistakenly matched to that city's pricing.
   const segments = placeName.split(',').map((s) => s.trim())
 
   for (const segment of segments) {
     // exact segment match
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (hubTable[segment]) return segment
+
+    // skip street segments for partial matching
+    if (STREET_PREFIX_RE.test(segment)) continue
 
     // partial — key appears within this segment only
     const lower = segment.toLowerCase()

@@ -13,6 +13,7 @@ function RouteComponent() {
   return (
     <motion.div {...mainTransitionProps}>
       <PageHero
+        image="/faq-banner.png"
         title="FAQ"
         subtitle="Everything you need to know about our services"
       />

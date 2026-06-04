@@ -13,11 +13,14 @@ import { Route as PublicRouteImport } from './routes/_public'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as PublicVipConciergeRouteImport } from './routes/_public/vip-concierge'
 import { Route as PublicTransfersRouteImport } from './routes/_public/transfers'
+import { Route as PublicSpecialEventsRouteImport } from './routes/_public/special-events'
 import { Route as PublicPrivacyPolicyRouteImport } from './routes/_public/privacy-policy'
 import { Route as PublicPartnershipsRouteImport } from './routes/_public/partnerships'
 import { Route as PublicHourlyServiceRouteImport } from './routes/_public/hourly-service'
 import { Route as PublicFaqRouteImport } from './routes/_public/faq'
+import { Route as PublicCorporateMobilityRouteImport } from './routes/_public/corporate-mobility'
 import { Route as PublicB2bRouteImport } from './routes/_public/b2b'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as PublicToursIndexRouteImport } from './routes/_public/tours/index'
@@ -31,6 +34,7 @@ import { Route as PublicBlogSlugRouteImport } from './routes/_public/blog/$slug'
 import { Route as AuthenticatedAdminPartnershipsRouteImport } from './routes/_authenticated/admin/partnerships'
 import { Route as AuthenticatedAdminFaqsRouteImport } from './routes/_authenticated/admin/faqs'
 import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
+import { Route as AuthenticatedAdminConciergeRequestsRouteImport } from './routes/_authenticated/admin/concierge-requests'
 import { Route as AuthenticatedAdminUsersIndexRouteImport } from './routes/_authenticated/admin/users/index'
 import { Route as AuthenticatedAdminToursIndexRouteImport } from './routes/_authenticated/admin/tours/index'
 import { Route as AuthenticatedAdminPostsIndexRouteImport } from './routes/_authenticated/admin/posts/index'
@@ -64,9 +68,19 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PublicRoute,
 } as any)
+const PublicVipConciergeRoute = PublicVipConciergeRouteImport.update({
+  id: '/vip-concierge',
+  path: '/vip-concierge',
+  getParentRoute: () => PublicRoute,
+} as any)
 const PublicTransfersRoute = PublicTransfersRouteImport.update({
   id: '/transfers',
   path: '/transfers',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicSpecialEventsRoute = PublicSpecialEventsRouteImport.update({
+  id: '/special-events',
+  path: '/special-events',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicPrivacyPolicyRoute = PublicPrivacyPolicyRouteImport.update({
@@ -87,6 +101,11 @@ const PublicHourlyServiceRoute = PublicHourlyServiceRouteImport.update({
 const PublicFaqRoute = PublicFaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicCorporateMobilityRoute = PublicCorporateMobilityRouteImport.update({
+  id: '/corporate-mobility',
+  path: '/corporate-mobility',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicB2bRoute = PublicB2bRouteImport.update({
@@ -154,6 +173,12 @@ const AuthenticatedAdminDashboardRoute =
   AuthenticatedAdminDashboardRouteImport.update({
     id: '/admin/dashboard',
     path: '/admin/dashboard',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAdminConciergeRequestsRoute =
+  AuthenticatedAdminConciergeRequestsRouteImport.update({
+    id: '/admin/concierge-requests',
+    path: '/admin/concierge-requests',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedAdminUsersIndexRoute =
@@ -250,12 +275,16 @@ const AuthenticatedAdminFleetVehicleFleetIdEditRoute =
 export interface FileRoutesByFullPath {
   '/login': typeof AuthLoginRoute
   '/b2b': typeof PublicB2bRoute
+  '/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/faq': typeof PublicFaqRoute
   '/hourly-service': typeof PublicHourlyServiceRoute
   '/partnerships': typeof PublicPartnershipsRoute
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
+  '/special-events': typeof PublicSpecialEventsRoute
   '/transfers': typeof PublicTransfersRoute
+  '/vip-concierge': typeof PublicVipConciergeRoute
   '/': typeof PublicIndexRoute
+  '/admin/concierge-requests': typeof AuthenticatedAdminConciergeRequestsRoute
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
   '/admin/partnerships': typeof AuthenticatedAdminPartnershipsRoute
@@ -286,12 +315,16 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/login': typeof AuthLoginRoute
   '/b2b': typeof PublicB2bRoute
+  '/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/faq': typeof PublicFaqRoute
   '/hourly-service': typeof PublicHourlyServiceRoute
   '/partnerships': typeof PublicPartnershipsRoute
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
+  '/special-events': typeof PublicSpecialEventsRoute
   '/transfers': typeof PublicTransfersRoute
+  '/vip-concierge': typeof PublicVipConciergeRoute
   '/': typeof PublicIndexRoute
+  '/admin/concierge-requests': typeof AuthenticatedAdminConciergeRequestsRoute
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
   '/admin/partnerships': typeof AuthenticatedAdminPartnershipsRoute
@@ -326,12 +359,16 @@ export interface FileRoutesById {
   '/_public': typeof PublicRouteWithChildren
   '/_auth/login': typeof AuthLoginRoute
   '/_public/b2b': typeof PublicB2bRoute
+  '/_public/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/_public/faq': typeof PublicFaqRoute
   '/_public/hourly-service': typeof PublicHourlyServiceRoute
   '/_public/partnerships': typeof PublicPartnershipsRoute
   '/_public/privacy-policy': typeof PublicPrivacyPolicyRoute
+  '/_public/special-events': typeof PublicSpecialEventsRoute
   '/_public/transfers': typeof PublicTransfersRoute
+  '/_public/vip-concierge': typeof PublicVipConciergeRoute
   '/_public/': typeof PublicIndexRoute
+  '/_authenticated/admin/concierge-requests': typeof AuthenticatedAdminConciergeRequestsRoute
   '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/_authenticated/admin/faqs': typeof AuthenticatedAdminFaqsRoute
   '/_authenticated/admin/partnerships': typeof AuthenticatedAdminPartnershipsRoute
@@ -364,12 +401,16 @@ export interface FileRouteTypes {
   fullPaths:
     | '/login'
     | '/b2b'
+    | '/corporate-mobility'
     | '/faq'
     | '/hourly-service'
     | '/partnerships'
     | '/privacy-policy'
+    | '/special-events'
     | '/transfers'
+    | '/vip-concierge'
     | '/'
+    | '/admin/concierge-requests'
     | '/admin/dashboard'
     | '/admin/faqs'
     | '/admin/partnerships'
@@ -400,12 +441,16 @@ export interface FileRouteTypes {
   to:
     | '/login'
     | '/b2b'
+    | '/corporate-mobility'
     | '/faq'
     | '/hourly-service'
     | '/partnerships'
     | '/privacy-policy'
+    | '/special-events'
     | '/transfers'
+    | '/vip-concierge'
     | '/'
+    | '/admin/concierge-requests'
     | '/admin/dashboard'
     | '/admin/faqs'
     | '/admin/partnerships'
@@ -439,12 +484,16 @@ export interface FileRouteTypes {
     | '/_public'
     | '/_auth/login'
     | '/_public/b2b'
+    | '/_public/corporate-mobility'
     | '/_public/faq'
     | '/_public/hourly-service'
     | '/_public/partnerships'
     | '/_public/privacy-policy'
+    | '/_public/special-events'
     | '/_public/transfers'
+    | '/_public/vip-concierge'
     | '/_public/'
+    | '/_authenticated/admin/concierge-requests'
     | '/_authenticated/admin/dashboard'
     | '/_authenticated/admin/faqs'
     | '/_authenticated/admin/partnerships'
@@ -509,11 +558,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/vip-concierge': {
+      id: '/_public/vip-concierge'
+      path: '/vip-concierge'
+      fullPath: '/vip-concierge'
+      preLoaderRoute: typeof PublicVipConciergeRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_public/transfers': {
       id: '/_public/transfers'
       path: '/transfers'
       fullPath: '/transfers'
       preLoaderRoute: typeof PublicTransfersRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/special-events': {
+      id: '/_public/special-events'
+      path: '/special-events'
+      fullPath: '/special-events'
+      preLoaderRoute: typeof PublicSpecialEventsRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/privacy-policy': {
@@ -542,6 +605,13 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof PublicFaqRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/corporate-mobility': {
+      id: '/_public/corporate-mobility'
+      path: '/corporate-mobility'
+      fullPath: '/corporate-mobility'
+      preLoaderRoute: typeof PublicCorporateMobilityRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/b2b': {
@@ -633,6 +703,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AuthenticatedAdminDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/concierge-requests': {
+      id: '/_authenticated/admin/concierge-requests'
+      path: '/admin/concierge-requests'
+      fullPath: '/admin/concierge-requests'
+      preLoaderRoute: typeof AuthenticatedAdminConciergeRequestsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/admin/users/': {
@@ -754,6 +831,7 @@ const AuthRouteChildren: AuthRouteChildren = {
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface AuthenticatedRouteChildren {
+  AuthenticatedAdminConciergeRequestsRoute: typeof AuthenticatedAdminConciergeRequestsRoute
   AuthenticatedAdminDashboardRoute: typeof AuthenticatedAdminDashboardRoute
   AuthenticatedAdminFaqsRoute: typeof AuthenticatedAdminFaqsRoute
   AuthenticatedAdminPartnershipsRoute: typeof AuthenticatedAdminPartnershipsRoute
@@ -775,6 +853,8 @@ interface AuthenticatedRouteChildren {
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedAdminConciergeRequestsRoute:
+    AuthenticatedAdminConciergeRequestsRoute,
   AuthenticatedAdminDashboardRoute: AuthenticatedAdminDashboardRoute,
   AuthenticatedAdminFaqsRoute: AuthenticatedAdminFaqsRoute,
   AuthenticatedAdminPartnershipsRoute: AuthenticatedAdminPartnershipsRoute,
@@ -805,11 +885,14 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 
 interface PublicRouteChildren {
   PublicB2bRoute: typeof PublicB2bRoute
+  PublicCorporateMobilityRoute: typeof PublicCorporateMobilityRoute
   PublicFaqRoute: typeof PublicFaqRoute
   PublicHourlyServiceRoute: typeof PublicHourlyServiceRoute
   PublicPartnershipsRoute: typeof PublicPartnershipsRoute
   PublicPrivacyPolicyRoute: typeof PublicPrivacyPolicyRoute
+  PublicSpecialEventsRoute: typeof PublicSpecialEventsRoute
   PublicTransfersRoute: typeof PublicTransfersRoute
+  PublicVipConciergeRoute: typeof PublicVipConciergeRoute
   PublicIndexRoute: typeof PublicIndexRoute
   PublicBlogSlugRoute: typeof PublicBlogSlugRoute
   PublicBookingConfirmRoute: typeof PublicBookingConfirmRoute
@@ -823,11 +906,14 @@ interface PublicRouteChildren {
 
 const PublicRouteChildren: PublicRouteChildren = {
   PublicB2bRoute: PublicB2bRoute,
+  PublicCorporateMobilityRoute: PublicCorporateMobilityRoute,
   PublicFaqRoute: PublicFaqRoute,
   PublicHourlyServiceRoute: PublicHourlyServiceRoute,
   PublicPartnershipsRoute: PublicPartnershipsRoute,
   PublicPrivacyPolicyRoute: PublicPrivacyPolicyRoute,
+  PublicSpecialEventsRoute: PublicSpecialEventsRoute,
   PublicTransfersRoute: PublicTransfersRoute,
+  PublicVipConciergeRoute: PublicVipConciergeRoute,
   PublicIndexRoute: PublicIndexRoute,
   PublicBlogSlugRoute: PublicBlogSlugRoute,
   PublicBookingConfirmRoute: PublicBookingConfirmRoute,

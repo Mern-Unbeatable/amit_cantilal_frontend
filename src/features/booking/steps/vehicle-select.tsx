@@ -230,7 +230,6 @@ export default function Step2VehicleSelect({
     v.category === 'electric' ||
     Boolean(v.is_electric)
 
-  // const electric = eligibleFleet.filter(isElectric)
   const combustion = eligibleFleet.filter((v) => !isElectric(v))
 
   const resolvePrice = (v: Vehicle): number => {

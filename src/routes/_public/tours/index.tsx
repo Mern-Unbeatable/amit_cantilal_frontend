@@ -15,7 +15,7 @@ function RouteComponent() {
   return (
     <motion.div {...mainTransitionProps}>
       <PageHero
-        image="/80b4782c-0188-480d-9c68-db3524d24158-1920w.webp"
+        image="/tour-banner.PNG"
         title="Tours"
         subtitle="Discover Portugal through exclusive private experiences designed for comfort, authenticity, and elegance. Travel with our professional chauffeurs in premium Mercedes vehicles and enjoy unforgettable journeys tailored to your pace."
       />
