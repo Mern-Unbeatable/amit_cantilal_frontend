@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 import { mainTransitionProps } from '@/lib/utils.ts'
+import { getTourPrice } from '@/features/tour/tour-pricing.ts'
 import { tourService } from '@/features/tour/tour.service.ts'
 import { useCreateBooking } from '@/features/booking/booking.hooks.ts'
 import { Spinner } from '@/components/ui/spinner.tsx'
@@ -142,9 +143,8 @@ function RouteComponent() {
   const tour = Route.useLoaderData()
   const createBooking = useCreateBooking()
 
-  // Price is stored in cents — divide by 100 for display only
   const priceInCents = Number(tour.price)
-  const price = priceInCents / 100
+  const maxPax = tour.max_pax ?? 7
 
   const [step, setStep] = useState(0)
   const [state, setState] = useState<TourFormState>(INITIAL_STATE)
@@ -170,8 +170,9 @@ function RouteComponent() {
 
   // ── Derived values ──────────────────────────────────────────────────────────
 
-  const total = price          // display value (euros)
-  const totalCents = priceInCents  // payment amount (cents)
+  // Resolve tier pricing based on selected adult count
+  const pricing = getTourPrice(priceInCents, state.adults, tour.pricing_tiers)
+  const { perPerson, total, totalCents } = pricing
 
   const tourImages = tour.images ?? []
   const images =
@@ -326,6 +327,7 @@ function RouteComponent() {
                   date={state.date}
                   time={state.time}
                   adults={state.adults}
+                  maxAdults={maxPax}
                   startTimes={tour.start_times}
                   onDateChange={updateDate}
                   onTimeChange={updateTime}
@@ -381,7 +383,7 @@ function RouteComponent() {
               date={state.date}
               time={state.time}
               adults={state.adults}
-              price={price}
+              price={perPerson}
               total={total}
               images={images}
             />

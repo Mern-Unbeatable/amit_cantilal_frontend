@@ -88,12 +88,9 @@ export function BookingSummary({
 
         <div className="flex justify-between text-xs">
           <span className="text-white-dim">Adults</span>
-          <span className="text-white/70">{adults}</span>
-        </div>
-
-        <div className="flex justify-between text-xs">
-          <span className="text-white-dim">Tour Price</span>
-          <span className="text-white/70">{formatCurrency(price)}</span>
+          <span className="text-white/70">
+            {adults} × {formatCurrency(price)}
+          </span>
         </div>
       </div>
 

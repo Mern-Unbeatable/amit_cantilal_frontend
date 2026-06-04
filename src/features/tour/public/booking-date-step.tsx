@@ -6,6 +6,7 @@ type BookingDateStepProps = {
   date?: Date
   time?: string
   adults: number
+  maxAdults?: number
   startTimes?: Array<string>
   onDateChange: (date: Date | undefined) => void
   onTimeChange: (time: string) => void
@@ -17,6 +18,7 @@ export function BookingDateStep({
   date,
   time,
   adults,
+  maxAdults = 7,
   startTimes = ['07:00', '08:00', '09:00'],
   onDateChange,
   onTimeChange,
@@ -90,7 +92,7 @@ export function BookingDateStep({
             </span>
             <button
               type="button"
-              onClick={() => onAdultsChange(adults + 1)}
+              onClick={() => onAdultsChange(Math.min(maxAdults, adults + 1))}
               className="w-8 h-8 border border-[#C9A84C]/30 hover:border-[#C9A84C] text-[#C9A84C] flex items-center justify-center transition-colors"
             >
               <Plus className="w-3.5 h-3.5" strokeWidth={2} />
