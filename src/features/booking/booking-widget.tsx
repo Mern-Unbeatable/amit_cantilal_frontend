@@ -132,9 +132,9 @@ export default function BookingWidget() {
     if (!vehicle) return undefined
     const label = vehicle.name.toLowerCase()
     if (label.includes('sprinter')) return 'sprinter'
-    if (label.includes('van')) return 'van'
+    if (label.includes('v-class') || label.includes('v class') || label.includes('van')) return 'van'
     if (label.includes('suv')) return 'suv'
-    if (label.includes('sedan')) return 'sedan'
+    if (label.includes('sedan') || label.includes('e-class') || label.includes('e class') || label.includes('s-class') || label.includes('s class')) return 'sedan'
     if (vehicle.passengers > 8) return 'sprinter'
     if (vehicle.passengers > 6) return 'van'
     if (vehicle.passengers > 4) return 'suv'
@@ -189,6 +189,7 @@ export default function BookingWidget() {
       amount,
       pickup_location: state.trip.pickup,
       vehicle_type: inferVehicleType(state.vehicle),
+      vehicle_name: state.vehicle.name,
     }
 
     if (state.trip.serviceType === 'transfer') {
@@ -269,8 +270,8 @@ export default function BookingWidget() {
     <div className="w-full" ref={widgetRef}>
       <StepIndicator current={step} total={STEPS.length} />
 
-      <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-start">
-        <div className="md:col-span-2">
+      <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-start min-w-0">
+        <div className="md:col-span-2 min-w-0 overflow-hidden">
           {step === 0 && (
             <Step1TripDetails
               data={state.trip}

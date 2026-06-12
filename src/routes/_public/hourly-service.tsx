@@ -78,7 +78,7 @@ function RouteComponent() {
               {/* Image */}
               <div className="overflow-hidden">
                 <img
-                  src="/hourly-chauffeur-service-0m0pPYWC.webp"
+                  src="/hourly-chauffeur-service.png"
                   alt="Hourly chauffeur service"
                   className="w-full h-80 object-cover"
                   loading="lazy"

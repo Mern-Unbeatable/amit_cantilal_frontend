@@ -5,7 +5,7 @@ export function EventsHero() {
   return (
     <section className="relative h-[92vh] min-h-[600px] w-full overflow-hidden">
       <img
-        src="/homepage.png"
+        src="/event-banner.PNG"
         alt="Special Events"
         className="absolute inset-0 w-full h-full object-cover scale-105"
         loading="eager"

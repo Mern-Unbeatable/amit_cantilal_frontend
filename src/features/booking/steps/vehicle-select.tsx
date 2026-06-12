@@ -230,7 +230,16 @@ export default function Step2VehicleSelect({
     v.category === 'electric' ||
     Boolean(v.is_electric)
 
-  const combustion = eligibleFleet.filter((v) => !isElectric(v))
+  const VEHICLE_ORDER = ['eqe', 'eqv', 'eqs', 'e-class', 'e class', 'v-class', 'v class', 's-class', 's class', 'sprinter']
+  const vehicleSortIndex = (name: string) => {
+    const lower = name.toLowerCase()
+    const idx = VEHICLE_ORDER.findIndex((k) => lower.includes(k))
+    return idx === -1 ? 99 : idx
+  }
+
+  const combustion = eligibleFleet
+    .filter((v) => !isElectric(v))
+    .sort((a, b) => vehicleSortIndex(a.name) - vehicleSortIndex(b.name))
 
   const resolvePrice = (v: Vehicle): number => {
     if (trip.serviceType === 'hourly') {
@@ -361,15 +370,14 @@ export default function Step2VehicleSelect({
           <div className="grid grid-cols-2 gap-4 text-[#9A9182]">
             <div>
               <p className="font-medium text-[#F5F0E8]/70 mb-1">Sedan & Van</p>
-              <p>Less than 12 hours: 100% charged</p>
+              <p>Less than 24 hours: 100% charged</p>
               <p>Less than 48 hours: 50% charged</p>
               <p>More than 48 hours: Full refund</p>
             </div>
             <div>
-              <p className="font-medium text-[#F5F0E8]/70 mb-1">Sprinter</p>
-              <p>Less than 48 hours: 100% charged</p>
-              <p>Less than 4 days: 50% charged</p>
-              <p>More than 4 days: Full refund</p>
+              <p className="font-medium text-red-400 mb-1">Sprinter</p>
+              <p className="text-red-400/80">100% charged for any cancellation</p>
+              <p className="text-[#9A9182]/60 italic mt-1">Non-refundable. No refunds after booking confirmation.</p>
             </div>
           </div>
           <p className="italic text-[#9A9182]/60">

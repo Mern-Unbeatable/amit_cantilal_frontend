@@ -23,6 +23,7 @@ interface Language {
 
 const standaloneLinks: Array<NavItem> = [
   { id: 1, name: 'Home', to: '/' },
+  { id: 13, name: 'Fleet', to: '/fleet' },
   { id: 2, name: 'Book Now', to: '/booking' },
 ]
 

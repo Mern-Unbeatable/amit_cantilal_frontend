@@ -1,24 +1,9 @@
-import { AlertCircle, Bus, Car, Clock, RefreshCw } from 'lucide-react'
+import { AlertCircle, Bus, Car, Clock, RefreshCw, ShieldOff } from 'lucide-react'
 
-const policies = [
-  {
-    icon: Car,
-    title: 'Sedan & Van',
-    rules: [
-      { label: 'Less than 24 hours', charge: '100% charged', severity: 'high' },
-      { label: 'Less than 48 hours', charge: '50% charged', severity: 'mid' },
-      { label: 'More than 48 hours', charge: 'Full refund', severity: 'low' },
-    ],
-  },
-  {
-    icon: Bus,
-    title: 'Sprinter',
-    rules: [
-      { label: 'Less than 24 hours', charge: '100% charged', severity: 'high' },
-      { label: 'Less than 4 days', charge: '50% charged', severity: 'mid' },
-      { label: 'More than 4 days', charge: 'Full refund', severity: 'low' },
-    ],
-  },
+const sedanVanRules = [
+  { label: 'Less than 24 hours', charge: '100% charged', severity: 'high' },
+  { label: 'Less than 48 hours', charge: '50% charged', severity: 'mid' },
+  { label: 'More than 48 hours', charge: 'Full refund', severity: 'low' },
 ]
 
 const rescheduleOptions = [
@@ -57,54 +42,60 @@ export function BookingPoliciesSection() {
 
           {/* Vehicle policy cards */}
           <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
-            {policies.map(({ icon: Icon, title, rules }) => (
-              <div
-                key={title}
-                className="bg-[#141414] border border-[#C9A84C]/12 hover:border-[#C9A84C]/30 transition-colors duration-200"
-              >
-                {/* Card header */}
-                <div className="flex items-center gap-3 px-5 py-4 md:px-8 md:py-6 border-b border-[#C9A84C]/12">
-                  <div className="w-9 h-9 md:w-12 md:h-12 bg-[#C9A84C] flex items-center justify-center flex-shrink-0">
-                    <Icon
-                      className="w-4 h-4 md:w-5 md:h-5 text-[#0B0B0B]"
-                      strokeWidth={1.5}
-                    />
-                  </div>
-                  <h3 className="font-serif text-lg md:text-2xl font-light text-gradient-gold">
-                    {title}
-                  </h3>
-                </div>
 
-                {/* Rules */}
-                <div className="px-5 py-4 md:px-8 md:py-6 space-y-0 divide-y divide-[#C9A84C]/08">
-                  {rules.map(({ label, charge, severity }) => (
-                    <div
-                      key={label}
-                      className="flex items-center justify-between py-3 md:py-4 gap-4"
-                    >
-                      <div className="flex items-center gap-3">
-                        {/* Severity indicator bar */}
-                        <span
-                          className={`w-1 h-8 flex-shrink-0 ${severityBar[severity]}`}
-                        />
-                        <div className="flex items-center gap-2 text-[#9A9182]">
-                          <Clock
-                            className="w-3.5 h-3.5 flex-shrink-0"
-                            strokeWidth={1.5}
-                          />
-                          <span className="text-xs md:text-sm">{label}</span>
-                        </div>
+            {/* Sedan & Van */}
+            <div className="bg-[#141414] border border-[#C9A84C]/12 hover:border-[#C9A84C]/30 transition-colors duration-200">
+              <div className="flex items-center gap-3 px-5 py-4 md:px-8 md:py-6 border-b border-[#C9A84C]/12">
+                <div className="w-9 h-9 md:w-12 md:h-12 bg-[#C9A84C] flex items-center justify-center flex-shrink-0">
+                  <Car className="w-4 h-4 md:w-5 md:h-5 text-[#0B0B0B]" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-serif text-lg md:text-2xl font-light text-gradient-gold">Sedan & Van</h3>
+              </div>
+              <div className="px-5 py-4 md:px-8 md:py-6 space-y-0 divide-y divide-[#C9A84C]/08">
+                {sedanVanRules.map(({ label, charge, severity }) => (
+                  <div key={label} className="flex items-center justify-between py-3 md:py-4 gap-4">
+                    <div className="flex items-center gap-3">
+                      <span className={`w-1 h-8 flex-shrink-0 ${severityBar[severity]}`} />
+                      <div className="flex items-center gap-2 text-[#9A9182]">
+                        <Clock className="w-3.5 h-3.5 flex-shrink-0" strokeWidth={1.5} />
+                        <span className="text-xs md:text-sm">{label}</span>
                       </div>
-                      <span
-                        className={`text-xs md:text-sm font-medium tabular-nums ${severityText[severity]}`}
-                      >
-                        {charge}
-                      </span>
                     </div>
-                  ))}
+                    <span className={`text-xs md:text-sm font-medium tabular-nums ${severityText[severity]}`}>
+                      {charge}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Sprinter — non-refundable */}
+            <div className="bg-[#141414] border border-red-500/30 hover:border-red-500/50 transition-colors duration-200">
+              <div className="flex items-center gap-3 px-5 py-4 md:px-8 md:py-6 border-b border-red-500/20">
+                <div className="w-9 h-9 md:w-12 md:h-12 bg-red-500 flex items-center justify-center flex-shrink-0">
+                  <Bus className="w-4 h-4 md:w-5 md:h-5 text-white" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-serif text-lg md:text-2xl font-light text-red-400">Sprinter</h3>
+              </div>
+              <div className="px-5 py-5 md:px-8 md:py-6 space-y-4">
+                {/* Big badge */}
+                <div className="flex items-center gap-3">
+                  <span className="w-1 h-10 flex-shrink-0 bg-red-500" />
+                  <div>
+                    <p className="text-sm md:text-base font-semibold text-red-400">100% charged for any cancellation</p>
+                    <p className="text-xs text-[#9A9182] mt-0.5">Applies regardless of notice period</p>
+                  </div>
+                </div>
+                {/* Non-refundable notice */}
+                <div className="flex items-start gap-3 p-4 bg-red-500/08 border border-red-500/20">
+                  <ShieldOff className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+                  <p className="text-xs md:text-sm text-[#9A9182] leading-relaxed">
+                    All Sprinter bookings are <span className="text-red-400 font-medium">non-refundable</span>. No refunds will be issued under any circumstances after booking confirmation.
+                  </p>
                 </div>
               </div>
-            ))}
+            </div>
+
           </div>
 
           {/* Rescheduling */}

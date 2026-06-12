@@ -3,6 +3,7 @@ import {
   COUNTRY_CODES
 } from '../booking.types'
 import type {ContactDetails, TripDetails, Vehicle} from '../booking.types';
+import { getHourlyRate } from '@/features/booking/pricing.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -62,6 +63,8 @@ export default function Step3ContactInfo({
     data.email.trim() !== '' &&
     data.phone.trim() !== ''
 
+  const hourlyRate = getHourlyRate(vehicle.name)
+
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5">
       <h2 className="font-serif text-2xl md:text-3xl font-light text-gradient-gold">
@@ -85,6 +88,9 @@ export default function Step3ContactInfo({
               value: `${trip.date?.toLocaleDateString('en-GB') ?? '—'} • ${trip.time}`,
             },
             { label: 'Vehicle', value: vehicle.name },
+            ...(hourlyRate
+              ? [{ label: 'Rate', value: `€${hourlyRate.toFixed(2)}/hr` }]
+              : []),
           ].map(({ label, value }) => (
             <div key={label} className="flex items-start gap-2">
               <span className="text-[#9A9182] min-w-[60px]">{label}:</span>
@@ -96,7 +102,10 @@ export default function Step3ContactInfo({
           <div className="flex items-center gap-2 pt-2 mt-1 border-t border-[#C9A84C]/15">
             <span className="text-[#9A9182] min-w-[60px]">Total:</span>
             <span className="font-serif text-lg text-gradient-gold">
-              €{vehicle.price}.00
+              €{(trip.serviceType === 'hourly'
+                ? vehicle.price * (trip.hours ?? 1)
+                : vehicle.price
+              ).toFixed(2)}
             </span>
           </div>
         </div>
@@ -126,15 +135,15 @@ export default function Step3ContactInfo({
         </Field>
 
         <Field id="phone" label="Phone / WhatsApp" required>
-          <div className="flex gap-2">
+          <div className="flex gap-2 shrink-0">
             <Select
               value={data.countryCode}
               onValueChange={(v) => update({ countryCode: v })}
             >
-              <SelectTrigger className="w-[110px] h-14 rounded-none bg-[#0B0B0B] border-[#C9A84C]/20 text-white flex-shrink-0">
+              <SelectTrigger className="w-27.5 h-14! rounded-none bg-[#0B0B0B] border-[#C9A84C]/20 text-white flex-shrink-0">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-[#141414] border-[#C9A84C]/20">
+              <SelectContent className="bg-black-2 border-gold/20">
                 {COUNTRY_CODES.map((c) => (
                   <SelectItem
                     key={c.code}

@@ -19,7 +19,7 @@ export function BookingDateStep({
   time,
   adults,
   maxAdults = 7,
-  startTimes = ['07:00', '08:00', '09:00'],
+  startTimes = ['07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30'],
   onDateChange,
   onTimeChange,
   onAdultsChange,
@@ -50,7 +50,7 @@ export function BookingDateStep({
             <Clock className="w-4 h-4" strokeWidth={1.5} />
             Select a Start Time
           </p>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
             {startTimes.map((t) => (
               <button
                 key={t}

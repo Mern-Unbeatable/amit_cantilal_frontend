@@ -139,14 +139,12 @@ function AutocompleteInput({
   useEffect(() => {
     if (!placesLib || !inputRef.current || autocompleteRef.current) return
 
-
     const autocomplete = new placesLib.Autocomplete(inputRef.current, {
       fields: ['formatted_address', 'geometry', 'name'],
-      // Bias toward Portugal + nearby countries
       componentRestrictions: undefined,
       bounds: new google.maps.LatLngBounds(
-        { lat: 36.8, lng: -9.6 }, // SW — southern Portugal
-        { lat: 42.2, lng: -6.0 }, // NE — northern Portugal
+        { lat: 36.8, lng: -9.6 },
+        { lat: 42.2, lng: -6.0 },
       ),
       strictBounds: false,
     })
@@ -159,7 +157,6 @@ function AutocompleteInput({
       const lng = place.geometry.location.lng()
       const label = place.formatted_address ?? place.name ?? ''
 
-      onSelect({ label, lat, lng })
       onSelectRef.current({ label, lat, lng })
     })
 
@@ -172,7 +169,7 @@ function AutocompleteInput({
   }, [placesLib])
 
   return (
-    <div className="flex-1 relative">
+    <div className="flex-1 relative min-w-0">
       {icon && (
         <div className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9A9182] z-10 pointer-events-none">
           {icon}
@@ -184,10 +181,10 @@ function AutocompleteInput({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className={`
-          w-full h-14 text-base bg-[#0B0B0B] border border-[#C9A84C]/20
+          w-full h-14 text-sm bg-[#0B0B0B] border border-[#C9A84C]/20
           focus:border-[#C9A84C]/50 focus:outline-none
           text-white placeholder:text-[#9A9182]/50
-          ${icon ? 'pl-12' : 'pl-4'} pr-12
+          ${icon ? 'pl-12' : 'pl-4'} pr-10
         `}
       />
     </div>
@@ -411,7 +408,7 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
     data.time !== ''
 
   return (
-    <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5">
+    <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5 w-full min-w-0 overflow-hidden">
       <h2 className="font-serif text-2xl md:text-3xl font-light text-gradient-gold">
         Trip Details
       </h2>
@@ -440,11 +437,11 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
       </Tabs>
 
       {/* Route inputs */}
-      <div className="relative space-y-0">
+      <div className="relative space-y-0 min-w-0">
         <div className="absolute left-6.5 top-7 bottom-7 w-px bg-[#C9A84C]/20 z-0" />
 
         {/* Pickup */}
-        <div className="relative flex items-center gap-3 pb-2">
+        <div className="relative flex items-center gap-3 pb-2 min-w-0">
           <div className="w-3 h-3 rounded-full bg-[#C9A84C] z-10 flex-shrink-0 ml-[17px]" />
           <AutocompleteInput
             value={data.pickup}
@@ -491,7 +488,7 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
 
         {/* Dropoff — hidden for hourly */}
         {data.serviceType === 'transfer' && (
-          <div className="relative flex items-center gap-3 pt-2">
+          <div className="relative flex items-center gap-3 pt-2 min-w-0">
             <div className="w-3 h-3 rounded-sm bg-[#C9A84C] z-10 flex-shrink-0 ml-[17px]" />
             <AutocompleteInput
               value={data.dropoff}

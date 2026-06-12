@@ -3,11 +3,11 @@ import { Link } from '@tanstack/react-router'
 
 export function CorporateHero() {
   return (
-    <section className="relative h-[92vh] min-h-[600px] w-full overflow-hidden">
+    <section className="relative h-[92vh] min-h-150 w-full overflow-hidden">
       <img
-        src="/partnership-banner.png"
+        src="/corperate-banner.png"
         alt="Corporate Mobility"
-        className="absolute inset-0 w-full h-full object-cover scale-105"
+        className="absolute inset-0 w-full h-full object-cover object-right md:object-center scale-105"
         loading="eager"
         fetchPriority="high"
       />

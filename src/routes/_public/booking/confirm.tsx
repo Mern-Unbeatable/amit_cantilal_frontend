@@ -118,10 +118,7 @@ function BookingCard({ booking }: { booking: BookingState }) {
 
       {/* Trip details */}
       <div className="space-y-0">
-        <BookingDetail
-          label="Service"
-          value={(booking.service_type)}
-        />
+        <BookingDetail label="Service" value={booking.service_type} />
         <BookingDetail
           label="Date"
           value={
@@ -168,13 +165,13 @@ function BookingCard({ booking }: { booking: BookingState }) {
             </span>
           }
         />
-        {details?.vehicle_type && (
+        {details?.vehicle_name && (
           <BookingDetail
             label="Vehicle"
             value={
               <span className="flex items-center gap-1.5 justify-end">
                 <Car className="w-3.5 h-3.5 text-[#9A9182]" />
-                {capitalize(details.vehicle_type)}
+                {capitalize(details.vehicle_name)}
               </span>
             }
           />

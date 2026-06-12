@@ -19,6 +19,7 @@ import { Route as PublicSpecialEventsRouteImport } from './routes/_public/specia
 import { Route as PublicPrivacyPolicyRouteImport } from './routes/_public/privacy-policy'
 import { Route as PublicPartnershipsRouteImport } from './routes/_public/partnerships'
 import { Route as PublicHourlyServiceRouteImport } from './routes/_public/hourly-service'
+import { Route as PublicFleetRouteImport } from './routes/_public/fleet'
 import { Route as PublicFaqRouteImport } from './routes/_public/faq'
 import { Route as PublicCorporateMobilityRouteImport } from './routes/_public/corporate-mobility'
 import { Route as PublicB2bRouteImport } from './routes/_public/b2b'
@@ -96,6 +97,11 @@ const PublicPartnershipsRoute = PublicPartnershipsRouteImport.update({
 const PublicHourlyServiceRoute = PublicHourlyServiceRouteImport.update({
   id: '/hourly-service',
   path: '/hourly-service',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicFleetRoute = PublicFleetRouteImport.update({
+  id: '/fleet',
+  path: '/fleet',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicFaqRoute = PublicFaqRouteImport.update({
@@ -277,6 +283,7 @@ export interface FileRoutesByFullPath {
   '/b2b': typeof PublicB2bRoute
   '/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/faq': typeof PublicFaqRoute
+  '/fleet': typeof PublicFleetRoute
   '/hourly-service': typeof PublicHourlyServiceRoute
   '/partnerships': typeof PublicPartnershipsRoute
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
@@ -317,6 +324,7 @@ export interface FileRoutesByTo {
   '/b2b': typeof PublicB2bRoute
   '/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/faq': typeof PublicFaqRoute
+  '/fleet': typeof PublicFleetRoute
   '/hourly-service': typeof PublicHourlyServiceRoute
   '/partnerships': typeof PublicPartnershipsRoute
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
@@ -361,6 +369,7 @@ export interface FileRoutesById {
   '/_public/b2b': typeof PublicB2bRoute
   '/_public/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/_public/faq': typeof PublicFaqRoute
+  '/_public/fleet': typeof PublicFleetRoute
   '/_public/hourly-service': typeof PublicHourlyServiceRoute
   '/_public/partnerships': typeof PublicPartnershipsRoute
   '/_public/privacy-policy': typeof PublicPrivacyPolicyRoute
@@ -403,6 +412,7 @@ export interface FileRouteTypes {
     | '/b2b'
     | '/corporate-mobility'
     | '/faq'
+    | '/fleet'
     | '/hourly-service'
     | '/partnerships'
     | '/privacy-policy'
@@ -443,6 +453,7 @@ export interface FileRouteTypes {
     | '/b2b'
     | '/corporate-mobility'
     | '/faq'
+    | '/fleet'
     | '/hourly-service'
     | '/partnerships'
     | '/privacy-policy'
@@ -486,6 +497,7 @@ export interface FileRouteTypes {
     | '/_public/b2b'
     | '/_public/corporate-mobility'
     | '/_public/faq'
+    | '/_public/fleet'
     | '/_public/hourly-service'
     | '/_public/partnerships'
     | '/_public/privacy-policy'
@@ -598,6 +610,13 @@ declare module '@tanstack/react-router' {
       path: '/hourly-service'
       fullPath: '/hourly-service'
       preLoaderRoute: typeof PublicHourlyServiceRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/fleet': {
+      id: '/_public/fleet'
+      path: '/fleet'
+      fullPath: '/fleet'
+      preLoaderRoute: typeof PublicFleetRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/faq': {
@@ -887,6 +906,7 @@ interface PublicRouteChildren {
   PublicB2bRoute: typeof PublicB2bRoute
   PublicCorporateMobilityRoute: typeof PublicCorporateMobilityRoute
   PublicFaqRoute: typeof PublicFaqRoute
+  PublicFleetRoute: typeof PublicFleetRoute
   PublicHourlyServiceRoute: typeof PublicHourlyServiceRoute
   PublicPartnershipsRoute: typeof PublicPartnershipsRoute
   PublicPrivacyPolicyRoute: typeof PublicPrivacyPolicyRoute
@@ -908,6 +928,7 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicB2bRoute: PublicB2bRoute,
   PublicCorporateMobilityRoute: PublicCorporateMobilityRoute,
   PublicFaqRoute: PublicFaqRoute,
+  PublicFleetRoute: PublicFleetRoute,
   PublicHourlyServiceRoute: PublicHourlyServiceRoute,
   PublicPartnershipsRoute: PublicPartnershipsRoute,
   PublicPrivacyPolicyRoute: PublicPrivacyPolicyRoute,

@@ -334,6 +334,22 @@ function resolveHub(
 const STREET_PREFIX_RE =
   /^(r\.|rua|av\.|avda\.|avenida|est\.|estrada|tv\.|travessa|lg\.|largo|pr\.|praça|beco|calçada|alameda|campo|estr\.)\s/i
 
+// Normalize Portuguese locale variants → English pricing-table keys.
+// e.g. "1100 Lisboa" → "1100 Lisbon" so the partial match finds the key.
+const PLACE_NORMALIZATIONS: Array<[RegExp, string]> = [
+  [/\blisboa\b/gi, 'Lisbon'],
+  [/\bsétubal\b/gi, 'Setúbal'],
+  [/\bsetubal\b/gi, 'Setúbal'],
+]
+
+function normalizeSegment(s: string): string {
+  let result = s
+  for (const [re, replacement] of PLACE_NORMALIZATIONS) {
+    result = result.replace(re, replacement)
+  }
+  return result
+}
+
 function resolveDestinationKey(
   placeName: string,
   hubTable: Record<string, DestinationPricing>,
@@ -351,15 +367,18 @@ function resolveDestinationKey(
   const segments = placeName.split(',').map((s) => s.trim())
 
   for (const segment of segments) {
-    // exact segment match
+    // Normalize PT locale variants before comparing
+    const normalized = normalizeSegment(segment)
+
+    // exact segment match (normalized)
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (hubTable[segment]) return segment
+    if (hubTable[normalized]) return normalized
 
     // skip street segments for partial matching
     if (STREET_PREFIX_RE.test(segment)) continue
 
     // partial — key appears within this segment only
-    const lower = segment.toLowerCase()
+    const lower = normalized.toLowerCase()
     const match = Object.keys(hubTable).find((key) =>
       lower.includes(key.toLowerCase()),
     )

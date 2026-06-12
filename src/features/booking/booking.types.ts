@@ -88,6 +88,7 @@ export interface CreateBookingPayload {
   hours?: number
   flight_number?: string
   vehicle_type?: VehicleType
+  vehicle_name?: string
   tour_id?: string
 }
 

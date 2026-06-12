@@ -50,7 +50,6 @@ function TransferBlock({
             {label}
           </span>
         </div>
-
         <h2 className="font-serif text-3xl md:text-4xl font-light text-gradient-gold mb-4">
           {title}
         </h2>
@@ -114,7 +113,7 @@ export default function TransferServices() {
           title="Airport Transfers"
           description="Seamless airport pickups and drop-offs across Portugal. We include up to 60 minutes of complimentary waiting time from landing, with real-time flight tracking so your chauffeur is always ready. Our drivers meet you at arrivals with a name board, handle your luggage, and take you to your destination in a premium Mercedes-Benz vehicle."
           features={airportFeatures}
-          image="/services-hero-airport-Bn7uK8eL.webp"
+          image="/airport-transfer.png"
           imageAlt="Airport transfer service Portugal"
         />
 
@@ -130,7 +129,7 @@ export default function TransferServices() {
           title="City to City Transfers"
           description="Travel between Portugal's major cities in total comfort. Whether it's Lisbon to Porto, Lisbon to the Algarve, or a cross-border route into Spain, we provide fixed-price transfers with no surprises — door to door, in executive vehicles built for long distances."
           features={cityFeatures}
-          image="/lisbon-alfama-CqRs8hen.webp"
+          image="/city-to-city.png"
           imageAlt="City to city transfer service Portugal"
           reversed
         />

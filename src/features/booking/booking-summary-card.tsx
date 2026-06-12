@@ -25,13 +25,13 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
         {trip.pickup && (
           <div className="flex justify-between gap-4">
             <span className="text-[#9A9182] flex-shrink-0">From</span>
-            <span className="text-[#F5F0E8] text-right truncate">{trip.pickup}</span>
+            <span className="text-[#F5F0E8] text-right min-w-0">{trip.pickup}</span>
           </div>
         )}
         {trip.dropoff && (
           <div className="flex justify-between gap-4">
             <span className="text-[#9A9182] flex-shrink-0">To</span>
-            <span className="text-[#F5F0E8] text-right truncate">{trip.dropoff}</span>
+            <span className="text-[#F5F0E8] text-right min-w-0">{trip.dropoff}</span>
           </div>
         )}
 
