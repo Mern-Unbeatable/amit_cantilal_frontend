@@ -61,7 +61,7 @@ function VehicleCard({
     <div
       onClick={onSelect}
       className={`
-        group relative cursor-pointer flex transition-all duration-200
+        group relative cursor-pointer flex flex-col md:flex-row transition-all duration-200
         border-b border-[#C9A84C]/10 last:border-b-0 overflow-hidden
         ${selected ? 'bg-[#111008]' : 'bg-[#0B0B0B] hover:bg-[#0f0f0f]'}
       `}
@@ -73,15 +73,13 @@ function VehicleCard({
       )}
 
       {/* LEFT — image, edge-to-edge, no padding */}
-      <div className="w-1/2 flex-shrink-0 relative bg-[#0B0B0B] overflow-hidden">
+      <div className="w-full md:w-3/5 flex-shrink-0 relative overflow-hidden">
         <img
           src={vehicle.image ?? ''}
           alt={vehicle.name}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          className="relative md:absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           loading="lazy"
         />
-        {/* subtle right-side fade so image bleeds into info column */}
-        <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-r from-transparent to-[#0B0B0B]" />
       </div>
 
       {/* RIGHT — all info, padded */}
