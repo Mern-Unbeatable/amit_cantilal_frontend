@@ -2,6 +2,7 @@ import { Outlet, useMatch, useMatches } from '@tanstack/react-router'
 import { AnimatePresence } from 'framer-motion'
 import Header from '@/components/layouts/header.tsx'
 import Footer from '@/components/layouts/footer.tsx'
+import { PageSpinner } from '@/components/layouts/page-spinner.tsx'
 
 const PublicLayout = () => {
   const matches = useMatches()
@@ -11,6 +12,7 @@ const PublicLayout = () => {
 
   return (
     <>
+      <PageSpinner />
       <Header />
       <AnimatePresence mode="wait">
         <Outlet key={nextMatch.id} />

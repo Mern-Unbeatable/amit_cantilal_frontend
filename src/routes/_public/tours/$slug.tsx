@@ -1,36 +1,68 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, Clock, Minus, Plus } from 'lucide-react'
+import { ArrowLeft, Check, CheckCircle, Clock, MapPin, XCircle } from 'lucide-react'
 import { format } from 'date-fns'
 import { toast } from 'sonner'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 import { mainTransitionProps } from '@/lib/utils.ts'
-import { Button } from '@/components/ui/button.tsx'
-import { Input } from '@/components/ui/input.tsx'
-import { Textarea } from '@/components/ui/textarea.tsx'
-import { Calendar } from '@/components/ui/calendar'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel.tsx'
+import { getTourPrice } from '@/features/tour/tour-pricing.ts'
 import { tourService } from '@/features/tour/tour.service.ts'
 import { useCreateBooking } from '@/features/booking/booking.hooks.ts'
 import { Spinner } from '@/components/ui/spinner.tsx'
+import { BookingSummary } from '@/features/tour/public/booking-summary.tsx'
+import { BookingDateStep } from '@/features/tour/public/booking-date-step.tsx'
+import { BookingDetailsStep } from '@/features/tour/public/booking-details-step.tsx'
+import { StripeCheckoutForm } from '@/features/tour/public/stripe-checkout-form.tsx'
 
-const TourSkeleton = () => {
-  return (
-    <div>
-      <div className="min-h-screen bg-[#0B0B0B] pt-20 md:pt-24 pb-16 md:pb-24">
-        <div className="container mx-auto px-4 md:px-12 max-w-5xl">
-          <Spinner />
-        </div>
-      </div>
-    </div>
-  )
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface TourFormState {
+  date: Date | undefined
+  time: string
+  adults: number
+  contact: {
+    name: string
+    email: string
+    phone: string
+    notes: string
+  }
 }
+
+const INITIAL_STATE: TourFormState = {
+  date: undefined,
+  time: '',
+  adults: 1,
+  contact: {
+    name: '',
+    email: '',
+    phone: '',
+    notes: '',
+  },
+}
+
+type TourTab = 'description' | 'itinerary' | 'pickup'
+
+// ─── Stripe ───────────────────────────────────────────────────────────────────
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
+
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+const STEPS = ['Date & Guests', 'Your Details', 'Payment']
+
+// ─── Route skeleton ───────────────────────────────────────────────────────────
+
+const TourSkeleton = () => (
+  <div className="min-h-screen bg-[#0B0B0B] pt-20 md:pt-24 pb-16 md:pb-24">
+    <div className="container mx-auto px-4 md:px-12 max-w-5xl">
+      <Spinner />
+    </div>
+  </div>
+)
+
+// ─── Route ────────────────────────────────────────────────────────────────────
 
 export const Route = createFileRoute('/_public/tours/$slug')({
   loader: ({ context, params }) => {
@@ -44,93 +76,163 @@ export const Route = createFileRoute('/_public/tours/$slug')({
   component: RouteComponent,
 })
 
-const STEPS = ['Date & Guests', 'Your Details', 'Payment']
+// ─── Step indicator ───────────────────────────────────────────────────────────
+
+function StepIndicator({ current }: { current: number }) {
+  return (
+    <div className="mb-10 md:mb-14">
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-sm text-[#9A9182] font-medium">
+          Step {current + 1} of {STEPS.length}
+        </span>
+      </div>
+      <div className="flex gap-1.5 md:gap-2">
+        {Array.from({ length: STEPS.length }).map((_, i) => (
+          <div
+            key={i}
+            className={`h-1.5 flex-1 transition-all duration-500 ${
+              i <= current ? 'bg-[#C9A84C]' : 'bg-[#1C1C1C]'
+            }`}
+          />
+        ))}
+      </div>
+      <div className="flex items-center gap-0 mt-6 md:mt-8">
+        {STEPS.map((label, i) => (
+          <div key={label} className="flex items-center flex-1 last:flex-none">
+            <div className="flex items-center gap-2 md:gap-3">
+              <div
+                className={`w-7 h-7 md:w-8 md:h-8 flex items-center justify-center text-xs font-medium transition-colors duration-200 flex-shrink-0 ${
+                  i < current
+                    ? 'bg-[#C9A84C] text-[#0B0B0B]'
+                    : i === current
+                      ? 'border border-[#C9A84C] text-[#C9A84C]'
+                      : 'border border-[#C9A84C]/20 text-[#9A9182]'
+                }`}
+              >
+                {i < current ? (
+                  <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
+                ) : (
+                  i + 1
+                )}
+              </div>
+              <span
+                className={`text-xs md:text-sm hidden sm:block transition-colors duration-200 ${
+                  i === current ? 'text-[#F5F0E8]' : 'text-[#9A9182]'
+                }`}
+              >
+                {label}
+              </span>
+            </div>
+            {i < STEPS.length - 1 && (
+              <div
+                className={`flex-1 h-px mx-3 md:mx-4 transition-colors duration-200 ${
+                  i < current ? 'bg-[#C9A84C]' : 'bg-[#C9A84C]/15'
+                }`}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
 
 function RouteComponent() {
   const tour = Route.useLoaderData()
   const createBooking = useCreateBooking()
 
-  const price = Number(tour.price)
+  const priceInCents = Number(tour.price)
+  const maxPax = tour.max_pax ?? 7
 
   const [step, setStep] = useState(0)
-  const [date, setDate] = useState<Date | undefined>()
-  const [adults, setAdults] = useState(1)
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    notes: '',
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [state, setState] = useState<TourFormState>(INITIAL_STATE)
+  const [clientSecret, setClientSecret] = useState<string | null>(null)
+  const [activeTab, setActiveTab] = useState<TourTab>('description')
 
-  const total = price
+  // ── State updaters ──────────────────────────────────────────────────────────
 
-  const canProceedStep0 = !!date && adults >= 1
-  const canProceedStep1 =
-    form.name.trim() !== '' &&
-    form.email.trim() !== '' &&
-    form.phone.trim() !== ''
+  const updateDate = (date: Date | undefined) =>
+    setState((s) => ({ ...s, date, time: '' })) // reset time when date changes
+
+  const updateTime = (time: string) =>
+    setState((s) => ({ ...s, time }))
+
+  const updateAdults = (adults: number) =>
+    setState((s) => ({ ...s, adults }))
+
+  const updateContact = (field: keyof TourFormState['contact'], value: string) =>
+    setState((s) => ({
+      ...s,
+      contact: { ...s.contact, [field]: value },
+    }))
+
+  // ── Derived values ──────────────────────────────────────────────────────────
+
+  // Resolve tier pricing based on selected adult count
+  const pricing = getTourPrice(priceInCents, state.adults, tour.pricing_tiers)
+  const { perPerson, total, totalCents } = pricing
 
   const tourImages = tour.images ?? []
-
   const images =
     tourImages.length > 0
       ? tourImages.map((image) => ({
-          originalUrl: image.url,
-          description: image.alt,
-        }))
-      : [
-          {
-            originalUrl: '/cars/mercedes-vclass-2.webp',
-            description: tour.title,
-          },
-        ]
+        originalUrl: image.url,
+        description: image.alt,
+      }))
+      : [{ originalUrl: '/cars/mercedes-vclass-2.webp', description: tour.title }]
 
-  const handlePay = async () => {
-    if (!date) {
+  // ── Step 1 → 2: create booking + PaymentIntent, store clientSecret ──────────
+  // Mirrors handleContactNext in BookingWidget exactly.
+
+  const handleDetailsNext = async () => {
+    if (!state.date) {
       toast.error('Please select a date before proceeding to payment.')
       return
     }
 
-    setIsSubmitting(true)
-
     try {
-      await createBooking.mutateAsync({
-        service_type: 'hourly',
-        name: form.name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim(),
-        passengers: adults,
-        date: format(date, 'yyyy-MM-dd'),
-        notes: form.notes.trim() || undefined,
-        amount: Math.max(1, Math.round(total)),
+      const response = await createBooking.mutateAsync({
+        tour_id: tour.id ? String(tour.id) : undefined,
+        service_type: 'tour',
+        name: state.contact.name.trim(),
+        email: state.contact.email.trim(),
+        phone: state.contact.phone.trim(),
+        passengers: state.adults,
+        date: format(state.date, 'yyyy-MM-dd'),
+        pickup_time: state.time || undefined,
+        notes: state.contact.notes.trim() || undefined,
+        amount: Math.max(1, Math.round(totalCents)),
         pickup_location: `Tour booking: ${tour.title}`,
         hours: 1,
       })
 
-      toast.success('Booking created. Proceeding to payment.')
+      setClientSecret(response.client_secret)
+      setStep(2)
     } catch {
       toast.error('Failed to create booking. Please try again.')
-    } finally {
-      setIsSubmitting(false)
     }
   }
 
+  // ── Render ──────────────────────────────────────────────────────────────────
+
   return (
     <motion.div {...mainTransitionProps}>
-      <div className="min-h-screen bg-[#0B0B0B] pt-20 md:pt-24 pb-16 md:pb-24">
+      <div className="min-h-screen bg-black pt-20 md:pt-24 pb-16 md:pb-24">
         <div className="container mx-auto px-4 md:px-12 max-w-5xl">
+
           {/* Back */}
           <Link
             to="/tours"
-            className="inline-flex items-center gap-2 text-xs text-[#9A9182] hover:text-[#C9A84C] transition-colors mb-8 md:mb-12"
+            className="inline-flex items-center gap-2 text-xs text-white-dim hover:text-gold transition-colors mb-8 md:mb-12"
           >
             <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1.5} />
             Back to Tours
           </Link>
 
           {/* Page title */}
-          <div className="mb-8 md:mb-12">
+          <div className="mb-8 md:mb-10">
             <div className="tag-gold mb-3">Book Your Experience</div>
             <h1 className="font-serif text-2xl md:text-4xl font-light text-white leading-snug">
               {tour.title}
@@ -143,325 +245,148 @@ function RouteComponent() {
             </div>
           </div>
 
-          {/* Step indicator */}
-          <div className="flex items-center gap-0 mb-10 md:mb-14">
-            {STEPS.map((label, i) => (
-              <div
-                key={label}
-                className="flex items-center flex-1 last:flex-none"
-              >
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div
-                    className={`w-7 h-7 md:w-8 md:h-8 flex items-center justify-center text-xs font-medium transition-colors duration-200 flex-shrink-0 ${
-                      i < step
-                        ? 'bg-[#C9A84C] text-[#0B0B0B]'
-                        : i === step
-                          ? 'border border-[#C9A84C] text-[#C9A84C]'
-                          : 'border border-[#C9A84C]/20 text-[#9A9182]'
-                    }`}
-                  >
-                    {i < step ? (
-                      <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
-                    ) : (
-                      i + 1
-                    )}
-                  </div>
-                  <span
-                    className={`text-xs md:text-sm hidden sm:block transition-colors duration-200 ${
-                      i === step ? 'text-white' : 'text-[#9A9182]'
-                    }`}
-                  >
-                    {label}
-                  </span>
+          {/* Info tabs */}
+          <div className="mb-10 md:mb-14">
+            {/* Tab nav */}
+            <div className="flex border-b border-[#C9A84C]/15">
+              {(['description', 'itinerary', 'pickup'] as TourTab[]).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-5 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-colors border-b-2 -mb-px ${
+                    activeTab === tab
+                      ? 'border-[#C9A84C] text-[#C9A84C]'
+                      : 'border-transparent text-[#9A9182] hover:text-[#F5F0E8]'
+                  }`}
+                >
+                  {tab === 'pickup' ? 'Pick-up' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab content */}
+            <div className="py-6 text-sm text-[#F5F0E8]/70 font-light leading-relaxed">
+              {activeTab === 'description' && (
+                <p>{tour.description}</p>
+              )}
+
+              {activeTab === 'itinerary' && (
+                <div className="space-y-6">
+                  {/* Inclusions */}
+                  {tour.inclusions && tour.inclusions.length > 0 && (
+                    <div>
+                      <p className="text-xs tracking-[0.15em] uppercase text-[#C9A84C] mb-3">Included</p>
+                      <ul className="space-y-2">
+                        {tour.inclusions.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle className="w-4 h-4 text-[#C9A84C] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                            <span>{typeof item === 'string' ? item : item.label}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {/* Exclusions */}
+                  {tour.exclusions && tour.exclusions.length > 0 && (
+                    <div>
+                      <p className="text-xs tracking-[0.15em] uppercase text-[#C9A84C] mb-3">Not Included</p>
+                      <ul className="space-y-2">
+                        {tour.exclusions.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <XCircle className="w-4 h-4 text-[#9A9182] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                            <span>{typeof item === 'string' ? item : item.label}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-                {i < STEPS.length - 1 && (
-                  <div
-                    className={`flex-1 h-px mx-3 md:mx-4 transition-colors duration-200 ${i < step ? 'bg-[#C9A84C]' : 'bg-[#C9A84C]/15'}`}
-                  />
-                )}
-              </div>
-            ))}
+              )}
+
+              {activeTab === 'pickup' && (
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-[#C9A84C] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                  <p>{tour.pickup_info ?? 'Your driver will meet you at your hotel lobby or accommodation at the agreed time. Please provide your full address at booking.'}</p>
+                </div>
+              )}
+            </div>
           </div>
+
+          {/* Step indicator */}
+          <StepIndicator current={step} />
 
           {/* Main layout */}
           <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-start">
+
             {/* Step content */}
             <div className="md:col-span-2">
-              {/* ── Step 0: Date & Guests ── */}
+
+              {/* Step 0: Date & Guests */}
               {step === 0 && (
-                <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-8">
-                  <div>
-                    <p className="font-serif text-sm md:text-base text-[#C9A84C] mb-4">
-                      Select a Date
-                    </p>
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      disabled={{ before: new Date() }}
-                      className="bg-transparent text-white w-full [&_.rdp-day_button:hover]:bg-[#C9A84C]/20 [&_.rdp-day_button.rdp-day_selected]:bg-[#C9A84C] [&_.rdp-day_button.rdp-day_selected]:text-[#0B0B0B]"
-                    />
-                  </div>
-
-                  <div className="border-t border-[#C9A84C]/10 pt-6">
-                    <p className="font-serif text-sm md:text-base text-[#C9A84C] mb-4">
-                      Guests
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm text-white/80">Adults</p>
-                        <p className="text-xs text-[#9A9182]">Age 18+</p>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <button
-                          onClick={() => setAdults((a) => Math.max(1, a - 1))}
-                          className="w-8 h-8 border border-[#C9A84C]/30 hover:border-[#C9A84C] text-[#C9A84C] flex items-center justify-center transition-colors"
-                        >
-                          <Minus className="w-3.5 h-3.5" strokeWidth={2} />
-                        </button>
-                        <span className="text-white font-medium w-4 text-center tabular-nums">
-                          {adults}
-                        </span>
-                        <button
-                          onClick={() => setAdults((a) => a + 1)}
-                          className="w-8 h-8 border border-[#C9A84C]/30 hover:border-[#C9A84C] text-[#C9A84C] flex items-center justify-center transition-colors"
-                        >
-                          <Plus className="w-3.5 h-3.5" strokeWidth={2} />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Button
-                    onClick={() => setStep(1)}
-                    disabled={!canProceedStep0}
-                    className="w-full bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0B0B0B] font-medium rounded-none h-11"
-                  >
-                    Continue
-                  </Button>
-                </div>
+                <BookingDateStep
+                  date={state.date}
+                  time={state.time}
+                  adults={state.adults}
+                  maxAdults={maxPax}
+                  startTimes={tour.start_times}
+                  onDateChange={updateDate}
+                  onTimeChange={updateTime}
+                  onAdultsChange={updateAdults}
+                  onContinue={() => setStep(1)}
+                />
               )}
 
-              {/* ── Step 1: Your Details ── */}
+              {/* Step 1: Contact Details
+                  onContinue creates the booking + PaymentIntent before advancing */}
               {step === 1 && (
-                <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5">
-                  <p className="font-serif text-sm md:text-base text-[#C9A84C] mb-2">
-                    Your Details
-                  </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs text-[#9A9182]">
-                        Full Name *
-                      </label>
-                      <Input
-                        value={form.name}
-                        onChange={(e) =>
-                          setForm({ ...form, name: e.target.value })
-                        }
-                        placeholder="John Smith"
-                        className="bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C] rounded-none text-white placeholder:text-[#9A9182]/50 h-11"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs text-[#9A9182]">
-                        Email Address *
-                      </label>
-                      <Input
-                        type="email"
-                        value={form.email}
-                        onChange={(e) =>
-                          setForm({ ...form, email: e.target.value })
-                        }
-                        placeholder="john@example.com"
-                        className="bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C] rounded-none text-white placeholder:text-[#9A9182]/50 h-11"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs text-[#9A9182]">
-                      Phone Number *
-                    </label>
-                    <Input
-                      type="tel"
-                      value={form.phone}
-                      onChange={(e) =>
-                        setForm({ ...form, phone: e.target.value })
-                      }
-                      placeholder="+351 900 000 000"
-                      className="bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C] rounded-none text-white placeholder:text-[#9A9182]/50 h-11"
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs text-[#9A9182]">
-                      Special Requests
-                    </label>
-                    <Textarea
-                      value={form.notes}
-                      onChange={(e) =>
-                        setForm({ ...form, notes: e.target.value })
-                      }
-                      placeholder="Any special requirements or requests..."
-                      className="bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C] rounded-none text-white placeholder:text-[#9A9182]/50 min-h-[100px] resize-none"
-                    />
-                  </div>
-
-                  <div className="flex gap-3 pt-2">
-                    <Button
-                      onClick={() => setStep(0)}
-                      variant="outline"
-                      className="flex-1 border-[#C9A84C]/20 bg-transparent text-[#9A9182] hover:text-white hover:border-[#C9A84C]/50 rounded-none h-11"
-                    >
-                      Back
-                    </Button>
-                    <Button
-                      onClick={() => setStep(2)}
-                      disabled={!canProceedStep1}
-                      className="flex-1 bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0B0B0B] font-medium rounded-none h-11"
-                    >
-                      Continue
-                    </Button>
-                  </div>
-                </div>
+                <BookingDetailsStep
+                  form={state.contact}
+                  onChange={updateContact}
+                  onBack={() => setStep(0)}
+                  onContinue={handleDetailsNext}
+                  isLoading={createBooking.isPending}
+                />
               )}
 
-              {/* ── Step 2: Payment ── */}
-              {step === 2 && (
-                <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-6">
-                  <p className="font-serif text-sm md:text-base text-[#C9A84C]">
-                    Payment
-                  </p>
-
-                  <div className="space-y-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs text-[#9A9182]">
-                        Card Details
-                      </label>
-                      <div
-                        id="stripe-card-element"
-                        className="bg-[#0B0B0B] border border-[#C9A84C]/20 p-3.5 h-11 flex items-center"
-                      >
-                        <span className="text-xs text-[#9A9182]/50">
-                          Stripe card element mounts here
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="text-[10px] text-[#9A9182]/60 flex items-center gap-1.5">
-                    <svg
-                      className="w-3 h-3"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Payments are secured and encrypted by Stripe
-                  </p>
-
-                  <div className="flex gap-3">
-                    <Button
-                      onClick={() => setStep(1)}
-                      variant="outline"
-                      className="flex-1 border-[#C9A84C]/20 bg-transparent text-[#9A9182] hover:text-white hover:border-[#C9A84C]/50 rounded-none h-11"
-                    >
-                      Back
-                    </Button>
-                    <Button
-                      onClick={handlePay}
-                      disabled={isSubmitting}
-                      className="flex-1 bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0B0B0B] font-medium rounded-none h-11 disabled:opacity-50"
-                    >
-                      {isSubmitting
-                        ? 'Processing...'
-                        : `Pay €${total.toLocaleString()}`}
-                    </Button>
-                  </div>
-                </div>
+              {/* Step 2: Payment
+                  Wrap in a fresh Elements instance keyed to this PaymentIntent's
+                  clientSecret — required for PaymentElement to render correctly. */}
+              {step === 2 && clientSecret && (
+                <Elements
+                  stripe={stripePromise}
+                  options={{
+                    clientSecret,
+                    appearance: {
+                      theme: 'night',
+                      variables: {
+                        colorPrimary: '#C9A84C',
+                        colorBackground: '#111111',
+                        colorText: '#F5F0E8',
+                        colorDanger: '#E05C5C',
+                        fontFamily: 'inherit',
+                        borderRadius: '2px',
+                      },
+                    },
+                  }}
+                >
+                  <StripeCheckoutForm
+                    onBack={() => setStep(1)}
+                    returnUrl={`${window.location.origin}/booking/confirm`}
+                  />
+                </Elements>
               )}
             </div>
 
             {/* Booking summary sidebar */}
-            <div className="bg-black-2 border border-gold/12 p-5 md:p-6 space-y-4 sticky top-28">
-              <div className="w-8 h-0.5 bg-gold mb-4" />
-              <p className="font-serif text-sm text-gold">
-                Booking Summary
-              </p>
-
-              <div className="relative shrink-0 overflow-hidden">
-                {images.length > 1 ? (
-                  <Carousel className="w-full h-full">
-                    <CarouselContent className="h-full ml-0">
-                      {images.map((img, i) => (
-                        <CarouselItem key={i} className="h-full pl-0">
-                          <img
-                            src={img.originalUrl}
-                            alt=""
-                            loading="lazy"
-                            className="w-full h-full object-cover"
-                          />
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="left-2 h-7 w-7 border-0 bg-black/40 hover:bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <CarouselNext className="right-2 h-7 w-7 border-0 bg-black/40 hover:bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </Carousel>
-                ) : (
-                  <img
-                    src={images[0].originalUrl}
-                    alt=""
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </div>
-
-              <div className="space-y-2 pt-1">
-                <p className="text-sm text-white/80 font-light leading-snug">
-                  {tour.title}
-                </p>
-
-                {date && (
-                  <div className="flex justify-between text-xs">
-                    <span className="text-white-dim">Date</span>
-                    <span className="text-white/70">
-                      {date.toLocaleDateString('en-GB', {
-                        day: 'numeric',
-                        month: 'short',
-                        year: 'numeric',
-                      })}
-                    </span>
-                  </div>
-                )}
-
-                <div className="flex justify-between text-xs">
-                  <span className="text-white-dim">Adults</span>
-                  <span className="text-white/70">{adults}</span>
-                </div>
-
-                {price && (
-                  <div className="flex justify-between text-xs">
-                    <span className="text-white-dim">Price per person</span>
-                    <span className="text-white/70">
-                      €{price.toLocaleString()}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              <div className="border-t border-gold/10 pt-3 flex justify-between items-center">
-                <span className="text-xs text-white-dim">Total</span>
-                <span className="font-serif text-lg text-gradient-gold">
-                  €{total.toLocaleString()}
-                </span>
-              </div>
-            </div>
+            <BookingSummary
+              title={tour.title}
+              date={state.date}
+              time={state.time}
+              adults={state.adults}
+              price={perPerson}
+              total={total}
+              images={images}
+            />
           </div>
         </div>
       </div>

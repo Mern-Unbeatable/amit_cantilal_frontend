@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { usePartnershipRequest } from '@/features/partnership-request/partnership-request.hooks.ts'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -58,28 +59,37 @@ export default function PartnerForm() {
   const [submitted, setSubmitted] = useState(false)
   const [businessType, setBusinessType] = useState('')
 
+  const { mutate: submitRequest, isPending } = usePartnershipRequest()
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     setError,
   } = useForm<PartnerFormData>()
 
-  const onSubmit = async (data: PartnerFormData) => {
-    try {
-      // TODO: wire to POST /api/partnerships
-      console.log({ ...data, businessType })
-      // await partnershipService.submit({ ...data, businessType })
-      setSubmitted(true)
-    } catch (err: any) {
-      setError('root', {
-        message:
-          err?.response?.data?.message ??
-          'Something went wrong. Please try again.',
-      })
-    }
+  const onSubmit = (data: PartnerFormData) => {
+    submitRequest(
+      {
+        source: 'partnerships',
+        company_name: data.company,
+        contact_name: data.representative,
+        email: data.email,
+        phone: data.phone,
+        message: data.message,
+        company_type: businessType,
+      },
+      {
+        onSuccess: () => setSubmitted(true),
+        onError: (err: any) =>
+          setError('root', {
+            message:
+              err?.response?.data?.message ??
+              'Something went wrong. Please try again.',
+          }),
+      },
+    )
   }
-
   return (
     <section id="apply" className="py-10 md:py-32 bg-[#141414]">
       <div className="container mx-auto px-4 md:px-12">
@@ -227,12 +237,10 @@ export default function PartnerForm() {
 
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isPending}
                   className="w-full h-12 md:h-16 text-base md:text-xl bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium tracking-[.1em] rounded-none"
                 >
-                  {isSubmitting
-                    ? 'Submitting...'
-                    : 'Submit Partnership Request'}
+                  {isPending ? 'Submitting...' : 'Submit Partnership Request'}
                 </Button>
               </form>
             )}

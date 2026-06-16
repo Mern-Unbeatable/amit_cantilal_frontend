@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import {usePartnershipRequest} from "@/features/partnership-request/partnership-request.hooks.ts";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -65,25 +66,37 @@ export default function B2BRequestForm() {
   const [submitted, setSubmitted] = useState(false)
   const [partnerType, setPartnerType] = useState('')
 
+  const { mutate: submitRequest, isPending } = usePartnershipRequest()
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     setError,
   } = useForm<B2BFormData>()
 
   const onSubmit = async (data: B2BFormData) => {
-    try {
-      // TODO: wire to POST /api/b2b/requests
-      console.log({ ...data, partnerType })
-      setSubmitted(true)
-    } catch (err: any) {
-      setError('root', {
-        message:
-          err?.response?.data?.message ??
-          'Something went wrong. Please try again.',
-      })
-    }
+    submitRequest(
+      {
+        source: 'b2b',
+        company_name: data.companyName,
+        contact_name: data.contactName,
+        position: data.position,
+        email: data.email,
+        phone: data.phone,
+        message: data.message,
+        company_type: partnerType,
+      },
+      {
+        onSuccess: () => setSubmitted(true),
+        onError: (err: any) =>
+          setError('root', {
+            message:
+              err?.response?.data?.message ??
+              'Something went wrong. Please try again.',
+          }),
+      },
+    )
   }
 
   return (
@@ -260,16 +273,16 @@ export default function B2BRequestForm() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isPending}
                     className="flex-1 h-10 rounded-none bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium text-sm md:text-base"
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                    {isPending ? 'Submitting...' : 'Submit Request'}
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
                     asChild
-                    className="flex-1 h-10 rounded-none border-[#C9A84C]/30 text-[#F5F0E8] hover:bg-[#C9A84C]/10 hover:text-[#F5F0E8] text-sm md:text-base"
+                    className="flex-1 h-10 rounded-none border-gold/30 text-white-cream hover:bg-gold/10 hover:text-white-cream text-sm md:text-base"
                   >
                     <a
                       href={WHATSAPP}

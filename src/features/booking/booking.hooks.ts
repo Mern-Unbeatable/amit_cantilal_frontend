@@ -67,6 +67,20 @@ export function useGetBookingByPaymentIntent(id: number | string) {
 
 
 
+export function useLookupBooking() {
+  return useMutation({
+    mutationFn: ({ reference, email }: { reference: string; email: string }) =>
+      bookingService.lookup(reference, email),
+  })
+}
+
+export function useRefreshPaymentIntent() {
+  return useMutation({
+    mutationFn: ({ reference, email }: { reference: string; email: string }) =>
+      bookingService.refreshPaymentIntent(reference, email),
+  })
+}
+
 export function useUpdateBookingStatus() {
   const queryClient = useQueryClient()
 

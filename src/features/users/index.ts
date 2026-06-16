@@ -1,0 +1,6 @@
+export * from '@/features/users/user.types'
+export * from '@/features/users/user.service'
+export * from '@/features/users/user.hooks'
+export { userColumns } from '@/features/users/user-columns'
+export { default as UserTable } from '@/features/users/user-table'
+

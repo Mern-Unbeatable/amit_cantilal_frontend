@@ -23,6 +23,7 @@ interface Language {
 
 const standaloneLinks: Array<NavItem> = [
   { id: 1, name: 'Home', to: '/' },
+  { id: 13, name: 'Fleet', to: '/fleet' },
   { id: 2, name: 'Book Now', to: '/booking' },
 ]
 
@@ -34,6 +35,9 @@ const navGroups: Array<NavGroup> = [
       { id: 3, name: 'Transfers', to: '/transfers' },
       { id: 4, name: 'Hourly Service', to: '/hourly-service' },
       { id: 5, name: 'Tours', to: '/tours' },
+      { id: 10, name: 'VIP Concierge', to: '/vip-concierge' },
+      { id: 11, name: 'Corporate Mobility', to: '/corporate-mobility' },
+      { id: 12, name: 'Special Events', to: '/special-events' },
     ],
   },
   {
@@ -212,7 +216,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
               {group.label}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openGroup === group.id ? 'rotate-180' : ''}`} />
             </button>
-            <div className={`overflow-hidden transition-all duration-200 ${openGroup === group.id ? 'max-h-48' : 'max-h-0'}`}>
+            <div className={`overflow-hidden transition-all duration-200 ${openGroup === group.id ? 'max-h-96' : 'max-h-0'}`}>
               {group.items.map((item) => (
                 <Link
                   key={item.id}
@@ -263,7 +267,7 @@ const Header: React.FC = () => {
     group.items.some((item) => item.to === activePath)
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-20 bg-[#0B0B0B] border-b border-[#C9A84C]/10">
+    <header className="sticky top-0 right-0 left-0 z-20 bg-[#0B0B0B] border-b border-[#C9A84C]/10">
       <div className="container mx-auto px-4 py-1 md:py-4">
         <div className="flex items-center justify-between h-20">
 

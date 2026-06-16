@@ -1,203 +1,206 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import type { AxiosError } from 'axios'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import type { ApiError } from '@/@types/api.ts'
-import { extractApiErrors } from '@/features/auth/auth.hooks.ts'
-import { useCreatePost } from '@/features/blogs/blog.hooks.ts'
-import type { AdminCreatePostFormValues } from '@/features/blogs/blog.types.ts'
-import { Button } from '@/components/ui/button'
-import { Field, FieldError, FieldLabel } from '@/components/ui/field'
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Spinner } from '@/components/ui/spinner.tsx'
-import { Textarea } from '@/components/ui/textarea'
+// src/features/blogs/post-form.tsx
 
-const postFormSchema = z.object({
-  title: z.string().min(3, { message: 'Title must be at least 3 characters' }),
-  slug: z.string().min(3, { message: 'Slug must be at least 3 characters' }),
-  date: z.string().min(1, { message: 'Publish date is required' }),
-  coverImage: z.string().url({ message: 'Cover image must be a valid URL' }),
-  excerpt: z.string().max(500, { message: 'Excerpt must be 500 characters max' }).optional(),
-  content: z.string().min(20, { message: 'Content must be at least 20 characters' }),
+import { useEffect, useRef, useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { ImagePlus, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import { Switch } from '@/components/ui/switch'
+import { RichTextEditor } from '@/components/rich-text-editor.tsx'
+import type { AdminPost } from '@/features/blogs/blog.types.ts'
+
+const schema = z.object({
+  title:        z.string().min(1, 'Title is required'),
+  excerpt:      z.string().optional(),
+  content:      z.string().min(1, 'Content is required'),
+  author:       z.string().optional(),
+  published_at: z.string().nullable().optional(),
 })
 
-const defaultValues: AdminCreatePostFormValues = {
-  title: '',
-  slug: '',
-  date: '',
-  coverImage: '',
-  excerpt: '',
-  content: '',
+type PostFormValues = z.infer<typeof schema>
+
+interface PostFormProps {
+  defaultValues?: AdminPost
+  onSubmit: (values: PostFormValues, coverImage: File | null) => Promise<void>
+  isSubmitting: boolean
 }
 
-const PostForm = () => {
-  const { mutate: createPost, isPending } = useCreatePost()
-
-  const form = useForm<AdminCreatePostFormValues>({
-    resolver: zodResolver(postFormSchema),
-    defaultValues,
-  })
-
-  const onSubmit = (values: AdminCreatePostFormValues) => {
-    createPost(
-      {
-        title: values.title,
-        slug: values.slug,
-        excerpt: values.excerpt,
-        content: values.content,
-        cover_image: values.coverImage,
-        published_at: values.date,
-        status: 'published',
-      },
-      {
-        onSuccess: () => {
-          form.reset(defaultValues)
-        },
-        onError: (err) => {
-          const axiosError = err as AxiosError<ApiError>
-          const apiErrors = extractApiErrors(axiosError)
-
-          if (apiErrors) {
-            Object.entries(apiErrors).forEach(([field, message]) => {
-              const keyMap: Record<string, keyof AdminCreatePostFormValues> = {
-                cover_image: 'coverImage',
-                published_at: 'date',
-              }
-              const targetField = keyMap[field] ?? (field as keyof AdminCreatePostFormValues)
-              form.setError(targetField, { message })
-            })
-            return
-          }
-
-          form.setError('root', {
-            message:
-              axiosError.response?.data.message ??
-              'Could not create post. Please try again.',
-          })
-        },
-      },
-    )
-  }
-
+function Field({
+                 id, label, required, error, children,
+               }: {
+  id: string
+  label: string
+  required?: boolean
+  error?: string
+  children: React.ReactNode
+}) {
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
-        {form.formState.errors.root && (
-          <p className="rounded-md border border-destructive/20 bg-destructive/10 px-4 py-3 text-sm text-destructive">
-            {form.formState.errors.root.message}
-          </p>
-        )}
-
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem>
-              <Field>
-                <FieldLabel htmlFor="title">Title</FieldLabel>
-                <FormControl>
-                  <Input id="title" placeholder="Enter post title" {...field} />
-                </FormControl>
-                <FieldError>{form.formState.errors.title?.message}</FieldError>
-              </Field>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="slug"
-          render={({ field }) => (
-            <FormItem>
-              <Field>
-                <FieldLabel htmlFor="slug">Slug</FieldLabel>
-                <FormControl>
-                  <Input id="slug" placeholder="my-awesome-post" {...field} />
-                </FormControl>
-                <FieldError>{form.formState.errors.slug?.message}</FieldError>
-              </Field>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="date"
-          render={({ field }) => (
-            <FormItem>
-              <Field>
-                <FieldLabel htmlFor="date">Publish Date</FieldLabel>
-                <FormControl>
-                  <Input id="date" type="datetime-local" {...field} />
-                </FormControl>
-                <FieldError>{form.formState.errors.date?.message}</FieldError>
-              </Field>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="coverImage"
-          render={({ field }) => (
-            <FormItem>
-              <Field>
-                <FieldLabel htmlFor="coverImage">Cover Image URL</FieldLabel>
-                <FormControl>
-                  <Input id="coverImage" placeholder="https://..." {...field} />
-                </FormControl>
-                <FieldError>{form.formState.errors.coverImage?.message}</FieldError>
-              </Field>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="excerpt"
-          render={({ field }) => (
-            <FormItem>
-              <Field>
-                <FieldLabel htmlFor="excerpt">Excerpt (Optional)</FieldLabel>
-                <FormControl>
-                  <Textarea id="excerpt" rows={4} placeholder="Brief summary" {...field} />
-                </FormControl>
-                <FieldError>{form.formState.errors.excerpt?.message}</FieldError>
-              </Field>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="content"
-          render={({ field }) => (
-            <FormItem>
-              <Field>
-                <FieldLabel htmlFor="content">Content (HTML)</FieldLabel>
-                <FormControl>
-                  <Textarea id="content" rows={12} placeholder="<p>Post content...</p>" {...field} />
-                </FormControl>
-                <FieldError>{form.formState.errors.content?.message}</FieldError>
-              </Field>
-            </FormItem>
-          )}
-        />
-
-        <Button type="submit" disabled={isPending} className="w-fit">
-          {isPending ? (
-            <>
-              <Spinner className="mr-2 size-4" />
-              Creating...
-            </>
-          ) : (
-            'Create Post'
-          )}
-        </Button>
-      </form>
-    </Form>
+    <div className="space-y-2">
+      <Label htmlFor={id} className="text-sm font-medium">
+        {label} {required && <span className="text-destructive">*</span>}
+      </Label>
+      {children}
+      {error && <p className="text-xs text-destructive">{error}</p>}
+    </div>
   )
 }
 
-export default PostForm
+export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProps) {
+  const [coverPreview, setCoverPreview] = useState<string | null>(
+    defaultValues?.cover_image ?? null,
+  )
+  const [coverFile, setCoverFile] = useState<File | null>(null)
+  const [isPublished, setIsPublished] = useState(!!defaultValues?.published_at)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    formState: { errors },
+  } = useForm<PostFormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      title:        defaultValues?.title ?? '',
+      excerpt:      defaultValues?.excerpt ?? '',
+      content:      defaultValues?.content ?? '',
+      author:       defaultValues?.author ?? '',
+      published_at: defaultValues?.published_at ?? null,
+    },
+  })
+
+  // sync published toggle → published_at
+  useEffect(() => {
+    if (isPublished) {
+      setValue('published_at', new Date().toISOString())
+    } else {
+      setValue('published_at', null)
+    }
+  }, [isPublished, setValue])
+
+  const handleCoverChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setCoverFile(file)
+    setCoverPreview(URL.createObjectURL(file))
+  }
+
+  const removeCover = () => {
+    setCoverFile(null)
+    setCoverPreview(null)
+    if (fileInputRef.current) fileInputRef.current.value = ''
+  }
+
+  const handleFormSubmit = async (values: PostFormValues) => {
+    await onSubmit(values, coverFile)
+  }
+
+  return (
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+      {/* Cover image */}
+      <Field id="cover_image" label="Cover Image">
+        {coverPreview ? (
+          <div className="relative w-full h-48 rounded-md overflow-hidden border border-input">
+            <img
+              src={coverPreview}
+              alt="Cover preview"
+              className="w-full h-full object-cover"
+            />
+            <button
+              type="button"
+              onClick={removeCover}
+              className="absolute top-2 right-2 bg-black/60 hover:bg-black/80 rounded-full p-1"
+            >
+              <X className="w-4 h-4 text-white" />
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            className="flex flex-col items-center justify-center w-full h-48 border border-dashed border-input rounded-md hover:border-primary transition-colors gap-2 text-muted-foreground hover:text-foreground"
+          >
+            <ImagePlus className="w-8 h-8" />
+            <span className="text-sm">Click to upload cover image</span>
+          </button>
+        )}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleCoverChange}
+        />
+      </Field>
+
+      {/* Title */}
+      <Field id="title" label="Title" required error={errors.title?.message}>
+        <Input
+          id="title"
+          placeholder="Post title"
+          {...register('title')}
+        />
+      </Field>
+
+      {/* Author */}
+      <Field id="author" label="Author" error={errors.author?.message}>
+        <Input
+          id="author"
+          placeholder="e.g. Off We Go Team"
+          {...register('author')}
+        />
+      </Field>
+
+      {/* Excerpt */}
+      <Field id="excerpt" label="Excerpt" error={errors.excerpt?.message}>
+        <Textarea
+          id="excerpt"
+          rows={2}
+          placeholder="Short description shown in post listings"
+          className="resize-none"
+          {...register('excerpt')}
+        />
+      </Field>
+
+      {/* Content */}
+      <Field id="content" label="Content" required error={errors.content?.message}>
+        <Controller
+          name="content"
+          control={control}
+          render={({ field }) => (
+            <RichTextEditor
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="Write your post content here..."
+            />
+          )}
+        />
+      </Field>
+
+      {/* Publish toggle */}
+      <div className="flex items-center justify-between border border-input rounded-md p-4">
+        <div>
+          <p className="text-sm font-medium">
+            {isPublished ? 'Published' : 'Draft'}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {isPublished
+              ? 'Post is visible to the public'
+              : 'Post is hidden from the public'}
+          </p>
+        </div>
+        <Switch checked={isPublished} onCheckedChange={setIsPublished} />
+      </div>
+
+      {/* Submit */}
+      <Button type="submit" disabled={isSubmitting} className="w-full">
+        {isSubmitting ? 'Saving...' : defaultValues ? 'Update Post' : 'Create Post'}
+      </Button>
+    </form>
+  )
+}

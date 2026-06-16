@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { format } from 'date-fns'
 import { toast } from 'sonner'
 import { Check } from 'lucide-react'
@@ -18,6 +18,8 @@ import Step3ContactInfo from '@/features/booking/steps/contact-info.tsx'
 import Step4Payment from '@/features/booking/steps/payment.tsx'
 import BookingSummaryCard from '@/features/booking/booking-summary-card.tsx'
 import { useCreateBooking } from '@/features/booking/booking.hooks.ts'
+import { getHourlyRate } from '@/features/booking/pricing.ts'
+
 
 const STEPS = ['Trip Details', 'Select Vehicle', 'Contact Info', 'Payment']
 
@@ -31,7 +33,7 @@ const INITIAL_STATE: BookingFormState = {
     date: undefined,
     time: '',
     distanceKm: undefined,
-    hours: 3,
+    hours: 1,
   },
   vehicle: null,
   notes: '',
@@ -112,42 +114,68 @@ export default function BookingWidget() {
   const [clientSecret, setClientSecret] = useState<string | null>(null)
   const [isConfirming, setIsConfirming] = useState(false)
   const createBooking = useCreateBooking()
+  const widgetRef = useRef<HTMLDivElement>(null)
 
   const updateTrip = (trip: TripDetails) => setState((s) => ({ ...s, trip }))
   const updateVehicle = (vehicle: Vehicle) => setState((s) => ({ ...s, vehicle }))
   const updateNotes = (notes: string) => setState((s) => ({ ...s, notes }))
   const updateContact = (contact: ContactDetails) => setState((s) => ({ ...s, contact }))
 
+  const goToStep = (n: number) => {
+    setStep(n)
+    setTimeout(() => {
+      widgetRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 50) // small delay lets React render first
+  }
+
   const inferVehicleType = (vehicle: Vehicle | null): VehicleType | undefined => {
     if (!vehicle) return undefined
     const label = vehicle.name.toLowerCase()
     if (label.includes('sprinter')) return 'sprinter'
-    if (label.includes('van')) return 'van'
+    if (label.includes('v-class') || label.includes('v class') || label.includes('van')) return 'van'
     if (label.includes('suv')) return 'suv'
-    if (label.includes('sedan')) return 'sedan'
+    if (label.includes('sedan') || label.includes('e-class') || label.includes('e class') || label.includes('s-class') || label.includes('s class')) return 'sedan'
     if (vehicle.passengers > 8) return 'sprinter'
     if (vehicle.passengers > 6) return 'van'
     if (vehicle.passengers > 4) return 'suv'
     return 'sedan'
   }
 
+  // const calculateAmount = (): number | null => {
+  //   if (!state.vehicle) return null
+  //   const baseRate = Number(state.vehicle.price)
+  //   if (!Number.isFinite(baseRate) || baseRate <= 0) return null
+  //   if (state.trip.serviceType === 'hourly') {
+  //     const hours = state.trip.hours ?? 3
+  //     return Math.max(1, Math.round(baseRate * hours))
+  //   }
+  //   const distanceKm = state.trip.distanceKm
+  //   if (!distanceKm || distanceKm <= 0) return null
+  //   return Math.max(1, Math.round(baseRate * distanceKm))
+  // }
+
   const calculateAmount = (): number | null => {
     if (!state.vehicle) return null
-    const baseRate = Number(state.vehicle.price)
-    if (!Number.isFinite(baseRate) || baseRate <= 0) return null
+
     if (state.trip.serviceType === 'hourly') {
-      const hours = state.trip.hours ?? 3
-      return Math.max(1, Math.round(baseRate * hours))
+      const rate = getHourlyRate(state.vehicle.name)
+      if (!rate) return null
+      const hours = state.trip.hours ?? 1
+      return rate * hours
     }
-    const distanceKm = state.trip.distanceKm
-    if (!distanceKm || distanceKm <= 0) return null
-    return Math.max(1, Math.round(baseRate * distanceKm))
+
+    // transfer — price already resolved by Step2VehicleSelect via getTransferPrice
+    const basePrice = Number(state.vehicle.price)
+    if (!Number.isFinite(basePrice) || basePrice <= 0) return null
+    return Math.max(1, Math.round(basePrice))
   }
 
   const buildPayload = (): CreateBookingPayload | null => {
+    // console.log("Building payload with state:", state)
     if (!state.trip.date || !state.vehicle) return null
-    const amount = calculateAmount()
-    if (!amount) return null
+    const amount = calculateAmount() ?? 200
+    // console.log("Calculated amount:", amount)
+    // if (!amount)
 
     const payload: CreateBookingPayload = {
       service_type: state.trip.serviceType,
@@ -161,6 +189,7 @@ export default function BookingWidget() {
       amount,
       pickup_location: state.trip.pickup,
       vehicle_type: inferVehicleType(state.vehicle),
+      vehicle_name: state.vehicle.name,
     }
 
     if (state.trip.serviceType === 'transfer') {
@@ -169,7 +198,7 @@ export default function BookingWidget() {
     }
 
     if (state.trip.serviceType === 'hourly') {
-      payload.hours = state.trip.hours ?? 3
+      payload.hours = state.trip.hours ?? 1
     }
 
     return payload
@@ -180,6 +209,7 @@ export default function BookingWidget() {
   // then advances to the payment step.
   const handleContactNext = async () => {
     const payload = buildPayload()
+
     if (!payload) {
       toast.error('Please complete your trip details before submitting.')
       return
@@ -190,7 +220,7 @@ export default function BookingWidget() {
     try {
       const response = await createBooking.mutateAsync(payload)
       setClientSecret(response.client_secret)
-      setStep(3)
+      goToStep(3)
     } catch {
       toast.error('Failed to create booking. Please try again.')
     }
@@ -237,16 +267,16 @@ export default function BookingWidget() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full" ref={widgetRef}>
       <StepIndicator current={step} total={STEPS.length} />
 
-      <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-start">
-        <div className="md:col-span-2">
+      <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-start min-w-0">
+        <div className="md:col-span-2 min-w-0 overflow-hidden">
           {step === 0 && (
             <Step1TripDetails
               data={state.trip}
               onChange={updateTrip}
-              onNext={() => setStep(1)}
+              onNext={() => goToStep(1)}
             />
           )}
           {step === 1 && (
@@ -256,8 +286,8 @@ export default function BookingWidget() {
               notes={state.notes}
               onSelect={updateVehicle}
               onNotesChange={updateNotes}
-              onNext={() => setStep(2)}
-              onBack={() => setStep(0)}
+              onNext={() => goToStep(2)}
+              onBack={() => goToStep(0)}
             />
           )}
           {step === 2 && state.vehicle && (
@@ -266,9 +296,9 @@ export default function BookingWidget() {
               trip={state.trip}
               vehicle={state.vehicle}
               onChange={updateContact}
-              onNext={handleContactNext}       // ← creates booking + moves to step 3
-              onBack={() => setStep(1)}
-
+              onNext={handleContactNext} // ← creates booking + moves to step 3
+              onBack={() => goToStep(1)}
+              isLoading={createBooking.isPending}
             />
           )}
 

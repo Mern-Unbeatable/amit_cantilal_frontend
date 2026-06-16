@@ -28,6 +28,11 @@ export interface Tour {
   inclusions?: Array<string | TourOptionItem>
   exclusions?: Array<string | TourOptionItem>
   images?: Array<TourImage>
+  start_times?: Array<string>
+  pickup_info?: string | null
+  itinerary?: Array<{ title?: string; body?: string }>
+  pricing_tiers?: Array<{ pax: number; price: number }>
+  max_pax?: number
 }
 
 export interface TourImage {

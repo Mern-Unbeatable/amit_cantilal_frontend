@@ -23,7 +23,7 @@ function RouteComponent() {
     <motion.div {...mainTransitionProps}>
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-end pb-12 md:pb-20">
         <Image
-          src="/b2b-hero-lisbon-mercedes-BHNBdxWS.webp"
+          src="/partnership-banner.png"
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center"
           loading="eager"

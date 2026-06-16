@@ -167,27 +167,27 @@ const Footer: React.FC = () => {
               >
                 Complaints Book
               </a>
-              {/* <span>|</span>*/}
-              {/* <a*/}
-              {/*  className="hover:text-primary transition-smooth flex items-center gap-1"*/}
-              {/*  href="/admin"*/}
-              {/* >*/}
-              {/*  <svg*/}
-              {/*    xmlns="http://www.w3.org/2000/svg"*/}
-              {/*    width="24"*/}
-              {/*    height="24"*/}
-              {/*    viewBox="0 0 24 24"*/}
-              {/*    fill="none"*/}
-              {/*    stroke="currentColor"*/}
-              {/*    stroke-width="2"*/}
-              {/*    stroke-linecap="round"*/}
-              {/*    stroke-linejoin="round"*/}
-              {/*    className="lucide lucide-shield w-3 h-3"*/}
-              {/*  >*/}
-              {/*    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>*/}
-              {/*  </svg>*/}
-              {/*  Admin*/}
-              {/* </a>*/}
+               <span>|</span>
+               <Link
+                className="hover:text-primary transition-smooth flex items-center gap-1"
+                to="/admin/dashboard"
+               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-shield w-3 h-3"
+                >
+                  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                </svg>
+                Admin
+               </Link>
              </div>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-foreground/60">

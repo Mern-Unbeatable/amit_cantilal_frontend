@@ -25,13 +25,13 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
         {trip.pickup && (
           <div className="flex justify-between gap-4">
             <span className="text-[#9A9182] flex-shrink-0">From</span>
-            <span className="text-[#F5F0E8] text-right truncate">{trip.pickup}</span>
+            <span className="text-[#F5F0E8] text-right min-w-0">{trip.pickup}</span>
           </div>
         )}
         {trip.dropoff && (
           <div className="flex justify-between gap-4">
             <span className="text-[#9A9182] flex-shrink-0">To</span>
-            <span className="text-[#F5F0E8] text-right truncate">{trip.dropoff}</span>
+            <span className="text-[#F5F0E8] text-right min-w-0">{trip.dropoff}</span>
           </div>
         )}
 
@@ -66,6 +66,14 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
           </div>
         )}
 
+        {/* Passengers */}
+        {trip.passengers > 0 && (
+          <div className="flex justify-between">
+            <span className="text-[#9A9182]">Passengers</span>
+            <span className="text-[#F5F0E8]">{trip.passengers}</span>
+          </div>
+        )}
+
         {/* Vehicle */}
         {vehicle && currentStep >= 2 && (
           <>
@@ -83,7 +91,7 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
       {vehicle && amount && (
         <div className="border-t border-[#C9A84C]/10 pt-3 flex justify-between items-center">
           <span className="text-xs text-[#9A9182]">Total</span>
-          <span className="font-serif text-lg text-gradient-gold">€{amount}.00</span>
+          <span className="font-serif text-lg text-gradient-gold">€{amount.toFixed(2)}</span>
         </div>
       )}
 

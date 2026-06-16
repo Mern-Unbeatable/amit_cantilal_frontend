@@ -4,13 +4,13 @@ interface PageHeroProps {
   subtitle?: string;
 }
 
-export function PageHero({ image = '/b2b-hero-lisbon-mercedes-BHNBdxWS.webp', title, subtitle }: PageHeroProps) {
+export function PageHero({ image = '/homepage.png', title, subtitle }: PageHeroProps) {
   return (
     <section className="relative min-h-[40vh] md:min-h-[50vh] flex items-end pb-12 md:pb-20">
       <img
         src={image}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-top md:object-center"
         loading="eager"
         fetchPriority="high"
         width={1920}

@@ -14,18 +14,15 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   component: () => (
     <>
       <Outlet />
-      <TanStackDevtools
-        config={{
-          position: 'bottom-right',
-        }}
-        plugins={[
-          {
-            name: 'Tans tack Router',
-            render: <TanStackRouterDevtoolsPanel />,
-          },
-          TanStackQueryDevtools,
-        ]}
-      />
+      {import.meta.env.DEV && (
+        <TanStackDevtools
+          config={{ position: 'bottom-right' }}
+          plugins={[
+            { name: 'TanStack Router', render: <TanStackRouterDevtoolsPanel /> },
+            TanStackQueryDevtools,
+          ]}
+        />
+      )}
     </>
   ),
 })

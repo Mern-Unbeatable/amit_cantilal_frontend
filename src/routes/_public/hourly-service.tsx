@@ -63,7 +63,7 @@ function RouteComponent() {
   return (
     <motion.div {...mainTransitionProps}>
       <PageHero
-        image="/chauffeur-service-Bb4E-ZAm.webp"
+        image="/hourly-banner.png"
         title="Hourly Chauffeur Service"
         subtitle="For occasions requiring greater flexibility, our Hourly Service is the perfect solution. Hire a vehicle and professional driver for as many hours as you need, tailoring the itinerary entirely to your schedule."
       />
@@ -78,7 +78,7 @@ function RouteComponent() {
               {/* Image */}
               <div className="overflow-hidden">
                 <img
-                  src="/hourly-chauffeur-service-0m0pPYWC.webp"
+                  src="/hourly-chauffeur-service.png"
                   alt="Hourly chauffeur service"
                   className="w-full h-80 object-cover"
                   loading="lazy"
