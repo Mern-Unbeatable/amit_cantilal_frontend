@@ -1,4 +1,4 @@
-name: Deploy Offwego Platform
+name: Deploy Offwego Frontend
 
 on:
   push:
@@ -17,26 +17,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build project
         run: npm run build
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@v1.2.0
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd /home/offwego/public_html
-
-            git pull origin main
-
-            npm ci
-            npm run build
-
-            echo "🚀 Deployment completed successfully"
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ./public_html/
+          dangerous-clean-slate: false
