@@ -1,10 +1,10 @@
 const ITEMS = [
-  { n: '01', text: 'Dedicated corporate account manager' },
-  { n: '02', text: 'Monthly consolidated invoicing, GDPR compliant' },
-  { n: '03', text: 'Vetted, trained chauffeurs with NDA on file' },
-  { n: '04', text: 'Multi-vehicle coordination for events and roadshows' },
-  { n: '05', text: 'Priority dispatch, 24/7 support line' },
-  { n: '06', text: 'Integration with travel management platforms on request' },
+  { n: '01', text: 'Dedicated account manager' },
+  { n: '02', text: 'Flexible invoicing options for corporate clients' },
+  { n: '03', text: 'Professional chauffeurs trained for executive travel' },
+  { n: '04', text: 'Conference and event transportation coordination' },
+  { n: '05', text: '24/7 operational support' },
+  { n: '06', text: 'Custom transportation solutions throughout Portugal' },
 ]
 
 export function CorporateSignature() {

@@ -261,7 +261,7 @@ const PRICING_ZONES: Array<PricingZone> = [
 
 // ─── Haversine distance ───────────────────────────────────────────────────────
 
-function getDistanceKm(
+export function getDistanceKm(
   lat1: number,
   lng1: number,
   lat2: number,
@@ -451,6 +451,39 @@ export function getTransferPrice(
   if (!destinationKey) return null
 
   return hubTable[destinationKey][vehicleClass]
+}
+
+// ─── Distance-based pricing (uncovered areas) ─────────────────────────────────
+// Used when neither end resolves to a known hub/destination pair in the fixed
+// tables above. Price is per-km rate × straight-line distance, rounded UP to
+// the nearest €5 (e.g. €623 → €625, €627 → €630).
+
+export const PER_KM_RATES: Record<PricingVehicleClass, number> = {
+  'E-Class': 2.25,
+  'V-Class': 2.55,
+  'S-Class': 3.75,
+  Sprinter: 3.2,
+}
+
+function roundUpToFive(amount: number): number {
+  return Math.ceil(amount / 5) * 5
+}
+
+export function getDistancePrice(
+  pickupCoords: [number, number] | undefined,
+  dropoffCoords: [number, number] | undefined,
+  vehicleName: string,
+): number | null {
+  if (!pickupCoords || !dropoffCoords) return null
+
+  const vehicleClass = resolveVehicleClass(vehicleName)
+  if (!vehicleClass) return null
+
+  const [lat1, lng1] = pickupCoords
+  const [lat2, lng2] = dropoffCoords
+  const distanceKm = getDistanceKm(lat1, lng1, lat2, lng2)
+
+  return roundUpToFive(distanceKm * PER_KM_RATES[vehicleClass])
 }
 
 // ─── Hourly rates ─────────────────────────────────────────────────────────────

@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicVipConciergeRouteImport } from './routes/_public/vip-concierge'
 import { Route as PublicTransfersRouteImport } from './routes/_public/transfers'
+import { Route as PublicTermsRouteImport } from './routes/_public/terms'
 import { Route as PublicSpecialEventsRouteImport } from './routes/_public/special-events'
 import { Route as PublicPrivacyPolicyRouteImport } from './routes/_public/privacy-policy'
 import { Route as PublicPartnershipsRouteImport } from './routes/_public/partnerships'
@@ -77,6 +78,11 @@ const PublicVipConciergeRoute = PublicVipConciergeRouteImport.update({
 const PublicTransfersRoute = PublicTransfersRouteImport.update({
   id: '/transfers',
   path: '/transfers',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicTermsRoute = PublicTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicSpecialEventsRoute = PublicSpecialEventsRouteImport.update({
@@ -288,6 +294,7 @@ export interface FileRoutesByFullPath {
   '/partnerships': typeof PublicPartnershipsRoute
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/special-events': typeof PublicSpecialEventsRoute
+  '/terms': typeof PublicTermsRoute
   '/transfers': typeof PublicTransfersRoute
   '/vip-concierge': typeof PublicVipConciergeRoute
   '/': typeof PublicIndexRoute
@@ -329,6 +336,7 @@ export interface FileRoutesByTo {
   '/partnerships': typeof PublicPartnershipsRoute
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/special-events': typeof PublicSpecialEventsRoute
+  '/terms': typeof PublicTermsRoute
   '/transfers': typeof PublicTransfersRoute
   '/vip-concierge': typeof PublicVipConciergeRoute
   '/': typeof PublicIndexRoute
@@ -374,6 +382,7 @@ export interface FileRoutesById {
   '/_public/partnerships': typeof PublicPartnershipsRoute
   '/_public/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/_public/special-events': typeof PublicSpecialEventsRoute
+  '/_public/terms': typeof PublicTermsRoute
   '/_public/transfers': typeof PublicTransfersRoute
   '/_public/vip-concierge': typeof PublicVipConciergeRoute
   '/_public/': typeof PublicIndexRoute
@@ -417,6 +426,7 @@ export interface FileRouteTypes {
     | '/partnerships'
     | '/privacy-policy'
     | '/special-events'
+    | '/terms'
     | '/transfers'
     | '/vip-concierge'
     | '/'
@@ -458,6 +468,7 @@ export interface FileRouteTypes {
     | '/partnerships'
     | '/privacy-policy'
     | '/special-events'
+    | '/terms'
     | '/transfers'
     | '/vip-concierge'
     | '/'
@@ -502,6 +513,7 @@ export interface FileRouteTypes {
     | '/_public/partnerships'
     | '/_public/privacy-policy'
     | '/_public/special-events'
+    | '/_public/terms'
     | '/_public/transfers'
     | '/_public/vip-concierge'
     | '/_public/'
@@ -582,6 +594,13 @@ declare module '@tanstack/react-router' {
       path: '/transfers'
       fullPath: '/transfers'
       preLoaderRoute: typeof PublicTransfersRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/terms': {
+      id: '/_public/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof PublicTermsRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/special-events': {
@@ -911,6 +930,7 @@ interface PublicRouteChildren {
   PublicPartnershipsRoute: typeof PublicPartnershipsRoute
   PublicPrivacyPolicyRoute: typeof PublicPrivacyPolicyRoute
   PublicSpecialEventsRoute: typeof PublicSpecialEventsRoute
+  PublicTermsRoute: typeof PublicTermsRoute
   PublicTransfersRoute: typeof PublicTransfersRoute
   PublicVipConciergeRoute: typeof PublicVipConciergeRoute
   PublicIndexRoute: typeof PublicIndexRoute
@@ -933,6 +953,7 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicPartnershipsRoute: PublicPartnershipsRoute,
   PublicPrivacyPolicyRoute: PublicPrivacyPolicyRoute,
   PublicSpecialEventsRoute: PublicSpecialEventsRoute,
+  PublicTermsRoute: PublicTermsRoute,
   PublicTransfersRoute: PublicTransfersRoute,
   PublicVipConciergeRoute: PublicVipConciergeRoute,
   PublicIndexRoute: PublicIndexRoute,

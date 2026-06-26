@@ -1,18 +1,18 @@
 const PILLARS = [
   {
     n: '01',
-    title: 'Tailored vehicles',
-    desc: 'From a single Maybach to a coordinated convoy, dressed and prepared to the occasion.',
+    title: 'Premium Fleet Selection',
+    desc: 'Choose from our luxury Mercedes-Benz fleet, including E-Class, S-Class, V-Class and Sprinter vehicles, tailored to the size and requirements of your event.',
   },
   {
     n: '02',
-    title: 'Timed choreography',
-    desc: 'Synchronised arrivals and departures, rehearsed in advance with your planner.',
+    title: 'Precise Event Coordination',
+    desc: 'Our team carefully plans arrival schedules, departure logistics and guest movements to ensure a smooth and efficient event experience.',
   },
   {
     n: '03',
-    title: 'Discreet chauffeurs',
-    desc: 'Formal attire, silent presence, perfect timing, invisible until needed.',
+    title: 'Professional Chauffeurs',
+    desc: 'Experienced, professionally dressed chauffeurs delivering the highest standards of service, discretion and reliability.',
   },
 ]
 

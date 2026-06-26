@@ -1,18 +1,18 @@
 const PILLARS = [
   {
     n: '01',
-    title: 'Account based billing',
-    desc: 'Monthly consolidated invoicing with a dedicated account manager and single point of contact.',
+    title: 'Executive Transfers',
+    desc: 'Reliable transportation for executives, clients and VIP guests throughout Portugal.',
   },
   {
     n: '02',
-    title: 'Multi-vehicle coordination',
-    desc: 'From a single S-Class to a full event fleet of twenty, dispatched and tracked centrally.',
+    title: 'Event Transportation',
+    desc: 'Coordinated fleet management for conferences, meetings, incentives and corporate events.',
   },
   {
     n: '03',
-    title: 'NDA on request',
-    desc: 'Confidentiality formalised in writing, vetted chauffeurs, sealed itineraries.',
+    title: 'Dedicated Account Support',
+    desc: 'A single point of contact to manage reservations, changes and special requirements.',
   },
 ]
 
@@ -21,7 +21,7 @@ export function CorporateExperience() {
     <section className="py-28 md:py-32 border-y border-[#C9A84C]/10 bg-[#0F0F0F]">
       <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
         <p className="text-center text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] mb-16 font-light">
-          The Experience
+          Experience
         </p>
         <div className="grid md:grid-cols-3 gap-16 md:gap-24">
           {PILLARS.map((p) => (

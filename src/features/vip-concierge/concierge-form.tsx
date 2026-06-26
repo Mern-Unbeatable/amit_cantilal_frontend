@@ -114,11 +114,11 @@ export function VipConciergeForm() {
             Concierge
           </span>
           <h2 className="font-serif text-3xl md:text-5xl font-light text-[#F5F0E8] leading-[1.15] mb-8">
-            Speak With Our Concierge Team
+            Request Airport Concierge Assistance
           </h2>
           <div className="w-12 h-px bg-[#C9A84C]/40 mx-auto mb-8" />
           <p className="text-base md:text-lg text-[#F5F0E8]/65 font-light leading-relaxed max-w-2xl mx-auto">
-            Our concierge team will personally coordinate every detail of your airport assistance experience.
+            Tell us about your travel plans and our team will coordinate the most suitable airport assistance service for your arrival or departure.
           </p>
         </div>
 

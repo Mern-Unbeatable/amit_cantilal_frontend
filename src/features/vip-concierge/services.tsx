@@ -1,20 +1,21 @@
 import { Luggage, Shield, UserCheck } from 'lucide-react'
 
 const MEET_ASSIST_ITEMS = [
-  'Personal airport greeting on arrival or departure',
-  'Guidance through every airport procedure',
-  'Discreet assistance with luggage',
-  'Check-in coordination',
-  'Direct handover with your private chauffeur',
-  'Escort to gate or arrivals area',
+  'Personal meet & greet service upon arrival or departure',
+  'Assistance navigating airport procedures',
+  'Luggage assistance and coordination',
+  'Check-in support for departing passengers',
+  'Seamless connection with your chauffeur',
+  'Escort assistance where available',
 ]
 
 const FAST_TRACK_ITEMS = [
-  'Everything included in Meet & Assist',
-  'Priority access through security',
-  'Expedited airport flow at every step',
-  'Faster immigration assistance, when available',
-  'An enhanced, unhurried premium experience',
+  'All Meet & Assist services included',
+  'Fast Track access where available',
+  'Reduced waiting times at security checkpoints',
+  'Priority airport processing when permitted',
+  'Dedicated airport host assistance',
+  'Seamless transfer to your chauffeur service',
 ]
 
 function ServiceList({ items, gold = false }: { items: string[]; gold?: boolean }) {
@@ -39,7 +40,7 @@ export function VipConciergeServices() {
           Services
         </span>
         <h2 className="font-serif text-3xl md:text-5xl font-light text-[#F5F0E8] leading-[1.15]">
-          Two ways to travel
+          Choose Your Airport Experience
         </h2>
         <div className="flex items-center justify-center gap-3 mt-8">
           <span className="w-8 h-px bg-[#C9A84C]/30" />
@@ -65,7 +66,7 @@ export function VipConciergeServices() {
             Meet &amp; Assist
           </h3>
           <p className="text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-[#C9A84C] mb-10 font-light">
-            The signature airport welcome
+            Personalized Airport Arrival & Departure Assistance
           </p>
           <div className="w-10 h-px mb-8 bg-[#C9A84C]/30" />
           <ServiceList items={MEET_ASSIST_ITEMS} />
@@ -87,7 +88,7 @@ export function VipConciergeServices() {
             Meet &amp; Assist + Fast Track
           </h3>
           <p className="text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-[#C9A84C] mb-10 font-light">
-            The elevated, time-saving experience
+            Priority Airport Assistance
           </p>
           <div className="w-10 h-px mb-8 bg-[#C9A84C]/50" />
           <ServiceList items={FAST_TRACK_ITEMS} gold />

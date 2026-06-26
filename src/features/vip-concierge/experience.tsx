@@ -10,11 +10,17 @@ export function VipConciergeExperience() {
             The Experience
           </span>
           <h2 className="font-serif text-3xl md:text-5xl font-light text-[#F5F0E8] leading-[1.15] mb-8">
-            Airport travel, quietly reimagined
+            Every Journey Begins with Peace of Mind
           </h2>
           <div className="w-12 h-px bg-[#C9A84C]/40 mb-8" />
           <p className="text-base md:text-lg text-[#F5F0E8]/70 font-light leading-relaxed">
-            Long queues, unfamiliar terminals, the small frictions of international travel — they have a way of dulling the start of every journey. Our private airport concierge removes them entirely. A dedicated host meets you the moment you step off the aircraft or arrive at the terminal, guiding you through every formality with discretion, fluency and unhurried care. You travel as you should: rested, on time, and entirely at ease.
+            A seamless travel experience starts long before reaching your destination.
+          </p>
+          <p className="mt-6 text-base md:text-lg text-[#F5F0E8]/70 font-light leading-relaxed">
+            We assist clients with airport meet & greet services, arrival coordination, luggage assistance, and premium ground transportation, ensuring a smooth transition from airport to destination.
+          </p>
+          <p className="mt-6 text-base md:text-lg text-[#F5F0E8]/70 font-light leading-relaxed">
+            With trusted local partners and dedicated attention to detail, we help make every arrival and departure as effortless as possible.
           </p>
         </div>
 

@@ -1,10 +1,10 @@
 const ITEMS = [
-  { n: '01', text: 'Mercedes Maybach, S-Class or coordinated fleet' },
-  { n: '02', text: 'Vehicle dressed to occasion: ribbons, flowers, signage on request' },
-  { n: '03', text: 'Liaison with wedding planner or event coordinator' },
-  { n: '04', text: 'Synchronised arrivals for bridal party and guests' },
-  { n: '05', text: 'Champagne service in the car, on request' },
-  { n: '06', text: 'Late-night returns, no time pressure' },
+  { n: '01', text: 'Luxury Mercedes-Benz vehicles suited to your event requirements' },
+  { n: '02', text: 'Vehicle customization options available upon request' },
+  { n: '03', text: 'Coordination with event planners, venues and organizers' },
+  { n: '04', text: 'Scheduled transportation for guests, speakers or VIP attendees' },
+  { n: '05', text: 'Complimentary bottled water and premium onboard amenities' },
+  { n: '06', text: 'Flexible scheduling and return transportation options' },
 ]
 
 export function EventsSignature() {
@@ -16,7 +16,7 @@ export function EventsSignature() {
             Always included
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-[#F5F0E8] font-light leading-tight">
-            The Signature
+            What's Included
           </h2>
         </div>
 

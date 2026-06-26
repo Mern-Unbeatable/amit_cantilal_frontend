@@ -14,7 +14,7 @@ export function VipConciergeAvailability() {
           Availability
         </span>
         <h2 className="font-serif text-3xl md:text-5xl font-light text-[#F5F0E8] leading-[1.15]">
-          Available at
+          Available Airports
         </h2>
       </div>
 
@@ -40,7 +40,7 @@ export function VipConciergeAvailability() {
       </div>
 
       <p className="text-center text-xs md:text-sm text-[#F5F0E8]/45 italic font-light mt-10 max-w-2xl mx-auto">
-        Services are coordinated through our trusted aviation hospitality partners.
+        Airport assistance services are provided through carefully selected aviation hospitality partners operating at Lisbon and Porto airports.
       </p>
     </section>
   )

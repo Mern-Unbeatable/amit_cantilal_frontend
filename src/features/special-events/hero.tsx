@@ -26,10 +26,10 @@ export function EventsHero() {
             Occasions
           </p>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] text-[#F5F0E8] leading-[1.05] max-w-4xl font-light">
-            Special Events
+            Special Events Transportation
           </h1>
           <p className="mt-10 text-base md:text-xl text-[#F5F0E8]/60 max-w-2xl font-light tracking-wide leading-relaxed">
-            Weddings, galas, anniversaries, private celebrations.
+            Luxury chauffeur services for weddings, corporate events, celebrations, conferences and VIP occasions across Portugal.
           </p>
         </div>
       </div>

@@ -1,15 +1,11 @@
 import { Users } from 'lucide-react'
 
 const PROFILES = [
-  { n: '01', title: 'Business Executives', desc: 'Arrive composed, depart on schedule.' },
-  { n: '02', title: 'International Travellers', desc: 'A familiar welcome in an unfamiliar terminal.' },
-  { n: '03', title: 'Families', desc: 'Children, luggage and timings, gracefully handled.' },
-  { n: '04', title: 'VIP Guests', desc: 'A discreet, protocol-aware reception.' },
-  { n: '05', title: 'Luxury Leisure Clients', desc: 'Begin the holiday before leaving the airport.' },
-  { n: '06', title: 'Senior Travellers', desc: 'A patient hand from kerb to cabin.' },
-  { n: '07', title: 'High-Profile Passengers', desc: 'Privacy, fluency, complete discretion.' },
-  { n: '08', title: 'Diplomatic Delegations', desc: 'Protocol-aware reception with absolute discretion.' },
-  { n: '09', title: 'Private Aviation Guests', desc: 'A seamless bridge between terminal and chauffeur.' },
+  { n: '01', title: 'Business Executives', desc: 'Save time and travel with complete peace of mind.' },
+  { n: '02', title: 'Families', desc: 'Extra support for children, luggage and airport navigation.' },
+  { n: '03', title: 'Luxury Travellers', desc: 'Start and end your journey with comfort and personalized assistance.' },
+  { n: '04', title: 'Senior Travellers', desc: 'Additional guidance and support throughout the airport experience.' },
+  { n: '05', title: 'VIP & High-Profile Guests', desc: 'Discreet assistance with privacy and attention to detail.' },
 ]
 
 export function VipConciergeForWhom() {
@@ -21,7 +17,7 @@ export function VipConciergeForWhom() {
           For Whom
         </span>
         <h2 className="font-serif text-3xl md:text-5xl font-light text-[#F5F0E8] leading-[1.15]">
-          Designed for travellers who value their time
+          Who Benefits From This Service
         </h2>
         <div className="flex items-center justify-center gap-3 mt-8">
           <span className="w-8 h-px bg-[#C9A84C]/30" />

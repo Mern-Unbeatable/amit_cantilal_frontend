@@ -159,6 +159,13 @@ const Footer: React.FC = () => {
                 Privacy Policy
               </Link>
               <span>|</span>
+              <Link
+                to="/terms"
+                className="hover:text-primary transition-smooth"
+              >
+                Terms & Conditions
+              </Link>
+              <span>|</span>
               <a
                 href="https://www.livroreclamacoes.pt/inicio"
                 target="_blank"

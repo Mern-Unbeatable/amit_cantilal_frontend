@@ -38,13 +38,16 @@ function RouteComponent() {
               Partnerships
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed italic max-w-4xl drop-shadow-md">
-              Off We Go Portugal understands the unique demands of corporate travel.
-              Our B2B services are tailored to meet the expectations of business
-              executives, event planners and travel managers.
+              Off We Go Portugal understands the unique demands of corporate
+              travel. Our B2B services are tailored to meet the expectations of
+              business executives, event planners and travel managers.
             </p>
             <div className="mt-6 md:mt-8">
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-start flex-wrap">
-                <Button asChild className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 btn-luxury text-sm md:text-lg px-5 py-4 md:px-8 md:py-6">
+                <Button
+                  asChild
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 btn-luxury text-sm md:text-lg px-5 py-4 md:px-8 md:py-6"
+                >
                   <a
                     href="https://wa.me/351914578214"
                     target="_blank"
@@ -52,21 +55,21 @@ function RouteComponent() {
                     className="flex items-center gap-3 group"
                     aria-label="WhatsApp"
                   >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    className="lucide lucide-message-circle w-4 h-4 md:w-5 md:h-5 mr-2"
-                  >
-                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
-                  </svg>
-                  Chat on WhatsApp
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      className="lucide lucide-message-circle w-4 h-4 md:w-5 md:h-5 mr-2"
+                    >
+                      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                    </svg>
+                    Chat on WhatsApp
                   </a>
                 </Button>
                 <Button className="inline-flex text-white items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:text-accent-foreground h-10 text-sm md:text-lg px-5 py-4 md:px-8 md:py-6 border-primary/30 hover:bg-primary/10">
@@ -100,7 +103,6 @@ function RouteComponent() {
       <section className="py-10 md:py-24 bg-[#141414] border-y border-[#C9A84C]/12">
         <div className="container mx-auto px-4 md:px-12">
           <div className="max-w-6xl mx-auto">
-
             {/* Header */}
             <div className="text-center mb-8 md:mb-16">
               <div className="tag-gold mb-4">Why Partner With Us</div>
@@ -115,7 +117,6 @@ function RouteComponent() {
 
             {/* 2-col layout */}
             <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-stretch">
-
               {/* Feature cards */}
               <div className="space-y-3 md:space-y-4">
                 {features.map(({ icon: Icon, title, description }) => (
@@ -125,7 +126,10 @@ function RouteComponent() {
                   >
                     {/* Icon */}
                     <div className="flex-shrink-0 w-8 h-8 md:w-12 md:h-12 bg-[#C9A84C] flex items-center justify-center">
-                      <Icon className="w-4 h-4 md:w-5 md:h-5 text-[#0B0B0B]" strokeWidth={1.5} />
+                      <Icon
+                        className="w-4 h-4 md:w-5 md:h-5 text-[#0B0B0B]"
+                        strokeWidth={1.5}
+                      />
                     </div>
 
                     {/* Text */}
@@ -144,7 +148,7 @@ function RouteComponent() {
               {/* Image */}
               <div className="relative h-full min-h-[400px]">
                 <img
-                  src="/mercedes-e-class-vertical.webp"
+                  src="/partnership-img.PNG"
                   alt="OffWeGo Luxury Fleet"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -157,17 +161,14 @@ function RouteComponent() {
                     Ready to partner with us?
                   </p>
                   <p className="text-xs text-[#9A9182] mb-3">
-                    Join 50+ travel agencies, hotels and DMCs already working with Off We Go Portugal.
+                    Join 50+ travel agencies, hotels and DMCs already working
+                    with Off We Go Portugal.
                   </p>
-                  <a
-                    href="#apply"
-                    className="btn-gold text-[10px] py-2 px-5"
-                  >
+                  <a href="#apply" className="btn-gold text-[10px] py-2 px-5">
                     Apply Now →
                   </a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -176,12 +177,12 @@ function RouteComponent() {
       <section className="py-10 md:py-32 bg-[#0B0B0B]">
         <div className="container mx-auto px-4 md:px-12">
           <div className="max-w-6xl mx-auto">
-
             {/* Header */}
             <div className="text-center mb-8 md:mb-20">
               <div className="tag-gold mb-4">Built for Business</div>
               <h2 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold mb-3 md:mb-6">
-                Corporate transportation<br className="hidden md:block" />
+                Corporate transportation
+                <br className="hidden md:block" />
                 <em className="italic"> for every occasion</em>
               </h2>
               <p className="text-sm md:text-xl text-[#9A9182] max-w-3xl mx-auto">
@@ -197,10 +198,12 @@ function RouteComponent() {
                   className="group bg-[#141414] p-4 md:p-10 border border-[#C9A84C]/12 hover:border-[#C9A84C]/35 transition-colors duration-200 h-full"
                 >
                   <div className="flex flex-col md:flex-row items-start gap-3 md:gap-6 h-full">
-
                     {/* Icon */}
                     <div className="flex-shrink-0 w-10 h-10 md:w-16 md:h-16 bg-[#C9A84C] flex items-center justify-center">
-                      <Icon className="w-5 h-5 md:w-7 md:h-7 text-[#0B0B0B]" strokeWidth={1.5} />
+                      <Icon
+                        className="w-5 h-5 md:w-7 md:h-7 text-[#0B0B0B]"
+                        strokeWidth={1.5}
+                      />
                     </div>
 
                     {/* Text */}
@@ -212,25 +215,23 @@ function RouteComponent() {
                         {description}
                       </p>
                     </div>
-
                   </div>
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </section>
 
-      <CoverageArea/>
+      <CoverageArea />
 
-      <FleetSection fleet={fleet}/>
+      <FleetSection fleet={fleet} />
 
-      <CorporateTaxReduction/>
+      <CorporateTaxReduction />
 
-      <SustainabilityImpact/>
+      <SustainabilityImpact />
 
-      <PartnerForm/>
+      <PartnerForm />
     </motion.div>
   )
 }

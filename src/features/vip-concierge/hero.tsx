@@ -23,10 +23,10 @@ export function VipConciergeHero() {
             Airport Concierge
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light leading-[1.05] tracking-tight mb-6 md:mb-10 text-[#F5F0E8]">
-            A Seamless Airport Experience, Tailored Around You
+            Premium Airport Concierge Services in Portugal
           </h1>
           <p className="text-base md:text-xl text-[#F5F0E8]/80 leading-relaxed italic max-w-3xl font-light mb-8 md:mb-12">
-            From arrival to departure, every detail is discreetly handled for a smooth and elevated journey through Lisbon and Porto airports.
+            Enjoy a seamless arrival or departure experience with personalised airport assistance, priority coordination, and professional meet & greet services at Lisbon and Porto airports.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <a

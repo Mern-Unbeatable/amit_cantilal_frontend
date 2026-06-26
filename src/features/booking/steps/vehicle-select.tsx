@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
-import { getHourlyRate, getTransferPrice } from '@/features/booking/pricing.ts'
+import { getDistancePrice, getHourlyRate, getTransferPrice } from '@/features/booking/pricing.ts'
 
 interface Props {
   trip: TripDetails
@@ -250,7 +250,9 @@ export default function Step2VehicleSelect({
         trip.dropoffCoords,
         trip.dropoff,
         v.name,
-      ) ?? v.price
+      ) ??
+      getDistancePrice(trip.pickupCoords, trip.dropoffCoords, v.name) ??
+      v.price
     )
   }
 

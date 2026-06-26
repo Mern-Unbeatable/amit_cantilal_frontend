@@ -8,11 +8,11 @@ export function VipConciergeCta() {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light italic text-[#F5F0E8] leading-[1.15] mb-8">
-            Where the journey truly begins
+            Travel With Confidence
           </h2>
           <div className="w-12 h-px bg-[#C9A84C]/40 mx-auto mb-8" />
           <p className="text-base md:text-xl text-[#F5F0E8]/70 font-light leading-relaxed italic mb-10">
-            At Elite Ride, airport travel is no longer a process. It becomes part of the experience itself — quiet, considered, and entirely yours.
+            At Off We Go Portugal, we believe every journey should begin and end with exceptional service. Our airport concierge solutions are designed to complement our premium chauffeur services, ensuring a seamless experience from terminal to destination.
           </p>
           <Link
             to="/booking"
