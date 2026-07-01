@@ -183,9 +183,9 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
       </Field>
 
       {/* Publish toggle */}
-      <div className="flex items-center justify-between border border-input rounded-md p-4">
+      <div className={`flex items-center justify-between rounded-md p-4 border ${isPublished ? 'border-green-500 bg-green-50 dark:bg-green-950/20' : 'border-orange-400 bg-orange-50 dark:bg-orange-950/20'}`}>
         <div>
-          <p className="text-sm font-medium">
+          <p className={`text-sm font-medium ${isPublished ? 'text-green-700 dark:text-green-400' : 'text-orange-700 dark:text-orange-400'}`}>
             {isPublished ? 'Published' : 'Draft'}
           </p>
           <p className="text-xs text-muted-foreground">

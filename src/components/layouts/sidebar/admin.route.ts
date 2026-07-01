@@ -35,12 +35,7 @@ export const adminRoutes: Array<NavGroup> = [
         url: '/admin/posts',
         icon: 'material-symbols:article-outline-rounded',
       },
-      {
-        title: 'FAQs',
-        url: '/admin/faqs',
-        icon: 'material-symbols:help-outline-rounded',
-      },
-      {
+{
         title: 'Partnerships',
         url: '/admin/partnerships',
         icon: 'material-symbols:handshake-outline-rounded',

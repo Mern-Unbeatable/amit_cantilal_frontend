@@ -14,6 +14,7 @@ import {
 import {useSidebarItems} from "@/components/layouts/sidebar/sidebar-items.ts";
 import {useAuthStore} from "@/stores/user.ts";
 import ApplicationLogo from '@/components/application-logo.tsx'
+import { ExternalLink } from 'lucide-react'
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   
@@ -29,6 +30,14 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:p-1.5!">
               <Link to="/admin/dashboard">
                 <ApplicationLogo/>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <Link to="/">
+                <ExternalLink className="w-4 h-4" />
+                <span>View Site</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
