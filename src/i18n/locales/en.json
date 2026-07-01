@@ -1,0 +1,886 @@
+{
+  "nav": {
+    "home": "Home",
+    "fleet": "Fleet",
+    "bookNow": "Book Now",
+    "services": "Services",
+    "transfers": "Transfers",
+    "hourlyService": "Hourly Service",
+    "tours": "Tours",
+    "vipConcierge": "VIP Concierge",
+    "corporateMobility": "Corporate Mobility",
+    "specialEvents": "Special Events",
+    "business": "Business",
+    "b2b": "B2B",
+    "partnerships": "Partnerships",
+    "resources": "Resources",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "language": "Language",
+    "toggleMenu": "Toggle menu"
+  },
+  "footer": {
+    "tagline": "Secure your Transfer & Tour and have an incredible experience on your trip.",
+    "locations": "Locations",
+    "contact": "Contact",
+    "callMobile": "Call to national mobile",
+    "faq": "FAQ",
+    "followUs": "Follow Us",
+    "email": "Email",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "complaintsBook": "Complaints Book",
+    "admin": "Admin",
+    "registration": "Registration RNAAT: 738/2023",
+    "whatsappCta": "Questions? Contact us"
+  },
+  "faq": {
+    "ctaTitle": "Still have questions?",
+    "ctaBody": "Our team is available 24/7. Reach out on WhatsApp and we'll get back to you right away.",
+    "ctaButton": "Chat on WhatsApp",
+    "categories": [
+      {
+        "title": "Booking & Reservations",
+        "items": [
+          {
+            "question": "How do I book a transfer or tour?",
+            "answer": "You can book directly through our website or contact us on WhatsApp for a personalised quote. Once we confirm availability, you'll receive a booking confirmation by email."
+          },
+          {
+            "question": "How far in advance should I book?",
+            "answer": "We recommend booking at least 48 hours in advance for standard transfers and 4+ days for Sprinter/group bookings. Same-day requests can be handled via WhatsApp subject to availability."
+          },
+          {
+            "question": "Can I modify my booking after confirmation?",
+            "answer": "Yes — modifications are welcome subject to availability. Contact us as early as possible and we'll do our best to accommodate changes at no extra charge."
+          }
+        ]
+      },
+      {
+        "title": "Payment & Pricing",
+        "items": [
+          {
+            "question": "What payment methods do you accept?",
+            "answer": "We accept major credit/debit cards, bank transfers, and PayPal. Cash payment on the day is also available for certain services — confirm at time of booking."
+          },
+          {
+            "question": "Are your prices fixed or can they change?",
+            "answer": "All quoted prices are fixed and inclusive of VAT. There are no hidden fees — tolls, parking, and waiting time within the included grace period are all covered."
+          },
+          {
+            "question": "How does PayPal payment work?",
+            "answer": "After booking confirmation, we'll send a PayPal payment request to your email. You can pay with your PayPal balance or any linked card — no PayPal account required."
+          }
+        ]
+      },
+      {
+        "title": "Cancellation Policy",
+        "items": [
+          {
+            "question": "What is your cancellation policy?",
+            "answer": "Cancellations more than 48 hours before your Sedan/Van transfer receive a full refund. Under 48 hours, 50% is charged; under 24 hours, 100% is charged. Sprinter bookings have extended windows — see our Booking Policies page for full details."
+          }
+        ]
+      },
+      {
+        "title": "Service Details",
+        "items": [
+          {
+            "question": "How much waiting time is included?",
+            "answer": "Airport pickups include 60 minutes of complimentary waiting time after the flight lands. All other pickups include 15 minutes. Additional waiting time is billed at an hourly rate."
+          },
+          {
+            "question": "Are your vehicles electric?",
+            "answer": "Our fleet includes hybrid and electric Mercedes-Benz models. If you have a preference, let us know at the time of booking and we'll do our best to accommodate."
+          },
+          {
+            "question": "Do your drivers speak English?",
+            "answer": "Yes — all our chauffeurs are fluent in English and Portuguese. Some also speak French and Spanish. Language preference can be noted at the time of booking."
+          },
+          {
+            "question": "What is included in the tour price?",
+            "answer": "All tours include the chauffeur, vehicle, fuel, tolls, and any planned stops. Entrance fees to attractions and meals are not included unless explicitly stated in your quote."
+          },
+          {
+            "question": "Do you have vehicles for longer routes?",
+            "answer": "Absolutely. We serve routes across Portugal and into Spain. Our Sprinter is ideal for groups or extended itineraries. Contact us for a custom quote."
+          }
+        ]
+      }
+    ]
+  },
+  "home": {
+    "tag": "Luxury Chauffeur Service — Portugal",
+    "headingLine1": "Faith in",
+    "headingEmphasis": "absolute",
+    "headingLine2": "comfort & style",
+    "subtext": "Premium chauffeur service across Lisbon, Porto and the Algarve. Professional drivers, executive fleet, available 24/7.",
+    "reserveRide": "Reserve Your Ride",
+    "viewFleet": "View Our Fleet",
+    "stats": {
+      "years": "Years of Service",
+      "clients": "Happy Clients",
+      "availability": "Availability",
+      "cities": "Cities Covered"
+    },
+    "ourServices": "Our Services",
+    "services": {
+      "airportTransfers": { "title": "Airport Transfers", "description": "Punctual and luxurious airport pickups and drop-offs across Portugal." },
+      "privateTours": { "title": "Private Tours", "description": "Exclusive guided tours to Portugal's most iconic destinations." },
+      "chauffeurService": { "title": "Chauffeur Service", "description": "Hourly service with a professional driver at your disposal." }
+    },
+    "whyChooseTitle": "Why Choose Off We Go Portugal",
+    "whyChooseBody": "Off We Go Portugal is a premium chauffeur service, offering luxury private transportation across Lisbon, Porto, and the Algarve. With a high-end Mercedes-Benz fleet, multilingual professional drivers, and 24/7 availability, we deliver an exceptional travel experience for discerning travellers, business executives, and families.",
+    "airportTransfersTitle": "Airport Transfers Across Portugal",
+    "airportTransfersBody": "We provide seamless airport transfers at Lisbon (LIS), Porto (OPO) and Faro (FAO) airports. Every transfer includes complimentary flight monitoring, 60 minutes of free waiting time, meet & greet service and fixed prices with no hidden fees. Whether you need a private driver from the airport to your hotel or a long-distance transfer to the Algarve, our chauffeur service ensures a stress-free arrival.",
+    "airportTransfersLink": "Airport Transfers Across Portugal →",
+    "privateToursTitle": "Private Tours & Experiences",
+    "privateToursBody": "Discover Portugal with a private chauffeur. Our curated tours include Sintra's fairy-tale palaces, the Douro Valley wine region, the sacred sanctuary of Fatima and the stunning Algarve coastline. Every tour is fully customisable — choose your itinerary, pace and stops. Perfect for couples, families and small groups seeking an authentic Portuguese experience.",
+    "privateToursLink": "Private Tours & Experiences →",
+    "sustainableFleetTitle": "Sustainable Electric Fleet",
+    "sustainableFleetBody": "Our fleet features the latest Mercedes-Benz electric vehicles — EQS, EQE and EQV — alongside executive diesel options including S-Class, E-Class and V-Class. As a sustainable chauffeur service, we prioritise zero-emission transport without compromising on luxury, comfort or performance. Ideal for corporate clients with ESG requirements.",
+    "sustainableFleetLink": "Sustainable Electric Fleet →",
+    "areasWeServeTitle": "Areas We Serve",
+    "areasWeServeBody": "Our luxury chauffeur service covers all major destinations in Portugal: Lisbon and Greater Lisbon (Cascais, Sintra, Estoril), Porto and Northern Portugal (Douro Valley, Braga, Guimarães), the Algarve (Faro, Albufeira, Vilamoura, Lagos, Tavira), and Central Portugal (Coimbra, Évora, Óbidos, Nazaré). We also offer cross-border transfers to Spain.",
+    "testimonialsTitle": "What our clients say",
+    "premiumFleetTitle": "Our Premium Fleet",
+    "electric": "Electric",
+    "diesel": "Diesel",
+    "viewAllFleet": "View All Fleet"
+  },
+  "vipConcierge": {
+    "hero": {
+      "tag": "Airport Concierge",
+      "title": "Premium Airport Concierge Services in Portugal",
+      "subtitle": "Enjoy a seamless arrival or departure experience with personalised airport assistance, priority coordination, and professional meet & greet services at Lisbon and Porto airports.",
+      "contactButton": "Contact Concierge",
+      "requestButton": "Request Assistance"
+    },
+    "experience": {
+      "tag": "The Experience",
+      "title": "Every Journey Begins with Peace of Mind",
+      "p1": "A seamless travel experience starts long before reaching your destination.",
+      "p2": "We assist clients with airport meet & greet services, arrival coordination, luggage assistance, and premium ground transportation, ensuring a smooth transition from airport to destination.",
+      "p3": "With trusted local partners and dedicated attention to detail, we help make every arrival and departure as effortless as possible."
+    },
+    "services": {
+      "tag": "Services",
+      "title": "Choose Your Airport Experience",
+      "meetAssist": {
+        "title": "Meet & Assist",
+        "subtitle": "Personalized Airport Arrival & Departure Assistance",
+        "items": [
+          "Personal meet & greet service upon arrival or departure",
+          "Assistance navigating airport procedures",
+          "Luggage assistance and coordination",
+          "Check-in support for departing passengers",
+          "Seamless connection with your chauffeur",
+          "Escort assistance where available"
+        ]
+      },
+      "fastTrack": {
+        "title": "Meet & Assist + Fast Track",
+        "subtitle": "Priority Airport Assistance",
+        "items": [
+          "All Meet & Assist services included",
+          "Fast Track access where available",
+          "Reduced waiting times at security checkpoints",
+          "Priority airport processing when permitted",
+          "Dedicated airport host assistance",
+          "Seamless transfer to your chauffeur service"
+        ]
+      }
+    },
+    "availability": {
+      "tag": "Availability",
+      "title": "Available Airports",
+      "lisbonName": "Lisbon Airport",
+      "lisbonCode": "LIS · Humberto Delgado",
+      "portoName": "Porto Airport",
+      "portoCode": "OPO · Francisco Sá Carneiro",
+      "footnote": "Airport assistance services are provided through carefully selected aviation hospitality partners operating at Lisbon and Porto airports."
+    },
+    "forWhom": {
+      "tag": "For Whom",
+      "title": "Who Benefits From This Service",
+      "profiles": [
+        { "title": "Business Executives", "desc": "Save time and travel with complete peace of mind." },
+        { "title": "Families", "desc": "Extra support for children, luggage and airport navigation." },
+        { "title": "Luxury Travellers", "desc": "Start and end your journey with comfort and personalized assistance." },
+        { "title": "Senior Travellers", "desc": "Additional guidance and support throughout the airport experience." },
+        { "title": "VIP & High-Profile Guests", "desc": "Discreet assistance with privacy and attention to detail." }
+      ]
+    },
+    "form": {
+      "tag": "Concierge",
+      "title": "Request Airport Concierge Assistance",
+      "subtitle": "Tell us about your travel plans and our team will coordinate the most suitable airport assistance service for your arrival or departure.",
+      "successTitle": "Request Received",
+      "successBody": "Our concierge team will be in touch shortly.",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "airport": "Airport",
+      "airportPlaceholder": "Lisbon or Porto",
+      "flightDetails": "Arrival / Departure",
+      "flightDetailsPlaceholder": "Date, flight number, terminal",
+      "passengers": "Number of Passengers",
+      "contactMethod": "Preferred Contact Method",
+      "contactMethodPlaceholder": "Select method",
+      "notes": "Additional Notes",
+      "sending": "Sending...",
+      "requestButton": "Request Assistance",
+      "genericError": "Something went wrong. Please try again."
+    },
+    "cta": {
+      "title": "Travel With Confidence",
+      "body": "At Off We Go Portugal, we believe every journey should begin and end with exceptional service. Our airport concierge solutions are designed to complement our premium chauffeur services, ensuring a seamless experience from terminal to destination.",
+      "bookNow": "Book Now"
+    }
+  },
+  "corporateMobility": {
+    "hero": {
+      "backLink": "Chauffeur",
+      "tag": "For companies",
+      "title": "Corporate Mobility",
+      "subtitle": "Quiet logistics for executives, boards and guests."
+    },
+    "intro": {
+      "lead": "Corporate transportation should never become a concern.",
+      "body": "Whether it's an airport transfer for a visiting executive, transportation for a board meeting, or mobility management for a multi-day event, our role is simple: ensure every journey happens seamlessly, professionally and on schedule."
+    },
+    "experience": {
+      "tag": "Experience",
+      "pillars": [
+        { "title": "Executive Transfers", "desc": "Reliable transportation for executives, clients and VIP guests throughout Portugal." },
+        { "title": "Event Transportation", "desc": "Coordinated fleet management for conferences, meetings, incentives and corporate events." },
+        { "title": "Dedicated Account Support", "desc": "A single point of contact to manage reservations, changes and special requirements." }
+      ]
+    },
+    "signature": {
+      "tag": "Always included",
+      "title": "The Signature",
+      "items": [
+        "Dedicated account manager",
+        "Flexible invoicing options for corporate clients",
+        "Professional chauffeurs trained for executive travel",
+        "Conference and event transportation coordination",
+        "24/7 operational support",
+        "Custom transportation solutions throughout Portugal"
+      ]
+    },
+    "quote": {
+      "text": "\"Professional transportation is measured not by what happens, but by what never goes wrong.\"",
+      "body": "With dedicated account management, flexible billing options and experienced chauffeurs, Off We Go Portugal becomes an extension of your operations team."
+    },
+    "cta": {
+      "tag": "By appointment",
+      "title": "Request Your Experience",
+      "body": "Every journey begins with a quiet conversation. Tell us when, and we compose the rest.",
+      "button": "Plan Your Journey",
+      "concierge": "Or speak with concierge"
+    }
+  },
+  "specialEvents": {
+    "hero": {
+      "backLink": "Chauffeur",
+      "tag": "Occasions",
+      "title": "Special Events Transportation",
+      "subtitle": "Luxury chauffeur services for weddings, corporate events, celebrations, conferences and VIP occasions across Portugal."
+    },
+    "intro": {
+      "lead": "Exceptional events deserve exceptional transportation.",
+      "body1": "Whether you are organizing a wedding, gala dinner, corporate gathering, private celebration or VIP event, our team ensures every guest arrives comfortably, punctually and professionally.",
+      "body2": "From individual executive transfers to coordinated multi-vehicle logistics, we help create a seamless transportation experience for hosts and guests alike."
+    },
+    "experience": {
+      "tag": "The Experience",
+      "pillars": [
+        { "title": "Premium Fleet Selection", "desc": "Choose from our luxury Mercedes-Benz fleet, including E-Class, S-Class, V-Class and Sprinter vehicles, tailored to the size and requirements of your event." },
+        { "title": "Precise Event Coordination", "desc": "Our team carefully plans arrival schedules, departure logistics and guest movements to ensure a smooth and efficient event experience." },
+        { "title": "Professional Chauffeurs", "desc": "Experienced, professionally dressed chauffeurs delivering the highest standards of service, discretion and reliability." }
+      ]
+    },
+    "signature": {
+      "tag": "Always included",
+      "title": "What's Included",
+      "items": [
+        "Luxury Mercedes-Benz vehicles suited to your event requirements",
+        "Vehicle customization options available upon request",
+        "Coordination with event planners, venues and organizers",
+        "Scheduled transportation for guests, speakers or VIP attendees",
+        "Complimentary bottled water and premium onboard amenities",
+        "Flexible scheduling and return transportation options"
+      ]
+    },
+    "quote": {
+      "text": "\"Leave the transportation to us, so you can focus on the occasion.\""
+    },
+    "cta": {
+      "tag": "By appointment",
+      "title": "Request Event Transportation",
+      "body": "Tell us about your event and transportation requirements. Our team will prepare a tailored solution designed around your guests, schedule and venue.",
+      "button": "Request a Quote",
+      "concierge": "Or speak with concierge"
+    }
+  },
+  "toursSection": {
+    "tag": "Experiences",
+    "titlePrefix": "Available",
+    "titleEmphasis": "Tours",
+    "subtitle": "Choose from our curated selection of exclusive private tours across Portugal.",
+    "empty": "Tours are temporarily unavailable. Please try again in a moment."
+  },
+  "whyPartner": {
+    "title": "Why partner with us?",
+    "stats": [
+      { "value": "7+", "label": "Premium models" },
+      { "value": "48", "label": "People per group" },
+      { "value": "15-20%", "label": "Commission per booking" },
+      { "value": "24/7", "label": "Dedicated support" },
+      { "value": "VIP", "label": "Exclusive services" },
+      { "value": "70%+", "label": "Electric fleet" }
+    ]
+  },
+  "coverageArea": {
+    "tag": "Where We Operate",
+    "title": "Coverage Areas",
+    "subtitle": "Complete coverage across the Iberian Peninsula",
+    "areas": [
+      { "title": "Continental Portugal", "description": "Lisbon, Porto, Algarve, Alentejo, Central and North regions — complete national coverage." },
+      { "title": "Spain", "description": "Available upon request — Madrid, Seville, Barcelona and other major cities." }
+    ]
+  },
+  "taxReduction": {
+    "tag": "Sustainability",
+    "title": "Corporate Tax Reduction",
+    "subtitle": "Turn your commitment to sustainability into tangible tax benefits. Our quarterly green certificates provide documented proof of emissions reduction.",
+    "benefits": [
+      { "title": "Quarterly Green Certificates", "description": "Get detailed certificates every quarter showing trees saved and emissions avoided — perfect for ESG reporting and tax benefits." },
+      { "title": "Direct Tax Benefits", "description": "Use our environmental certificates to qualify for corporate tax deductions and ESG incentives." },
+      { "title": "ESG Reporting Ready", "description": "Detailed quarterly reports with metrics ready for your sustainability and ESG disclosures." }
+    ]
+  },
+  "reviews": {
+    "tag": "What Our Guests Say",
+    "title": "Google Reviews",
+    "reviewsSuffix": "reviews",
+    "localGuide": "Local Guide"
+  },
+  "b2bFeatures": {
+    "fleet": {
+      "tag": "Premium Fleet",
+      "title": "Luxury Fleet & Group Transport",
+      "body": "We provide a fleet of premium vehicles that match the highest market standards. From executive sedans to VIP vans, we offer capacity for groups of 6 to 48 people.",
+      "items": ["Mercedes E-Class, S-Class, Sprinter", "Groups of 6 to 48 people"],
+      "statModels": "Premium Models",
+      "statPeople": "Max. People"
+    },
+    "commissions": {
+      "value": "15-20%",
+      "label": "Commission per booking",
+      "note": "Special conditions for volume contracts and long-term partnerships",
+      "tag": "Attractive Conditions",
+      "title": "Commissions & Competitive Pricing",
+      "body": "We offer attractive commission conditions between 15% and 20% per booking. With volume contracts, benefit from even more competitive prices.",
+      "items": ["15-20% commission per booking", "Volume contracts with discounts", "Guaranteed monthly payments"]
+    },
+    "sustainability": {
+      "tag": "Sustainability",
+      "title": "Decarbonization Goals",
+      "body": "We help companies achieve their corporate decarbonization goals. With a mostly electric fleet, we offer carbon-zero certificates and ESG reports.",
+      "items": ["Carbon-zero certificates", "Quarterly ESG reports", "Mostly electric fleet"],
+      "hotlineTitle": "Direct Hotline",
+      "hotlineSubtitle": "Priority access",
+      "whatsappTitle": "WhatsApp Business",
+      "whatsappSubtitle": "Quick responses",
+      "managerTitle": "Dedicated Manager",
+      "managerSubtitle": "Single point of contact"
+    }
+  },
+  "fleetSection": {
+    "tag": "The Fleet",
+    "title": "Our Premium & First Class Fleet",
+    "subtitle": "Luxury vehicles matching the highest market standards",
+    "electricFleet": "Electric Fleet",
+    "dieselFleet": "Diesel Fleet (Long Distance)"
+  },
+  "transferServices": {
+    "bookNow": "Book Now",
+    "airport": {
+      "label": "Airport Transfer",
+      "title": "Airport Transfers",
+      "description": "Seamless airport pickups and drop-offs across Portugal. We include up to 60 minutes of complimentary waiting time from landing, with real-time flight tracking so your chauffeur is always ready. Our drivers meet you at arrivals with a name board, handle your luggage, and take you to your destination in a premium Mercedes-Benz vehicle.",
+      "features": [
+        "60 min complimentary wait from landing",
+        "Real-time flight tracking",
+        "Meet & greet with name board at arrivals",
+        "Luggage assistance included",
+        "All major Portuguese airports covered"
+      ]
+    },
+    "cityToCity": {
+      "label": "City to City",
+      "title": "City to City Transfers",
+      "description": "Travel between Portugal's major cities in total comfort. Whether it's Lisbon to Porto, Lisbon to the Algarve, or a cross-border route into Spain, we provide fixed-price transfers with no surprises — door to door, in executive vehicles built for long distances.",
+      "features": [
+        "Lisbon ↔ Porto, Lisbon ↔ Algarve and more",
+        "Fixed price — no surge or meter running",
+        "Door-to-door service across Portugal",
+        "Available for Spain cross-border routes",
+        "Comfortable for long distances — Mercedes S-Class & Sprinter"
+      ]
+    }
+  },
+  "bookingPolicy": {
+    "tag": "Policies",
+    "titlePrefix": "Booking",
+    "titleEmphasis": "Policies",
+    "subtitle": "Transparent terms so you always know where you stand.",
+    "sedanVan": "Sedan & Van",
+    "sedanVanRules": [
+      { "label": "Less than 24 hours", "charge": "100% charged" },
+      { "label": "Less than 48 hours", "charge": "50% charged" },
+      { "label": "More than 48 hours", "charge": "Full refund" }
+    ],
+    "sprinter": "Sprinter",
+    "sprinterCharge": "100% charged for any cancellation",
+    "sprinterNote": "Applies regardless of notice period",
+    "sprinterNotice": "All Sprinter bookings are <bold>non-refundable</bold>. No refunds will be issued under any circumstances after booking confirmation.",
+    "reschedulingTitle": "Rescheduling Options",
+    "reschedulingOptions": [
+      "Propose a new date",
+      "Credit of paid amount + 20% bonus towards other services",
+      "Full refund according to cancellation policy"
+    ],
+    "availabilityNotice": "All bookings are subject to availability confirmation.",
+    "sameDayNoticePrefix": "Same-day bookings are not available online —",
+    "sameDayLink": "contact us on WhatsApp",
+    "sameDayNoticeSuffix": "for last-minute requests."
+  },
+  "sustainabilityImpact": {
+    "tag": "Sustainability",
+    "titlePrefix": "Your Impact,",
+    "titleEmphasis": "Certified",
+    "subtitle": "Comprehensive ESG documentation supporting your corporate sustainability goals",
+    "highlights": [
+      { "title": "Quarterly ESG Reports", "description": "Measurable CO₂ savings and detailed environmental impact metrics" },
+      { "title": "Tax & Compliance Data", "description": "Supporting sustainability audits and corporate tax deductions" },
+      { "title": "Real Metrics", "description": "Tree-planted equivalents per ride with carbon reduction tracking" }
+    ],
+    "calculator": {
+      "title": "Calculate Your Impact",
+      "subtitle": "See how much CO₂ your company can save by choosing our electric fleet",
+      "cardTitle": "CO₂ Savings Calculator",
+      "monthlyTrips": "Monthly Trips",
+      "avgDistance": "Average Trip Distance",
+      "distanceOptions": [
+        { "label": "Short Distance (20 km)" },
+        { "label": "Medium Distance (50 km)" },
+        { "label": "Long Distance (100 km)" },
+        { "label": "Cross-country (300 km)" }
+      ],
+      "monthlyLabel": "Monthly CO₂ Savings",
+      "yearlyLabel": "Yearly CO₂ Savings",
+      "treesLabel": "Trees Equivalent",
+      "treesUnit": "trees/year",
+      "disclaimer": "* Based on average emissions of 160g CO₂/km for traditional luxury vehicles vs 0g for electric vehicles"
+    }
+  },
+  "partnerForm": {
+    "tag": "Partner Application",
+    "title": "Become a Corporate Partner",
+    "successTitle": "Request Submitted",
+    "successBody": "Thank you! Our partnerships team will be in touch within 24 hours.",
+    "company": "Company Name",
+    "companyPlaceholder": "Your Company",
+    "companyRequired": "Company name is required",
+    "businessType": "Business Type",
+    "businessTypePlaceholder": "Select your business type",
+    "businessTypes": {
+      "agency": "Travel Agency",
+      "hotel": "Luxury Hotel",
+      "concierge": "Concierge Service",
+      "corporate": "Corporate",
+      "dmc": "DMC",
+      "other": "Other"
+    },
+    "representative": "Representative Name",
+    "representativePlaceholder": "John Doe",
+    "representativeRequired": "Representative name is required",
+    "email": "Corporate Email",
+    "emailPlaceholder": "contact@company.com",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email address",
+    "phone": "Phone",
+    "phonePlaceholder": "+351 912 345 678",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your partnership needs...",
+    "genericError": "Something went wrong. Please try again.",
+    "submitting": "Submitting...",
+    "submit": "Submit Partnership Request"
+  },
+  "transfersPage": {
+    "heroTitle": "Premium Airport Chauffeur Services",
+    "heroSubtitle": "Experience first-class airport transportation with Off We Go Portugal. Meet & greet at arrivals, luxury Mercedes fleet, and a smooth, stress-free transfer tailored to your schedule.",
+    "cards": [
+      { "title": "Airport Pickup", "description": "60 minutes free waiting time from landing. Flight tracking included." },
+      { "title": "Fixed Prices", "description": "Transparent pricing with no hidden fees or surge charges." },
+      { "title": "Multilingual Drivers", "description": "Professional chauffeurs fluent in English, Portuguese, Spanish and more." },
+      { "title": "Premium Fleet", "description": "Mercedes-Benz vehicles with immaculate interiors." }
+    ]
+  },
+  "b2bPage": {
+    "tag": "Corporate Services",
+    "heading": "B2B",
+    "subtext": "Off We Go Portugal understands the unique demands in B2B services for Travel Agencies, Hotels and Concierge Services — tailored to meet the expectations of your clients.",
+    "whatsapp": "Chat on WhatsApp",
+    "fillForm": "Fill Form",
+    "partnerLogin": "Partner Login"
+  },
+  "b2bForm": {
+    "tag": "Get Started",
+    "title": "Request Partnership",
+    "subtitle": "Fill out the form and we'll contact you within 24 hours.",
+    "successTitle": "Request Submitted",
+    "successBody": "Our team will be in touch within 24 hours.",
+    "partnerType": "Partner Type",
+    "partnerTypePlaceholder": "Select type",
+    "partnerTypes": {
+      "hotel": "Hotel",
+      "travelAgency": "Travel Agency",
+      "concierge": "Concierge Service",
+      "corporate": "Corporate",
+      "other": "Other"
+    },
+    "companyName": "Company Name",
+    "companyNamePlaceholder": "Hotel or agency name",
+    "companyNameRequired": "Company name is required",
+    "name": "Name",
+    "nameRequired": "Name is required",
+    "position": "Position",
+    "email": "Email",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email",
+    "phone": "Phone",
+    "phonePlaceholder": "+351 912 345 678",
+    "phoneRequired": "Phone is required",
+    "message": "Message",
+    "submitting": "Submitting...",
+    "submit": "Submit Request",
+    "whatsapp": "WhatsApp",
+    "directContact": "Or contact us directly:"
+  },
+  "partnershipsPage": {
+    "title": "Partnerships",
+    "subtitle": "Off We Go Portugal understands the unique demands of corporate travel. Our B2B services are tailored to meet the expectations of business executives, event planners and travel managers.",
+    "whatsapp": "Chat on WhatsApp",
+    "requestPartnership": "Request Partnership",
+    "partnerLogin": "Partner Login",
+    "whyTag": "Why Partner With Us",
+    "whyTitlePrefix": "Why Choose",
+    "whyTitleEmphasis": "Off We Go Portugal",
+    "whySubtitle": "Discover the advantages of partnering with us for your clients' transportation needs across Portugal.",
+    "features": [
+      { "title": "Luxury Fleet", "description": "Premium Mercedes-Benz vehicles that meet the highest standards for your most discerning clients." },
+      { "title": "Group Transport", "description": "Capacity for groups from 6 to 48 people with the right vehicle for every occasion." },
+      { "title": "24/7 Availability & Support", "description": "Dedicated support and service available around the clock so you can rely on us every time." },
+      { "title": "Exclusive Services", "description": "Personalised VIP service tailored to your clients' specific needs and preferences." },
+      { "title": "Long Distance Options", "description": "For long-distance transfers we have Mercedes E-Class, S-Class and Sprinter vehicles available." },
+      { "title": "Competitive Commission", "description": "Earn up to 15% commission on every booking with transparent monthly reporting and fast payouts." }
+    ],
+    "badgeTitle": "Ready to partner with us?",
+    "badgeBody": "Join 50+ travel agencies, hotels and DMCs already working with Off We Go Portugal.",
+    "applyNow": "Apply Now →",
+    "builtTag": "Built for Business",
+    "builtTitlePrefix": "Corporate transportation",
+    "builtTitleEmphasis": "for every occasion",
+    "builtSubtitle": "Premium services designed for corporate excellence",
+    "services": [
+      { "title": "100% Electric Fleet", "description": "Our sustainable fleet represents the future of premium transportation. Give your clients luxury with minimal environmental impact." },
+      { "title": "Dedicated Account Manager", "description": "24/7 support with real-time tracking and dedicated account management tailored to your business." },
+      { "title": "White Label Service", "description": "Smooth integration with your brand identity and booking systems for a seamless client experience." },
+      { "title": "Flexible Contracts", "description": "Custom agreements and volume pricing tailored to your business size, frequency and needs." }
+    ]
+  },
+  "hourlyServicePage": {
+    "heroTitle": "Hourly Chauffeur Service",
+    "heroSubtitle": "For occasions requiring greater flexibility, our Hourly Service is the perfect solution. Hire a vehicle and professional driver for as many hours as you need, tailoring the itinerary entirely to your schedule.",
+    "tag": "Hourly Service",
+    "title": "Hourly Chauffeur Service",
+    "body1": "For occasions requiring greater flexibility, our Hourly Service is the perfect solution. Hire a vehicle and professional driver for as many hours as you need, tailoring the itinerary entirely to your schedule.",
+    "body2": "Whether you have multiple meetings, errands across the city, or an evening out, you maintain full control while enjoying the convenience of a professional chauffeur at your side.",
+    "bookNow": "Book Now",
+    "features": [
+      { "title": "Flexible Schedule", "description": "Book from 3 hours up to a full day, entirely on your terms." },
+      { "title": "Dedicated Chauffeur", "description": "Your personal driver stays with you throughout the entire service." },
+      { "title": "Full Control", "description": "Change your itinerary on the go. Total freedom to adjust plans." },
+      { "title": "All Inclusive", "description": "Fuel, tolls, parking and driver time all included in the price." }
+    ],
+    "whyTag": "Why Choose Us",
+    "whyTitleLine1": "Every ride,",
+    "whyTitleEmphasis": "perfected",
+    "whyBody": "Trust Off We Go Portugal to make every trip smooth, efficient, and thoroughly enjoyable — from the moment we pick you up to the moment we drop you off.",
+    "reasons": [
+      { "title": "Private, Comfortable Vehicles", "description": "Modern sedans and spacious vans with immaculate interiors — every journey feels like first class." },
+      { "title": "Expert Chauffeurs", "description": "Courteous, multilingual drivers trained in customer care and first aid, so you're always in safe hands." },
+      { "title": "Transparent Pricing", "description": "Fixed rates with no hidden fees. Fuel, tolls and parking included — pay only for what you need." },
+      { "title": "24/7 Availability", "description": "We operate around the clock to suit your schedule, whether it's an early flight or a late-night event." }
+    ]
+  },
+  "faqPage": {
+    "heroTitle": "FAQ",
+    "heroSubtitle": "Everything you need to know about our services"
+  },
+  "fleetPage": {
+    "tag": "The Private Fleet",
+    "title": "Our Fleet",
+    "subtitle": "Premium vehicles for every occasion — from executive sedans to spacious luxury vans.",
+    "electric": "Electric",
+    "diesel": "Diesel",
+    "electricFleet": "Electric Fleet",
+    "dieselFleet": "Diesel Fleet — Long Distance",
+    "bookVehicle": "Book This Vehicle",
+    "ctaQuote": "Every vehicle is chosen with precision, so only the silence of comfort is felt.",
+    "reserveRide": "Reserve Your Ride"
+  },
+  "privacyPolicy": {
+    "heroTitle": "Privacy Policy",
+    "heroSubtitle": "Off We Go Portugal is committed to protecting the privacy and personal data of all visitors, clients, partners, and users of our website.",
+    "introP1": "<strong>Off We Go Portugal</strong> is the trading name and commercial brand of LEAPOFSTARS - MANAGEMENT, PRODUCTIONS & TRAVEL LDA., VAT Number PT516863452, with registered office at Rua Dom João V, Nº 24 – 1.03, 1250-091 Lisbon, Portugal.",
+    "introP2": "We process personal data in accordance with the General Data Protection Regulation (EU) 2016/679 (\"GDPR\") and all applicable Portuguese data protection laws.",
+    "introP3": "By using our website or booking our services, you acknowledge and accept the practices described in this Privacy Policy.",
+    "dataWeCollect": {
+      "title": "1. Data We Collect",
+      "personalInfoLabel": "Personal Information",
+      "personalInfo": ["Full name", "Email address", "Telephone number", "Country of residence", "Billing information", "Flight information", "Pick-up and drop-off addresses", "Passenger details", "Special requests provided during booking"],
+      "usageLabel": "Website Usage Information",
+      "usageIntro": "When you visit our website, we may automatically collect:",
+      "usage": ["IP address", "Browser type", "Device information", "Operating system", "Website usage statistics", "Pages visited", "Referral sources"]
+    },
+    "howWeCollect": {
+      "title": "2. How We Collect Your Data",
+      "intro": "We collect personal information when you:",
+      "items": ["Submit a contact form", "Request a quotation", "Make a reservation through our booking engine", "Contact us by email, telephone, or WhatsApp", "Subscribe to our newsletter", "Interact with us through social media platforms", "Participate in surveys or promotions"]
+    },
+    "purpose": {
+      "title": "3. Purpose of Processing",
+      "intro": "We process personal data for the following purposes:",
+      "items": ["Managing reservations and transportation services", "Processing payments", "Providing customer support", "Communicating booking updates", "Responding to enquiries", "Improving our services and website performance", "Sending marketing communications (where consent has been provided)", "Complying with legal and regulatory obligations", "Preventing fraud and ensuring security"]
+    },
+    "legalBasis": {
+      "title": "4. Legal Basis for Processing",
+      "intro": "We process personal data based on one or more of the following legal grounds:",
+      "items": ["Performance of a contract", "Compliance with legal obligations", "Legitimate business interests", "Consent provided by the data subject"],
+      "note": "Where consent is required, it may be withdrawn at any time without affecting the lawfulness of processing carried out before withdrawal."
+    },
+    "marketing": {
+      "title": "5. Marketing Communications",
+      "p1": "With your consent, Off We Go Portugal may send promotional communications regarding our services, offers, and updates.",
+      "p2": "You may unsubscribe from marketing communications at any time by:",
+      "item1": "Clicking the unsubscribe link included in our emails",
+      "item2Prefix": "Contacting us directly at",
+      "p3": "Opting out of marketing communications will not affect service-related communications regarding existing bookings."
+    },
+    "retention": {
+      "title": "6. Data Retention",
+      "p1": "Personal data will be retained only for as long as necessary to fulfil the purposes for which it was collected, including legal, accounting, and regulatory requirements.",
+      "p2Prefix": "In general, booking and contractual records may be retained for up to",
+      "p2Bold": "five (5) years",
+      "p2Suffix": "following the conclusion of the business relationship, unless a longer retention period is required by law."
+    },
+    "security": {
+      "title": "7. Data Security",
+      "p1": "Off We Go Portugal implements appropriate technical and organisational measures designed to protect personal data against:",
+      "items": ["Unauthorised access", "Disclosure", "Alteration", "Loss", "Misuse", "Destruction"],
+      "p2": "While we strive to protect your personal information, no internet transmission or electronic storage system can be guaranteed as completely secure."
+    },
+    "thirdParty": {
+      "title": "8. Third-Party Service Providers",
+      "p1": "To operate our business efficiently, we may share personal data with trusted third-party providers, including:",
+      "items": ["Payment processors (such as Stripe)", "Website hosting providers", "Reservation and booking software providers", "Accounting and legal service providers", "Licensed transportation partners operating services on our behalf"],
+      "p2": "All third parties are required to process personal data securely and in compliance with applicable data protection laws."
+    },
+    "socialMedia": {
+      "title": "9. Social Media",
+      "p1": "Our website may contain links to social media platforms including Facebook, Instagram, LinkedIn, and other services.",
+      "p2": "These platforms may collect information about your interaction with their services. We encourage users to review the privacy policies of the respective social media providers.",
+      "p3": "Off We Go Portugal does not control how these third parties collect or process your personal information."
+    },
+    "rights": {
+      "title": "10. Your Rights Under GDPR",
+      "intro": "Under the GDPR, you have the right to:",
+      "items": ["Access your personal data", "Correct inaccurate personal data", "Request deletion of your personal data", "Restrict processing of your personal data", "Object to processing", "Request data portability", "Withdraw consent where processing is based on consent"],
+      "note": "To exercise any of these rights, please contact us using the details below."
+    },
+    "complaints": {
+      "title": "11. Complaints",
+      "p1": "If you believe your personal data has been processed unlawfully, you have the right to lodge a complaint with the relevant supervisory authority.",
+      "p2Prefix": "In Portugal, the supervisory authority is the",
+      "p2Bold": "Comissão Nacional de Proteção de Dados (CNPD)"
+    },
+    "cookies": {
+      "title": "12. Cookies",
+      "whatTitle": "What Are Cookies?",
+      "whatBody": "Cookies are small text files stored on your device when you visit a website. They help improve website functionality, performance, security, and user experience.",
+      "typesTitle": "Types of Cookies We Use",
+      "essential": "Essential Cookies",
+      "essentialBody": "Required for the proper operation of the website.",
+      "analytics": "Analytics Cookies",
+      "analyticsBody": "Used to understand how visitors interact with the website and improve performance.",
+      "functional": "Functional Cookies",
+      "functionalBody": "Remember user preferences and settings.",
+      "managingTitle": "Managing Cookies",
+      "managingBody": "Most web browsers allow users to control, block, or delete cookies through browser settings. Please note that disabling cookies may affect certain website functions and user experience."
+    },
+    "contact": {
+      "title": "13. Contact Information",
+      "intro": "For any questions regarding this Privacy Policy or your personal data, please contact:",
+      "brandLine": "A brand of LEAPOFSTARS - MANAGEMENT, PRODUCTIONS & TRAVEL LDA.",
+      "vatLabel": "VAT Number:",
+      "emailLabel": "Email:",
+      "websiteLabel": "Website:"
+    },
+    "closingNote": "Off We Go Portugal reserves the right to update or amend this Privacy Policy at any time. Any updates will be published on this page and become effective immediately upon publication. We encourage users to review this Privacy Policy periodically."
+  },
+  "terms": {
+    "heroTitle": "Terms & Conditions",
+    "heroSubtitle": "Please read these Terms & Conditions carefully before booking or using any service provided by Off We Go Portugal.",
+    "company": {
+      "title": "1. Company Information",
+      "p1Prefix": "Off We Go Portugal is the trading name and commercial brand of",
+      "p1Bold": "LEAPOFSTARS - MANAGEMENT, PRODUCTIONS & TRAVEL LDA.",
+      "p1Suffix": ", a company duly incorporated and registered in Portugal.",
+      "regNameLabel": "Registered Company Name",
+      "vatLabel": "VAT Number",
+      "officeLabel": "Registered Office",
+      "p2": "Throughout these Terms & Conditions, references to \"Off We Go Portugal\", \"we\", \"our\", or \"us\" shall refer to LEAPOFSTARS - MANAGEMENT, PRODUCTIONS & TRAVEL LDA."
+    },
+    "insurance": {
+      "title": "2. Insurance & Licensing",
+      "p1": "All services are operated in accordance with Portuguese legislation and applicable licensing requirements.",
+      "p2": "All vehicles and passengers are covered by the legally required insurance policies, including:",
+      "items": ["Public Liability Insurance", "Personal Accident Insurance", "Vehicle Insurance"]
+    },
+    "services": {
+      "title": "3. Services",
+      "intro": "Off We Go Portugal provides:",
+      "items": ["Airport Transfers", "Point-to-Point Transfers", "Private Tours", "Hourly Chauffeur Services", "Corporate Transportation", "Event Transportation", "Luxury Travel Experiences"],
+      "includesLabel": "Unless otherwise stated in writing, quoted prices include:",
+      "includes": ["Professional chauffeur", "Fuel", "Highway tolls", "Applicable taxes"],
+      "excludesLabel": "Unless specifically stated, prices do not include:",
+      "excludes": ["Entrance fees to attractions and monuments", "Meals and beverages", "Official tour guides", "Personal expenses", "Parking fees during hourly chauffeur services"]
+    },
+    "belongings": {
+      "title": "4. Personal Belongings",
+      "p1": "Passengers are responsible for their personal belongings at all times.",
+      "p2": "Off We Go Portugal shall not be held liable for any items that are lost, stolen, damaged, misplaced, or forgotten inside the vehicle."
+    },
+    "luggage": {
+      "title": "5. Luggage",
+      "p1": "Vehicle allocation is based on the luggage information provided at the time of booking.",
+      "p2": "Clients are responsible for accurately declaring the number and size of all luggage items.",
+      "p3": "Off We Go Portugal reserves the right to provide a larger vehicle or additional vehicle at the client's expense if the declared luggage capacity is exceeded.",
+      "p4": "We shall not be responsible for any disruption caused by undeclared excess luggage."
+    },
+    "conduct": {
+      "title": "6. Passenger Conduct",
+      "intro": "The following are strictly prohibited in all vehicles:",
+      "items": ["Smoking or vaping", "Illegal substances", "Excessive alcohol consumption", "Any conduct that may endanger the driver, vehicle, or other passengers"],
+      "note": "Off We Go Portugal reserves the right to refuse or terminate a service without refund if a passenger behaves in a manner that is abusive, unsafe, threatening, or inappropriate."
+    },
+    "forceMajeure": {
+      "title": "7. Force Majeure",
+      "intro": "Off We Go Portugal shall not be liable for delays, interruptions, itinerary changes, or inability to provide services due to circumstances beyond our reasonable control, including but not limited to:",
+      "items": ["Severe weather conditions", "Traffic accidents or congestion", "Road closures", "Airport disruptions or closures", "Flight cancellations", "Government restrictions", "Border restrictions", "Strikes", "Civil disturbances", "Natural disasters"]
+    },
+    "pricing": {
+      "title": "8. Pricing",
+      "p1": "All prices are subject to change without prior notice until a reservation has been confirmed and payment has been received.",
+      "p2": "Once confirmed, the agreed service price shall remain fixed unless the booking is modified by the client."
+    },
+    "reservations": {
+      "title": "9. Reservations & Payments",
+      "bookingMethodsLabel": "9.1 Booking Methods",
+      "bookingMethodsIntro": "Reservations may be made through:",
+      "bookingMethods": ["Website booking engine", "Email", "Telephone", "WhatsApp"],
+      "confirmationLabel": "9.2 Booking Confirmation",
+      "confirmationIntro": "A booking is only considered confirmed when:",
+      "confirmationItems": ["Availability has been verified;", "The booking has been accepted by Off We Go Portugal; and", "Payment has been received, unless otherwise agreed in writing."],
+      "paymentMethodsLabel": "9.3 Payment Methods",
+      "paymentMethodsIntro": "Payments may be made via:",
+      "paymentMethods": ["Credit Card", "Debit Card", "Stripe Payment Links", "Bank Transfer"],
+      "paymentNote": "Off We Go Portugal reserves the right to verify payment transactions and request additional documentation when necessary to prevent fraud.",
+      "chargebacksLabel": "9.4 Chargebacks",
+      "chargebacksP1": "Clients are encouraged to contact Off We Go Portugal directly regarding any payment concerns before initiating a chargeback procedure.",
+      "chargebacksP2": "Fraudulent or unjustified chargebacks may result in additional administrative, collection, and legal costs where permitted by law."
+    },
+    "cancellation": {
+      "title": "10. Cancellation Policy",
+      "standardLabel": "10.1 Standard Services",
+      "standardIntro": "The following cancellation policy applies to:",
+      "standardServices": ["Airport Transfers", "Point-to-Point Transfers", "Private Tours", "Hourly Chauffeur Services"],
+      "standardRules": ["More than 48 hours before service commencement: Full refund.", "Less than 48 hours before service commencement: 100% cancellation fee.", "No-show: 100% cancellation fee."],
+      "sprinterLabel": "10.2 Mercedes Sprinter Services",
+      "sprinterP1": "Due to the operational requirements of group transportation, all Mercedes Sprinter bookings are non-refundable once confirmed.",
+      "sprinterP2": "No refunds shall be issued under any circumstances following confirmation of a Mercedes Sprinter reservation.",
+      "noShowLabel": "10.3 No-Show Policy",
+      "noShowP1": "A no-show occurs when a client fails to appear at the agreed pick-up location within the applicable waiting time and without prior communication.",
+      "noShowP2": "No-shows are charged at 100% of the service value."
+    },
+    "waitingTime": {
+      "title": "11. Waiting Time Policy",
+      "airportLabel": "Airport Arrivals",
+      "complimentaryLabel": "Complimentary waiting time:",
+      "airportTime": "60 minutes from actual flight landing time.",
+      "airportNote": "Flight arrivals are monitored in real time provided a valid flight number has been supplied during the booking process.",
+      "hotelsLabel": "Hotels, Residences & Offices",
+      "hotelsTime": "15 minutes.",
+      "cruiseLabel": "Cruise Terminals",
+      "cruiseTime": "30 minutes.",
+      "extraNote": "Additional waiting time may be charged at the applicable hourly rate."
+    },
+    "childSafety": {
+      "title": "12. Child Safety",
+      "p1": "Children and infants must travel using the appropriate safety equipment as required by law.",
+      "p2": "Child seats and booster seats are available upon request and must be requested at the time of booking.",
+      "p3": "Failure to request the necessary child safety equipment may prevent the service from being operated."
+    },
+    "vehicleDamage": {
+      "title": "13. Vehicle Damage",
+      "p1": "The client shall be financially responsible for any damage caused to the vehicle by themselves or members of their party.",
+      "intro": "This includes but is not limited to:",
+      "items": ["Interior damage", "Excessive cleaning requirements", "Spilled liquids", "Torn upholstery", "Vomit-related cleaning", "Damage to vehicle equipment"],
+      "note": "Repair, cleaning, replacement, and administrative costs may be charged accordingly."
+    },
+    "tourServices": {
+      "title": "14. Tour Services",
+      "p1": "Tour itineraries may be modified due to weather conditions, traffic, road closures, monument restrictions, operational requirements, or circumstances beyond our control.",
+      "p2": "Off We Go Portugal will make every reasonable effort to preserve the overall experience whenever possible."
+    },
+    "subcontracted": {
+      "title": "15. Subcontracted Services",
+      "p1": "Off We Go Portugal reserves the right to subcontract services to carefully selected, fully licensed, and insured transportation partners.",
+      "p2": "Where subcontractors are used, the same operational and service standards shall apply."
+    },
+    "amendments": {
+      "title": "16. Booking Amendments",
+      "intro": "Requests to modify an existing reservation are subject to:",
+      "items": ["Availability", "Operational feasibility", "Possible price adjustments"],
+      "note": "No modification shall be considered confirmed until accepted in writing by Off We Go Portugal."
+    },
+    "governingLaw": {
+      "title": "17. Governing Law",
+      "p1": "These Terms & Conditions shall be governed by and interpreted in accordance with the laws of Portugal.",
+      "p2": "Any dispute arising from these Terms & Conditions shall be subject to the exclusive jurisdiction of the courts of Lisbon, Portugal."
+    },
+    "contact": {
+      "title": "Contact Information",
+      "brandLine": "A brand of LEAPOFSTARS - MANAGEMENT, PRODUCTIONS & TRAVEL LDA.",
+      "vatLabel": "VAT Number:",
+      "emailLabel": "Email:",
+      "websiteLabel": "Website:"
+    },
+    "closingNote": "Off We Go Portugal reserves the right to amend these Terms & Conditions at any time without prior notice. The latest version will always be available on the company's website."
+  }
+}

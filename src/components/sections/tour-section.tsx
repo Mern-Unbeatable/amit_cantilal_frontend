@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import type {Tour} from "@/features/tour/tour.types.ts";
 import {TourCard} from "@/features/tour/tour-card.tsx";
 
@@ -6,18 +7,19 @@ interface ToursSectionProps {
 }
 
 export function ToursSection({ tours }: ToursSectionProps) {
+  const { t } = useTranslation();
   return (
     <section className="py-10 md:py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-4 md:px-12">
 
         {/* Header */}
         <div className="text-center mb-8 md:mb-16">
-          <div className="tag-gold mb-4">Experiences</div>
+          <div className="tag-gold mb-4">{t('toursSection.tag')}</div>
           <h2 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold mb-3 md:mb-6">
-            Available <em className="italic">Tours</em>
+            {t('toursSection.titlePrefix')} <em className="italic">{t('toursSection.titleEmphasis')}</em>
           </h2>
           <p className="text-sm md:text-xl text-[#9A9182] max-w-2xl mx-auto">
-            Choose from our curated selection of exclusive private tours across Portugal.
+            {t('toursSection.subtitle')}
           </p>
         </div>
 
@@ -31,7 +33,7 @@ export function ToursSection({ tours }: ToursSectionProps) {
         ) : (
           <div className="max-w-3xl mx-auto border border-[#C9A84C]/20 bg-[#141414] px-6 py-8 text-center">
             <p className="text-sm md:text-base text-[#9A9182]">
-              Tours are temporarily unavailable. Please try again in a moment.
+              {t('toursSection.empty')}
             </p>
           </div>
         )}

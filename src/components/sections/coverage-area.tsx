@@ -1,7 +1,11 @@
 import { MapPin } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import {areas} from "@/data";
 
 const CoverageArea = () => {
+  const { t } = useTranslation()
+  const translatedAreas = t('coverageArea.areas', { returnObjects: true }) as Array<{ title: string; description: string }>
+  const mergedAreas = areas.map((area, idx) => ({ ...area, ...translatedAreas[idx] }))
   return (
     <section className="py-10 md:py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-4 md:px-12">
@@ -9,18 +13,18 @@ const CoverageArea = () => {
 
           {/* Header */}
           <div className="text-center mb-6 md:mb-16">
-            <div className="tag-gold mb-4">Where We Operate</div>
+            <div className="tag-gold mb-4">{t('coverageArea.tag')}</div>
             <h2 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold mb-3 md:mb-6">
-              Coverage Areas
+              {t('coverageArea.title')}
             </h2>
             <p className="text-sm md:text-xl text-[#9A9182] max-w-3xl mx-auto">
-              Complete coverage across the Iberian Peninsula
+              {t('coverageArea.subtitle')}
             </p>
           </div>
 
           {/* 2-col grid */}
           <div className="grid grid-cols-2 gap-3 md:gap-8">
-            {areas.map(({ title, description, cities }) => (
+            {mergedAreas.map(({ title, description, cities }) => (
               <div
                 key={title}
                 className="group bg-[#141414] border border-[#C9A84C]/12 hover:border-[#C9A84C]/35 transition-colors duration-200 p-4 md:p-8 text-center"

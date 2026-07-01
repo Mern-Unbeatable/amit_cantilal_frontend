@@ -4,17 +4,18 @@ import PageHeader from "@/components/page-header.tsx";
 import { StatisticsCard } from "@/components/dashboard/statistics-card.tsx";
 import {
   BookingTrendsChart,
-  FleetUtilizationChart,
   ServiceBreakdownChart,
-  TopDestinationsChart,
 } from "@/components/dashboard/charts-section.tsx";
-import { mainStatistics } from "@/data/statistics";
+import { useDashboardStats } from "@/features/dashboard/dashboard.hooks.ts";
 
 export const Route = createFileRoute('/_authenticated/admin/dashboard')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const { data, isFetching } = useDashboardStats()
+  const mainStatistics = data?.main_statistics ?? []
+
   return (
     <AppWrapper>
       <PageHeader
@@ -24,27 +25,26 @@ function RouteComponent() {
 
       {/* Main Statistics Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        {mainStatistics.map((stat) => (
-          <StatisticsCard
-            key={stat.id}
-            title={stat.title}
-            value={stat.value}
-            change={stat.change}
-            changeType={stat.changeType}
-            description={stat.description}
-          />
-        ))}
+        {isFetching
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="h-32 animate-pulse bg-muted/20 rounded-md" />
+            ))
+          : mainStatistics.map((stat) => (
+              <StatisticsCard
+                key={stat.id}
+                title={stat.title}
+                value={stat.value}
+                change={stat.change}
+                changeType={stat.change_type}
+                description={stat.description}
+              />
+            ))}
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <BookingTrendsChart />
         <ServiceBreakdownChart />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <FleetUtilizationChart />
-        <TopDestinationsChart />
       </div>
     </AppWrapper>
   )
