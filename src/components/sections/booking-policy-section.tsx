@@ -1,16 +1,7 @@
 import { AlertCircle, Bus, Car, Clock, RefreshCw, ShieldOff } from 'lucide-react'
+import { Trans, useTranslation } from 'react-i18next'
 
-const sedanVanRules = [
-  { label: 'Less than 24 hours', charge: '100% charged', severity: 'high' },
-  { label: 'Less than 48 hours', charge: '50% charged', severity: 'mid' },
-  { label: 'More than 48 hours', charge: 'Full refund', severity: 'low' },
-]
-
-const rescheduleOptions = [
-  'Propose a new date',
-  'Credit of paid amount + 20% bonus towards other services',
-  'Full refund according to cancellation policy',
-]
+const severities = ['high', 'mid', 'low']
 
 const severityBar: Record<string, string> = {
   high: 'bg-red-500',
@@ -25,18 +16,22 @@ const severityText: Record<string, string> = {
 }
 
 export function BookingPoliciesSection() {
+  const { t } = useTranslation()
+  const sedanVanRules = (t('bookingPolicy.sedanVanRules', { returnObjects: true }) as Array<{ label: string; charge: string }>)
+    .map((rule, idx) => ({ ...rule, severity: severities[idx] }))
+  const rescheduleOptions = t('bookingPolicy.reschedulingOptions', { returnObjects: true }) as string[]
   return (
     <section className="py-10 md:py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-4 md:px-12">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-10 md:mb-16">
-            <div className="tag-gold mb-4">Policies</div>
+            <div className="tag-gold mb-4">{t('bookingPolicy.tag')}</div>
             <h2 className="font-serif text-2xl md:text-5xl font-light text-gradient-gold mb-3 md:mb-6">
-              Booking <em className="italic">Policies</em>
+              {t('bookingPolicy.titlePrefix')} <em className="italic">{t('bookingPolicy.titleEmphasis')}</em>
             </h2>
             <p className="text-sm md:text-lg text-[#9A9182] max-w-2xl mx-auto">
-              Transparent terms so you always know where you stand.
+              {t('bookingPolicy.subtitle')}
             </p>
           </div>
 
@@ -49,7 +44,7 @@ export function BookingPoliciesSection() {
                 <div className="w-9 h-9 md:w-12 md:h-12 bg-[#C9A84C] flex items-center justify-center flex-shrink-0">
                   <Car className="w-4 h-4 md:w-5 md:h-5 text-[#0B0B0B]" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-serif text-lg md:text-2xl font-light text-gradient-gold">Sedan & Van</h3>
+                <h3 className="font-serif text-lg md:text-2xl font-light text-gradient-gold">{t('bookingPolicy.sedanVan')}</h3>
               </div>
               <div className="px-5 py-4 md:px-8 md:py-6 space-y-0 divide-y divide-[#C9A84C]/08">
                 {sedanVanRules.map(({ label, charge, severity }) => (
@@ -75,22 +70,25 @@ export function BookingPoliciesSection() {
                 <div className="w-9 h-9 md:w-12 md:h-12 bg-red-500 flex items-center justify-center flex-shrink-0">
                   <Bus className="w-4 h-4 md:w-5 md:h-5 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-serif text-lg md:text-2xl font-light text-red-400">Sprinter</h3>
+                <h3 className="font-serif text-lg md:text-2xl font-light text-red-400">{t('bookingPolicy.sprinter')}</h3>
               </div>
               <div className="px-5 py-5 md:px-8 md:py-6 space-y-4">
                 {/* Big badge */}
                 <div className="flex items-center gap-3">
                   <span className="w-1 h-10 flex-shrink-0 bg-red-500" />
                   <div>
-                    <p className="text-sm md:text-base font-semibold text-red-400">100% charged for any cancellation</p>
-                    <p className="text-xs text-[#9A9182] mt-0.5">Applies regardless of notice period</p>
+                    <p className="text-sm md:text-base font-semibold text-red-400">{t('bookingPolicy.sprinterCharge')}</p>
+                    <p className="text-xs text-[#9A9182] mt-0.5">{t('bookingPolicy.sprinterNote')}</p>
                   </div>
                 </div>
                 {/* Non-refundable notice */}
                 <div className="flex items-start gap-3 p-4 bg-red-500/08 border border-red-500/20">
                   <ShieldOff className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
                   <p className="text-xs md:text-sm text-[#9A9182] leading-relaxed">
-                    All Sprinter bookings are <span className="text-red-400 font-medium">non-refundable</span>. No refunds will be issued under any circumstances after booking confirmation.
+                    <Trans
+                      i18nKey="bookingPolicy.sprinterNotice"
+                      components={{ bold: <span className="text-red-400 font-medium" /> }}
+                    />
                   </p>
                 </div>
               </div>
@@ -108,7 +106,7 @@ export function BookingPoliciesSection() {
                 />
               </div>
               <h3 className="font-serif text-lg md:text-2xl font-light text-gradient-gold">
-                Rescheduling Options
+                {t('bookingPolicy.reschedulingTitle')}
               </h3>
             </div>
 
@@ -137,19 +135,19 @@ export function BookingPoliciesSection() {
             />
             <div className="space-y-1 md:space-y-2">
               <p className="text-xs md:text-sm text-[#9A9182] leading-relaxed">
-                All bookings are subject to availability confirmation.
+                {t('bookingPolicy.availabilityNotice')}
               </p>
               <p className="text-xs md:text-sm text-[#9A9182] leading-relaxed">
-                Same-day bookings are not available online —{' '}
+                {t('bookingPolicy.sameDayNoticePrefix')}{' '}
                 <a
                   href="https://wa.me/351914578214"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#C9A84C] underline underline-offset-2 hover:text-[#C9A84C]/70 transition-colors"
                 >
-                  contact us on WhatsApp
+                  {t('bookingPolicy.sameDayLink')}
                 </a>{' '}
-                for last-minute requests.
+                {t('bookingPolicy.sameDayNoticeSuffix')}
               </p>
             </div>
           </div>

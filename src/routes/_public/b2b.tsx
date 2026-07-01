@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { LogIn, MessageCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { Button } from '@/components/ui/button.tsx'
 import { WHATSAPP_MESSAGE, WHATSAPP_NUMBER } from '@/constants'
@@ -16,6 +17,7 @@ export const Route = createFileRoute('/_public/b2b')({
 })
 
 function RouteComponent() {
+  const { t } = useTranslation()
   const { data: fleet } = useFleet()
 
   return (
@@ -39,18 +41,16 @@ function RouteComponent() {
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-5xl">
             {/* Tag */}
-            <div className="tag-gold mb-4 md:mb-6">Corporate Services</div>
+            <div className="tag-gold mb-4 md:mb-6">{t('b2bPage.tag')}</div>
 
             {/* Heading */}
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light italic text-[#C9A84C] mb-4 md:mb-6 drop-shadow-lg">
-              B2B
+              {t('b2bPage.heading')}
             </h1>
 
             {/* Subtext */}
             <p className="text-lg md:text-xl lg:text-2xl text-[#F5F0E8] leading-relaxed italic max-w-4xl drop-shadow-md">
-              Off We Go Portugal understands the unique demands in B2B services for Travel
-              Agencies, Hotels and Concierge Services — tailored to meet the
-              expectations of your clients.
+              {t('b2bPage.subtext')}
             </p>
 
             {/* CTAs */}
@@ -66,7 +66,7 @@ function RouteComponent() {
                   rel="noopener noreferrer"
                 >
                   <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                  Chat on WhatsApp
+                  {t('b2bPage.whatsapp')}
                 </a>
               </Button>
 
@@ -76,7 +76,7 @@ function RouteComponent() {
                 variant="outline"
                 className="rounded-none h-10 md:h-14 text-sm md:text-lg px-5 md:px-8 border-[#C9A84C]/30 text-[#F5F0E8] hover:bg-[#C9A84C]/10 hover:text-[#F5F0E8]"
               >
-                <a href="#apply">Fill Form</a>
+                <a href="#apply">{t('b2bPage.fillForm')}</a>
               </Button>
 
               {/* Partner login */}
@@ -87,7 +87,7 @@ function RouteComponent() {
               >
                 <Link to="/">
                   <LogIn className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                  Partner Login
+                  {t('b2bPage.partnerLogin')}
                 </Link>
               </Button>
             </div>

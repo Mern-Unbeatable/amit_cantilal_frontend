@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Mail, MessageCircle, Phone } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -63,6 +64,7 @@ function Field({
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function B2BRequestForm() {
+  const { t } = useTranslation()
   const [submitted, setSubmitted] = useState(false)
   const [partnerType, setPartnerType] = useState('')
 
@@ -93,7 +95,7 @@ export default function B2BRequestForm() {
           setError('root', {
             message:
               err?.response?.data?.message ??
-              'Something went wrong. Please try again.',
+              t('partnerForm.genericError'),
           }),
       },
     )
@@ -105,12 +107,12 @@ export default function B2BRequestForm() {
         <div className="max-w-2xl mx-auto">
           {/* Header */}
           <div className="text-center mb-6 md:mb-10">
-            <div className="tag-gold mb-4">Get Started</div>
+            <div className="tag-gold mb-4">{t('b2bForm.tag')}</div>
             <h2 className="font-serif text-2xl md:text-4xl font-light text-gradient-gold mb-2 md:mb-4">
-              Request Partnership
+              {t('b2bForm.title')}
             </h2>
             <p className="text-xs md:text-base text-[#9A9182]">
-              Fill out the form and we'll contact you within 24 hours.
+              {t('b2bForm.subtitle')}
             </p>
           </div>
 
@@ -134,10 +136,10 @@ export default function B2BRequestForm() {
                   </svg>
                 </div>
                 <h4 className="font-serif text-2xl font-light text-gradient-gold">
-                  Request Submitted
+                  {t('b2bForm.successTitle')}
                 </h4>
                 <p className="text-[#9A9182]">
-                  Our team will be in touch within 24 hours.
+                  {t('b2bForm.successBody')}
                 </p>
               </div>
             ) : (
@@ -146,25 +148,25 @@ export default function B2BRequestForm() {
                 className="space-y-3 md:space-y-6"
               >
                 {/* Partner type */}
-                <Field id="partnerType" label="Partner Type" required>
+                <Field id="partnerType" label={t('b2bForm.partnerType')} required>
                   <Select
                     value={partnerType}
                     onValueChange={setPartnerType}
                     required
                   >
                     <SelectTrigger className="h-10 text-xs md:text-base">
-                      <SelectValue placeholder="Select type" />
+                      <SelectValue placeholder={t('b2bForm.partnerTypePlaceholder')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="hotel">Hotel</SelectItem>
+                      <SelectItem value="hotel">{t('b2bForm.partnerTypes.hotel')}</SelectItem>
                       <SelectItem value="travel-agency">
-                        Travel Agency
+                        {t('b2bForm.partnerTypes.travelAgency')}
                       </SelectItem>
                       <SelectItem value="concierge">
-                        Concierge Service
+                        {t('b2bForm.partnerTypes.concierge')}
                       </SelectItem>
-                      <SelectItem value="corporate">Corporate</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="corporate">{t('b2bForm.partnerTypes.corporate')}</SelectItem>
+                      <SelectItem value="other">{t('b2bForm.partnerTypes.other')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </Field>
@@ -172,16 +174,16 @@ export default function B2BRequestForm() {
                 {/* Company name */}
                 <Field
                   id="companyName"
-                  label="Company Name"
+                  label={t('b2bForm.companyName')}
                   required
                   error={errors.companyName?.message}
                 >
                   <Input
                     id="companyName"
-                    placeholder="Hotel or agency name"
+                    placeholder={t('b2bForm.companyNamePlaceholder')}
                     className="h-10 text-xs md:text-base"
                     {...register('companyName', {
-                      required: 'Company name is required',
+                      required: t('b2bForm.companyNameRequired'),
                     })}
                   />
                 </Field>
@@ -190,7 +192,7 @@ export default function B2BRequestForm() {
                 <div className="grid grid-cols-2 gap-3 md:gap-4">
                   <Field
                     id="contactName"
-                    label="Name"
+                    label={t('b2bForm.name')}
                     required
                     error={errors.contactName?.message}
                   >
@@ -198,13 +200,13 @@ export default function B2BRequestForm() {
                       id="contactName"
                       className="h-10 text-xs md:text-base"
                       {...register('contactName', {
-                        required: 'Name is required',
+                        required: t('b2bForm.nameRequired'),
                       })}
                     />
                   </Field>
                   <Field
                     id="position"
-                    label="Position"
+                    label={t('b2bForm.position')}
                     error={errors.position?.message}
                   >
                     <Input
@@ -219,7 +221,7 @@ export default function B2BRequestForm() {
                 <div className="grid grid-cols-2 gap-3 md:gap-4">
                   <Field
                     id="email"
-                    label="Email"
+                    label={t('b2bForm.email')}
                     required
                     error={errors.email?.message}
                   >
@@ -228,32 +230,32 @@ export default function B2BRequestForm() {
                       type="email"
                       className="h-10 text-xs md:text-base"
                       {...register('email', {
-                        required: 'Email is required',
+                        required: t('b2bForm.emailRequired'),
                         pattern: {
                           value: /^\S+@\S+\.\S+$/,
-                          message: 'Invalid email',
+                          message: t('b2bForm.emailInvalid'),
                         },
                       })}
                     />
                   </Field>
                   <Field
                     id="phone"
-                    label="Phone"
+                    label={t('b2bForm.phone')}
                     required
                     error={errors.phone?.message}
                   >
                     <Input
                       id="phone"
                       type="tel"
-                      placeholder="+351 912 345 678"
+                      placeholder={t('b2bForm.phonePlaceholder')}
                       className="h-10 text-xs md:text-base"
-                      {...register('phone', { required: 'Phone is required' })}
+                      {...register('phone', { required: t('b2bForm.phoneRequired') })}
                     />
                   </Field>
                 </div>
 
                 {/* Message */}
-                <Field id="message" label="Message">
+                <Field id="message" label={t('b2bForm.message')}>
                   <Textarea
                     id="message"
                     rows={3}
@@ -276,7 +278,7 @@ export default function B2BRequestForm() {
                     disabled={isPending}
                     className="flex-1 h-10 rounded-none bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium text-sm md:text-base"
                   >
-                    {isPending ? 'Submitting...' : 'Submit Request'}
+                    {isPending ? t('b2bForm.submitting') : t('b2bForm.submit')}
                   </Button>
                   <Button
                     type="button"
@@ -290,7 +292,7 @@ export default function B2BRequestForm() {
                       rel="noopener noreferrer"
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
-                      WhatsApp
+                      {t('b2bForm.whatsapp')}
                     </a>
                   </Button>
                 </div>
@@ -301,7 +303,7 @@ export default function B2BRequestForm() {
           {/* Direct contact */}
           <div className="mt-6 md:mt-10 text-center space-y-2 md:space-y-4">
             <p className="text-[#9A9182] text-xs md:text-sm">
-              Or contact us directly:
+              {t('b2bForm.directContact')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
               <a

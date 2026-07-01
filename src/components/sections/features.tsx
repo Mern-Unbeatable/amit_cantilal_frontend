@@ -8,6 +8,7 @@ import {
   Phone,
   Users,
 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 // ─── Reusable sub-components ──────────────────────────────────────────────────
 
@@ -101,6 +102,10 @@ function ContactCard({
 // ─── Section ──────────────────────────────────────────────────────────────────
 
 export default function B2BFeatures() {
+  const { t } = useTranslation()
+  const fleetItems = t('b2bFeatures.fleet.items', { returnObjects: true }) as string[]
+  const commissionItems = t('b2bFeatures.commissions.items', { returnObjects: true }) as string[]
+  const sustainabilityItems = t('b2bFeatures.sustainability.items', { returnObjects: true }) as string[]
   return (
     <section className="py-10 md:py-20 bg-[#0B0B0B]">
       <div className="container mx-auto px-4 md:px-12">
@@ -109,27 +114,20 @@ export default function B2BFeatures() {
           <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-center">
             {/* Text */}
             <div className="space-y-3 md:space-y-6">
-              <Tag icon={Car} label="Premium Fleet" />
+              <Tag icon={Car} label={t('b2bFeatures.fleet.tag')} />
               <h2 className="font-serif text-xl md:text-4xl font-light text-gradient-gold">
-                Luxury Fleet &amp; Group Transport
+                {t('b2bFeatures.fleet.title')}
               </h2>
               <p className="text-xs md:text-lg text-[#9A9182] leading-relaxed">
-                We provide a fleet of premium vehicles that match the highest
-                market standards. From executive sedans to VIP vans, we offer
-                capacity for groups of 6 to 48 people.
+                {t('b2bFeatures.fleet.body')}
               </p>
-              <CheckList
-                items={[
-                  'Mercedes E-Class, S-Class, Sprinter',
-                  'Groups of 6 to 48 people',
-                ]}
-              />
+              <CheckList items={fleetItems} />
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-3 md:gap-4">
-              <StatCard icon={Car} value="7+" label="Premium Models" />
-              <StatCard icon={Users} value="48" label="Max. People" />
+              <StatCard icon={Car} value="7+" label={t('b2bFeatures.fleet.statModels')} />
+              <StatCard icon={Users} value="48" label={t('b2bFeatures.fleet.statPeople')} />
             </div>
           </div>
 
@@ -142,37 +140,28 @@ export default function B2BFeatures() {
                 strokeWidth={1.5}
               />
               <h3 className="font-serif text-2xl md:text-4xl font-light text-gradient-gold mb-2 md:mb-4">
-                15-20%
+                {t('b2bFeatures.commissions.value')}
               </h3>
               <p className="text-sm md:text-xl text-[#9A9182]">
-                Commission per booking
+                {t('b2bFeatures.commissions.label')}
               </p>
               <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-[#C9A84C]/12">
                 <p className="text-xs md:text-sm text-[#9A9182]">
-                  Special conditions for volume contracts and long-term
-                  partnerships
+                  {t('b2bFeatures.commissions.note')}
                 </p>
               </div>
             </div>
 
             {/* Text */}
             <div className="order-1 lg:order-2 space-y-3 md:space-y-6">
-              <Tag icon={DollarSign} label="Attractive Conditions" />
+              <Tag icon={DollarSign} label={t('b2bFeatures.commissions.tag')} />
               <h2 className="font-serif text-xl md:text-4xl font-light text-gradient-gold">
-                Commissions &amp; Competitive Pricing
+                {t('b2bFeatures.commissions.title')}
               </h2>
               <p className="text-xs md:text-lg text-[#9A9182] leading-relaxed">
-                We offer attractive commission conditions between 15% and 20%
-                per booking. With volume contracts, benefit from even more
-                competitive prices.
+                {t('b2bFeatures.commissions.body')}
               </p>
-              <CheckList
-                items={[
-                  '15-20% commission per booking',
-                  'Volume contracts with discounts',
-                  'Guaranteed monthly payments',
-                ]}
-              />
+              <CheckList items={commissionItems} />
             </div>
           </div>
 
@@ -180,41 +169,32 @@ export default function B2BFeatures() {
           <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-center">
             {/* Text */}
             <div className="space-y-3 md:space-y-6">
-              <Tag icon={Leaf} label="Sustainability" green />
+              <Tag icon={Leaf} label={t('b2bFeatures.sustainability.tag')} green />
               <h2 className="font-serif text-xl md:text-4xl font-light text-gradient-gold">
-                Decarbonization Goals
+                {t('b2bFeatures.sustainability.title')}
               </h2>
               <p className="text-xs md:text-lg text-[#9A9182] leading-relaxed">
-                We help companies achieve their corporate decarbonization goals.
-                With a mostly electric fleet, we offer carbon-zero certificates
-                and ESG reports.
+                {t('b2bFeatures.sustainability.body')}
               </p>
-              <CheckList
-                green
-                items={[
-                  'Carbon-zero certificates',
-                  'Quarterly ESG reports',
-                  'Mostly electric fleet',
-                ]}
-              />
+              <CheckList green items={sustainabilityItems} />
             </div>
 
             {/* Contact cards */}
             <div className="space-y-3 md:space-y-4">
               <ContactCard
                 icon={Phone}
-                title="Direct Hotline"
-                subtitle="Priority access"
+                title={t('b2bFeatures.sustainability.hotlineTitle')}
+                subtitle={t('b2bFeatures.sustainability.hotlineSubtitle')}
               />
               <ContactCard
                 icon={MessageCircle}
-                title="WhatsApp Business"
-                subtitle="Quick responses"
+                title={t('b2bFeatures.sustainability.whatsappTitle')}
+                subtitle={t('b2bFeatures.sustainability.whatsappSubtitle')}
               />
               <ContactCard
                 icon={Mail}
-                title="Dedicated Manager"
-                subtitle="Single point of contact"
+                title={t('b2bFeatures.sustainability.managerTitle')}
+                subtitle={t('b2bFeatures.sustainability.managerSubtitle')}
               />
             </div>
           </div>

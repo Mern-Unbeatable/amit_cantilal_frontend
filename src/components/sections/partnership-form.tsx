@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
@@ -56,6 +57,7 @@ function Field({
 // ─── Form ─────────────────────────────────────────────────────────────────────
 
 export default function PartnerForm() {
+  const { t } = useTranslation()
   const [submitted, setSubmitted] = useState(false)
   const [businessType, setBusinessType] = useState('')
 
@@ -85,7 +87,7 @@ export default function PartnerForm() {
           setError('root', {
             message:
               err?.response?.data?.message ??
-              'Something went wrong. Please try again.',
+              t('partnerForm.genericError'),
           }),
       },
     )
@@ -96,9 +98,9 @@ export default function PartnerForm() {
         <div className="max-w-3xl mx-auto">
           <div className="bg-[#0B0B0B] border border-[#C9A84C]/15 p-5 md:p-16">
             <div className="text-center mb-6 md:mb-12">
-              <div className="tag-gold mb-4">Partner Application</div>
+              <div className="tag-gold mb-4">{t('partnerForm.tag')}</div>
               <h3 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold">
-                Become a Corporate Partner
+                {t('partnerForm.title')}
               </h3>
             </div>
 
@@ -121,11 +123,10 @@ export default function PartnerForm() {
                   </svg>
                 </div>
                 <h4 className="font-serif text-2xl font-light text-gradient-gold">
-                  Request Submitted
+                  {t('partnerForm.successTitle')}
                 </h4>
                 <p className="text-[#9A9182]">
-                  Thank you! Our partnerships team will be in touch within 24
-                  hours.
+                  {t('partnerForm.successBody')}
                 </p>
               </div>
             ) : (
@@ -135,80 +136,80 @@ export default function PartnerForm() {
               >
                 <Field
                   id="company"
-                  label="Company Name"
+                  label={t('partnerForm.company')}
                   required
                   error={errors.company?.message}
                 >
                   <Input
                     id="company"
-                    placeholder="Your Company"
+                    placeholder={t('partnerForm.companyPlaceholder')}
                     className="h-10 md:h-14 text-sm md:text-lg"
                     {...register('company', {
-                      required: 'Company name is required',
+                      required: t('partnerForm.companyRequired'),
                     })}
                   />
                 </Field>
 
-                <Field id="businessType" label="Business Type" required>
+                <Field id="businessType" label={t('partnerForm.businessType')} required>
                   <Select value={businessType} onValueChange={setBusinessType}>
                     <SelectTrigger className="h-10 !md:h-14 w-full text-sm md:text-lg">
-                      <SelectValue placeholder="Select your business type" />
+                      <SelectValue placeholder={t('partnerForm.businessTypePlaceholder')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="agency">Travel Agency</SelectItem>
-                      <SelectItem value="hotel">Luxury Hotel</SelectItem>
+                      <SelectItem value="agency">{t('partnerForm.businessTypes.agency')}</SelectItem>
+                      <SelectItem value="hotel">{t('partnerForm.businessTypes.hotel')}</SelectItem>
                       <SelectItem value="concierge">
-                        Concierge Service
+                        {t('partnerForm.businessTypes.concierge')}
                       </SelectItem>
-                      <SelectItem value="corporate">Corporate</SelectItem>
-                      <SelectItem value="dmc">DMC</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="corporate">{t('partnerForm.businessTypes.corporate')}</SelectItem>
+                      <SelectItem value="dmc">{t('partnerForm.businessTypes.dmc')}</SelectItem>
+                      <SelectItem value="other">{t('partnerForm.businessTypes.other')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </Field>
 
                 <Field
                   id="representative"
-                  label="Representative Name"
+                  label={t('partnerForm.representative')}
                   required
                   error={errors.representative?.message}
                 >
                   <Input
                     id="representative"
-                    placeholder="John Doe"
+                    placeholder={t('partnerForm.representativePlaceholder')}
                     className="h-10 md:h-14 text-sm md:text-lg"
                     {...register('representative', {
-                      required: 'Representative name is required',
+                      required: t('partnerForm.representativeRequired'),
                     })}
                   />
                 </Field>
 
                 <Field
                   id="email"
-                  label="Corporate Email"
+                  label={t('partnerForm.email')}
                   required
                   error={errors.email?.message}
                 >
                   <Input
                     id="email"
                     type="email"
-                    placeholder="contact@company.com"
+                    placeholder={t('partnerForm.emailPlaceholder')}
                     className="h-10 md:h-14 text-sm md:text-lg"
                     {...register('email', {
-                      required: 'Email is required',
+                      required: t('partnerForm.emailRequired'),
                       pattern: {
                         value: /^\S+@\S+\.\S+$/,
-                        message: 'Invalid email address',
+                        message: t('partnerForm.emailInvalid'),
                       },
                     })}
                   />
                 </Field>
 
-                <Field id="phone" label="Phone" error={errors.phone?.message}>
+                <Field id="phone" label={t('partnerForm.phone')} error={errors.phone?.message}>
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="+351 912 345 678"
+                    placeholder={t('partnerForm.phonePlaceholder')}
                     className="h-10 md:h-14 text-sm md:text-lg"
                     {...register('phone')}
                   />
@@ -216,12 +217,12 @@ export default function PartnerForm() {
 
                 <Field
                   id="message"
-                  label="Message"
+                  label={t('partnerForm.message')}
                   error={errors.message?.message}
                 >
                   <Textarea
                     id="message"
-                    placeholder="Tell us about your partnership needs..."
+                    placeholder={t('partnerForm.messagePlaceholder')}
                     rows={4}
                     className="text-sm md:text-lg resize-none"
                     {...register('message')}
@@ -240,7 +241,7 @@ export default function PartnerForm() {
                   disabled={isPending}
                   className="w-full h-12 md:h-16 text-base md:text-xl bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium tracking-[.1em] rounded-none"
                 >
-                  {isPending ? 'Submitting...' : 'Submit Partnership Request'}
+                  {isPending ? t('partnerForm.submitting') : t('partnerForm.submit')}
                 </Button>
               </form>
             )}

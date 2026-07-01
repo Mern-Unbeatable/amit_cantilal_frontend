@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { ArrowRight, Briefcase, Car, Users, Zap, Fuel } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
 import type { FleetVehicle } from '@/features/fleet/fleet.types.ts'
@@ -24,6 +25,7 @@ function isElectric(v: FleetVehicle) {
 // ─── Vehicle card ─────────────────────────────────────────────────────────────
 
 function VehicleCard({ vehicle, electric }: { vehicle: FleetVehicle; electric: boolean }) {
+  const { t } = useTranslation()
   return (
     <div className="group h-full flex flex-col bg-[#141414] border border-[#C9A84C]/12 hover:border-[#C9A84C]/50 overflow-hidden transition-colors duration-700 cursor-pointer">
       {/* Image */}
@@ -55,7 +57,7 @@ function VehicleCard({ vehicle, electric }: { vehicle: FleetVehicle; electric: b
             ) : (
               <Fuel className="w-2.5 h-2.5" strokeWidth={2} />
             )}
-            {electric ? 'Electric' : 'Diesel'}
+            {electric ? t('fleetPage.electric') : t('fleetPage.diesel')}
           </span>
         </div>
       </div>
@@ -94,7 +96,7 @@ function VehicleCard({ vehicle, electric }: { vehicle: FleetVehicle; electric: b
             to="/booking"
             className="w-full inline-flex items-center justify-center gap-2 text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] hover:text-[#F5F0E8] transition-colors duration-500 py-1"
           >
-            Book This Vehicle
+            {t('fleetPage.bookVehicle')}
             <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
           </Link>
         </div>
@@ -156,6 +158,7 @@ function FleetSkeleton() {
 // ─── Main component ───────────────────────────────────────────────────────────
 
 function RouteComponent() {
+  const { t } = useTranslation()
   const { data: fleet, isFetching } = useFleet()
 
   const VEHICLE_ORDER = ['eqe', 'eqv', 'eqs', 'e-class', 'e class', 'v-class', 'v class', 's-class', 's class', 'sprinter']
@@ -186,14 +189,14 @@ function RouteComponent() {
 
           <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 md:px-12 max-w-4xl mx-auto">
             <span className="text-[10px] tracking-[0.4em] uppercase text-[#C9A84C] mb-6 md:mb-8">
-              The Private Fleet
+              {t('fleetPage.tag')}
             </span>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] leading-[1.05] mb-6">
-              Our Fleet
+              {t('fleetPage.title')}
             </h1>
             <div className="w-16 h-px bg-[#C9A84C]/60 mb-6 md:mb-8" />
             <p className="text-base md:text-lg text-[#F5F0E8]/60 font-light leading-relaxed max-w-xl">
-              Premium vehicles for every occasion — from executive sedans to spacious luxury vans.
+              {t('fleetPage.subtitle')}
             </p>
           </div>
         </section>
@@ -207,14 +210,14 @@ function RouteComponent() {
             {!isFetching && fleet && (
               <>
                 <FleetGroup
-                  label="Electric Fleet"
+                  label={t('fleetPage.electricFleet')}
                   icon={<Zap className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2} />}
                   vehicles={electric}
                   electric={true}
                 />
 
                 <FleetGroup
-                  label="Diesel Fleet — Long Distance"
+                  label={t('fleetPage.dieselFleet')}
                   icon={<Fuel className="w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={2} />}
                   vehicles={diesel}
                   electric={false}
@@ -229,13 +232,13 @@ function RouteComponent() {
         <section className="py-24 md:py-32 bg-[#0F0F0F] border-t border-[#C9A84C]/15">
           <div className="container mx-auto px-6 md:px-12 max-w-3xl text-center">
             <p className="font-serif text-2xl md:text-4xl text-[#F5F0E8] font-light italic leading-relaxed mb-10">
-              Every vehicle is chosen with precision, so only the silence of comfort is felt.
+              {t('fleetPage.ctaQuote')}
             </p>
             <Link
               to="/booking"
               className="inline-flex items-center gap-3 bg-[#C9A84C] text-[#0B0B0B] px-10 py-4 text-[10px] tracking-[0.3em] uppercase font-medium hover:bg-[#E2C97E] transition-all duration-500"
             >
-              Reserve Your Ride
+              {t('fleetPage.reserveRide')}
               <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
             </Link>
           </div>

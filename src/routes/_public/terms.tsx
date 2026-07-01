@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import {
   AlertTriangle,
   Baby,
@@ -56,7 +57,31 @@ function SectionCard({ icon, title, children, delay = 0 }: SectionCardProps) {
   )
 }
 
+function List({ items }: { items: Array<string> }) {
+  return (
+    <ul className="list-disc pl-6 space-y-1 text-foreground/80">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  )
+}
+
 function RouteComponent() {
+  const { t } = useTranslation()
+  const insuranceItems = t('terms.insurance.items', { returnObjects: true }) as string[]
+  const servicesItems = t('terms.services.items', { returnObjects: true }) as string[]
+  const servicesIncludes = t('terms.services.includes', { returnObjects: true }) as string[]
+  const servicesExcludes = t('terms.services.excludes', { returnObjects: true }) as string[]
+  const conductItems = t('terms.conduct.items', { returnObjects: true }) as string[]
+  const forceMajeureItems = t('terms.forceMajeure.items', { returnObjects: true }) as string[]
+  const bookingMethods = t('terms.reservations.bookingMethods', { returnObjects: true }) as string[]
+  const confirmationItems = t('terms.reservations.confirmationItems', { returnObjects: true }) as string[]
+  const paymentMethods = t('terms.reservations.paymentMethods', { returnObjects: true }) as string[]
+  const standardServices = t('terms.cancellation.standardServices', { returnObjects: true }) as string[]
+  const standardRules = t('terms.cancellation.standardRules', { returnObjects: true }) as string[]
+  const vehicleDamageItems = t('terms.vehicleDamage.items', { returnObjects: true }) as string[]
+  const amendmentsItems = t('terms.amendments.items', { returnObjects: true }) as string[]
   return (
     <motion.div {...mainTransitionProps}>
       <section className="py-16 md:py-24 bg-gradient-to-b from-muted/30 to-background">
@@ -72,11 +97,10 @@ function RouteComponent() {
               </div>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gradient-gold mb-4">
-              Terms &amp; Conditions
+              {t('terms.heroTitle')}
             </h1>
             <p className="text-sm md:text-lg text-foreground/70 max-w-2xl mx-auto">
-              Please read these Terms &amp; Conditions carefully before booking
-              or using any service provided by Off We Go Portugal.
+              {t('terms.heroSubtitle')}
             </p>
           </motion.div>
         </div>
@@ -88,458 +112,250 @@ function RouteComponent() {
             {/* 1. Company Information */}
             <SectionCard
               icon={<Building2 className="w-full h-full" />}
-              title="1. Company Information"
+              title={t('terms.company.title')}
             >
               <p>
-                Off We Go Portugal is the trading name and commercial brand of{' '}
-                <strong>
-                  LEAPOFSTARS - MANAGEMENT, PRODUCTIONS &amp; TRAVEL LDA.
-                </strong>
-                , a company duly incorporated and registered in Portugal.
+                {t('terms.company.p1Prefix')}{' '}
+                <strong>{t('terms.company.p1Bold')}</strong>
+                {t('terms.company.p1Suffix')}
               </p>
               <p className="font-semibold text-foreground pt-2">
-                Registered Company Name
+                {t('terms.company.regNameLabel')}
               </p>
               <p>LEAPOFSTARS - MANAGEMENT, PRODUCTIONS &amp; TRAVEL LDA.</p>
               <p className="font-semibold text-foreground pt-2">
-                VAT Number
+                {t('terms.company.vatLabel')}
               </p>
               <p>PT516863452</p>
               <p className="font-semibold text-foreground pt-2">
-                Registered Office
+                {t('terms.company.officeLabel')}
               </p>
               <p>
                 Rua Dom João V, Nº 24 – 1.03
                 <br />
                 1250-091 Lisbon, Portugal
               </p>
-              <p>
-                Throughout these Terms &amp; Conditions, references to
-                "Off We Go Portugal", "we", "our", or "us" shall refer to
-                LEAPOFSTARS - MANAGEMENT, PRODUCTIONS &amp; TRAVEL LDA.
-              </p>
+              <p>{t('terms.company.p2')}</p>
             </SectionCard>
 
             {/* 2. Insurance & Licensing */}
             <SectionCard
               icon={<ShieldCheck className="w-full h-full" />}
-              title="2. Insurance & Licensing"
+              title={t('terms.insurance.title')}
             >
-              <p>
-                All services are operated in accordance with Portuguese
-                legislation and applicable licensing requirements.
-              </p>
-              <p>
-                All vehicles and passengers are covered by the legally
-                required insurance policies, including:
-              </p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Public Liability Insurance</li>
-                <li>Personal Accident Insurance</li>
-                <li>Vehicle Insurance</li>
-              </ul>
+              <p>{t('terms.insurance.p1')}</p>
+              <p>{t('terms.insurance.p2')}</p>
+              <List items={insuranceItems} />
             </SectionCard>
 
             {/* 3. Services */}
             <SectionCard
               icon={<Car className="w-full h-full" />}
-              title="3. Services"
+              title={t('terms.services.title')}
             >
-              <p>Off We Go Portugal provides:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Airport Transfers</li>
-                <li>Point-to-Point Transfers</li>
-                <li>Private Tours</li>
-                <li>Hourly Chauffeur Services</li>
-                <li>Corporate Transportation</li>
-                <li>Event Transportation</li>
-                <li>Luxury Travel Experiences</li>
-              </ul>
+              <p>{t('terms.services.intro')}</p>
+              <List items={servicesItems} />
               <p className="font-semibold text-foreground pt-2">
-                Unless otherwise stated in writing, quoted prices include:
+                {t('terms.services.includesLabel')}
               </p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Professional chauffeur</li>
-                <li>Fuel</li>
-                <li>Highway tolls</li>
-                <li>Applicable taxes</li>
-              </ul>
+              <List items={servicesIncludes} />
               <p className="font-semibold text-foreground pt-2">
-                Unless specifically stated, prices do not include:
+                {t('terms.services.excludesLabel')}
               </p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Entrance fees to attractions and monuments</li>
-                <li>Meals and beverages</li>
-                <li>Official tour guides</li>
-                <li>Personal expenses</li>
-                <li>Parking fees during hourly chauffeur services</li>
-              </ul>
+              <List items={servicesExcludes} />
             </SectionCard>
 
             {/* 4. Personal Belongings */}
             <SectionCard
               icon={<Wallet className="w-full h-full" />}
-              title="4. Personal Belongings"
+              title={t('terms.belongings.title')}
             >
-              <p>
-                Passengers are responsible for their personal belongings at
-                all times.
-              </p>
-              <p>
-                Off We Go Portugal shall not be held liable for any items
-                that are lost, stolen, damaged, misplaced, or forgotten
-                inside the vehicle.
-              </p>
+              <p>{t('terms.belongings.p1')}</p>
+              <p>{t('terms.belongings.p2')}</p>
             </SectionCard>
 
             {/* 5. Luggage */}
             <SectionCard
               icon={<Luggage className="w-full h-full" />}
-              title="5. Luggage"
+              title={t('terms.luggage.title')}
             >
-              <p>
-                Vehicle allocation is based on the luggage information
-                provided at the time of booking.
-              </p>
-              <p>
-                Clients are responsible for accurately declaring the number
-                and size of all luggage items.
-              </p>
-              <p>
-                Off We Go Portugal reserves the right to provide a larger
-                vehicle or additional vehicle at the client's expense if the
-                declared luggage capacity is exceeded.
-              </p>
-              <p>
-                We shall not be responsible for any disruption caused by
-                undeclared excess luggage.
-              </p>
+              <p>{t('terms.luggage.p1')}</p>
+              <p>{t('terms.luggage.p2')}</p>
+              <p>{t('terms.luggage.p3')}</p>
+              <p>{t('terms.luggage.p4')}</p>
             </SectionCard>
 
             {/* 6. Passenger Conduct */}
             <SectionCard
               icon={<Users className="w-full h-full" />}
-              title="6. Passenger Conduct"
+              title={t('terms.conduct.title')}
             >
-              <p>The following are strictly prohibited in all vehicles:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Smoking or vaping</li>
-                <li>Illegal substances</li>
-                <li>Excessive alcohol consumption</li>
-                <li>
-                  Any conduct that may endanger the driver, vehicle, or other
-                  passengers
-                </li>
-              </ul>
-              <p>
-                Off We Go Portugal reserves the right to refuse or terminate
-                a service without refund if a passenger behaves in a manner
-                that is abusive, unsafe, threatening, or inappropriate.
-              </p>
+              <p>{t('terms.conduct.intro')}</p>
+              <List items={conductItems} />
+              <p>{t('terms.conduct.note')}</p>
             </SectionCard>
 
             {/* 7. Force Majeure */}
             <SectionCard
               icon={<CloudLightning className="w-full h-full" />}
-              title="7. Force Majeure"
+              title={t('terms.forceMajeure.title')}
             >
-              <p>
-                Off We Go Portugal shall not be liable for delays,
-                interruptions, itinerary changes, or inability to provide
-                services due to circumstances beyond our reasonable control,
-                including but not limited to:
-              </p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Severe weather conditions</li>
-                <li>Traffic accidents or congestion</li>
-                <li>Road closures</li>
-                <li>Airport disruptions or closures</li>
-                <li>Flight cancellations</li>
-                <li>Government restrictions</li>
-                <li>Border restrictions</li>
-                <li>Strikes</li>
-                <li>Civil disturbances</li>
-                <li>Natural disasters</li>
-              </ul>
+              <p>{t('terms.forceMajeure.intro')}</p>
+              <List items={forceMajeureItems} />
             </SectionCard>
 
             {/* 8. Pricing */}
             <SectionCard
               icon={<Banknote className="w-full h-full" />}
-              title="8. Pricing"
+              title={t('terms.pricing.title')}
             >
-              <p>
-                All prices are subject to change without prior notice until a
-                reservation has been confirmed and payment has been received.
-              </p>
-              <p>
-                Once confirmed, the agreed service price shall remain fixed
-                unless the booking is modified by the client.
-              </p>
+              <p>{t('terms.pricing.p1')}</p>
+              <p>{t('terms.pricing.p2')}</p>
             </SectionCard>
 
             {/* 9. Reservations & Payments */}
             <SectionCard
               icon={<CalendarClock className="w-full h-full" />}
-              title="9. Reservations & Payments"
+              title={t('terms.reservations.title')}
             >
               <p className="font-semibold text-foreground">
-                9.1 Booking Methods
+                {t('terms.reservations.bookingMethodsLabel')}
               </p>
-              <p>Reservations may be made through:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Website booking engine</li>
-                <li>Email</li>
-                <li>Telephone</li>
-                <li>WhatsApp</li>
-              </ul>
+              <p>{t('terms.reservations.bookingMethodsIntro')}</p>
+              <List items={bookingMethods} />
               <p className="font-semibold text-foreground pt-2">
-                9.2 Booking Confirmation
+                {t('terms.reservations.confirmationLabel')}
               </p>
-              <p>A booking is only considered confirmed when:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Availability has been verified;</li>
-                <li>The booking has been accepted by Off We Go Portugal; and</li>
-                <li>
-                  Payment has been received, unless otherwise agreed in
-                  writing.
-                </li>
-              </ul>
+              <p>{t('terms.reservations.confirmationIntro')}</p>
+              <List items={confirmationItems} />
               <p className="font-semibold text-foreground pt-2">
-                9.3 Payment Methods
+                {t('terms.reservations.paymentMethodsLabel')}
               </p>
-              <p>Payments may be made via:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Credit Card</li>
-                <li>Debit Card</li>
-                <li>Stripe Payment Links</li>
-                <li>Bank Transfer</li>
-              </ul>
-              <p>
-                Off We Go Portugal reserves the right to verify payment
-                transactions and request additional documentation when
-                necessary to prevent fraud.
-              </p>
+              <p>{t('terms.reservations.paymentMethodsIntro')}</p>
+              <List items={paymentMethods} />
+              <p>{t('terms.reservations.paymentNote')}</p>
               <p className="font-semibold text-foreground pt-2">
-                9.4 Chargebacks
+                {t('terms.reservations.chargebacksLabel')}
               </p>
-              <p>
-                Clients are encouraged to contact Off We Go Portugal directly
-                regarding any payment concerns before initiating a chargeback
-                procedure.
-              </p>
-              <p>
-                Fraudulent or unjustified chargebacks may result in
-                additional administrative, collection, and legal costs where
-                permitted by law.
-              </p>
+              <p>{t('terms.reservations.chargebacksP1')}</p>
+              <p>{t('terms.reservations.chargebacksP2')}</p>
             </SectionCard>
 
             {/* 10. Cancellation Policy */}
             <SectionCard
               icon={<Ticket className="w-full h-full" />}
-              title="10. Cancellation Policy"
+              title={t('terms.cancellation.title')}
             >
               <p className="font-semibold text-foreground">
-                10.1 Standard Services
+                {t('terms.cancellation.standardLabel')}
               </p>
-              <p>The following cancellation policy applies to:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Airport Transfers</li>
-                <li>Point-to-Point Transfers</li>
-                <li>Private Tours</li>
-                <li>Hourly Chauffeur Services</li>
-              </ul>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>
-                  More than 48 hours before service commencement: Full
-                  refund.
-                </li>
-                <li>
-                  Less than 48 hours before service commencement: 100%
-                  cancellation fee.
-                </li>
-                <li>No-show: 100% cancellation fee.</li>
-              </ul>
+              <p>{t('terms.cancellation.standardIntro')}</p>
+              <List items={standardServices} />
+              <List items={standardRules} />
               <p className="font-semibold text-foreground pt-2">
-                10.2 Mercedes Sprinter Services
+                {t('terms.cancellation.sprinterLabel')}
               </p>
-              <p>
-                Due to the operational requirements of group transportation,
-                all Mercedes Sprinter bookings are non-refundable once
-                confirmed.
-              </p>
-              <p>
-                No refunds shall be issued under any circumstances following
-                confirmation of a Mercedes Sprinter reservation.
-              </p>
+              <p>{t('terms.cancellation.sprinterP1')}</p>
+              <p>{t('terms.cancellation.sprinterP2')}</p>
               <p className="font-semibold text-foreground pt-2">
-                10.3 No-Show Policy
+                {t('terms.cancellation.noShowLabel')}
               </p>
-              <p>
-                A no-show occurs when a client fails to appear at the agreed
-                pick-up location within the applicable waiting time and
-                without prior communication.
-              </p>
-              <p>No-shows are charged at 100% of the service value.</p>
+              <p>{t('terms.cancellation.noShowP1')}</p>
+              <p>{t('terms.cancellation.noShowP2')}</p>
             </SectionCard>
 
             {/* 11. Waiting Time Policy */}
             <SectionCard
               icon={<MapPin className="w-full h-full" />}
-              title="11. Waiting Time Policy"
+              title={t('terms.waitingTime.title')}
             >
               <p className="font-semibold text-foreground">
-                Airport Arrivals
+                {t('terms.waitingTime.airportLabel')}
               </p>
-              <p>Complimentary waiting time:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>60 minutes from actual flight landing time.</li>
-              </ul>
-              <p>
-                Flight arrivals are monitored in real time provided a valid
-                flight number has been supplied during the booking process.
-              </p>
+              <p>{t('terms.waitingTime.complimentaryLabel')}</p>
+              <List items={[t('terms.waitingTime.airportTime')]} />
+              <p>{t('terms.waitingTime.airportNote')}</p>
               <p className="font-semibold text-foreground pt-2">
-                Hotels, Residences &amp; Offices
+                {t('terms.waitingTime.hotelsLabel')}
               </p>
-              <p>Complimentary waiting time:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>15 minutes.</li>
-              </ul>
+              <p>{t('terms.waitingTime.complimentaryLabel')}</p>
+              <List items={[t('terms.waitingTime.hotelsTime')]} />
               <p className="font-semibold text-foreground pt-2">
-                Cruise Terminals
+                {t('terms.waitingTime.cruiseLabel')}
               </p>
-              <p>Complimentary waiting time:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>30 minutes.</li>
-              </ul>
-              <p>
-                Additional waiting time may be charged at the applicable
-                hourly rate.
-              </p>
+              <p>{t('terms.waitingTime.complimentaryLabel')}</p>
+              <List items={[t('terms.waitingTime.cruiseTime')]} />
+              <p>{t('terms.waitingTime.extraNote')}</p>
             </SectionCard>
 
             {/* 12. Child Safety */}
             <SectionCard
               icon={<Baby className="w-full h-full" />}
-              title="12. Child Safety"
+              title={t('terms.childSafety.title')}
             >
-              <p>
-                Children and infants must travel using the appropriate safety
-                equipment as required by law.
-              </p>
-              <p>
-                Child seats and booster seats are available upon request and
-                must be requested at the time of booking.
-              </p>
-              <p>
-                Failure to request the necessary child safety equipment may
-                prevent the service from being operated.
-              </p>
+              <p>{t('terms.childSafety.p1')}</p>
+              <p>{t('terms.childSafety.p2')}</p>
+              <p>{t('terms.childSafety.p3')}</p>
             </SectionCard>
 
             {/* 13. Vehicle Damage */}
             <SectionCard
               icon={<AlertTriangle className="w-full h-full" />}
-              title="13. Vehicle Damage"
+              title={t('terms.vehicleDamage.title')}
             >
-              <p>
-                The client shall be financially responsible for any damage
-                caused to the vehicle by themselves or members of their
-                party.
-              </p>
-              <p>This includes but is not limited to:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Interior damage</li>
-                <li>Excessive cleaning requirements</li>
-                <li>Spilled liquids</li>
-                <li>Torn upholstery</li>
-                <li>Vomit-related cleaning</li>
-                <li>Damage to vehicle equipment</li>
-              </ul>
-              <p>
-                Repair, cleaning, replacement, and administrative costs may
-                be charged accordingly.
-              </p>
+              <p>{t('terms.vehicleDamage.p1')}</p>
+              <p>{t('terms.vehicleDamage.intro')}</p>
+              <List items={vehicleDamageItems} />
+              <p>{t('terms.vehicleDamage.note')}</p>
             </SectionCard>
 
             {/* 14. Tour Services */}
             <SectionCard
               icon={<MapPin className="w-full h-full" />}
-              title="14. Tour Services"
+              title={t('terms.tourServices.title')}
             >
-              <p>
-                Tour itineraries may be modified due to weather conditions,
-                traffic, road closures, monument restrictions, operational
-                requirements, or circumstances beyond our control.
-              </p>
-              <p>
-                Off We Go Portugal will make every reasonable effort to
-                preserve the overall experience whenever possible.
-              </p>
+              <p>{t('terms.tourServices.p1')}</p>
+              <p>{t('terms.tourServices.p2')}</p>
             </SectionCard>
 
             {/* 15. Subcontracted Services */}
             <SectionCard
               icon={<Users className="w-full h-full" />}
-              title="15. Subcontracted Services"
+              title={t('terms.subcontracted.title')}
             >
-              <p>
-                Off We Go Portugal reserves the right to subcontract services
-                to carefully selected, fully licensed, and insured
-                transportation partners.
-              </p>
-              <p>
-                Where subcontractors are used, the same operational and
-                service standards shall apply.
-              </p>
+              <p>{t('terms.subcontracted.p1')}</p>
+              <p>{t('terms.subcontracted.p2')}</p>
             </SectionCard>
 
             {/* 16. Booking Amendments */}
             <SectionCard
               icon={<CalendarClock className="w-full h-full" />}
-              title="16. Booking Amendments"
+              title={t('terms.amendments.title')}
             >
-              <p>Requests to modify an existing reservation are subject to:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Availability</li>
-                <li>Operational feasibility</li>
-                <li>Possible price adjustments</li>
-              </ul>
-              <p>
-                No modification shall be considered confirmed until accepted
-                in writing by Off We Go Portugal.
-              </p>
+              <p>{t('terms.amendments.intro')}</p>
+              <List items={amendmentsItems} />
+              <p>{t('terms.amendments.note')}</p>
             </SectionCard>
 
             {/* 17. Governing Law */}
             <SectionCard
               icon={<Gavel className="w-full h-full" />}
-              title="17. Governing Law"
+              title={t('terms.governingLaw.title')}
             >
-              <p>
-                These Terms &amp; Conditions shall be governed by and
-                interpreted in accordance with the laws of Portugal.
-              </p>
-              <p>
-                Any dispute arising from these Terms &amp; Conditions shall
-                be subject to the exclusive jurisdiction of the courts of
-                Lisbon, Portugal.
-              </p>
+              <p>{t('terms.governingLaw.p1')}</p>
+              <p>{t('terms.governingLaw.p2')}</p>
             </SectionCard>
 
             {/* Contact Information */}
             <SectionCard
               icon={<Mail className="w-full h-full" />}
-              title="Contact Information"
+              title={t('terms.contact.title')}
             >
               <p className="font-semibold text-foreground">
                 Off We Go Portugal
                 <br />
                 <span className="font-normal text-foreground/80">
-                  A brand of LEAPOFSTARS - MANAGEMENT, PRODUCTIONS &amp; TRAVEL
-                  LDA.
+                  {t('terms.contact.brandLine')}
                 </span>
               </p>
               <p>
@@ -547,9 +363,9 @@ function RouteComponent() {
                 <br />
                 1250-091 Lisbon, Portugal
               </p>
-              <p>VAT Number: PT516863452</p>
+              <p>{t('terms.contact.vatLabel')} PT516863452</p>
               <p>
-                Email:{' '}
+                {t('terms.contact.emailLabel')}{' '}
                 <a
                   href="mailto:info@offwego.pt"
                   className="text-primary hover:underline"
@@ -557,7 +373,7 @@ function RouteComponent() {
                   info@offwego.pt
                 </a>
                 <br />
-                Website:{' '}
+                {t('terms.contact.websiteLabel')}{' '}
                 <a
                   href="https://www.offwego.pt"
                   className="text-primary hover:underline"
@@ -578,10 +394,7 @@ function RouteComponent() {
                 <div className="flex items-start gap-3">
                   <FileText className="w-5 h-5 md:w-6 md:h-6 text-primary mt-0.5 flex-shrink-0" />
                   <p className="text-xs md:text-sm text-foreground/80">
-                    Off We Go Portugal reserves the right to amend these Terms
-                    &amp; Conditions at any time without prior notice. The
-                    latest version will always be available on the company's
-                    website.
+                    {t('terms.closingNote')}
                   </p>
                 </div>
               </div>

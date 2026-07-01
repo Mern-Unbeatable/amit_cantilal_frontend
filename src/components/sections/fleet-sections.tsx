@@ -1,4 +1,5 @@
 import { Car, Zap } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { FleetVehicle } from '@/features/fleet/fleet.types.ts'
 import type { FleetCardProps } from '@/features/fleet/fleet-card.tsx'
 import FleetCard from '@/features/fleet/fleet-card.tsx'
@@ -39,6 +40,7 @@ interface FleetSectionProps {
 }
 
 export default function FleetSection({ fleet = [] }: FleetSectionProps) {
+  const { t } = useTranslation()
   const isElectricVehicle = (vehicle: FleetVehicle) =>
     vehicle.fuel_type === 'electric' ||
     vehicle.category === 'electric' ||
@@ -68,18 +70,18 @@ export default function FleetSection({ fleet = [] }: FleetSectionProps) {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-6 md:mb-16">
-            <div className="tag-gold mb-4">The Fleet</div>
+            <div className="tag-gold mb-4">{t('fleetSection.tag')}</div>
             <h2 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold mb-3 md:mb-6">
-              Our Premium &amp; First Class Fleet
+              {t('fleetSection.title')}
             </h2>
             <p className="text-sm md:text-xl text-[#9A9182] max-w-3xl mx-auto">
-              Luxury vehicles matching the highest market standards
+              {t('fleetSection.subtitle')}
             </p>
           </div>
 
           {/* Electric fleet */}
           <FleetGroup
-            label="Electric Fleet"
+            label={t('fleetSection.electricFleet')}
             icon={
               <Zap
                 className="w-4 h-4 md:w-6 md:h-6 text-green-500"
@@ -91,7 +93,7 @@ export default function FleetSection({ fleet = [] }: FleetSectionProps) {
 
           {/* Diesel fleet */}
           <FleetGroup
-            label="Diesel Fleet (Long Distance)"
+            label={t('fleetSection.dieselFleet')}
             icon={
               <Car
                 className="w-4 h-4 md:w-6 md:h-6 text-[#9A9182]"

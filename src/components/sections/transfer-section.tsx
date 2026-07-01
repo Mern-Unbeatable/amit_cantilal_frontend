@@ -1,22 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Check, MapPin, Plane } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
-
-const airportFeatures = [
-  '60 min complimentary wait from landing',
-  'Real-time flight tracking',
-  'Meet & greet with name board at arrivals',
-  'Luggage assistance included',
-  'All major Portuguese airports covered',
-]
-
-const cityFeatures = [
-  'Lisbon ↔ Porto, Lisbon ↔ Algarve and more',
-  'Fixed price — no surge or meter running',
-  'Door-to-door service across Portugal',
-  'Available for Spain cross-border routes',
-  'Comfortable for long distances — Mercedes S-Class & Sprinter',
-]
 
 function TransferBlock({
   icon: Icon,
@@ -27,6 +12,7 @@ function TransferBlock({
   image,
   imageAlt,
   reversed,
+  bookNowLabel,
 }: {
   icon: React.ElementType
   label: string
@@ -36,6 +22,7 @@ function TransferBlock({
   image: string
   imageAlt: string
   reversed?: boolean
+  bookNowLabel: string
 }) {
   return (
     <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
@@ -79,7 +66,7 @@ function TransferBlock({
           className="rounded-none h-11 px-8 bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium"
         >
           <Link to="/booking">
-            Book Now
+            {bookNowLabel}
             <ArrowRight className="w-4 h-4 ml-2" />
           </Link>
         </Button>
@@ -103,18 +90,22 @@ function TransferBlock({
 // ─── Section ──────────────────────────────────────────────────────────────────
 
 export default function TransferServices() {
+  const { t } = useTranslation()
+  const airportFeatures = t('transferServices.airport.features', { returnObjects: true }) as string[]
+  const cityFeatures = t('transferServices.cityToCity.features', { returnObjects: true }) as string[]
   return (
     <section className="py-16 md:py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-6 md:px-12 space-y-20 md:space-y-32">
         {/* Airport transfers */}
         <TransferBlock
           icon={Plane}
-          label="Airport Transfer"
-          title="Airport Transfers"
-          description="Seamless airport pickups and drop-offs across Portugal. We include up to 60 minutes of complimentary waiting time from landing, with real-time flight tracking so your chauffeur is always ready. Our drivers meet you at arrivals with a name board, handle your luggage, and take you to your destination in a premium Mercedes-Benz vehicle."
+          label={t('transferServices.airport.label')}
+          title={t('transferServices.airport.title')}
+          description={t('transferServices.airport.description')}
           features={airportFeatures}
           image="/airport-transfer.png"
           imageAlt="Airport transfer service Portugal"
+          bookNowLabel={t('transferServices.bookNow')}
         />
 
         {/* Divider */}
@@ -125,13 +116,14 @@ export default function TransferServices() {
         {/* City to city */}
         <TransferBlock
           icon={MapPin}
-          label="City to City"
-          title="City to City Transfers"
-          description="Travel between Portugal's major cities in total comfort. Whether it's Lisbon to Porto, Lisbon to the Algarve, or a cross-border route into Spain, we provide fixed-price transfers with no surprises — door to door, in executive vehicles built for long distances."
+          label={t('transferServices.cityToCity.label')}
+          title={t('transferServices.cityToCity.title')}
+          description={t('transferServices.cityToCity.description')}
           features={cityFeatures}
           image="/city-to-city.png"
           imageAlt="City to city transfer service Portugal"
           reversed
+          bookNowLabel={t('transferServices.bookNow')}
         />
       </div>
     </section>

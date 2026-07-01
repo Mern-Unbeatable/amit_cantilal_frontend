@@ -1,4 +1,5 @@
 import { Star } from "lucide-react"
+import { useTranslation } from "react-i18next"
 import { googleReviews } from "@/data/reviews"
 
 function StarRating({ rating }: { rating: number }) {
@@ -15,19 +16,20 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export function ReviewsSection() {
+  const { t } = useTranslation()
   return (
     <section className="bg-[#0B0B0B] py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-12 max-w-6xl">
 
         {/* Header */}
         <div className="mb-10 md:mb-14">
-          <div className="tag-gold mb-3">What Our Guests Say</div>
+          <div className="tag-gold mb-3">{t('reviews.tag')}</div>
           <h2 className="font-serif text-2xl md:text-4xl font-light text-white">
-            Google Reviews
+            {t('reviews.title')}
           </h2>
           <div className="flex items-center gap-2 mt-3">
             <StarRating rating={5} />
-            <span className="text-xs text-[#9A9182]">5.0 · {googleReviews.length} reviews</span>
+            <span className="text-xs text-[#9A9182]">5.0 · {googleReviews.length} {t('reviews.reviewsSuffix')}</span>
           </div>
         </div>
 
@@ -50,7 +52,7 @@ export function ReviewsSection() {
                   <div>
                     <p className="text-sm text-white/90 font-medium leading-tight">{review.name}</p>
                     <p className="text-[11px] text-[#9A9182] mt-0.5">
-                      {review.isLocalGuide ? "Local Guide · " : ""}
+                      {review.isLocalGuide ? `${t('reviews.localGuide')} · ` : ""}
                       {review.reviewCount ? `${review.reviewCount} review${review.reviewCount > 1 ? "s" : ""}` : ""}
                     </p>
                   </div>

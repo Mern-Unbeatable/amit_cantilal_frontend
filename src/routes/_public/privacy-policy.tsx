@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
+import { Trans, useTranslation } from 'react-i18next'
 import {
   AlertCircle,
   CircleUser,
@@ -17,7 +18,6 @@ import {
   Users,
 } from 'lucide-react'
 import { mainTransitionProps } from '@/lib/utils.ts'
-import { PageHero } from '@/components/shared/page-hero.tsx'
 
 export const Route = createFileRoute('/_public/privacy-policy')({
   component: RouteComponent,
@@ -55,11 +55,28 @@ function SectionCard({ icon, title, children, delay = 0 }: SectionCardProps) {
   );
 }
 
+function List({ items }: { items: Array<string> }) {
+  return (
+    <ul className="list-disc pl-6 space-y-1 text-foreground/80">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  )
+}
+
 function RouteComponent() {
+  const { t } = useTranslation()
+  const dataWeCollectPersonal = t('privacyPolicy.dataWeCollect.personalInfo', { returnObjects: true }) as string[]
+  const dataWeCollectUsage = t('privacyPolicy.dataWeCollect.usage', { returnObjects: true }) as string[]
+  const howWeCollectItems = t('privacyPolicy.howWeCollect.items', { returnObjects: true }) as string[]
+  const purposeItems = t('privacyPolicy.purpose.items', { returnObjects: true }) as string[]
+  const legalBasisItems = t('privacyPolicy.legalBasis.items', { returnObjects: true }) as string[]
+  const securityItems = t('privacyPolicy.security.items', { returnObjects: true }) as string[]
+  const thirdPartyItems = t('privacyPolicy.thirdParty.items', { returnObjects: true }) as string[]
+  const rightsItems = t('privacyPolicy.rights.items', { returnObjects: true }) as string[]
   return (
     <motion.div {...mainTransitionProps}>
-      <PageHero title="Privacy Policy" subtitle="check out privacy policy" />
-
       <section className="py-16 md:py-24 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4 md:px-12 text-center">
           <motion.div
@@ -73,12 +90,10 @@ function RouteComponent() {
               </div>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gradient-gold mb-4">
-              Privacy Policy
+              {t('privacyPolicy.heroTitle')}
             </h1>
             <p className="text-sm md:text-lg text-foreground/70 max-w-2xl mx-auto">
-              Off We Go Portugal is committed to protecting the privacy and
-              personal data of all visitors, clients, partners, and users of our
-              website.
+              {t('privacyPolicy.heroSubtitle')}
             </p>
           </motion.div>
         </div>
@@ -96,19 +111,13 @@ function RouteComponent() {
             >
               <div className="bg-card/60 border border-border rounded-xl md:rounded-2xl p-6 md:p-10">
                 <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-3">
-                  <strong>Off We Go Portugal</strong> is the trading name and
-                  commercial brand of LEAPOFSTARS - MANAGEMENT, PRODUCTIONS &
-                  TRAVEL LDA., VAT Number PT516863452, with registered office at
-                  Rua Dom João V, Nº 24 – 1.03, 1250-091 Lisbon, Portugal.
+                  <Trans i18nKey="privacyPolicy.introP1" components={{ strong: <strong /> }} />
                 </p>
                 <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-3">
-                  We process personal data in accordance with the General Data
-                  Protection Regulation (EU) 2016/679 ("GDPR") and all
-                  applicable Portuguese data protection laws.
+                  {t('privacyPolicy.introP2')}
                 </p>
                 <p className="text-sm md:text-base text-foreground/90 leading-relaxed">
-                  By using our website or booking our services, you acknowledge
-                  and accept the practices described in this Privacy Policy.
+                  {t('privacyPolicy.introP3')}
                 </p>
               </div>
             </motion.div>
@@ -116,115 +125,58 @@ function RouteComponent() {
             {/* 1. Data We Collect */}
             <SectionCard
               icon={<Lock className="w-full h-full" />}
-              title="1. Data We Collect"
+              title={t('privacyPolicy.dataWeCollect.title')}
             >
               <p className="font-semibold text-foreground">
-                Personal Information
+                {t('privacyPolicy.dataWeCollect.personalInfoLabel')}
               </p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Full name</li>
-                <li>Email address</li>
-                <li>Telephone number</li>
-                <li>Country of residence</li>
-                <li>Billing information</li>
-                <li>Flight information</li>
-                <li>Pick-up and drop-off addresses</li>
-                <li>Passenger details</li>
-                <li>Special requests provided during booking</li>
-              </ul>
+              <List items={dataWeCollectPersonal} />
               <p className="font-semibold text-foreground pt-2">
-                Website Usage Information
+                {t('privacyPolicy.dataWeCollect.usageLabel')}
               </p>
-              <p>When you visit our website, we may automatically collect:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>IP address</li>
-                <li>Browser type</li>
-                <li>Device information</li>
-                <li>Operating system</li>
-                <li>Website usage statistics</li>
-                <li>Pages visited</li>
-                <li>Referral sources</li>
-              </ul>
+              <p>{t('privacyPolicy.dataWeCollect.usageIntro')}</p>
+              <List items={dataWeCollectUsage} />
             </SectionCard>
 
             {/* 2. How We Collect Your Data */}
             <SectionCard
               icon={<CircleUser className="w-full h-full" />}
-              title="2. How We Collect Your Data"
+              title={t('privacyPolicy.howWeCollect.title')}
             >
-              <p>We collect personal information when you:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Submit a contact form</li>
-                <li>Request a quotation</li>
-                <li>Make a reservation through our booking engine</li>
-                <li>Contact us by email, telephone, or WhatsApp</li>
-                <li>Subscribe to our newsletter</li>
-                <li>Interact with us through social media platforms</li>
-                <li>Participate in surveys or promotions</li>
-              </ul>
+              <p>{t('privacyPolicy.howWeCollect.intro')}</p>
+              <List items={howWeCollectItems} />
             </SectionCard>
 
             {/* 3. Purpose of Processing */}
             <SectionCard
               icon={<Target className="w-full h-full" />}
-              title="3. Purpose of Processing"
+              title={t('privacyPolicy.purpose.title')}
             >
-              <p>We process personal data for the following purposes:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Managing reservations and transportation services</li>
-                <li>Processing payments</li>
-                <li>Providing customer support</li>
-                <li>Communicating booking updates</li>
-                <li>Responding to enquiries</li>
-                <li>Improving our services and website performance</li>
-                <li>
-                  Sending marketing communications (where consent has been
-                  provided)
-                </li>
-                <li>Complying with legal and regulatory obligations</li>
-                <li>Preventing fraud and ensuring security</li>
-              </ul>
+              <p>{t('privacyPolicy.purpose.intro')}</p>
+              <List items={purposeItems} />
             </SectionCard>
 
             {/* 4. Legal Basis for Processing */}
             <SectionCard
               icon={<Scale className="w-full h-full" />}
-              title="4. Legal Basis for Processing"
+              title={t('privacyPolicy.legalBasis.title')}
             >
-              <p>
-                We process personal data based on one or more of the following
-                legal grounds:
-              </p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Performance of a contract</li>
-                <li>Compliance with legal obligations</li>
-                <li>Legitimate business interests</li>
-                <li>Consent provided by the data subject</li>
-              </ul>
-              <p>
-                Where consent is required, it may be withdrawn at any time
-                without affecting the lawfulness of processing carried out
-                before withdrawal.
-              </p>
+              <p>{t('privacyPolicy.legalBasis.intro')}</p>
+              <List items={legalBasisItems} />
+              <p>{t('privacyPolicy.legalBasis.note')}</p>
             </SectionCard>
 
             {/* 5. Marketing Communications */}
             <SectionCard
               icon={<Mail className="w-full h-full" />}
-              title="5. Marketing Communications"
+              title={t('privacyPolicy.marketing.title')}
             >
-              <p>
-                With your consent, Off We Go Portugal may send promotional
-                communications regarding our services, offers, and updates.
-              </p>
-              <p>
-                You may unsubscribe from marketing communications at any time
-                by:
-              </p>
+              <p>{t('privacyPolicy.marketing.p1')}</p>
+              <p>{t('privacyPolicy.marketing.p2')}</p>
               <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Clicking the unsubscribe link included in our emails</li>
+                <li>{t('privacyPolicy.marketing.item1')}</li>
                 <li>
-                  Contacting us directly at{' '}
+                  {t('privacyPolicy.marketing.item2Prefix')}{' '}
                   <a
                     href="mailto:info@offwego.pt"
                     className="text-primary hover:underline"
@@ -233,196 +185,118 @@ function RouteComponent() {
                   </a>
                 </li>
               </ul>
-              <p>
-                Opting out of marketing communications will not affect
-                service-related communications regarding existing bookings.
-              </p>
+              <p>{t('privacyPolicy.marketing.p3')}</p>
             </SectionCard>
 
             {/* 6. Data Retention */}
             <SectionCard
               icon={<Clock className="w-full h-full" />}
-              title="6. Data Retention"
+              title={t('privacyPolicy.retention.title')}
             >
+              <p>{t('privacyPolicy.retention.p1')}</p>
               <p>
-                Personal data will be retained only for as long as necessary to
-                fulfil the purposes for which it was collected, including legal,
-                accounting, and regulatory requirements.
-              </p>
-              <p>
-                In general, booking and contractual records may be retained for
-                up to <strong>five (5) years</strong> following the conclusion
-                of the business relationship, unless a longer retention period
-                is required by law.
+                {t('privacyPolicy.retention.p2Prefix')}{' '}
+                <strong>{t('privacyPolicy.retention.p2Bold')}</strong>{' '}
+                {t('privacyPolicy.retention.p2Suffix')}
               </p>
             </SectionCard>
 
             {/* 7. Data Security */}
             <SectionCard
               icon={<ShieldCheck className="w-full h-full" />}
-              title="7. Data Security"
+              title={t('privacyPolicy.security.title')}
             >
-              <p>
-                Off We Go Portugal implements appropriate technical and
-                organisational measures designed to protect personal data
-                against:
-              </p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Unauthorised access</li>
-                <li>Disclosure</li>
-                <li>Alteration</li>
-                <li>Loss</li>
-                <li>Misuse</li>
-                <li>Destruction</li>
-              </ul>
-              <p>
-                While we strive to protect your personal information, no
-                internet transmission or electronic storage system can be
-                guaranteed as completely secure.
-              </p>
+              <p>{t('privacyPolicy.security.p1')}</p>
+              <List items={securityItems} />
+              <p>{t('privacyPolicy.security.p2')}</p>
             </SectionCard>
 
             {/* 8. Third-Party Service Providers */}
             <SectionCard
               icon={<Users className="w-full h-full" />}
-              title="8. Third-Party Service Providers"
+              title={t('privacyPolicy.thirdParty.title')}
             >
-              <p>
-                To operate our business efficiently, we may share personal data
-                with trusted third-party providers, including:
-              </p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Payment processors (such as Stripe)</li>
-                <li>Website hosting providers</li>
-                <li>Reservation and booking software providers</li>
-                <li>Accounting and legal service providers</li>
-                <li>
-                  Licensed transportation partners operating services on our
-                  behalf
-                </li>
-              </ul>
-              <p>
-                All third parties are required to process personal data securely
-                and in compliance with applicable data protection laws.
-              </p>
+              <p>{t('privacyPolicy.thirdParty.p1')}</p>
+              <List items={thirdPartyItems} />
+              <p>{t('privacyPolicy.thirdParty.p2')}</p>
             </SectionCard>
 
             {/* 9. Social Media */}
             <SectionCard
               icon={<Share2 className="w-full h-full" />}
-              title="9. Social Media"
+              title={t('privacyPolicy.socialMedia.title')}
             >
-              <p>
-                Our website may contain links to social media platforms
-                including Facebook, Instagram, LinkedIn, and other services.
-              </p>
-              <p>
-                These platforms may collect information about your interaction
-                with their services. We encourage users to review the privacy
-                policies of the respective social media providers.
-              </p>
-              <p>
-                Off We Go Portugal does not control how these third parties
-                collect or process your personal information.
-              </p>
+              <p>{t('privacyPolicy.socialMedia.p1')}</p>
+              <p>{t('privacyPolicy.socialMedia.p2')}</p>
+              <p>{t('privacyPolicy.socialMedia.p3')}</p>
             </SectionCard>
 
             {/* 10. Your Rights Under GDPR */}
             <SectionCard
               icon={<Trash2 className="w-full h-full" />}
-              title="10. Your Rights Under GDPR"
+              title={t('privacyPolicy.rights.title')}
             >
-              <p>Under the GDPR, you have the right to:</p>
-              <ul className="list-disc pl-6 space-y-1 text-foreground/80">
-                <li>Access your personal data</li>
-                <li>Correct inaccurate personal data</li>
-                <li>Request deletion of your personal data</li>
-                <li>Restrict processing of your personal data</li>
-                <li>Object to processing</li>
-                <li>Request data portability</li>
-                <li>Withdraw consent where processing is based on consent</li>
-              </ul>
-              <p>
-                To exercise any of these rights, please contact us using the
-                details below.
-              </p>
+              <p>{t('privacyPolicy.rights.intro')}</p>
+              <List items={rightsItems} />
+              <p>{t('privacyPolicy.rights.note')}</p>
             </SectionCard>
 
             {/* 11. Complaints */}
             <SectionCard
               icon={<AlertCircle className="w-full h-full" />}
-              title="11. Complaints"
+              title={t('privacyPolicy.complaints.title')}
             >
+              <p>{t('privacyPolicy.complaints.p1')}</p>
               <p>
-                If you believe your personal data has been processed unlawfully,
-                you have the right to lodge a complaint with the relevant
-                supervisory authority.
-              </p>
-              <p>
-                In Portugal, the supervisory authority is the{' '}
-                <strong>Comissão Nacional de Proteção de Dados (CNPD)</strong>.
+                {t('privacyPolicy.complaints.p2Prefix')}{' '}
+                <strong>{t('privacyPolicy.complaints.p2Bold')}</strong>.
               </p>
             </SectionCard>
 
             {/* 12. Cookies */}
             <SectionCard
               icon={<Cookie className="w-full h-full" />}
-              title="12. Cookies"
+              title={t('privacyPolicy.cookies.title')}
             >
               <div className="space-y-3">
                 <p className="font-semibold text-foreground">
-                  What Are Cookies?
+                  {t('privacyPolicy.cookies.whatTitle')}
+                </p>
+                <p>{t('privacyPolicy.cookies.whatBody')}</p>
+              </div>
+              <div className="space-y-3">
+                <p className="font-semibold text-foreground">
+                  {t('privacyPolicy.cookies.typesTitle')}
                 </p>
                 <p>
-                  Cookies are small text files stored on your device when you
-                  visit a website. They help improve website functionality,
-                  performance, security, and user experience.
+                  <strong>{t('privacyPolicy.cookies.essential')}</strong> — {t('privacyPolicy.cookies.essentialBody')}
+                </p>
+                <p>
+                  <strong>{t('privacyPolicy.cookies.analytics')}</strong> — {t('privacyPolicy.cookies.analyticsBody')}
+                </p>
+                <p>
+                  <strong>{t('privacyPolicy.cookies.functional')}</strong> — {t('privacyPolicy.cookies.functionalBody')}
                 </p>
               </div>
               <div className="space-y-3">
                 <p className="font-semibold text-foreground">
-                  Types of Cookies We Use
+                  {t('privacyPolicy.cookies.managingTitle')}
                 </p>
-                <p>
-                  <strong>Essential Cookies</strong> — Required for the proper
-                  operation of the website.
-                </p>
-                <p>
-                  <strong>Analytics Cookies</strong> — Used to understand how
-                  visitors interact with the website and improve performance.
-                </p>
-                <p>
-                  <strong>Functional Cookies</strong> — Remember user
-                  preferences and settings.
-                </p>
-              </div>
-              <div className="space-y-3">
-                <p className="font-semibold text-foreground">
-                  Managing Cookies
-                </p>
-                <p>
-                  Most web browsers allow users to control, block, or delete
-                  cookies through browser settings. Please note that disabling
-                  cookies may affect certain website functions and user
-                  experience.
-                </p>
+                <p>{t('privacyPolicy.cookies.managingBody')}</p>
               </div>
             </SectionCard>
 
             {/* 13. Contact Information */}
             <SectionCard
               icon={<Phone className="w-full h-full" />}
-              title="13. Contact Information"
+              title={t('privacyPolicy.contact.title')}
             >
-              <p>
-                For any questions regarding this Privacy Policy or your personal
-                data, please contact:
-              </p>
+              <p>{t('privacyPolicy.contact.intro')}</p>
               <p className="font-semibold text-foreground">
                 Off We Go Portugal
                 <br />
                 <span className="font-normal text-foreground/80">
-                  A brand of LEAPOFSTARS - MANAGEMENT, PRODUCTIONS & TRAVEL LDA.
+                  {t('privacyPolicy.contact.brandLine')}
                 </span>
               </p>
               <p>
@@ -430,9 +304,9 @@ function RouteComponent() {
                 <br />
                 1250-091 Lisbon, Portugal
               </p>
-              <p>VAT Number: PT516863452</p>
+              <p>{t('privacyPolicy.contact.vatLabel')} PT516863452</p>
               <p>
-                Email:{' '}
+                {t('privacyPolicy.contact.emailLabel')}{' '}
                 <a
                   href="mailto:info@offwego.pt"
                   className="text-primary hover:underline"
@@ -440,7 +314,7 @@ function RouteComponent() {
                   info@offwego.pt
                 </a>
                 <br />
-                Website:{' '}
+                {t('privacyPolicy.contact.websiteLabel')}{' '}
                 <a
                   href="https://www.offwego.pt"
                   className="text-primary hover:underline"
@@ -461,11 +335,7 @@ function RouteComponent() {
                 <div className="flex items-start gap-3">
                   <Shield className="w-5 h-5 md:w-6 md:h-6 text-primary mt-0.5 flex-shrink-0" />
                   <p className="text-xs md:text-sm text-foreground/80">
-                    Off We Go Portugal reserves the right to update or amend
-                    this Privacy Policy at any time. Any updates will be
-                    published on this page and become effective immediately upon
-                    publication. We encourage users to review this Privacy
-                    Policy periodically.
+                    {t('privacyPolicy.closingNote')}
                   </p>
                 </div>
               </div>

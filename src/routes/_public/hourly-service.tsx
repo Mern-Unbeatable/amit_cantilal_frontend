@@ -1,71 +1,29 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import {motion} from "framer-motion";
 import { ArrowRight, CircleCheckBig, Clock, Shield, Users } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import {mainTransitionProps} from "@/lib/utils.ts";
 import {PageHero} from "@/components/shared/page-hero.tsx";
 import {Button} from "@/components/ui/button.tsx";
 
-const features = [
-  {
-    icon: Clock,
-    title: 'Flexible Schedule',
-    description: 'Book from 3 hours up to a full day, entirely on your terms.',
-  },
-  {
-    icon: Users,
-    title: 'Dedicated Chauffeur',
-    description: 'Your personal driver stays with you throughout the entire service.',
-  },
-  {
-    icon: CircleCheckBig,
-    title: 'Full Control',
-    description: 'Change your itinerary on the go. Total freedom to adjust plans.',
-  },
-  {
-    icon: Shield,
-    title: 'All Inclusive',
-    description: 'Fuel, tolls, parking and driver time all included in the price.',
-  },
-]
-
-const reasons = [
-  {
-    num: '01',
-    title: 'Private, Comfortable Vehicles',
-    description:
-      'Modern sedans and spacious vans with immaculate interiors — every journey feels like first class.',
-  },
-  {
-    num: '02',
-    title: 'Expert Chauffeurs',
-    description:
-      'Courteous, multilingual drivers trained in customer care and first aid, so you\'re always in safe hands.',
-  },
-  {
-    num: '03',
-    title: 'Transparent Pricing',
-    description:
-      'Fixed rates with no hidden fees. Fuel, tolls and parking included — pay only for what you need.',
-  },
-  {
-    num: '04',
-    title: '24/7 Availability',
-    description:
-      'We operate around the clock to suit your schedule, whether it\'s an early flight or a late-night event.',
-  },
-]
+const FEATURE_ICONS = [Clock, Users, CircleCheckBig, Shield]
 
 export const Route = createFileRoute('/_public/hourly-service')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const { t } = useTranslation()
+  const features = (t('hourlyServicePage.features', { returnObjects: true }) as Array<{ title: string; description: string }>)
+    .map((f, idx) => ({ ...f, icon: FEATURE_ICONS[idx] }))
+  const reasons = (t('hourlyServicePage.reasons', { returnObjects: true }) as Array<{ title: string; description: string }>)
+    .map((r, idx) => ({ ...r, num: String(idx + 1).padStart(2, '0') }))
   return (
     <motion.div {...mainTransitionProps}>
       <PageHero
         image="/hourly-banner.png"
-        title="Hourly Chauffeur Service"
-        subtitle="For occasions requiring greater flexibility, our Hourly Service is the perfect solution. Hire a vehicle and professional driver for as many hours as you need, tailoring the itinerary entirely to your schedule."
+        title={t('hourlyServicePage.heroTitle')}
+        subtitle={t('hourlyServicePage.heroSubtitle')}
       />
 
       <section className="py-16 md:py-24 bg-[#0B0B0B]">
@@ -87,26 +45,22 @@ function RouteComponent() {
 
               {/* Text */}
               <div>
-                <div className="tag-gold mb-4">Hourly Service</div>
+                <div className="tag-gold mb-4">{t('hourlyServicePage.tag')}</div>
                 <h2 className="font-serif text-3xl md:text-4xl font-light text-gradient-gold mb-6">
-                  Hourly Chauffeur Service
+                  {t('hourlyServicePage.title')}
                 </h2>
                 <p className="text-[#9A9182] leading-relaxed mb-4">
-                  For occasions requiring greater flexibility, our Hourly Service is the perfect
-                  solution. Hire a vehicle and professional driver for as many hours as you need,
-                  tailoring the itinerary entirely to your schedule.
+                  {t('hourlyServicePage.body1')}
                 </p>
                 <p className="text-[#9A9182] leading-relaxed mb-8">
-                  Whether you have multiple meetings, errands across the city, or an evening out,
-                  you maintain full control while enjoying the convenience of a professional
-                  chauffeur at your side.
+                  {t('hourlyServicePage.body2')}
                 </p>
                 <Button
                   asChild
                   className="rounded-none h-11 px-8 bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium"
                 >
                   <Link to="/booking">
-                    Book Now
+                    {t('hourlyServicePage.bookNow')}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
@@ -143,21 +97,20 @@ function RouteComponent() {
 
               {/* Left — heading + CTA */}
               <div className="lg:sticky lg:top-28 self-start">
-                <div className="tag-gold mb-4">Why Choose Us</div>
+                <div className="tag-gold mb-4">{t('hourlyServicePage.whyTag')}</div>
                 <h2 className="font-serif text-3xl md:text-5xl font-light text-gradient-gold mb-6 leading-tight">
-                  Every ride,<br />
-                  <em className="italic">perfected</em>
+                  {t('hourlyServicePage.whyTitleLine1')}<br />
+                  <em className="italic">{t('hourlyServicePage.whyTitleEmphasis')}</em>
                 </h2>
                 <p className="text-[#9A9182] leading-relaxed mb-8 text-sm md:text-base">
-                  Trust Off We Go Portugal to make every trip smooth, efficient, and thoroughly enjoyable —
-                  from the moment we pick you up to the moment we drop you off.
+                  {t('hourlyServicePage.whyBody')}
                 </p>
                 <Button
                   asChild
                   className="rounded-none h-12 md:h-14 px-8 md:px-10 bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium text-base md:text-lg"
                 >
                   <Link to="/booking">
-                    Book Now
+                    {t('hourlyServicePage.bookNow')}
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
