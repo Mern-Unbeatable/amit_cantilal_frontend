@@ -41,6 +41,6 @@ jobs:
           set ssl:verify-certificate false;
           set ftp:passive-mode true;
           set net:max-retries 2;
-          open -u \$FTP_USERNAME,\$FTP_PASSWORD ftp://\$FTP_HOST;
+          open -u ${FTP_USERNAME},${FTP_PASSWORD} ftp://${FTP_HOST};
           mirror -R --verbose --parallel=1 ./dist/ /home/offwego/public_html/
           "
