@@ -1,20 +1,21 @@
 import { MapPin, Plane } from 'lucide-react'
-
-const AIRPORTS = [
-  { name: 'Lisbon Airport', code: 'LIS · Humberto Delgado' },
-  { name: 'Porto Airport', code: 'OPO · Francisco Sá Carneiro' },
-]
+import { useTranslation } from 'react-i18next'
 
 export function VipConciergeAvailability() {
+  const { t } = useTranslation()
+  const AIRPORTS = [
+    { name: t('vipConcierge.availability.lisbonName'), code: t('vipConcierge.availability.lisbonCode') },
+    { name: t('vipConcierge.availability.portoName'), code: t('vipConcierge.availability.portoCode') },
+  ]
   return (
     <section className="container mx-auto px-6 md:px-12 py-16 md:py-24">
       <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
         <span className="inline-flex items-center gap-2 text-[10px] md:text-xs tracking-[0.5em] uppercase text-[#C9A84C] mb-5">
           <Plane className="w-3 h-3" />
-          Availability
+          {t('vipConcierge.availability.tag')}
         </span>
         <h2 className="font-serif text-3xl md:text-5xl font-light text-[#F5F0E8] leading-[1.15]">
-          Available Airports
+          {t('vipConcierge.availability.title')}
         </h2>
       </div>
 
@@ -40,7 +41,7 @@ export function VipConciergeAvailability() {
       </div>
 
       <p className="text-center text-xs md:text-sm text-[#F5F0E8]/45 italic font-light mt-10 max-w-2xl mx-auto">
-        Airport assistance services are provided through carefully selected aviation hospitality partners operating at Lisbon and Porto airports.
+        {t('vipConcierge.availability.footnote')}
       </p>
     </section>
   )

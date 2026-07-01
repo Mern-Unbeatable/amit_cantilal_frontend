@@ -2,18 +2,11 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
-import { ArrowRight, Briefcase, Fuel, Users, Zap } from 'lucide-react'
+import { ArrowRight, Briefcase, Clock, Fuel, MapPin, Plane, Users, Zap } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { mainTransitionProps } from '@/lib/utils.ts'
-import { services } from '@/data'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
 import { ReviewsSection } from '@/components/sections/review-section.tsx'
-
-const stats = [
-  { num: '12+', label: 'Years of Service' },
-  { num: '500+', label: 'Happy Clients' },
-  { num: '24/7', label: 'Availability' },
-  { num: '3', label: 'Cities Covered' },
-]
 
 // Electric order: EQE → EQV → EQS
 // Diesel order:   E-Class → V-Class → S-Class → Sprinter
@@ -27,7 +20,21 @@ function vehicleSortIndex(name: string, order: Array<string>) {
 }
 
 const App: React.FC = () => {
+  const { t } = useTranslation()
   const { data: fleetData = [], isFetching: fleetLoading } = useFleet()
+
+  const stats = [
+    { num: '12+', label: t('home.stats.years') },
+    { num: '500+', label: t('home.stats.clients') },
+    { num: '24/7', label: t('home.stats.availability') },
+    { num: '3', label: t('home.stats.cities') },
+  ]
+
+  const services = [
+    { id: 1, ...t('home.services.airportTransfers', { returnObjects: true }) as { title: string; description: string }, icon: Plane },
+    { id: 2, ...t('home.services.privateTours', { returnObjects: true }) as { title: string; description: string }, icon: MapPin },
+    { id: 3, ...t('home.services.chauffeurService', { returnObjects: true }) as { title: string; description: string }, icon: Clock },
+  ]
 
   const isElectric = (name: string) =>
     ['eqe', 'eqv', 'eqs', 'electric'].some((k) => name.toLowerCase().includes(k))
@@ -76,20 +83,19 @@ const App: React.FC = () => {
         <div className="container mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
           {/* Tag */}
           <div className="inline-block text-[10px] font-medium tracking-[.3em] uppercase text-[#C9A84C] border border-[#C9A84C]/30 px-4 py-1.5 mb-8">
-            Luxury Chauffeur Service — Portugal
+            {t('home.tag')}
           </div>
 
           {/* Heading */}
           <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] leading-[1.1] tracking-tight mb-6 max-w-4xl mx-auto">
-            Faith in <em className="italic text-[#C9A84C]">absolute</em>
+            {t('home.headingLine1')} <em className="italic text-[#C9A84C]">{t('home.headingEmphasis')}</em>
             <br />
-            comfort &amp; style
+            {t('home.headingLine2')}
           </h1>
 
           {/* Subtext */}
           <p className="text-[#9A9182] text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto tracking-wide">
-            Premium chauffeur service across Lisbon, Porto and the Algarve.
-            Professional drivers, executive fleet, available 24/7.
+            {t('home.subtext')}
           </p>
 
           {/* Buttons */}
@@ -98,14 +104,14 @@ const App: React.FC = () => {
               to="/booking"
               className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[.18em] uppercase bg-[#C9A84C] text-[#0B0B0B] px-8 py-3.5 hover:bg-[#E2C97E] transition-colors duration-200"
             >
-              Reserve Your Ride
+              {t('home.reserveRide')}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               to="/fleet"
               className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[.18em] uppercase bg-transparent text-[#F5F0E8] border border-[#F5F0E8]/25 px-8 py-3.5 hover:border-[#F5F0E8]/50 transition-colors duration-200"
             >
-              View Our Fleet
+              {t('home.viewFleet')}
             </Link>
           </div>
 
@@ -131,7 +137,7 @@ const App: React.FC = () => {
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-6 md:px-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-            Our Services
+            {t('home.ourServices')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {services.map((service) => {
@@ -165,14 +171,10 @@ const App: React.FC = () => {
       <section className="py-16 md:py-20 bg-muted/20">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-bold text-gradient-gold mb-6">
-            Why Choose Off We Go Portugal
+            {t('home.whyChooseTitle')}
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Off We Go Portugal is a premium chauffeur service, offering luxury
-            private transportation across Lisbon, Porto, and the Algarve. With a
-            high-end Mercedes-Benz fleet, multilingual professional drivers, and
-            24/7 availability, we deliver an exceptional travel experience for
-            discerning travellers, business executives, and families.
+            {t('home.whyChooseBody')}
           </p>
         </div>
       </section>
@@ -180,22 +182,16 @@ const App: React.FC = () => {
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-bold text-gradient-gold mb-6">
-            Airport Transfers Across Portugal
+            {t('home.airportTransfersTitle')}
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            We provide seamless airport transfers at Lisbon (LIS), Porto (OPO)
-            and Faro (FAO) airports. Every transfer includes complimentary
-            flight monitoring, 60 minutes of free waiting time, meet &amp; greet
-            service and fixed prices with no hidden fees. Whether you need a
-            private driver from the airport to your hotel or a long-distance
-            transfer to the Algarve, our chauffeur service ensures a stress-free
-            arrival.
+            {t('home.airportTransfersBody')}
           </p>
           <a
             className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 transition-colors"
             href="/transfers"
           >
-            Airport Transfers Across Portugal →
+            {t('home.airportTransfersLink')}
           </a>
         </div>
       </section>
@@ -203,21 +199,16 @@ const App: React.FC = () => {
       <section className="py-16 md:py-20 bg-muted/20">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-bold text-gradient-gold mb-6">
-            Private Tours &amp; Experiences
+            {t('home.privateToursTitle')}
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            Discover Portugal with a private chauffeur. Our curated tours
-            include Sintra's fairy-tale palaces, the Douro Valley wine region,
-            the sacred sanctuary of Fatima and the stunning Algarve coastline.
-            Every tour is fully customisable — choose your itinerary, pace and
-            stops. Perfect for couples, families and small groups seeking an
-            authentic Portuguese experience.
+            {t('home.privateToursBody')}
           </p>
           <a
             className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 transition-colors"
             href="/tours"
           >
-            Private Tours &amp; Experiences →
+            {t('home.privateToursLink')}
           </a>
         </div>
       </section>
@@ -241,22 +232,17 @@ const App: React.FC = () => {
               <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
             </svg>
             <h2 className="text-2xl md:text-3xl font-bold text-gradient-gold">
-              Sustainable Electric Fleet
+              {t('home.sustainableFleetTitle')}
             </h2>
           </div>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            Our fleet features the latest Mercedes-Benz electric vehicles — EQS,
-            EQE and EQV — alongside executive diesel options including S-Class,
-            E-Class and V-Class. As a sustainable chauffeur service, we
-            prioritise zero-emission transport without compromising on luxury,
-            comfort or performance. Ideal for corporate clients with ESG
-            requirements.
+            {t('home.sustainableFleetBody')}
           </p>
           <Link
             className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 transition-colors"
             to="/fleet"
           >
-            Sustainable Electric Fleet →
+            {t('home.sustainableFleetLink')}
           </Link>
         </div>
       </section>
@@ -281,16 +267,11 @@ const App: React.FC = () => {
               <path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712"></path>
             </svg>
             <h2 className="text-2xl md:text-3xl font-bold text-gradient-gold">
-              Areas We Serve
+              {t('home.areasWeServeTitle')}
             </h2>
           </div>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Our luxury chauffeur service covers all major destinations in
-            Portugal: Lisbon and Greater Lisbon (Cascais, Sintra, Estoril),
-            Porto and Northern Portugal (Douro Valley, Braga, Guimarães), the
-            Algarve (Faro, Albufeira, Vilamoura, Lagos, Tavira), and Central
-            Portugal (Coimbra, Évora, Óbidos, Nazaré). We also offer
-            cross-border transfers to Spain.
+            {t('home.areasWeServeBody')}
           </p>
         </div>
       </section>
@@ -299,7 +280,7 @@ const App: React.FC = () => {
       <section className="py-16 md:py-24 bg-card/50">
         <div className="container mx-auto px-6 md:px-12">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-12">
-            What our clients say
+            {t('home.testimonialsTitle')}
           </h2>
 
           <ReviewsSection />
@@ -309,7 +290,7 @@ const App: React.FC = () => {
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-6 md:px-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-            Our Premium Fleet
+            {t('home.premiumFleetTitle')}
           </h2>
 
           {fleetLoading ? (
@@ -339,7 +320,7 @@ const App: React.FC = () => {
                           {electric
                             ? <Zap className="w-3 h-3" />
                             : <Fuel className="w-3 h-3" />}
-                          {electric ? 'Electric' : 'Diesel'}
+                          {electric ? t('home.electric') : t('home.diesel')}
                         </span>
                       </div>
                     </div>
@@ -368,7 +349,7 @@ const App: React.FC = () => {
               to="/fleet"
               className="inline-flex items-center gap-2 border bg-background h-11 rounded-md px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
-              View All Fleet
+              {t('home.viewAllFleet')}
               <Icon icon="mdi:arrow-right" className="w-4 h-4" />
             </Link>
           </div>

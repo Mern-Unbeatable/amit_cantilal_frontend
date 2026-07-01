@@ -1,6 +1,8 @@
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export function VipConciergeHero() {
+  const { t } = useTranslation()
   return (
     <section className="relative min-h-[78vh] md:min-h-[92vh] flex items-end overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -20,20 +22,20 @@ export function VipConciergeHero() {
       <div className="relative z-10 container mx-auto px-6 md:px-12 pb-16 md:pb-28 pt-32">
         <div className="max-w-4xl">
           <span className="uppercase tracking-[0.4em] md:tracking-[0.5em] text-[10px] md:text-[11px] text-[#C9A84C] mb-6 md:mb-8 block font-medium">
-            Airport Concierge
+            {t('vipConcierge.hero.tag')}
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light leading-[1.05] tracking-tight mb-6 md:mb-10 text-[#F5F0E8]">
-            Premium Airport Concierge Services in Portugal
+            {t('vipConcierge.hero.title')}
           </h1>
           <p className="text-base md:text-xl text-[#F5F0E8]/80 leading-relaxed italic max-w-3xl font-light mb-8 md:mb-12">
-            Enjoy a seamless arrival or departure experience with personalised airport assistance, priority coordination, and professional meet & greet services at Lisbon and Porto airports.
+            {t('vipConcierge.hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <a
               href="#concierge"
               className="inline-flex items-center justify-center gap-3 bg-[#C9A84C] text-[#0B0B0B] px-8 py-4 md:px-10 md:py-5 text-[11px] md:text-xs tracking-[0.3em] uppercase hover:bg-[#E2C97E] transition-all duration-500"
             >
-              Contact Concierge <ArrowUpRight className="w-4 h-4" />
+              {t('vipConcierge.hero.contactButton')} <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
               href="https://wa.me/351914578214"
@@ -41,7 +43,7 @@ export function VipConciergeHero() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 border border-[#C9A84C]/60 text-[#C9A84C] px-8 py-4 md:px-10 md:py-5 text-[11px] md:text-xs tracking-[0.3em] uppercase hover:bg-[#C9A84C] hover:text-[#0B0B0B] transition-all duration-500"
             >
-              Request Assistance <MessageCircle className="w-4 h-4" />
+              {t('vipConcierge.hero.requestButton')} <MessageCircle className="w-4 h-4" />
             </a>
           </div>
         </div>

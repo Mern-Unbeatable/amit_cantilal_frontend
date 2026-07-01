@@ -3,7 +3,7 @@ export function CorporateGallery() {
     <section className="py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
-          <div className="aspect-[4/5] overflow-hidden">
+          <div className="overflow-hidden">
             <img
               src="/s-class.png"
               alt="Corporate Mobility — Elite Ride private chauffeur"
@@ -11,7 +11,7 @@ export function CorporateGallery() {
               loading="lazy"
             />
           </div>
-          <div className="aspect-[4/5] overflow-hidden">
+          <div className="overflow-hidden">
             <img
               src="/v-class.png"
               alt="Corporate Mobility — Elite Ride private chauffeur fleet"

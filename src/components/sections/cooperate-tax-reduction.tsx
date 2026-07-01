@@ -1,27 +1,12 @@
 import { Award, TrendingDown, TreePine } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
-const benefits = [
-  {
-    icon: Award,
-    title: 'Quarterly Green Certificates',
-    description:
-      'Get detailed certificates every quarter showing trees saved and emissions avoided — perfect for ESG reporting and tax benefits.',
-  },
-  {
-    icon: TrendingDown,
-    title: 'Direct Tax Benefits',
-    description:
-      'Use our environmental certificates to qualify for corporate tax deductions and ESG incentives.',
-  },
-  {
-    icon: TreePine,
-    title: 'ESG Reporting Ready',
-    description:
-      'Detailed quarterly reports with metrics ready for your sustainability and ESG disclosures.',
-  },
-]
+const BENEFIT_ICONS = [Award, TrendingDown, TreePine]
 
 export default function CorporateTaxReduction() {
+  const { t } = useTranslation()
+  const benefits = (t('taxReduction.benefits', { returnObjects: true }) as Array<{ title: string; description: string }>)
+    .map((b, idx) => ({ ...b, icon: BENEFIT_ICONS[idx] }))
   return (
     <section className="py-10 md:py-16 bg-[#141414]">
       <div className="container mx-auto px-4 md:px-12">
@@ -29,13 +14,12 @@ export default function CorporateTaxReduction() {
 
           {/* Header */}
           <div className="mb-6 md:mb-10">
-            <div className="tag-gold mb-4">Sustainability</div>
+            <div className="tag-gold mb-4">{t('taxReduction.tag')}</div>
             <h3 className="font-serif text-xl md:text-3xl lg:text-4xl font-light text-gradient-gold mb-2 md:mb-4">
-              Corporate Tax Reduction
+              {t('taxReduction.title')}
             </h3>
             <p className="text-sm md:text-lg text-[#9A9182] max-w-3xl">
-              Turn your commitment to sustainability into tangible tax benefits. Our quarterly
-              green certificates provide documented proof of emissions reduction.
+              {t('taxReduction.subtitle')}
             </p>
           </div>
 

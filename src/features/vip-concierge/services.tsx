@@ -1,22 +1,5 @@
 import { Luggage, Shield, UserCheck } from 'lucide-react'
-
-const MEET_ASSIST_ITEMS = [
-  'Personal meet & greet service upon arrival or departure',
-  'Assistance navigating airport procedures',
-  'Luggage assistance and coordination',
-  'Check-in support for departing passengers',
-  'Seamless connection with your chauffeur',
-  'Escort assistance where available',
-]
-
-const FAST_TRACK_ITEMS = [
-  'All Meet & Assist services included',
-  'Fast Track access where available',
-  'Reduced waiting times at security checkpoints',
-  'Priority airport processing when permitted',
-  'Dedicated airport host assistance',
-  'Seamless transfer to your chauffeur service',
-]
+import { useTranslation } from 'react-i18next'
 
 function ServiceList({ items, gold = false }: { items: string[]; gold?: boolean }) {
   return (
@@ -32,15 +15,18 @@ function ServiceList({ items, gold = false }: { items: string[]; gold?: boolean 
 }
 
 export function VipConciergeServices() {
+  const { t } = useTranslation()
+  const meetAssistItems = t('vipConcierge.services.meetAssist.items', { returnObjects: true }) as string[]
+  const fastTrackItems = t('vipConcierge.services.fastTrack.items', { returnObjects: true }) as string[]
   return (
     <section className="relative container mx-auto px-6 md:px-12 py-20 md:py-32">
       <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
         <span className="inline-flex items-center gap-2 text-[10px] md:text-xs tracking-[0.5em] uppercase text-[#C9A84C] mb-6">
           <UserCheck className="w-3 h-3" />
-          Services
+          {t('vipConcierge.services.tag')}
         </span>
         <h2 className="font-serif text-3xl md:text-5xl font-light text-[#F5F0E8] leading-[1.15]">
-          Choose Your Airport Experience
+          {t('vipConcierge.services.title')}
         </h2>
         <div className="flex items-center justify-center gap-3 mt-8">
           <span className="w-8 h-px bg-[#C9A84C]/30" />
@@ -63,13 +49,13 @@ export function VipConciergeServices() {
           </div>
 
           <h3 className="font-serif text-2xl md:text-3xl font-light text-[#F5F0E8] mb-3 leading-tight">
-            Meet &amp; Assist
+            {t('vipConcierge.services.meetAssist.title')}
           </h3>
           <p className="text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-[#C9A84C] mb-10 font-light">
-            Personalized Airport Arrival & Departure Assistance
+            {t('vipConcierge.services.meetAssist.subtitle')}
           </p>
           <div className="w-10 h-px mb-8 bg-[#C9A84C]/30" />
-          <ServiceList items={MEET_ASSIST_ITEMS} />
+          <ServiceList items={meetAssistItems} />
         </div>
 
         {/* Meet & Assist + Fast Track */}
@@ -85,13 +71,13 @@ export function VipConciergeServices() {
           </div>
 
           <h3 className="font-serif text-2xl md:text-3xl font-light text-[#F5F0E8] mb-3 leading-tight">
-            Meet &amp; Assist + Fast Track
+            {t('vipConcierge.services.fastTrack.title')}
           </h3>
           <p className="text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-[#C9A84C] mb-10 font-light">
-            Priority Airport Assistance
+            {t('vipConcierge.services.fastTrack.subtitle')}
           </p>
           <div className="w-10 h-px mb-8 bg-[#C9A84C]/50" />
-          <ServiceList items={FAST_TRACK_ITEMS} gold />
+          <ServiceList items={fastTrackItems} gold />
         </div>
       </div>
     </section>

@@ -1,8 +1,10 @@
 import React from 'react'
 import { Icon } from '@iconify/react'
 import {Link} from "@tanstack/react-router";
+import { useTranslation } from 'react-i18next'
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation()
   const socialIcons = [
     {
       name: 'Instagram',
@@ -35,8 +37,7 @@ const Footer: React.FC = () => {
                 loading="lazy"
               />
               <p className="text-sm text-foreground/80">
-                Secure your Transfer &amp; Tour and have an incredible
-                experience on your trip.
+                {t('footer.tagline')}
               </p>
             </div>
             <div>
@@ -56,7 +57,7 @@ const Footer: React.FC = () => {
                   <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                Locations
+                {t('footer.locations')}
               </h4>
               <p className="text-sm text-foreground/80">
                 <strong>Lisbon</strong>
@@ -82,7 +83,7 @@ const Footer: React.FC = () => {
                 >
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                Contact
+                {t('footer.contact')}
               </h4>
               <a
                 href="tel:+351914578214"
@@ -91,18 +92,18 @@ const Footer: React.FC = () => {
                 +351 914 578 214
               </a>
               <p className="text-xs text-foreground/60 mb-4">
-                Call to national mobile
+                {t('footer.callMobile')}
               </p>
               <a href="/faq">
                 <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background h-9 rounded-md px-3 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                  FAQ
+                  {t('footer.faq')}
                 </button>
               </a>
             </div>
             <div className="space-y-4">
               <div>
                 <h4 className="font-semibold text-gradient-gold mb-3">
-                  Follow Us
+                  {t('footer.followUs')}
                 </h4>
                 <div className="flex items-center gap-3">
                   {socialIcons.map((social) => (
@@ -139,7 +140,7 @@ const Footer: React.FC = () => {
                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </svg>
-                  Email
+                  {t('footer.email')}
                 </h4>
                 <a
                   href="mailto:info@offwego.pt"
@@ -156,14 +157,14 @@ const Footer: React.FC = () => {
                 to="/privacy-policy"
                 className="hover:text-primary transition-smooth"
               >
-                Privacy Policy
+                {t('footer.privacyPolicy')}
               </Link>
               <span>|</span>
               <Link
                 to="/terms"
                 className="hover:text-primary transition-smooth"
               >
-                Terms & Conditions
+                {t('footer.terms')}
               </Link>
               <span>|</span>
               <a
@@ -172,7 +173,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="hover:text-primary transition-smooth"
               >
-                Complaints Book
+                {t('footer.complaintsBook')}
               </a>
                <span>|</span>
                <Link
@@ -193,12 +194,12 @@ const Footer: React.FC = () => {
                 >
                   <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
                 </svg>
-                Admin
+                {t('footer.admin')}
                </Link>
              </div>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-foreground/60">
-                <span>Registration RNAAT: 738/2023</span>
+                <span>{t('footer.registration')}</span>
               </div>
             </div>
           </div>
@@ -212,7 +213,7 @@ const Footer: React.FC = () => {
         aria-label="WhatsApp"
       >
         <span className="hidden sm:block bg-background/90 backdrop-blur-sm border border-border text-foreground text-sm font-medium px-4 py-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-          Questions? Contact us
+          {t('footer.whatsappCta')}
         </span>
         <div className="w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#1DA851] shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 p-3">
           <img

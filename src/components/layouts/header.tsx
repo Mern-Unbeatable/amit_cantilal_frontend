@@ -1,68 +1,69 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { ChevronDown, Globe } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import ApplicationLogo from '@/components/application-logo.tsx'
+import type { SupportedLanguage } from '@/i18n'
 
 interface NavItem {
   id: number
-  name: string
+  nameKey: string
   to: string
 }
 
 interface NavGroup {
   id: number
-  label: string
+  labelKey: string
   items: Array<NavItem>
 }
 
 interface Language {
-  code: string
+  code: SupportedLanguage
   label: string
   flag: string
 }
 
 const standaloneLinks: Array<NavItem> = [
-  { id: 1, name: 'Home', to: '/' },
-  { id: 13, name: 'Fleet', to: '/fleet' },
-  { id: 2, name: 'Book Now', to: '/booking' },
+  { id: 1, nameKey: 'nav.home', to: '/' },
+  { id: 13, nameKey: 'nav.fleet', to: '/fleet' },
+  { id: 2, nameKey: 'nav.bookNow', to: '/booking' },
 ]
 
 const navGroups: Array<NavGroup> = [
   {
     id: 1,
-    label: 'Services',
+    labelKey: 'nav.services',
     items: [
-      { id: 3, name: 'Transfers', to: '/transfers' },
-      { id: 4, name: 'Hourly Service', to: '/hourly-service' },
-      { id: 5, name: 'Tours', to: '/tours' },
-      { id: 10, name: 'VIP Concierge', to: '/vip-concierge' },
-      { id: 11, name: 'Corporate Mobility', to: '/corporate-mobility' },
-      { id: 12, name: 'Special Events', to: '/special-events' },
+      { id: 3, nameKey: 'nav.transfers', to: '/transfers' },
+      { id: 4, nameKey: 'nav.hourlyService', to: '/hourly-service' },
+      { id: 5, nameKey: 'nav.tours', to: '/tours' },
+      { id: 10, nameKey: 'nav.vipConcierge', to: '/vip-concierge' },
+      { id: 11, nameKey: 'nav.corporateMobility', to: '/corporate-mobility' },
+      { id: 12, nameKey: 'nav.specialEvents', to: '/special-events' },
     ],
   },
   {
     id: 2,
-    label: 'Business',
+    labelKey: 'nav.business',
     items: [
-      { id: 6, name: 'B2B', to: '/b2b' },
-      { id: 7, name: 'Partnerships', to: '/partnerships' },
+      { id: 6, nameKey: 'nav.b2b', to: '/b2b' },
+      { id: 7, nameKey: 'nav.partnerships', to: '/partnerships' },
     ],
   },
   {
     id: 3,
-    label: 'Resources',
+    labelKey: 'nav.resources',
     items: [
-      { id: 8, name: 'FAQ', to: '/faq' },
-      { id: 9, name: 'Blog', to: '/blog' },
+      { id: 8, nameKey: 'nav.faq', to: '/faq' },
+      { id: 9, nameKey: 'nav.blog', to: '/blog' },
     ],
   },
 ]
 
 const languages: Array<Language> = [
-  { code: 'EN', label: 'English', flag: '🇬🇧' },
-  { code: 'PT', label: 'Português', flag: '🇵🇹' },
-  { code: 'ES', label: 'Español', flag: '🇪🇸' },
-  { code: 'ZH', label: '中文', flag: '🇨🇳' },
+  { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'pt', label: 'Português', flag: '🇵🇹' },
+  { code: 'es', label: 'Español', flag: '🇪🇸' },
 ]
 
 // ─── Dropdown ─────────────────────────────────────────────────────────────────
@@ -124,9 +125,12 @@ const Dropdown: React.FC<DropdownProps> = ({ label, children, isActive }) => {
 // ─── Language Switcher ────────────────────────────────────────────────────────
 
 const LanguageSwitcher: React.FC = () => {
+  const { i18n } = useTranslation()
   const [open, setOpen] = useState(false)
-  const [active, setActive] = useState(languages[0])
   const ref = useRef<HTMLDivElement>(null)
+
+  const active =
+    languages.find((lang) => lang.code === i18n.resolvedLanguage) ?? languages[0]
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -143,7 +147,7 @@ const LanguageSwitcher: React.FC = () => {
         className="flex items-center gap-2 border border-[#C9A84C]/30 px-4 h-11 rounded-3xl text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-colors duration-200 text-sm font-bold font-[Montserrat] uppercase tracking-wide"
       >
         <Globe className="w-4 h-4" />
-        <span>{active.flag} {active.code}</span>
+        <span>{active.flag} {active.code.toUpperCase()}</span>
         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
       </button>
 
@@ -157,7 +161,7 @@ const LanguageSwitcher: React.FC = () => {
           {languages.map((lang) => (
             <button
               key={lang.code}
-              onClick={() => { setActive(lang); setOpen(false) }}
+              onClick={() => { i18n.changeLanguage(lang.code); setOpen(false) }}
               className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors duration-150 font-bold font-[Montserrat] uppercase tracking-wide ${
                 active.code === lang.code
                   ? 'text-[#C9A84C] bg-[#C9A84C]/08'
@@ -165,7 +169,7 @@ const LanguageSwitcher: React.FC = () => {
               }`}
             >
               <span className="text-base normal-case">{lang.flag}</span>
-              <span className="font-medium">{lang.code}</span>
+              <span className="font-medium">{lang.code.toUpperCase()}</span>
               <span className="text-xs opacity-60 ml-auto normal-case">{lang.label}</span>
             </button>
           ))}
@@ -183,6 +187,7 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
+  const { t, i18n } = useTranslation()
   const [openGroup, setOpenGroup] = useState<number | null>(null)
 
   return (
@@ -202,7 +207,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
               activePath === item.to ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#F5F0E8]'
             }`}
           >
-            {item.name}
+            {t(item.nameKey)}
           </Link>
         ))}
 
@@ -213,7 +218,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
               onClick={() => setOpenGroup(openGroup === group.id ? null : group.id)}
               className="w-full flex items-center justify-between px-3 py-2.5 text-sm font-bold font-[Montserrat] uppercase tracking-wide text-[#9A9182] hover:text-[#F5F0E8] transition-colors"
             >
-              {group.label}
+              {t(group.labelKey)}
               <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openGroup === group.id ? 'rotate-180' : ''}`} />
             </button>
             <div className={`overflow-hidden transition-all duration-200 ${openGroup === group.id ? 'max-h-96' : 'max-h-0'}`}>
@@ -225,7 +230,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
                     activePath === item.to ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#F5F0E8]'
                   }`}
                 >
-                  {item.name}
+                  {t(item.nameKey)}
                 </Link>
               ))}
             </div>
@@ -235,14 +240,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
 
       {/* Language switcher in mobile */}
       <div className="px-4 pb-4 pt-2 border-t border-[#C9A84C]/10">
-        <p className="text-[10px] tracking-[.2em] uppercase text-[#5C564F] mb-2 px-3">Language</p>
+        <p className="text-[10px] tracking-[.2em] uppercase text-[#5C564F] mb-2 px-3">{t('nav.language')}</p>
         <div className="flex gap-2 px-3 flex-wrap">
           {languages.map((lang) => (
             <button
               key={lang.code}
-              className="flex items-center gap-1.5 text-xs font-bold font-[Montserrat] uppercase tracking-wide text-[#9A9182] hover:text-[#C9A84C] border border-[#C9A84C]/15 px-3 py-1.5 transition-colors"
+              onClick={() => i18n.changeLanguage(lang.code)}
+              className={`flex items-center gap-1.5 text-xs font-bold font-[Montserrat] uppercase tracking-wide border px-3 py-1.5 transition-colors ${
+                i18n.resolvedLanguage === lang.code
+                  ? 'text-[#C9A84C] border-[#C9A84C]/40 bg-[#C9A84C]/08'
+                  : 'text-[#9A9182] hover:text-[#C9A84C] border-[#C9A84C]/15'
+              }`}
             >
-              {lang.flag} {lang.code}
+              {lang.flag} {lang.code.toUpperCase()}
             </button>
           ))}
         </div>
@@ -254,6 +264,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activePath }) => {
 // ─── Header ───────────────────────────────────────────────────────────────────
 
 const Header: React.FC = () => {
+  const { t } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { location } = useRouterState()
   const activePath = location.pathname
@@ -288,7 +299,7 @@ const Header: React.FC = () => {
                 activePath === '/' ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#C9A84C]'
               }`}
             >
-              Home
+              {t('nav.home')}
             </Link>
 
             {/* Standalone: Book Now */}
@@ -298,12 +309,12 @@ const Header: React.FC = () => {
                 activePath === '/booking' ? 'text-[#C9A84C]' : 'text-[#9A9182] hover:text-[#C9A84C]'
               }`}
             >
-              Book Now
+              {t('nav.bookNow')}
             </Link>
 
             {/* Dropdown groups */}
             {navGroups.map((group) => (
-              <Dropdown key={group.id} label={group.label} isActive={isGroupActive(group)}>
+              <Dropdown key={group.id} label={t(group.labelKey)} isActive={isGroupActive(group)}>
                 {group.items.map((item) => (
                   <Link
                     key={item.id}
@@ -314,7 +325,7 @@ const Header: React.FC = () => {
                         : 'text-[#9A9182] hover:text-[#F5F0E8] hover:bg-[#1C1C1C]'
                     }`}
                   >
-                    {item.name}
+                    {t(item.nameKey)}
                   </Link>
                 ))}
               </Dropdown>
@@ -332,7 +343,7 @@ const Header: React.FC = () => {
             className="lg:hidden inline-flex items-center justify-center p-2 text-[#9A9182] hover:text-[#F5F0E8] transition-colors"
             aria-expanded={isMenuOpen}
           >
-            <span className="sr-only">Toggle menu</span>
+            <span className="sr-only">{t('nav.toggleMenu')}</span>
             {isMenuOpen ? (
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
