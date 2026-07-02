@@ -240,6 +240,12 @@ export default function BookingWidget() {
     setIsConfirming(true)
 
     try {
+      const { error: submitError } = await elements.submit()
+      if (submitError) {
+        setStripeError(submitError.message ?? 'Payment failed. Please try again.')
+        return
+      }
+
       const { error } = await stripe.confirmPayment({
         elements,                         // ← card details live here
         confirmParams: {
