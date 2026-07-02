@@ -173,7 +173,7 @@ export default function BookingWidget() {
   const buildPayload = (): CreateBookingPayload | null => {
     // console.log("Building payload with state:", state)
     if (!state.trip.date || !state.vehicle) return null
-    const amount = calculateAmount() ?? 200
+    const amount = Math.round((calculateAmount() ?? 200) * 100)
     // console.log("Calculated amount:", amount)
     // if (!amount)
 
