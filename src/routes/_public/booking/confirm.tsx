@@ -186,7 +186,7 @@ function BookingCard({ booking }: { booking: BookingState }) {
           Total Paid
         </span>
         <span className="font-serif text-xl text-[#C9A84C] font-light">
-          {formatCurrency(booking.amount)}
+          {formatCurrency(booking.amount / 100)}
         </span>
       </div>
     </div>
@@ -222,7 +222,7 @@ function RouteComponent() {
       details?.pickup ? `Pickup: ${details.pickup}` : null,
       details?.dropoff ? `Drop-off: ${details.dropoff}` : null,
       `Passengers: ${booking.passengers}`,
-      `Amount Paid: ${formatCurrency(booking.amount)}`,
+      `Amount Paid: ${formatCurrency(booking.amount / 100)}`,
       `Contact: ${booking.name} (${booking.email})`,
     ].filter(Boolean)
 
