@@ -473,15 +473,22 @@ export function getDistancePrice(
   pickupCoords: [number, number] | undefined,
   dropoffCoords: [number, number] | undefined,
   vehicleName: string,
+  roadDistanceKm?: number,
 ): number | null {
-  if (!pickupCoords || !dropoffCoords) return null
-
   const vehicleClass = resolveVehicleClass(vehicleName)
   if (!vehicleClass) return null
 
-  const [lat1, lng1] = pickupCoords
-  const [lat2, lng2] = dropoffCoords
-  const distanceKm = getDistanceKm(lat1, lng1, lat2, lng2)
+  let distanceKm: number
+
+  if (roadDistanceKm) {
+    distanceKm = roadDistanceKm
+  } else if (pickupCoords && dropoffCoords) {
+    const [lat1, lng1] = pickupCoords
+    const [lat2, lng2] = dropoffCoords
+    distanceKm = getDistanceKm(lat1, lng1, lat2, lng2)
+  } else {
+    return null
+  }
 
   return roundUpToFive(distanceKm * PER_KM_RATES[vehicleClass])
 }

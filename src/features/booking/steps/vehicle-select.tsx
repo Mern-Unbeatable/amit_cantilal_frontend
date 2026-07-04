@@ -1,10 +1,10 @@
- import {
+import { useEffect, useState } from 'react'
+import {
   Briefcase,
   Car,
   ChevronLeft,
   ChevronRight,
   Users,
-
 } from 'lucide-react'
 import type { TripDetails, Vehicle } from '../booking.types'
 import { Button } from '@/components/ui/button'
@@ -222,6 +222,30 @@ export default function Step2VehicleSelect({
 }: Props) {
   const { data: fleet = [], isFetching } = useFleet()
   const eligibleFleet = fleet.filter((v) => v.passengers >= trip.passengers)
+  const [roadDistanceKm, setRoadDistanceKm] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (trip.serviceType === 'hourly') return
+    if (!trip.pickup || !trip.dropoff) return
+
+    const service = new google.maps.DistanceMatrixService()
+    service.getDistanceMatrix(
+      {
+        origins: [trip.pickup],
+        destinations: [trip.dropoff],
+        travelMode: google.maps.TravelMode.DRIVING,
+        unitSystem: google.maps.UnitSystem.METRIC,
+      },
+      (response, status) => {
+        if (status === 'OK' && response) {
+          const element = response.rows[0]?.elements[0]
+          if (element?.status === 'OK') {
+            setRoadDistanceKm(element.distance.value / 1000)
+          }
+        }
+      },
+    )
+  }, [trip.pickup, trip.dropoff, trip.serviceType])
 
   const isElectric = (v: Vehicle) =>
     v.fuel_type === 'electric' ||
@@ -251,7 +275,7 @@ export default function Step2VehicleSelect({
         trip.dropoff,
         v.name,
       ) ??
-      getDistancePrice(trip.pickupCoords, trip.dropoffCoords, v.name) ??
+      getDistancePrice(trip.pickupCoords, trip.dropoffCoords, v.name, roadDistanceKm ?? undefined) ??
       v.price
     )
   }
