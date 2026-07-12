@@ -5,7 +5,7 @@ import PageHeader from '@/components/page-header.tsx'
 import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
 import { PostForm } from '@/features/blogs/post-form.tsx'
 import { useAdminPost, useUpdatePost } from '@/features/blogs/blog.hooks.ts'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card } from '@/components/ui/card'
 
 export const Route = createFileRoute('/_authenticated/admin/posts/$slug/edit')({
   component: RouteComponent,
@@ -41,14 +41,12 @@ function RouteComponent() {
     <AppWrapper>
       <PageHeader pageTitle="Edit Post" pageSubtitle={post?.title ?? ''} />
       <div className="p-4 md:p-6">
-        <Card className="max-w-3xl mx-auto">
-          <CardContent className="p-6">
-            <PostForm
-              defaultValues={post}
-              onSubmit={handleSubmit}
-              isSubmitting={isPending}
-            />
-          </CardContent>
+        <Card className="max-w-5xl mx-auto overflow-hidden">
+          <PostForm
+            defaultValues={post}
+            onSubmit={handleSubmit}
+            isSubmitting={isPending}
+          />
         </Card>
       </div>
     </AppWrapper>

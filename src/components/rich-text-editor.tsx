@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils'
 interface RichTextEditorProps {
   value: string
   onChange: (value: string) => void
+  onBlur?: () => void
   placeholder?: string
   className?: string
 }
@@ -62,6 +63,7 @@ export function RichTextEditor({
     ],
     content: value,
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
+    onBlur: () => onBlur?.(),
   })
 
   if (!editor) return null

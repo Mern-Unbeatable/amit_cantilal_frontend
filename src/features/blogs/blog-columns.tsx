@@ -3,7 +3,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import type { AdminPost, PostStatus } from '@/features/blogs/blog.types.ts'
 import { Badge } from '@/components/ui/badge'
 import { useNavigate } from '@tanstack/react-router'
-import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react'
+import { ExternalLink, MoreHorizontal, Pencil, Trash2 } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +12,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { useDeletePost } from '@/features/blogs/blog.hooks.ts'
 import { Button } from '@/components/ui/button.tsx'
+
+const SITE_URL = 'https://offwego.pt'
 
 export const POST_STATUS_MAP: Record<PostStatus, 'default' | 'secondary'> = {
   draft: 'default',
@@ -43,6 +45,26 @@ export function blogColumns(): Array<ColumnDef<AdminPost, unknown>> {
           </div>
         </div>
       ),
+    },
+
+    {
+      id: 'url',
+      header: 'URL',
+      cell: ({ row }) => {
+        const url = `${SITE_URL}/blog/${row.original.slug}`
+        return (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors max-w-[220px] truncate"
+            title={url}
+          >
+            <ExternalLink className="w-3 h-3 shrink-0" />
+            <span className="truncate">{url}</span>
+          </a>
+        )
+      },
     },
 
     {
