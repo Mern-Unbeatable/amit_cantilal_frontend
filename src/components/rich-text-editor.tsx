@@ -51,6 +51,7 @@ function ToolbarButton({ onClick, active, disabled, children, title }: ToolbarBu
 export function RichTextEditor({
                                  value,
                                  onChange,
+                                 onBlur,
                                  placeholder = 'Write something...',
                                  className,
                                }: RichTextEditorProps) {
