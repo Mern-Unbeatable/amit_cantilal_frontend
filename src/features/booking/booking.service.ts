@@ -61,8 +61,13 @@ export const bookingService = {
   updateStatus: (
     id: number | string,
     status: BookingStatus,
-  ): Promise<BookingState> =>
-    api
-      .patch<{ data: BookingState }>(`/admin/bookings/${id}/status`, { status })
-      .then(unwrap),
+  ): Promise<BookingState> => {
+    if (status !== 'confirmed' && status !== 'cancelled') {
+      return Promise.reject(new Error(`Unsupported status transition: ${status}`))
+    }
+    const action = status === 'confirmed' ? 'confirm' : 'cancel'
+    return api
+      .post<{ data: BookingState }>(`/admin/bookings/${id}/${action}`)
+      .then(unwrap)
+  },
 }
