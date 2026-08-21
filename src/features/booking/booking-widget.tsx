@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { format } from 'date-fns'
 import { toast } from 'sonner'
 import { Check } from 'lucide-react'
@@ -47,6 +47,41 @@ const INITIAL_STATE: BookingFormState = {
 }
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
+
+// ─── Reload persistence ───────────────────────────────────────────────────────
+// Keeps in-progress bookings across a page reload (e.g. accidental refresh
+// while picking a vehicle). Cleared once the payment step is left behind by
+// a successful redirect, since the underlying PaymentIntent won't be reused.
+
+const STORAGE_KEY = 'offwego-booking-widget'
+
+interface PersistedBookingState {
+  step: number
+  state: BookingFormState
+  clientSecret: string | null
+}
+
+function loadPersisted(): PersistedBookingState | null {
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as PersistedBookingState
+    if (parsed.state.trip.date) {
+      parsed.state.trip.date = new Date(parsed.state.trip.date)
+    }
+    return parsed
+  } catch {
+    return null
+  }
+}
+
+function savePersisted(data: PersistedBookingState) {
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+}
+
+export function clearPersistedBookingWidget() {
+  sessionStorage.removeItem(STORAGE_KEY)
+}
 
 // ─── Step indicator ───────────────────────────────────────────────────────────
 
@@ -108,13 +143,18 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
 // ─── Main widget ──────────────────────────────────────────────────────────────
 
 export default function BookingWidget() {
-  const [step, setStep] = useState(0)
-  const [state, setState] = useState<BookingFormState>(INITIAL_STATE)
+  const [persisted] = useState(() => loadPersisted())
+  const [step, setStep] = useState(persisted?.step ?? 0)
+  const [state, setState] = useState<BookingFormState>(persisted?.state ?? INITIAL_STATE)
   const [stripeError, setStripeError] = useState<string | null>(null)
-  const [clientSecret, setClientSecret] = useState<string | null>(null)
+  const [clientSecret, setClientSecret] = useState<string | null>(persisted?.clientSecret ?? null)
   const [isConfirming, setIsConfirming] = useState(false)
   const createBooking = useCreateBooking()
   const widgetRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    savePersisted({ step, state, clientSecret })
+  }, [step, state, clientSecret])
 
   const updateTrip = (trip: TripDetails) => setState((s) => ({ ...s, trip }))
   const updateVehicle = (vehicle: Vehicle) => setState((s) => ({ ...s, vehicle }))

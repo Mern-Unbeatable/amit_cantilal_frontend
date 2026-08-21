@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import {
@@ -12,6 +13,7 @@ import {
 import type { BookingState } from '@/features/booking/booking.types.ts'
 import { capitalize, formatCurrency, mainTransitionProps } from '@/lib/utils.ts'
 import { useGetBookingByPaymentIntent } from '@/features/booking/booking.hooks.ts'
+import { clearPersistedBookingWidget } from '@/features/booking/booking-widget.tsx'
 
 export const Route = createFileRoute('/_public/booking/confirm')({
   component: RouteComponent,
@@ -204,6 +206,12 @@ function RouteComponent() {
 
   const { data: booking, isLoading } =
     useGetBookingByPaymentIntent(paymentIntentId)
+
+  useEffect(() => {
+    if (isSucceeded) {
+      clearPersistedBookingWidget()
+    }
+  }, [isSucceeded])
 
   const handlePrint = () => {
     window.print()
