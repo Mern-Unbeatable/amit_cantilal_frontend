@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { PageHero } from '@/components/shared/page-hero.tsx'
 import BlogCard from '@/features/blogs/blog-card.tsx'
+import type { BlogPost } from '@/features/blogs/blog.types.ts'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { usePosts } from '@/features/blogs/blog.hooks.ts'
 
@@ -10,7 +12,16 @@ export const Route = createFileRoute('/_public/blog/')({
 })
 
 function RouteComponent() {
-  const { data, isLoading } = usePosts()
+  const [page, setPage] = useState(1)
+  const [posts, setPosts] = useState<Array<BlogPost>>([])
+  const { data, isLoading, isFetching } = usePosts(page)
+
+  useEffect(() => {
+    if (!data) return
+    setPosts((prev) => (page === 1 ? data.posts : [...prev, ...data.posts]))
+  }, [data, page])
+
+  const hasMore = data ? data.pagination.current_page < data.pagination.last_page : false
 
   return (
     <motion.div {...mainTransitionProps}>
@@ -32,15 +43,27 @@ function RouteComponent() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {isLoading
+            {isLoading && page === 1
               ? Array.from({ length: 3 }).map((_, i) => (
                 <div key={i} className="h-64 bg-[#141414] animate-pulse" />
               ))
-              : data?.posts.map((post) => (
+              : posts.map((post) => (
                 <BlogCard key={post.slug} post={post} />
               ))
             }
           </div>
+
+          {hasMore && (
+            <div className="flex justify-center mt-10 md:mt-14">
+              <button
+                onClick={() => setPage((p) => p + 1)}
+                disabled={isFetching}
+                className="px-8 h-12 border border-[#C9A84C]/40 hover:border-[#C9A84C] text-[#F5F0E8] text-sm font-medium tracking-[.08em] uppercase transition-colors disabled:opacity-40"
+              >
+                {isFetching ? 'Loading...' : 'Load More'}
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </motion.div>
