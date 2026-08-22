@@ -62,7 +62,7 @@ function RouteComponent() {
             <article
               className="
                 prose prose-invert max-w-none
-                prose-headings:font-serif prose-headings:font-light prose-headings:text-gradient-gold
+                prose-headings:font-serif prose-headings:font-light prose-headings:text-[#C9A84C]
                 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-8 prose-h2:mb-4
                 prose-p:text-[#9A9182] prose-p:leading-relaxed prose-p:text-sm md:prose-p:text-base
                 prose-a:text-[#C9A84C] prose-a:no-underline hover:prose-a:underline prose-a:transition-colors

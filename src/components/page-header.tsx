@@ -21,10 +21,11 @@ const PageHeader = ({ pageTitle, pageSubtitle }: PageHeaderProps) => {
   })
 
   // 2. Split path into an array and filter out empty strings (caused by leading '/')
-  const pathSegments = pathname
-    .split('/')
-    .filter(Boolean)
-    .filter((segment) => segment !== 'admin' && segment !== 'student')
+  const allSegments = pathname.split('/').filter(Boolean)
+  // Segments actually shown as crumbs — "admin"/"student" are part of every
+  // URL here but shouldn't get their own crumb. Kept separate from
+  // allSegments so link paths below can still include them.
+  const pathSegments = allSegments.filter((segment) => segment !== 'admin' && segment !== 'student')
 
   return (
     <div className="flex justify-between items-center">
@@ -50,10 +51,16 @@ const PageHeader = ({ pageTitle, pageSubtitle }: PageHeaderProps) => {
           {/* Only render separator if we have deep routes */}
           {pathSegments.length > 0 && <BreadcrumbSeparator />}
 
-          {pathSegments.map((segment, index) => {
-            // Reconstruct the full path for this segment (e.g., /dashboard/settings)
-            const segmentPath = `/${pathSegments.slice(0, index + 1).join('/')}`
-            const isLast = index === pathSegments.length - 1
+          {allSegments.map((segment, index) => {
+            // Skip rendering a crumb for the role segment, but keep it in the
+            // reconstructed path below — dropping it from allSegments itself
+            // (as the old code did) silently broke every breadcrumb link by
+            // stripping "/admin" out of the URL it points to.
+            if (segment === 'admin' || segment === 'student') return null
+
+            // Reconstruct the full path for this segment (e.g., /admin/dashboard/settings)
+            const segmentPath = `/${allSegments.slice(0, index + 1).join('/')}`
+            const isLast = index === allSegments.length - 1
 
             // Capitalize first letter
             const title = segment.charAt(0).toUpperCase() + segment.slice(1)
