@@ -69,6 +69,15 @@ export interface StripePaymentIntentStatus {
   } | null
 }
 
+export interface BookingActivityEntry {
+  id: number
+  description: string
+  causer: string
+  changes: Record<string, unknown> | null
+  old: Record<string, unknown> | null
+  created_at: string
+}
+
 export interface BookingState {
   id: number
   reference: string

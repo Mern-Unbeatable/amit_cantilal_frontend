@@ -10,6 +10,8 @@ export const bookingKeys = {
     [...bookingKeys.all, 'detail', id] as const,
   paymentIntent: (id: number | string) =>
     [...bookingKeys.all, 'paymentIntent', id] as const,
+  activity: (id: number | string) =>
+    [...bookingKeys.all, 'activity', id] as const,
 }
 
 export function useCreateBooking() {
@@ -71,6 +73,13 @@ export function useStripeStatus() {
   })
 }
 
+export function useBookingActivity(id: number | string) {
+  return useQuery({
+    queryKey: bookingKeys.activity(id),
+    queryFn: () => bookingService.getActivity(id),
+  })
+}
+
 export function useDeleteBooking() {
   const queryClient = useQueryClient()
 
@@ -94,6 +103,7 @@ export function useUpdateBookingStatus() {
     }) => bookingService.updateStatus(id, status),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: bookingKeys.detail(data.id) })
+      queryClient.invalidateQueries({ queryKey: bookingKeys.activity(data.id) })
     },
   })
 }

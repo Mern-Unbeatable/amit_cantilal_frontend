@@ -1,4 +1,5 @@
 import type {
+  BookingActivityEntry,
   BookingPaginatedResponse,
   BookingState,
   BookingStatus,
@@ -64,6 +65,9 @@ export const bookingService = {
 
   getStripeStatus: (id: number | string): Promise<StripePaymentIntentStatus> =>
     api.get<{ data: StripePaymentIntentStatus }>(`/admin/bookings/${id}/stripe-status`).then(unwrap),
+
+  getActivity: (id: number | string): Promise<Array<BookingActivityEntry>> =>
+    api.get<{ data: Array<BookingActivityEntry> }>(`/admin/bookings/${id}/activity`).then(unwrap),
 
   updateStatus: (
     id: number | string,

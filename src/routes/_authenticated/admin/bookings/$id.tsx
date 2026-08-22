@@ -2,7 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import {
   AlertTriangle, ArrowLeft, Calendar, Car, Clock, Compass, CreditCard,
-  FileText, MapPin, User, Users,
+  FileText, History, MapPin, User, Users,
 } from 'lucide-react'
 import type { BookingStatus } from '@/features/booking/booking.types.ts'
 import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/dialog.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Spinner } from '@/components/ui/spinner.tsx'
-import { useGetBooking, useStripeStatus, useUpdateBookingStatus } from '@/features/booking/booking.hooks.ts'
+import { useBookingActivity, useGetBooking, useStripeStatus, useUpdateBookingStatus } from '@/features/booking/booking.hooks.ts'
 import { formatCurrency } from '@/lib/utils.ts'
 import { StatusPill } from '@/components/status-pill.tsx'
 
@@ -154,6 +154,49 @@ function StripeStatusDialog({
   )
 }
 
+function ActivityTimeline({ bookingId }: { bookingId: number }) {
+  const { data: activity, isLoading } = useBookingActivity(bookingId)
+
+  if (isLoading) {
+    return <div className="h-16 animate-pulse bg-muted/20 rounded-md" />
+  }
+
+  if (!activity || activity.length === 0) {
+    return <p className="text-sm text-muted-foreground">No activity recorded yet.</p>
+  }
+
+  return (
+    <div className="space-y-4">
+      {activity.map((entry) => {
+        const statusChange = entry.changes?.status
+        const previousStatus = entry.old?.status
+        return (
+          <div key={entry.id} className="flex items-start gap-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+            <div className="min-w-0">
+              <p className="text-sm text-foreground">
+                {entry.causer}
+                <span className="text-muted-foreground"> {entry.description}</span>
+                {typeof statusChange === 'string' && typeof previousStatus === 'string' && (
+                  <>
+                    {' — '}
+                    <span className="capitalize">{previousStatus}</span>
+                    {' → '}
+                    <span className="capitalize font-medium">{statusChange}</span>
+                  </>
+                )}
+              </p>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                {new Date(entry.created_at).toLocaleString('en-GB')}
+              </p>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 function RouteComponent() {
   const { id } = Route.useParams()
   const { data: booking, isLoading } = useGetBooking(id)
@@ -168,6 +211,13 @@ function RouteComponent() {
   const details = booking.details as Record<string, string> | null
 
   const handleStatusChange = (val: string) => {
+    if (val === 'cancelled' && booking.payment?.status === 'succeeded') {
+      const confirmed = confirm(
+        'This booking was already paid. Cancelling it here does NOT refund the customer automatically — you\'ll need to issue the refund yourself from the Stripe dashboard. Continue cancelling?',
+      )
+      if (!confirmed) return
+    }
+
     setStatus(val as BookingStatus)
     updateStatus({ id: booking.id, status: val as BookingStatus })
   }
@@ -282,6 +332,12 @@ function RouteComponent() {
 
           {booking.payment && (
             <SectionCard icon={<CreditCard className="w-4 h-4" />} title="Payment">
+              {booking.status === 'cancelled' && booking.payment.status === 'succeeded' && (
+                <div className="flex items-start gap-2 mb-4 p-3 rounded-md border border-destructive/30 bg-destructive/10 text-destructive text-sm">
+                  <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <span>This booking was cancelled but the payment hasn't been refunded yet — issue the refund manually from the Stripe dashboard.</span>
+                </div>
+              )}
               <div className="divide-y divide-border">
                 <div className="flex items-center justify-between py-3 first:pt-0">
                   <span className="text-sm text-muted-foreground">Amount</span>
@@ -313,6 +369,10 @@ function RouteComponent() {
               </div>
             </SectionCard>
           )}
+
+          <SectionCard icon={<History className="w-4 h-4" />} title="Activity">
+            <ActivityTimeline bookingId={booking.id} />
+          </SectionCard>
         </div>
 
         {/* Right: status + summary */}
