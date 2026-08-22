@@ -65,6 +65,12 @@ export function useRefreshPaymentIntent() {
   })
 }
 
+export function useStripeStatus() {
+  return useMutation({
+    mutationFn: (id: number | string) => bookingService.getStripeStatus(id),
+  })
+}
+
 export function useDeleteBooking() {
   const queryClient = useQueryClient()
 

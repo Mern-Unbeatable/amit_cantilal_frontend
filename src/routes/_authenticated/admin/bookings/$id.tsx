@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import {
-  ArrowLeft, Calendar, Car, Clock, Compass, CreditCard,
+  AlertTriangle, ArrowLeft, Calendar, Car, Clock, Compass, CreditCard,
   FileText, MapPin, User, Users,
 } from 'lucide-react'
 import type { BookingStatus } from '@/features/booking/booking.types.ts'
@@ -14,7 +14,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select.tsx'
-import { useGetBooking, useUpdateBookingStatus } from '@/features/booking/booking.hooks.ts'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog.tsx'
+import { Button } from '@/components/ui/button.tsx'
+import { Spinner } from '@/components/ui/spinner.tsx'
+import { useGetBooking, useStripeStatus, useUpdateBookingStatus } from '@/features/booking/booking.hooks.ts'
 import { formatCurrency } from '@/lib/utils.ts'
 import { StatusPill } from '@/components/status-pill.tsx'
 
@@ -63,11 +72,94 @@ function Field({
   )
 }
 
+function StripeStatusDialog({
+  bookingId, open, onOpenChange,
+}: {
+  bookingId: number
+  open: boolean
+  onOpenChange: (open: boolean) => void
+}) {
+  const { mutate, data, isPending, isError, error } = useStripeStatus()
+
+  const handleOpenChange = (next: boolean) => {
+    onOpenChange(next)
+    if (next) mutate(bookingId)
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={handleOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Stripe Payment Status</DialogTitle>
+          <DialogDescription>
+            Live data pulled directly from Stripe, not our cached record.
+          </DialogDescription>
+        </DialogHeader>
+
+        {isPending && (
+          <div className="flex items-center justify-center py-8">
+            <Spinner className="w-5 h-5" />
+          </div>
+        )}
+
+        {isError && (
+          <p className="text-sm text-destructive py-4">
+            {error instanceof Error ? error.message : 'Could not reach Stripe.'}
+          </p>
+        )}
+
+        {data && (
+          <div className="divide-y divide-border">
+            <div className="flex items-center justify-between py-3 first:pt-0">
+              <span className="text-sm text-muted-foreground">Intent Status</span>
+              <StatusPill status={data.status} />
+            </div>
+            <div className="flex items-center justify-between py-3">
+              <span className="text-sm text-muted-foreground">Amount</span>
+              <span className="text-sm text-foreground font-medium">
+                {formatCurrency(data.amount / 100)}
+                {data.amount_received !== data.amount && (
+                  <span className="text-muted-foreground ml-1">
+                    ({formatCurrency(data.amount_received / 100)} received)
+                  </span>
+                )}
+              </span>
+            </div>
+            <div className="flex items-center justify-between py-3 gap-4">
+              <span className="text-sm text-muted-foreground flex-shrink-0">Payment Intent</span>
+              <code className="text-xs bg-muted px-2 py-1 rounded break-all text-right">{data.id}</code>
+            </div>
+            <div className="flex items-center justify-between py-3">
+              <span className="text-sm text-muted-foreground">Created</span>
+              <span className="text-sm text-foreground font-medium">
+                {new Date(data.created).toLocaleString('en-GB')}
+              </span>
+            </div>
+            {data.next_action && (
+              <div className="flex items-center justify-between py-3">
+                <span className="text-sm text-muted-foreground">Next Action Needed</span>
+                <span className="text-sm text-foreground font-medium">{data.next_action.type}</span>
+              </div>
+            )}
+            {data.last_payment_error && (
+              <div className="py-3 last:pb-0">
+                <p className="text-sm text-muted-foreground mb-1">Last Payment Error</p>
+                <p className="text-sm text-destructive">{data.last_payment_error.message}</p>
+              </div>
+            )}
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 function RouteComponent() {
   const { id } = Route.useParams()
   const { data: booking, isLoading } = useGetBooking(id)
   const { mutate: updateStatus, isPending } = useUpdateBookingStatus()
   const [status, setStatus] = useState<BookingStatus | ''>('')
+  const [stripeDialogOpen, setStripeDialogOpen] = useState(false)
 
   if (isLoading) return <AppWrapper><div className="p-8 text-muted-foreground">Loading...</div></AppWrapper>
   if (!booking) return <AppWrapper><div className="p-8 text-muted-foreground">Booking not found.</div></AppWrapper>
@@ -101,6 +193,17 @@ function RouteComponent() {
               {booking.reference}
             </h1>
             <StatusPill status={booking.status} />
+            {booking.stripe_status === 'requires_action' && (
+              <Button
+                size="sm"
+                variant="outline"
+                className="border-destructive/40 text-destructive hover:bg-destructive/10"
+                onClick={() => setStripeDialogOpen(true)}
+              >
+                <AlertTriangle className="w-3.5 h-3.5 mr-1.5" />
+                Action Required — Check Stripe
+              </Button>
+            )}
           </div>
           <p className="text-sm text-muted-foreground mt-2">
             <span className="text-foreground font-medium">{booking.name}</span>
@@ -264,6 +367,12 @@ function RouteComponent() {
           </SectionCard>
         </div>
       </div>
+
+      <StripeStatusDialog
+        bookingId={booking.id}
+        open={stripeDialogOpen}
+        onOpenChange={setStripeDialogOpen}
+      />
     </AppWrapper>
   )
 }

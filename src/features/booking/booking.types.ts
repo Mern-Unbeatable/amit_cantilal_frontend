@@ -51,6 +51,24 @@ export interface Payment {
   created_at: string
 }
 
+export interface StripePaymentIntentStatus {
+  id: string
+  status: string
+  amount: number
+  amount_received: number
+  currency: string
+  created: string
+  payment_method_types: Array<string>
+  last_payment_error: {
+    message: string | null
+    code: string | null
+    decline_code: string | null
+  } | null
+  next_action: {
+    type: string
+  } | null
+}
+
 export interface BookingState {
   id: number
   reference: string
@@ -66,6 +84,7 @@ export interface BookingState {
   amount: number
   currency: string
   status: BookingStatus
+  stripe_status?: string | null
   payment?: Payment | null
   created_at: string
   updated_at: string

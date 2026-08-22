@@ -4,6 +4,7 @@ import type {
   BookingStatus,
   CreateBookingPayload,
   CreateBookingResponse,
+  StripePaymentIntentStatus,
 } from '@/features/booking/booking.types.ts'
 import { api, unwrap } from '@/services/api.ts'
 
@@ -60,6 +61,9 @@ export const bookingService = {
     api
       .post<{ data: CreateBookingResponse }>(`/public/bookings/${reference}/payment-intent`, { email })
       .then(unwrap),
+
+  getStripeStatus: (id: number | string): Promise<StripePaymentIntentStatus> =>
+    api.get<{ data: StripePaymentIntentStatus }>(`/admin/bookings/${id}/stripe-status`).then(unwrap),
 
   updateStatus: (
     id: number | string,
