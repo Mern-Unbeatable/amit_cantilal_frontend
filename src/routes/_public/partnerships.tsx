@@ -2,7 +2,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { Image } from '@unpic/react'
 import { useTranslation } from 'react-i18next'
-import { mainTransitionProps } from '@/lib/utils.ts'
+import { mainTransitionProps, toWhatsAppUrl } from '@/lib/utils.ts'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
 import { Button } from '@/components/ui/button.tsx'
 import { PartnershipServices, features } from '@/data'
 import FleetSection from '@/components/sections/fleet-sections.tsx'
@@ -18,6 +19,7 @@ export const Route = createFileRoute('/_public/partnerships')({
 
 function RouteComponent() {
   const { t } = useTranslation()
+  const { data: settings } = usePublicSettings()
   const { data: fleet } = useFleet()
   const translatedFeatures = t('partnershipsPage.features', { returnObjects: true }) as Array<{ title: string; description: string }>
   const mergedFeatures = features.map((f, idx) => ({ ...f, ...translatedFeatures[idx] }))
@@ -52,7 +54,7 @@ function RouteComponent() {
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 btn-luxury text-sm md:text-lg px-5 py-4 md:px-8 md:py-6"
                 >
                   <a
-                    href="https://wa.me/351914578214"
+                    href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 group"

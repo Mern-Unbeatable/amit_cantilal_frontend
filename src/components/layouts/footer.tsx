@@ -2,9 +2,13 @@ import React from 'react'
 import { Icon } from '@iconify/react'
 import {Link} from "@tanstack/react-router";
 import { useTranslation } from 'react-i18next'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { toWhatsAppUrl } from '@/lib/utils.ts'
 
 const Footer: React.FC = () => {
   const { t } = useTranslation()
+  const { data: settings } = usePublicSettings()
+  const whatsappNumber = settings?.whatsapp_number ?? '+351914578214'
   const socialIcons = [
     {
       name: 'Instagram',
@@ -86,10 +90,10 @@ const Footer: React.FC = () => {
                 {t('footer.contact')}
               </h4>
               <a
-                href="tel:+351914578214"
+                href={`tel:${whatsappNumber}`}
                 className="text-sm text-foreground/80 hover:text-primary transition-smooth block mb-1"
               >
-                +351 914 578 214
+                {whatsappNumber}
               </a>
               <p className="text-xs text-foreground/60 mb-4">
                 {t('footer.callMobile')}
@@ -206,7 +210,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <a
-        href="https://wa.me/351914578214"
+        href={toWhatsAppUrl(whatsappNumber)}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group"

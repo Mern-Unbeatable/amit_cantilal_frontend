@@ -14,12 +14,13 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import {usePartnershipRequest} from "@/features/partnership-request/partnership-request.hooks.ts";
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { toWhatsAppUrl } from '@/lib/utils.ts'
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const PHONE = '+351 914 578 214'
 const EMAIL = 'partners@offwego.pt'
-const WHATSAPP = `https://wa.me/351914578214?text=${encodeURIComponent("Hi Off We Go Portugal, I'd like to request a B2B partnership.")}`
+const B2B_MESSAGE = "Hi Off We Go Portugal, I'd like to request a B2B partnership."
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -67,6 +68,10 @@ export default function B2BRequestForm() {
   const { t } = useTranslation()
   const [submitted, setSubmitted] = useState(false)
   const [partnerType, setPartnerType] = useState('')
+
+  const { data: settings } = usePublicSettings()
+  const phone = settings?.whatsapp_number ?? '+351 914 578 214'
+  const whatsappUrl = toWhatsAppUrl(phone, B2B_MESSAGE)
 
   const { mutate: submitRequest, isPending } = usePartnershipRequest()
 
@@ -287,7 +292,7 @@ export default function B2BRequestForm() {
                     className="flex-1 h-10 rounded-none border-gold/30 text-white-cream hover:bg-gold/10 hover:text-white-cream text-sm md:text-base"
                   >
                     <a
-                      href={WHATSAPP}
+                      href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -307,11 +312,11 @@ export default function B2BRequestForm() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
               <a
-                href={`tel:${PHONE}`}
+                href={`tel:${phone}`}
                 className="flex items-center gap-2 text-xs md:text-base text-[#9A9182] hover:text-[#C9A84C] transition-colors"
               >
                 <Phone className="w-4 h-4" strokeWidth={1.5} />
-                {PHONE}
+                {phone}
               </a>
               <a
                 href={`mailto:${EMAIL}`}

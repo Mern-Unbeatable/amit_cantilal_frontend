@@ -6,6 +6,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { toWhatsAppUrl } from '@/lib/utils.ts'
 
 export interface FaqItem {
   question: string
@@ -24,10 +26,12 @@ interface FaqSectionProps {
 
 export function FaqSection({
   data,
-  whatsappNumber = '351914578214',
+  whatsappNumber,
 }: FaqSectionProps) {
   const { t } = useTranslation()
+  const { data: settings } = usePublicSettings()
   const faqData = data ?? (t('faq.categories', { returnObjects: true }) as Array<FaqCategory>)
+  const resolvedWhatsappNumber = whatsappNumber ?? settings?.whatsapp_number ?? '+351914578214'
 
   return (
     <section className="py-10 md:py-24 bg-[#0B0B0B]">
@@ -76,7 +80,7 @@ export function FaqSection({
             </p>
 
             <a
-              href={`https://wa.me/${whatsappNumber}`}
+              href={toWhatsAppUrl(resolvedWhatsappNumber)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold inline-flex items-center gap-2 md:gap-3 text-xs md:text-sm px-6 py-3 md:px-8 md:py-4"

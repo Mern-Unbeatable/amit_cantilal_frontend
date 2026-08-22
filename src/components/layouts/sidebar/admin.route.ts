@@ -52,4 +52,14 @@ export const adminRoutes: Array<NavGroup> = [
       },
     ],
   },
+  {
+    id: 3,
+    items: [
+      {
+        title: 'Settings',
+        url: '/admin/settings',
+        icon: 'material-symbols:settings-outline-rounded',
+      },
+    ],
+  },
 ]

@@ -18,6 +18,8 @@ import {
   useMapsLibrary,
 } from '@vis.gl/react-google-maps'
 import type { Stop, TripDetails } from '@/features/booking/booking.types.ts'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { toWhatsAppUrl } from '@/lib/utils.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -381,6 +383,7 @@ function DatePicker({
 // ─── Main Step ────────────────────────────────────────────────────────────────
 
 export default function Step1TripDetails({ data, onChange, onNext }: Props) {
+  const { data: settings } = usePublicSettings()
   const [pickupLatLng, setPickupLatLng] = useState<LatLng | null>(null)
   const [dropoffLatLng, setDropoffLatLng] = useState<LatLng | null>(null)
 
@@ -596,7 +599,7 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
           </p>
           <div className="flex flex-col sm:flex-row gap-2">
             <a
-              href="https://wa.me/351914578214"
+              href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 text-center h-11 flex items-center justify-center bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] text-sm font-medium transition-colors"
@@ -604,7 +607,7 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
               WhatsApp Us
             </a>
             <a
-              href="mailto:bookings@offwego.pt"
+              href={`mailto:${settings?.contact_email ?? 'bookings@offwego.pt'}`}
               className="flex-1 text-center h-11 flex items-center justify-center border border-[#C9A84C]/40 hover:border-[#C9A84C] text-[#F5F0E8] text-sm font-medium transition-colors"
             >
               Email Us

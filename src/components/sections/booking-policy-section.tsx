@@ -1,5 +1,7 @@
 import { AlertCircle, Bus, Car, Clock, RefreshCw, ShieldOff } from 'lucide-react'
 import { Trans, useTranslation } from 'react-i18next'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { toWhatsAppUrl } from '@/lib/utils.ts'
 
 const severities = ['high', 'mid', 'low']
 
@@ -17,6 +19,7 @@ const severityText: Record<string, string> = {
 
 export function BookingPoliciesSection() {
   const { t } = useTranslation()
+  const { data: settings } = usePublicSettings()
   const sedanVanRules = (t('bookingPolicy.sedanVanRules', { returnObjects: true }) as Array<{ label: string; charge: string }>)
     .map((rule, idx) => ({ ...rule, severity: severities[idx] }))
   const rescheduleOptions = t('bookingPolicy.reschedulingOptions', { returnObjects: true }) as string[]
@@ -140,7 +143,7 @@ export function BookingPoliciesSection() {
               <p className="text-xs md:text-sm text-[#9A9182] leading-relaxed">
                 {t('bookingPolicy.sameDayNoticePrefix')}{' '}
                 <a
-                  href="https://wa.me/351914578214"
+                  href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#C9A84C] underline underline-offset-2 hover:text-[#C9A84C]/70 transition-colors"

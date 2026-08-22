@@ -1,8 +1,11 @@
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { toWhatsAppUrl } from '@/lib/utils.ts'
 
 export function VipConciergeHero() {
   const { t } = useTranslation()
+  const { data: settings } = usePublicSettings()
   return (
     <section className="relative min-h-[78vh] md:min-h-[92vh] flex items-end overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -38,7 +41,7 @@ export function VipConciergeHero() {
               {t('vipConcierge.hero.contactButton')} <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
-              href="https://wa.me/351914578214"
+              href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 border border-[#C9A84C]/60 text-[#C9A84C] px-8 py-4 md:px-10 md:py-5 text-[11px] md:text-xs tracking-[0.3em] uppercase hover:bg-[#C9A84C] hover:text-[#0B0B0B] transition-all duration-500"

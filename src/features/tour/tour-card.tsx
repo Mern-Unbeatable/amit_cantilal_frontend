@@ -10,8 +10,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { toWhatsAppUrl } from '@/lib/utils.ts'
 
 export function TourCard({ tour }: { tour: Tour }) {
+  const { data: settings } = usePublicSettings()
   const autoplayPlugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: false }),
   )
@@ -89,7 +92,7 @@ export function TourCard({ tour }: { tour: Tour }) {
           {/* CTA */}
           {tour.category === 'on_demand' ? (
             <a
-              href="https://wa.me/351914578214"
+              href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 border border-[#C9A84C]/30 hover:border-[#C9A84C] hover:bg-[#C9A84C]/10 text-[#C9A84C] transition-colors duration-200 py-2 md:py-2.5 text-xs md:text-sm"

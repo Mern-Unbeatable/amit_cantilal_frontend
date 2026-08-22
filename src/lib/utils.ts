@@ -72,3 +72,11 @@ export const postTransitionProps = {
     damping: 10,
   },
 } as const
+
+/** Builds a wa.me link from a phone number (any formatting) and optional prefilled message. */
+export function toWhatsAppUrl(number: string, message?: string): string {
+  const digits = number.replace(/[^0-9]/g, '')
+  return message
+    ? `https://wa.me/${digits}?text=${encodeURIComponent(message)}`
+    : `https://wa.me/${digits}`
+}

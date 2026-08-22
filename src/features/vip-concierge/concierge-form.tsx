@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { toWhatsAppUrl } from '@/lib/utils.ts'
 import {
   Select,
   SelectContent,
@@ -63,6 +65,7 @@ function Field({
 export function VipConciergeForm() {
   const { t } = useTranslation()
   const [submitted, setSubmitted] = useState(false)
+  const { data: settings } = usePublicSettings()
 
   const { mutate: createRequest, isPending } = useCreateConciergeRequest()
 
@@ -252,7 +255,7 @@ export function VipConciergeForm() {
                   asChild
                   className="flex-1 h-12 rounded-none border-[#C9A84C]/60 text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0B0B0B] tracking-[0.1em] uppercase"
                 >
-                  <a href="https://wa.me/351914578214" target="_blank" rel="noopener noreferrer">
+                  <a href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-4 h-4 mr-2" />
                     WhatsApp
                   </a>
