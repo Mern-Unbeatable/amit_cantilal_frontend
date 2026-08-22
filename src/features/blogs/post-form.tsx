@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import heic2any from 'heic2any'
 import { ImagePlus, X, FileText, AlignLeft, Eye, EyeOff } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -69,6 +70,7 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
     defaultValues?.cover_image ?? null,
   )
   const [coverFile, setCoverFile] = useState<File | null>(null)
+  const [isConvertingCover, setIsConvertingCover] = useState(false)
   const [isPublished, setIsPublished] = useState(!!defaultValues?.published_at)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -90,19 +92,46 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
     },
   })
 
-  useEffect(() => {
-    if (isPublished) {
-      setValue('published_at', new Date().toISOString())
-    } else {
-      setValue('published_at', null)
-    }
-  }, [isPublished, setValue])
+  const handleVisibilityChange = (checked: boolean) => {
+    setIsPublished(checked)
+    setValue('published_at', checked ? new Date().toISOString() : null)
+  }
 
-  const handleCoverChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCoverChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-    setCoverFile(file)
-    setCoverPreview(URL.createObjectURL(file))
+
+    // iPad/iPhone photos default to HEIC, which the backend's image
+    // validation rejects and most non-Apple browsers can't render anyway.
+    // Convert to JPEG here rather than asking non-technical users to
+    // figure out how to export a different format.
+    const isHeic =
+      file.type === 'image/heic' ||
+      file.type === 'image/heif' ||
+      /\.hei[cf]$/i.test(file.name)
+
+    if (!isHeic) {
+      setCoverFile(file)
+      setCoverPreview(URL.createObjectURL(file))
+      return
+    }
+
+    setIsConvertingCover(true)
+    try {
+      const converted = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.8 })
+      const blob = Array.isArray(converted) ? converted[0] : converted
+      const jpegFile = new File(
+        [blob],
+        file.name.replace(/\.hei[cf]$/i, '.jpg'),
+        { type: 'image/jpeg' },
+      )
+      setCoverFile(jpegFile)
+      setCoverPreview(URL.createObjectURL(jpegFile))
+    } catch {
+      toast.error('Could not convert this HEIC photo. Please choose a JPEG or PNG instead.')
+    } finally {
+      setIsConvertingCover(false)
+    }
   }
 
   const removeCover = () => {
@@ -211,7 +240,14 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
               title="Cover Image"
               description="Shown in listings and at the top of the post."
             />
-            {coverPreview ? (
+            {isConvertingCover ? (
+              <div className="flex flex-col items-center justify-center w-full aspect-video border-2 border-dashed border-border rounded-lg gap-2 text-muted-foreground">
+                <div className="p-2.5 rounded-full bg-muted animate-pulse">
+                  <ImagePlus className="w-4 h-4" />
+                </div>
+                <p className="text-xs font-medium text-foreground">Converting photo...</p>
+              </div>
+            ) : coverPreview ? (
               <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
                 <img src={coverPreview} alt="Cover preview" className="w-full h-full object-cover" />
                 <button
@@ -275,7 +311,7 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
                   {isPublished ? 'Visible to the public' : 'Hidden from the public'}
                 </p>
               </div>
-              <Switch checked={isPublished} onCheckedChange={setIsPublished} />
+              <Switch checked={isPublished} onCheckedChange={handleVisibilityChange} />
             </div>
           </div>
 

@@ -63,7 +63,13 @@ export function RichTextEditor({
       Placeholder.configure({ placeholder }),
     ],
     content: value,
-    onUpdate: ({ editor }) => onChange(editor.getHTML()),
+    onUpdate: ({ editor }) => {
+      // TipTap serializes a blank line as a bare <p></p>, which has no
+      // line box and gets margin-collapsed away by prose CSS outside the
+      // editor. Forcing a <br> inside keeps blank lines visible on publish.
+      const html = editor.getHTML().replace(/<p><\/p>/g, '<p><br></p>')
+      onChange(html)
+    },
     onBlur: () => onBlur?.(),
   })
 
