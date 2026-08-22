@@ -6,6 +6,7 @@ export const dashboardKeys = {
   stats: () => [...dashboardKeys.all, 'stats'] as const,
   monthly: () => [...dashboardKeys.all, 'monthly'] as const,
   channels: () => [...dashboardKeys.all, 'channels'] as const,
+  recentBookings: () => [...dashboardKeys.all, 'recent-bookings'] as const,
 }
 
 export function useDashboardStats() {
@@ -26,5 +27,12 @@ export function useDashboardChannels() {
   return useQuery({
     queryKey: dashboardKeys.channels(),
     queryFn: dashboardService.getChannels,
+  })
+}
+
+export function useDashboardRecentBookings() {
+  return useQuery({
+    queryKey: dashboardKeys.recentBookings(),
+    queryFn: dashboardService.getRecentBookings,
   })
 }

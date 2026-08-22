@@ -227,9 +227,13 @@ export function NavMain({ items }: NavMainProps) {
     <>
       {items.map((group) => (
         <SidebarGroup key={group.id}>
-          {group.label && <SidebarGroupLabel>{group.label}</SidebarGroupLabel>}
-          <SidebarGroupContent className="flex flex-col gap-4">
-            <SidebarMenu>
+          {group.label && (
+            <SidebarGroupLabel className="text-primary/80 text-[10px] font-semibold uppercase tracking-[0.12em] px-2">
+              {group.label}
+            </SidebarGroupLabel>
+          )}
+          <SidebarGroupContent>
+            <SidebarMenu className="gap-1.5">
               {group.items.map((item) => {
                 if (state === 'collapsed' && !isMobile) {
                   // If no subItems, just render the button as a link

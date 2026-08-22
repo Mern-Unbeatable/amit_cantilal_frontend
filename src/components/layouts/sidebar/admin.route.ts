@@ -18,7 +18,7 @@ export const adminRoutes: Array<NavGroup> = [
       {
         title: 'Fleet Vehicle',
         url: '/admin/fleet-vehicle',
-        icon: 'material-symbols:travel-explore-rounded',
+        icon: 'material-symbols:directions-car-outline-rounded',
       },
       {
         title: 'Tours',
@@ -35,7 +35,7 @@ export const adminRoutes: Array<NavGroup> = [
         url: '/admin/posts',
         icon: 'material-symbols:article-outline-rounded',
       },
-{
+      {
         title: 'Partnerships',
         url: '/admin/partnerships',
         icon: 'material-symbols:handshake-outline-rounded',
@@ -48,7 +48,7 @@ export const adminRoutes: Array<NavGroup> = [
       {
         title: 'Users',
         url: '/admin/users',
-        icon: 'material-symbols-outlined:group',
+        icon: 'material-symbols:group-outline-rounded',
       },
     ],
   },

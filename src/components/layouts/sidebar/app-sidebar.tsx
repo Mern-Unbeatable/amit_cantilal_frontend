@@ -24,17 +24,13 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
 
   return (
     <Sidebar {...props}>
-      <SidebarHeader>
-        <SidebarMenu>
+      <SidebarHeader className="gap-0">
+        <Link to="/admin/dashboard" className="flex items-center justify-center px-2 py-4">
+          <ApplicationLogo width={100} height={56} className="h-14 w-auto" />
+        </Link>
+        <SidebarMenu className="pt-1 border-t border-sidebar-border">
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:p-1.5!">
-              <Link to="/admin/dashboard">
-                <ApplicationLogo/>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
+            <SidebarMenuButton asChild className="text-muted-foreground/80">
               <Link to="/">
                 <ExternalLink className="w-4 h-4" />
                 <span>View Site</span>
