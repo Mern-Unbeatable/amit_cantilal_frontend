@@ -400,12 +400,21 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
       stops: data.stops.map((s: Stop) => (s.id === id ? { ...s, value } : s)),
     })
 
+  const pickupDateTime =
+    data.date && data.time
+      ? new Date(`${format(data.date, 'yyyy-MM-dd')}T${data.time}:00`)
+      : null
+
+  const isWithin24Hours =
+    !!pickupDateTime && pickupDateTime.getTime() - Date.now() < 24 * 60 * 60 * 1000
+
   const canProceed =
     data.pickup.trim() !== '' &&
     (data.serviceType === 'hourly' || data.dropoff.trim() !== '') &&
     data.passengers >= 1 &&
     !!data.date &&
-    data.time !== ''
+    data.time !== '' &&
+    !isWithin24Hours
 
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-5 w-full min-w-0 overflow-hidden">
@@ -579,10 +588,35 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
         <TimePicker value={data.time} onChange={(t) => update({ time: t })} />
       </div>
 
-      <p className="text-sm text-[#9A9182] text-center">
-        Driver will wait 60 minutes free for airport pickups, 15 minutes for
-        other locations
-      </p>
+      {isWithin24Hours ? (
+        <div className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 p-4 space-y-3">
+          <p className="text-sm text-[#F5F0E8] leading-relaxed">
+            Bookings less than 24 hours away can't be scheduled online. Please
+            contact us directly to check if we can accommodate your trip.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <a
+              href="https://wa.me/351914578214"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center h-11 flex items-center justify-center bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] text-sm font-medium transition-colors"
+            >
+              WhatsApp Us
+            </a>
+            <a
+              href="mailto:bookings@offwego.pt"
+              className="flex-1 text-center h-11 flex items-center justify-center border border-[#C9A84C]/40 hover:border-[#C9A84C] text-[#F5F0E8] text-sm font-medium transition-colors"
+            >
+              Email Us
+            </a>
+          </div>
+        </div>
+      ) : (
+        <p className="text-sm text-[#9A9182] text-center">
+          Driver will wait 60 minutes free for airport pickups, 15 minutes for
+          other locations
+        </p>
+      )}
 
       <Button
         onClick={onNext}

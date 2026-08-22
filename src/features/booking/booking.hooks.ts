@@ -65,6 +65,16 @@ export function useRefreshPaymentIntent() {
   })
 }
 
+export function useDeleteBooking() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: (id: number | string) => bookingService.deleteBooking(id),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: bookingKeys.all }),
+  })
+}
+
 export function useUpdateBookingStatus() {
   const queryClient = useQueryClient()
 

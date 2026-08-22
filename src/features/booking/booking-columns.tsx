@@ -4,7 +4,14 @@ import { formatCurrency } from '@/lib/utils.ts'
 import { Badge } from '@/components/ui/badge.tsx'
 import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button.tsx'
-import { Eye } from 'lucide-react'
+import { Eye, MoreHorizontal, Trash2 } from 'lucide-react'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu.tsx'
+import { useDeleteBooking } from '@/features/booking/booking.hooks.ts'
 
 const statusVariant: Record<string, 'default' | 'secondary' | 'destructive'> = {
   pending: 'secondary',
@@ -75,12 +82,38 @@ export const bookingColumns = (): Array<ColumnDef<BookingState, unknown>> => [
   {
     id: 'actions',
     header: '',
-    cell: ({ row }) => (
-      <Link to="/admin/bookings/$id" params={{ id: String(row.original.id) }}>
-        <Button variant="ghost" size="icon">
-          <Eye className="w-4 h-4" />
-        </Button>
-      </Link>
-    ),
+    cell: ({ row }) => {
+      const { mutate: deleteBooking } = useDeleteBooking()
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <MoreHorizontal className="w-4 h-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem asChild>
+              <Link
+                to="/admin/bookings/$id"
+                params={{ id: String(row.original.id) }}
+              >
+                <Eye className="w-4 h-4 mr-2" /> View
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="text-destructive focus:text-destructive"
+              onClick={() => {
+                if (confirm(`Delete booking ${row.original.reference}?`)) {
+                  deleteBooking(row.original.id)
+                }
+              }}
+            >
+              <Trash2 className="w-4 h-4 mr-2" /> Delete
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    },
   },
 ]

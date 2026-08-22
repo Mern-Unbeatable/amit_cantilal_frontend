@@ -43,6 +43,9 @@ export const bookingService = {
   byId: (id: number | string): Promise<BookingState> =>
     api.get<{ data: BookingState }>(`/admin/bookings/${id}`).then(unwrap),
 
+  deleteBooking: (id: number | string): Promise<BookingState> =>
+    api.delete<{ data: BookingState }>(`/admin/bookings/${id}`).then(unwrap),
+
   byPaymentIntent: (id: number | string): Promise<BookingState> =>
     api
       .get<{ data: BookingState }>(`/public/bookings/payment-intent/${id}`)
