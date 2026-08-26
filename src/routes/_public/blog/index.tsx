@@ -6,8 +6,15 @@ import BlogCard from '@/features/blogs/blog-card.tsx'
 import type { BlogPost } from '@/features/blogs/blog.types.ts'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { usePosts } from '@/features/blogs/blog.hooks.ts'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/blog/')({
+  head: () =>
+    pageHead({
+      title: 'Blog',
+      description: 'News, tips and stories from our journeys across Portugal.',
+      path: '/blog',
+    }),
   component: RouteComponent,
 })
 

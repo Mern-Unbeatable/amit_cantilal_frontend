@@ -15,6 +15,7 @@ import { BookingSummary } from '@/features/tour/public/booking-summary.tsx'
 import { BookingDateStep } from '@/features/tour/public/booking-date-step.tsx'
 import { BookingDetailsStep } from '@/features/tour/public/booking-details-step.tsx'
 import { StripeCheckoutForm } from '@/features/tour/public/stripe-checkout-form.tsx'
+import { pageHead } from '@/lib/seo.ts'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -72,6 +73,16 @@ export const Route = createFileRoute('/_public/tours/$slug')({
       queryFn: () => tourService.bySlug(slug),
     })
   },
+  head: ({ loaderData: tour, params }) =>
+    pageHead({
+      title: tour?.title ?? tour?.name ?? 'Tour',
+      description:
+        tour?.excerpt ??
+        tour?.description?.slice(0, 160) ??
+        'Discover Portugal through an exclusive private tour with Off We Go Portugal.',
+      path: `/tours/${params.slug}`,
+      image: tour?.cover_image ?? tour?.images?.[0]?.url,
+    }),
   pendingComponent: TourSkeleton,
   component: RouteComponent,
 })

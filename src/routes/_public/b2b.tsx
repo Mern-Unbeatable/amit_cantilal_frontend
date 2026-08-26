@@ -11,8 +11,16 @@ import FleetSection from '@/components/sections/fleet-sections.tsx'
 import CoverageArea from '@/components/sections/coverage-area.tsx'
 import B2BRequestForm from '@/components/form/b2b-request-form.tsx'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/b2b')({
+  head: () =>
+    pageHead({
+      title: 'B2B Partnerships',
+      description:
+        'Partner with Off We Go Portugal — hotels, DMCs and travel agencies can offer their clients premium chauffeur transfers and private tours across Lisbon, Porto & Algarve.',
+      path: '/b2b',
+    }),
   component: RouteComponent,
 })
 

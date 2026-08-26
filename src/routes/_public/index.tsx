@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import React from 'react'
+import { pageHead } from '@/lib/seo.ts'
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
 import { ArrowRight, Briefcase, Clock, Fuel, MapPin, Plane, Users, Zap } from 'lucide-react'
@@ -360,5 +361,12 @@ const App: React.FC = () => {
 }
 
 export const Route = createFileRoute('/_public/')({
+  head: () =>
+    pageHead({
+      title: 'Luxury Chauffeur Service Portugal',
+      description:
+        'Premium chauffeur service & airport transfers in Lisbon, Porto & Algarve. Private tours, Mercedes-Benz electric fleet, 24/7.',
+      path: '/',
+    }),
   component: App,
 })

@@ -2,9 +2,27 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Calendar } from 'lucide-react'
 import { mainTransitionProps } from '@/lib/utils.ts'
-import { usePublicPost } from '@/features/blogs/blog.hooks.ts'
+import { blogKeys, usePublicPost } from '@/features/blogs/blog.hooks.ts'
+import { blogService, mapToPublicPost } from '@/features/blogs/blog.service.ts'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/blog/$slug')({
+  loader: ({ context, params }) => {
+    const { slug } = params
+    return context.queryClient.ensureQueryData({
+      queryKey: blogKeys.detail(slug),
+      queryFn: async () => mapToPublicPost(await blogService.getPublicPostBySlug(slug)),
+    })
+  },
+  head: ({ loaderData: post, params }) =>
+    pageHead({
+      title: post?.title ?? 'Blog',
+      description:
+        post?.excerpt ??
+        'News, tips and stories from our journeys across Portugal.',
+      path: `/blog/${params.slug}`,
+      image: post?.coverImage,
+    }),
   component: RouteComponent,
 })
 

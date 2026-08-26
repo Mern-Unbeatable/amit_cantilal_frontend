@@ -5,10 +5,18 @@ import { useTranslation } from 'react-i18next'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
 import type { FleetVehicle } from '@/features/fleet/fleet.types.ts'
+import { pageHead } from '@/lib/seo.ts'
 
 // ─── Route ────────────────────────────────────────────────────────────────────
 
 export const Route = createFileRoute('/_public/fleet')({
+  head: () =>
+    pageHead({
+      title: 'Our Fleet',
+      description:
+        'Explore our premium Mercedes-Benz electric fleet — the vehicles behind every chauffeur transfer and private tour with Off We Go Portugal.',
+      path: '/fleet',
+    }),
   component: RouteComponent,
 })
 

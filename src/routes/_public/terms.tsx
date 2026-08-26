@@ -20,8 +20,16 @@ import {
   Wallet,
 } from 'lucide-react'
 import { mainTransitionProps } from '@/lib/utils.ts'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/terms')({
+  head: () =>
+    pageHead({
+      title: 'Terms & Conditions',
+      description:
+        'Terms and conditions for booking chauffeur transfers, tours and hourly service with Off We Go Portugal.',
+      path: '/terms',
+    }),
   component: RouteComponent,
 })
 

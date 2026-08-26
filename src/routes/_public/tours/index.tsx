@@ -4,8 +4,16 @@ import { mainTransitionProps } from '@/lib/utils.ts'
 import { PageHero } from '@/components/shared/page-hero.tsx'
 import { ToursSection } from '@/components/sections/tour-section.tsx'
 import { useTours } from '@/features/tour/tour.hooks.ts'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/tours/')({
+  head: () =>
+    pageHead({
+      title: 'Tours',
+      description:
+        'Discover Portugal through exclusive private tours — travel with a professional chauffeur in a premium Mercedes vehicle, tailored to your pace.',
+      path: '/tours',
+    }),
   component: RouteComponent,
 })
 

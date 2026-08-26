@@ -8,8 +8,12 @@
     <meta name="theme-color" content="#0B0B0B" />
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
+    <!-- Title (adopted by React 19's <title> singleton) and per-page meta
+         description/OG tags are now rendered by each route's head() via
+         <HeadContent /> in __root.tsx — see src/lib/seo.ts. Keeping a static
+         <meta name="description"> here would create a duplicate description
+         tag once a route overrides it. -->
     <title>Luxury Chauffeur Service Portugal</title>
-    <meta name="description" content="Premium chauffeur service & airport transfers in Lisbon, Porto & Algarve. Private tours, Mercedes-Benz electric fleet, 24/7.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap">
@@ -21,7 +25,6 @@
     <!-- Preconnect for external services (deferred) -->
     <link rel="dns-prefetch" href="https://maps.googleapis.com">
     <link rel="dns-prefetch" href="https://www.paypal.com">
-    <meta name="author" content="VIP On Wheels" />
   </head>
   <body class="min-h-screen antialiased">
     <div id="app"></div>

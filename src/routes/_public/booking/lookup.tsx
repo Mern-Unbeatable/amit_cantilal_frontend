@@ -7,8 +7,16 @@ import { useLookupBooking } from '@/features/booking/booking.hooks.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/booking/lookup')({
+  head: () =>
+    pageHead({
+      title: 'Find My Booking',
+      description: 'Look up an existing booking.',
+      path: '/booking/lookup',
+      noindex: true,
+    }),
   component: RouteComponent,
 })
 

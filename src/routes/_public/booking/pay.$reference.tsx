@@ -8,8 +8,16 @@ import { mainTransitionProps } from '@/lib/utils.ts'
 import { useRefreshPaymentIntent } from '@/features/booking/booking.hooks.ts'
 import type { BookingState, CreateBookingResponse } from '@/features/booking/booking.types.ts'
 import { Button } from '@/components/ui/button'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/booking/pay/$reference')({
+  head: ({ params }) =>
+    pageHead({
+      title: 'Complete Your Payment',
+      description: 'Complete payment for your booking.',
+      path: `/booking/pay/${params.reference}`,
+      noindex: true,
+    }),
   component: RouteComponent,
 })
 

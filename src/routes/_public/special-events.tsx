@@ -8,8 +8,16 @@ import { EventsSignature } from '@/features/special-events/signature.tsx'
 import { EventsGallery } from '@/features/special-events/gallery.tsx'
 import { EventsQuote } from '@/features/special-events/quote.tsx'
 import { EventsCta } from '@/features/special-events/cta.tsx'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/special-events')({
+  head: () =>
+    pageHead({
+      title: 'Special Events',
+      description:
+        'Chauffeur transport for weddings, galas and private celebrations in Portugal — arrive in style with our Mercedes-Benz fleet.',
+      path: '/special-events',
+    }),
   component: RouteComponent,
 })
 

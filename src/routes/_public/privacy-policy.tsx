@@ -18,8 +18,16 @@ import {
   Users,
 } from 'lucide-react'
 import { mainTransitionProps } from '@/lib/utils.ts'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/privacy-policy')({
+  head: () =>
+    pageHead({
+      title: 'Privacy Policy',
+      description:
+        'How Off We Go Portugal collects, uses and protects your personal data.',
+      path: '/privacy-policy',
+    }),
   component: RouteComponent,
 })
 

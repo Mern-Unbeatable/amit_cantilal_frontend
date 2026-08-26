@@ -12,8 +12,16 @@ import SustainabilityImpact from '@/components/sections/sustainability-impact.ts
 import PartnerForm from '@/components/sections/partnership-form.tsx'
 import CoverageArea from '@/components/sections/coverage-area.tsx'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/partnerships')({
+  head: () =>
+    pageHead({
+      title: 'Fleet Partnerships',
+      description:
+        'Join Off We Go Portugal as a fleet or driver partner — sustainable, tax-efficient corporate mobility opportunities across Portugal.',
+      path: '/partnerships',
+    }),
   component: RouteComponent,
 })
 

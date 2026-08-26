@@ -5,10 +5,18 @@ import { useTranslation } from 'react-i18next'
 import {mainTransitionProps} from "@/lib/utils.ts";
 import {PageHero} from "@/components/shared/page-hero.tsx";
 import {Button} from "@/components/ui/button.tsx";
+import { pageHead } from '@/lib/seo.ts'
 
 const FEATURE_ICONS = [Clock, Users, CircleCheckBig, Shield]
 
 export const Route = createFileRoute('/_public/hourly-service')({
+  head: () =>
+    pageHead({
+      title: 'Hourly Chauffeur Service',
+      description:
+        'Hire a professional chauffeur and vehicle by the hour in Portugal — flexible, tailor-made itineraries for as long as you need.',
+      path: '/hourly-service',
+    }),
   component: RouteComponent,
 })
 

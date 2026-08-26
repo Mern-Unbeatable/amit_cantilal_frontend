@@ -14,8 +14,16 @@ import type { BookingState } from '@/features/booking/booking.types.ts'
 import { capitalize, formatCurrency, mainTransitionProps } from '@/lib/utils.ts'
 import { useGetBookingByPaymentIntent } from '@/features/booking/booking.hooks.ts'
 import { clearPersistedBookingWidget } from '@/features/booking/booking-widget.tsx'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/booking/confirm')({
+  head: () =>
+    pageHead({
+      title: 'Booking Confirmation',
+      description: 'Your booking confirmation.',
+      path: '/booking/confirm',
+      noindex: true,
+    }),
   component: RouteComponent,
 })
 

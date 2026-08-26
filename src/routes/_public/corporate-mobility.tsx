@@ -8,8 +8,16 @@ import { CorporateSignature } from '@/features/corporate-mobility/signature.tsx'
 import { CorporateGallery } from '@/features/corporate-mobility/gallery.tsx'
 import { CorporateQuote } from '@/features/corporate-mobility/quote.tsx'
 import { CorporateCta } from '@/features/corporate-mobility/cta.tsx'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/corporate-mobility')({
+  head: () =>
+    pageHead({
+      title: 'Corporate Mobility',
+      description:
+        'Reliable, discreet chauffeur transport for business travel in Portugal — executive transfers, roadshows and recurring corporate accounts with dedicated account management.',
+      path: '/corporate-mobility',
+    }),
   component: RouteComponent,
 })
 

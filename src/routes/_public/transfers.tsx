@@ -6,10 +6,18 @@ import { mainTransitionProps } from '@/lib/utils.ts'
 import { PageHero } from '@/components/shared/page-hero.tsx'
 import TransferServices from '@/components/sections/transfer-section.tsx'
 import FeatureCards from '@/components/feature-card.tsx'
+import { pageHead } from '@/lib/seo.ts'
 
 const CARD_ICONS = [Plane, Shield, Globe, Car]
 
 export const Route = createFileRoute('/_public/transfers')({
+  head: () =>
+    pageHead({
+      title: 'Airport Transfers',
+      description:
+        'Premium airport chauffeur transfers in Portugal — meet & greet at arrivals, luxury Mercedes fleet, and a smooth, stress-free ride tailored to your schedule.',
+      path: '/transfers',
+    }),
   component: RouteComponent,
 })
 

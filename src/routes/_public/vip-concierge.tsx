@@ -8,8 +8,16 @@ import { VipConciergeAvailability } from '@/features/vip-concierge/availability.
 import { VipConciergeForWhom } from '@/features/vip-concierge/for-whom.tsx'
 import { VipConciergeForm } from '@/features/vip-concierge/concierge-form.tsx'
 import { VipConciergeCta } from '@/features/vip-concierge/cta.tsx'
+import { pageHead } from '@/lib/seo.ts'
 
 export const Route = createFileRoute('/_public/vip-concierge')({
+  head: () =>
+    pageHead({
+      title: 'VIP Concierge',
+      description:
+        'Beyond the drive — restaurant reservations, itinerary planning and bespoke arrangements from our VIP concierge team in Portugal.',
+      path: '/vip-concierge',
+    }),
   component: RouteComponent,
 })
 
