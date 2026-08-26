@@ -459,10 +459,10 @@ export function getTransferPrice(
 // the nearest €5 (e.g. €623 → €625, €627 → €630).
 
 export const PER_KM_RATES: Record<PricingVehicleClass, number> = {
-  'E-Class': 2.25,
-  'V-Class': 2.55,
-  'S-Class': 3.75,
-  Sprinter: 3.2,
+  'E-Class': 23,
+  'V-Class': 26,
+  'S-Class': 38,
+  Sprinter: 32,
 }
 
 function roundUpToFive(amount: number): number {
