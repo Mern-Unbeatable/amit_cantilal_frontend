@@ -19,7 +19,7 @@ const MainLayout = () => {
 
   return (
     <SidebarProvider defaultOpen>
-      <AppSidebar variant="sidebar" collapsible="offcanvas" />
+      <AppSidebar variant="sidebar" collapsible="offcanvas" className="print:hidden" />
       <SidebarInset
         data-content-layout="centered"
         className={cn(
@@ -29,7 +29,7 @@ const MainLayout = () => {
       >
         <header
           className={cn(
-            'flex h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12',
+            'flex h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 print:hidden',
             'data-[navbar-style=sticky]:bg-background/50 data-[navbar-style=sticky]:sticky data-[navbar-style=sticky]:top-0 data-[navbar-style=sticky]:z-50 data-[navbar-style=sticky]:overflow-hidden data-[navbar-style=sticky]:rounded-t-[inherit] data-[navbar-style=sticky]:backdrop-blur-md',
           )}
         >

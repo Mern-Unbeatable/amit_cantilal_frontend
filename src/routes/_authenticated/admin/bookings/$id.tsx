@@ -2,9 +2,11 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import {
   AlertTriangle, ArrowLeft, Calendar, Car, Clock, Compass, CreditCard,
-  FileText, History, MapPin, User, Users,
+  FileText, History, MapPin, Printer, User, Users,
 } from 'lucide-react'
 import type { BookingStatus } from '@/features/booking/booking.types.ts'
+import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
+import { BookingPrintReceipt } from '@/features/booking/booking-print-receipt.tsx'
 import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
 import { Card } from '@/components/ui/card.tsx'
 import {
@@ -200,6 +202,7 @@ function ActivityTimeline({ bookingId }: { bookingId: number }) {
 function RouteComponent() {
   const { id } = Route.useParams()
   const { data: booking, isLoading } = useGetBooking(id)
+  const { data: settings } = usePublicSettings()
   const { mutate: updateStatus, isPending } = useUpdateBookingStatus()
   const [status, setStatus] = useState<BookingStatus | ''>('')
   const [stripeDialogOpen, setStripeDialogOpen] = useState(false)
@@ -223,6 +226,8 @@ function RouteComponent() {
   }
 
   return (
+    <>
+    <div className="print:hidden">
     <AppWrapper>
       <Link
         to="/admin/bookings"
@@ -267,6 +272,15 @@ function RouteComponent() {
           </p>
         </div>
         <div className="text-right">
+          <Button
+            size="sm"
+            variant="outline"
+            className="mb-3"
+            onClick={() => window.print()}
+          >
+            <Printer className="w-3.5 h-3.5 mr-1.5" />
+            Print
+          </Button>
           <p className="text-[11px] uppercase tracking-wider text-muted-foreground mb-1.5">
             Total Paid
           </p>
@@ -434,5 +448,15 @@ function RouteComponent() {
         onOpenChange={setStripeDialogOpen}
       />
     </AppWrapper>
+    </div>
+
+    <div className="hidden print:block">
+      <BookingPrintReceipt
+        booking={booking}
+        whatsappNumber={settings?.whatsapp_number}
+        contactEmail={settings?.contact_email}
+      />
+    </div>
+    </>
   )
 }
