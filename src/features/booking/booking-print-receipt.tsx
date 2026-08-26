@@ -28,7 +28,7 @@ export function BookingPrintReceipt({
     : undefined
 
   return (
-    <div className="mx-auto w-[600px] max-w-full font-sans text-[#333333]">
+    <div className="mx-auto w-[600px] max-w-full bg-white font-sans text-[#333333]">
       {/* Header */}
       <div className="bg-[#0B0B0B] border-b-[3px] border-[#C9A84C] px-6 py-8 text-center">
         <img src="/logo512.png" alt="Off We Go Portugal" width={130} className="mx-auto" />

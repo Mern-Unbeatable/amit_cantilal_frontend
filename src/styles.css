@@ -378,3 +378,13 @@ input:-webkit-autofill:active {
 .dark ::-webkit-scrollbar-thumb:hover {
     background: oklch(0.5808 0.1795 279.24 / 0.6);
 }
+
+/* The app's :root is permanently the black/gold theme (there's no actual
+   light variant — see src/stores/theme.ts), so printed pages would
+   otherwise inherit that black background. Printouts (e.g. the booking
+   receipt) must always be plain white paper, regardless of theme state. */
+@media print {
+    html, body {
+        background: #ffffff !important;
+    }
+}
