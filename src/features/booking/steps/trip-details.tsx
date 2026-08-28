@@ -211,7 +211,7 @@ function RoutePreview({
       <Map
         defaultCenter={center}
         defaultZoom={12}
-        mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID ?? 'offwego-map'}
+        mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID || 'offwego-map'}
         disableDefaultUI
         gestureHandling="cooperative"
         className="h-full w-full"
