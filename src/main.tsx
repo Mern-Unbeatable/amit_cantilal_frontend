@@ -19,6 +19,7 @@ import { Toaster } from 'sonner'
 import {TooltipProvider} from "@/components/ui/tooltip.tsx";
 import NotFound from '@/components/not-found.tsx'
 import { DefaultCatchBoundary } from '@/components/default-catch-boundary.tsx'
+import { initAnalytics, trackPageview } from '@/lib/analytics.ts'
 
 // Create a new router instance
 
@@ -34,6 +35,11 @@ const router = createRouter({
   defaultPreloadStaleTime: 0,
   defaultNotFoundComponent: () => <NotFound />,
   defaultErrorComponent: DefaultCatchBoundary,
+})
+
+initAnalytics()
+router.subscribe('onResolved', ({ toLocation, pathChanged }) => {
+  if (pathChanged) trackPageview(toLocation.pathname)
 })
 
 // Register the router instance for type safety
