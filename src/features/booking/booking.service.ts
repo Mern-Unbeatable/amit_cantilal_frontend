@@ -25,6 +25,7 @@ export const bookingService = {
     serviceType?: string
     date_from?: string
     date_to?: string
+    sort?: 'created_at' | 'updated_at'
   }) => {
     const response = await api.get<{ data: BookingPaginatedResponse }>(
       '/admin/bookings',
@@ -36,6 +37,7 @@ export const bookingService = {
           service_type: params.serviceType,
           date_from: params.date_from,
           date_to: params.date_to,
+          sort: params.sort,
         },
       },
     )

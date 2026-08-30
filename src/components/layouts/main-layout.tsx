@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/sidebar'
 import ThemeSwitcher from '@/components/shadcn-studio/blocks/theme-switcher.tsx'
 import AccountSwitcher from '@/components/layouts/sidebar/account-switcher.tsx'
+import BookingNotificationsBell from '@/features/notifications/booking-notifications-bell.tsx'
 import { cn } from '@/lib/utils.ts'
 import AppSidebar from '@/components/layouts/sidebar/app-sidebar.tsx'
 
@@ -42,6 +43,7 @@ const MainLayout = () => {
               />
             </div>
             <div className="flex items-center gap-2">
+              <BookingNotificationsBell />
               <ThemeSwitcher />
               <AccountSwitcher />
             </div>

@@ -20,12 +20,14 @@ function RouteComponent() {
   const [whatsappNumber, setWhatsappNumber] = useState('')
   const [contactEmail, setContactEmail] = useState('')
   const [bookingNotificationEmail, setBookingNotificationEmail] = useState('')
+  const [bookingNotificationWhatsapp, setBookingNotificationWhatsapp] = useState('')
 
   useEffect(() => {
     if (!settings) return
     setWhatsappNumber(settings.whatsapp_number)
     setContactEmail(settings.contact_email)
     setBookingNotificationEmail(settings.booking_notification_email)
+    setBookingNotificationWhatsapp(settings.booking_notification_whatsapp ?? '')
   }, [settings])
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,6 +37,7 @@ function RouteComponent() {
         whatsapp_number: whatsappNumber,
         contact_email: contactEmail,
         booking_notification_email: bookingNotificationEmail,
+        booking_notification_whatsapp: bookingNotificationWhatsapp || null,
       },
       {
         onSuccess: () => toast.success('Settings saved.'),
@@ -99,6 +102,19 @@ function RouteComponent() {
             />
             <p className="text-xs text-muted-foreground">
               Where you receive an email every time a booking is confirmed.
+            </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="booking_notification_whatsapp">Booking Notification WhatsApp</Label>
+            <Input
+              id="booking_notification_whatsapp"
+              value={bookingNotificationWhatsapp}
+              onChange={(e) => setBookingNotificationWhatsapp(e.target.value)}
+              placeholder="+351966240153"
+            />
+            <p className="text-xs text-muted-foreground">
+              Where you receive a WhatsApp message every time a booking is confirmed. Leave blank to disable.
             </p>
           </div>
 
