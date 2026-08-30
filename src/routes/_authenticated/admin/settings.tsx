@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
+import { KeyRound, Mail, MessageCircle } from 'lucide-react'
 import type { AxiosError } from 'axios'
 import type { ApiError } from '@/@types/api.ts'
 import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
@@ -68,10 +69,16 @@ function RouteComponent() {
       <PageHeader pageTitle="Settings" pageSubtitle="Business contact details" />
 
       <Tabs defaultValue="email" className="max-w-xl mt-6">
-        <TabsList>
-          <TabsTrigger value="email">Email</TabsTrigger>
-          <TabsTrigger value="whatsapp">WhatsApp</TabsTrigger>
-          <TabsTrigger value="password">Change Password</TabsTrigger>
+        <TabsList variant="line" className="w-full border-b">
+          <TabsTrigger value="email" className="flex-1 gap-2">
+            <Mail /> Email
+          </TabsTrigger>
+          <TabsTrigger value="whatsapp" className="flex-1 gap-2">
+            <MessageCircle /> WhatsApp
+          </TabsTrigger>
+          <TabsTrigger value="password" className="flex-1 gap-2">
+            <KeyRound /> Change Password
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="email">
