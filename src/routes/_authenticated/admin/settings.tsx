@@ -68,7 +68,7 @@ function RouteComponent() {
     <AppWrapper>
       <PageHeader pageTitle="Settings" pageSubtitle="Business contact details" />
 
-      <Tabs defaultValue="email" className="max-w-xl mt-6">
+      <Tabs defaultValue="email" className="w-full mt-6">
         <TabsList variant="line" className="w-full border-b">
           <TabsTrigger value="email" className="flex-1 gap-2">
             <Mail /> Email
