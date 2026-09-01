@@ -38,7 +38,18 @@ const router = createRouter({
 })
 
 initAnalytics()
-router.subscribe('onResolved', ({ toLocation, pathChanged }) => {
+// The very first load doesn't reliably fire 'onResolved' below — that event
+// only emits on a captured pending→resolved transition (see TanStack
+// Router's Transitioner), and a route with no loader (e.g. the homepage)
+// can resolve on mount before any render captures it as pending. Track the
+// initial pageview directly so it's never silently skipped.
+trackPageview(window.location.pathname)
+router.subscribe('onResolved', ({ toLocation, pathChanged, fromLocation }) => {
+  // fromLocation is only undefined on the router's first-ever resolution
+  // (whichever route that happens to be) — already covered by the direct
+  // call above, so skip it here to avoid double-counting that one pageview.
+  // Every subsequent event has a real fromLocation.
+  if (!fromLocation) return
   if (pathChanged) trackPageview(toLocation.pathname)
 })
 
