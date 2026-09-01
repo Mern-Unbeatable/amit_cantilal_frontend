@@ -144,10 +144,10 @@ function RouteComponent() {
                   id="booking_notification_whatsapp"
                   value={bookingNotificationWhatsapp}
                   onChange={(e) => setBookingNotificationWhatsapp(e.target.value)}
-                  placeholder="+351966240153"
+                  placeholder="+351966240153, +351914578214"
                 />
                 <p className="text-xs text-muted-foreground">
-                  Where you receive a WhatsApp message every time a booking is confirmed. Leave blank to disable.
+                  Who receives a WhatsApp message every time a booking is confirmed. Separate multiple numbers with commas. Leave blank to disable.
                 </p>
               </div>
 
