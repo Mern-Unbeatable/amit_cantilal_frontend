@@ -27,6 +27,20 @@ export function initAnalytics() {
     window.dataLayer?.push(args)
   }
 
+  // Google Consent Mode: without an explicit "default" consent state, gtag.js
+  // can silently withhold every hit (not just this page — every future one
+  // too) for traffic it detects as EEA, which is exactly what happened here —
+  // gtag/js loaded fine but zero collect requests ever fired. There's no
+  // cookie-consent banner on this site to gate this properly yet, so grant
+  // analytics_storage by default to restore collection; keep ad-related
+  // storage denied since nothing here does ads/remarketing.
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+  })
+
   // send_page_view: false — this is an SPA, we send page_view manually on
   // route changes via trackPageview() instead of relying on the initial load.
   window.gtag('js', new Date())
