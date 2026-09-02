@@ -27,16 +27,24 @@ export function initAnalytics() {
     window.dataLayer?.push(args)
   }
 
-  // TEMPORARY: stripped down to the exact stock snippet from GA4's own
-  // "Install manually" setup page (no consent call, no send_page_view:
-  // false, automatic page_view instead of our manual SPA tracking) — a
-  // clean-room test to see if the bare, unmodified official pattern
-  // actually reaches Google in this environment at all, since our
-  // customized version hasn't despite everything checking out correctly.
-  // Revert to the consent-mode + manual-SPA-tracking version once this
-  // confirms one way or the other.
+  // Google Consent Mode: without an explicit "default" consent state, gtag.js
+  // can withhold hits for traffic it detects as EEA. There's no cookie-consent
+  // banner on this site to gate this properly yet, so grant analytics_storage
+  // by default; keep ad-related storage denied since nothing here does
+  // ads/remarketing. (Tested reverting to the bare stock snippet without this
+  // — made no difference, so this isn't what's blocking data collection, but
+  // it's still correct to keep.)
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted',
+  })
+
+  // send_page_view: false — this is an SPA, we send page_view manually on
+  // route changes via trackPageview() instead of relying on the initial load.
   window.gtag('js', new Date())
-  window.gtag('config', measurementId)
+  window.gtag('config', measurementId, { send_page_view: false })
 }
 
 export function trackPageview(path: string) {
