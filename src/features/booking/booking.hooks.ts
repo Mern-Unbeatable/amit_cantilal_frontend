@@ -107,3 +107,9 @@ export function useUpdateBookingStatus() {
     },
   })
 }
+
+export function useResendBookingConfirmation() {
+  return useMutation({
+    mutationFn: (id: number | string) => bookingService.resendConfirmation(id),
+  })
+}

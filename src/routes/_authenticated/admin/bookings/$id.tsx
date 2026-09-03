@@ -1,8 +1,9 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { toast } from 'sonner'
 import {
   AlertTriangle, ArrowLeft, Calendar, Car, Clock, Compass, CreditCard,
-  FileText, History, MapPin, Printer, User, Users,
+  FileText, History, MapPin, Printer, Send, User, Users,
 } from 'lucide-react'
 import type { BookingStatus } from '@/features/booking/booking.types.ts'
 import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
@@ -25,7 +26,13 @@ import {
 } from '@/components/ui/dialog.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Spinner } from '@/components/ui/spinner.tsx'
-import { useBookingActivity, useGetBooking, useStripeStatus, useUpdateBookingStatus } from '@/features/booking/booking.hooks.ts'
+import {
+  useBookingActivity,
+  useGetBooking,
+  useResendBookingConfirmation,
+  useStripeStatus,
+  useUpdateBookingStatus,
+} from '@/features/booking/booking.hooks.ts'
 import { formatCurrency } from '@/lib/utils.ts'
 import { StatusPill } from '@/components/status-pill.tsx'
 
@@ -204,6 +211,7 @@ function RouteComponent() {
   const { data: booking, isLoading } = useGetBooking(id)
   const { data: settings } = usePublicSettings()
   const { mutate: updateStatus, isPending } = useUpdateBookingStatus()
+  const { mutate: resendConfirmation, isPending: isResending } = useResendBookingConfirmation()
   const [status, setStatus] = useState<BookingStatus | ''>('')
   const [stripeDialogOpen, setStripeDialogOpen] = useState(false)
 
@@ -223,6 +231,13 @@ function RouteComponent() {
 
     setStatus(val as BookingStatus)
     updateStatus({ id: booking.id, status: val as BookingStatus })
+  }
+
+  const handleResendConfirmation = () => {
+    resendConfirmation(booking.id, {
+      onSuccess: () => toast.success('Confirmation resent to the customer (email + WhatsApp).'),
+      onError: () => toast.error('Could not resend the confirmation.'),
+    })
   }
 
   return (
@@ -416,6 +431,20 @@ function RouteComponent() {
                   </SelectContent>
                 </Select>
               </div>
+
+              {booking.status === 'confirmed' && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                  disabled={isResending}
+                  onClick={handleResendConfirmation}
+                >
+                  <Send className="w-3.5 h-3.5 mr-2" />
+                  {isResending ? 'Resending...' : 'Resend Confirmation'}
+                </Button>
+              )}
             </div>
           </SectionCard>
 

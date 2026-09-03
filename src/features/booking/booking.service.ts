@@ -83,4 +83,9 @@ export const bookingService = {
       .post<{ data: BookingState }>(`/admin/bookings/${id}/${action}`)
       .then(unwrap)
   },
+
+  resendConfirmation: (id: number | string): Promise<BookingState> =>
+    api
+      .post<{ data: BookingState }>(`/admin/bookings/${id}/resend-confirmation`)
+      .then(unwrap),
 }
