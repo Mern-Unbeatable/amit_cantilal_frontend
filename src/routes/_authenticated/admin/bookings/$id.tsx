@@ -410,7 +410,7 @@ function RouteComponent() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Current</span>
-                <StatusPill status={booking.status} />
+                <StatusPill status={currentStatus} />
               </div>
               <div className="space-y-2">
                 <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">

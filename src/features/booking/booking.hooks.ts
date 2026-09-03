@@ -101,9 +101,15 @@ export function useUpdateBookingStatus() {
       id: number | string
       status: BookingStatus
     }) => bookingService.updateStatus(id, status),
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: bookingKeys.detail(data.id) })
-      queryClient.invalidateQueries({ queryKey: bookingKeys.activity(data.id) })
+    onSuccess: () => {
+      // Invalidate the whole 'bookings' prefix rather than a specific
+      // detail(id)/activity(id) key — the detail page's own query is
+      // registered with the route param's string id, while `data.id` here
+      // is a number from the API response, and React Query treats '42' and
+      // 42 as different keys, so a narrower invalidation silently misses
+      // the very page that just changed (needing a manual reload to catch
+      // up). This also picks up the list page in the same call.
+      queryClient.invalidateQueries({ queryKey: bookingKeys.all })
     },
   })
 }
