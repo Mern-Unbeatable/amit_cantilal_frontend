@@ -4,7 +4,7 @@ import type { PublicBlockedDateRange } from '@/features/blocked-dates/blocked-da
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
 import { usePublicBlockedDates } from '@/features/blocked-dates/blocked-dates.hooks.ts'
-import { findBlockedRange, toDisabledMatchers } from '@/features/blocked-dates/blocked-dates.utils.ts'
+import { findBlockedRange, toBlockedMatchers } from '@/features/blocked-dates/blocked-dates.utils.ts'
 import { BlockedDateDialog } from '@/features/blocked-dates/blocked-date-dialog.tsx'
 
 type BookingDateStepProps = {
@@ -45,12 +45,17 @@ export function BookingDateStep({
         <Calendar
           mode="single"
           selected={date}
-          onSelect={onDateChange}
-          disabled={[{ before: new Date() }, ...toDisabledMatchers(blockedRanges)]}
-          onDayClick={(day) => {
-            const blocked = findBlockedRange(day, blockedRanges)
-            if (blocked) setClickedBlockedRange(blocked)
+          onSelect={(selectedDate, triggerDate) => {
+            const blocked = findBlockedRange(triggerDate, blockedRanges)
+            if (blocked) {
+              setClickedBlockedRange(blocked)
+              return
+            }
+            onDateChange(selectedDate)
           }}
+          disabled={[{ before: new Date() }]}
+          modifiers={{ blocked: toBlockedMatchers(blockedRanges) }}
+          modifiersClassNames={{ blocked: 'opacity-40' }}
           className="bg-transparent text-white w-full [&_.rdp-day_button:hover]:bg-[#C9A84C]/20 [&_.rdp-day_button.rdp-day_selected]:bg-[#C9A84C] [&_.rdp-day_button.rdp-day_selected]:text-[#0B0B0B]"
         />
         <BlockedDateDialog

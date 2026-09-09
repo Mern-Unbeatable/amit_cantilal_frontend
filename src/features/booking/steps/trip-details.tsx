@@ -22,7 +22,7 @@ import type { PublicBlockedDateRange } from '@/features/blocked-dates/blocked-da
 import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
 import { toWhatsAppUrl } from '@/lib/utils.ts'
 import { usePublicBlockedDates } from '@/features/blocked-dates/blocked-dates.hooks.ts'
-import { findBlockedRange, toDisabledMatchers } from '@/features/blocked-dates/blocked-dates.utils.ts'
+import { findBlockedRange, toBlockedMatchers } from '@/features/blocked-dates/blocked-dates.utils.ts'
 import { BlockedDateDialog } from '@/features/blocked-dates/blocked-date-dialog.tsx'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -366,15 +366,18 @@ function DatePicker({
         <CalendarUI
           mode="single"
           selected={value}
-          onSelect={(d) => {
+          onSelect={(d, triggerDate) => {
+            const blocked = findBlockedRange(triggerDate, blockedRanges)
+            if (blocked) {
+              setClickedBlockedRange(blocked)
+              return
+            }
             onChange(d)
             setOpen(false)
           }}
-          disabled={[{ before: new Date() }, ...toDisabledMatchers(blockedRanges)]}
-          onDayClick={(day) => {
-            const blocked = findBlockedRange(day, blockedRanges)
-            if (blocked) setClickedBlockedRange(blocked)
-          }}
+          disabled={[{ before: new Date() }]}
+          modifiers={{ blocked: toBlockedMatchers(blockedRanges) }}
+          modifiersClassNames={{ blocked: 'opacity-40' }}
           className="bg-transparent text-white p-3
             [&_.rdp-day_button:hover]:bg-[#C9A84C]/20
             [&_.rdp-day_button:hover]:text-white
