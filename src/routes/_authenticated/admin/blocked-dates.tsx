@@ -35,6 +35,7 @@ import {
   useCreateBlockedDateRange,
   useDeleteBlockedDateRange,
 } from '@/features/blocked-dates/blocked-dates.hooks.ts'
+import { parseLocalDate } from '@/features/blocked-dates/blocked-dates.utils.ts'
 
 export const Route = createFileRoute('/_authenticated/admin/blocked-dates')({
   component: RouteComponent,
@@ -229,8 +230,8 @@ function RouteComponent() {
               {ranges.map((range) => (
                 <TableRow key={range.id}>
                   <TableCell className="font-medium">{range.label}</TableCell>
-                  <TableCell>{format(new Date(`${range.start_date}T00:00:00`), 'd MMM yyyy')}</TableCell>
-                  <TableCell>{format(new Date(`${range.end_date}T00:00:00`), 'd MMM yyyy')}</TableCell>
+                  <TableCell>{format(parseLocalDate(range.start_date), 'd MMM yyyy')}</TableCell>
+                  <TableCell>{format(parseLocalDate(range.end_date), 'd MMM yyyy')}</TableCell>
                   <TableCell className="max-w-xs truncate text-muted-foreground">
                     {range.message || '—'}
                   </TableCell>
