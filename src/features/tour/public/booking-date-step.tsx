@@ -1,6 +1,11 @@
+import { useState } from 'react'
 import { Clock, Minus, Plus } from 'lucide-react'
+import type { PublicBlockedDateRange } from '@/features/blocked-dates/blocked-dates.types.ts'
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
+import { usePublicBlockedDates } from '@/features/blocked-dates/blocked-dates.hooks.ts'
+import { findBlockedRange, toDisabledMatchers } from '@/features/blocked-dates/blocked-dates.utils.ts'
+import { BlockedDateDialog } from '@/features/blocked-dates/blocked-date-dialog.tsx'
 
 type BookingDateStepProps = {
   date?: Date
@@ -26,6 +31,9 @@ export function BookingDateStep({
   onContinue,
 }: BookingDateStepProps) {
   const canContinue = !!date && !!time && adults >= 1
+  const { data: blockedRanges } = usePublicBlockedDates()
+  const [clickedBlockedRange, setClickedBlockedRange] =
+    useState<PublicBlockedDateRange | null>(null)
 
   return (
     <div className="bg-[#141414] border border-[#C9A84C]/12 p-5 md:p-8 space-y-8">
@@ -38,8 +46,16 @@ export function BookingDateStep({
           mode="single"
           selected={date}
           onSelect={onDateChange}
-          disabled={{ before: new Date() }}
+          disabled={[{ before: new Date() }, ...toDisabledMatchers(blockedRanges)]}
+          onDayClick={(day) => {
+            const blocked = findBlockedRange(day, blockedRanges)
+            if (blocked) setClickedBlockedRange(blocked)
+          }}
           className="bg-transparent text-white w-full [&_.rdp-day_button:hover]:bg-[#C9A84C]/20 [&_.rdp-day_button.rdp-day_selected]:bg-[#C9A84C] [&_.rdp-day_button.rdp-day_selected]:text-[#0B0B0B]"
+        />
+        <BlockedDateDialog
+          range={clickedBlockedRange}
+          onOpenChange={(open) => !open && setClickedBlockedRange(null)}
         />
       </div>
 

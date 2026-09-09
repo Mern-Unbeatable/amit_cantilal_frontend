@@ -18,8 +18,12 @@ import {
   useMapsLibrary,
 } from '@vis.gl/react-google-maps'
 import type { Stop, TripDetails } from '@/features/booking/booking.types.ts'
+import type { PublicBlockedDateRange } from '@/features/blocked-dates/blocked-dates.types.ts'
 import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
 import { toWhatsAppUrl } from '@/lib/utils.ts'
+import { usePublicBlockedDates } from '@/features/blocked-dates/blocked-dates.hooks.ts'
+import { findBlockedRange, toDisabledMatchers } from '@/features/blocked-dates/blocked-dates.utils.ts'
+import { BlockedDateDialog } from '@/features/blocked-dates/blocked-date-dialog.tsx'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -335,6 +339,9 @@ function DatePicker({
   onChange: (d: Date | undefined) => void
 }) {
   const [open, setOpen] = useState(false)
+  const { data: blockedRanges } = usePublicBlockedDates()
+  const [clickedBlockedRange, setClickedBlockedRange] =
+    useState<PublicBlockedDateRange | null>(null)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -363,7 +370,11 @@ function DatePicker({
             onChange(d)
             setOpen(false)
           }}
-          disabled={{ before: new Date() }}
+          disabled={[{ before: new Date() }, ...toDisabledMatchers(blockedRanges)]}
+          onDayClick={(day) => {
+            const blocked = findBlockedRange(day, blockedRanges)
+            if (blocked) setClickedBlockedRange(blocked)
+          }}
           className="bg-transparent text-white p-3
             [&_.rdp-day_button:hover]:bg-[#C9A84C]/20
             [&_.rdp-day_button:hover]:text-white
@@ -376,6 +387,10 @@ function DatePicker({
             [&_.rdp-day_button:disabled]:text-[#9A9182]/30"
         />
       </PopoverContent>
+      <BlockedDateDialog
+        range={clickedBlockedRange}
+        onOpenChange={(isOpen) => !isOpen && setClickedBlockedRange(null)}
+      />
     </Popover>
   )
 }
