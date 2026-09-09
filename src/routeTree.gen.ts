@@ -38,6 +38,7 @@ import { Route as AuthenticatedAdminPartnershipsRouteImport } from './routes/_au
 import { Route as AuthenticatedAdminFaqsRouteImport } from './routes/_authenticated/admin/faqs'
 import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
 import { Route as AuthenticatedAdminConciergeRequestsRouteImport } from './routes/_authenticated/admin/concierge-requests'
+import { Route as AuthenticatedAdminBlockedDatesRouteImport } from './routes/_authenticated/admin/blocked-dates'
 import { Route as AuthenticatedAdminUsersIndexRouteImport } from './routes/_authenticated/admin/users/index'
 import { Route as AuthenticatedAdminToursIndexRouteImport } from './routes/_authenticated/admin/tours/index'
 import { Route as AuthenticatedAdminPostsIndexRouteImport } from './routes/_authenticated/admin/posts/index'
@@ -200,6 +201,12 @@ const AuthenticatedAdminConciergeRequestsRoute =
     path: '/admin/concierge-requests',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedAdminBlockedDatesRoute =
+  AuthenticatedAdminBlockedDatesRouteImport.update({
+    id: '/admin/blocked-dates',
+    path: '/admin/blocked-dates',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAdminUsersIndexRoute =
   AuthenticatedAdminUsersIndexRouteImport.update({
     id: '/admin/users/',
@@ -305,6 +312,7 @@ export interface FileRoutesByFullPath {
   '/transfers': typeof PublicTransfersRoute
   '/vip-concierge': typeof PublicVipConciergeRoute
   '/': typeof PublicIndexRoute
+  '/admin/blocked-dates': typeof AuthenticatedAdminBlockedDatesRoute
   '/admin/concierge-requests': typeof AuthenticatedAdminConciergeRequestsRoute
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
@@ -348,6 +356,7 @@ export interface FileRoutesByTo {
   '/transfers': typeof PublicTransfersRoute
   '/vip-concierge': typeof PublicVipConciergeRoute
   '/': typeof PublicIndexRoute
+  '/admin/blocked-dates': typeof AuthenticatedAdminBlockedDatesRoute
   '/admin/concierge-requests': typeof AuthenticatedAdminConciergeRequestsRoute
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/faqs': typeof AuthenticatedAdminFaqsRoute
@@ -395,6 +404,7 @@ export interface FileRoutesById {
   '/_public/transfers': typeof PublicTransfersRoute
   '/_public/vip-concierge': typeof PublicVipConciergeRoute
   '/_public/': typeof PublicIndexRoute
+  '/_authenticated/admin/blocked-dates': typeof AuthenticatedAdminBlockedDatesRoute
   '/_authenticated/admin/concierge-requests': typeof AuthenticatedAdminConciergeRequestsRoute
   '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/_authenticated/admin/faqs': typeof AuthenticatedAdminFaqsRoute
@@ -440,6 +450,7 @@ export interface FileRouteTypes {
     | '/transfers'
     | '/vip-concierge'
     | '/'
+    | '/admin/blocked-dates'
     | '/admin/concierge-requests'
     | '/admin/dashboard'
     | '/admin/faqs'
@@ -483,6 +494,7 @@ export interface FileRouteTypes {
     | '/transfers'
     | '/vip-concierge'
     | '/'
+    | '/admin/blocked-dates'
     | '/admin/concierge-requests'
     | '/admin/dashboard'
     | '/admin/faqs'
@@ -529,6 +541,7 @@ export interface FileRouteTypes {
     | '/_public/transfers'
     | '/_public/vip-concierge'
     | '/_public/'
+    | '/_authenticated/admin/blocked-dates'
     | '/_authenticated/admin/concierge-requests'
     | '/_authenticated/admin/dashboard'
     | '/_authenticated/admin/faqs'
@@ -770,6 +783,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminConciergeRequestsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/blocked-dates': {
+      id: '/_authenticated/admin/blocked-dates'
+      path: '/admin/blocked-dates'
+      fullPath: '/admin/blocked-dates'
+      preLoaderRoute: typeof AuthenticatedAdminBlockedDatesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin/users/': {
       id: '/_authenticated/admin/users/'
       path: '/admin/users'
@@ -889,6 +909,7 @@ const AuthRouteChildren: AuthRouteChildren = {
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface AuthenticatedRouteChildren {
+  AuthenticatedAdminBlockedDatesRoute: typeof AuthenticatedAdminBlockedDatesRoute
   AuthenticatedAdminConciergeRequestsRoute: typeof AuthenticatedAdminConciergeRequestsRoute
   AuthenticatedAdminDashboardRoute: typeof AuthenticatedAdminDashboardRoute
   AuthenticatedAdminFaqsRoute: typeof AuthenticatedAdminFaqsRoute
@@ -912,6 +933,7 @@ interface AuthenticatedRouteChildren {
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedAdminBlockedDatesRoute: AuthenticatedAdminBlockedDatesRoute,
   AuthenticatedAdminConciergeRequestsRoute:
     AuthenticatedAdminConciergeRequestsRoute,
   AuthenticatedAdminDashboardRoute: AuthenticatedAdminDashboardRoute,

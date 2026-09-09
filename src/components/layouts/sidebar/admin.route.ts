@@ -46,6 +46,11 @@ export const adminRoutes: Array<NavGroup> = [
         icon: 'material-symbols:concierge-outline-rounded',
       },
       {
+        title: 'Blocked Dates',
+        url: '/admin/blocked-dates',
+        icon: 'material-symbols:event-busy-outline-rounded',
+      },
+      {
         title: 'Users',
         url: '/admin/users',
         icon: 'material-symbols:group-outline-rounded',
