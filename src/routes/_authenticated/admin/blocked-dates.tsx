@@ -108,7 +108,7 @@ function RouteComponent() {
           <div>
             <p className="text-sm font-semibold text-primary">Blocked Ranges</p>
             <p className="text-xs text-muted-foreground">
-              Dates in these ranges are disabled on the booking calendars — customers
+              Dates in these ranges are disabled on the booking calendars, and customers
               who click a blocked date see a popup pointing them to email/WhatsApp.
             </p>
           </div>
@@ -144,7 +144,7 @@ function RouteComponent() {
                     id="label"
                     value={form.label}
                     onChange={(e) => setForm((f) => ({ ...f, label: e.target.value }))}
-                    placeholder="Lisbon Event — Sept 2026"
+                    placeholder="Lisbon Event, Sept 2026"
                     required
                   />
                   {fieldErrors.label && (
@@ -233,7 +233,7 @@ function RouteComponent() {
                   <TableCell>{format(parseLocalDate(range.start_date), 'd MMM yyyy')}</TableCell>
                   <TableCell>{format(parseLocalDate(range.end_date), 'd MMM yyyy')}</TableCell>
                   <TableCell className="max-w-xs truncate text-muted-foreground">
-                    {range.message || '—'}
+                    {range.message || 'None'}
                   </TableCell>
                   <TableCell className="text-right">
                     <Button
