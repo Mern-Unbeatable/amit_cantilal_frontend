@@ -13,6 +13,8 @@ const STATIC_PATHS = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/tours', priority: '0.9', changefreq: 'weekly' },
   { path: '/transfers', priority: '0.8', changefreq: 'monthly' },
+  { path: '/transfers/lisbon-porto-private-transfer', priority: '0.8', changefreq: 'monthly' },
+  { path: '/transfers/lisbon-algarve-private-transfer', priority: '0.8', changefreq: 'monthly' },
   { path: '/hourly-service', priority: '0.8', changefreq: 'monthly' },
   { path: '/fleet', priority: '0.7', changefreq: 'monthly' },
   { path: '/vip-concierge', priority: '0.7', changefreq: 'monthly' },
@@ -35,9 +37,12 @@ async function fetchJson(url) {
 }
 
 async function fetchTourEntries() {
+  const redirectedHome = new Set([
+    'fatima-private-half-day-tour-from-lisbon',
+  ])
   const { data: tours } = await fetchJson(`${API_BASE_URL}/public/tours`)
   return (tours ?? [])
-    .filter((tour) => tour.slug)
+    .filter((tour) => tour.slug && !redirectedHome.has(tour.slug))
     .map((tour) => ({ path: `/tours/${tour.slug}`, priority: '0.8', changefreq: 'weekly' }))
 }
 

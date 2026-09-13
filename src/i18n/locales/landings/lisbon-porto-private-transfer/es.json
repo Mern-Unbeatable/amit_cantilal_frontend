@@ -1,0 +1,201 @@
+{
+  "seo": {
+    "title": "Traslado Privado Lisboa–Oporto",
+    "description": "Traslados privados Lisboa–Oporto y Oporto–Lisboa en un Mercedes premium. Chófer profesional, servicio puerta a puerta y paradas opcionales en el camino."
+  },
+  "hero": {
+    "tag": "Traslado",
+    "title": "Traslado Privado Entre Lisboa y Oporto",
+    "subtitle": "Viaje entre Lisboa y Oporto con confort en un servicio privado de chófer puerta a puerta, adaptado a su recorrido. Elija un traslado directo o aproveche el día con paradas cuidadosamente seleccionadas en el camino.",
+    "primaryCta": "Solicitar Su Traslado Privado",
+    "secondaryCta": "WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y Oporto.",
+    "imageAlt": "Mercedes V-Class traslado privado entre Lisboa y Oporto",
+    "benefits": [
+      "Servicio Privado Puerta a Puerta",
+      "Flota Mercedes Premium",
+      "Chóferes de Habla Inglesa",
+      "Disponible en Ambas Direcciones"
+    ]
+  },
+  "intro": {
+    "title": "Un Viaje Privado Entre las Dos Grandes Ciudades de Portugal",
+    "p1": "Viajar entre Lisboa y Oporto debería ser tan agradable como los propios destinos.",
+    "p2": "Con Off We Go Portugal, su chófer profesional le recoge directamente en su hotel, residencia privada, aeropuerto u otra ubicación acordada y le lleva cómodamente a su destino en Oporto o de Oporto a Lisboa.",
+    "p3": "No hay estaciones de tren que recorrer, equipaje que llevar entre andenes ni horarios fijos de salida. El vehículo es exclusivamente para usted y su grupo, y la salida se organiza en torno a su itinerario.",
+    "p4": "Ya sea viajando en pareja, en familia o en un grupo privado, disfrute de un viaje cómodo y discreto a bordo de un Mercedes premium con un chófer profesional de habla inglesa.",
+    "imageAlt": "Traslado privado Mercedes chófer Lisboa Oporto"
+  },
+  "directions": {
+    "title": "Lisboa a Oporto u Oporto a Lisboa",
+    "from": "Lisboa",
+    "to": "Oporto",
+    "body": "La recogida y la entrega pueden organizarse en hoteles, residencias privadas, aeropuertos u otra dirección acordada, ofreciendo una verdadera experiencia puerta a puerta."
+  },
+  "stops": {
+    "title": "Haga Del Viaje Parte De Su Experiencia En Portugal",
+    "p1": "Su traslado entre Lisboa y Oporto no tiene por qué ser simplemente un viaje de A a B.",
+    "p2": "Si su itinerario lo permite, podemos incorporar paradas turísticas en el camino, convirtiendo el día del traslado en otra parte memorable de su visita a Portugal.",
+    "note": "Elija una o más paradas según sus intereses y el tiempo disponible. Las paradas opcionales y el tiempo adicional de espera o visita se cotizan por separado según el itinerario solicitado.",
+    "destinations": {
+      "obidos": {
+        "name": "Óbidos",
+        "description": "Recorra una de las villas medievales amuralladas más pintorescas de Portugal, conocida por sus calles empedradas, casas encaladas y su castillo histórico.",
+        "imageAlt": "Parada turística en Óbidos"
+      },
+      "nazareth": {
+        "name": "Nazaré",
+        "description": "Descubra la famosa villa costera atlántica conocida por su tradición pesquera, costa dramática y olas de fama mundial.",
+        "imageAlt": "Parada turística en Nazaré"
+      },
+      "fatima": {
+        "name": "Fátima",
+        "description": "Visite uno de los destinos de peregrinación católica más importantes del mundo y el Santuario de Fátima.",
+        "imageAlt": "Parada turística en Fátima"
+      },
+      "coimbra": {
+        "name": "Coimbra",
+        "description": "Descubra la histórica ciudad universitaria de Portugal y siglos de cultura y arquitectura portuguesas.",
+        "imageAlt": "Parada turística en Coimbra"
+      },
+      "aveiro": {
+        "name": "Aveiro",
+        "description": "Explore los canales de la ciudad, los coloridos barcos moliceiros y la distintiva arquitectura Art Nouveau.",
+        "imageAlt": "Parada turística en Aveiro"
+      }
+    }
+  },
+  "vehicles": {
+    "title": "Viaje En Un Mercedes Premium",
+    "intro": "Nuestra flota premium Mercedes-Benz nos permite seleccionar el vehículo adecuado según el número de pasajeros, el equipaje y el nivel de confort preferido.",
+    "note": "Indíquenos el número de pasajeros y el equipaje al solicitar su traslado y le recomendaremos el vehículo más adecuado.",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "Una elegante berlina ejecutiva, ideal para parejas y viajeros individuales que buscan confort, privacidad y refinamiento.",
+      "imageAlt": "Mercedes E-Class traslado privado Portugal"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "Nuestra opción premium de berlina para viajeros que buscan un nivel elevado de confort, sofisticación y servicio de chófer discreto.",
+      "imageAlt": "Mercedes S-Class chófer de lujo Portugal"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Espacioso y cómodo, especialmente adecuado para familias, grupos privados y viajeros con equipaje adicional.",
+      "imageAlt": "Mercedes V-Class traslado privado Lisboa Oporto"
+    }
+  },
+  "included": {
+    "title": "Todo Lo Que Necesita Para Un Viaje Cómodo",
+    "items": [
+      {
+        "title": "Chófer Profesional de Habla Inglesa",
+        "description": "Experimentado, discreto y con presentación profesional."
+      },
+      {
+        "title": "Servicio Privado Puerta a Puerta",
+        "description": "Recogida y entrega en las ubicaciones solicitadas."
+      },
+      {
+        "title": "Vehículo Mercedes Premium",
+        "description": "Viaje con confort en un vehículo seleccionado para su grupo."
+      },
+      {
+        "title": "Asistencia Con El Equipaje",
+        "description": "Su chófer le ayudará a cargar y descargar el equipaje."
+      },
+      {
+        "title": "Agua Embotellada De Cortesía",
+        "description": "Refrescos disponibles durante el viaje."
+      },
+      {
+        "title": "Wi-Fi Cuando Esté Disponible",
+        "description": "Manténgase conectado mientras viaja."
+      },
+      {
+        "title": "Peajes Incluidos",
+        "description": "Los peajes de autopista y los costes operativos estándar están incluidos en el traslado directo cotizado."
+      },
+      {
+        "title": "Coordinación Personalizada",
+        "description": "Nuestro equipo coordina el servicio con usted antes del viaje."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "¿Por Qué Elegir Un Traslado Privado?",
+    "items": [
+      {
+        "title": "Viaje Según Su Horario",
+        "description": "Elija una hora de salida que encaje con su itinerario."
+      },
+      {
+        "title": "Privacidad Total",
+        "description": "Su Mercedes es exclusivamente para usted y su grupo."
+      },
+      {
+        "title": "Sin Estaciones Ni Conexiones",
+        "description": "Evite recorrer estaciones y manejar equipaje entre conexiones."
+      },
+      {
+        "title": "Descubra Más Por El Camino",
+        "description": "Añada paradas turísticas y viva más de Portugal durante su viaje."
+      }
+    ]
+  },
+  "airport": {
+    "title": "¿Su Viaje Empieza En El Aeropuerto?",
+    "p1": "Si su viaje Lisboa–Oporto u Oporto–Lisboa comienza en el aeropuerto, Off We Go Portugal puede coordinar su traslado privado en torno a la llegada de su vuelo.",
+    "p2": "La recogida en el aeropuerto incluye seguimiento de vuelo, Meet & Greet en la zona de llegadas con cartel nominativo y hasta 60 minutos de espera gratuita tras la llegada del vuelo.",
+    "cta": "Solicitar Recogida En El Aeropuerto"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "question": "¿Cuánto dura un traslado privado entre Lisboa y Oporto?",
+        "answer": "Un viaje directo suele durar aproximadamente tres horas, según el tráfico y las ubicaciones exactas de recogida y entrega."
+      },
+      {
+        "question": "¿Puedo reservar un traslado privado de Oporto a Lisboa?",
+        "answer": "Sí. Este servicio está disponible en ambas direcciones, de Lisboa a Oporto y de Oporto a Lisboa."
+      },
+      {
+        "question": "¿Podemos parar durante el viaje?",
+        "answer": "Sí. Paradas como Óbidos, Nazaré, Fátima, Coimbra o Aveiro pueden incorporarse a su itinerario. Las paradas adicionales y el tiempo de espera se cotizan según el itinerario seleccionado."
+      },
+      {
+        "question": "¿Pueden recogernos directamente en el hotel?",
+        "answer": "Sí. Ofrecemos recogida puerta a puerta en hoteles, residencias privadas, aeropuertos y otras ubicaciones acordadas."
+      },
+      {
+        "question": "¿Qué vehículo Mercedes debo elegir?",
+        "answer": "El vehículo adecuado depende del número de pasajeros y de la cantidad de equipaje. Indíquenos estos detalles al solicitar el traslado y nuestro equipo le recomendará la opción más adecuada."
+      },
+      {
+        "question": "¿Pueden proporcionar sillas infantiles?",
+        "answer": "Sí. Las sillas infantiles pueden solicitarse con antelación. Indique la edad del niño al reservar para poder preparar la silla adecuada."
+      },
+      {
+        "question": "¿Pueden acomodar mucho equipaje?",
+        "answer": "Sí, sujeto a la capacidad del vehículo. Indíquenos el número y el tamaño aproximado de las maletas al solicitar el traslado para recomendarle el vehículo correcto."
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo Para Viajar Entre Lisboa Y Oporto?",
+    "lead": "Haga su viaje cómodo, privado y sin esfuerzo con Off We Go Portugal.",
+    "body": "Viaje directamente entre Lisboa y Oporto o cree un recorrido personalizado con paradas turísticas en el camino. Indíquenos la fecha de viaje, lugares de recogida y entrega, número de pasajeros, equipaje e itinerario preferido, y organizaremos el servicio adecuado.",
+    "primaryCta": "Solicitar Su Traslado Privado",
+    "secondaryCta": "Contáctenos Por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y Oporto.",
+    "imageAlt": "Off We Go Portugal traslado privado Lisboa Oporto",
+    "linksLabel": "Explorar más",
+    "links": {
+      "fleet": "Flota",
+      "transfers": "Traslados Aeroportuarios",
+      "tours": "Tours Privados",
+      "booking": "Reservas"
+    }
+  }
+}

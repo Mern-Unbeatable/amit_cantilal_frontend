@@ -1,10 +1,19 @@
+import { PublicBreadcrumbs } from '@/components/shared/public-breadcrumbs.tsx'
+import type { PublicBreadcrumbItem } from '@/components/shared/public-breadcrumbs.tsx'
+
 interface PageHeroProps {
-  image?: string;
-  title: string;
-  subtitle?: string;
+  image?: string
+  title: string
+  subtitle?: string
+  breadcrumbs?: Array<PublicBreadcrumbItem>
 }
 
-export function PageHero({ image = '/homepage.png', title, subtitle }: PageHeroProps) {
+export function PageHero({
+  image = '/homepage.png',
+  title,
+  subtitle,
+  breadcrumbs,
+}: PageHeroProps) {
   return (
     <section className="relative min-h-[40vh] md:min-h-[50vh] flex items-end pb-12 md:pb-20">
       <img
@@ -19,6 +28,9 @@ export function PageHero({ image = '/homepage.png', title, subtitle }: PageHeroP
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-background" />
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-5xl">
+          {breadcrumbs && breadcrumbs.length > 0 && (
+            <PublicBreadcrumbs items={breadcrumbs} variant="hero" />
+          )}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold italic text-primary mb-4 md:mb-6 drop-shadow-lg">
             {title}
           </h1>
@@ -30,5 +42,5 @@ export function PageHero({ image = '/homepage.png', title, subtitle }: PageHeroP
         </div>
       </div>
     </section>
-  );
+  )
 }

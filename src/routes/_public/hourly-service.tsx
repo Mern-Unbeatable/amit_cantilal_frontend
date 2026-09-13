@@ -16,6 +16,10 @@ export const Route = createFileRoute('/_public/hourly-service')({
       description:
         'Hire a professional chauffeur and vehicle by the hour in Portugal — flexible, tailor-made itineraries for as long as you need.',
       path: '/hourly-service',
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Hourly Service', path: '/hourly-service' },
+      ],
     }),
   component: RouteComponent,
 })
@@ -32,6 +36,10 @@ function RouteComponent() {
         image="/hourly-banner.png"
         title={t('hourlyServicePage.heroTitle')}
         subtitle={t('hourlyServicePage.heroSubtitle')}
+        breadcrumbs={[
+          { label: t('nav.home'), to: '/' },
+          { label: t('nav.hourlyService') },
+        ]}
       />
 
       <section className="py-16 md:py-24 bg-[#0B0B0B]">

@@ -14,7 +14,6 @@ import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicVipConciergeRouteImport } from './routes/_public/vip-concierge'
-import { Route as PublicTransfersRouteImport } from './routes/_public/transfers'
 import { Route as PublicTermsRouteImport } from './routes/_public/terms'
 import { Route as PublicSpecialEventsRouteImport } from './routes/_public/special-events'
 import { Route as PublicPrivacyPolicyRouteImport } from './routes/_public/privacy-policy'
@@ -25,10 +24,13 @@ import { Route as PublicFaqRouteImport } from './routes/_public/faq'
 import { Route as PublicCorporateMobilityRouteImport } from './routes/_public/corporate-mobility'
 import { Route as PublicB2bRouteImport } from './routes/_public/b2b'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
+import { Route as PublicTransfersIndexRouteImport } from './routes/_public/transfers/index'
 import { Route as PublicToursIndexRouteImport } from './routes/_public/tours/index'
 import { Route as PublicBookingIndexRouteImport } from './routes/_public/booking/index'
 import { Route as PublicBlogIndexRouteImport } from './routes/_public/blog/index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as PublicTransfersLisbonPortoPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-porto-private-transfer'
+import { Route as PublicTransfersLisbonAlgarvePrivateTransferRouteImport } from './routes/_public/transfers/lisbon-algarve-private-transfer'
 import { Route as PublicToursSlugRouteImport } from './routes/_public/tours/$slug'
 import { Route as PublicBookingLookupRouteImport } from './routes/_public/booking/lookup'
 import { Route as PublicBookingConfirmRouteImport } from './routes/_public/booking/confirm'
@@ -75,11 +77,6 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
 const PublicVipConciergeRoute = PublicVipConciergeRouteImport.update({
   id: '/vip-concierge',
   path: '/vip-concierge',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicTransfersRoute = PublicTransfersRouteImport.update({
-  id: '/transfers',
-  path: '/transfers',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicTermsRoute = PublicTermsRouteImport.update({
@@ -132,6 +129,11 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AuthRoute,
 } as any)
+const PublicTransfersIndexRoute = PublicTransfersIndexRouteImport.update({
+  id: '/transfers/',
+  path: '/transfers/',
+  getParentRoute: () => PublicRoute,
+} as any)
 const PublicToursIndexRoute = PublicToursIndexRouteImport.update({
   id: '/tours/',
   path: '/tours/',
@@ -152,6 +154,18 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const PublicTransfersLisbonPortoPrivateTransferRoute =
+  PublicTransfersLisbonPortoPrivateTransferRouteImport.update({
+    id: '/transfers/lisbon-porto-private-transfer',
+    path: '/transfers/lisbon-porto-private-transfer',
+    getParentRoute: () => PublicRoute,
+  } as any)
+const PublicTransfersLisbonAlgarvePrivateTransferRoute =
+  PublicTransfersLisbonAlgarvePrivateTransferRouteImport.update({
+    id: '/transfers/lisbon-algarve-private-transfer',
+    path: '/transfers/lisbon-algarve-private-transfer',
+    getParentRoute: () => PublicRoute,
+  } as any)
 const PublicToursSlugRoute = PublicToursSlugRouteImport.update({
   id: '/tours/$slug',
   path: '/tours/$slug',
@@ -309,7 +323,6 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/special-events': typeof PublicSpecialEventsRoute
   '/terms': typeof PublicTermsRoute
-  '/transfers': typeof PublicTransfersRoute
   '/vip-concierge': typeof PublicVipConciergeRoute
   '/': typeof PublicIndexRoute
   '/admin/blocked-dates': typeof AuthenticatedAdminBlockedDatesRoute
@@ -322,10 +335,13 @@ export interface FileRoutesByFullPath {
   '/booking/confirm': typeof PublicBookingConfirmRoute
   '/booking/lookup': typeof PublicBookingLookupRoute
   '/tours/$slug': typeof PublicToursSlugRoute
+  '/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
+  '/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/blog': typeof PublicBlogIndexRoute
   '/booking': typeof PublicBookingIndexRoute
   '/tours': typeof PublicToursIndexRoute
+  '/transfers': typeof PublicTransfersIndexRoute
   '/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
   '/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
@@ -353,7 +369,6 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/special-events': typeof PublicSpecialEventsRoute
   '/terms': typeof PublicTermsRoute
-  '/transfers': typeof PublicTransfersRoute
   '/vip-concierge': typeof PublicVipConciergeRoute
   '/': typeof PublicIndexRoute
   '/admin/blocked-dates': typeof AuthenticatedAdminBlockedDatesRoute
@@ -366,10 +381,13 @@ export interface FileRoutesByTo {
   '/booking/confirm': typeof PublicBookingConfirmRoute
   '/booking/lookup': typeof PublicBookingLookupRoute
   '/tours/$slug': typeof PublicToursSlugRoute
+  '/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
+  '/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/blog': typeof PublicBlogIndexRoute
   '/booking': typeof PublicBookingIndexRoute
   '/tours': typeof PublicToursIndexRoute
+  '/transfers': typeof PublicTransfersIndexRoute
   '/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
   '/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
@@ -401,7 +419,6 @@ export interface FileRoutesById {
   '/_public/privacy-policy': typeof PublicPrivacyPolicyRoute
   '/_public/special-events': typeof PublicSpecialEventsRoute
   '/_public/terms': typeof PublicTermsRoute
-  '/_public/transfers': typeof PublicTransfersRoute
   '/_public/vip-concierge': typeof PublicVipConciergeRoute
   '/_public/': typeof PublicIndexRoute
   '/_authenticated/admin/blocked-dates': typeof AuthenticatedAdminBlockedDatesRoute
@@ -414,10 +431,13 @@ export interface FileRoutesById {
   '/_public/booking/confirm': typeof PublicBookingConfirmRoute
   '/_public/booking/lookup': typeof PublicBookingLookupRoute
   '/_public/tours/$slug': typeof PublicToursSlugRoute
+  '/_public/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
+  '/_public/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_public/blog/': typeof PublicBlogIndexRoute
   '/_public/booking/': typeof PublicBookingIndexRoute
   '/_public/tours/': typeof PublicToursIndexRoute
+  '/_public/transfers/': typeof PublicTransfersIndexRoute
   '/_authenticated/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/_authenticated/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
   '/_authenticated/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
@@ -447,7 +467,6 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/special-events'
     | '/terms'
-    | '/transfers'
     | '/vip-concierge'
     | '/'
     | '/admin/blocked-dates'
@@ -460,10 +479,13 @@ export interface FileRouteTypes {
     | '/booking/confirm'
     | '/booking/lookup'
     | '/tours/$slug'
+    | '/transfers/lisbon-algarve-private-transfer'
+    | '/transfers/lisbon-porto-private-transfer'
     | '/admin'
     | '/blog'
     | '/booking'
     | '/tours'
+    | '/transfers'
     | '/admin/bookings/$id'
     | '/admin/fleet-vehicle/create'
     | '/admin/posts/create'
@@ -491,7 +513,6 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/special-events'
     | '/terms'
-    | '/transfers'
     | '/vip-concierge'
     | '/'
     | '/admin/blocked-dates'
@@ -504,10 +525,13 @@ export interface FileRouteTypes {
     | '/booking/confirm'
     | '/booking/lookup'
     | '/tours/$slug'
+    | '/transfers/lisbon-algarve-private-transfer'
+    | '/transfers/lisbon-porto-private-transfer'
     | '/admin'
     | '/blog'
     | '/booking'
     | '/tours'
+    | '/transfers'
     | '/admin/bookings/$id'
     | '/admin/fleet-vehicle/create'
     | '/admin/posts/create'
@@ -538,7 +562,6 @@ export interface FileRouteTypes {
     | '/_public/privacy-policy'
     | '/_public/special-events'
     | '/_public/terms'
-    | '/_public/transfers'
     | '/_public/vip-concierge'
     | '/_public/'
     | '/_authenticated/admin/blocked-dates'
@@ -551,10 +574,13 @@ export interface FileRouteTypes {
     | '/_public/booking/confirm'
     | '/_public/booking/lookup'
     | '/_public/tours/$slug'
+    | '/_public/transfers/lisbon-algarve-private-transfer'
+    | '/_public/transfers/lisbon-porto-private-transfer'
     | '/_authenticated/admin/'
     | '/_public/blog/'
     | '/_public/booking/'
     | '/_public/tours/'
+    | '/_public/transfers/'
     | '/_authenticated/admin/bookings/$id'
     | '/_authenticated/admin/fleet-vehicle/create'
     | '/_authenticated/admin/posts/create'
@@ -613,13 +639,6 @@ declare module '@tanstack/react-router' {
       path: '/vip-concierge'
       fullPath: '/vip-concierge'
       preLoaderRoute: typeof PublicVipConciergeRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/transfers': {
-      id: '/_public/transfers'
-      path: '/transfers'
-      fullPath: '/transfers'
-      preLoaderRoute: typeof PublicTransfersRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/terms': {
@@ -692,6 +711,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_public/transfers/': {
+      id: '/_public/transfers/'
+      path: '/transfers'
+      fullPath: '/transfers'
+      preLoaderRoute: typeof PublicTransfersIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_public/tours/': {
       id: '/_public/tours/'
       path: '/tours'
@@ -719,6 +745,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin'
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
+    }
+    '/_public/transfers/lisbon-porto-private-transfer': {
+      id: '/_public/transfers/lisbon-porto-private-transfer'
+      path: '/transfers/lisbon-porto-private-transfer'
+      fullPath: '/transfers/lisbon-porto-private-transfer'
+      preLoaderRoute: typeof PublicTransfersLisbonPortoPrivateTransferRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/transfers/lisbon-algarve-private-transfer': {
+      id: '/_public/transfers/lisbon-algarve-private-transfer'
+      path: '/transfers/lisbon-algarve-private-transfer'
+      fullPath: '/transfers/lisbon-algarve-private-transfer'
+      preLoaderRoute: typeof PublicTransfersLisbonAlgarvePrivateTransferRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_public/tours/$slug': {
       id: '/_public/tours/$slug'
@@ -975,16 +1015,18 @@ interface PublicRouteChildren {
   PublicPrivacyPolicyRoute: typeof PublicPrivacyPolicyRoute
   PublicSpecialEventsRoute: typeof PublicSpecialEventsRoute
   PublicTermsRoute: typeof PublicTermsRoute
-  PublicTransfersRoute: typeof PublicTransfersRoute
   PublicVipConciergeRoute: typeof PublicVipConciergeRoute
   PublicIndexRoute: typeof PublicIndexRoute
   PublicBlogSlugRoute: typeof PublicBlogSlugRoute
   PublicBookingConfirmRoute: typeof PublicBookingConfirmRoute
   PublicBookingLookupRoute: typeof PublicBookingLookupRoute
   PublicToursSlugRoute: typeof PublicToursSlugRoute
+  PublicTransfersLisbonAlgarvePrivateTransferRoute: typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
+  PublicTransfersLisbonPortoPrivateTransferRoute: typeof PublicTransfersLisbonPortoPrivateTransferRoute
   PublicBlogIndexRoute: typeof PublicBlogIndexRoute
   PublicBookingIndexRoute: typeof PublicBookingIndexRoute
   PublicToursIndexRoute: typeof PublicToursIndexRoute
+  PublicTransfersIndexRoute: typeof PublicTransfersIndexRoute
   PublicBookingPayReferenceRoute: typeof PublicBookingPayReferenceRoute
 }
 
@@ -998,16 +1040,20 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicPrivacyPolicyRoute: PublicPrivacyPolicyRoute,
   PublicSpecialEventsRoute: PublicSpecialEventsRoute,
   PublicTermsRoute: PublicTermsRoute,
-  PublicTransfersRoute: PublicTransfersRoute,
   PublicVipConciergeRoute: PublicVipConciergeRoute,
   PublicIndexRoute: PublicIndexRoute,
   PublicBlogSlugRoute: PublicBlogSlugRoute,
   PublicBookingConfirmRoute: PublicBookingConfirmRoute,
   PublicBookingLookupRoute: PublicBookingLookupRoute,
   PublicToursSlugRoute: PublicToursSlugRoute,
+  PublicTransfersLisbonAlgarvePrivateTransferRoute:
+    PublicTransfersLisbonAlgarvePrivateTransferRoute,
+  PublicTransfersLisbonPortoPrivateTransferRoute:
+    PublicTransfersLisbonPortoPrivateTransferRoute,
   PublicBlogIndexRoute: PublicBlogIndexRoute,
   PublicBookingIndexRoute: PublicBookingIndexRoute,
   PublicToursIndexRoute: PublicToursIndexRoute,
+  PublicTransfersIndexRoute: PublicTransfersIndexRoute,
   PublicBookingPayReferenceRoute: PublicBookingPayReferenceRoute,
 }
 

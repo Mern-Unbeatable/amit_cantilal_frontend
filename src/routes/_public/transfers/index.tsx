@@ -10,7 +10,7 @@ import { pageHead } from '@/lib/seo.ts'
 
 const CARD_ICONS = [Plane, Shield, Globe, Car]
 
-export const Route = createFileRoute('/_public/transfers')({
+export const Route = createFileRoute('/_public/transfers/')({
   head: () =>
     pageHead({
       title: 'Airport Transfers',

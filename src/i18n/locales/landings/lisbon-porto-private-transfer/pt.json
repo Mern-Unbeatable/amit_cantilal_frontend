@@ -1,0 +1,201 @@
+{
+  "seo": {
+    "title": "Transferência Privada Lisboa–Porto",
+    "description": "Transferências privadas Lisboa–Porto e Porto–Lisboa num Mercedes premium. Chauffeur profissional, serviço porta-a-porta e paragens opcionais no percurso."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Transferência Privada Entre Lisboa e Porto",
+    "subtitle": "Viaje entre Lisboa e o Porto com conforto num serviço de chauffeur privado porta-a-porta, adaptado à sua viagem. Escolha uma transferência direta ou aproveite o dia com paragens cuidadosamente selecionadas no percurso.",
+    "primaryCta": "Pedir a Sua Transferência Privada",
+    "secondaryCta": "WhatsApp",
+    "whatsappMessage": "Olá, gostaria de pedir uma transferência privada entre Lisboa e o Porto.",
+    "imageAlt": "Mercedes V-Class transferência privada entre Lisboa e Porto",
+    "benefits": [
+      "Serviço Privado Porta-a-Porta",
+      "Frota Mercedes Premium",
+      "Chauffeurs de Língua Inglesa",
+      "Disponível em Ambas as Direções"
+    ]
+  },
+  "intro": {
+    "title": "Uma Viagem Privada Entre as Duas Grandes Cidades de Portugal",
+    "p1": "Viajar entre Lisboa e o Porto deve ser tão agradável quanto os próprios destinos.",
+    "p2": "Com a Off We Go Portugal, o seu chauffeur profissional recolhe-o diretamente no hotel, residência privada, aeroporto ou outro local combinado e leva-o confortavelmente ao seu destino no Porto ou de Porto para Lisboa.",
+    "p3": "Não há estações de comboio para navegar, bagagem para transportar entre plataformas nem horários fixos de partida. O veículo é exclusivamente para si e o seu grupo, e a partida é organizada em torno do seu itinerário.",
+    "p4": "Quer viaje em casal, em família ou em grupo privado, desfrute de uma viagem confortável e discreta a bordo de um Mercedes premium com um chauffeur profissional de língua inglesa.",
+    "imageAlt": "Transferência privada Mercedes chauffeur Lisboa Porto"
+  },
+  "directions": {
+    "title": "Lisboa para o Porto ou Porto para Lisboa",
+    "from": "Lisboa",
+    "to": "Porto",
+    "body": "A recolha e a entrega podem ser organizadas em hotéis, residências privadas, aeroportos ou outro endereço combinado, proporcionando uma verdadeira experiência porta-a-porta."
+  },
+  "stops": {
+    "title": "Faça da Viagem Parte da Sua Experiência em Portugal",
+    "p1": "A sua transferência entre Lisboa e o Porto não tem de ser simplesmente uma viagem de A a B.",
+    "p2": "Se o seu itinerário o permitir, podemos incorporar paragens turísticas pelo caminho, transformando o dia da transferência noutra parte memorável da sua visita a Portugal.",
+    "note": "Escolha uma ou mais paragens de acordo com os seus interesses e tempo disponível. Paragens opcionais e tempo adicional de espera ou visita são orçamentados separadamente conforme o itinerário solicitado.",
+    "destinations": {
+      "obidos": {
+        "name": "Óbidos",
+        "description": "Percorra uma das vilas medievais muralhadas mais pitorescas de Portugal, conhecida pelas suas ruas de calçada, casas caiadas de branco e castelo histórico.",
+        "imageAlt": "Paragem turística em Óbidos"
+      },
+      "nazareth": {
+        "name": "Nazaré",
+        "description": "Descubra a famosa vila costeira atlântica conhecida pela sua tradição piscatória, costa dramática e ondas mundialmente famosas.",
+        "imageAlt": "Paragem turística na Nazaré"
+      },
+      "fatima": {
+        "name": "Fátima",
+        "description": "Visite um dos destinos de peregrinação católica mais importantes do mundo e o Santuário de Fátima.",
+        "imageAlt": "Paragem turística em Fátima"
+      },
+      "coimbra": {
+        "name": "Coimbra",
+        "description": "Descubra a histórica cidade universitária de Portugal e séculos de cultura e arquitetura portuguesas.",
+        "imageAlt": "Paragem turística em Coimbra"
+      },
+      "aveiro": {
+        "name": "Aveiro",
+        "description": "Explore os canais da cidade, os coloridos barcos moliceiros e a distintiva arquitetura Art Nouveau.",
+        "imageAlt": "Paragem turística em Aveiro"
+      }
+    }
+  },
+  "vehicles": {
+    "title": "Viaje num Mercedes Premium",
+    "intro": "A nossa frota premium Mercedes-Benz permite-nos selecionar o veículo adequado de acordo com o número de passageiros, bagagem e nível de conforto preferido.",
+    "note": "Indique-nos o número de passageiros e bagagem ao pedir a sua transferência e recomendaremos o veículo mais adequado.",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "Uma elegante berlina executiva, ideal para casais e viajantes individuais que procuram conforto, privacidade e refinamento.",
+      "imageAlt": "Mercedes E-Class transferência privada Portugal"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "A nossa escolha premium de berlina para viajantes que procuram um nível elevado de conforto, sofisticação e serviço de chauffeur discreto.",
+      "imageAlt": "Mercedes S-Class chauffeur de luxo Portugal"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Espaçoso e confortável, particularmente adequado para famílias, grupos privados e viajantes com bagagem adicional.",
+      "imageAlt": "Mercedes V-Class transferência privada Lisboa Porto"
+    }
+  },
+  "included": {
+    "title": "Tudo o Que Precisa para uma Viagem Confortável",
+    "items": [
+      {
+        "title": "Chauffeur Profissional de Língua Inglesa",
+        "description": "Experiente, discreto e com apresentação profissional."
+      },
+      {
+        "title": "Serviço Privado Porta-a-Porta",
+        "description": "Recolha e entrega nos locais solicitados."
+      },
+      {
+        "title": "Veículo Mercedes Premium",
+        "description": "Viaje com conforto num veículo selecionado para o seu grupo."
+      },
+      {
+        "title": "Assistência com Bagagem",
+        "description": "O seu chauffeur ajuda a carregar e descarregar a bagagem."
+      },
+      {
+        "title": "Água Engarrafada Gratuita",
+        "description": "Refrigerantes disponíveis durante a viagem."
+      },
+      {
+        "title": "Wi-Fi Quando Disponível",
+        "description": "Mantenha-se ligado durante a viagem."
+      },
+      {
+        "title": "Portagens Incluídas",
+        "description": "Portagens de autoestrada e custos operacionais padrão estão incluídos na transferência direta orçamentada."
+      },
+      {
+        "title": "Coordenação Personalizada",
+        "description": "A nossa equipa coordena o serviço consigo antes da viagem."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "Porquê Escolher uma Transferência Privada?",
+    "items": [
+      {
+        "title": "Viaje no Seu Horário",
+        "description": "Escolha uma hora de partida que se adeque ao seu itinerário."
+      },
+      {
+        "title": "Privacidade Total",
+        "description": "O seu Mercedes é exclusivamente para si e o seu grupo."
+      },
+      {
+        "title": "Sem Estações nem Ligações",
+        "description": "Evite navegar estações e manusear bagagem entre ligações."
+      },
+      {
+        "title": "Descubra Mais no Percurso",
+        "description": "Adicione paragens turísticas e viva mais de Portugal durante a viagem."
+      }
+    ]
+  },
+  "airport": {
+    "title": "A Sua Viagem Começa no Aeroporto?",
+    "p1": "Se a sua viagem Lisboa–Porto ou Porto–Lisboa começa no aeroporto, a Off We Go Portugal pode coordenar a sua transferência privada em torno da chegada do voo.",
+    "p2": "A recolha no aeroporto inclui monitorização de voo, Meet & Greet na zona de chegadas com placa identificativa e até 60 minutos de espera gratuita após a chegada do voo.",
+    "cta": "Pedir Recolha no Aeroporto"
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      {
+        "question": "Quanto tempo demora uma transferência privada entre Lisboa e o Porto?",
+        "answer": "Uma viagem direta demora tipicamente cerca de três horas, dependendo do trânsito e dos locais exactos de recolha e entrega."
+      },
+      {
+        "question": "Posso reservar uma transferência privada do Porto para Lisboa?",
+        "answer": "Sim. Este serviço está disponível em ambas as direções, de Lisboa para o Porto e do Porto para Lisboa."
+      },
+      {
+        "question": "Podemos fazer paragens durante a viagem?",
+        "answer": "Sim. Paragens como Óbidos, Nazaré, Fátima, Coimbra ou Aveiro podem ser incorporadas no seu itinerário. Paragens adicionais e tempo de espera são orçamentados de acordo com o itinerário selecionado."
+      },
+      {
+        "question": "Podem recolher-nos diretamente no hotel?",
+        "answer": "Sim. Oferecemos recolha porta-a-porta em hotéis, residências privadas, aeroportos e outros locais combinados."
+      },
+      {
+        "question": "Que veículo Mercedes devo escolher?",
+        "answer": "O veículo adequado depende do número de passageiros e da quantidade de bagagem. Indique-nos estes detalhes ao pedir a transferência e a nossa equipa recomendará a opção mais adequada."
+      },
+      {
+        "question": "Podem fornecer cadeiras para crianças?",
+        "answer": "Sim. As cadeiras para crianças podem ser pedidas com antecedência. Indique a idade da criança na reserva para que a cadeira adequada possa ser organizada."
+      },
+      {
+        "question": "Conseguem acomodar muita bagagem?",
+        "answer": "Sim, sujeito à capacidade do veículo. Indique-nos o número e o tamanho aproximado das malas ao pedir a transferência para recomendarmos o veículo correto."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Pronto para Viajar Entre Lisboa e o Porto?",
+    "lead": "Torne a sua viagem confortável, privada e sem esforço com a Off We Go Portugal.",
+    "body": "Viaje diretamente entre Lisboa e o Porto ou crie uma viagem personalizada com paragens turísticas no percurso. Indique-nos a data de viagem, locais de recolha e entrega, número de passageiros, bagagem e itinerário preferido, e organizaremos o serviço adequado.",
+    "primaryCta": "Pedir a Sua Transferência Privada",
+    "secondaryCta": "Contacte-nos no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de pedir uma transferência privada entre Lisboa e o Porto.",
+    "imageAlt": "Off We Go Portugal transferência privada Lisboa Porto",
+    "linksLabel": "Explorar mais",
+    "links": {
+      "fleet": "Frota",
+      "transfers": "Transferências Aeroportuárias",
+      "tours": "Tours Privados",
+      "booking": "Reservas"
+    }
+  }
+}

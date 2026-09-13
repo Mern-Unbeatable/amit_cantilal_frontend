@@ -1,7 +1,7 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, redirect } from '@tanstack/react-router'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Check, CheckCircle, Clock, MapPin, XCircle } from 'lucide-react'
+import { Check, CheckCircle, Clock, MapPin, XCircle } from 'lucide-react'
 import { format } from 'date-fns'
 import { toast } from 'sonner'
 import { loadStripe } from '@stripe/stripe-js'
@@ -9,12 +9,14 @@ import { Elements } from '@stripe/react-stripe-js'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { getTourPrice } from '@/features/tour/tour-pricing.ts'
 import { tourService } from '@/features/tour/tour.service.ts'
+import { shouldRedirectTourSlugToHome, normalizeTourSlug } from '@/features/tour/redirects.ts'
 import { useCreateBooking } from '@/features/booking/booking.hooks.ts'
 import { Spinner } from '@/components/ui/spinner.tsx'
 import { BookingSummary } from '@/features/tour/public/booking-summary.tsx'
 import { BookingDateStep } from '@/features/tour/public/booking-date-step.tsx'
 import { BookingDetailsStep } from '@/features/tour/public/booking-details-step.tsx'
 import { StripeCheckoutForm } from '@/features/tour/public/stripe-checkout-form.tsx'
+import { PublicBreadcrumbs } from '@/components/shared/public-breadcrumbs.tsx'
 import { pageHead } from '@/lib/seo.ts'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -66,23 +68,40 @@ const TourSkeleton = () => (
 // ─── Route ────────────────────────────────────────────────────────────────────
 
 export const Route = createFileRoute('/_public/tours/$slug')({
+  beforeLoad: ({ params }) => {
+    // Matches both clean slug and broken variants like `...lisbon+`
+    if (shouldRedirectTourSlugToHome(params.slug)) {
+      throw redirect({
+        to: '/',
+        replace: true,
+      })
+    }
+  },
   loader: ({ context, params }) => {
-    const { slug } = params
+    const slug = normalizeTourSlug(params.slug)
     return context.queryClient.ensureQueryData({
       queryKey: ['tours', slug],
       queryFn: () => tourService.bySlug(slug),
     })
   },
-  head: ({ loaderData: tour, params }) =>
-    pageHead({
-      title: tour?.title ?? tour?.name ?? 'Tour',
+  head: ({ loaderData: tour, params }) => {
+    const slug = normalizeTourSlug(params.slug)
+    const title = tour?.title ?? tour?.name ?? 'Tour'
+    return pageHead({
+      title,
       description:
         tour?.excerpt ??
         tour?.description?.slice(0, 160) ??
         'Discover Portugal through an exclusive private tour with Off We Go Portugal.',
-      path: `/tours/${params.slug}`,
+      path: `/tours/${slug}`,
       image: tour?.cover_image ?? tour?.images?.[0]?.url,
-    }),
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Tours', path: '/tours' },
+        { label: title, path: `/tours/${slug}` },
+      ],
+    })
+  },
   pendingComponent: TourSkeleton,
   component: RouteComponent,
 })
@@ -233,14 +252,14 @@ function RouteComponent() {
       <div className="min-h-screen bg-black pt-20 md:pt-24 pb-16 md:pb-24">
         <div className="container mx-auto px-4 md:px-12 max-w-5xl">
 
-          {/* Back */}
-          <Link
-            to="/tours"
-            className="inline-flex items-center gap-2 text-xs text-white-dim hover:text-gold transition-colors mb-8 md:mb-12"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1.5} />
-            Back to Tours
-          </Link>
+          <PublicBreadcrumbs
+            items={[
+              { label: 'Home', to: '/' },
+              { label: 'Tours', to: '/tours' },
+              { label: tour.title ?? tour.name ?? 'Tour' },
+            ]}
+            variant="page"
+          />
 
           {/* Page title */}
           <div className="mb-8 md:mb-10">
@@ -399,6 +418,25 @@ function RouteComponent() {
               images={images}
             />
           </div>
+
+          <p className="mt-14 md:mt-16 text-center text-sm text-[#9A9182] font-light">
+            Looking for another experience?{' '}
+            <Link
+              to="/tours"
+              className="text-[#C9A84C] hover:text-[#E2C97E] transition-colors duration-500"
+            >
+              View all private tours
+            </Link>
+            {' '}
+            or return{' '}
+            <Link
+              to="/"
+              className="text-[#C9A84C] hover:text-[#E2C97E] transition-colors duration-500"
+            >
+              home
+            </Link>
+            .
+          </p>
         </div>
       </div>
     </motion.div>

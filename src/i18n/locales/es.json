@@ -125,9 +125,18 @@
     },
     "ourServices": "Nuestros Servicios",
     "services": {
-      "airportTransfers": { "title": "Traslados Aeroportuarios", "description": "Recogidas y entregas puntuales y lujosas en aeropuertos de todo Portugal." },
-      "privateTours": { "title": "Tours Privados", "description": "Tours guiados exclusivos a los destinos más icónicos de Portugal." },
-      "chauffeurService": { "title": "Servicio de Chófer", "description": "Servicio por horas con un conductor profesional a su disposición." }
+      "airportTransfers": {
+        "title": "Traslados Aeroportuarios",
+        "description": "Recogidas y entregas puntuales y lujosas en aeropuertos de todo Portugal."
+      },
+      "privateTours": {
+        "title": "Tours Privados",
+        "description": "Tours guiados exclusivos a los destinos más icónicos de Portugal."
+      },
+      "chauffeurService": {
+        "title": "Servicio de Chófer",
+        "description": "Servicio por horas con un conductor profesional a su disposición."
+      }
     },
     "whyChooseTitle": "Por qué elegir Off We Go Portugal",
     "whyChooseBody": "Off We Go Portugal es un servicio de chófer premium que ofrece transporte privado de lujo en Lisboa, Oporto y el Algarve. Con una flota Mercedes-Benz de alta gama, conductores profesionales multilingües y disponibilidad 24/7, ofrecemos una experiencia de viaje excepcional para viajeros exigentes, ejecutivos y familias.",
@@ -204,11 +213,26 @@
       "tag": "Para Quién",
       "title": "Quién Se Beneficia de Este Servicio",
       "profiles": [
-        { "title": "Ejecutivos de Negocios", "desc": "Ahorre tiempo y viaje con total tranquilidad." },
-        { "title": "Familias", "desc": "Apoyo adicional para niños, equipaje y navegación en el aeropuerto." },
-        { "title": "Viajeros de Lujo", "desc": "Comience y termine su viaje con comodidad y asistencia personalizada." },
-        { "title": "Viajeros Mayores", "desc": "Orientación y apoyo adicional durante toda la experiencia aeroportuaria." },
-        { "title": "Invitados VIP y de Alto Perfil", "desc": "Asistencia discreta con privacidad y atención a los detalles." }
+        {
+          "title": "Ejecutivos de Negocios",
+          "desc": "Ahorre tiempo y viaje con total tranquilidad."
+        },
+        {
+          "title": "Familias",
+          "desc": "Apoyo adicional para niños, equipaje y navegación en el aeropuerto."
+        },
+        {
+          "title": "Viajeros de Lujo",
+          "desc": "Comience y termine su viaje con comodidad y asistencia personalizada."
+        },
+        {
+          "title": "Viajeros Mayores",
+          "desc": "Orientación y apoyo adicional durante toda la experiencia aeroportuaria."
+        },
+        {
+          "title": "Invitados VIP y de Alto Perfil",
+          "desc": "Asistencia discreta con privacidad y atención a los detalles."
+        }
       ]
     },
     "form": {
@@ -252,9 +276,18 @@
     "experience": {
       "tag": "Experiencia",
       "pillars": [
-        { "title": "Traslados Ejecutivos", "desc": "Transporte fiable para ejecutivos, clientes e invitados VIP en todo Portugal." },
-        { "title": "Transporte para Eventos", "desc": "Gestión coordinada de flota para conferencias, reuniones, incentivos y eventos corporativos." },
-        { "title": "Atención Dedicada de Cuenta", "desc": "Un único punto de contacto para gestionar reservas, cambios y requisitos especiales." }
+        {
+          "title": "Traslados Ejecutivos",
+          "desc": "Transporte fiable para ejecutivos, clientes e invitados VIP en todo Portugal."
+        },
+        {
+          "title": "Transporte para Eventos",
+          "desc": "Gestión coordinada de flota para conferencias, reuniones, incentivos y eventos corporativos."
+        },
+        {
+          "title": "Atención Dedicada de Cuenta",
+          "desc": "Un único punto de contacto para gestionar reservas, cambios y requisitos especiales."
+        }
       ]
     },
     "signature": {
@@ -296,9 +329,18 @@
     "experience": {
       "tag": "La Experiencia",
       "pillars": [
-        { "title": "Selección de Flota Premium", "desc": "Elija entre nuestra flota de lujo Mercedes-Benz, incluyendo Clase E, Clase S, Clase V y Sprinter, adaptada al tamaño y requisitos de su evento." },
-        { "title": "Coordinación Precisa del Evento", "desc": "Nuestro equipo planifica cuidadosamente los horarios de llegada, la logística de salida y los movimientos de los invitados para garantizar una experiencia de evento fluida y eficiente." },
-        { "title": "Chóferes Profesionales", "desc": "Chóferes experimentados y profesionalmente vestidos que ofrecen los más altos estándares de servicio, discreción y fiabilidad." }
+        {
+          "title": "Selección de Flota Premium",
+          "desc": "Elija entre nuestra flota de lujo Mercedes-Benz, incluyendo Clase E, Clase S, Clase V y Sprinter, adaptada al tamaño y requisitos de su evento."
+        },
+        {
+          "title": "Coordinación Precisa del Evento",
+          "desc": "Nuestro equipo planifica cuidadosamente los horarios de llegada, la logística de salida y los movimientos de los invitados para garantizar una experiencia de evento fluida y eficiente."
+        },
+        {
+          "title": "Chóferes Profesionales",
+          "desc": "Chóferes experimentados y profesionalmente vestidos que ofrecen los más altos estándares de servicio, discreción y fiabilidad."
+        }
       ]
     },
     "signature": {
@@ -334,12 +376,30 @@
   "whyPartner": {
     "title": "¿Por qué asociarse con nosotros?",
     "stats": [
-      { "value": "7+", "label": "Modelos premium" },
-      { "value": "48", "label": "Personas por grupo" },
-      { "value": "15-20%", "label": "Comisión por reserva" },
-      { "value": "24/7", "label": "Soporte dedicado" },
-      { "value": "VIP", "label": "Servicios exclusivos" },
-      { "value": "70%+", "label": "Flota eléctrica" }
+      {
+        "value": "7+",
+        "label": "Modelos premium"
+      },
+      {
+        "value": "48",
+        "label": "Personas por grupo"
+      },
+      {
+        "value": "15-20%",
+        "label": "Comisión por reserva"
+      },
+      {
+        "value": "24/7",
+        "label": "Soporte dedicado"
+      },
+      {
+        "value": "VIP",
+        "label": "Servicios exclusivos"
+      },
+      {
+        "value": "70%+",
+        "label": "Flota eléctrica"
+      }
     ]
   },
   "coverageArea": {
@@ -347,8 +407,14 @@
     "title": "Áreas de Cobertura",
     "subtitle": "Cobertura completa en toda la Península Ibérica",
     "areas": [
-      { "title": "Portugal Continental", "description": "Lisboa, Oporto, Algarve, Alentejo, regiones Centro y Norte — cobertura nacional completa." },
-      { "title": "España", "description": "Disponible a petición — Madrid, Sevilla, Barcelona y otras grandes ciudades." }
+      {
+        "title": "Portugal Continental",
+        "description": "Lisboa, Oporto, Algarve, Alentejo, regiones Centro y Norte — cobertura nacional completa."
+      },
+      {
+        "title": "España",
+        "description": "Disponible a petición — Madrid, Sevilla, Barcelona y otras grandes ciudades."
+      }
     ]
   },
   "taxReduction": {
@@ -356,9 +422,18 @@
     "title": "Reducción de Impuestos Corporativos",
     "subtitle": "Convierta su compromiso con la sostenibilidad en beneficios fiscales tangibles. Nuestros certificados verdes trimestrales proporcionan prueba documentada de la reducción de emisiones.",
     "benefits": [
-      { "title": "Certificados Verdes Trimestrales", "description": "Obtenga certificados detallados cada trimestre que muestran árboles salvados y emisiones evitadas — perfecto para informes ESG y beneficios fiscales." },
-      { "title": "Beneficios Fiscales Directos", "description": "Use nuestros certificados ambientales para calificar para deducciones fiscales corporativas e incentivos ESG." },
-      { "title": "Listo para Informes ESG", "description": "Informes trimestrales detallados con métricas listas para sus divulgaciones de sostenibilidad y ESG." }
+      {
+        "title": "Certificados Verdes Trimestrales",
+        "description": "Obtenga certificados detallados cada trimestre que muestran árboles salvados y emisiones evitadas — perfecto para informes ESG y beneficios fiscales."
+      },
+      {
+        "title": "Beneficios Fiscales Directos",
+        "description": "Use nuestros certificados ambientales para calificar para deducciones fiscales corporativas e incentivos ESG."
+      },
+      {
+        "title": "Listo para Informes ESG",
+        "description": "Informes trimestrales detallados con métricas listas para sus divulgaciones de sostenibilidad y ESG."
+      }
     ]
   },
   "reviews": {
@@ -372,7 +447,10 @@
       "tag": "Flota Premium",
       "title": "Flota de Lujo y Transporte en Grupo",
       "body": "Ofrecemos una flota de vehículos premium que cumplen con los más altos estándares del mercado. Desde sedanes ejecutivos hasta furgonetas VIP, ofrecemos capacidad para grupos de 6 a 48 personas.",
-      "items": ["Mercedes Clase E, Clase S, Sprinter", "Grupos de 6 a 48 personas"],
+      "items": [
+        "Mercedes Clase E, Clase S, Sprinter",
+        "Grupos de 6 a 48 personas"
+      ],
       "statModels": "Modelos Premium",
       "statPeople": "Máx. de Personas"
     },
@@ -383,13 +461,21 @@
       "tag": "Condiciones Atractivas",
       "title": "Comisiones y Precios Competitivos",
       "body": "Ofrecemos condiciones de comisión atractivas entre el 15% y el 20% por reserva. Con contratos de volumen, benefíciese de precios aún más competitivos.",
-      "items": ["15-20% de comisión por reserva", "Contratos de volumen con descuentos", "Pagos mensuales garantizados"]
+      "items": [
+        "15-20% de comisión por reserva",
+        "Contratos de volumen con descuentos",
+        "Pagos mensuales garantizados"
+      ]
     },
     "sustainability": {
       "tag": "Sostenibilidad",
       "title": "Objetivos de Descarbonización",
       "body": "Ayudamos a las empresas a alcanzar sus objetivos corporativos de descarbonización. Con una flota mayoritariamente eléctrica, ofrecemos certificados de carbono cero e informes ESG.",
-      "items": ["Certificados de carbono cero", "Informes ESG trimestrales", "Flota mayoritariamente eléctrica"],
+      "items": [
+        "Certificados de carbono cero",
+        "Informes ESG trimestrales",
+        "Flota mayoritariamente eléctrica"
+      ],
       "hotlineTitle": "Línea Directa",
       "hotlineSubtitle": "Acceso prioritario",
       "whatsappTitle": "WhatsApp Business",
@@ -439,9 +525,18 @@
     "subtitle": "Términos transparentes para que siempre sepa dónde está.",
     "sedanVan": "Sedán y Furgoneta",
     "sedanVanRules": [
-      { "label": "Menos de 24 horas", "charge": "100% cobrado" },
-      { "label": "Menos de 48 horas", "charge": "50% cobrado" },
-      { "label": "Más de 48 horas", "charge": "Reembolso completo" }
+      {
+        "label": "Menos de 24 horas",
+        "charge": "100% cobrado"
+      },
+      {
+        "label": "Menos de 48 horas",
+        "charge": "50% cobrado"
+      },
+      {
+        "label": "Más de 48 horas",
+        "charge": "Reembolso completo"
+      }
     ],
     "sprinter": "Sprinter",
     "sprinterCharge": "100% cobrado por cualquier cancelación",
@@ -464,9 +559,18 @@
     "titleEmphasis": "Certificado",
     "subtitle": "Documentación ESG completa que respalda sus objetivos de sostenibilidad corporativa",
     "highlights": [
-      { "title": "Informes ESG Trimestrales", "description": "Ahorros de CO₂ medibles y métricas detalladas de impacto ambiental" },
-      { "title": "Datos Fiscales y de Cumplimiento", "description": "Apoyo a auditorías de sostenibilidad y deducciones fiscales corporativas" },
-      { "title": "Métricas Reales", "description": "Equivalentes de árboles plantados por viaje con seguimiento de reducción de carbono" }
+      {
+        "title": "Informes ESG Trimestrales",
+        "description": "Ahorros de CO₂ medibles y métricas detalladas de impacto ambiental"
+      },
+      {
+        "title": "Datos Fiscales y de Cumplimiento",
+        "description": "Apoyo a auditorías de sostenibilidad y deducciones fiscales corporativas"
+      },
+      {
+        "title": "Métricas Reales",
+        "description": "Equivalentes de árboles plantados por viaje con seguimiento de reducción de carbono"
+      }
     ],
     "calculator": {
       "title": "Calcule Su Impacto",
@@ -475,10 +579,18 @@
       "monthlyTrips": "Viajes Mensuales",
       "avgDistance": "Distancia Media por Viaje",
       "distanceOptions": [
-        { "label": "Distancia Corta (20 km)" },
-        { "label": "Distancia Media (50 km)" },
-        { "label": "Distancia Larga (100 km)" },
-        { "label": "Interurbana (300 km)" }
+        {
+          "label": "Distancia Corta (20 km)"
+        },
+        {
+          "label": "Distancia Media (50 km)"
+        },
+        {
+          "label": "Distancia Larga (100 km)"
+        },
+        {
+          "label": "Interurbana (300 km)"
+        }
       ],
       "monthlyLabel": "Ahorro Mensual de CO₂",
       "yearlyLabel": "Ahorro Anual de CO₂",
@@ -524,10 +636,22 @@
     "heroTitle": "Servicios Premium de Chófer para Aeropuerto",
     "heroSubtitle": "Experimente un transporte aeroportuario de primera clase con Off We Go Portugal. Recepción en llegadas, flota Mercedes de lujo y un traslado fluido y sin estrés, adaptado a su horario.",
     "cards": [
-      { "title": "Recogida en el Aeropuerto", "description": "60 minutos de espera gratuita tras el aterrizaje. Seguimiento de vuelo incluido." },
-      { "title": "Precios Fijos", "description": "Precios transparentes sin cargos ocultos ni tarifas dinámicas." },
-      { "title": "Conductores Multilingües", "description": "Chóferes profesionales fluidos en inglés, portugués, español y más." },
-      { "title": "Flota Premium", "description": "Vehículos Mercedes-Benz con interiores impecables." }
+      {
+        "title": "Recogida en el Aeropuerto",
+        "description": "60 minutos de espera gratuita tras el aterrizaje. Seguimiento de vuelo incluido."
+      },
+      {
+        "title": "Precios Fijos",
+        "description": "Precios transparentes sin cargos ocultos ni tarifas dinámicas."
+      },
+      {
+        "title": "Conductores Multilingües",
+        "description": "Chóferes profesionales fluidos en inglés, portugués, español y más."
+      },
+      {
+        "title": "Flota Premium",
+        "description": "Vehículos Mercedes-Benz con interiores impecables."
+      }
     ]
   },
   "b2bPage": {
@@ -582,12 +706,30 @@
     "whyTitleEmphasis": "Off We Go Portugal",
     "whySubtitle": "Descubra las ventajas de asociarse con nosotros para las necesidades de transporte de sus clientes en todo Portugal.",
     "features": [
-      { "title": "Flota de Lujo", "description": "Vehículos Mercedes-Benz premium que cumplen con los más altos estándares para sus clientes más exigentes." },
-      { "title": "Transporte en Grupo", "description": "Capacidad para grupos de 6 a 48 personas con el vehículo adecuado para cada ocasión." },
-      { "title": "Disponibilidad y Soporte 24/7", "description": "Soporte y servicio dedicados disponibles a toda hora para que pueda contar siempre con nosotros." },
-      { "title": "Servicios Exclusivos", "description": "Servicio VIP personalizado, adaptado a las necesidades y preferencias específicas de sus clientes." },
-      { "title": "Opciones de Larga Distancia", "description": "Para traslados de larga distancia tenemos disponibles vehículos Mercedes Clase E, Clase S y Sprinter." },
-      { "title": "Comisión Competitiva", "description": "Gane hasta un 15% de comisión en cada reserva, con informes mensuales transparentes y pagos rápidos." }
+      {
+        "title": "Flota de Lujo",
+        "description": "Vehículos Mercedes-Benz premium que cumplen con los más altos estándares para sus clientes más exigentes."
+      },
+      {
+        "title": "Transporte en Grupo",
+        "description": "Capacidad para grupos de 6 a 48 personas con el vehículo adecuado para cada ocasión."
+      },
+      {
+        "title": "Disponibilidad y Soporte 24/7",
+        "description": "Soporte y servicio dedicados disponibles a toda hora para que pueda contar siempre con nosotros."
+      },
+      {
+        "title": "Servicios Exclusivos",
+        "description": "Servicio VIP personalizado, adaptado a las necesidades y preferencias específicas de sus clientes."
+      },
+      {
+        "title": "Opciones de Larga Distancia",
+        "description": "Para traslados de larga distancia tenemos disponibles vehículos Mercedes Clase E, Clase S y Sprinter."
+      },
+      {
+        "title": "Comisión Competitiva",
+        "description": "Gane hasta un 15% de comisión en cada reserva, con informes mensuales transparentes y pagos rápidos."
+      }
     ],
     "badgeTitle": "¿Listo para asociarse con nosotros?",
     "badgeBody": "Únase a más de 50 agencias de viajes, hoteles y DMCs que ya trabajan con Off We Go Portugal.",
@@ -597,10 +739,22 @@
     "builtTitleEmphasis": "para cada ocasión",
     "builtSubtitle": "Servicios premium diseñados para la excelencia corporativa",
     "services": [
-      { "title": "Flota 100% Eléctrica", "description": "Nuestra flota sostenible representa el futuro del transporte premium. Ofrezca a sus clientes lujo con un impacto ambiental mínimo." },
-      { "title": "Gestor de Cuenta Dedicado", "description": "Soporte 24/7 con seguimiento en tiempo real y gestión de cuenta dedicada adaptada a su negocio." },
-      { "title": "Servicio de Marca Blanca", "description": "Integración fluida con la identidad de su marca y sistemas de reserva para una experiencia de cliente perfecta." },
-      { "title": "Contratos Flexibles", "description": "Acuerdos personalizados y precios por volumen adaptados al tamaño, frecuencia y necesidades de su negocio." }
+      {
+        "title": "Flota 100% Eléctrica",
+        "description": "Nuestra flota sostenible representa el futuro del transporte premium. Ofrezca a sus clientes lujo con un impacto ambiental mínimo."
+      },
+      {
+        "title": "Gestor de Cuenta Dedicado",
+        "description": "Soporte 24/7 con seguimiento en tiempo real y gestión de cuenta dedicada adaptada a su negocio."
+      },
+      {
+        "title": "Servicio de Marca Blanca",
+        "description": "Integración fluida con la identidad de su marca y sistemas de reserva para una experiencia de cliente perfecta."
+      },
+      {
+        "title": "Contratos Flexibles",
+        "description": "Acuerdos personalizados y precios por volumen adaptados al tamaño, frecuencia y necesidades de su negocio."
+      }
     ]
   },
   "hourlyServicePage": {
@@ -612,20 +766,44 @@
     "body2": "Ya tenga múltiples reuniones, recados por la ciudad o una salida nocturna, mantiene el control total mientras disfruta de la comodidad de un chófer profesional a su lado.",
     "bookNow": "Reservar Ahora",
     "features": [
-      { "title": "Horario Flexible", "description": "Reserve desde 3 horas hasta un día completo, totalmente a su medida." },
-      { "title": "Chófer Dedicado", "description": "Su conductor personal permanece con usted durante todo el servicio." },
-      { "title": "Control Total", "description": "Cambie su itinerario sobre la marcha. Libertad total para ajustar planes." },
-      { "title": "Todo Incluido", "description": "Combustible, peajes, estacionamiento y tiempo del conductor, todo incluido en el precio." }
+      {
+        "title": "Horario Flexible",
+        "description": "Reserve desde 3 horas hasta un día completo, totalmente a su medida."
+      },
+      {
+        "title": "Chófer Dedicado",
+        "description": "Su conductor personal permanece con usted durante todo el servicio."
+      },
+      {
+        "title": "Control Total",
+        "description": "Cambie su itinerario sobre la marcha. Libertad total para ajustar planes."
+      },
+      {
+        "title": "Todo Incluido",
+        "description": "Combustible, peajes, estacionamiento y tiempo del conductor, todo incluido en el precio."
+      }
     ],
     "whyTag": "Por Qué Elegirnos",
     "whyTitleLine1": "Cada viaje,",
     "whyTitleEmphasis": "perfeccionado",
     "whyBody": "Confíe en Off We Go Portugal para hacer que cada viaje sea fluido, eficiente y completamente agradable — desde el momento en que lo recogemos hasta el momento en que lo dejamos.",
     "reasons": [
-      { "title": "Vehículos Privados y Cómodos", "description": "Sedanes modernos y furgonetas espaciosas con interiores impecables — cada viaje se siente como primera clase." },
-      { "title": "Chóferes Expertos", "description": "Conductores cortés y multilingües, capacitados en atención al cliente y primeros auxilios, para que siempre esté en buenas manos." },
-      { "title": "Precios Transparentes", "description": "Tarifas fijas sin cargos ocultos. Combustible, peajes y estacionamiento incluidos — pague solo por lo que necesite." },
-      { "title": "Disponibilidad 24/7", "description": "Operamos las 24 horas para adaptarnos a su horario, ya sea un vuelo temprano o un evento nocturno." }
+      {
+        "title": "Vehículos Privados y Cómodos",
+        "description": "Sedanes modernos y furgonetas espaciosas con interiores impecables — cada viaje se siente como primera clase."
+      },
+      {
+        "title": "Chóferes Expertos",
+        "description": "Conductores cortés y multilingües, capacitados en atención al cliente y primeros auxilios, para que siempre esté en buenas manos."
+      },
+      {
+        "title": "Precios Transparentes",
+        "description": "Tarifas fijas sin cargos ocultos. Combustible, peajes y estacionamiento incluidos — pague solo por lo que necesite."
+      },
+      {
+        "title": "Disponibilidad 24/7",
+        "description": "Operamos las 24 horas para adaptarnos a su horario, ya sea un vuelo temprano o un evento nocturno."
+      }
     ]
   },
   "faqPage": {
@@ -653,25 +831,66 @@
     "dataWeCollect": {
       "title": "1. Datos que Recopilamos",
       "personalInfoLabel": "Información Personal",
-      "personalInfo": ["Nombre completo", "Dirección de correo electrónico", "Número de teléfono", "País de residencia", "Información de facturación", "Información de vuelo", "Direcciones de recogida y entrega", "Datos de los pasajeros", "Solicitudes especiales proporcionadas durante la reserva"],
+      "personalInfo": [
+        "Nombre completo",
+        "Dirección de correo electrónico",
+        "Número de teléfono",
+        "País de residencia",
+        "Información de facturación",
+        "Información de vuelo",
+        "Direcciones de recogida y entrega",
+        "Datos de los pasajeros",
+        "Solicitudes especiales proporcionadas durante la reserva"
+      ],
       "usageLabel": "Información de Uso del Sitio Web",
       "usageIntro": "Al visitar nuestro sitio web, podemos recopilar automáticamente:",
-      "usage": ["Dirección IP", "Tipo de navegador", "Información del dispositivo", "Sistema operativo", "Estadísticas de uso del sitio web", "Páginas visitadas", "Fuentes de referencia"]
+      "usage": [
+        "Dirección IP",
+        "Tipo de navegador",
+        "Información del dispositivo",
+        "Sistema operativo",
+        "Estadísticas de uso del sitio web",
+        "Páginas visitadas",
+        "Fuentes de referencia"
+      ]
     },
     "howWeCollect": {
       "title": "2. Cómo Recopilamos Sus Datos",
       "intro": "Recopilamos información personal cuando usted:",
-      "items": ["Envía un formulario de contacto", "Solicita una cotización", "Realiza una reserva a través de nuestro motor de reservas", "Nos contacta por correo electrónico, teléfono o WhatsApp", "Se suscribe a nuestro boletín", "Interactúa con nosotros a través de plataformas de redes sociales", "Participa en encuestas o promociones"]
+      "items": [
+        "Envía un formulario de contacto",
+        "Solicita una cotización",
+        "Realiza una reserva a través de nuestro motor de reservas",
+        "Nos contacta por correo electrónico, teléfono o WhatsApp",
+        "Se suscribe a nuestro boletín",
+        "Interactúa con nosotros a través de plataformas de redes sociales",
+        "Participa en encuestas o promociones"
+      ]
     },
     "purpose": {
       "title": "3. Finalidad del Tratamiento",
       "intro": "Tratamos los datos personales para los siguientes fines:",
-      "items": ["Gestión de reservas y servicios de transporte", "Procesamiento de pagos", "Prestación de atención al cliente", "Comunicación de actualizaciones de reserva", "Respuesta a consultas", "Mejora de nuestros servicios y del rendimiento del sitio web", "Envío de comunicaciones de marketing (cuando se haya dado consentimiento)", "Cumplimiento de obligaciones legales y reglamentarias", "Prevención de fraude y garantía de seguridad"]
+      "items": [
+        "Gestión de reservas y servicios de transporte",
+        "Procesamiento de pagos",
+        "Prestación de atención al cliente",
+        "Comunicación de actualizaciones de reserva",
+        "Respuesta a consultas",
+        "Mejora de nuestros servicios y del rendimiento del sitio web",
+        "Envío de comunicaciones de marketing (cuando se haya dado consentimiento)",
+        "Cumplimiento de obligaciones legales y reglamentarias",
+        "Prevención de fraude y garantía de seguridad"
+      ]
     },
     "legalBasis": {
       "title": "4. Base Legal para el Tratamiento",
       "intro": "Tratamos los datos personales con base en uno o más de los siguientes fundamentos legales:",
-      "items": ["Ejecución de un contrato", "Cumplimiento de obligaciones legales", "Intereses legítimos del negocio", "Consentimiento proporcionado por el interesado"],
+      "items": [
+        "Ejecución de un contrato",
+        "Cumplimiento de obligaciones legales",
+        "Intereses legítimos del negocio",
+        "Consentimiento proporcionado por el interesado"
+      ],
       "note": "Cuando se requiera consentimiento, este puede retirarse en cualquier momento, sin afectar la legalidad del tratamiento realizado antes de la retirada."
     },
     "marketing": {
@@ -692,13 +911,26 @@
     "security": {
       "title": "7. Seguridad de los Datos",
       "p1": "Off We Go Portugal implementa medidas técnicas y organizativas adecuadas diseñadas para proteger los datos personales contra:",
-      "items": ["Acceso no autorizado", "Divulgación", "Alteración", "Pérdida", "Uso indebido", "Destrucción"],
+      "items": [
+        "Acceso no autorizado",
+        "Divulgación",
+        "Alteración",
+        "Pérdida",
+        "Uso indebido",
+        "Destrucción"
+      ],
       "p2": "Aunque nos esforzamos por proteger su información personal, ninguna transmisión por internet o sistema de almacenamiento electrónico puede garantizarse como completamente seguro."
     },
     "thirdParty": {
       "title": "8. Proveedores de Servicios de Terceros",
       "p1": "Para operar nuestro negocio de manera eficiente, podemos compartir datos personales con proveedores externos de confianza, incluyendo:",
-      "items": ["Procesadores de pago (como Stripe)", "Proveedores de alojamiento web", "Proveedores de software de reservas", "Proveedores de servicios de contabilidad y legales", "Socios de transporte autorizados que operan servicios en nuestro nombre"],
+      "items": [
+        "Procesadores de pago (como Stripe)",
+        "Proveedores de alojamiento web",
+        "Proveedores de software de reservas",
+        "Proveedores de servicios de contabilidad y legales",
+        "Socios de transporte autorizados que operan servicios en nuestro nombre"
+      ],
       "p2": "Todos los terceros están obligados a procesar los datos personales de forma segura y de conformidad con la legislación de protección de datos aplicable."
     },
     "socialMedia": {
@@ -710,7 +942,15 @@
     "rights": {
       "title": "10. Sus Derechos Bajo el RGPD",
       "intro": "Bajo el RGPD, usted tiene el derecho a:",
-      "items": ["Acceder a sus datos personales", "Corregir datos personales inexactos", "Solicitar la eliminación de sus datos personales", "Restringir el tratamiento de sus datos personales", "Oponerse al tratamiento", "Solicitar la portabilidad de los datos", "Retirar el consentimiento cuando el tratamiento se base en el consentimiento"],
+      "items": [
+        "Acceder a sus datos personales",
+        "Corregir datos personales inexactos",
+        "Solicitar la eliminación de sus datos personales",
+        "Restringir el tratamiento de sus datos personales",
+        "Oponerse al tratamiento",
+        "Solicitar la portabilidad de los datos",
+        "Retirar el consentimiento cuando el tratamiento se base en el consentimiento"
+      ],
       "note": "Para ejercer cualquiera de estos derechos, contáctenos utilizando los datos a continuación."
     },
     "complaints": {
@@ -760,16 +1000,39 @@
       "title": "2. Seguro y Licencias",
       "p1": "Todos los servicios se operan de conformidad con la legislación portuguesa y los requisitos de licencia aplicables.",
       "p2": "Todos los vehículos y pasajeros están cubiertos por las pólizas de seguro legalmente requeridas, incluyendo:",
-      "items": ["Seguro de Responsabilidad Civil", "Seguro de Accidentes Personales", "Seguro del Vehículo"]
+      "items": [
+        "Seguro de Responsabilidad Civil",
+        "Seguro de Accidentes Personales",
+        "Seguro del Vehículo"
+      ]
     },
     "services": {
       "title": "3. Servicios",
       "intro": "Off We Go Portugal ofrece:",
-      "items": ["Traslados Aeroportuarios", "Traslados Punto a Punto", "Tours Privados", "Servicios de Chófer por Horas", "Transporte Corporativo", "Transporte para Eventos", "Experiencias de Viaje de Lujo"],
+      "items": [
+        "Traslados Aeroportuarios",
+        "Traslados Punto a Punto",
+        "Tours Privados",
+        "Servicios de Chófer por Horas",
+        "Transporte Corporativo",
+        "Transporte para Eventos",
+        "Experiencias de Viaje de Lujo"
+      ],
       "includesLabel": "Salvo indicación en contrario por escrito, los precios cotizados incluyen:",
-      "includes": ["Chófer profesional", "Combustible", "Peajes de autopista", "Impuestos aplicables"],
+      "includes": [
+        "Chófer profesional",
+        "Combustible",
+        "Peajes de autopista",
+        "Impuestos aplicables"
+      ],
       "excludesLabel": "Salvo indicación expresa, los precios no incluyen:",
-      "excludes": ["Entradas a atracciones y monumentos", "Comidas y bebidas", "Guías turísticos oficiales", "Gastos personales", "Tarifas de estacionamiento durante servicios de chófer por horas"]
+      "excludes": [
+        "Entradas a atracciones y monumentos",
+        "Comidas y bebidas",
+        "Guías turísticos oficiales",
+        "Gastos personales",
+        "Tarifas de estacionamiento durante servicios de chófer por horas"
+      ]
     },
     "belongings": {
       "title": "4. Pertenencias Personales",
@@ -786,13 +1049,29 @@
     "conduct": {
       "title": "6. Conducta del Pasajero",
       "intro": "Lo siguiente está estrictamente prohibido en todos los vehículos:",
-      "items": ["Fumar o vapear", "Sustancias ilegales", "Consumo excesivo de alcohol", "Cualquier conducta que pueda poner en peligro al conductor, vehículo u otros pasajeros"],
+      "items": [
+        "Fumar o vapear",
+        "Sustancias ilegales",
+        "Consumo excesivo de alcohol",
+        "Cualquier conducta que pueda poner en peligro al conductor, vehículo u otros pasajeros"
+      ],
       "note": "Off We Go Portugal se reserva el derecho de rechazar o terminar un servicio sin reembolso si un pasajero se comporta de manera abusiva, insegura, amenazante o inapropiada."
     },
     "forceMajeure": {
       "title": "7. Fuerza Mayor",
       "intro": "Off We Go Portugal no será responsable por retrasos, interrupciones, cambios de itinerario, o imposibilidad de prestar servicios debido a circunstancias fuera de nuestro control razonable, incluyendo pero no limitado a:",
-      "items": ["Condiciones climáticas severas", "Accidentes de tráfico o congestión", "Cierres de carreteras", "Interrupciones o cierres de aeropuertos", "Cancelaciones de vuelos", "Restricciones gubernamentales", "Restricciones fronterizas", "Huelgas", "Disturbios civiles", "Desastres naturales"]
+      "items": [
+        "Condiciones climáticas severas",
+        "Accidentes de tráfico o congestión",
+        "Cierres de carreteras",
+        "Interrupciones o cierres de aeropuertos",
+        "Cancelaciones de vuelos",
+        "Restricciones gubernamentales",
+        "Restricciones fronterizas",
+        "Huelgas",
+        "Disturbios civiles",
+        "Desastres naturales"
+      ]
     },
     "pricing": {
       "title": "8. Precios",
@@ -803,13 +1082,27 @@
       "title": "9. Reservas y Pagos",
       "bookingMethodsLabel": "9.1 Métodos de Reserva",
       "bookingMethodsIntro": "Las reservas pueden realizarse a través de:",
-      "bookingMethods": ["Motor de reservas del sitio web", "Correo electrónico", "Teléfono", "WhatsApp"],
+      "bookingMethods": [
+        "Motor de reservas del sitio web",
+        "Correo electrónico",
+        "Teléfono",
+        "WhatsApp"
+      ],
       "confirmationLabel": "9.2 Confirmación de la Reserva",
       "confirmationIntro": "Una reserva solo se considera confirmada cuando:",
-      "confirmationItems": ["Se ha verificado la disponibilidad;", "La reserva ha sido aceptada por Off We Go Portugal; y", "Se ha recibido el pago, salvo acuerdo en contrario por escrito."],
+      "confirmationItems": [
+        "Se ha verificado la disponibilidad;",
+        "La reserva ha sido aceptada por Off We Go Portugal; y",
+        "Se ha recibido el pago, salvo acuerdo en contrario por escrito."
+      ],
       "paymentMethodsLabel": "9.3 Métodos de Pago",
       "paymentMethodsIntro": "Los pagos pueden realizarse mediante:",
-      "paymentMethods": ["Tarjeta de Crédito", "Tarjeta de Débito", "Enlaces de Pago Stripe", "Transferencia Bancaria"],
+      "paymentMethods": [
+        "Tarjeta de Crédito",
+        "Tarjeta de Débito",
+        "Enlaces de Pago Stripe",
+        "Transferencia Bancaria"
+      ],
       "paymentNote": "Off We Go Portugal se reserva el derecho de verificar las transacciones de pago y solicitar documentación adicional cuando sea necesario para prevenir fraude.",
       "chargebacksLabel": "9.4 Contracargos",
       "chargebacksP1": "Se anima a los clientes a contactar directamente con Off We Go Portugal respecto a cualquier inquietud de pago antes de iniciar un procedimiento de contracargo.",
@@ -819,8 +1112,17 @@
       "title": "10. Política de Cancelación",
       "standardLabel": "10.1 Servicios Estándar",
       "standardIntro": "La siguiente política de cancelación se aplica a:",
-      "standardServices": ["Traslados Aeroportuarios", "Traslados Punto a Punto", "Tours Privados", "Servicios de Chófer por Horas"],
-      "standardRules": ["Más de 48 horas antes del inicio del servicio: Reembolso completo.", "Menos de 48 horas antes del inicio del servicio: Cargo de cancelación del 100%.", "No presentación: Cargo de cancelación del 100%."],
+      "standardServices": [
+        "Traslados Aeroportuarios",
+        "Traslados Punto a Punto",
+        "Tours Privados",
+        "Servicios de Chófer por Horas"
+      ],
+      "standardRules": [
+        "Más de 48 horas antes del inicio del servicio: Reembolso completo.",
+        "Menos de 48 horas antes del inicio del servicio: Cargo de cancelación del 100%.",
+        "No presentación: Cargo de cancelación del 100%."
+      ],
       "sprinterLabel": "10.2 Servicios Mercedes Sprinter",
       "sprinterP1": "Debido a los requisitos operativos del transporte de grupos, todas las reservas de Mercedes Sprinter no son reembolsables una vez confirmadas.",
       "sprinterP2": "No se emitirán reembolsos bajo ninguna circunstancia tras la confirmación de una reserva de Mercedes Sprinter.",
@@ -850,7 +1152,14 @@
       "title": "13. Daños al Vehículo",
       "p1": "El cliente será financieramente responsable de cualquier daño causado al vehículo por sí mismo o por miembros de su grupo.",
       "intro": "Esto incluye, pero no se limita a:",
-      "items": ["Daños interiores", "Necesidades de limpieza excesiva", "Derrame de líquidos", "Tapicería rota", "Limpieza relacionada con vómitos", "Daños al equipo del vehículo"],
+      "items": [
+        "Daños interiores",
+        "Necesidades de limpieza excesiva",
+        "Derrame de líquidos",
+        "Tapicería rota",
+        "Limpieza relacionada con vómitos",
+        "Daños al equipo del vehículo"
+      ],
       "note": "Los costos de reparación, limpieza, reemplazo y administrativos pueden cobrarse en consecuencia."
     },
     "tourServices": {
@@ -866,7 +1175,11 @@
     "amendments": {
       "title": "16. Modificaciones de Reserva",
       "intro": "Las solicitudes de modificación de una reserva existente están sujetas a:",
-      "items": ["Disponibilidad", "Viabilidad operativa", "Posibles ajustes de precio"],
+      "items": [
+        "Disponibilidad",
+        "Viabilidad operativa",
+        "Posibles ajustes de precio"
+      ],
       "note": "Ninguna modificación se considerará confirmada hasta que sea aceptada por escrito por Off We Go Portugal."
     },
     "governingLaw": {

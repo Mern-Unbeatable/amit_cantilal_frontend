@@ -1,0 +1,203 @@
+{
+  "seo": {
+    "title": "Traslado Privado Lisboa–Algarve",
+    "description": "Traslados privados entre Lisboa y el Algarve en un Mercedes premium. Servicio de chófer puerta a puerta a Lagos, Albufeira, Vilamoura, Quinta do Lago, Faro y más."
+  },
+  "hero": {
+    "tag": "Traslado",
+    "title": "Traslado Privado Entre Lisboa y el Algarve",
+    "subtitle": "Viaje con confort entre Lisboa y el Algarve con un servicio privado de chófer puerta a puerta.\nDisfrute de un Mercedes premium, un chófer profesional de habla inglesa y un viaje organizado enteramente en torno a usted.",
+    "primaryCta": "Solicitar Su Traslado Privado",
+    "secondaryCta": "WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y el Algarve.",
+    "imageAlt": "Mercedes V-Class traslado privado Lisboa Algarve",
+    "benefits": [
+      "Servicio Privado Puerta a Puerta",
+      "Flota Mercedes Premium",
+      "Chóferes de Habla Inglesa",
+      "Disponible en Ambas Direcciones"
+    ]
+  },
+  "intro": {
+    "title": "Un Viaje Privado Cómodo Al Algarve",
+    "p1": "De las calles históricas de Lisboa a la costa dorada del sur de Portugal, viaje entre Lisboa y el Algarve con privacidad y confort con Off We Go Portugal.",
+    "p2": "Su chófer profesional le recoge directamente en su hotel, residencia privada, aeropuerto u otra ubicación acordada y le lleva a su destino en el Algarve o desde el Algarve de vuelta a Lisboa.",
+    "p3": "Evite vuelos domésticos, transporte público, conexiones entre estaciones y viajar con equipaje entre distintos servicios. Su Mercedes está reservado exclusivamente para usted y su grupo, con la salida organizada según su itinerario.",
+    "p4": "Ya sea viajando en pareja, en familia o en un grupo privado, nuestro servicio de traslado privado ofrece una forma cómoda y sin esfuerzo de viajar entre Lisboa y el sur de Portugal.",
+    "imageAlt": "Traslado privado Mercedes chófer Lisboa Algarve"
+  },
+  "directions": {
+    "title": "Lisboa Al Algarve O Algarve A Lisboa",
+    "from": "Lisboa",
+    "to": "Algarve",
+    "body": "La recogida y la entrega se organizan directamente en las ubicaciones solicitadas."
+  },
+  "destinations": {
+    "title": "Traslados Privados Por Todo El Algarve",
+    "p1": "El Algarve es mucho más que un solo destino. Off We Go Portugal ofrece transporte privado entre Lisboa y hoteles, villas, resorts y residencias privadas en toda la región.",
+    "note": "Si su destino en el Algarve no aparece arriba, contáctenos. Se pueden organizar traslados privados a otras ubicaciones de la región según su itinerario.",
+    "items": {
+      "lagos": {
+        "name": "Lagos",
+        "description": "Viaje directamente a Lagos y el Algarve occidental, hogar de espectaculares paisajes atlánticos, acantilados dorados y algunas de las playas más celebradas de Portugal.",
+        "imageAlt": "Destino traslado privado Lagos Algarve"
+      },
+      "albufeira": {
+        "name": "Albufeira",
+        "description": "Transporte privado puerta a puerta a uno de los destinos resort más conocidos del Algarve, incluyendo hoteles, villas y alojamiento privado.",
+        "imageAlt": "Destino traslado privado Albufeira Algarve"
+      },
+      "vilamoura": {
+        "name": "Vilamoura",
+        "description": "Llegue cómodamente a Vilamoura, conocida por su marina, resorts premium, campos de golf y sofisticada atmósfera costera.",
+        "imageAlt": "Destino traslado privado Vilamoura Algarve"
+      },
+      "quintaDoLago": {
+        "name": "Quinta do Lago & Vale do Lobo",
+        "description": "Traslados privados con chófer a dos de las comunidades resort más exclusivas del Algarve, especialmente indicados para clientes que buscan transporte premium y discreto.",
+        "imageAlt": "Traslado privado Quinta do Lago y Vale do Lobo"
+      },
+      "faro": {
+        "name": "Faro",
+        "description": "Traslados privados a la ciudad de Faro, hoteles y el Aeropuerto Internacional de Faro, con conexiones cómodas entre Lisboa y la principal puerta de entrada del Algarve.",
+        "imageAlt": "Destino traslado privado Faro Algarve"
+      }
+    }
+  },
+  "vehicles": {
+    "title": "Viaje En Un Mercedes Premium",
+    "note": "Indíquenos el número de pasajeros y el equipaje al solicitar su traslado y le recomendaremos el vehículo más adecuado para su viaje.",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "Una elegante berlina ejecutiva, ideal para parejas y viajeros individuales que buscan confort, privacidad y refinamiento.",
+      "imageAlt": "Mercedes E-Class traslado privado Algarve"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "Nuestra opción premium de berlina para viajeros que buscan un nivel elevado de confort, sofisticación y servicio de chófer discreto.",
+      "imageAlt": "Mercedes S-Class traslado de lujo Algarve"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Espacioso y cómodo, especialmente adecuado para familias, grupos privados y viajeros con equipaje adicional.",
+      "imageAlt": "Mercedes V-Class traslado privado Lisboa Algarve"
+    }
+  },
+  "included": {
+    "title": "Todo Lo Que Necesita Para Un Viaje Cómodo",
+    "items": [
+      {
+        "title": "Chófer Profesional de Habla Inglesa",
+        "description": "Experimentado, discreto y con presentación profesional."
+      },
+      {
+        "title": "Servicio Privado Puerta a Puerta",
+        "description": "Recogida y entrega directamente en las ubicaciones solicitadas."
+      },
+      {
+        "title": "Vehículo Mercedes Premium",
+        "description": "Viaje con confort en un vehículo seleccionado según su grupo y equipaje."
+      },
+      {
+        "title": "Asistencia Con El Equipaje",
+        "description": "Su chófer le ayudará a cargar y descargar el equipaje."
+      },
+      {
+        "title": "Agua Embotellada De Cortesía",
+        "description": "Refrescos disponibles durante el viaje."
+      },
+      {
+        "title": "Wi-Fi Cuando Esté Disponible",
+        "description": "Manténgase conectado mientras viaja."
+      },
+      {
+        "title": "Peajes Incluidos",
+        "description": "Los peajes de autopista y los costes operativos estándar están incluidos en el traslado directo cotizado."
+      },
+      {
+        "title": "Coordinación Personalizada",
+        "description": "Nuestro equipo coordina su viaje con usted antes de la salida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "¿Por Qué Elegir Un Traslado Privado?",
+    "items": [
+      {
+        "title": "Comodidad Puerta A Puerta",
+        "description": "Viaje directamente desde su alojamiento en Lisboa hasta su hotel, villa o resort en el Algarve."
+      },
+      {
+        "title": "Viaje Según Su Horario",
+        "description": "Elija la hora de salida que mejor se adapte a su itinerario."
+      },
+      {
+        "title": "Privacidad Total",
+        "description": "Su vehículo es exclusivamente para usted y su grupo."
+      },
+      {
+        "title": "Confort En Un Viaje De Larga Distancia",
+        "description": "Disfrute del viaje en un Mercedes premium en lugar de navegar múltiples conexiones de transporte."
+      }
+    ]
+  },
+  "airport": {
+    "title": "Traslados Aeroportuarios Entre Lisboa Y El Algarve",
+    "p1": "Su viaje puede comenzar o terminar en el Aeropuerto de Lisboa o en el Aeropuerto de Faro, lo que nos permite conectar su vuelo internacional directamente con su hotel, resort, villa o próximo destino.",
+    "p2": "Para las recogidas en el aeropuerto, nuestro servicio incluye seguimiento de vuelo, Meet & Greet en la zona de llegadas con cartel nominativo y hasta 60 minutos de espera gratuita tras la llegada del vuelo.",
+    "cta": "Solicitar Un Traslado Aeroportuario"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "question": "¿Cuánto dura el traslado de Lisboa al Algarve?",
+        "answer": "El tiempo de viaje depende del destino exacto en el Algarve. Un traslado directo suele durar aproximadamente de 2,5 a 3,5 horas, según el destino, el tráfico y las ubicaciones de recogida y entrega."
+      },
+      {
+        "question": "¿Puedo reservar en dirección Algarve–Lisboa?",
+        "answer": "Sí. Todos los servicios están disponibles en ambas direcciones."
+      },
+      {
+        "question": "¿Qué destinos del Algarve cubren?",
+        "answer": "Ofrecemos traslados por todo el Algarve, incluyendo Lagos, Albufeira, Vilamoura, Quinta do Lago, Vale do Lobo y Faro, así como otros destinos bajo petición."
+      },
+      {
+        "question": "¿Pueden recogernos en nuestro hotel o villa?",
+        "answer": "Sí. El servicio es privado y puerta a puerta."
+      },
+      {
+        "question": "¿Pueden recogernos en el Aeropuerto de Lisboa e ir directamente al Algarve?",
+        "answer": "Sí. Podemos recibirle en el Aeropuerto de Lisboa y ofrecerle un traslado privado directamente a su hotel, villa o resort en el Algarve."
+      },
+      {
+        "question": "¿Pueden llevarnos del Algarve directamente al Aeropuerto de Lisboa?",
+        "answer": "Sí. Podemos organizar la recogida según la hora de salida de su vuelo y sus requisitos de viaje."
+      },
+      {
+        "question": "¿Qué vehículo debo elegir?",
+        "answer": "El vehículo adecuado depende del número de pasajeros y del equipaje. Indique estos detalles al solicitar el traslado y nuestro equipo le recomendará el Mercedes más adecuado."
+      },
+      {
+        "question": "¿Pueden proporcionar sillas infantiles?",
+        "answer": "Sí. Las sillas infantiles pueden solicitarse con antelación. Indique la edad del niño al reservar para poder preparar la silla adecuada."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Comience Su Viaje Al Algarve Con Confort",
+    "lead": "De Lisboa al Algarve o del Algarve de vuelta a Lisboa, disfrute de un viaje privado diseñado en torno a su horario.",
+    "body": "Indíquenos la fecha de viaje, lugares de recogida y entrega, número de pasajeros y equipaje, y Off We Go Portugal organizará el vehículo y el chófer adecuados para su viaje.",
+    "primaryCta": "Solicitar Su Traslado Privado",
+    "secondaryCta": "Contáctenos Por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y el Algarve.",
+    "imageAlt": "Off We Go Portugal traslado privado Lisboa Algarve",
+    "linksLabel": "Explorar más",
+    "links": {
+      "fleet": "Flota",
+      "transfers": "Traslados Aeroportuarios",
+      "tours": "Tours Privados",
+      "booking": "Reservas"
+    }
+  }
+}

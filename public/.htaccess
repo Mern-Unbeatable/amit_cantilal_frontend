@@ -1,0 +1,20 @@
+# Off We Go Portugal — Apache helpers for static SPA hosting
+
+# Discontinued tour → homepage (permanent)
+# Also covers the broken Search Console / backlink variant with trailing "+"
+Redirect 301 /tours/fatima-private-half-day-tour-from-lisbon /
+Redirect 301 "/tours/fatima-private-half-day-tour-from-lisbon+" /
+Redirect 301 /tours/fatima-private-half-day-tour-from-lisbon%2B /
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Don't rewrite real files/directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback
+  RewriteRule ^ index.html [L]
+</IfModule>

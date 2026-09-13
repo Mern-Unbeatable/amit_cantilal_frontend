@@ -8,17 +8,30 @@ interface PageHeadInput {
   path: string
   image?: string
   noindex?: boolean
+  /** Optional trail for BreadcrumbList JSON-LD (label + absolute or site-relative path) */
+  breadcrumbs?: Array<{ label: string; path: string }>
 }
 
 /**
- * Builds the { meta, links } shape TanStack Router's head() / <HeadContent />
+ * Builds the { meta, links, scripts } shape TanStack Router's head() / <HeadContent />
  * expects, so every route gets its own <title>, description and canonical URL
  * instead of the single static one baked into index.html.
  */
-export function pageHead({ title, description, path, image, noindex }: PageHeadInput) {
+export function pageHead({
+  title,
+  description,
+  path,
+  image,
+  noindex,
+  breadcrumbs,
+}: PageHeadInput) {
   const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`
   const url = `${SITE_URL}${path}`
-  const ogImage = image ?? DEFAULT_IMAGE
+  const ogImage = image?.startsWith('http')
+    ? image
+    : image
+      ? `${SITE_URL}${image}`
+      : DEFAULT_IMAGE
 
   const meta: Array<Record<string, string>> = [
     { title: fullTitle },
@@ -39,8 +52,30 @@ export function pageHead({ title, description, path, image, noindex }: PageHeadI
     meta.push({ name: 'robots', content: 'noindex, nofollow' })
   }
 
+  const scripts =
+    breadcrumbs && breadcrumbs.length > 0
+      ? [
+          {
+            type: 'application/ld+json',
+            children: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: breadcrumbs.map((crumb, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: crumb.label,
+                item: crumb.path.startsWith('http')
+                  ? crumb.path
+                  : `${SITE_URL}${crumb.path}`,
+              })),
+            }),
+          },
+        ]
+      : undefined
+
   return {
     meta,
     links: [{ rel: 'canonical', href: url }],
+    ...(scripts ? { scripts } : {}),
   }
 }
