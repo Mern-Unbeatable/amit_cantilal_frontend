@@ -29,6 +29,7 @@ import { Route as PublicToursIndexRouteImport } from './routes/_public/tours/ind
 import { Route as PublicBookingIndexRouteImport } from './routes/_public/booking/index'
 import { Route as PublicBlogIndexRouteImport } from './routes/_public/blog/index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as PublicTransfersLisbonSevillePrivateTransferRouteImport } from './routes/_public/transfers/lisbon-seville-private-transfer'
 import { Route as PublicTransfersLisbonPortoPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-porto-private-transfer'
 import { Route as PublicTransfersLisbonAlgarvePrivateTransferRouteImport } from './routes/_public/transfers/lisbon-algarve-private-transfer'
 import { Route as PublicToursSlugRouteImport } from './routes/_public/tours/$slug'
@@ -154,6 +155,12 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const PublicTransfersLisbonSevillePrivateTransferRoute =
+  PublicTransfersLisbonSevillePrivateTransferRouteImport.update({
+    id: '/transfers/lisbon-seville-private-transfer',
+    path: '/transfers/lisbon-seville-private-transfer',
+    getParentRoute: () => PublicRoute,
+  } as any)
 const PublicTransfersLisbonPortoPrivateTransferRoute =
   PublicTransfersLisbonPortoPrivateTransferRouteImport.update({
     id: '/transfers/lisbon-porto-private-transfer',
@@ -337,6 +344,7 @@ export interface FileRoutesByFullPath {
   '/tours/$slug': typeof PublicToursSlugRoute
   '/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
+  '/transfers/lisbon-seville-private-transfer': typeof PublicTransfersLisbonSevillePrivateTransferRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/blog': typeof PublicBlogIndexRoute
   '/booking': typeof PublicBookingIndexRoute
@@ -383,6 +391,7 @@ export interface FileRoutesByTo {
   '/tours/$slug': typeof PublicToursSlugRoute
   '/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
+  '/transfers/lisbon-seville-private-transfer': typeof PublicTransfersLisbonSevillePrivateTransferRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/blog': typeof PublicBlogIndexRoute
   '/booking': typeof PublicBookingIndexRoute
@@ -433,6 +442,7 @@ export interface FileRoutesById {
   '/_public/tours/$slug': typeof PublicToursSlugRoute
   '/_public/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/_public/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
+  '/_public/transfers/lisbon-seville-private-transfer': typeof PublicTransfersLisbonSevillePrivateTransferRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_public/blog/': typeof PublicBlogIndexRoute
   '/_public/booking/': typeof PublicBookingIndexRoute
@@ -481,6 +491,7 @@ export interface FileRouteTypes {
     | '/tours/$slug'
     | '/transfers/lisbon-algarve-private-transfer'
     | '/transfers/lisbon-porto-private-transfer'
+    | '/transfers/lisbon-seville-private-transfer'
     | '/admin'
     | '/blog'
     | '/booking'
@@ -527,6 +538,7 @@ export interface FileRouteTypes {
     | '/tours/$slug'
     | '/transfers/lisbon-algarve-private-transfer'
     | '/transfers/lisbon-porto-private-transfer'
+    | '/transfers/lisbon-seville-private-transfer'
     | '/admin'
     | '/blog'
     | '/booking'
@@ -576,6 +588,7 @@ export interface FileRouteTypes {
     | '/_public/tours/$slug'
     | '/_public/transfers/lisbon-algarve-private-transfer'
     | '/_public/transfers/lisbon-porto-private-transfer'
+    | '/_public/transfers/lisbon-seville-private-transfer'
     | '/_authenticated/admin/'
     | '/_public/blog/'
     | '/_public/booking/'
@@ -745,6 +758,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin'
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
+    }
+    '/_public/transfers/lisbon-seville-private-transfer': {
+      id: '/_public/transfers/lisbon-seville-private-transfer'
+      path: '/transfers/lisbon-seville-private-transfer'
+      fullPath: '/transfers/lisbon-seville-private-transfer'
+      preLoaderRoute: typeof PublicTransfersLisbonSevillePrivateTransferRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_public/transfers/lisbon-porto-private-transfer': {
       id: '/_public/transfers/lisbon-porto-private-transfer'
@@ -1023,6 +1043,7 @@ interface PublicRouteChildren {
   PublicToursSlugRoute: typeof PublicToursSlugRoute
   PublicTransfersLisbonAlgarvePrivateTransferRoute: typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   PublicTransfersLisbonPortoPrivateTransferRoute: typeof PublicTransfersLisbonPortoPrivateTransferRoute
+  PublicTransfersLisbonSevillePrivateTransferRoute: typeof PublicTransfersLisbonSevillePrivateTransferRoute
   PublicBlogIndexRoute: typeof PublicBlogIndexRoute
   PublicBookingIndexRoute: typeof PublicBookingIndexRoute
   PublicToursIndexRoute: typeof PublicToursIndexRoute
@@ -1050,6 +1071,8 @@ const PublicRouteChildren: PublicRouteChildren = {
     PublicTransfersLisbonAlgarvePrivateTransferRoute,
   PublicTransfersLisbonPortoPrivateTransferRoute:
     PublicTransfersLisbonPortoPrivateTransferRoute,
+  PublicTransfersLisbonSevillePrivateTransferRoute:
+    PublicTransfersLisbonSevillePrivateTransferRoute,
   PublicBlogIndexRoute: PublicBlogIndexRoute,
   PublicBookingIndexRoute: PublicBookingIndexRoute,
   PublicToursIndexRoute: PublicToursIndexRoute,

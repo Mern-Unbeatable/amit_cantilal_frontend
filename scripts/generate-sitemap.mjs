@@ -15,6 +15,7 @@ const STATIC_PATHS = [
   { path: '/transfers', priority: '0.8', changefreq: 'monthly' },
   { path: '/transfers/lisbon-porto-private-transfer', priority: '0.8', changefreq: 'monthly' },
   { path: '/transfers/lisbon-algarve-private-transfer', priority: '0.8', changefreq: 'monthly' },
+  { path: '/transfers/lisbon-seville-private-transfer', priority: '0.8', changefreq: 'monthly' },
   { path: '/hourly-service', priority: '0.8', changefreq: 'monthly' },
   { path: '/fleet', priority: '0.7', changefreq: 'monthly' },
   { path: '/vip-concierge', priority: '0.7', changefreq: 'monthly' },

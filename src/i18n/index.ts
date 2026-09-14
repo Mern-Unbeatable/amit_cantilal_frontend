@@ -14,6 +14,10 @@ import lisbonAlgarveEn from './locales/landings/lisbon-algarve-private-transfer/
 import lisbonAlgarvePt from './locales/landings/lisbon-algarve-private-transfer/pt.json'
 import lisbonAlgarveEs from './locales/landings/lisbon-algarve-private-transfer/es.json'
 
+import lisbonSevilleEn from './locales/landings/lisbon-seville-private-transfer/en.json'
+import lisbonSevillePt from './locales/landings/lisbon-seville-private-transfer/pt.json'
+import lisbonSevilleEs from './locales/landings/lisbon-seville-private-transfer/es.json'
+
 export const SUPPORTED_LANGUAGES = ['en', 'pt', 'es'] as const
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number]
 
@@ -29,6 +33,11 @@ export const LANDING_NAMESPACES = {
     pt: lisbonAlgarvePt,
     es: lisbonAlgarveEs,
   },
+  lisbonSevilleTransfer: {
+    en: lisbonSevilleEn,
+    pt: lisbonSevillePt,
+    es: lisbonSevilleEs,
+  },
 } as const
 
 i18next
@@ -40,16 +49,19 @@ i18next
         translation: en,
         lisbonPortoTransfer: LANDING_NAMESPACES.lisbonPortoTransfer.en,
         lisbonAlgarveTransfer: LANDING_NAMESPACES.lisbonAlgarveTransfer.en,
+        lisbonSevilleTransfer: LANDING_NAMESPACES.lisbonSevilleTransfer.en,
       },
       pt: {
         translation: pt,
         lisbonPortoTransfer: LANDING_NAMESPACES.lisbonPortoTransfer.pt,
         lisbonAlgarveTransfer: LANDING_NAMESPACES.lisbonAlgarveTransfer.pt,
+        lisbonSevilleTransfer: LANDING_NAMESPACES.lisbonSevilleTransfer.pt,
       },
       es: {
         translation: es,
         lisbonPortoTransfer: LANDING_NAMESPACES.lisbonPortoTransfer.es,
         lisbonAlgarveTransfer: LANDING_NAMESPACES.lisbonAlgarveTransfer.es,
+        lisbonSevilleTransfer: LANDING_NAMESPACES.lisbonSevilleTransfer.es,
       },
     },
     fallbackLng: 'en',

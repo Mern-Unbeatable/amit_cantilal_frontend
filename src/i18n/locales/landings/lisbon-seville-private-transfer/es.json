@@ -1,0 +1,201 @@
+{
+  "seo": {
+    "title": "Traslado Privado Lisboa–Sevilla",
+    "description": "Traslados privados Lisboa–Sevilla y Sevilla–Lisboa en un Mercedes premium. Servicio de chófer puerta a puerta con paradas opcionales en Portugal y España."
+  },
+  "hero": {
+    "tag": "Traslado",
+    "title": "Traslado Privado Entre Lisboa y Sevilla",
+    "subtitle": "Viaje en privado entre Portugal y España con un servicio premium de chófer puerta a puerta que conecta Lisboa y Sevilla. Elija un trayecto directo o enriquezca la experiencia con paradas cuidadosamente seleccionadas en el camino.",
+    "primaryCta": "Solicitar Su Traslado Privado",
+    "secondaryCta": "WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y Sevilla.",
+    "imageAlt": "Mercedes V-Class traslado privado Lisboa Sevilla",
+    "benefits": [
+      "Puerta a Puerta Portugal–España",
+      "Flota Mercedes Premium",
+      "Chóferes de Habla Inglesa",
+      "Disponible en Ambas Direcciones"
+    ]
+  },
+  "intro": {
+    "title": "Viaje En Privado De Portugal A España",
+    "p1": "Combine Lisboa y Sevilla sin el inconveniente de aeropuertos, estaciones o múltiples conexiones de transporte.",
+    "p2": "Con Off We Go Portugal, su chófer profesional le recoge directamente en su hotel, residencia privada u otra ubicación acordada en Lisboa y le lleva cómodamente a su destino en Sevilla o de Sevilla de vuelta a Lisboa.",
+    "p3": "Su vehículo está reservado exclusivamente para usted y su grupo, lo que le permite viajar en privado con su equipaje y salir a una hora organizada en torno a su itinerario.",
+    "p4": "Para parejas, familias y grupos privados que combinan Portugal y España, un traslado privado ofrece una alternativa cómoda y conveniente a vuelos, autobuses u otros transportes con horario fijo.",
+    "imageAlt": "Chófer Mercedes privado Lisboa a Sevilla"
+  },
+  "directions": {
+    "title": "Lisboa A Sevilla O Sevilla A Lisboa",
+    "from": "Lisboa",
+    "to": "Sevilla",
+    "body": "La recogida y la entrega pueden organizarse directamente en hoteles, alojamiento privado u otra dirección acordada."
+  },
+  "stops": {
+    "title": "Saque Más Partido De Su Viaje Entre Portugal Y España",
+    "p1": "Su traslado privado puede organizarse como un trayecto directo, o puede transformar su día de viaje en una experiencia personalizada con paradas cuidadosamente seleccionadas en Portugal y España.",
+    "note": "Las paradas y experiencias opcionales se adaptan a sus intereses, al tiempo disponible y al itinerario solicitado. Paradas adicionales, desviaciones de ruta y tiempo de espera o de visita se cotizan por separado. Las experiencias que requieran entrada o reservas están sujetas a disponibilidad y confirmación anticipada.",
+    "items": {
+      "evora": {
+        "name": "Évora",
+        "description": "Descubra el centro histórico declarado Patrimonio de la UNESCO de una de las ciudades más bellas del Alentejo, conocida por su notable patrimonio romano y medieval.",
+        "imageAlt": "Parada en Évora durante el traslado privado Lisboa–Sevilla"
+      },
+      "monsaraz": {
+        "name": "Monsaraz",
+        "description": "Explore un pueblo medieval en la cima de una colina bellamente conservado, con calles encaladas y vistas panorámicas del campo del Alentejo y Alqueva.",
+        "imageAlt": "Parada en Monsaraz durante el traslado privado Lisboa–Sevilla"
+      },
+      "cincoJotas": {
+        "name": "Cinco Jotas Jabugo",
+        "description": "Añada una experiencia gastronómica distintiva a su viaje con una visita a Cinco Jotas en Jabugo, internacionalmente reconocida por su jamón 100% Ibérico de bellota. La visita puede incorporarse previa solicitud, ofreciendo la oportunidad de descubrir la tradición, la artesanía y los sabores de uno de los productos gourmet más celebrados de España.",
+        "imageAlt": "Parada Cinco Jotas Jabugo durante el traslado privado Lisboa–Sevilla"
+      },
+      "merida": {
+        "name": "Mérida",
+        "description": "Descubra una de las colecciones más importantes de patrimonio romano de España, con monumentos extraordinarios que revelan más de dos mil años de historia.",
+        "imageAlt": "Parada en Mérida durante el traslado privado Lisboa–Sevilla"
+      },
+      "cordoba": {
+        "name": "Córdoba",
+        "description": "Para viajeros que deseen ampliar su itinerario, Córdoba puede incorporarse previa solicitud, ofreciendo la oportunidad de descubrir una de las grandes ciudades históricas de Andalucía.",
+        "imageAlt": "Parada en Córdoba durante el traslado privado Lisboa–Sevilla"
+      }
+    }
+  },
+  "crossBorder": {
+    "title": "Un Traslado Privado Transfronterizo Sin Interrupciones",
+    "p1": "Viajar entre Portugal y España no tiene por qué significar cambiar de vehículo u organizar transportes separados.",
+    "p2": "Su chófer y Mercedes privado le acompañan durante todo el trayecto, ofreciendo un servicio puerta a puerta continuo desde el punto de recogida hasta su destino final."
+  },
+  "vehicles": {
+    "title": "Viaje En Un Mercedes Premium",
+    "note": "Indíquenos el número de pasajeros y el equipaje al solicitar su traslado y le recomendaremos el vehículo más adecuado.",
+    "eqe": {
+      "name": "Mercedes-Benz EQE",
+      "description": "Un sedán ejecutivo eléctrico elegante, ideal para parejas y viajeros individuales que buscan comodidad, privacidad y refinamiento.",
+      "imageAlt": "Mercedes EQE traslado privado Lisboa Sevilla"
+    },
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "Un sedán ejecutivo elegante, ideal para parejas y viajeros individuales que buscan comodidad, privacidad y refinamiento.",
+      "imageAlt": "Mercedes E-Class traslado privado Lisboa Sevilla"
+    },
+    "eqv": {
+      "name": "Mercedes-Benz EQV",
+      "description": "Espacioso y cómodo, especialmente adecuado para familias, grupos privados y viajeros con equipaje adicional.",
+      "imageAlt": "Mercedes EQV traslado privado Lisboa Sevilla"
+    }
+  },
+  "included": {
+    "title": "Todo Lo Que Necesita Para Un Viaje Cómodo",
+    "items": [
+      {
+        "title": "Chófer Profesional De Habla Inglesa",
+        "description": "Experimentado, discreto y con presentación profesional."
+      },
+      {
+        "title": "Servicio Privado Puerta A Puerta",
+        "description": "Un viaje privado continuo entre Portugal y España."
+      },
+      {
+        "title": "Vehículo Mercedes Premium",
+        "description": "Seleccionado según su grupo y requisitos de equipaje."
+      },
+      {
+        "title": "Asistencia Con El Equipaje",
+        "description": "Asistencia con la carga y descarga de su equipaje."
+      },
+      {
+        "title": "Agua Embotellada De Cortesía",
+        "description": "Refrescos disponibles durante el viaje."
+      },
+      {
+        "title": "Wi-Fi Cuando Esté Disponible",
+        "description": "Manténgase conectado mientras viaja."
+      },
+      {
+        "title": "Peajes Estándar Incluidos",
+        "description": "Los peajes de autopista estándar y los costes operativos están incluidos en el traslado directo cotizado."
+      },
+      {
+        "title": "Coordinación Personalizada",
+        "description": "Su viaje se coordina con usted antes de la salida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "¿Por Qué Viajar En Privado Entre Lisboa Y Sevilla?",
+    "items": [
+      {
+        "title": "Un Vehículo, Puerta A Puerta",
+        "description": "Viaje entre Portugal y España sin cambiar de transporte."
+      },
+      {
+        "title": "Viaje Según Su Horario",
+        "description": "Salida organizada en torno a su itinerario."
+      },
+      {
+        "title": "Privacidad Y Comodidad",
+        "description": "Su Mercedes es exclusivamente para su grupo."
+      },
+      {
+        "title": "Viva Más Por El Camino",
+        "description": "Transforme su día de viaje con experiencias culturales, históricas y gastronómicas en Portugal y España."
+      }
+    ]
+  },
+  "airport": {
+    "title": "¿Conectar El Aeropuerto De Lisboa O Sevilla?",
+    "p1": "Su viaje puede comenzar o terminar en el Aeropuerto de Lisboa o en el Aeropuerto de Sevilla, conectando su vuelo directamente con su siguiente destino.",
+    "p2": "Las recogidas en el aeropuerto incluyen seguimiento del vuelo y Meet & Greet en la zona de llegadas con un cartel con su nombre.",
+    "p3": "El tiempo de espera gratuito aplicable se proporciona según nuestras condiciones de reserva.",
+    "cta": "Solicitar Su Traslado Privado"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "question": "¿Cuánto dura Lisboa a Sevilla?",
+        "answer": "Un trayecto directo suele durar aproximadamente de 4,5 a 5 horas, según el tráfico, las condiciones de la carretera y las ubicaciones exactas."
+      },
+      {
+        "question": "¿Puedo reservar Sevilla a Lisboa?",
+        "answer": "Sí. El servicio opera en ambas direcciones."
+      },
+      {
+        "question": "¿Cambiamos de vehículo en la frontera?",
+        "answer": "No. El mismo vehículo privado le lleva hasta su destino final."
+      },
+      {
+        "question": "¿Podemos añadir paradas turísticas?",
+        "answer": "Sí. Las paradas y experiencias pueden organizarse según su itinerario, con tiempo y costes adicionales cotizados por separado."
+      },
+      {
+        "question": "¿Podemos visitar Cinco Jotas en Jabugo?",
+        "answer": "Una experiencia Cinco Jotas en Jabugo puede incorporarse previa solicitud, sujeta a disponibilidad, horarios de apertura y confirmación de reserva."
+      },
+      {
+        "question": "¿Pueden proporcionar sillas infantiles?",
+        "answer": "Sí. Indique la edad del niño al hacer la reserva."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Continúe Su Viaje De Portugal A España Con Comodidad",
+    "lead": "Viaje directamente entre Lisboa y Sevilla o cree un trayecto personalizado con paradas culturales, históricas y gastronómicas en el camino.",
+    "body": "Indíquenos su fecha de viaje, ubicaciones, pasajeros, equipaje y paradas preferidas, y organizaremos su viaje privado.",
+    "primaryCta": "Solicitar Su Traslado Privado",
+    "secondaryCta": "Contactarnos Por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y Sevilla.",
+    "imageAlt": "Off We Go Portugal traslado privado Lisboa Sevilla",
+    "linksLabel": "Explorar más",
+    "links": {
+      "fleet": "Flota",
+      "transfers": "Traslados Aeropuerto",
+      "tours": "Tours Privados",
+      "booking": "Reservas"
+    }
+  }
+}

@@ -86,20 +86,20 @@ function VehicleCard({ vehicle, electric }: { vehicle: FleetVehicle; electric: b
         )}
 
         {/* Pax / luggage */}
-        <div className="flex items-center gap-4 text-[11px] tracking-[0.25em] uppercase text-[#9A9182] mb-5">
+        <div className="flex items-center gap-4 text-[11px] tracking-[0.25em] uppercase text-white-dim mb-5">
           <span className="flex items-center gap-1.5">
-            <Users className="w-3.5 h-3.5 text-[#C9A84C]" strokeWidth={1.8} />
+            <Users className="w-3.5 h-3.5 text-gold" strokeWidth={1.8} />
             {vehicle.passengers}
           </span>
-          <span className="text-[#C9A84C]/30">·</span>
+          <span className="text-gold/30">·</span>
           <span className="flex items-center gap-1.5">
-            <Briefcase className="w-3.5 h-3.5 text-[#C9A84C]" strokeWidth={1.8} />
+            <Briefcase className="w-3.5 h-3.5 text-gold" strokeWidth={1.8} />
             {vehicle.suitcases}
           </span>
         </div>
 
         {/* CTA */}
-        <div className="mt-auto pt-5 border-t border-[#C9A84C]/12">
+        <div className="mt-auto pt-5 border-t border-gold/12">
           <Link
             to="/booking"
             className="w-full inline-flex items-center justify-center gap-2 text-[10px] tracking-[0.3em] uppercase text-[#C9A84C] hover:text-[#F5F0E8] transition-colors duration-500 py-1"
@@ -113,7 +113,7 @@ function VehicleCard({ vehicle, electric }: { vehicle: FleetVehicle; electric: b
   )
 }
 
-// ─── Fleet group ──────────────────────────────────────────────────────────────
+// ─── Fleet group ───
 
 function FleetGroup({
   label,

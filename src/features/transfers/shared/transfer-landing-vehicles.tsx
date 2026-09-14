@@ -17,11 +17,20 @@ export const TRANSFER_LANDING_VEHICLES = [
   },
 ] as const
 
-interface TransferLandingVehiclesProps {
-  ns: string
+export interface TransferLandingVehicleCard {
+  key: string
+  image: string
 }
 
-export function TransferLandingVehicles({ ns }: TransferLandingVehiclesProps) {
+interface TransferLandingVehiclesProps {
+  ns: string
+  vehicles?: ReadonlyArray<TransferLandingVehicleCard>
+}
+
+export function TransferLandingVehicles({
+  ns,
+  vehicles = TRANSFER_LANDING_VEHICLES,
+}: TransferLandingVehiclesProps) {
   const { t, i18n } = useTranslation(ns)
   const hasIntro = i18n.exists('vehicles.intro', { ns })
 
@@ -41,7 +50,7 @@ export function TransferLandingVehicles({ ns }: TransferLandingVehiclesProps) {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {TRANSFER_LANDING_VEHICLES.map((vehicle, index) => (
+          {vehicles.map((vehicle, index) => (
             <motion.article
               key={vehicle.key}
               className="group bg-[#141414] border border-[#C9A84C]/12 hover:border-[#C9A84C]/35 overflow-hidden transition-colors duration-300"
