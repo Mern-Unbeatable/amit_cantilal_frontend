@@ -1,0 +1,201 @@
+{
+  "seo": {
+    "title": "Transferência Privada Lisboa–Sevilha",
+    "description": "Transferências privadas Lisboa–Sevilha e Sevilha–Lisboa num Mercedes premium. Serviço de chauffeur porta-a-porta com paragens opcionais em Portugal e Espanha."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Transferência Privada Entre Lisboa e Sevilha",
+    "subtitle": "Viaje em privado entre Portugal e Espanha com um serviço de chauffeur premium porta-a-porta que liga Lisboa e Sevilha. Escolha uma viagem direta ou enriqueça a experiência com paragens cuidadosamente selecionadas no percurso.",
+    "primaryCta": "Pedir a Sua Transferência Privada",
+    "secondaryCta": "WhatsApp",
+    "whatsappMessage": "Olá, gostaria de pedir uma transferência privada entre Lisboa e Sevilha.",
+    "imageAlt": "Mercedes V-Class transferência privada Lisboa Sevilha",
+    "benefits": [
+      "Porta-a-Porta Portugal–Espanha",
+      "Frota Mercedes Premium",
+      "Chauffeurs de Língua Inglesa",
+      "Disponível em Ambas as Direções"
+    ]
+  },
+  "intro": {
+    "title": "Viaje em Privado de Portugal para Espanha",
+    "p1": "Combine Lisboa e Sevilha sem o inconveniente de aeroportos, estações ou múltiplas ligações de transporte.",
+    "p2": "Com a Off We Go Portugal, o seu chauffeur profissional recolhe-o diretamente no hotel, residência privada ou outro local combinado em Lisboa e leva-o confortavelmente ao seu destino em Sevilha ou de Sevilha de volta a Lisboa.",
+    "p3": "O seu veículo é reservado exclusivamente para si e o seu grupo, permitindo viajar em privado com a bagagem e partir a uma hora organizada em torno do seu itinerário.",
+    "p4": "Para casais, famílias e grupos privados que combinam Portugal e Espanha, uma transferência privada oferece uma alternativa confortável e conveniente a voos, autocarros ou outros transportes com horário fixo.",
+    "imageAlt": "Mercedes chauffeur privado Lisboa para Sevilha"
+  },
+  "directions": {
+    "title": "Lisboa para Sevilha ou Sevilha para Lisboa",
+    "from": "Lisboa",
+    "to": "Sevilha",
+    "body": "A recolha e a entrega podem ser organizadas diretamente em hotéis, alojamento privado ou outro endereço combinado."
+  },
+  "stops": {
+    "title": "Tire Mais Partido da Sua Viagem Entre Portugal e Espanha",
+    "p1": "A sua transferência privada pode ser organizada como uma viagem direta, ou pode transformar o seu dia de viagem numa experiência personalizada com paragens cuidadosamente selecionadas em Portugal e Espanha.",
+    "note": "As paragens e experiências opcionais são adaptadas aos seus interesses, ao tempo disponível e ao itinerário solicitado. Paragens adicionais, desvios de percurso e tempo de espera ou de visita são cotados separadamente. Experiências que requeiram entrada ou reservas estão sujeitas a disponibilidade e confirmação antecipada.",
+    "items": {
+      "evora": {
+        "name": "Évora",
+        "description": "Descubra o centro histórico classificado pela UNESCO de uma das mais belas cidades do Alentejo, conhecida pelo seu notável património romano e medieval.",
+        "imageAlt": "Paragem em Évora durante transferência privada Lisboa–Sevilha"
+      },
+      "monsaraz": {
+        "name": "Monsaraz",
+        "description": "Explore uma aldeia medieval de colina belamente preservada, com ruas caiadas de branco e vistas panorâmicas sobre o Alentejo e o Alqueva.",
+        "imageAlt": "Paragem em Monsaraz durante transferência privada Lisboa–Sevilha"
+      },
+      "cincoJotas": {
+        "name": "Cinco Jotas Jabugo",
+        "description": "Acrescente uma experiência gastronómica distintiva à sua viagem com uma visita à Cinco Jotas em Jabugo, internacionalmente reconhecida pelo seu presunto 100% Ibérico de bolota. A visita pode ser incorporada mediante combinação prévia, oferecendo a oportunidade de descobrir a tradição, o artesanato e os sabores de um dos produtos gourmet mais celebrados de Espanha.",
+        "imageAlt": "Paragem Cinco Jotas Jabugo durante transferência privada Lisboa–Sevilha"
+      },
+      "merida": {
+        "name": "Mérida",
+        "description": "Descubra uma das mais importantes coleções de património romano de Espanha, com monumentos extraordinários que revelam mais de dois mil anos de história.",
+        "imageAlt": "Paragem em Mérida durante transferência privada Lisboa–Sevilha"
+      },
+      "cordoba": {
+        "name": "Córdoba",
+        "description": "Para viajantes que desejam alargar o itinerário, Córdoba pode ser incorporada mediante combinação prévia, oferecendo a oportunidade de descobrir uma das grandes cidades históricas da Andaluzia.",
+        "imageAlt": "Paragem em Córdoba durante transferência privada Lisboa–Sevilha"
+      }
+    }
+  },
+  "crossBorder": {
+    "title": "Uma Transferência Privada Transfronteiriça Sem Interrupções",
+    "p1": "Viajar entre Portugal e Espanha não precisa de significar mudar de veículo ou organizar transportes separados.",
+    "p2": "O seu chauffeur e Mercedes privado acompanham-no durante toda a viagem, assegurando um serviço porta-a-porta contínuo desde o local de recolha até ao destino final."
+  },
+  "vehicles": {
+    "title": "Viaje num Mercedes Premium",
+    "note": "Indique o número de passageiros e a bagagem ao pedir a sua transferência e recomendaremos o veículo mais adequado.",
+    "eqe": {
+      "name": "Mercedes-Benz EQE",
+      "description": "Um sedã executivo elétrico elegante, ideal para casais e viajantes individuais que procuram conforto, privacidade e refinamento.",
+      "imageAlt": "Mercedes EQE transferência privada Lisboa Sevilha"
+    },
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "Um sedã executivo elegante, ideal para casais e viajantes individuais que procuram conforto, privacidade e refinamento.",
+      "imageAlt": "Mercedes E-Class transferência privada Lisboa Sevilha"
+    },
+    "eqv": {
+      "name": "Mercedes-Benz EQV",
+      "description": "Espaçoso e confortável, especialmente adequado para famílias, grupos privados e viajantes com bagagem adicional.",
+      "imageAlt": "Mercedes EQV transferência privada Lisboa Sevilha"
+    }
+  },
+  "included": {
+    "title": "Tudo o Que Precisa para uma Viagem Confortável",
+    "items": [
+      {
+        "title": "Chauffeur Profissional de Língua Inglesa",
+        "description": "Experiente, discreto e com apresentação profissional."
+      },
+      {
+        "title": "Serviço Privado Porta-a-Porta",
+        "description": "Uma viagem privada contínua entre Portugal e Espanha."
+      },
+      {
+        "title": "Veículo Mercedes Premium",
+        "description": "Selecionado de acordo com o seu grupo e requisitos de bagagem."
+      },
+      {
+        "title": "Assistência com Bagagem",
+        "description": "Assistência no carregamento e descarregamento da bagagem."
+      },
+      {
+        "title": "Água Engarrafada Oferecida",
+        "description": "Bebidas disponíveis durante a viagem."
+      },
+      {
+        "title": "Wi-Fi Quando Disponível",
+        "description": "Mantenha-se ligado durante a viagem."
+      },
+      {
+        "title": "Portagens Standard Incluídas",
+        "description": "Portagens de autoestrada standard e custos operacionais estão incluídos na transferência direta cotada."
+      },
+      {
+        "title": "Coordenação Personalizada",
+        "description": "A sua viagem é coordenada consigo antes da partida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "Porque Viajar em Privado Entre Lisboa e Sevilha?",
+    "items": [
+      {
+        "title": "Um Veículo, Porta a Porta",
+        "description": "Viaje entre Portugal e Espanha sem mudar de transporte."
+      },
+      {
+        "title": "Viaje no Seu Horário",
+        "description": "Partida organizada em torno do seu itinerário."
+      },
+      {
+        "title": "Privacidade e Conforto",
+        "description": "O seu Mercedes é exclusivamente para o seu grupo."
+      },
+      {
+        "title": "Viva Mais Pelo Caminho",
+        "description": "Transforme o seu dia de viagem com experiências culturais, históricas e gastronómicas em Portugal e Espanha."
+      }
+    ]
+  },
+  "airport": {
+    "title": "Ligar o Aeroporto de Lisboa ou de Sevilha?",
+    "p1": "A sua viagem pode começar ou terminar no Aeroporto de Lisboa ou no Aeroporto de Sevilha, ligando o seu voo diretamente ao próximo destino.",
+    "p2": "As recolhas no aeroporto incluem monitorização do voo e Meet & Greet na zona de chegadas com placa de identificação.",
+    "p3": "O tempo de espera complementar aplicável é fornecido de acordo com as nossas condições de reserva.",
+    "cta": "Pedir a Sua Transferência Privada"
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      {
+        "question": "Quanto tempo demora Lisboa a Sevilha?",
+        "answer": "Uma viagem direta demora geralmente cerca de 4,5 a 5 horas, consoante o trânsito, as condições da estrada e as localizações exactas."
+      },
+      {
+        "question": "Posso reservar Sevilha para Lisboa?",
+        "answer": "Sim. O serviço opera em ambas as direções."
+      },
+      {
+        "question": "Mudamos de veículo na fronteira?",
+        "answer": "Não. O mesmo veículo privado leva-o até ao destino final."
+      },
+      {
+        "question": "Podemos acrescentar paragens turísticas?",
+        "answer": "Sim. Paragens e experiências podem ser organizadas de acordo com o seu itinerário, com tempo e custos adicionais cotados separadamente."
+      },
+      {
+        "question": "Podemos visitar a Cinco Jotas em Jabugo?",
+        "answer": "Uma experiência Cinco Jotas em Jabugo pode ser incorporada mediante combinação prévia, sujeita a disponibilidade, horários de abertura e confirmação de reserva."
+      },
+      {
+        "question": "Podem fornecer cadeiras de criança?",
+        "answer": "Sim. Indique a idade da criança aquando da reserva."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Continue a Sua Viagem de Portugal a Espanha com Conforto",
+    "lead": "Viaje diretamente entre Lisboa e Sevilha ou crie uma viagem personalizada com paragens culturais, históricas e gastronómicas pelo caminho.",
+    "body": "Indique a data de viagem, localizações, passageiros, bagagem e paragens preferidas, e organizaremos a sua jornada privada.",
+    "primaryCta": "Pedir a Sua Transferência Privada",
+    "secondaryCta": "Contactar-nos no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de pedir uma transferência privada entre Lisboa e Sevilha.",
+    "imageAlt": "Off We Go Portugal transferência privada Lisboa Sevilha",
+    "linksLabel": "Explorar mais",
+    "links": {
+      "fleet": "Frota",
+      "transfers": "Transfers Aeroporto",
+      "tours": "Tours Privados",
+      "booking": "Reservas"
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "seo": {
+    "title": "Lisbon to Seville Private Transfer",
+    "description": "Private Lisbon to Seville and Seville to Lisbon transfers in a premium Mercedes. Door-to-door chauffeur service with optional stops across Portugal and Spain."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Private Transfer Between Lisbon and Seville",
+    "subtitle": "Travel privately between Portugal and Spain with a premium door-to-door chauffeur service connecting Lisbon and Seville. Choose a direct journey or enrich your experience with carefully selected stops along the way.",
+    "primaryCta": "Request Your Private Transfer",
+    "secondaryCta": "WhatsApp Us",
+    "whatsappMessage": "Hello, I would like to request a private transfer between Lisbon and Seville.",
+    "imageAlt": "Mercedes V-Class private transfer Lisbon Seville",
+    "benefits": [
+      "Portugal-Spain Door-to-Door",
+      "Premium Mercedes Fleet",
+      "English-Speaking Chauffeurs",
+      "Available Both Directions"
+    ]
+  },
+  "intro": {
+    "title": "Travel Privately from Portugal to Spain",
+    "p1": "Combine Lisbon and Seville without the inconvenience of airports, stations or multiple transportation connections.",
+    "p2": "With Off We Go Portugal, your professional chauffeur collects you directly from your hotel, private residence or other agreed location in Lisbon and takes you comfortably to your destination in Seville or from Seville back to Lisbon.",
+    "p3": "Your vehicle is reserved exclusively for you and your party, allowing you to travel privately with your luggage and depart at a time arranged around your itinerary.",
+    "p4": "For couples, families and private groups combining Portugal and Spain, a private transfer provides a comfortable and convenient alternative to navigating flights, buses or other scheduled transportation.",
+    "imageAlt": "Private Mercedes chauffeur Lisbon to Seville"
+  },
+  "directions": {
+    "title": "Lisbon to Seville or Seville to Lisbon",
+    "from": "Lisbon",
+    "to": "Seville",
+    "body": "Pickup and drop-off can be arranged directly at hotels, private accommodation or another agreed address."
+  },
+  "stops": {
+    "title": "Make More of Your Journey Between Portugal and Spain",
+    "p1": "Your private transfer can be arranged as a direct journey, or you can transform your travel day into a personalised experience with carefully selected stops across Portugal and Spain.",
+    "note": "Optional stops and experiences are tailored according to your interests, available time and requested itinerary. Additional stops, route deviations and waiting or sightseeing time are quoted separately. Experiences requiring admission or reservations are subject to availability and advance confirmation.",
+    "items": {
+      "evora": {
+        "name": "Évora",
+        "description": "Discover the UNESCO-listed historic centre of one of Portugal's most beautiful Alentejo cities, known for its remarkable Roman and medieval heritage.",
+        "imageAlt": "Évora stop during Lisbon to Seville private transfer"
+      },
+      "monsaraz": {
+        "name": "Monsaraz",
+        "description": "Explore a beautifully preserved hilltop medieval village with whitewashed streets and panoramic views across the Alentejo countryside and Alqueva.",
+        "imageAlt": "Monsaraz stop during Lisbon to Seville private transfer"
+      },
+      "cincoJotas": {
+        "name": "Cinco Jotas Jabugo",
+        "description": "Add a distinctive gastronomic experience to your journey with a visit to Cinco Jotas in Jabugo, internationally renowned for its 100% Ibérico acorn-fed ham. A visit can be incorporated by prior arrangement, offering an opportunity to discover the tradition, craftsmanship and flavours behind one of Spain's most celebrated gourmet products.",
+        "imageAlt": "Cinco Jotas Jabugo stop during Lisbon to Seville private transfer"
+      },
+      "merida": {
+        "name": "Mérida",
+        "description": "Discover one of Spain's most important collections of Roman heritage, with extraordinary monuments that reveal more than two thousand years of history.",
+        "imageAlt": "Mérida stop during Lisbon to Seville private transfer"
+      },
+      "cordoba": {
+        "name": "Córdoba",
+        "description": "For travellers wishing to extend their itinerary, Córdoba can be incorporated by prior arrangement, offering the opportunity to discover one of Andalusia's great historic cities.",
+        "imageAlt": "Córdoba stop during Lisbon to Seville private transfer"
+      }
+    }
+  },
+  "crossBorder": {
+    "title": "A Seamless Cross-Border Private Transfer",
+    "p1": "Travelling between Portugal and Spain doesn't need to mean changing vehicles or arranging separate transportation.",
+    "p2": "Your chauffeur and private Mercedes accompany you throughout the journey, providing continuous door-to-door service from your pickup location to your final destination."
+  },
+  "vehicles": {
+    "title": "Travel in a Premium Mercedes",
+    "note": "Tell us the number of passengers and luggage when requesting your transfer and we'll recommend the most suitable vehicle.",
+    "eqe": {
+      "name": "Mercedes-Benz EQE",
+      "description": "An elegant electric executive sedan, ideal for couples and individual travellers seeking comfort, privacy and refinement.",
+      "imageAlt": "Mercedes EQE private transfer Lisbon Seville"
+    },
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "An elegant executive sedan, ideal for couples and individual travellers seeking comfort, privacy and refinement.",
+      "imageAlt": "Mercedes E-Class private transfer Lisbon Seville"
+    },
+    "eqv": {
+      "name": "Mercedes-Benz EQV",
+      "description": "Spacious and comfortable, particularly suitable for families, private groups and travellers carrying additional luggage.",
+      "imageAlt": "Mercedes EQV Lisbon Seville private transfer"
+    }
+  },
+  "included": {
+    "title": "Everything You Need for a Comfortable Journey",
+    "items": [
+      {
+        "title": "Professional English-Speaking Chauffeur",
+        "description": "Experienced, discreet and professionally presented."
+      },
+      {
+        "title": "Private Door-to-Door Service",
+        "description": "One continuous private journey between Portugal and Spain."
+      },
+      {
+        "title": "Premium Mercedes Vehicle",
+        "description": "Selected according to your party and luggage requirements."
+      },
+      {
+        "title": "Luggage Assistance",
+        "description": "Assistance with loading and unloading your luggage."
+      },
+      {
+        "title": "Complimentary Bottled Water",
+        "description": "Refreshments available during your journey."
+      },
+      {
+        "title": "Wi-Fi Where Available",
+        "description": "Stay connected while travelling."
+      },
+      {
+        "title": "Standard Tolls Included",
+        "description": "Standard motorway tolls and operating costs are included in the quoted direct transfer."
+      },
+      {
+        "title": "Personalised Coordination",
+        "description": "Your journey is coordinated with you before departure."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "Why Travel Privately Between Lisbon and Seville?",
+    "items": [
+      {
+        "title": "One Vehicle, Door to Door",
+        "description": "Travel between Portugal and Spain without changing transportation."
+      },
+      {
+        "title": "Travel on Your Schedule",
+        "description": "Departure arranged around your itinerary."
+      },
+      {
+        "title": "Privacy & Comfort",
+        "description": "Your Mercedes is exclusively for your party."
+      },
+      {
+        "title": "Experience More Along the Way",
+        "description": "Transform your travel day with cultural, historical and gastronomic experiences across Portugal and Spain."
+      }
+    ]
+  },
+  "airport": {
+    "title": "Connecting Lisbon or Seville Airport?",
+    "p1": "Your journey can begin or end at Lisbon Airport or Seville Airport, connecting your flight directly with your next destination.",
+    "p2": "Airport collections include flight monitoring and Meet & Greet in the arrivals area with a name sign.",
+    "p3": "Applicable complimentary waiting time is provided according to our booking conditions.",
+    "cta": "Request Your Private Transfer"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How long is Lisbon to Seville?",
+        "answer": "A direct journey generally takes approximately 4.5 to 5 hours, depending on traffic, road conditions and exact locations."
+      },
+      {
+        "question": "Can I book Seville to Lisbon?",
+        "answer": "Yes. The service operates in both directions."
+      },
+      {
+        "question": "Do we change vehicles at the border?",
+        "answer": "No. The same private vehicle takes you to your final destination."
+      },
+      {
+        "question": "Can we add sightseeing stops?",
+        "answer": "Yes. Stops and experiences can be arranged according to your itinerary, with additional time and costs quoted separately."
+      },
+      {
+        "question": "Can we visit Cinco Jotas in Jabugo?",
+        "answer": "A Cinco Jotas experience in Jabugo can be incorporated by prior arrangement, subject to availability, opening schedules and reservation confirmation."
+      },
+      {
+        "question": "Can you provide child seats?",
+        "answer": "Yes. Please provide the child's age when booking."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Continue Your Journey from Portugal to Spain in Comfort",
+    "lead": "Travel directly between Lisbon and Seville or create a personalised journey with cultural, historical and gastronomic stops along the way.",
+    "body": "Tell us your travel date, locations, passengers, luggage and preferred stops, and we'll arrange your private journey.",
+    "primaryCta": "Request Your Private Transfer",
+    "secondaryCta": "Contact Us on WhatsApp",
+    "whatsappMessage": "Hello, I would like to request a private transfer between Lisbon and Seville.",
+    "imageAlt": "Off We Go Portugal private transfer Lisbon Seville",
+    "linksLabel": "Explore more",
+    "links": {
+      "fleet": "Fleet",
+      "transfers": "Airport Transfers",
+      "tours": "Private Tours",
+      "booking": "Booking"
+    }
+  }
+}

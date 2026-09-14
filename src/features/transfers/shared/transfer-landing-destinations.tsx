@@ -20,7 +20,9 @@ export function TransferLandingDestinations({
 }: TransferLandingDestinationsProps) {
   const { t, i18n } = useTranslation(ns)
   const p2Key = `${sectionKey}.p2`
+  const noteKey = `${sectionKey}.note`
   const hasP2 = i18n.exists(p2Key, { ns })
+  const hasNote = i18n.exists(noteKey, { ns })
 
   return (
     <section className="bg-[#0B0B0B] py-20 md:py-32 border-t border-[#C9A84C]/10">
@@ -68,12 +70,14 @@ export function TransferLandingDestinations({
           ))}
         </div>
 
-        <motion.p
-          className="mt-12 md:mt-16 text-center text-sm md:text-base text-[#F5F0E8]/50 font-light leading-relaxed max-w-3xl mx-auto"
-          {...fadeUp}
-        >
-          {t(`${sectionKey}.note`)}
-        </motion.p>
+        {hasNote && (
+          <motion.p
+            className="mt-12 md:mt-16 text-center text-sm md:text-base text-[#F5F0E8]/50 font-light leading-relaxed max-w-3xl mx-auto"
+            {...fadeUp}
+          >
+            {t(noteKey)}
+          </motion.p>
+        )}
       </div>
     </section>
   )
