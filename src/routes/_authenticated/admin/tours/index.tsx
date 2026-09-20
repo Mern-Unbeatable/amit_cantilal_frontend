@@ -9,7 +9,13 @@ import { DataTable } from '@/components/data-table/data-table.tsx'
 import { DataTablePagination } from '@/components/data-table/data-table-pagination.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Input } from '@/components/ui/input.tsx'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.tsx'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select.tsx'
 import { useDeleteTour, useToursPaginated } from '@/features/tour/tour.hooks.ts'
 import { useDataTableInstance } from '@/hooks/use-datatable-instance.ts'
 import { formatCurrency } from '@/lib/utils.ts'
@@ -56,7 +62,11 @@ function RouteComponent() {
       {
         id: 'duration',
         header: 'Duration',
-        cell: ({ row }) => row.original.duration ?? (typeof row.original.duration_minutes === 'number' ? `${row.original.duration_minutes} min` : '-'),
+        cell: ({ row }) =>
+          row.original.duration ??
+          (typeof row.original.duration_minutes === 'number'
+            ? `${row.original.duration_minutes} min`
+            : '-'),
       },
       {
         accessorKey: 'max_guests',
@@ -95,10 +105,14 @@ function RouteComponent() {
               type="button"
               variant="destructive"
               size="sm"
-              disabled={isDeleting && deletingTourId === String(row.original.id)}
+              disabled={
+                isDeleting && deletingTourId === String(row.original.id)
+              }
               onClick={() => {
                 const tourId = String(row.original.id)
-                const canDelete = window.confirm(`Delete ${row.original.title ?? row.original.name ?? 'this tour'}? This action cannot be undone.`)
+                const canDelete = window.confirm(
+                  `Delete ${row.original.title ?? row.original.name ?? 'this tour'}? This action cannot be undone.`,
+                )
 
                 if (!canDelete) {
                   return

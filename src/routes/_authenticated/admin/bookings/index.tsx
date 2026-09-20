@@ -1,16 +1,25 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {useState} from "react";
-import {format} from "date-fns";
-import type {BookingStatus, ServiceType} from "@/features/booking/booking.types.ts";
-import type {DateRange} from "react-day-picker";
-import type {PaginationState} from "@tanstack/react-table";
-import AppWrapper from "@/components/layouts/sidebar/app-wrapper.tsx";
-import PageHeader from "@/components/page-header.tsx";
+import { useState } from 'react'
+import { format } from 'date-fns'
+import type {
+  BookingStatus,
+  ServiceType,
+} from '@/features/booking/booking.types.ts'
+import type { DateRange } from 'react-day-picker'
+import type { PaginationState } from '@tanstack/react-table'
+import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
+import PageHeader from '@/components/page-header.tsx'
 import { Card, CardContent, CardHeader } from '@/components/ui/card.tsx'
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
-import {DateRangePicker} from "@/components/date-range-picker.tsx";
-import BookingDatatable from "@/features/booking/booking-datatable.tsx";
-import {useGetPaginatedBookings} from "@/features/booking/booking.hooks.ts";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select.tsx'
+import { DateRangePicker } from '@/components/date-range-picker.tsx'
+import BookingDatatable from '@/features/booking/booking-datatable.tsx'
+import { useGetPaginatedBookings } from '@/features/booking/booking.hooks.ts'
 
 export const Route = createFileRoute('/_authenticated/admin/bookings/')({
   component: RouteComponent,

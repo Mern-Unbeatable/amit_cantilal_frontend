@@ -38,7 +38,8 @@ export function VipConciergeHero() {
               href="#concierge"
               className="inline-flex items-center justify-center gap-3 bg-[#C9A84C] text-[#0B0B0B] px-8 py-4 md:px-10 md:py-5 text-[11px] md:text-xs tracking-[0.3em] uppercase hover:bg-[#E2C97E] transition-all duration-500"
             >
-              {t('vipConcierge.hero.contactButton')} <ArrowUpRight className="w-4 h-4" />
+              {t('vipConcierge.hero.contactButton')}{' '}
+              <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
               href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')}
@@ -46,7 +47,8 @@ export function VipConciergeHero() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 border border-[#C9A84C]/60 text-[#C9A84C] px-8 py-4 md:px-10 md:py-5 text-[11px] md:text-xs tracking-[0.3em] uppercase hover:bg-[#C9A84C] hover:text-[#0B0B0B] transition-all duration-500"
             >
-              {t('vipConcierge.hero.requestButton')} <MessageCircle className="w-4 h-4" />
+              {t('vipConcierge.hero.requestButton')}{' '}
+              <MessageCircle className="w-4 h-4" />
             </a>
           </div>
         </div>

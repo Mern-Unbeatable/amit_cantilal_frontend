@@ -4,7 +4,10 @@ import type { PublicBlockedDateRange } from '@/features/blocked-dates/blocked-da
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
 import { usePublicBlockedDates } from '@/features/blocked-dates/blocked-dates.hooks.ts'
-import { findBlockedRange, toBlockedMatchers } from '@/features/blocked-dates/blocked-dates.utils.ts'
+import {
+  findBlockedRange,
+  toBlockedMatchers,
+} from '@/features/blocked-dates/blocked-dates.utils.ts'
 import { BlockedDateDialog } from '@/features/blocked-dates/blocked-date-dialog.tsx'
 
 type BookingDateStepProps = {
@@ -24,7 +27,26 @@ export function BookingDateStep({
   time,
   adults,
   maxAdults = 7,
-  startTimes = ['07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30'],
+  startTimes = [
+    '07:00',
+    '07:30',
+    '08:00',
+    '08:30',
+    '09:00',
+    '09:30',
+    '10:00',
+    '10:30',
+    '11:00',
+    '11:30',
+    '12:00',
+    '12:30',
+    '13:00',
+    '13:30',
+    '14:00',
+    '14:30',
+    '15:00',
+    '15:30',
+  ],
   onDateChange,
   onTimeChange,
   onAdultsChange,

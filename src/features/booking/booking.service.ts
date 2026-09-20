@@ -57,26 +57,43 @@ export const bookingService = {
 
   lookup: (reference: string, email: string): Promise<BookingState> =>
     api
-      .get<{ data: BookingState }>(`/public/bookings/lookup`, { params: { reference, email } })
+      .get<{
+        data: BookingState
+      }>(`/public/bookings/lookup`, { params: { reference, email } })
       .then(unwrap),
 
-  refreshPaymentIntent: (reference: string, email: string): Promise<CreateBookingResponse> =>
+  refreshPaymentIntent: (
+    reference: string,
+    email: string,
+  ): Promise<CreateBookingResponse> =>
     api
-      .post<{ data: CreateBookingResponse }>(`/public/bookings/${reference}/payment-intent`, { email })
+      .post<{
+        data: CreateBookingResponse
+      }>(`/public/bookings/${reference}/payment-intent`, { email })
       .then(unwrap),
 
   getStripeStatus: (id: number | string): Promise<StripePaymentIntentStatus> =>
-    api.get<{ data: StripePaymentIntentStatus }>(`/admin/bookings/${id}/stripe-status`).then(unwrap),
+    api
+      .get<{
+        data: StripePaymentIntentStatus
+      }>(`/admin/bookings/${id}/stripe-status`)
+      .then(unwrap),
 
   getActivity: (id: number | string): Promise<Array<BookingActivityEntry>> =>
-    api.get<{ data: Array<BookingActivityEntry> }>(`/admin/bookings/${id}/activity`).then(unwrap),
+    api
+      .get<{
+        data: Array<BookingActivityEntry>
+      }>(`/admin/bookings/${id}/activity`)
+      .then(unwrap),
 
   updateStatus: (
     id: number | string,
     status: BookingStatus,
   ): Promise<BookingState> => {
     if (status !== 'confirmed' && status !== 'cancelled') {
-      return Promise.reject(new Error(`Unsupported status transition: ${status}`))
+      return Promise.reject(
+        new Error(`Unsupported status transition: ${status}`),
+      )
     }
     const action = status === 'confirmed' ? 'confirm' : 'cancel'
     return api

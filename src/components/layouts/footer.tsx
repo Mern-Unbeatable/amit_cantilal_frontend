@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon } from '@iconify/react'
-import {Link} from "@tanstack/react-router";
+import { Link } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
 import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
 import { toWhatsAppUrl } from '@/lib/utils.ts'
@@ -156,7 +156,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className="border-t border-border pt-6">
-             <div className="mb-6 flex flex-wrap gap-4 text-xs text-foreground/60">
+            <div className="mb-6 flex flex-wrap gap-4 text-xs text-foreground/60">
               <Link
                 to="/privacy-policy"
                 className="hover:text-primary transition-smooth"
@@ -179,11 +179,11 @@ const Footer: React.FC = () => {
               >
                 {t('footer.complaintsBook')}
               </a>
-               <span>|</span>
-               <Link
+              <span>|</span>
+              <Link
                 className="hover:text-primary transition-smooth flex items-center gap-1"
                 to="/admin/dashboard"
-               >
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -199,8 +199,8 @@ const Footer: React.FC = () => {
                   <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
                 </svg>
                 {t('footer.admin')}
-               </Link>
-             </div>
+              </Link>
+            </div>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-foreground/60">
                 <span>{t('footer.registration')}</span>

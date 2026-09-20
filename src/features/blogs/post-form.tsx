@@ -1,23 +1,23 @@
 import { useRef, useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import heic2any from 'heic2any'
-import { ImagePlus, X, FileText, AlignLeft, Eye, EyeOff } from 'lucide-react'
+import { AlignLeft, Eye, EyeOff, FileText, ImagePlus, X } from 'lucide-react'
 import { toast } from 'sonner'
+import type { AdminPost } from '@/features/blogs/blog.types.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Switch } from '@/components/ui/switch'
 import { RichTextEditor } from '@/components/rich-text-editor.tsx'
-import type { AdminPost } from '@/features/blogs/blog.types.ts'
 
 const schema = z.object({
-  title:        z.string().min(1, 'Title is required'),
-  excerpt:      z.string().optional(),
-  content:      z.string().min(1, 'Content is required'),
-  author:       z.string().optional(),
+  title: z.string().min(1, 'Title is required'),
+  excerpt: z.string().optional(),
+  content: z.string().min(1, 'Content is required'),
+  author: z.string().optional(),
   published_at: z.string().nullable().optional(),
 })
 
@@ -29,7 +29,15 @@ interface PostFormProps {
   isSubmitting: boolean
 }
 
-function SectionHeading({ icon, title, description }: { icon: React.ReactNode; title: string; description?: string }) {
+function SectionHeading({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode
+  title: string
+  description?: string
+}) {
   return (
     <div className="flex items-start gap-3 mb-5">
       <div className="mt-0.5 p-2 rounded-md bg-muted text-muted-foreground">
@@ -37,14 +45,21 @@ function SectionHeading({ icon, title, description }: { icon: React.ReactNode; t
       </div>
       <div>
         <p className="text-sm font-semibold text-foreground">{title}</p>
-        {description && <p className="text-xs text-muted-foreground mt-0.5">{description}</p>}
+        {description && (
+          <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
+        )}
       </div>
     </div>
   )
 }
 
 function Field({
-  id, label, required, error, hint, children,
+  id,
+  label,
+  required,
+  error,
+  hint,
+  children,
 }: {
   id: string
   label: string
@@ -59,13 +74,19 @@ function Field({
         {label} {required && <span className="text-destructive">*</span>}
       </Label>
       {children}
-      {hint && !error && <p className="text-xs text-muted-foreground">{hint}</p>}
+      {hint && !error && (
+        <p className="text-xs text-muted-foreground">{hint}</p>
+      )}
       {error && <p className="text-xs text-destructive">{error}</p>}
     </div>
   )
 }
 
-export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProps) {
+export function PostForm({
+  defaultValues,
+  onSubmit,
+  isSubmitting,
+}: PostFormProps) {
   const [coverPreview, setCoverPreview] = useState<string | null>(
     defaultValues?.cover_image ?? null,
   )
@@ -84,10 +105,10 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
     resolver: zodResolver(schema),
     mode: 'onTouched',
     defaultValues: {
-      title:        defaultValues?.title ?? '',
-      excerpt:      defaultValues?.excerpt ?? '',
-      content:      defaultValues?.content ?? '',
-      author:       defaultValues?.author ?? '',
+      title: defaultValues?.title ?? '',
+      excerpt: defaultValues?.excerpt ?? '',
+      content: defaultValues?.content ?? '',
+      author: defaultValues?.author ?? '',
       published_at: defaultValues?.published_at ?? null,
     },
   })
@@ -118,7 +139,11 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
 
     setIsConvertingCover(true)
     try {
-      const converted = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.8 })
+      const converted = await heic2any({
+        blob: file,
+        toType: 'image/jpeg',
+        quality: 0.8,
+      })
       const blob = Array.isArray(converted) ? converted[0] : converted
       const jpegFile = new File(
         [blob],
@@ -128,7 +153,9 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
       setCoverFile(jpegFile)
       setCoverPreview(URL.createObjectURL(jpegFile))
     } catch {
-      toast.error('Could not convert this HEIC photo. Please choose a JPEG or PNG instead.')
+      toast.error(
+        'Could not convert this HEIC photo. Please choose a JPEG or PNG instead.',
+      )
     } finally {
       setIsConvertingCover(false)
     }
@@ -152,19 +179,19 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
       <div className="space-y-1">
         <p className="font-medium">Please fix the following:</p>
         <ul className="list-disc list-inside text-sm space-y-0.5">
-          {messages.map((msg) => <li key={msg}>{msg}</li>)}
+          {messages.map((msg) => (
+            <li key={msg}>{msg}</li>
+          ))}
         </ul>
-      </div>
+      </div>,
     )
   }
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit, handleInvalid)}>
       <div className="grid grid-cols-1 md:grid-cols-12">
-
         {/* ── LEFT: Main content (col-9) ─────────────────────────────── */}
         <div className="md:col-span-9 border-r border-border divide-y divide-border">
-
           {/* Post Details */}
           <div className="p-6 space-y-5">
             <SectionHeading
@@ -172,7 +199,13 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
               title="Post Details"
               description="Core metadata that defines the post."
             />
-            <Field id="title" label="Title" required error={errors.title?.message} hint="Keep it concise and descriptive.">
+            <Field
+              id="title"
+              label="Title"
+              required
+              error={errors.title?.message}
+              hint="Keep it concise and descriptive."
+            >
               <Input
                 id="title"
                 placeholder="e.g. The Best Transfers in Lisbon"
@@ -180,7 +213,12 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
                 {...register('title')}
               />
             </Field>
-            <Field id="excerpt" label="Excerpt" error={errors.excerpt?.message} hint="Shown in post listings and SEO previews. 1–2 sentences.">
+            <Field
+              id="excerpt"
+              label="Excerpt"
+              error={errors.excerpt?.message}
+              hint="Shown in post listings and SEO previews. 1–2 sentences."
+            >
               <Textarea
                 id="excerpt"
                 rows={2}
@@ -206,7 +244,12 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
               title="Content"
               description="The full body of the post. Use headings, images and formatting."
             />
-            <Field id="content" label="Body" required error={errors.content?.message}>
+            <Field
+              id="content"
+              label="Body"
+              required
+              error={errors.content?.message}
+            >
               <Controller
                 name="content"
                 control={control}
@@ -224,15 +267,22 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
 
           {/* Submit */}
           <div className="p-6 flex items-center justify-end">
-            <Button type="submit" disabled={isSubmitting} className="min-w-[140px]">
-              {isSubmitting ? 'Saving...' : defaultValues ? 'Update Post' : 'Publish Post'}
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="min-w-[140px]"
+            >
+              {isSubmitting
+                ? 'Saving...'
+                : defaultValues
+                  ? 'Update Post'
+                  : 'Publish Post'}
             </Button>
           </div>
         </div>
 
         {/* ── RIGHT: Sidebar (col-3) ─────────────────────────────────── */}
         <div className="md:col-span-3 divide-y divide-border">
-
           {/* Cover Image */}
           <div className="p-4 space-y-3">
             <SectionHeading
@@ -245,11 +295,17 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
                 <div className="p-2.5 rounded-full bg-muted animate-pulse">
                   <ImagePlus className="w-4 h-4" />
                 </div>
-                <p className="text-xs font-medium text-foreground">Converting photo...</p>
+                <p className="text-xs font-medium text-foreground">
+                  Converting photo...
+                </p>
               </div>
             ) : coverPreview ? (
               <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
-                <img src={coverPreview} alt="Cover preview" className="w-full h-full object-cover" />
+                <img
+                  src={coverPreview}
+                  alt="Cover preview"
+                  className="w-full h-full object-cover"
+                />
                 <button
                   type="button"
                   onClick={removeCover}
@@ -268,8 +324,12 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
                   <ImagePlus className="w-4 h-4" />
                 </div>
                 <div className="text-center px-2">
-                  <p className="text-xs font-medium text-foreground">Upload cover</p>
-                  <p className="text-[10px] text-muted-foreground mt-0.5">1200×630px recommended</p>
+                  <p className="text-xs font-medium text-foreground">
+                    Upload cover
+                  </p>
+                  <p className="text-[10px] text-muted-foreground mt-0.5">
+                    1200×630px recommended
+                  </p>
                 </div>
               </button>
             )}
@@ -294,27 +354,41 @@ export function PostForm({ defaultValues, onSubmit, isSubmitting }: PostFormProp
           {/* Visibility */}
           <div className="p-4 space-y-3">
             <SectionHeading
-              icon={isPublished ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+              icon={
+                isPublished ? (
+                  <Eye className="w-4 h-4" />
+                ) : (
+                  <EyeOff className="w-4 h-4" />
+                )
+              }
               title="Visibility"
               description="Control whether this post is public."
             />
-            <div className={`flex items-center justify-between rounded-lg p-3 border transition-colors ${
-              isPublished
-                ? 'border-green-500/40 bg-green-500/5'
-                : 'border-orange-400/40 bg-orange-400/5'
-            }`}>
+            <div
+              className={`flex items-center justify-between rounded-lg p-3 border transition-colors ${
+                isPublished
+                  ? 'border-green-500/40 bg-green-500/5'
+                  : 'border-orange-400/40 bg-orange-400/5'
+              }`}
+            >
               <div>
-                <p className={`text-xs font-semibold ${isPublished ? 'text-green-600 dark:text-green-400' : 'text-orange-600 dark:text-orange-400'}`}>
+                <p
+                  className={`text-xs font-semibold ${isPublished ? 'text-green-600 dark:text-green-400' : 'text-orange-600 dark:text-orange-400'}`}
+                >
                   {isPublished ? 'Published' : 'Draft'}
                 </p>
                 <p className="text-[10px] text-muted-foreground mt-0.5">
-                  {isPublished ? 'Visible to the public' : 'Hidden from the public'}
+                  {isPublished
+                    ? 'Visible to the public'
+                    : 'Hidden from the public'}
                 </p>
               </div>
-              <Switch checked={isPublished} onCheckedChange={handleVisibilityChange} />
+              <Switch
+                checked={isPublished}
+                onCheckedChange={handleVisibilityChange}
+              />
             </div>
           </div>
-
         </div>
       </div>
     </form>

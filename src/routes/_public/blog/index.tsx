@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
+import type { BlogPost } from '@/features/blogs/blog.types.ts'
 import { PageHero } from '@/components/shared/page-hero.tsx'
 import BlogCard from '@/features/blogs/blog-card.tsx'
-import type { BlogPost } from '@/features/blogs/blog.types.ts'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { usePosts } from '@/features/blogs/blog.hooks.ts'
 import { pageHead } from '@/lib/seo.ts'
@@ -28,7 +28,9 @@ function RouteComponent() {
     setPosts((prev) => (page === 1 ? data.posts : [...prev, ...data.posts]))
   }, [data, page])
 
-  const hasMore = data ? data.pagination.current_page < data.pagination.last_page : false
+  const hasMore = data
+    ? data.pagination.current_page < data.pagination.last_page
+    : false
 
   return (
     <motion.div {...mainTransitionProps}>
@@ -52,12 +54,9 @@ function RouteComponent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {isLoading && page === 1
               ? Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="h-64 bg-[#141414] animate-pulse" />
-              ))
-              : posts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
-              ))
-            }
+                  <div key={i} className="h-64 bg-[#141414] animate-pulse" />
+                ))
+              : posts.map((post) => <BlogCard key={post.slug} post={post} />)}
           </div>
 
           {hasMore && (

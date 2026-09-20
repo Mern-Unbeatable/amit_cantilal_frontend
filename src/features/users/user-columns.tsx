@@ -1,16 +1,19 @@
 import { format } from 'date-fns'
+import { useNavigate } from '@tanstack/react-router'
+import { Eye, EyeOff, MoreHorizontal, Pencil, Trash2 } from 'lucide-react'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { AdminUser } from '@/features/users/user.types.ts'
 import { Badge } from '@/components/ui/badge'
-import { useNavigate } from '@tanstack/react-router'
-import { MoreHorizontal, Pencil, Trash2, Eye, EyeOff } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { useDeleteUser, useToggleUserStatus } from '@/features/users/user.hooks.ts'
+import {
+  useDeleteUser,
+  useToggleUserStatus,
+} from '@/features/users/user.hooks.ts'
 import { Button } from '@/components/ui/button.tsx'
 import { ROLE_LABELS } from '@/@types/user'
 
@@ -50,9 +53,7 @@ export function userColumns(): Array<ColumnDef<AdminUser, unknown>> {
     {
       accessorKey: 'status',
       header: 'Status',
-      cell: ({ row }) => (
-        <Badge variant="outline">{row.original.status}</Badge>
-      ),
+      cell: ({ row }) => <Badge variant="outline">{row.original.status}</Badge>,
     },
 
     {
@@ -149,4 +150,3 @@ export function userColumns(): Array<ColumnDef<AdminUser, unknown>> {
     },
   ]
 }
-

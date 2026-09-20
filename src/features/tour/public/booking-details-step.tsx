@@ -23,7 +23,7 @@ export function BookingDetailsStep({
   onChange,
   onBack,
   onContinue,
-  isLoading
+  isLoading,
 }: BookingDetailsStepProps) {
   const canContinue =
     form.name.trim() !== '' &&
@@ -102,7 +102,7 @@ export function BookingDetailsStep({
           disabled={!canContinue || isLoading}
           className="flex-1 bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0B0B0B] font-medium rounded-none h-11"
         >
-          {isLoading && <Spinner/>}
+          {isLoading && <Spinner />}
           {isLoading ? 'Processing...' : 'Continue'}
         </Button>
       </div>

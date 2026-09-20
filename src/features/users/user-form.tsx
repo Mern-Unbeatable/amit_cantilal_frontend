@@ -3,6 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import type { AdminUser } from '@/features/users/user.types.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -13,30 +14,40 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import type { AdminUser } from '@/features/users/user.types.ts'
 import { ROLE_LABELS } from '@/@types/user'
 
 const ROLES = ['admin', 'student'] as const
-const STATUSES = ['Student', 'Graduate', 'Employed', 'Self-employed', 'Other'] as const
+const STATUSES = [
+  'Student',
+  'Graduate',
+  'Employed',
+  'Self-employed',
+  'Other',
+] as const
 
-const schema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  email: z.string().email('Invalid email'),
-  phone: z.string().optional(),
-  location: z.string().optional(),
-  password: z.string().optional(),
-  password_confirmation: z.string().optional(),
-  role: z.enum(ROLES),
-  status: z.enum(STATUSES),
-}).refine((data) => {
-  if (data.password && data.password !== data.password_confirmation) {
-    return false
-  }
-  return true
-}, {
-  message: "Passwords don't match",
-  path: ['password_confirmation'],
-})
+const schema = z
+  .object({
+    name: z.string().min(1, 'Name is required'),
+    email: z.string().email('Invalid email'),
+    phone: z.string().optional(),
+    location: z.string().optional(),
+    password: z.string().optional(),
+    password_confirmation: z.string().optional(),
+    role: z.enum(ROLES),
+    status: z.enum(STATUSES),
+  })
+  .refine(
+    (data) => {
+      if (data.password && data.password !== data.password_confirmation) {
+        return false
+      }
+      return true
+    },
+    {
+      message: "Passwords don't match",
+      path: ['password_confirmation'],
+    },
+  )
 
 type UserFormValues = z.infer<typeof schema>
 
@@ -139,7 +150,10 @@ export function UserForm({
 
       {/* Role */}
       <Field id="role" label="Role" required error={errors.role?.message}>
-        <Select value={role} onValueChange={(value) => setValue('role', value as any)}>
+        <Select
+          value={role}
+          onValueChange={(value) => setValue('role', value as any)}
+        >
           <SelectTrigger id="role">
             <SelectValue placeholder="Select a role" />
           </SelectTrigger>
@@ -155,7 +169,10 @@ export function UserForm({
 
       {/* Status */}
       <Field id="status" label="Status" required error={errors.status?.message}>
-        <Select value={status} onValueChange={(value) => setValue('status', value as any)}>
+        <Select
+          value={status}
+          onValueChange={(value) => setValue('status', value as any)}
+        >
           <SelectTrigger id="status">
             <SelectValue placeholder="Select a status" />
           </SelectTrigger>
@@ -172,7 +189,11 @@ export function UserForm({
       {/* Password */}
       <Field
         id="password"
-        label={defaultValues ? 'New Password (leave empty to keep current)' : 'Password'}
+        label={
+          defaultValues
+            ? 'New Password (leave empty to keep current)'
+            : 'Password'
+        }
         required={!defaultValues}
         error={errors.password?.message}
       >
@@ -210,4 +231,3 @@ export function UserForm({
     </form>
   )
 }
-

@@ -1,22 +1,22 @@
-import { useTranslation } from "react-i18next";
-import type {Tour} from "@/features/tour/tour.types.ts";
-import {TourCard} from "@/features/tour/tour-card.tsx";
+import { useTranslation } from 'react-i18next'
+import type { Tour } from '@/features/tour/tour.types.ts'
+import { TourCard } from '@/features/tour/tour-card.tsx'
 
 interface ToursSectionProps {
-  tours: Array<Tour>;
+  tours: Array<Tour>
 }
 
 export function ToursSection({ tours }: ToursSectionProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <section className="py-10 md:py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-4 md:px-12">
-
         {/* Header */}
         <div className="text-center mb-8 md:mb-16">
           <div className="tag-gold mb-4">{t('toursSection.tag')}</div>
           <h2 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold mb-3 md:mb-6">
-            {t('toursSection.titlePrefix')} <em className="italic">{t('toursSection.titleEmphasis')}</em>
+            {t('toursSection.titlePrefix')}{' '}
+            <em className="italic">{t('toursSection.titleEmphasis')}</em>
           </h2>
           <p className="text-sm md:text-xl text-[#9A9182] max-w-2xl mx-auto">
             {t('toursSection.subtitle')}
@@ -37,8 +37,7 @@ export function ToursSection({ tours }: ToursSectionProps) {
             </p>
           </div>
         )}
-
       </div>
     </section>
-  );
+  )
 }

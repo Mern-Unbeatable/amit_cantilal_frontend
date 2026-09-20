@@ -33,7 +33,9 @@ export function PublicBreadcrumbs({
   const isHero = variant === 'hero'
 
   return (
-    <Breadcrumb className={cn(isHero ? 'mb-6 md:mb-8' : 'mb-8 md:mb-10', className)}>
+    <Breadcrumb
+      className={cn(isHero ? 'mb-6 md:mb-8' : 'mb-8 md:mb-10', className)}
+    >
       <BreadcrumbList
         className={cn(
           'gap-1.5 sm:gap-2 text-[10px] md:text-[11px] tracking-[0.18em] uppercase font-light',

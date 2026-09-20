@@ -203,7 +203,6 @@ function BookingCard({ booking }: { booking: BookingState }) {
   )
 }
 
-
 // ─── Route component ──────────────────────────────────────────────────────────
 
 function RouteComponent() {
@@ -242,7 +241,9 @@ function RouteComponent() {
       `Contact: ${booking.name} (${booking.email})`,
     ].filter(Boolean)
 
-    const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' })
+    const blob = new Blob([lines.join('\n')], {
+      type: 'text/plain;charset=utf-8',
+    })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
@@ -258,7 +259,9 @@ function RouteComponent() {
       <section className="min-h-screen flex items-center justify-center bg-[#0B0B0B]">
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 rounded-full border-2 border-[#C9A84C]/20 border-t-[#C9A84C] animate-spin" />
-          <span className="text-sm text-[#9A9182]">Loading your booking...</span>
+          <span className="text-sm text-[#9A9182]">
+            Loading your booking...
+          </span>
         </div>
       </section>
     )
@@ -266,9 +269,15 @@ function RouteComponent() {
     return (
       <section className="min-h-screen flex items-center justify-center bg-[#0B0B0B]">
         <div className="text-center space-y-4">
-          <XCircle className="w-12 h-12 text-red-400 mx-auto" strokeWidth={1.5} />
+          <XCircle
+            className="w-12 h-12 text-red-400 mx-auto"
+            strokeWidth={1.5}
+          />
           <p className="text-[#9A9182]">Booking not found.</p>
-          <Link to="/booking" className="inline-block px-6 py-3 bg-[#C9A84C] text-[#0B0B0B] text-sm font-medium hover:bg-[#E2C97E] transition-colors">
+          <Link
+            to="/booking"
+            className="inline-block px-6 py-3 bg-[#C9A84C] text-[#0B0B0B] text-sm font-medium hover:bg-[#E2C97E] transition-colors"
+          >
             Try Again
           </Link>
         </div>
@@ -308,9 +317,9 @@ function RouteComponent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
           >
-              {redirectStatus === 'succeeded' && (
-                <BookingCard booking={booking} />
-              )}
+            {redirectStatus === 'succeeded' && (
+              <BookingCard booking={booking} />
+            )}
           </motion.div>
 
           {/* Actions */}

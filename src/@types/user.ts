@@ -1,13 +1,17 @@
 /* ===AUTH TYPES ===*/
 
-export type UserRole = 'admin'
-  | 'student'
+export type UserRole = 'admin' | 'student'
 
-export type UserStatus = 'Student' | 'Graduate' | 'Employed' | 'Self-employed' | 'Other'
+export type UserStatus =
+  | 'Student'
+  | 'Graduate'
+  | 'Employed'
+  | 'Self-employed'
+  | 'Other'
 
 /* === User ===*/
 export interface User {
-  id: number;
+  id: number
   uid: string
   name: string
   email: string
@@ -15,8 +19,8 @@ export interface User {
   location: number | null
   is_active: boolean
   last_login_at: string | null
-  role: UserRole,
-  status: UserStatus,
+  role: UserRole
+  status: UserStatus
   roles: Array<UserRole>
   permissions: Array<string>
 }
@@ -43,7 +47,12 @@ export interface ApplyPayload {
   location?: string
   password: string
   password_confirmation: string
-  current_status: 'Student' | 'Graduate' | 'Employed' | 'Self-employed' | 'Other'
+  current_status:
+    | 'Student'
+    | 'Graduate'
+    | 'Employed'
+    | 'Self-employed'
+    | 'Other'
   prior_experience: 'yes' | 'no'
   experience_description?: string
 }

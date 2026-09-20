@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import type { PartnershipRequestStatus } from '@/features/partnership-request/partnership-request.types.ts'
 import { partnershipRequestService } from '@/features/partnership-request/partnership-request.service.ts'
+
 export const partnershipRequestKeys = {
   all: ['partnership-request'] as const,
   paginatedList: (params: object) =>
@@ -24,7 +25,8 @@ export function useGetPaginatedPartnershipRequest(params: {
 }) {
   return useQuery({
     queryKey: partnershipRequestKeys.paginatedList(params),
-    queryFn: () => partnershipRequestService.getPaginatedPartnershipRequests(params),
+    queryFn: () =>
+      partnershipRequestService.getPaginatedPartnershipRequests(params),
     staleTime: 1000 * 60 * 5,
   })
 }

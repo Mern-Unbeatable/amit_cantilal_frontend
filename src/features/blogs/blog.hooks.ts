@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import type {
   AdminCreatePostPayload,
   AdminUpdatePostPayload,
@@ -10,7 +10,8 @@ export const blogKeys = {
   lists: () => [...blogKeys.all(), 'list'] as const,
   list: (page: number) => [...blogKeys.lists(), { page }] as const,
   detail: (slug: string) => [...blogKeys.all(), 'detail', slug] as const,
-  paginatedList: (params: object) => [...blogKeys.all(), 'list', params] as const,
+  paginatedList: (params: object) =>
+    [...blogKeys.all(), 'list', params] as const,
 }
 
 export function useAdminPosts(params: {

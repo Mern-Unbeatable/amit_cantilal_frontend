@@ -4,8 +4,14 @@ import { useTranslation } from 'react-i18next'
 export function VipConciergeAvailability() {
   const { t } = useTranslation()
   const AIRPORTS = [
-    { name: t('vipConcierge.availability.lisbonName'), code: t('vipConcierge.availability.lisbonCode') },
-    { name: t('vipConcierge.availability.portoName'), code: t('vipConcierge.availability.portoCode') },
+    {
+      name: t('vipConcierge.availability.lisbonName'),
+      code: t('vipConcierge.availability.lisbonCode'),
+    },
+    {
+      name: t('vipConcierge.availability.portoName'),
+      code: t('vipConcierge.availability.portoCode'),
+    },
   ]
   return (
     <section className="container mx-auto px-6 md:px-12 py-16 md:py-24">

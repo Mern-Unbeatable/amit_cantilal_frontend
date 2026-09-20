@@ -3,7 +3,7 @@
 export interface BlogPost {
   slug: string
   title: string
-  date: string           // formatted, mapped from published_at
+  date: string // formatted, mapped from published_at
   coverImage: string
   excerpt?: string
   content: string
@@ -31,7 +31,7 @@ export interface AdminCreatePostPayload {
   content: string
   cover_image?: File | null
   author?: string
-  published_at?: string | null  // null = save as draft
+  published_at?: string | null // null = save as draft
 }
 
 export interface AdminUpdatePostPayload extends Partial<AdminCreatePostPayload> {}

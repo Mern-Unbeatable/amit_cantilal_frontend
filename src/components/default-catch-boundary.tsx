@@ -5,8 +5,8 @@ import {
   useMatch,
   useRouter,
 } from '@tanstack/react-router'
-import type { ErrorComponentProps } from '@tanstack/react-router'
 import { Icon } from '@iconify/react'
+import type { ErrorComponentProps } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 
 export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
@@ -39,10 +39,7 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
       </div>
 
       <div className="flex items-center gap-3">
-        <Button
-          variant="outline"
-          onClick={() => router.invalidate()}
-        >
+        <Button variant="outline" onClick={() => router.invalidate()}>
           <Icon icon="material-symbols:refresh" className="mr-2 size-4" />
           Try again
         </Button>
@@ -69,7 +66,10 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
                 window.history.back()
               }}
             >
-              <Icon icon="material-symbols:arrow-back" className="mr-2 size-4" />
+              <Icon
+                icon="material-symbols:arrow-back"
+                className="mr-2 size-4"
+              />
               Go back
             </Link>
           </Button>

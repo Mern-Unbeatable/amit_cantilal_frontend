@@ -20,7 +20,11 @@ const MainLayout = () => {
 
   return (
     <SidebarProvider defaultOpen>
-      <AppSidebar variant="sidebar" collapsible="offcanvas" className="print:hidden" />
+      <AppSidebar
+        variant="sidebar"
+        collapsible="offcanvas"
+        className="print:hidden"
+      />
       <SidebarInset
         data-content-layout="centered"
         className={cn(

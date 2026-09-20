@@ -4,21 +4,22 @@ import { adminRoutes } from '@/components/layouts/sidebar/admin.route.ts'
 import { studentRoutes } from '@/components/layouts/sidebar/student.route.ts'
 
 interface SideBarItemsProps {
-  user: User | null,
+  user: User | null
 }
 
-export const useSidebarItems = ({user}: SideBarItemsProps): Array<NavGroup> => {
+export const useSidebarItems = ({
+  user,
+}: SideBarItemsProps): Array<NavGroup> => {
+  if (!user) return []
 
-  if (!user) return [];
-
-  const role = user.role;
+  const role = user.role
 
   switch (role) {
-    case "admin":
-      return adminRoutes;
-    case "student":
-      return studentRoutes;
+    case 'admin':
+      return adminRoutes
+    case 'student':
+      return studentRoutes
     default:
-      return [];
+      return []
   }
-};
+}

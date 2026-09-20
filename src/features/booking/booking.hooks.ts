@@ -6,8 +6,7 @@ export const bookingKeys = {
   all: ['bookings'] as const,
   paginatedList: (params: object) =>
     [...bookingKeys.all, 'list', params] as const,
-  detail: (id: number | string) =>
-    [...bookingKeys.all, 'detail', id] as const,
+  detail: (id: number | string) => [...bookingKeys.all, 'detail', id] as const,
   paymentIntent: (id: number | string) =>
     [...bookingKeys.all, 'paymentIntent', id] as const,
   activity: (id: number | string) =>
@@ -50,8 +49,6 @@ export function useGetBookingByPaymentIntent(id: number | string) {
     staleTime: 1000 * 60 * 5,
   })
 }
-
-
 
 export function useLookupBooking() {
   return useMutation({

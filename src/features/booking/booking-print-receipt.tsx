@@ -20,8 +20,12 @@ export function BookingPrintReceipt({
   whatsappNumber,
   contactEmail,
 }: BookingPrintReceiptProps) {
-  const details = (booking.details ?? {}) as Record<string, string | number | undefined>
-  const isTransferOrHourly = booking.service_type === 'transfer' || booking.service_type === 'hourly'
+  const details = (booking.details ?? {}) as Record<
+    string,
+    string | number | undefined
+  >
+  const isTransferOrHourly =
+    booking.service_type === 'transfer' || booking.service_type === 'hourly'
   const vehicle = details.vehicle_name ?? details.vehicle_type
   const waLink = whatsappNumber
     ? `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}`
@@ -31,7 +35,12 @@ export function BookingPrintReceipt({
     <div className="mx-auto w-[600px] max-w-full bg-white font-sans text-[#333333]">
       {/* Header */}
       <div className="bg-[#0B0B0B] border-b-[3px] border-[#C9A84C] px-6 py-8 text-center">
-        <img src="/logo512.png" alt="Off We Go Portugal" width={130} className="mx-auto" />
+        <img
+          src="/logo512.png"
+          alt="Off We Go Portugal"
+          width={130}
+          className="mx-auto"
+        />
       </div>
 
       {/* Status heading */}
@@ -43,10 +52,12 @@ export function BookingPrintReceipt({
           BOOKING CONFIRMED
         </h1>
         <div className="mx-auto my-6 h-px w-15 bg-[#C9A84C]" />
-        <p className="text-left text-sm leading-relaxed">Dear {booking.name},</p>
+        <p className="text-left text-sm leading-relaxed">
+          Dear {booking.name},
+        </p>
         <p className="mt-3 text-left text-sm leading-relaxed">
-          Thank you for choosing Off We Go Portugal. Your booking has been confirmed
-          and your driver will be ready for you.
+          Thank you for choosing Off We Go Portugal. Your booking has been
+          confirmed and your driver will be ready for you.
         </p>
       </div>
 
@@ -56,7 +67,9 @@ export function BookingPrintReceipt({
           <p className="mb-1.5 text-[11px] font-bold tracking-[1.5px] text-[#C9A84C]">
             BOOKING REFERENCE
           </p>
-          <p className="text-xl font-bold text-[#1a1a1a]">{booking.reference}</p>
+          <p className="text-xl font-bold text-[#1a1a1a]">
+            {booking.reference}
+          </p>
         </div>
       </div>
 
@@ -71,20 +84,27 @@ export function BookingPrintReceipt({
           <tbody>
             <tr className="border-b border-[#f0ede6]">
               <td className="py-2.5 text-[#777777]">Service</td>
-              <td className="py-2.5 text-right capitalize">{booking.service_type}</td>
+              <td className="py-2.5 text-right capitalize">
+                {booking.service_type}
+              </td>
             </tr>
             <tr className="border-b border-[#f0ede6]">
               <td className="py-2.5 text-[#777777]">Date</td>
               <td className="py-2.5 text-right">
                 {new Date(booking.date).toLocaleDateString('en-GB', {
-                  weekday: 'long', day: '2-digit', month: 'long', year: 'numeric',
+                  weekday: 'long',
+                  day: '2-digit',
+                  month: 'long',
+                  year: 'numeric',
                 })}
               </td>
             </tr>
             {booking.pickup_time && (
               <tr className="border-b border-[#f0ede6]">
                 <td className="py-2.5 text-[#777777]">Pickup Time</td>
-                <td className="py-2.5 text-right">{booking.pickup_time.slice(0, 5)}</td>
+                <td className="py-2.5 text-right">
+                  {booking.pickup_time.slice(0, 5)}
+                </td>
               </tr>
             )}
             <tr className="border-b border-[#f0ede6]">
@@ -93,14 +113,20 @@ export function BookingPrintReceipt({
             </tr>
             {details.pickup_location && (
               <tr className="border-b border-[#f0ede6]">
-                <td className="py-2.5 align-top text-[#777777]">Pickup Location</td>
+                <td className="py-2.5 align-top text-[#777777]">
+                  Pickup Location
+                </td>
                 <td className="py-2.5 text-right">{details.pickup_location}</td>
               </tr>
             )}
             {details.dropoff_location && (
               <tr className="border-b border-[#f0ede6]">
-                <td className="py-2.5 align-top text-[#777777]">Drop-off Location</td>
-                <td className="py-2.5 text-right">{details.dropoff_location}</td>
+                <td className="py-2.5 align-top text-[#777777]">
+                  Drop-off Location
+                </td>
+                <td className="py-2.5 text-right">
+                  {details.dropoff_location}
+                </td>
               </tr>
             )}
             {booking.service_type === 'hourly' && details.hours && (
@@ -161,14 +187,20 @@ export function BookingPrintReceipt({
               Your driver will be waiting at the pickup location.
             </p>
             <ul className="mb-4 list-disc pl-5 text-sm leading-relaxed">
-              <li>For airport pickups, we monitor your flight and wait 60 minutes at no extra charge.</li>
-              <li>For other locations, we wait 15 minutes at no extra charge.</li>
+              <li>
+                For airport pickups, we monitor your flight and wait 60 minutes
+                at no extra charge.
+              </li>
+              <li>
+                For other locations, we wait 15 minutes at no extra charge.
+              </li>
             </ul>
           </>
         )}
         <p className="mb-6 text-sm leading-relaxed">
-          If you have any questions or need to make changes, please contact us as soon
-          as possible with your booking reference <strong>{booking.reference}</strong>.
+          If you have any questions or need to make changes, please contact us
+          as soon as possible with your booking reference{' '}
+          <strong>{booking.reference}</strong>.
         </p>
         {waLink && (
           <div className="mx-auto w-fit rounded-full bg-[#0B0B0B] px-7 py-3.5 text-center text-[13px] font-bold tracking-wide text-white">
@@ -199,14 +231,19 @@ export function BookingPrintReceipt({
 
       {/* Footer */}
       <div className="bg-[#0B0B0B] px-6 py-8 text-center">
-        <p className="font-serif text-sm text-[#C9A84C]">Thank you for traveling with us.</p>
+        <p className="font-serif text-sm text-[#C9A84C]">
+          Thank you for traveling with us.
+        </p>
         <p className="mt-1 font-serif text-sm text-[#C9A84C]">
           We look forward to providing you with an exceptional experience.
         </p>
         <div className="mx-auto my-5 h-px w-15 bg-[#C9A84C]" />
-        <p className="text-xs text-[#C9A84C]">Off We Go Portugal – Premium Chauffeur Services</p>
+        <p className="text-xs text-[#C9A84C]">
+          Off We Go Portugal – Premium Chauffeur Services
+        </p>
         <p className="mt-2.5 text-[11px] text-[#999999]">
-          Transfers &nbsp;|&nbsp; Tours &nbsp;|&nbsp; Corporate Mobility &nbsp;|&nbsp; Special Events
+          Transfers &nbsp;|&nbsp; Tours &nbsp;|&nbsp; Corporate Mobility
+          &nbsp;|&nbsp; Special Events
         </p>
         <p className="mt-2.5 text-[10px] text-[#777777]">
           © {new Date().getFullYear()} Off We Go Portugal. All rights reserved.

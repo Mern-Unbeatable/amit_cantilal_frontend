@@ -1,4 +1,3 @@
-
 export type VehicleCategory = 'electric' | 'diesel'
 
 export interface FleetVehicle {
@@ -15,7 +14,7 @@ export interface FleetVehicle {
 }
 
 export interface AllFleetResponse {
-  data:    Array<FleetVehicle>
+  data: Array<FleetVehicle>
 }
 
 export interface FleetPaginationParams {

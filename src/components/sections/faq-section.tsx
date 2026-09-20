@@ -24,14 +24,13 @@ interface FaqSectionProps {
   whatsappNumber?: string
 }
 
-export function FaqSection({
-  data,
-  whatsappNumber,
-}: FaqSectionProps) {
+export function FaqSection({ data, whatsappNumber }: FaqSectionProps) {
   const { t } = useTranslation()
   const { data: settings } = usePublicSettings()
-  const faqData = data ?? (t('faq.categories', { returnObjects: true }) as Array<FaqCategory>)
-  const resolvedWhatsappNumber = whatsappNumber ?? settings?.whatsapp_number ?? '+351914578214'
+  const faqData =
+    data ?? (t('faq.categories', { returnObjects: true }) as Array<FaqCategory>)
+  const resolvedWhatsappNumber =
+    whatsappNumber ?? settings?.whatsapp_number ?? '+351914578214'
 
   return (
     <section className="py-10 md:py-24 bg-[#0B0B0B]">

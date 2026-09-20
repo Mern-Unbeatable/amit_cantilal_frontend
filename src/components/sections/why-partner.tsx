@@ -5,8 +5,12 @@ const STAT_ICONS = [Car, Users, DollarSign, Clock, Shield, Leaf]
 
 export default function WhyPartnerWithUs() {
   const { t } = useTranslation()
-  const stats = (t('whyPartner.stats', { returnObjects: true }) as Array<{ value: string; label: string }>)
-    .map((s, idx) => ({ ...s, icon: STAT_ICONS[idx] }))
+  const stats = (
+    t('whyPartner.stats', { returnObjects: true }) as Array<{
+      value: string
+      label: string
+    }>
+  ).map((s, idx) => ({ ...s, icon: STAT_ICONS[idx] }))
   return (
     <section className="py-10 md:py-20 bg-[#141414]">
       <div className="container mx-auto px-4 md:px-12">

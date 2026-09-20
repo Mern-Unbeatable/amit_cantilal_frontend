@@ -37,7 +37,8 @@ export function useCreateTour() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (payload: AdminCreateTourPayload) => tourService.create(payload),
+    mutationFn: (payload: AdminCreateTourPayload) =>
+      tourService.create(payload),
     onSuccess: () => {
       toast.success('Tour created successfully')
       queryClient.invalidateQueries({ queryKey: TOUR_QUERY_KEY })
@@ -49,7 +50,13 @@ export function useUpdateTour() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: ({ id, payload }: { id: string | number, payload: AdminUpdateTourPayload }) => tourService.update(id, payload),
+    mutationFn: ({
+      id,
+      payload,
+    }: {
+      id: string | number
+      payload: AdminUpdateTourPayload
+    }) => tourService.update(id, payload),
     onSuccess: () => {
       toast.success('Tour updated successfully')
       queryClient.invalidateQueries({ queryKey: TOUR_QUERY_KEY })

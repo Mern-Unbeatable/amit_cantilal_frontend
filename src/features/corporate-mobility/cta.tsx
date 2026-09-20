@@ -20,7 +20,8 @@ export function CorporateCta() {
           to="/booking"
           className="inline-flex items-center gap-4 bg-[#C9A84C] text-[#0B0B0B] px-12 py-5 text-[10px] tracking-[0.3em] uppercase hover:bg-[#E2C97E] transition-all duration-700 font-medium"
         >
-          {t('corporateMobility.cta.button')} <ArrowUpRight className="w-3 h-3" strokeWidth={1} />
+          {t('corporateMobility.cta.button')}{' '}
+          <ArrowUpRight className="w-3 h-3" strokeWidth={1} />
         </Link>
         <div className="mt-8 text-sm text-white-cream/40">
           <Link

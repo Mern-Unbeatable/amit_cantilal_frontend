@@ -86,8 +86,7 @@ export default function PartnerForm() {
         onError: (err: any) =>
           setError('root', {
             message:
-              err?.response?.data?.message ??
-              t('partnerForm.genericError'),
+              err?.response?.data?.message ?? t('partnerForm.genericError'),
           }),
       },
     )
@@ -125,9 +124,7 @@ export default function PartnerForm() {
                 <h4 className="font-serif text-2xl font-light text-gradient-gold">
                   {t('partnerForm.successTitle')}
                 </h4>
-                <p className="text-[#9A9182]">
-                  {t('partnerForm.successBody')}
-                </p>
+                <p className="text-[#9A9182]">{t('partnerForm.successBody')}</p>
               </div>
             ) : (
               <form
@@ -150,20 +147,36 @@ export default function PartnerForm() {
                   />
                 </Field>
 
-                <Field id="businessType" label={t('partnerForm.businessType')} required>
+                <Field
+                  id="businessType"
+                  label={t('partnerForm.businessType')}
+                  required
+                >
                   <Select value={businessType} onValueChange={setBusinessType}>
                     <SelectTrigger className="h-10 !md:h-14 w-full text-sm md:text-lg">
-                      <SelectValue placeholder={t('partnerForm.businessTypePlaceholder')} />
+                      <SelectValue
+                        placeholder={t('partnerForm.businessTypePlaceholder')}
+                      />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="agency">{t('partnerForm.businessTypes.agency')}</SelectItem>
-                      <SelectItem value="hotel">{t('partnerForm.businessTypes.hotel')}</SelectItem>
+                      <SelectItem value="agency">
+                        {t('partnerForm.businessTypes.agency')}
+                      </SelectItem>
+                      <SelectItem value="hotel">
+                        {t('partnerForm.businessTypes.hotel')}
+                      </SelectItem>
                       <SelectItem value="concierge">
                         {t('partnerForm.businessTypes.concierge')}
                       </SelectItem>
-                      <SelectItem value="corporate">{t('partnerForm.businessTypes.corporate')}</SelectItem>
-                      <SelectItem value="dmc">{t('partnerForm.businessTypes.dmc')}</SelectItem>
-                      <SelectItem value="other">{t('partnerForm.businessTypes.other')}</SelectItem>
+                      <SelectItem value="corporate">
+                        {t('partnerForm.businessTypes.corporate')}
+                      </SelectItem>
+                      <SelectItem value="dmc">
+                        {t('partnerForm.businessTypes.dmc')}
+                      </SelectItem>
+                      <SelectItem value="other">
+                        {t('partnerForm.businessTypes.other')}
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </Field>
@@ -205,7 +218,11 @@ export default function PartnerForm() {
                   />
                 </Field>
 
-                <Field id="phone" label={t('partnerForm.phone')} error={errors.phone?.message}>
+                <Field
+                  id="phone"
+                  label={t('partnerForm.phone')}
+                  error={errors.phone?.message}
+                >
                   <Input
                     id="phone"
                     type="tel"
@@ -241,7 +258,9 @@ export default function PartnerForm() {
                   disabled={isPending}
                   className="w-full h-12 md:h-16 text-base md:text-xl bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium tracking-[.1em] rounded-none"
                 >
-                  {isPending ? t('partnerForm.submitting') : t('partnerForm.submit')}
+                  {isPending
+                    ? t('partnerForm.submitting')
+                    : t('partnerForm.submit')}
                 </Button>
               </form>
             )}

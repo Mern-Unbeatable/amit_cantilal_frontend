@@ -2,7 +2,9 @@ import { useTranslation } from 'react-i18next'
 
 export function EventsSignature() {
   const { t } = useTranslation()
-  const items = t('specialEvents.signature.items', { returnObjects: true }) as string[]
+  const items = t('specialEvents.signature.items', {
+    returnObjects: true,
+  }) as Array<string>
   return (
     <section className="py-28 md:py-36 bg-[#0B0B0B]">
       <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
@@ -24,7 +26,9 @@ export function EventsSignature() {
               <span className="text-[10px] tracking-[0.3em] text-[#C9A84C] mt-1.5 font-light shrink-0">
                 {String(idx + 1).padStart(2, '0')}
               </span>
-              <span className="text-[#F5F0E8]/75 font-light leading-relaxed">{text}</span>
+              <span className="text-[#F5F0E8]/75 font-light leading-relaxed">
+                {text}
+              </span>
             </li>
           ))}
         </ul>

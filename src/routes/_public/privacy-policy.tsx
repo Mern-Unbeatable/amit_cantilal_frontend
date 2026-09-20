@@ -32,10 +32,10 @@ export const Route = createFileRoute('/_public/privacy-policy')({
 })
 
 interface SectionCardProps {
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-  delay?: number;
+  icon: React.ReactNode
+  title: string
+  children: React.ReactNode
+  delay?: number
 }
 
 function SectionCard({ icon, title, children, delay = 0 }: SectionCardProps) {
@@ -43,7 +43,7 @@ function SectionCard({ icon, title, children, delay = 0 }: SectionCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, delay }}
     >
       <div className="bg-card/60 border border-border rounded-xl md:rounded-2xl p-6 md:p-10">
@@ -60,7 +60,7 @@ function SectionCard({ icon, title, children, delay = 0 }: SectionCardProps) {
         </div>
       </div>
     </motion.div>
-  );
+  )
 }
 
 function List({ items }: { items: Array<string> }) {
@@ -75,14 +75,30 @@ function List({ items }: { items: Array<string> }) {
 
 function RouteComponent() {
   const { t } = useTranslation()
-  const dataWeCollectPersonal = t('privacyPolicy.dataWeCollect.personalInfo', { returnObjects: true }) as string[]
-  const dataWeCollectUsage = t('privacyPolicy.dataWeCollect.usage', { returnObjects: true }) as string[]
-  const howWeCollectItems = t('privacyPolicy.howWeCollect.items', { returnObjects: true }) as string[]
-  const purposeItems = t('privacyPolicy.purpose.items', { returnObjects: true }) as string[]
-  const legalBasisItems = t('privacyPolicy.legalBasis.items', { returnObjects: true }) as string[]
-  const securityItems = t('privacyPolicy.security.items', { returnObjects: true }) as string[]
-  const thirdPartyItems = t('privacyPolicy.thirdParty.items', { returnObjects: true }) as string[]
-  const rightsItems = t('privacyPolicy.rights.items', { returnObjects: true }) as string[]
+  const dataWeCollectPersonal = t('privacyPolicy.dataWeCollect.personalInfo', {
+    returnObjects: true,
+  }) as Array<string>
+  const dataWeCollectUsage = t('privacyPolicy.dataWeCollect.usage', {
+    returnObjects: true,
+  }) as Array<string>
+  const howWeCollectItems = t('privacyPolicy.howWeCollect.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const purposeItems = t('privacyPolicy.purpose.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const legalBasisItems = t('privacyPolicy.legalBasis.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const securityItems = t('privacyPolicy.security.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const thirdPartyItems = t('privacyPolicy.thirdParty.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const rightsItems = t('privacyPolicy.rights.items', {
+    returnObjects: true,
+  }) as Array<string>
   return (
     <motion.div {...mainTransitionProps}>
       <section className="py-16 md:py-24 bg-gradient-to-b from-muted/30 to-background">
@@ -119,7 +135,10 @@ function RouteComponent() {
             >
               <div className="bg-card/60 border border-border rounded-xl md:rounded-2xl p-6 md:p-10">
                 <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-3">
-                  <Trans i18nKey="privacyPolicy.introP1" components={{ strong: <strong /> }} />
+                  <Trans
+                    i18nKey="privacyPolicy.introP1"
+                    components={{ strong: <strong /> }}
+                  />
                 </p>
                 <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-3">
                   {t('privacyPolicy.introP2')}
@@ -277,13 +296,16 @@ function RouteComponent() {
                   {t('privacyPolicy.cookies.typesTitle')}
                 </p>
                 <p>
-                  <strong>{t('privacyPolicy.cookies.essential')}</strong> — {t('privacyPolicy.cookies.essentialBody')}
+                  <strong>{t('privacyPolicy.cookies.essential')}</strong> —{' '}
+                  {t('privacyPolicy.cookies.essentialBody')}
                 </p>
                 <p>
-                  <strong>{t('privacyPolicy.cookies.analytics')}</strong> — {t('privacyPolicy.cookies.analyticsBody')}
+                  <strong>{t('privacyPolicy.cookies.analytics')}</strong> —{' '}
+                  {t('privacyPolicy.cookies.analyticsBody')}
                 </p>
                 <p>
-                  <strong>{t('privacyPolicy.cookies.functional')}</strong> — {t('privacyPolicy.cookies.functionalBody')}
+                  <strong>{t('privacyPolicy.cookies.functional')}</strong> —{' '}
+                  {t('privacyPolicy.cookies.functionalBody')}
                 </p>
               </div>
               <div className="space-y-3">

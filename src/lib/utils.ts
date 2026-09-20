@@ -1,6 +1,6 @@
-import type { ClassValue } from 'clsx'
 import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import type { ClassValue } from 'clsx'
 
 export function cn(...inputs: Array<ClassValue>) {
   return twMerge(clsx(inputs))
@@ -39,7 +39,6 @@ export const capitalize = (str: string) => {
 }
 
 export const getInitials = (str: string): string => {
-
   return (
     str
       .trim()

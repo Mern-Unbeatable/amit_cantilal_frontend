@@ -32,16 +32,28 @@ function RouteComponent() {
     setError('')
 
     try {
-      const booking = await lookup.mutateAsync({ reference: reference.trim().toUpperCase(), email: email.trim() })
+      const booking = await lookup.mutateAsync({
+        reference: reference.trim().toUpperCase(),
+        email: email.trim(),
+      })
 
       if (booking.status === 'confirmed') {
-        navigate({ to: '/booking/confirm', search: { already_confirmed: booking.reference } as never })
+        navigate({
+          to: '/booking/confirm',
+          search: { already_confirmed: booking.reference } as never,
+        })
         return
       }
 
-      navigate({ to: '/booking/pay/$reference', params: { reference: booking.reference }, search: { email: email.trim() } as never })
+      navigate({
+        to: '/booking/pay/$reference',
+        params: { reference: booking.reference },
+        search: { email: email.trim() } as never,
+      })
     } catch {
-      setError('No booking found with that reference and email. Please check and try again.')
+      setError(
+        'No booking found with that reference and email. Please check and try again.',
+      )
     }
   }
 
@@ -50,7 +62,10 @@ function RouteComponent() {
       <section className="relative min-h-screen flex items-center justify-center bg-[#0B0B0B] overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 20%, rgba(201,168,76,0.05) 0%, transparent 70%)' }}
+          style={{
+            background:
+              'radial-gradient(ellipse 60% 40% at 50% 20%, rgba(201,168,76,0.05) 0%, transparent 70%)',
+          }}
         />
 
         <div className="container mx-auto px-4 py-20 max-w-md">
@@ -67,11 +82,15 @@ function RouteComponent() {
                 Find Your Booking
               </h1>
               <p className="text-sm text-[#9A9182]">
-                Enter your booking reference and email to retrieve your booking and complete payment.
+                Enter your booking reference and email to retrieve your booking
+                and complete payment.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="bg-[#141414] border border-[#C9A84C]/12 p-6 md:p-8 space-y-5">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-[#141414] border border-[#C9A84C]/12 p-6 md:p-8 space-y-5"
+            >
               <div className="space-y-1.5">
                 <Label className="text-sm text-[#9A9182]">
                   Booking Reference <span className="text-[#C9A84C]">*</span>

@@ -1,6 +1,4 @@
-import type {
-  CreateBookingResponse,
-} from '@/features/booking/booking.types.ts'
+import type { CreateBookingResponse } from '@/features/booking/booking.types.ts'
 import type {
   PartnershipRequestPaginatedResponse,
   PartnershipRequestPayload,
@@ -24,17 +22,16 @@ export const partnershipRequestService = {
     source?: string
     status?: string
   }) => {
-    const response = await api.get<{ data: PartnershipRequestPaginatedResponse }>(
-      '/admin/partnerships',
-      {
-        params: {
-          page: params.page,
-          per_page: params.pageSize,
-          source: params.source,
-          status: params.status,
-        },
+    const response = await api.get<{
+      data: PartnershipRequestPaginatedResponse
+    }>('/admin/partnerships', {
+      params: {
+        page: params.page,
+        per_page: params.pageSize,
+        source: params.source,
+        status: params.status,
       },
-    )
+    })
     return unwrap(response)
   },
 
@@ -43,11 +40,8 @@ export const partnershipRequestService = {
     status: PartnershipRequestStatus,
   ): Promise<PartnershipRequestState> =>
     api
-      .put<{ data: PartnershipRequestState }>(
-        `/admin/partnerships/${id}/status`,
-        { status },
-      )
+      .put<{
+        data: PartnershipRequestState
+      }>(`/admin/partnerships/${id}/status`, { status })
       .then(unwrap),
 }
-
-

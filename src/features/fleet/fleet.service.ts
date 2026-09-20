@@ -22,14 +22,14 @@ type FleetPaginatedResponse = {
 
 export const fleetService = {
   all: (): Promise<Array<FleetVehicle>> =>
-    api
-      .get<{ data: FleetListResponse }>('/public/fleet')
-      .then(unwrap),
+    api.get<{ data: FleetListResponse }>('/public/fleet').then(unwrap),
   byId: (id: string | number): Promise<FleetVehicle> =>
-    api
-      .get<{ data: FleetVehicle }>(`/public/fleet/${id}`)
-      .then(unwrap),
-  paginated: ({ page, pageSize, search }: FleetPaginationParams): Promise<FleetPaginatedResult> =>
+    api.get<{ data: FleetVehicle }>(`/public/fleet/${id}`).then(unwrap),
+  paginated: ({
+    page,
+    pageSize,
+    search,
+  }: FleetPaginationParams): Promise<FleetPaginatedResult> =>
     api
       .get<FleetPaginatedResponse>('/public/fleet', {
         params: {
@@ -41,9 +41,9 @@ export const fleetService = {
       .then((response) => {
         const items = response.data.data
         const totalFromPayload =
-          response.data.pagination?.total
-          ?? response.data.meta?.total
-          ?? response.data.total
+          response.data.pagination?.total ??
+          response.data.meta?.total ??
+          response.data.total
 
         return {
           items,
@@ -84,7 +84,10 @@ export const fleetService = {
     return unwrap(response)
   },
 
-  update: async (id: string | number, payload: AdminUpdateFleetPayload): Promise<FleetVehicle> => {
+  update: async (
+    id: string | number,
+    payload: AdminUpdateFleetPayload,
+  ): Promise<FleetVehicle> => {
     const formData = new FormData()
     formData.append('_method', 'PUT')
     formData.append('name', payload.name)

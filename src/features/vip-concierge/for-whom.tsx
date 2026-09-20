@@ -3,7 +3,9 @@ import { useTranslation } from 'react-i18next'
 
 export function VipConciergeForWhom() {
   const { t } = useTranslation()
-  const profiles = t('vipConcierge.forWhom.profiles', { returnObjects: true }) as Array<{ title: string; desc: string }>
+  const profiles = t('vipConcierge.forWhom.profiles', {
+    returnObjects: true,
+  }) as Array<{ title: string; desc: string }>
   return (
     <section className="relative container mx-auto px-6 md:px-12 py-20 md:py-32">
       <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
@@ -34,7 +36,9 @@ export function VipConciergeForWhom() {
               {p.title}
             </h3>
             <div className="w-6 h-px bg-[#C9A84C]/40 mb-4 transition-all duration-700 group-hover:w-12 group-hover:bg-[#C9A84C]/60" />
-            <p className="text-sm text-[#F5F0E8]/60 font-light leading-relaxed">{p.desc}</p>
+            <p className="text-sm text-[#F5F0E8]/60 font-light leading-relaxed">
+              {p.desc}
+            </p>
           </div>
         ))}
       </div>

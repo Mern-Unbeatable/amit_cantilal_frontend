@@ -31,7 +31,6 @@ export function BookingSummary({
   total,
   images,
 }: BookingSummaryProps) {
-
   return (
     <div className="bg-black-2 border border-gold/12 p-5 md:p-6 space-y-4 sticky top-28">
       <div className="w-8 h-0.5 bg-gold mb-4" />
@@ -75,7 +74,11 @@ export function BookingSummary({
           <div className="flex justify-between text-xs">
             <span className="text-white-dim">Date</span>
             <span className="text-white/70">
-              {date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+              {date.toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+              })}
             </span>
           </div>
         )}

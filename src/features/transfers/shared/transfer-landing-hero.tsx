@@ -11,7 +11,10 @@ interface TransferLandingHeroProps {
   imageSrc: string
 }
 
-export function TransferLandingHero({ ns, imageSrc }: TransferLandingHeroProps) {
+export function TransferLandingHero({
+  ns,
+  imageSrc,
+}: TransferLandingHeroProps) {
   const { t } = useTranslation(ns)
   const { data: settings } = usePublicSettings()
   const whatsappMessage = t('hero.whatsappMessage')
@@ -74,7 +77,10 @@ export function TransferLandingHero({ ns, imageSrc }: TransferLandingHeroProps) 
         </div>
       </section>
 
-      <motion.div className="bg-[#0F0F0F] border-y border-[#C9A84C]/15" {...fadeIn}>
+      <motion.div
+        className="bg-[#0F0F0F] border-y border-[#C9A84C]/15"
+        {...fadeIn}
+      >
         <div className="container mx-auto px-6 md:px-12 py-5 md:py-6">
           <ul className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-start sm:items-center justify-center gap-3 sm:gap-x-0 sm:gap-y-3">
             {benefits.map((benefit, index) => (

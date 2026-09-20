@@ -16,7 +16,6 @@ import type {
 import { api, unwrap } from '@/services/api.ts'
 
 export const authService = {
-
   login: async (payload: LoginPayload): Promise<LoginResponse> => {
     const response = await api.post<{ data: LoginResponse }>(
       '/auth/login',
@@ -75,10 +74,8 @@ export const authService = {
     return unwrap(response)
   },
 
-  getProfile: () =>
-    api.get<{data: User}>('/student/profile').then(unwrap),
+  getProfile: () => api.get<{ data: User }>('/student/profile').then(unwrap),
 
   updateProfile: (payload: UpdateProfilePayload) =>
     api.put<{ data: User }>('/student/profile', payload).then(unwrap),
-
 }

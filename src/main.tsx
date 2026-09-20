@@ -4,7 +4,7 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 // Supports weights 100-900
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import '@fontsource-variable/inter';
+import '@fontsource-variable/inter'
 
 import * as TanStackQueryProvider from './integrations/tanstack-query/root-provider.tsx'
 
@@ -16,7 +16,7 @@ import './i18n'
 import reportWebVitals from './reportWebVitals.ts'
 // eslint-disable-next-line import/order
 import { Toaster } from 'sonner'
-import {TooltipProvider} from "@/components/ui/tooltip.tsx";
+import { TooltipProvider } from '@/components/ui/tooltip.tsx'
 import NotFound from '@/components/not-found.tsx'
 import { DefaultCatchBoundary } from '@/components/default-catch-boundary.tsx'
 import { initAnalytics, trackPageview } from '@/lib/analytics.ts'
@@ -68,11 +68,11 @@ if (rootElement && !rootElement.innerHTML) {
     <StrictMode>
       <TanStackQueryProvider.Provider {...TanStackQueryProviderContext}>
         <TooltipProvider>
-        <Toaster richColors position='top-center' expand />
-        <RouterProvider router={router} />
+          <Toaster richColors position="top-center" expand />
+          <RouterProvider router={router} />
         </TooltipProvider>
       </TanStackQueryProvider.Provider>
-    </StrictMode>
+    </StrictMode>,
   )
 }
 

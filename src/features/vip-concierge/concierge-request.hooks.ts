@@ -32,8 +32,13 @@ export function useUpdateConciergeRequestStatus() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: ({ id, status }: { id: number | string; status: ConciergeRequestStatus }) =>
-      conciergeRequestService.updateStatus(id, status),
+    mutationFn: ({
+      id,
+      status,
+    }: {
+      id: number | string
+      status: ConciergeRequestStatus
+    }) => conciergeRequestService.updateStatus(id, status),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: conciergeRequestKeys.all })
     },

@@ -1,12 +1,23 @@
 import { Luggage, Shield, UserCheck } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
-function ServiceList({ items, gold = false }: { items: string[]; gold?: boolean }) {
+function ServiceList({
+  items,
+  gold = false,
+}: {
+  items: Array<string>
+  gold?: boolean
+}) {
   return (
     <ul className="space-y-5">
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-4 text-sm md:text-[15px] text-[#F5F0E8]/80 font-light leading-relaxed">
-          <span className={`mt-[10px] w-3 h-px flex-shrink-0 ${gold ? 'bg-[#C9A84C]/70' : 'bg-[#C9A84C]/50'}`} />
+        <li
+          key={item}
+          className="flex items-start gap-4 text-sm md:text-[15px] text-[#F5F0E8]/80 font-light leading-relaxed"
+        >
+          <span
+            className={`mt-[10px] w-3 h-px flex-shrink-0 ${gold ? 'bg-[#C9A84C]/70' : 'bg-[#C9A84C]/50'}`}
+          />
           <span>{item}</span>
         </li>
       ))}
@@ -16,8 +27,12 @@ function ServiceList({ items, gold = false }: { items: string[]; gold?: boolean 
 
 export function VipConciergeServices() {
   const { t } = useTranslation()
-  const meetAssistItems = t('vipConcierge.services.meetAssist.items', { returnObjects: true }) as string[]
-  const fastTrackItems = t('vipConcierge.services.fastTrack.items', { returnObjects: true }) as string[]
+  const meetAssistItems = t('vipConcierge.services.meetAssist.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const fastTrackItems = t('vipConcierge.services.fastTrack.items', {
+    returnObjects: true,
+  }) as Array<string>
   return (
     <section className="relative container mx-auto px-6 md:px-12 py-20 md:py-32">
       <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
@@ -42,7 +57,9 @@ export function VipConciergeServices() {
           <span className="absolute top-0 left-0 w-px h-6 bg-[#C9A84C]/40" />
           <span className="absolute bottom-0 right-0 w-6 h-px bg-[#C9A84C]/40" />
           <span className="absolute bottom-0 right-0 w-px h-6 bg-[#C9A84C]/40" />
-          <span className="absolute top-8 right-10 font-serif text-2xl font-light tracking-tight text-[#C9A84C]/25">I</span>
+          <span className="absolute top-8 right-10 font-serif text-2xl font-light tracking-tight text-[#C9A84C]/25">
+            I
+          </span>
 
           <div className="inline-flex items-center justify-center w-14 h-14 mb-8 rounded-full border transition-transform duration-700 group-hover:scale-105 border-[#C9A84C]/25 text-[#C9A84C] bg-white/[0.02]">
             <Luggage className="w-5 h-5" strokeWidth={1.25} />
@@ -64,7 +81,9 @@ export function VipConciergeServices() {
           <span className="absolute top-0 left-0 w-px h-6 bg-[#C9A84C]/60" />
           <span className="absolute bottom-0 right-0 w-6 h-px bg-[#C9A84C]/60" />
           <span className="absolute bottom-0 right-0 w-px h-6 bg-[#C9A84C]/60" />
-          <span className="absolute top-8 right-10 font-serif text-2xl font-light tracking-tight text-[#C9A84C]/40">II</span>
+          <span className="absolute top-8 right-10 font-serif text-2xl font-light tracking-tight text-[#C9A84C]/40">
+            II
+          </span>
 
           <div className="inline-flex items-center justify-center w-14 h-14 mb-8 rounded-full border transition-transform duration-700 group-hover:scale-105 border-[#C9A84C]/50 text-[#C9A84C] bg-[#C9A84C]/[0.05]">
             <Shield className="w-5 h-5" strokeWidth={1.25} />

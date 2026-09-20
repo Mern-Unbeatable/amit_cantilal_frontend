@@ -37,7 +37,8 @@ export const PLAN_DETAILS = {
     type: 'fullstack',
     price: 27000,
     sessions: 24,
-    description: 'Master both frontend and backend — become a complete developer.',
+    description:
+      'Master both frontend and backend — become a complete developer.',
     features: [
       'Everything in Frontend',
       'Laravel & PHP backend',

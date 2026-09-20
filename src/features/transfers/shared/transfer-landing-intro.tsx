@@ -71,17 +71,26 @@ export function TransferLandingIntro({
               <span className="text-sm md:text-base font-light">
                 {t(`directions.${fromKey}`)}
               </span>
-              <ArrowRight className="w-4 h-4 text-[#C9A84C]" strokeWidth={1.5} />
+              <ArrowRight
+                className="w-4 h-4 text-[#C9A84C]"
+                strokeWidth={1.5}
+              />
               <span className="text-sm md:text-base font-light">
                 {t(`directions.${toKey}`)}
               </span>
             </div>
-            <span className="hidden sm:block h-4 w-px bg-[#C9A84C]/30" aria-hidden />
+            <span
+              className="hidden sm:block h-4 w-px bg-[#C9A84C]/30"
+              aria-hidden
+            />
             <div className="inline-flex items-center gap-3 text-[#F5F0E8] tracking-wide">
               <span className="text-sm md:text-base font-light">
                 {t(`directions.${toKey}`)}
               </span>
-              <ArrowRight className="w-4 h-4 text-[#C9A84C]" strokeWidth={1.5} />
+              <ArrowRight
+                className="w-4 h-4 text-[#C9A84C]"
+                strokeWidth={1.5}
+              />
               <span className="text-sm md:text-base font-light">
                 {t(`directions.${fromKey}`)}
               </span>

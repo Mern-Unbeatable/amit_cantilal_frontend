@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { settingsService } from '@/features/settings/settings.service.ts'
 import type { UpdateSettingsPayload } from '@/features/settings/settings.types.ts'
+import { settingsService } from '@/features/settings/settings.service.ts'
 
 export const settingsKeys = {
   all: ['settings'] as const,
@@ -19,7 +19,8 @@ export function useUpdateSettings() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (payload: UpdateSettingsPayload) => settingsService.updateSettings(payload),
+    mutationFn: (payload: UpdateSettingsPayload) =>
+      settingsService.updateSettings(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: settingsKeys.all })
     },

@@ -4,7 +4,7 @@ import {
   getFacetedUniqueValues,
   getFilteredRowModel,
   getSortedRowModel,
-  useReactTable
+  useReactTable,
 } from '@tanstack/react-table'
 import * as React from 'react'
 import type { Dispatch, SetStateAction } from 'react'
@@ -13,7 +13,8 @@ import type {
   ColumnFiltersState,
   FilterFn,
   PaginationState,
-  SortingState,VisibilityState
+  SortingState,
+  VisibilityState,
 } from '@tanstack/react-table'
 
 type UseDataTableInstanceProps<TData, TValue> = {

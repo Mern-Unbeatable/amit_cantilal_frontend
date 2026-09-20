@@ -7,10 +7,14 @@ export interface FleetCardProps {
   suitcases: number
 }
 
-export default function FleetCard({ name, image, passengers, suitcases }: FleetCardProps) {
+export default function FleetCard({
+  name,
+  image,
+  passengers,
+  suitcases,
+}: FleetCardProps) {
   return (
     <div className="group bg-[#141414] border border-[#C9A84C]/12 hover:border-[#C9A84C]/35 overflow-hidden transition-colors duration-200">
-
       {/* Image */}
       <div className="aspect-[4/3] overflow-hidden bg-[#1C1C1C]">
         <img
@@ -39,7 +43,6 @@ export default function FleetCard({ name, image, passengers, suitcases }: FleetC
           </span>
         </div>
       </div>
-
     </div>
   )
 }

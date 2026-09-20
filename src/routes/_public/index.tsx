@@ -1,10 +1,19 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import React from 'react'
-import { pageHead } from '@/lib/seo.ts'
 import { motion } from 'framer-motion'
 import { Icon } from '@iconify/react'
-import { ArrowRight, Briefcase, Clock, Fuel, MapPin, Plane, Users, Zap } from 'lucide-react'
+import {
+  ArrowRight,
+  Briefcase,
+  Clock,
+  Fuel,
+  MapPin,
+  Plane,
+  Users,
+  Zap,
+} from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { pageHead } from '@/lib/seo.ts'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
 import { ReviewsSection } from '@/components/sections/review-section.tsx'
@@ -12,7 +21,15 @@ import { ReviewsSection } from '@/components/sections/review-section.tsx'
 // Electric order: EQE → EQV → EQS
 // Diesel order:   E-Class → V-Class → S-Class → Sprinter
 const ELECTRIC_ORDER = ['eqe', 'eqv', 'eqs']
-const DIESEL_ORDER   = ['e-class', 'e class', 'v-class', 'v class', 's-class', 's class', 'sprinter']
+const DIESEL_ORDER = [
+  'e-class',
+  'e class',
+  'v-class',
+  'v class',
+  's-class',
+  's class',
+  'sprinter',
+]
 
 function vehicleSortIndex(name: string, order: Array<string>) {
   const lower = name.toLowerCase()
@@ -32,26 +49,65 @@ const App: React.FC = () => {
   ]
 
   const services = [
-    { id: 1, ...t('home.services.airportTransfers', { returnObjects: true }) as { title: string; description: string }, icon: Plane },
-    { id: 2, ...t('home.services.privateTours', { returnObjects: true }) as { title: string; description: string }, icon: MapPin },
-    { id: 3, ...t('home.services.chauffeurService', { returnObjects: true }) as { title: string; description: string }, icon: Clock },
+    {
+      id: 1,
+      ...(t('home.services.airportTransfers', { returnObjects: true }) as {
+        title: string
+        description: string
+      }),
+      icon: Plane,
+    },
+    {
+      id: 2,
+      ...(t('home.services.privateTours', { returnObjects: true }) as {
+        title: string
+        description: string
+      }),
+      icon: MapPin,
+    },
+    {
+      id: 3,
+      ...(t('home.services.chauffeurService', { returnObjects: true }) as {
+        title: string
+        description: string
+      }),
+      icon: Clock,
+    },
   ]
 
   const isElectric = (name: string) =>
-    ['eqe', 'eqv', 'eqs', 'electric'].some((k) => name.toLowerCase().includes(k))
+    ['eqe', 'eqv', 'eqs', 'electric'].some((k) =>
+      name.toLowerCase().includes(k),
+    )
 
   const electricFleet = fleetData
-    .filter((v) => isElectric(v.name) || v.fuel_type === 'electric' || Boolean(v.is_electric))
-    .sort((a, b) => vehicleSortIndex(a.name, ELECTRIC_ORDER) - vehicleSortIndex(b.name, ELECTRIC_ORDER))
+    .filter(
+      (v) =>
+        isElectric(v.name) ||
+        v.fuel_type === 'electric' ||
+        Boolean(v.is_electric),
+    )
+    .sort(
+      (a, b) =>
+        vehicleSortIndex(a.name, ELECTRIC_ORDER) -
+        vehicleSortIndex(b.name, ELECTRIC_ORDER),
+    )
 
   const dieselFleet = fleetData
-    .filter((v) => !isElectric(v.name) && v.fuel_type !== 'electric' && !v.is_electric)
-    .sort((a, b) => vehicleSortIndex(a.name, DIESEL_ORDER) - vehicleSortIndex(b.name, DIESEL_ORDER))
+    .filter(
+      (v) =>
+        !isElectric(v.name) && v.fuel_type !== 'electric' && !v.is_electric,
+    )
+    .sort(
+      (a, b) =>
+        vehicleSortIndex(a.name, DIESEL_ORDER) -
+        vehicleSortIndex(b.name, DIESEL_ORDER),
+    )
 
   const displayFleet = [...electricFleet, ...dieselFleet].slice(0, 6)
 
   return (
-    <motion.div {...mainTransitionProps} >
+    <motion.div {...mainTransitionProps}>
       <section className="relative min-h-[85svh] md:min-h-svh flex flex-col items-center justify-center pt-0 bg-black overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
@@ -89,7 +145,10 @@ const App: React.FC = () => {
 
           {/* Heading */}
           <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light text-[#F5F0E8] leading-[1.1] tracking-tight mb-6 max-w-4xl mx-auto">
-            {t('home.headingLine1')} <em className="italic text-[#C9A84C]">{t('home.headingEmphasis')}</em>
+            {t('home.headingLine1')}{' '}
+            <em className="italic text-[#C9A84C]">
+              {t('home.headingEmphasis')}
+            </em>
             <br />
             {t('home.headingLine2')}
           </h1>
@@ -297,13 +356,19 @@ const App: React.FC = () => {
           {fleetLoading ? (
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="rounded-lg border border-border/50 overflow-hidden animate-pulse bg-card h-64" />
+                <div
+                  key={i}
+                  className="rounded-lg border border-border/50 overflow-hidden animate-pulse bg-card h-64"
+                />
               ))}
             </div>
           ) : (
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {displayFleet.map((car) => {
-                const electric = car.fuel_type === 'electric' || Boolean(car.is_electric) || isElectric(car.name)
+                const electric =
+                  car.fuel_type === 'electric' ||
+                  Boolean(car.is_electric) ||
+                  isElectric(car.name)
                 return (
                   <div
                     key={car.id}
@@ -317,17 +382,23 @@ const App: React.FC = () => {
                         loading="lazy"
                       />
                       <div className="absolute top-3 right-3 flex flex-col gap-1.5">
-                        <span className={`text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1 ${electric ? 'bg-primary/90 text-primary-foreground' : 'bg-foreground/70 text-background'}`}>
-                          {electric
-                            ? <Zap className="w-3 h-3" />
-                            : <Fuel className="w-3 h-3" />}
+                        <span
+                          className={`text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1 ${electric ? 'bg-primary/90 text-primary-foreground' : 'bg-foreground/70 text-background'}`}
+                        >
+                          {electric ? (
+                            <Zap className="w-3 h-3" />
+                          ) : (
+                            <Fuel className="w-3 h-3" />
+                          )}
                           {electric ? t('home.electric') : t('home.diesel')}
                         </span>
                       </div>
                     </div>
 
                     <div className="p-5">
-                      <h3 className="text-lg font-semibold text-foreground text-center mb-3">{car.name}</h3>
+                      <h3 className="text-lg font-semibold text-foreground text-center mb-3">
+                        {car.name}
+                      </h3>
                       <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
                         <span className="flex items-center gap-1">
                           <Users className="w-3.5 h-3.5" />

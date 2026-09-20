@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { ArrowUpRight, Clock, MessageCircle } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { useCreateConciergeRequest } from './concierge-request.hooks.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -17,7 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useCreateConciergeRequest } from './concierge-request.hooks.ts'
 
 // ─── Schema ───────────────────────────────────────────────────────────────────
 
@@ -51,7 +51,10 @@ function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={id} className="text-xs md:text-sm font-medium text-[#F5F0E8]">
+      <Label
+        htmlFor={id}
+        className="text-xs md:text-sm font-medium text-[#F5F0E8]"
+      >
         {label} {required && <span className="text-[#C9A84C]">*</span>}
       </Label>
       {children}
@@ -103,14 +106,19 @@ export function VipConciergeForm() {
         },
         onError: (err: any) =>
           setError('root', {
-            message: err?.response?.data?.message ?? t('vipConcierge.form.genericError'),
+            message:
+              err?.response?.data?.message ??
+              t('vipConcierge.form.genericError'),
           }),
-      }
+      },
     )
   }
 
   return (
-    <section id="concierge" className="container mx-auto px-6 md:px-12 py-20 md:py-32">
+    <section
+      id="concierge"
+      className="container mx-auto px-6 md:px-12 py-20 md:py-32"
+    >
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -132,11 +140,23 @@ export function VipConciergeForm() {
           {submitted ? (
             <div className="text-center py-12 space-y-4">
               <div className="w-16 h-16 bg-[#C9A84C] flex items-center justify-center mx-auto">
-                <svg className="w-8 h-8 text-[#0B0B0B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-8 h-8 text-[#0B0B0B]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
-              <h4 className="font-serif text-2xl font-light text-[#C9A84C]">{t('vipConcierge.form.successTitle')}</h4>
+              <h4 className="font-serif text-2xl font-light text-[#C9A84C]">
+                {t('vipConcierge.form.successTitle')}
+              </h4>
               <p className="text-[#F5F0E8]/60">
                 {t('vipConcierge.form.successBody')}
               </p>
@@ -145,7 +165,12 @@ export function VipConciergeForm() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 {/* Name */}
-                <Field id="name" label={t('vipConcierge.form.name')} required error={errors.name?.message}>
+                <Field
+                  id="name"
+                  label={t('vipConcierge.form.name')}
+                  required
+                  error={errors.name?.message}
+                >
                   <Input
                     id="name"
                     className="h-11 rounded-none bg-transparent border-white/15 text-[#F5F0E8] placeholder:text-[#F5F0E8]/30 focus:border-[#C9A84C]"
@@ -154,7 +179,12 @@ export function VipConciergeForm() {
                 </Field>
 
                 {/* Email */}
-                <Field id="email" label={t('vipConcierge.form.email')} required error={errors.email?.message}>
+                <Field
+                  id="email"
+                  label={t('vipConcierge.form.email')}
+                  required
+                  error={errors.email?.message}
+                >
                   <Input
                     id="email"
                     type="email"
@@ -164,7 +194,11 @@ export function VipConciergeForm() {
                 </Field>
 
                 {/* Phone */}
-                <Field id="phone" label={t('vipConcierge.form.phone')} error={errors.phone?.message}>
+                <Field
+                  id="phone"
+                  label={t('vipConcierge.form.phone')}
+                  error={errors.phone?.message}
+                >
                   <Input
                     id="phone"
                     type="tel"
@@ -174,7 +208,12 @@ export function VipConciergeForm() {
                 </Field>
 
                 {/* Airport */}
-                <Field id="airport" label={t('vipConcierge.form.airport')} required error={errors.airport?.message}>
+                <Field
+                  id="airport"
+                  label={t('vipConcierge.form.airport')}
+                  required
+                  error={errors.airport?.message}
+                >
                   <Input
                     id="airport"
                     placeholder={t('vipConcierge.form.airportPlaceholder')}
@@ -185,10 +224,15 @@ export function VipConciergeForm() {
 
                 {/* Flight Details */}
                 <div className="sm:col-span-2">
-                  <Field id="flightDetails" label={t('vipConcierge.form.flightDetails')}>
+                  <Field
+                    id="flightDetails"
+                    label={t('vipConcierge.form.flightDetails')}
+                  >
                     <Input
                       id="flightDetails"
-                      placeholder={t('vipConcierge.form.flightDetailsPlaceholder')}
+                      placeholder={t(
+                        'vipConcierge.form.flightDetailsPlaceholder',
+                      )}
                       className="h-11 rounded-none bg-transparent border-white/15 text-[#F5F0E8] placeholder:text-[#F5F0E8]/30 focus:border-[#C9A84C]"
                       {...register('flightDetails')}
                     />
@@ -196,7 +240,10 @@ export function VipConciergeForm() {
                 </div>
 
                 {/* Passengers */}
-                <Field id="passengers" label={t('vipConcierge.form.passengers')}>
+                <Field
+                  id="passengers"
+                  label={t('vipConcierge.form.passengers')}
+                >
                   <Input
                     id="passengers"
                     type="text"
@@ -207,10 +254,24 @@ export function VipConciergeForm() {
                 </Field>
 
                 {/* Contact Method */}
-                <Field id="contactMethod" label={t('vipConcierge.form.contactMethod')} required error={errors.contactMethod?.message}>
-                  <Select value={contactMethod} onValueChange={(v) => setValue('contactMethod', v, { shouldValidate: true })}>
+                <Field
+                  id="contactMethod"
+                  label={t('vipConcierge.form.contactMethod')}
+                  required
+                  error={errors.contactMethod?.message}
+                >
+                  <Select
+                    value={contactMethod}
+                    onValueChange={(v) =>
+                      setValue('contactMethod', v, { shouldValidate: true })
+                    }
+                  >
                     <SelectTrigger className="h-11 rounded-none bg-transparent border-white/15 text-[#F5F0E8] focus:border-[#C9A84C]">
-                      <SelectValue placeholder={t('vipConcierge.form.contactMethodPlaceholder')} />
+                      <SelectValue
+                        placeholder={t(
+                          'vipConcierge.form.contactMethodPlaceholder',
+                        )}
+                      />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="Email">Email</SelectItem>
@@ -233,7 +294,9 @@ export function VipConciergeForm() {
 
               {/* Root error */}
               {errors.root && (
-                <p className="text-sm text-red-400 text-center">{errors.root.message}</p>
+                <p className="text-sm text-red-400 text-center">
+                  {errors.root.message}
+                </p>
               )}
 
               {/* Buttons */}
@@ -243,9 +306,12 @@ export function VipConciergeForm() {
                   disabled={isPending}
                   className="flex-1 h-12 rounded-none bg-[#C9A84C] hover:bg-[#E2C97E] text-[#0B0B0B] font-medium tracking-[0.1em] uppercase"
                 >
-                  {isPending ? t('vipConcierge.form.sending') : (
+                  {isPending ? (
+                    t('vipConcierge.form.sending')
+                  ) : (
                     <span className="inline-flex items-center gap-2">
-                      {t('vipConcierge.form.requestButton')} <ArrowUpRight className="w-4 h-4" />
+                      {t('vipConcierge.form.requestButton')}{' '}
+                      <ArrowUpRight className="w-4 h-4" />
                     </span>
                   )}
                 </Button>
@@ -255,7 +321,13 @@ export function VipConciergeForm() {
                   asChild
                   className="flex-1 h-12 rounded-none border-[#C9A84C]/60 text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0B0B0B] tracking-[0.1em] uppercase"
                 >
-                  <a href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={toWhatsAppUrl(
+                      settings?.whatsapp_number ?? '+351914578214',
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <MessageCircle className="w-4 h-4 mr-2" />
                     WhatsApp
                   </a>

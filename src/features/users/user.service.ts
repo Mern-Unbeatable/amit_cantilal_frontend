@@ -1,7 +1,7 @@
 import type {
   AdminCreateUserPayload,
-  AdminUser,
   AdminUpdateUserPayload,
+  AdminUser,
   PaginatedUsers,
 } from '@/features/users/user.types.ts'
 import { api, unwrap } from '@/services/api.ts'
@@ -59,4 +59,3 @@ export const userService = {
     return unwrap(response)
   },
 }
-

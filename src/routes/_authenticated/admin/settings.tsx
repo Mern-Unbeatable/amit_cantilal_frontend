@@ -10,8 +10,16 @@ import { Card } from '@/components/ui/card.tsx'
 import { Input } from '@/components/ui/input.tsx'
 import { Label } from '@/components/ui/label.tsx'
 import { Button } from '@/components/ui/button.tsx'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.tsx'
-import { useSettings, useUpdateSettings } from '@/features/settings/settings.hooks.ts'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs.tsx'
+import {
+  useSettings,
+  useUpdateSettings,
+} from '@/features/settings/settings.hooks.ts'
 import { useChangePassword } from '@/features/auth/auth.hooks.ts'
 
 export const Route = createFileRoute('/_authenticated/admin/settings')({
@@ -20,12 +28,14 @@ export const Route = createFileRoute('/_authenticated/admin/settings')({
 
 function RouteComponent() {
   const { data: settings, isLoading } = useSettings()
-  const { mutate: updateSettings, isPending: isSavingSettings } = useUpdateSettings()
+  const { mutate: updateSettings, isPending: isSavingSettings } =
+    useUpdateSettings()
 
   const [whatsappNumber, setWhatsappNumber] = useState('')
   const [contactEmail, setContactEmail] = useState('')
   const [bookingNotificationEmail, setBookingNotificationEmail] = useState('')
-  const [bookingNotificationWhatsapp, setBookingNotificationWhatsapp] = useState('')
+  const [bookingNotificationWhatsapp, setBookingNotificationWhatsapp] =
+    useState('')
 
   useEffect(() => {
     if (!settings) return
@@ -58,7 +68,10 @@ function RouteComponent() {
   if (isLoading) {
     return (
       <AppWrapper>
-        <PageHeader pageTitle="Settings" pageSubtitle="Business contact details" />
+        <PageHeader
+          pageTitle="Settings"
+          pageSubtitle="Business contact details"
+        />
         <div className="h-64 animate-pulse bg-muted/20 rounded-md mt-6" />
       </AppWrapper>
     )
@@ -66,7 +79,10 @@ function RouteComponent() {
 
   return (
     <AppWrapper>
-      <PageHeader pageTitle="Settings" pageSubtitle="Business contact details" />
+      <PageHeader
+        pageTitle="Settings"
+        pageSubtitle="Business contact details"
+      />
 
       <Tabs defaultValue="email" className="w-full mt-6">
         <TabsList variant="line" className="w-full border-b">
@@ -95,12 +111,15 @@ function RouteComponent() {
                   required
                 />
                 <p className="text-xs text-muted-foreground">
-                  Shown to customers in booking confirmation and payment-link emails.
+                  Shown to customers in booking confirmation and payment-link
+                  emails.
                 </p>
               </div>
 
               <div className="space-y-1.5">
-                <Label htmlFor="booking_notification_email">Booking Notification Email</Label>
+                <Label htmlFor="booking_notification_email">
+                  Booking Notification Email
+                </Label>
                 <Input
                   id="booking_notification_email"
                   type="email"
@@ -114,7 +133,11 @@ function RouteComponent() {
                 </p>
               </div>
 
-              <Button type="submit" disabled={isSavingSettings} className="min-w-[120px]">
+              <Button
+                type="submit"
+                disabled={isSavingSettings}
+                className="min-w-[120px]"
+              >
                 {isSavingSettings ? 'Saving...' : 'Save Changes'}
               </Button>
             </form>
@@ -134,24 +157,35 @@ function RouteComponent() {
                   required
                 />
                 <p className="text-xs text-muted-foreground">
-                  Shown across the site and in booking emails — the "Contact Us on WhatsApp" button, the 24h-cutoff message, and more.
+                  Shown across the site and in booking emails — the "Contact Us
+                  on WhatsApp" button, the 24h-cutoff message, and more.
                 </p>
               </div>
 
               <div className="space-y-1.5">
-                <Label htmlFor="booking_notification_whatsapp">Booking Notification WhatsApp</Label>
+                <Label htmlFor="booking_notification_whatsapp">
+                  Booking Notification WhatsApp
+                </Label>
                 <Input
                   id="booking_notification_whatsapp"
                   value={bookingNotificationWhatsapp}
-                  onChange={(e) => setBookingNotificationWhatsapp(e.target.value)}
+                  onChange={(e) =>
+                    setBookingNotificationWhatsapp(e.target.value)
+                  }
                   placeholder="+351966240153, +351914578214"
                 />
                 <p className="text-xs text-muted-foreground">
-                  Who receives a WhatsApp message every time a booking is confirmed. Separate multiple numbers with commas. Leave blank to disable.
+                  Who receives a WhatsApp message every time a booking is
+                  confirmed. Separate multiple numbers with commas. Leave blank
+                  to disable.
                 </p>
               </div>
 
-              <Button type="submit" disabled={isSavingSettings} className="min-w-[120px]">
+              <Button
+                type="submit"
+                disabled={isSavingSettings}
+                className="min-w-[120px]"
+              >
                 {isSavingSettings ? 'Saving...' : 'Save Changes'}
               </Button>
             </form>
