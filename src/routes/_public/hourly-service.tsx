@@ -1,10 +1,10 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import {motion} from "framer-motion";
+import { motion } from 'framer-motion'
 import { ArrowRight, CircleCheckBig, Clock, Shield, Users } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import {mainTransitionProps} from "@/lib/utils.ts";
-import {PageHero} from "@/components/shared/page-hero.tsx";
-import {Button} from "@/components/ui/button.tsx";
+import { mainTransitionProps } from '@/lib/utils.ts'
+import { PageHero } from '@/components/shared/page-hero.tsx'
+import { Button } from '@/components/ui/button.tsx'
 import { pageHead } from '@/lib/seo.ts'
 
 const FEATURE_ICONS = [Clock, Users, CircleCheckBig, Shield]
@@ -26,10 +26,18 @@ export const Route = createFileRoute('/_public/hourly-service')({
 
 function RouteComponent() {
   const { t } = useTranslation()
-  const features = (t('hourlyServicePage.features', { returnObjects: true }) as Array<{ title: string; description: string }>)
-    .map((f, idx) => ({ ...f, icon: FEATURE_ICONS[idx] }))
-  const reasons = (t('hourlyServicePage.reasons', { returnObjects: true }) as Array<{ title: string; description: string }>)
-    .map((r, idx) => ({ ...r, num: String(idx + 1).padStart(2, '0') }))
+  const features = (
+    t('hourlyServicePage.features', { returnObjects: true }) as Array<{
+      title: string
+      description: string
+    }>
+  ).map((f, idx) => ({ ...f, icon: FEATURE_ICONS[idx] }))
+  const reasons = (
+    t('hourlyServicePage.reasons', { returnObjects: true }) as Array<{
+      title: string
+      description: string
+    }>
+  ).map((r, idx) => ({ ...r, num: String(idx + 1).padStart(2, '0') }))
   return (
     <motion.div {...mainTransitionProps}>
       <PageHero
@@ -45,10 +53,8 @@ function RouteComponent() {
       <section className="py-16 md:py-24 bg-[#0B0B0B]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-6xl mx-auto">
-
             {/* 2-col: image + text */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
-
               {/* Image */}
               <div className="overflow-hidden">
                 <img
@@ -61,7 +67,9 @@ function RouteComponent() {
 
               {/* Text */}
               <div>
-                <div className="tag-gold mb-4">{t('hourlyServicePage.tag')}</div>
+                <div className="tag-gold mb-4">
+                  {t('hourlyServicePage.tag')}
+                </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-light text-gradient-gold mb-6">
                   {t('hourlyServicePage.title')}
                 </h2>
@@ -92,15 +100,19 @@ function RouteComponent() {
                 >
                   <div className="p-6 text-center">
                     <div className="w-12 h-12 mx-auto mb-4 bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-[#C9A84C]" strokeWidth={1.5} />
+                      <Icon
+                        className="w-6 h-6 text-[#C9A84C]"
+                        strokeWidth={1.5}
+                      />
                     </div>
-                    <h3 className="font-serif font-light text-[#F5F0E8] mb-2">{title}</h3>
+                    <h3 className="font-serif font-light text-[#F5F0E8] mb-2">
+                      {title}
+                    </h3>
                     <p className="text-sm text-[#9A9182]">{description}</p>
                   </div>
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </section>
@@ -108,15 +120,18 @@ function RouteComponent() {
       <section className="py-16 md:py-24 bg-[#141414]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-6xl mx-auto">
-
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
               {/* Left — heading + CTA */}
               <div className="lg:sticky lg:top-28 self-start">
-                <div className="tag-gold mb-4">{t('hourlyServicePage.whyTag')}</div>
+                <div className="tag-gold mb-4">
+                  {t('hourlyServicePage.whyTag')}
+                </div>
                 <h2 className="font-serif text-3xl md:text-5xl font-light text-gradient-gold mb-6 leading-tight">
-                  {t('hourlyServicePage.whyTitleLine1')}<br />
-                  <em className="italic">{t('hourlyServicePage.whyTitleEmphasis')}</em>
+                  {t('hourlyServicePage.whyTitleLine1')}
+                  <br />
+                  <em className="italic">
+                    {t('hourlyServicePage.whyTitleEmphasis')}
+                  </em>
                 </h2>
                 <p className="text-[#9A9182] leading-relaxed mb-8 text-sm md:text-base">
                   {t('hourlyServicePage.whyBody')}
@@ -141,25 +156,25 @@ function RouteComponent() {
                   >
                     {/* Number */}
                     <span className="font-serif text-3xl md:text-4xl font-light text-[#C9A84C]/20 group-hover:text-[#C9A84C]/40 transition-colors leading-none flex-shrink-0 w-10">
-                    {num}
-                  </span>
+                      {num}
+                    </span>
 
                     {/* Text */}
                     <div>
                       <h3 className="font-serif text-base md:text-xl font-light text-[#F5F0E8] mb-1.5">
                         {title}
                       </h3>
-                      <p className="text-sm text-[#9A9182] leading-relaxed">{description}</p>
+                      <p className="text-sm text-[#9A9182] leading-relaxed">
+                        {description}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
         </div>
       </section>
-
     </motion.div>
   )
 }

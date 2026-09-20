@@ -1,15 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { format } from 'date-fns'
 import { BadgeEuro, CalendarCheck, Clock, Users } from 'lucide-react'
-import AppWrapper from "@/components/layouts/sidebar/app-wrapper.tsx";
-import { StatisticsCard } from "@/components/dashboard/statistics-card.tsx";
+import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
+import { StatisticsCard } from '@/components/dashboard/statistics-card.tsx'
 import {
   BookingTrendsChart,
   ServiceBreakdownChart,
-} from "@/components/dashboard/charts-section.tsx";
-import { RecentBookingsCard } from "@/components/dashboard/recent-bookings.tsx";
-import { useDashboardStats } from "@/features/dashboard/dashboard.hooks.ts";
-import { useAuthStore } from "@/stores/user.ts";
+} from '@/components/dashboard/charts-section.tsx'
+import { RecentBookingsCard } from '@/components/dashboard/recent-bookings.tsx'
+import { useDashboardStats } from '@/features/dashboard/dashboard.hooks.ts'
+import { useAuthStore } from '@/stores/user.ts'
 
 export const Route = createFileRoute('/_authenticated/admin/dashboard')({
   component: RouteComponent,
@@ -37,7 +37,7 @@ function RouteComponent() {
   return (
     <AppWrapper>
       {/* Hero */}
-      <div className="relative overflow-hidden rounded-sm bg-[#0B0B0B] border border-primary/15 p-7 flex items-center justify-between gap-6 flex-wrap mb-8">
+      <div className="relative overflow-hidden rounded-sm bg-black border border-primary/15 p-7 flex items-center justify-between gap-6 flex-wrap mb-8">
         <div
           className="absolute -top-10 -right-10 size-56 rounded-full opacity-[0.15] blur-3xl pointer-events-none"
           style={{ background: '#C9A84C' }}
@@ -70,7 +70,10 @@ function RouteComponent() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {isFetching
           ? Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-32 animate-pulse bg-muted/20 rounded-md" />
+              <div
+                key={i}
+                className="h-32 animate-pulse bg-muted/20 rounded-md"
+              />
             ))
           : mainStatistics.map((stat) => (
               <StatisticsCard

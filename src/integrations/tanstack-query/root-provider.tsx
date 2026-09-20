@@ -7,7 +7,7 @@ export function getContext() {
         refetchOnWindowFocus: false,
       },
     },
-  });
+  })
   return {
     queryClient,
   }

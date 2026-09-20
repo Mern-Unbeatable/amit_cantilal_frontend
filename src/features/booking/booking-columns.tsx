@@ -1,10 +1,10 @@
+import { Link } from '@tanstack/react-router'
+import { Eye, MoreHorizontal, Trash2 } from 'lucide-react'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { BookingState } from '@/features/booking/booking.types.ts'
 import { formatCurrency } from '@/lib/utils.ts'
 import { Badge } from '@/components/ui/badge.tsx'
-import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button.tsx'
-import { Eye, MoreHorizontal, Trash2 } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,

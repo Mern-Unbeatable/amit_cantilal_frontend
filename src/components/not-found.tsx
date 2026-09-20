@@ -22,7 +22,10 @@ const NotFound = ({ children }: { children?: any }) => {
         {children || <p>The page you are looking for does not exist.</p>}
       </p>
 
-      <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white px-8">
+      <Button
+        asChild
+        className="bg-orange-500 hover:bg-orange-600 text-white px-8"
+      >
         <Link to="/">Go back home</Link>
       </Button>
     </div>

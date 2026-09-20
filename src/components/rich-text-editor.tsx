@@ -1,14 +1,23 @@
 // src/components/rich-text-editor.tsx
 
-import { useEditor, EditorContent } from '@tiptap/react'
+import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import {
-  Bold, Italic, Strikethrough, Heading2, Heading3,
-  List, ListOrdered, Link as LinkIcon, Image as ImageIcon,
-  Undo, Redo, Quote,
+  Bold,
+  Heading2,
+  Heading3,
+  Image as ImageIcon,
+  Italic,
+  Link as LinkIcon,
+  List,
+  ListOrdered,
+  Quote,
+  Redo,
+  Strikethrough,
+  Undo,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -29,7 +38,13 @@ interface ToolbarButtonProps {
   title: string
 }
 
-function ToolbarButton({ onClick, active, disabled, children, title }: ToolbarButtonProps) {
+function ToolbarButton({
+  onClick,
+  active,
+  disabled,
+  children,
+  title,
+}: ToolbarButtonProps) {
   return (
     <Button
       type="button"
@@ -49,17 +64,20 @@ function ToolbarButton({ onClick, active, disabled, children, title }: ToolbarBu
 }
 
 export function RichTextEditor({
-                                 value,
-                                 onChange,
-                                 onBlur,
-                                 placeholder = 'Write something...',
-                                 className,
-                               }: RichTextEditorProps) {
+  value,
+  onChange,
+  onBlur,
+  placeholder = 'Write something...',
+  className,
+}: RichTextEditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
       Image.configure({ inline: false, allowBase64: true }),
-      Link.configure({ openOnClick: false, HTMLAttributes: { class: 'text-primary underline' } }),
+      Link.configure({
+        openOnClick: false,
+        HTMLAttributes: { class: 'text-primary underline' },
+      }),
       Placeholder.configure({ placeholder }),
     ],
     content: value,
@@ -88,7 +106,12 @@ export function RichTextEditor({
   }
 
   return (
-    <div className={cn('border border-input rounded-md overflow-hidden', className)}>
+    <div
+      className={cn(
+        'border border-input rounded-md overflow-hidden',
+        className,
+      )}
+    >
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-0.5 p-2 border-b border-input bg-muted/40">
         <ToolbarButton
@@ -111,14 +134,18 @@ export function RichTextEditor({
         <ToolbarButton
           title="Heading 2"
           active={editor.isActive('heading', { level: 2 })}
-          onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+          onClick={() =>
+            editor.chain().focus().toggleHeading({ level: 2 }).run()
+          }
         >
           <Heading2 className="w-4 h-4" />
         </ToolbarButton>
         <ToolbarButton
           title="Heading 3"
           active={editor.isActive('heading', { level: 3 })}
-          onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+          onClick={() =>
+            editor.chain().focus().toggleHeading({ level: 3 }).run()
+          }
         >
           <Heading3 className="w-4 h-4" />
         </ToolbarButton>

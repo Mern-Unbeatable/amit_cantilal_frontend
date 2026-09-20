@@ -9,7 +9,10 @@ export const Route = createFileRoute('/_authenticated/admin/faqs')({
 function RouteComponent() {
   return (
     <AppWrapper>
-      <PageHeader pageTitle="FAQs" pageSubtitle="Manage frequently asked questions" />
+      <PageHeader
+        pageTitle="FAQs"
+        pageSubtitle="Manage frequently asked questions"
+      />
     </AppWrapper>
   )
 }

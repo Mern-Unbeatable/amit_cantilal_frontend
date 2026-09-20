@@ -13,14 +13,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import {usePartnershipRequest} from "@/features/partnership-request/partnership-request.hooks.ts";
+import { usePartnershipRequest } from '@/features/partnership-request/partnership-request.hooks.ts'
 import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
 import { toWhatsAppUrl } from '@/lib/utils.ts'
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const EMAIL = 'partners@offwego.pt'
-const B2B_MESSAGE = "Hi Off We Go Portugal, I'd like to request a B2B partnership."
+const B2B_MESSAGE =
+  "Hi Off We Go Portugal, I'd like to request a B2B partnership."
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -99,8 +100,7 @@ export default function B2BRequestForm() {
         onError: (err: any) =>
           setError('root', {
             message:
-              err?.response?.data?.message ??
-              t('partnerForm.genericError'),
+              err?.response?.data?.message ?? t('partnerForm.genericError'),
           }),
       },
     )
@@ -143,9 +143,7 @@ export default function B2BRequestForm() {
                 <h4 className="font-serif text-2xl font-light text-gradient-gold">
                   {t('b2bForm.successTitle')}
                 </h4>
-                <p className="text-[#9A9182]">
-                  {t('b2bForm.successBody')}
-                </p>
+                <p className="text-[#9A9182]">{t('b2bForm.successBody')}</p>
               </div>
             ) : (
               <form
@@ -153,25 +151,37 @@ export default function B2BRequestForm() {
                 className="space-y-3 md:space-y-6"
               >
                 {/* Partner type */}
-                <Field id="partnerType" label={t('b2bForm.partnerType')} required>
+                <Field
+                  id="partnerType"
+                  label={t('b2bForm.partnerType')}
+                  required
+                >
                   <Select
                     value={partnerType}
                     onValueChange={setPartnerType}
                     required
                   >
                     <SelectTrigger className="h-10 text-xs md:text-base">
-                      <SelectValue placeholder={t('b2bForm.partnerTypePlaceholder')} />
+                      <SelectValue
+                        placeholder={t('b2bForm.partnerTypePlaceholder')}
+                      />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="hotel">{t('b2bForm.partnerTypes.hotel')}</SelectItem>
+                      <SelectItem value="hotel">
+                        {t('b2bForm.partnerTypes.hotel')}
+                      </SelectItem>
                       <SelectItem value="travel-agency">
                         {t('b2bForm.partnerTypes.travelAgency')}
                       </SelectItem>
                       <SelectItem value="concierge">
                         {t('b2bForm.partnerTypes.concierge')}
                       </SelectItem>
-                      <SelectItem value="corporate">{t('b2bForm.partnerTypes.corporate')}</SelectItem>
-                      <SelectItem value="other">{t('b2bForm.partnerTypes.other')}</SelectItem>
+                      <SelectItem value="corporate">
+                        {t('b2bForm.partnerTypes.corporate')}
+                      </SelectItem>
+                      <SelectItem value="other">
+                        {t('b2bForm.partnerTypes.other')}
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </Field>
@@ -254,7 +264,9 @@ export default function B2BRequestForm() {
                       type="tel"
                       placeholder={t('b2bForm.phonePlaceholder')}
                       className="h-10 text-xs md:text-base"
-                      {...register('phone', { required: t('b2bForm.phoneRequired') })}
+                      {...register('phone', {
+                        required: t('b2bForm.phoneRequired'),
+                      })}
                     />
                   </Field>
                 </div>

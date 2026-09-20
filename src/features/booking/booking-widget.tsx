@@ -20,7 +20,6 @@ import BookingSummaryCard from '@/features/booking/booking-summary-card.tsx'
 import { useCreateBooking } from '@/features/booking/booking.hooks.ts'
 import { getHourlyRate } from '@/features/booking/pricing.ts'
 
-
 const STEPS = ['Trip Details', 'Select Vehicle', 'Contact Info', 'Payment']
 
 const INITIAL_STATE: BookingFormState = {
@@ -116,7 +115,11 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
                       : 'border border-[#C9A84C]/20 text-[#9A9182]'
                 }`}
               >
-                {i < current ? <Check className="w-3.5 h-3.5" strokeWidth={2.5} /> : i + 1}
+                {i < current ? (
+                  <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
+                ) : (
+                  i + 1
+                )}
               </div>
               <span
                 className={`text-xs hidden sm:block transition-colors duration-200 ${
@@ -145,9 +148,13 @@ function StepIndicator({ current, total }: { current: number; total: number }) {
 export default function BookingWidget() {
   const [persisted] = useState(() => loadPersisted())
   const [step, setStep] = useState(persisted?.step ?? 0)
-  const [state, setState] = useState<BookingFormState>(persisted?.state ?? INITIAL_STATE)
+  const [state, setState] = useState<BookingFormState>(
+    persisted?.state ?? INITIAL_STATE,
+  )
   const [stripeError, setStripeError] = useState<string | null>(null)
-  const [clientSecret, setClientSecret] = useState<string | null>(persisted?.clientSecret ?? null)
+  const [clientSecret, setClientSecret] = useState<string | null>(
+    persisted?.clientSecret ?? null,
+  )
   const [isConfirming, setIsConfirming] = useState(false)
   const createBooking = useCreateBooking()
   const widgetRef = useRef<HTMLDivElement>(null)
@@ -157,9 +164,11 @@ export default function BookingWidget() {
   }, [step, state, clientSecret])
 
   const updateTrip = (trip: TripDetails) => setState((s) => ({ ...s, trip }))
-  const updateVehicle = (vehicle: Vehicle) => setState((s) => ({ ...s, vehicle }))
+  const updateVehicle = (vehicle: Vehicle) =>
+    setState((s) => ({ ...s, vehicle }))
   const updateNotes = (notes: string) => setState((s) => ({ ...s, notes }))
-  const updateContact = (contact: ContactDetails) => setState((s) => ({ ...s, contact }))
+  const updateContact = (contact: ContactDetails) =>
+    setState((s) => ({ ...s, contact }))
 
   const goToStep = (n: number) => {
     setStep(n)
@@ -168,13 +177,27 @@ export default function BookingWidget() {
     }, 50) // small delay lets React render first
   }
 
-  const inferVehicleType = (vehicle: Vehicle | null): VehicleType | undefined => {
+  const inferVehicleType = (
+    vehicle: Vehicle | null,
+  ): VehicleType | undefined => {
     if (!vehicle) return undefined
     const label = vehicle.name.toLowerCase()
     if (label.includes('sprinter')) return 'sprinter'
-    if (label.includes('v-class') || label.includes('v class') || label.includes('van')) return 'van'
+    if (
+      label.includes('v-class') ||
+      label.includes('v class') ||
+      label.includes('van')
+    )
+      return 'van'
     if (label.includes('suv')) return 'suv'
-    if (label.includes('sedan') || label.includes('e-class') || label.includes('e class') || label.includes('s-class') || label.includes('s class')) return 'sedan'
+    if (
+      label.includes('sedan') ||
+      label.includes('e-class') ||
+      label.includes('e class') ||
+      label.includes('s-class') ||
+      label.includes('s class')
+    )
+      return 'sedan'
     if (vehicle.passengers > 8) return 'sprinter'
     if (vehicle.passengers > 6) return 'van'
     if (vehicle.passengers > 4) return 'suv'
@@ -282,12 +305,14 @@ export default function BookingWidget() {
     try {
       const { error: submitError } = await elements.submit()
       if (submitError) {
-        setStripeError(submitError.message ?? 'Payment failed. Please try again.')
+        setStripeError(
+          submitError.message ?? 'Payment failed. Please try again.',
+        )
         return
       }
 
       const { error } = await stripe.confirmPayment({
-        elements,                         // ← card details live here
+        elements, // ← card details live here
         confirmParams: {
           return_url: `${window.location.origin}/booking/confirm`,
           payment_method_data: {

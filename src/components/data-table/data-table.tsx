@@ -149,9 +149,11 @@ export function DataTable<TData, TValue>({
     }
   }
 
-  const hasFooter = table.getFooterGroups().some((group) =>
-    group.headers.some((header) => header.column.columnDef.footer)
-  )
+  const hasFooter = table
+    .getFooterGroups()
+    .some((group) =>
+      group.headers.some((header) => header.column.columnDef.footer),
+    )
 
   const hasData = table.getRowModel().rows.length > 0 && !isLoading
 
@@ -206,7 +208,10 @@ export function DataTable<TData, TValue>({
                 >
                   {header.isPlaceholder
                     ? null
-                    : flexRender(header.column.columnDef.footer, header.getContext())}
+                    : flexRender(
+                        header.column.columnDef.footer,
+                        header.getContext(),
+                      )}
                 </TableCell>
               ))}
             </TableRow>

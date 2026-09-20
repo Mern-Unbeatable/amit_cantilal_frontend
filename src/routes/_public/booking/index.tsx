@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
-import {APIProvider} from "@vis.gl/react-google-maps";
+import { APIProvider } from '@vis.gl/react-google-maps'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import BookingWidget from '@/features/booking/booking-widget.tsx'
 

@@ -1,4 +1,4 @@
-import { createFileRoute, Link, redirect } from '@tanstack/react-router'
+import { Link, createFileRoute, redirect } from '@tanstack/react-router'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check, CheckCircle, Clock, MapPin, XCircle } from 'lucide-react'
@@ -9,7 +9,10 @@ import { Elements } from '@stripe/react-stripe-js'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { getTourPrice } from '@/features/tour/tour-pricing.ts'
 import { tourService } from '@/features/tour/tour.service.ts'
-import { shouldRedirectTourSlugToHome, normalizeTourSlug } from '@/features/tour/redirects.ts'
+import {
+  normalizeTourSlug,
+  shouldRedirectTourSlugToHome,
+} from '@/features/tour/redirects.ts'
 import { useCreateBooking } from '@/features/booking/booking.hooks.ts'
 import { Spinner } from '@/components/ui/spinner.tsx'
 import { BookingSummary } from '@/features/tour/public/booking-summary.tsx'
@@ -186,13 +189,14 @@ function RouteComponent() {
   const updateDate = (date: Date | undefined) =>
     setState((s) => ({ ...s, date, time: '' })) // reset time when date changes
 
-  const updateTime = (time: string) =>
-    setState((s) => ({ ...s, time }))
+  const updateTime = (time: string) => setState((s) => ({ ...s, time }))
 
-  const updateAdults = (adults: number) =>
-    setState((s) => ({ ...s, adults }))
+  const updateAdults = (adults: number) => setState((s) => ({ ...s, adults }))
 
-  const updateContact = (field: keyof TourFormState['contact'], value: string) =>
+  const updateContact = (
+    field: keyof TourFormState['contact'],
+    value: string,
+  ) =>
     setState((s) => ({
       ...s,
       contact: { ...s.contact, [field]: value },
@@ -208,10 +212,15 @@ function RouteComponent() {
   const images =
     tourImages.length > 0
       ? tourImages.map((image) => ({
-        originalUrl: image.url,
-        description: image.alt,
-      }))
-      : [{ originalUrl: '/cars/mercedes-vclass-2.webp', description: tour.title }]
+          originalUrl: image.url,
+          description: image.alt,
+        }))
+      : [
+          {
+            originalUrl: '/cars/mercedes-vclass-2.webp',
+            description: tour.title,
+          },
+        ]
 
   // ── Step 1 → 2: create booking + PaymentIntent, store clientSecret ──────────
   // Mirrors handleContactNext in BookingWidget exactly.
@@ -251,7 +260,6 @@ function RouteComponent() {
     <motion.div {...mainTransitionProps}>
       <div className="min-h-screen bg-black pt-20 md:pt-24 pb-16 md:pb-24">
         <div className="container mx-auto px-4 md:px-12 max-w-5xl">
-
           <PublicBreadcrumbs
             items={[
               { label: 'Home', to: '/' },
@@ -279,38 +287,47 @@ function RouteComponent() {
           <div className="mb-10 md:mb-14">
             {/* Tab nav */}
             <div className="flex border-b border-[#C9A84C]/15">
-              {(['description', 'itinerary', 'pickup'] as TourTab[]).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-colors border-b-2 -mb-px ${
-                    activeTab === tab
-                      ? 'border-[#C9A84C] text-[#C9A84C]'
-                      : 'border-transparent text-[#9A9182] hover:text-[#F5F0E8]'
-                  }`}
-                >
-                  {tab === 'pickup' ? 'Pick-up' : tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </button>
-              ))}
+              {(['description', 'itinerary', 'pickup'] as Array<TourTab>).map(
+                (tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`px-5 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-colors border-b-2 -mb-px ${
+                      activeTab === tab
+                        ? 'border-[#C9A84C] text-[#C9A84C]'
+                        : 'border-transparent text-[#9A9182] hover:text-[#F5F0E8]'
+                    }`}
+                  >
+                    {tab === 'pickup'
+                      ? 'Pick-up'
+                      : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  </button>
+                ),
+              )}
             </div>
 
             {/* Tab content */}
             <div className="py-6 text-sm text-[#F5F0E8]/70 font-light leading-relaxed">
-              {activeTab === 'description' && (
-                <p>{tour.description}</p>
-              )}
+              {activeTab === 'description' && <p>{tour.description}</p>}
 
               {activeTab === 'itinerary' && (
                 <div className="space-y-6">
                   {/* Inclusions */}
                   {tour.inclusions && tour.inclusions.length > 0 && (
                     <div>
-                      <p className="text-xs tracking-[0.15em] uppercase text-[#C9A84C] mb-3">Included</p>
+                      <p className="text-xs tracking-[0.15em] uppercase text-[#C9A84C] mb-3">
+                        Included
+                      </p>
                       <ul className="space-y-2">
                         {tour.inclusions.map((item, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-[#C9A84C] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                            <span>{typeof item === 'string' ? item : item.label}</span>
+                            <CheckCircle
+                              className="w-4 h-4 text-[#C9A84C] mt-0.5 flex-shrink-0"
+                              strokeWidth={1.5}
+                            />
+                            <span>
+                              {typeof item === 'string' ? item : item.label}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -319,12 +336,19 @@ function RouteComponent() {
                   {/* Exclusions */}
                   {tour.exclusions && tour.exclusions.length > 0 && (
                     <div>
-                      <p className="text-xs tracking-[0.15em] uppercase text-[#C9A84C] mb-3">Not Included</p>
+                      <p className="text-xs tracking-[0.15em] uppercase text-[#C9A84C] mb-3">
+                        Not Included
+                      </p>
                       <ul className="space-y-2">
                         {tour.exclusions.map((item, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <XCircle className="w-4 h-4 text-[#9A9182] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                            <span>{typeof item === 'string' ? item : item.label}</span>
+                            <XCircle
+                              className="w-4 h-4 text-[#9A9182] mt-0.5 flex-shrink-0"
+                              strokeWidth={1.5}
+                            />
+                            <span>
+                              {typeof item === 'string' ? item : item.label}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -335,8 +359,14 @@ function RouteComponent() {
 
               {activeTab === 'pickup' && (
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#C9A84C] mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                  <p>{tour.pickup_info ?? 'Your driver will meet you at your hotel lobby or accommodation at the agreed time. Please provide your full address at booking.'}</p>
+                  <MapPin
+                    className="w-4 h-4 text-[#C9A84C] mt-0.5 flex-shrink-0"
+                    strokeWidth={1.5}
+                  />
+                  <p>
+                    {tour.pickup_info ??
+                      'Your driver will meet you at your hotel lobby or accommodation at the agreed time. Please provide your full address at booking.'}
+                  </p>
                 </div>
               )}
             </div>
@@ -347,10 +377,8 @@ function RouteComponent() {
 
           {/* Main layout */}
           <div className="grid md:grid-cols-3 gap-6 md:gap-10 items-start">
-
             {/* Step content */}
             <div className="md:col-span-2">
-
               {/* Step 0: Date & Guests */}
               {step === 0 && (
                 <BookingDateStep
@@ -426,8 +454,7 @@ function RouteComponent() {
               className="text-[#C9A84C] hover:text-[#E2C97E] transition-colors duration-500"
             >
               View all private tours
-            </Link>
-            {' '}
+            </Link>{' '}
             or return{' '}
             <Link
               to="/"

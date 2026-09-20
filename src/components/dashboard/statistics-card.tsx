@@ -1,15 +1,15 @@
-import type { ReactNode } from "react";
-import { ArrowDown, ArrowUp } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { ArrowDown, ArrowUp } from 'lucide-react'
+import type { ReactNode } from 'react'
+import { Card } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 interface StatisticsCardProps {
-  title: string;
-  value: string | number;
-  change: number;
-  changeType: 'increase' | 'decrease';
-  description?: string;
-  icon?: ReactNode;
+  title: string
+  value: string | number
+  change: number
+  changeType: 'increase' | 'decrease'
+  description?: string
+  icon?: ReactNode
 }
 
 export function StatisticsCard({
@@ -20,7 +20,7 @@ export function StatisticsCard({
   description,
   icon,
 }: StatisticsCardProps) {
-  const isPositive = changeType === 'increase';
+  const isPositive = changeType === 'increase'
 
   return (
     <Card className="p-5 gap-3">
@@ -35,14 +35,12 @@ export function StatisticsCard({
         </p>
       </div>
       <div className="space-y-1.5">
-        <div className="font-serif text-3xl text-foreground">
-          {value}
-        </div>
+        <div className="font-serif text-3xl text-foreground">{value}</div>
         <div className="flex items-center gap-2">
           <div
             className={cn(
-              "flex items-center gap-1 text-xs font-semibold",
-              isPositive ? "text-primary" : "text-destructive"
+              'flex items-center gap-1 text-xs font-semibold',
+              isPositive ? 'text-primary' : 'text-destructive',
             )}
           >
             {isPositive ? (
@@ -53,12 +51,10 @@ export function StatisticsCard({
             {change}%
           </div>
           {description && (
-            <span className="text-xs text-muted-foreground">
-              {description}
-            </span>
+            <span className="text-xs text-muted-foreground">{description}</span>
           )}
         </div>
       </div>
     </Card>
-  );
+  )
 }

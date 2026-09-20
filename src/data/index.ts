@@ -1,81 +1,86 @@
-import { BadgePercent, Building2, Car, Clock,
+import {
+  BadgePercent,
+  Building2,
+  Car,
+  Clock,
   Fuel,
   MapPin,
   Plane,
-  Shield, Users, Zap} from "lucide-react";
+  Shield,
+  Users,
+  Zap,
+} from 'lucide-react'
 
 type ServiceItem = {
-  id: number;
-  title: string;
-  description: string;
-  icon: React.ElementType;
-};
+  id: number
+  title: string
+  description: string
+  icon: React.ElementType
+}
 
 type FleetItem = {
-  id: number;
-  name: string;
-  image: string;
+  id: number
+  name: string
+  image: string
   tags: Array<{
-    label: string;
-    icon: string; // iconify name
-    variant?: "primary" | "dark";
-  }>;
-};
+    label: string
+    icon: string // iconify name
+    variant?: 'primary' | 'dark'
+  }>
+}
 
 export const services: Array<ServiceItem> = [
   {
     id: 1,
-    title: "Airport Transfers",
+    title: 'Airport Transfers',
     description:
-      "Punctual and luxurious airport pickups and drop-offs across Portugal.",
+      'Punctual and luxurious airport pickups and drop-offs across Portugal.',
     icon: Plane,
   },
   {
     id: 2,
-    title: "Private Tours",
+    title: 'Private Tours',
     description:
       "Exclusive guided tours to Portugal's most iconic destinations.",
     icon: MapPin,
   },
   {
     id: 3,
-    title: "Chauffeur Service",
-    description:
-      "Hourly service with a professional driver at your disposal.",
+    title: 'Chauffeur Service',
+    description: 'Hourly service with a professional driver at your disposal.',
     icon: Clock,
   },
-];
-
+]
 
 export const fleet: Array<FleetItem> = [
   {
     id: 1,
-    name: "Mercedes-Benz E-Class & EQE",
-    image: "/e-class.png",
+    name: 'Mercedes-Benz E-Class & EQE',
+    image: '/e-class.png',
     tags: [
-      { label: "Electric", icon: "mdi:flash", variant: "primary" },
-      { label: "Diesel", icon: "mdi:fuel", variant: "dark" },
+      { label: 'Electric', icon: 'mdi:flash', variant: 'primary' },
+      { label: 'Diesel', icon: 'mdi:fuel', variant: 'dark' },
     ],
   },
   {
     id: 2,
-    name: "Mercedes-Benz S-Class & EQS",
-    image: "/s-class.png",
+    name: 'Mercedes-Benz S-Class & EQS',
+    image: '/s-class.png',
     tags: [
-      { label: "Electric", icon: "mdi:flash", variant: "primary" },
-      { label: "Diesel", icon: "mdi:fuel", variant: "dark" },
+      { label: 'Electric', icon: 'mdi:flash', variant: 'primary' },
+      { label: 'Diesel', icon: 'mdi:fuel', variant: 'dark' },
     ],
   },
   {
     id: 3,
-    name: "Mercedes-Benz V-Class & EQV",
-    image: "/v-class.png",
+    name: 'Mercedes-Benz V-Class & EQV',
+    image: '/v-class.png',
     tags: [
-      { label: "Electric", icon: "mdi:flash", variant: "primary" },
-      { label: "Diesel", icon: "mdi:fuel", variant: "dark" },
+      { label: 'Electric', icon: 'mdi:flash', variant: 'primary' },
+      { label: 'Diesel', icon: 'mdi:fuel', variant: 'dark' },
     ],
   },
-];
+]
 
 export const features = [
   {
@@ -100,7 +105,7 @@ export const features = [
     icon: Shield,
     title: 'Exclusive Services',
     description:
-      'Personalised VIP service tailored to your clients\' specific needs and preferences.',
+      "Personalised VIP service tailored to your clients' specific needs and preferences.",
   },
   {
     icon: Fuel,
@@ -114,7 +119,7 @@ export const features = [
     description:
       'Earn up to 15% commission on every booking with transparent monthly reporting and fast payouts.',
   },
-  ]
+]
 
 export const PartnershipServices = [
   {

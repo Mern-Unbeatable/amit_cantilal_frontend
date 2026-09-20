@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server: ${{ secrets.FTP_HOST }}
-          port: "22"
-          local_path: "./dist/*"
-          remote_path: "/home/offwego/public_html/"
-          sftp_args: "-o StrictHostKeyChecking=no"
+          port: '22'
+          local_path: './dist/*'
+          remote_path: '/home/offwego/public_html/'
+          sftp_args: '-o StrictHostKeyChecking=no'

@@ -4,8 +4,8 @@ export interface PricingTier {
 }
 
 export interface TourPriceResult {
-  perPerson: number  // EUR
-  total: number      // EUR
+  perPerson: number // EUR
+  total: number // EUR
   totalCents: number // for Stripe
   hasTiers: boolean
 }

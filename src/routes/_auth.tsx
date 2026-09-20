@@ -1,7 +1,7 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
-import AuthLayout from "@/components/layouts/auth-layout.tsx";
-import {useAuthStore} from "@/stores/user.ts";
-import {ROLE_REDIRECTS} from "@/@types/user.ts";
+import AuthLayout from '@/components/layouts/auth-layout.tsx'
+import { useAuthStore } from '@/stores/user.ts'
+import { ROLE_REDIRECTS } from '@/@types/user.ts'
 
 export const Route = createFileRoute('/_auth')({
   beforeLoad: () => {
@@ -20,4 +20,3 @@ export const Route = createFileRoute('/_auth')({
   },
   component: AuthLayout,
 })
-

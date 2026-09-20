@@ -7,15 +7,28 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 
 const SITE_URL = 'https://offwego.pt'
-const API_BASE_URL = process.env.VITE_API_BASE_URL ?? 'https://api.offwego.pt/api/v1'
+const API_BASE_URL =
+  process.env.VITE_API_BASE_URL ?? 'https://api.offwego.pt/api/v1'
 
 const STATIC_PATHS = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/tours', priority: '0.9', changefreq: 'weekly' },
   { path: '/transfers', priority: '0.8', changefreq: 'monthly' },
-  { path: '/transfers/lisbon-porto-private-transfer', priority: '0.8', changefreq: 'monthly' },
-  { path: '/transfers/lisbon-algarve-private-transfer', priority: '0.8', changefreq: 'monthly' },
-  { path: '/transfers/lisbon-seville-private-transfer', priority: '0.8', changefreq: 'monthly' },
+  {
+    path: '/transfers/lisbon-porto-private-transfer',
+    priority: '0.8',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/transfers/lisbon-algarve-private-transfer',
+    priority: '0.8',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/transfers/lisbon-seville-private-transfer',
+    priority: '0.8',
+    changefreq: 'monthly',
+  },
   { path: '/hourly-service', priority: '0.8', changefreq: 'monthly' },
   { path: '/fleet', priority: '0.7', changefreq: 'monthly' },
   { path: '/vip-concierge', priority: '0.7', changefreq: 'monthly' },
@@ -38,21 +51,25 @@ async function fetchJson(url) {
 }
 
 async function fetchTourEntries() {
-  const redirectedHome = new Set([
-    'fatima-private-half-day-tour-from-lisbon',
-  ])
+  const redirectedHome = new Set(['fatima-private-half-day-tour-from-lisbon'])
   const { data: tours } = await fetchJson(`${API_BASE_URL}/public/tours`)
   return (tours ?? [])
     .filter((tour) => tour.slug && !redirectedHome.has(tour.slug))
-    .map((tour) => ({ path: `/tours/${tour.slug}`, priority: '0.8', changefreq: 'weekly' }))
+    .map((tour) => ({
+      path: `/tours/${tour.slug}`,
+      priority: '0.8',
+      changefreq: 'weekly',
+    }))
 }
 
 async function fetchBlogEntries() {
   const entries = []
   let page = 1
-  // eslint-disable-next-line no-constant-condition
+   
   while (true) {
-    const { data } = await fetchJson(`${API_BASE_URL}/public/posts?page=${page}&per_page=100`)
+    const { data } = await fetchJson(
+      `${API_BASE_URL}/public/posts?page=${page}&per_page=100`,
+    )
     for (const post of data.data ?? []) {
       if (!post.slug) continue
       entries.push({
@@ -69,10 +86,7 @@ async function fetchBlogEntries() {
 }
 
 function toUrlXml({ path: urlPath, priority, changefreq, lastmod }) {
-  const lines = [
-    '  <url>',
-    `    <loc>${SITE_URL}${urlPath}</loc>`,
-  ]
+  const lines = ['  <url>', `    <loc>${SITE_URL}${urlPath}</loc>`]
   if (lastmod) lines.push(`    <lastmod>${lastmod.slice(0, 10)}</lastmod>`)
   lines.push(`    <changefreq>${changefreq}</changefreq>`)
   lines.push(`    <priority>${priority}</priority>`)
@@ -92,7 +106,10 @@ async function main() {
     // Don't fail the whole production build because the API was briefly
     // unreachable — ship the static pages and let the next build pick up
     // new tours/posts.
-    console.warn('[sitemap] Failed to fetch tours/posts, sitemap will only include static pages:', err.message)
+    console.warn(
+      '[sitemap] Failed to fetch tours/posts, sitemap will only include static pages:',
+      err.message,
+    )
   }
 
   const allEntries = [...STATIC_PATHS, ...dynamicEntries]
@@ -105,7 +122,10 @@ async function main() {
     '',
   ].join('\n')
 
-  const outPath = path.resolve(fileURLToPath(new URL('.', import.meta.url)), '../public/sitemap.xml')
+  const outPath = path.resolve(
+    fileURLToPath(new URL('.', import.meta.url)),
+    '../public/sitemap.xml',
+  )
   await writeFile(outPath, xml, 'utf-8')
   console.log(`[sitemap] Wrote ${allEntries.length} URLs to ${outPath}`)
 }

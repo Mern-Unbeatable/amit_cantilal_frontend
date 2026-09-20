@@ -1,16 +1,20 @@
 import { MapPin } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import {areas} from "@/data";
+import { areas } from '@/data'
 
 const CoverageArea = () => {
   const { t } = useTranslation()
-  const translatedAreas = t('coverageArea.areas', { returnObjects: true }) as Array<{ title: string; description: string }>
-  const mergedAreas = areas.map((area, idx) => ({ ...area, ...translatedAreas[idx] }))
+  const translatedAreas = t('coverageArea.areas', {
+    returnObjects: true,
+  }) as Array<{ title: string; description: string }>
+  const mergedAreas = areas.map((area, idx) => ({
+    ...area,
+    ...translatedAreas[idx],
+  }))
   return (
     <section className="py-10 md:py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-4 md:px-12">
         <div className="max-w-5xl mx-auto">
-
           {/* Header */}
           <div className="text-center mb-6 md:mb-16">
             <div className="tag-gold mb-4">{t('coverageArea.tag')}</div>
@@ -31,7 +35,10 @@ const CoverageArea = () => {
               >
                 {/* Icon */}
                 <div className="inline-flex items-center justify-center w-10 h-10 md:w-16 md:h-16 bg-[#C9A84C] mb-3 md:mb-6">
-                  <MapPin className="w-5 h-5 md:w-7 md:h-7 text-[#0B0B0B]" strokeWidth={1.5} />
+                  <MapPin
+                    className="w-5 h-5 md:w-7 md:h-7 text-[#0B0B0B]"
+                    strokeWidth={1.5}
+                  />
                 </div>
 
                 {/* Title */}
@@ -58,12 +65,10 @@ const CoverageArea = () => {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
+  )
+}
 
-  );
-};
-
-export default CoverageArea;
+export default CoverageArea

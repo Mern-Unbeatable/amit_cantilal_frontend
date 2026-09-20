@@ -1,5 +1,8 @@
-
-export const landingViewport = { once: true, amount: 0.18, margin: '0px 0px -40px 0px' } as const
+export const landingViewport = {
+  once: true,
+  amount: 0.18,
+  margin: '0px 0px -40px 0px',
+} as const
 
 export const landingEase = [0.22, 1, 0.36, 1] as const
 

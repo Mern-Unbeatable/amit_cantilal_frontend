@@ -18,7 +18,10 @@ interface BlockedDateDialogProps {
   onOpenChange: (open: boolean) => void
 }
 
-export function BlockedDateDialog({ range, onOpenChange }: BlockedDateDialogProps) {
+export function BlockedDateDialog({
+  range,
+  onOpenChange,
+}: BlockedDateDialogProps) {
   const { data: settings } = usePublicSettings()
 
   return (

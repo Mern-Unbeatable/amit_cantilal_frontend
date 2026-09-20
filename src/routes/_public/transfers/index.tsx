@@ -23,8 +23,12 @@ export const Route = createFileRoute('/_public/transfers/')({
 
 function RouteComponent() {
   const { t } = useTranslation()
-  const transferCards = (t('transfersPage.cards', { returnObjects: true }) as Array<{ title: string; description: string }>)
-    .map((c, idx) => ({ ...c, icon: CARD_ICONS[idx] }))
+  const transferCards = (
+    t('transfersPage.cards', { returnObjects: true }) as Array<{
+      title: string
+      description: string
+    }>
+  ).map((c, idx) => ({ ...c, icon: CARD_ICONS[idx] }))
   return (
     <motion.div {...mainTransitionProps}>
       <PageHero

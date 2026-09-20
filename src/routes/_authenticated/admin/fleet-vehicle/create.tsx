@@ -5,18 +5,34 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import type { AxiosError } from 'axios'
 import type { ApiError } from '@/@types/api.ts'
-import type { AdminCreateFleetPayload, VehicleCategory } from '@/features/fleet/fleet.types.ts'
+import type {
+  AdminCreateFleetPayload,
+  VehicleCategory,
+} from '@/features/fleet/fleet.types.ts'
 import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
 import PageHeader from '@/components/page-header.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Field, FieldError, FieldLabel } from '@/components/ui/field.tsx'
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form.tsx'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+} from '@/components/ui/form.tsx'
 import { Input } from '@/components/ui/input.tsx'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.tsx'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select.tsx'
 import { extractApiErrors } from '@/features/auth/auth.hooks.ts'
 import { useCreateFleet } from '@/features/fleet/fleet.hooks.ts'
 
-export const Route = createFileRoute('/_authenticated/admin/fleet-vehicle/create')({
+export const Route = createFileRoute(
+  '/_authenticated/admin/fleet-vehicle/create',
+)({
   component: RouteComponent,
 })
 
@@ -26,11 +42,20 @@ const fleetSchema = z.object({
   image: z
     .instanceof(File, { message: 'Please select an image' })
     .refine((file) => file.size > 0, { message: 'Please select an image' }),
-  passengers: z.coerce.number().int().min(1, { message: 'Passengers must be at least 1' }),
-  suitcases: z.coerce.number().int().min(0, { message: 'Suitcases cannot be negative' }),
+  passengers: z.coerce
+    .number()
+    .int()
+    .min(1, { message: 'Passengers must be at least 1' }),
+  suitcases: z.coerce
+    .number()
+    .int()
+    .min(0, { message: 'Suitcases cannot be negative' }),
   price: z.coerce.number().min(0, { message: 'Price cannot be negative' }),
   fuel_type: z.enum(['electric', 'diesel']),
-  sort_order: z.coerce.number().int().min(0, { message: 'Sort order cannot be negative' }),
+  sort_order: z.coerce
+    .number()
+    .int()
+    .min(0, { message: 'Sort order cannot be negative' }),
 })
 
 type FleetFormInput = z.input<typeof fleetSchema>
@@ -111,8 +136,8 @@ function RouteComponent() {
 
         form.setError('root', {
           message:
-            axiosError.response?.data.message
-            ?? 'Could not create fleet vehicle. Please try again.',
+            axiosError.response?.data.message ??
+            'Could not create fleet vehicle. Please try again.',
         })
       },
     })
@@ -143,9 +168,15 @@ function RouteComponent() {
                     <Field>
                       <FieldLabel htmlFor="fleet-name">Vehicle Name</FieldLabel>
                       <FormControl>
-                        <Input id="fleet-name" placeholder="Mercedes-Benz EQE" {...field} />
+                        <Input
+                          id="fleet-name"
+                          placeholder="Mercedes-Benz EQE"
+                          {...field}
+                        />
                       </FormControl>
-                      <FieldError>{form.formState.errors.name?.message}</FieldError>
+                      <FieldError>
+                        {form.formState.errors.name?.message}
+                      </FieldError>
                     </Field>
                   </FormItem>
                 )}
@@ -159,7 +190,10 @@ function RouteComponent() {
                     <Field>
                       <FieldLabel>Fuel Type</FieldLabel>
                       <FormControl>
-                        <Select value={field.value} onValueChange={field.onChange}>
+                        <Select
+                          value={field.value}
+                          onValueChange={field.onChange}
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Select fuel type" />
                           </SelectTrigger>
@@ -169,7 +203,9 @@ function RouteComponent() {
                           </SelectContent>
                         </Select>
                       </FormControl>
-                      <FieldError>{form.formState.errors.fuel_type?.message}</FieldError>
+                      <FieldError>
+                        {form.formState.errors.fuel_type?.message}
+                      </FieldError>
                     </Field>
                   </FormItem>
                 )}
@@ -181,11 +217,21 @@ function RouteComponent() {
                 render={({ field }) => (
                   <FormItem>
                     <Field>
-                      <FieldLabel htmlFor="fleet-passengers">Passengers</FieldLabel>
+                      <FieldLabel htmlFor="fleet-passengers">
+                        Passengers
+                      </FieldLabel>
                       <FormControl>
-                        <Input id="fleet-passengers" type="number" min={1} {...field} value={field.value as number} />
+                        <Input
+                          id="fleet-passengers"
+                          type="number"
+                          min={1}
+                          {...field}
+                          value={field.value as number}
+                        />
                       </FormControl>
-                      <FieldError>{form.formState.errors.passengers?.message}</FieldError>
+                      <FieldError>
+                        {form.formState.errors.passengers?.message}
+                      </FieldError>
                     </Field>
                   </FormItem>
                 )}
@@ -197,11 +243,21 @@ function RouteComponent() {
                 render={({ field }) => (
                   <FormItem>
                     <Field>
-                      <FieldLabel htmlFor="fleet-suitcases">Suitcases</FieldLabel>
+                      <FieldLabel htmlFor="fleet-suitcases">
+                        Suitcases
+                      </FieldLabel>
                       <FormControl>
-                        <Input id="fleet-suitcases" type="number" min={0} {...field} value={field.value as number} />
+                        <Input
+                          id="fleet-suitcases"
+                          type="number"
+                          min={0}
+                          {...field}
+                          value={field.value as number}
+                        />
                       </FormControl>
-                      <FieldError>{form.formState.errors.suitcases?.message}</FieldError>
+                      <FieldError>
+                        {form.formState.errors.suitcases?.message}
+                      </FieldError>
                     </Field>
                   </FormItem>
                 )}
@@ -215,9 +271,18 @@ function RouteComponent() {
                     <Field>
                       <FieldLabel htmlFor="fleet-price">Price</FieldLabel>
                       <FormControl>
-                        <Input id="fleet-price" type="number" min={0} step="0.01" {...field} value={field.value as number} />
+                        <Input
+                          id="fleet-price"
+                          type="number"
+                          min={0}
+                          step="0.01"
+                          {...field}
+                          value={field.value as number}
+                        />
                       </FormControl>
-                      <FieldError>{form.formState.errors.price?.message}</FieldError>
+                      <FieldError>
+                        {form.formState.errors.price?.message}
+                      </FieldError>
                     </Field>
                   </FormItem>
                 )}
@@ -229,11 +294,21 @@ function RouteComponent() {
                 render={({ field }) => (
                   <FormItem>
                     <Field>
-                      <FieldLabel htmlFor="fleet-sort-order">Sort Order</FieldLabel>
+                      <FieldLabel htmlFor="fleet-sort-order">
+                        Sort Order
+                      </FieldLabel>
                       <FormControl>
-                        <Input id="fleet-sort-order" type="number" min={0} {...field} value={field.value as number} />
+                        <Input
+                          id="fleet-sort-order"
+                          type="number"
+                          min={0}
+                          {...field}
+                          value={field.value as number}
+                        />
                       </FormControl>
-                      <FieldError>{form.formState.errors.sort_order?.message}</FieldError>
+                      <FieldError>
+                        {form.formState.errors.sort_order?.message}
+                      </FieldError>
                     </Field>
                   </FormItem>
                 )}
@@ -246,11 +321,19 @@ function RouteComponent() {
               render={({ field }) => (
                 <FormItem>
                   <Field>
-                    <FieldLabel htmlFor="fleet-description">Description (optional)</FieldLabel>
+                    <FieldLabel htmlFor="fleet-description">
+                      Description (optional)
+                    </FieldLabel>
                     <FormControl>
-                      <Input id="fleet-description" placeholder="Premium electric executive sedan" {...field} />
+                      <Input
+                        id="fleet-description"
+                        placeholder="Premium electric executive sedan"
+                        {...field}
+                      />
                     </FormControl>
-                    <FieldError>{form.formState.errors.description?.message}</FieldError>
+                    <FieldError>
+                      {form.formState.errors.description?.message}
+                    </FieldError>
                   </Field>
                 </FormItem>
               )}
@@ -279,9 +362,15 @@ function RouteComponent() {
                           disabled={isCreating}
                         />
                       </FormControl>
-                      <Input value={field.value.name} readOnly placeholder="Selected image file" />
+                      <Input
+                        value={field.value.name}
+                        readOnly
+                        placeholder="Selected image file"
+                      />
                     </div>
-                    <FieldError>{form.formState.errors.image?.message}</FieldError>
+                    <FieldError>
+                      {form.formState.errors.image?.message}
+                    </FieldError>
                   </Field>
                 </FormItem>
               )}

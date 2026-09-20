@@ -5,27 +5,22 @@
 export const ALGARVE_DESTINATIONS = [
   {
     key: 'lagos',
-    // TEMP — replace with client Lagos image
-    image: 'https://imgcdn.bokun.tools/03bbd112-0472-4d90-b842-19bbb97ad9ad.jpg',
+    image: '/LAGOS _ SECTION 3.jpg',
   },
   {
     key: 'albufeira',
-    // TEMP — replace with client Albufeira image
-    image: '/lisbon-alfama-CqRs8hen.webp',
+    image: '/ALBUFEIRA _ SECTION 3.jpg',
   },
   {
     key: 'vilamoura',
-    // TEMP — replace with client Vilamoura image
-    image: '/city-to-city.png',
+    image: '/VILAMOURA _ SECTION 3.jpg',
   },
   {
     key: 'quintaDoLago',
-    // TEMP — replace with client Quinta do Lago & Vale do Lobo image
-    image: '/sintra-tour-tS9PJJsU.webp',
+    image: '/QUINTA DO LAGO _ VALE DO LOBO _ SECTION 3.jpg',
   },
   {
     key: 'faro',
-    // TEMP — replace with client Faro image
-    image: '/airport-transfer.png',
+    image: '/FARO _ SECTION 3.jpg',
   },
 ] as const

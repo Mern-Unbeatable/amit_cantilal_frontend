@@ -29,10 +29,20 @@ function RouteComponent() {
   const { t } = useTranslation()
   const { data: settings } = usePublicSettings()
   const { data: fleet } = useFleet()
-  const translatedFeatures = t('partnershipsPage.features', { returnObjects: true }) as Array<{ title: string; description: string }>
-  const mergedFeatures = features.map((f, idx) => ({ ...f, ...translatedFeatures[idx] }))
-  const translatedServices = t('partnershipsPage.services', { returnObjects: true }) as Array<{ title: string; description: string }>
-  const mergedServices = PartnershipServices.map((s, idx) => ({ ...s, ...translatedServices[idx] }))
+  const translatedFeatures = t('partnershipsPage.features', {
+    returnObjects: true,
+  }) as Array<{ title: string; description: string }>
+  const mergedFeatures = features.map((f, idx) => ({
+    ...f,
+    ...translatedFeatures[idx],
+  }))
+  const translatedServices = t('partnershipsPage.services', {
+    returnObjects: true,
+  }) as Array<{ title: string; description: string }>
+  const mergedServices = PartnershipServices.map((s, idx) => ({
+    ...s,
+    ...translatedServices[idx],
+  }))
 
   return (
     <motion.div {...mainTransitionProps}>
@@ -62,7 +72,9 @@ function RouteComponent() {
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 btn-luxury text-sm md:text-lg px-5 py-4 md:px-8 md:py-6"
                 >
                   <a
-                    href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')}
+                    href={toWhatsAppUrl(
+                      settings?.whatsapp_number ?? '+351914578214',
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 group"
@@ -118,9 +130,14 @@ function RouteComponent() {
           <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="text-center mb-8 md:mb-16">
-              <div className="tag-gold mb-4">{t('partnershipsPage.whyTag')}</div>
+              <div className="tag-gold mb-4">
+                {t('partnershipsPage.whyTag')}
+              </div>
               <h2 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold mb-3 md:mb-6">
-                {t('partnershipsPage.whyTitlePrefix')} <em className="italic">{t('partnershipsPage.whyTitleEmphasis')}</em>
+                {t('partnershipsPage.whyTitlePrefix')}{' '}
+                <em className="italic">
+                  {t('partnershipsPage.whyTitleEmphasis')}
+                </em>
               </h2>
               <p className="text-sm md:text-xl text-[#9A9182] max-w-3xl mx-auto">
                 {t('partnershipsPage.whySubtitle')}
@@ -190,11 +207,16 @@ function RouteComponent() {
           <div className="max-w-6xl mx-auto">
             {/* Header */}
             <div className="text-center mb-8 md:mb-20">
-              <div className="tag-gold mb-4">{t('partnershipsPage.builtTag')}</div>
+              <div className="tag-gold mb-4">
+                {t('partnershipsPage.builtTag')}
+              </div>
               <h2 className="font-serif text-2xl md:text-5xl lg:text-6xl font-light text-gradient-gold mb-3 md:mb-6">
                 {t('partnershipsPage.builtTitlePrefix')}
                 <br className="hidden md:block" />
-                <em className="italic"> {t('partnershipsPage.builtTitleEmphasis')}</em>
+                <em className="italic">
+                  {' '}
+                  {t('partnershipsPage.builtTitleEmphasis')}
+                </em>
               </h2>
               <p className="text-sm md:text-xl text-[#9A9182] max-w-3xl mx-auto">
                 {t('partnershipsPage.builtSubtitle')}

@@ -1,8 +1,11 @@
 import { format } from 'date-fns'
 import { useState } from 'react'
-import type { ColumnDef } from '@tanstack/react-table'
-import type { ConciergeRequestState, ConciergeRequestStatus } from './concierge-request.types.ts'
 import { useUpdateConciergeRequestStatus } from './concierge-request.hooks.ts'
+import type { ColumnDef } from '@tanstack/react-table'
+import type {
+  ConciergeRequestState,
+  ConciergeRequestStatus,
+} from './concierge-request.types.ts'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -22,7 +25,10 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-const statusVariant: Record<ConciergeRequestStatus, 'default' | 'secondary' | 'destructive'> = {
+const statusVariant: Record<
+  ConciergeRequestStatus,
+  'default' | 'secondary' | 'destructive'
+> = {
   new: 'secondary',
   in_progress: 'default',
   resolved: 'destructive',
@@ -53,14 +59,21 @@ function UpdateStatusDialog({ request }: { request: ConciergeRequestState }) {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm">Update status</Button>
+        <Button variant="outline" size="sm">
+          Update status
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Update concierge request status</DialogTitle>
-          <DialogDescription>Set a new status for {request.name}.</DialogDescription>
+          <DialogDescription>
+            Set a new status for {request.name}.
+          </DialogDescription>
         </DialogHeader>
-        <Select value={status} onValueChange={(v) => setStatus(v as ConciergeRequestStatus)}>
+        <Select
+          value={status}
+          onValueChange={(v) => setStatus(v as ConciergeRequestStatus)}
+        >
           <SelectTrigger>
             <SelectValue placeholder="Select status" />
           </SelectTrigger>
@@ -83,7 +96,9 @@ function UpdateStatusDialog({ request }: { request: ConciergeRequestState }) {
   )
 }
 
-export function conciergeRequestColumns(): Array<ColumnDef<ConciergeRequestState, unknown>> {
+export function conciergeRequestColumns(): Array<
+  ColumnDef<ConciergeRequestState, unknown>
+> {
   return [
     {
       accessorKey: 'name',
@@ -91,7 +106,9 @@ export function conciergeRequestColumns(): Array<ColumnDef<ConciergeRequestState
       cell: ({ row }) => (
         <div>
           <div className="font-medium">{row.original.name}</div>
-          <div className="text-xs text-muted-foreground">{row.original.email}</div>
+          <div className="text-xs text-muted-foreground">
+            {row.original.email}
+          </div>
         </div>
       ),
     },
@@ -133,7 +150,8 @@ export function conciergeRequestColumns(): Array<ColumnDef<ConciergeRequestState
     {
       accessorKey: 'created_at',
       header: 'Submitted',
-      cell: ({ row }) => format(new Date(row.original.created_at), 'dd MMM yyyy'),
+      cell: ({ row }) =>
+        format(new Date(row.original.created_at), 'dd MMM yyyy'),
     },
     {
       id: 'actions',

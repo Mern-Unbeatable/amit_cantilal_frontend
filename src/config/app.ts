@@ -1,18 +1,17 @@
-import packageJson from "../../package.json";
+import packageJson from '../../package.json'
 
 interface AppConfigProps {
-  name: string;
-  version: string;
-  developer: string;
-  copyright: string;
+  name: string
+  version: string
+  developer: string
+  copyright: string
 }
 
-const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear()
 
 export const appConfig: AppConfigProps = {
-  name: "Elite-ride-app",
+  name: 'Elite-ride-app',
   version: packageJson.version,
-  developer: "Demmy",
+  developer: 'Demmy',
   copyright: `© ${currentYear}.`,
 }
-

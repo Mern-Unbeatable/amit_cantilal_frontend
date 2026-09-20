@@ -1,9 +1,9 @@
 import axios from 'axios'
-import type {AxiosError, AxiosResponse} from 'axios';
+import type { AxiosError, AxiosResponse } from 'axios'
 import type { ApiError } from '@/@types/api.ts'
 import { REQUEST_HEADER_AUTH_KEY, TOKEN_TYPE } from '@/constants/api'
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const api = axios.create({
   baseURL: BASE_URL,
@@ -16,15 +16,15 @@ export const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = sessionStorage.getItem('access_token');
+    const token = sessionStorage.getItem('access_token')
     if (token) {
       config.headers[REQUEST_HEADER_AUTH_KEY] = `${TOKEN_TYPE}${token}`
     }
-    return config;
+    return config
   },
   (error) => {
     return Promise.reject(error)
-  }
+  },
 )
 
 api.interceptors.response.use(
@@ -40,9 +40,9 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error)
-  }
+  },
 )
 
 export function unwrap<T>(response: AxiosResponse<{ data: T }>): T {
-  return response.data.data;
+  return response.data.data
 }

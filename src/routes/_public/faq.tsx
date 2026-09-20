@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { mainTransitionProps } from '@/lib/utils.ts'
-import {BookingPoliciesSection} from "@/components/sections/booking-policy-section.tsx";
+import { BookingPoliciesSection } from '@/components/sections/booking-policy-section.tsx'
 import { FaqSection } from '@/components/sections/faq-section.tsx'
 import { PageHero } from '@/components/shared/page-hero.tsx'
 import { pageHead } from '@/lib/seo.ts'
@@ -28,10 +28,9 @@ function RouteComponent() {
         subtitle={t('faqPage.heroSubtitle')}
       />
 
-      <BookingPoliciesSection/>
+      <BookingPoliciesSection />
 
-      <FaqSection/>
-
+      <FaqSection />
     </motion.div>
   )
 }

@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import type {
   AdminCreateUserPayload,
   AdminUpdateUserPayload,
@@ -10,7 +10,8 @@ export const userKeys = {
   lists: () => [...userKeys.all(), 'list'] as const,
   list: (page: number) => [...userKeys.lists(), { page }] as const,
   detail: (id: number) => [...userKeys.all(), 'detail', id] as const,
-  paginatedList: (params: object) => [...userKeys.all(), 'list', params] as const,
+  paginatedList: (params: object) =>
+    [...userKeys.all(), 'list', params] as const,
 }
 
 export function useAdminUsers(params: {
@@ -72,4 +73,3 @@ export function useToggleUserStatus() {
       queryClient.invalidateQueries({ queryKey: userKeys.lists() }),
   })
 }
-

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const LogoIcon: React.FC = () => (
   <svg
@@ -13,6 +13,6 @@ const LogoIcon: React.FC = () => (
     <path d="M6 14H10V18H6V14Z" fill="#F97316" />
     <path d="M14 14H18V18H14V14Z" fill="#F97316" fillOpacity="0.5" />
   </svg>
-);
+)
 
-export default LogoIcon;
+export default LogoIcon

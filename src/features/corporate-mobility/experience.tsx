@@ -2,7 +2,9 @@ import { useTranslation } from 'react-i18next'
 
 export function CorporateExperience() {
   const { t } = useTranslation()
-  const pillars = t('corporateMobility.experience.pillars', { returnObjects: true }) as Array<{ title: string; desc: string }>
+  const pillars = t('corporateMobility.experience.pillars', {
+    returnObjects: true,
+  }) as Array<{ title: string; desc: string }>
   return (
     <section className="py-28 md:py-32 border-y border-[#C9A84C]/10 bg-[#0F0F0F]">
       <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
@@ -18,7 +20,9 @@ export function CorporateExperience() {
               <h2 className="font-serif text-2xl md:text-3xl text-[#F5F0E8] mb-5 font-light leading-tight">
                 {p.title}
               </h2>
-              <p className="text-[#F5F0E8]/60 leading-relaxed font-light">{p.desc}</p>
+              <p className="text-[#F5F0E8]/60 leading-relaxed font-light">
+                {p.desc}
+              </p>
             </div>
           ))}
         </div>

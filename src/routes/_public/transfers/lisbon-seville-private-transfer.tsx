@@ -28,7 +28,7 @@ export const Route = createFileRoute(
 function RouteComponent() {
   return (
     <motion.div {...mainTransitionProps}>
-      <div className="min-h-screen bg-[#0B0B0B] text-[#F5F0E8]">
+      <div className="min-h-screen bg-black text-white-cream">
         <LisbonSevilleHero />
         <LisbonSevilleIntro />
         <LisbonSevilleStops />

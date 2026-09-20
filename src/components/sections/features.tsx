@@ -35,7 +35,13 @@ function Tag({
   )
 }
 
-function CheckList({ items, green }: { items: Array<string>; green?: boolean }) {
+function CheckList({
+  items,
+  green,
+}: {
+  items: Array<string>
+  green?: boolean
+}) {
   return (
     <ul className="space-y-2">
       {items.map((item) => (
@@ -103,9 +109,15 @@ function ContactCard({
 
 export default function B2BFeatures() {
   const { t } = useTranslation()
-  const fleetItems = t('b2bFeatures.fleet.items', { returnObjects: true }) as string[]
-  const commissionItems = t('b2bFeatures.commissions.items', { returnObjects: true }) as string[]
-  const sustainabilityItems = t('b2bFeatures.sustainability.items', { returnObjects: true }) as string[]
+  const fleetItems = t('b2bFeatures.fleet.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const commissionItems = t('b2bFeatures.commissions.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const sustainabilityItems = t('b2bFeatures.sustainability.items', {
+    returnObjects: true,
+  }) as Array<string>
   return (
     <section className="py-10 md:py-20 bg-[#0B0B0B]">
       <div className="container mx-auto px-4 md:px-12">
@@ -126,8 +138,16 @@ export default function B2BFeatures() {
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-3 md:gap-4">
-              <StatCard icon={Car} value="7+" label={t('b2bFeatures.fleet.statModels')} />
-              <StatCard icon={Users} value="48" label={t('b2bFeatures.fleet.statPeople')} />
+              <StatCard
+                icon={Car}
+                value="7+"
+                label={t('b2bFeatures.fleet.statModels')}
+              />
+              <StatCard
+                icon={Users}
+                value="48"
+                label={t('b2bFeatures.fleet.statPeople')}
+              />
             </div>
           </div>
 
@@ -169,7 +189,11 @@ export default function B2BFeatures() {
           <div className="grid lg:grid-cols-2 gap-6 md:gap-12 items-center">
             {/* Text */}
             <div className="space-y-3 md:space-y-6">
-              <Tag icon={Leaf} label={t('b2bFeatures.sustainability.tag')} green />
+              <Tag
+                icon={Leaf}
+                label={t('b2bFeatures.sustainability.tag')}
+                green
+              />
               <h2 className="font-serif text-xl md:text-4xl font-light text-gradient-gold">
                 {t('b2bFeatures.sustainability.title')}
               </h2>

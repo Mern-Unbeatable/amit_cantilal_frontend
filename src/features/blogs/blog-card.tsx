@@ -1,20 +1,15 @@
-import {Link} from "@tanstack/react-router";
+import { Link } from '@tanstack/react-router'
 import { ArrowRight, Calendar } from 'lucide-react'
-import type {BlogPost} from "@/features/blogs/blog.types.ts";
+import type { BlogPost } from '@/features/blogs/blog.types.ts'
 
 interface BlogCardProps {
   post: BlogPost
 }
 
-const BlogCard = ({ post }: BlogCardProps)=> {
+const BlogCard = ({ post }: BlogCardProps) => {
   return (
-    <Link
-      to="/blog/$slug"
-      params={{ slug: post.slug }}
-      className="group block"
-    >
+    <Link to="/blog/$slug" params={{ slug: post.slug }} className="group block">
       <article className="bg-[#141414] border border-[#C9A84C]/12 group-hover:border-[#C9A84C]/35 transition-colors duration-200 h-full flex flex-col">
-
         {/* Image */}
         <div className="aspect-video overflow-hidden">
           <img
@@ -48,13 +43,15 @@ const BlogCard = ({ post }: BlogCardProps)=> {
           {/* Read more */}
           <div className="flex items-center gap-2 text-[#C9A84C] text-xs mt-auto pt-4 border-t border-[#C9A84C]/10">
             <span>Read More</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" strokeWidth={1.5} />
+            <ArrowRight
+              className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200"
+              strokeWidth={1.5}
+            />
           </div>
         </div>
-
       </article>
     </Link>
-  );
+  )
 }
 
-export default BlogCard;
+export default BlogCard

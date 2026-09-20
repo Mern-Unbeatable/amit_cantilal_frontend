@@ -25,7 +25,9 @@ const PageHeader = ({ pageTitle, pageSubtitle }: PageHeaderProps) => {
   // Segments actually shown as crumbs — "admin"/"student" are part of every
   // URL here but shouldn't get their own crumb. Kept separate from
   // allSegments so link paths below can still include them.
-  const pathSegments = allSegments.filter((segment) => segment !== 'admin' && segment !== 'student')
+  const pathSegments = allSegments.filter(
+    (segment) => segment !== 'admin' && segment !== 'student',
+  )
 
   return (
     <div className="flex justify-between items-center">
@@ -33,7 +35,9 @@ const PageHeader = ({ pageTitle, pageSubtitle }: PageHeaderProps) => {
         <h3 className="page__title font-medium text-sm sm:text-xl text-primary dark:text-foreground">
           {pageTitle}
         </h3>
-        {pageSubtitle && <p className="text-muted-foreground text-xs">{pageSubtitle}</p>}
+        {pageSubtitle && (
+          <p className="text-muted-foreground text-xs">{pageSubtitle}</p>
+        )}
       </div>
 
       <Breadcrumb className="hidden sm:block">

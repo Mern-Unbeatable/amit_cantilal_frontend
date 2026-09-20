@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react'
-import {
-  Briefcase,
-  Car,
-  ChevronLeft,
-  ChevronRight,
-  Users,
-} from 'lucide-react'
+import { Briefcase, Car, ChevronLeft, ChevronRight, Users } from 'lucide-react'
 import type { TripDetails, Vehicle } from '../booking.types'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
-import { getDistancePrice, getHourlyRate, getTransferPrice } from '@/features/booking/pricing.ts'
+import {
+  getDistancePrice,
+  getHourlyRate,
+  getTransferPrice,
+} from '@/features/booking/pricing.ts'
 
 interface Props {
   trip: TripDetails
@@ -252,7 +250,18 @@ export default function Step2VehicleSelect({
     v.category === 'electric' ||
     Boolean(v.is_electric)
 
-  const VEHICLE_ORDER = ['eqe', 'eqv', 'eqs', 'e-class', 'e class', 'v-class', 'v class', 's-class', 's class', 'sprinter']
+  const VEHICLE_ORDER = [
+    'eqe',
+    'eqv',
+    'eqs',
+    'e-class',
+    'e class',
+    'v-class',
+    'v class',
+    's-class',
+    's class',
+    'sprinter',
+  ]
   const vehicleSortIndex = (name: string) => {
     const lower = name.toLowerCase()
     const idx = VEHICLE_ORDER.findIndex((k) => lower.includes(k))
@@ -275,7 +284,12 @@ export default function Step2VehicleSelect({
         trip.dropoff,
         v.name,
       ) ??
-      getDistancePrice(trip.pickupCoords, trip.dropoffCoords, v.name, roadDistanceKm ?? undefined) ??
+      getDistancePrice(
+        trip.pickupCoords,
+        trip.dropoffCoords,
+        v.name,
+        roadDistanceKm ?? undefined,
+      ) ??
       v.price
     )
   }
@@ -329,7 +343,8 @@ export default function Step2VehicleSelect({
         </div>
 
         <p className="text-sm text-[#9A9182] pb-5 border-b border-[#C9A84C]/10">
-          Select a vehicle that fits your group. All prices are fixed — no surprises.
+          Select a vehicle that fits your group. All prices are fixed — no
+          surprises.
         </p>
       </div>
 
@@ -400,8 +415,12 @@ export default function Step2VehicleSelect({
             </div>
             <div>
               <p className="font-medium text-red-400 mb-1">Sprinter</p>
-              <p className="text-red-400/80">100% charged for any cancellation</p>
-              <p className="text-[#9A9182]/60 italic mt-1">Non-refundable. No refunds after booking confirmation.</p>
+              <p className="text-red-400/80">
+                100% charged for any cancellation
+              </p>
+              <p className="text-[#9A9182]/60 italic mt-1">
+                Non-refundable. No refunds after booking confirmation.
+              </p>
             </div>
           </div>
           <p className="italic text-[#9A9182]/60">

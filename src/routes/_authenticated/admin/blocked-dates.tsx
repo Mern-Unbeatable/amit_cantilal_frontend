@@ -45,7 +45,8 @@ const emptyForm = { label: '', start_date: '', end_date: '', message: '' }
 
 function RouteComponent() {
   const { data: ranges, isLoading } = useAdminBlockedDates()
-  const { mutate: createRange, isPending: isCreating } = useCreateBlockedDateRange()
+  const { mutate: createRange, isPending: isCreating } =
+    useCreateBlockedDateRange()
   const { mutate: deleteRange } = useDeleteBlockedDateRange()
 
   const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -108,8 +109,9 @@ function RouteComponent() {
           <div>
             <p className="text-sm font-semibold text-primary">Blocked Ranges</p>
             <p className="text-xs text-muted-foreground">
-              Dates in these ranges are disabled on the booking calendars, and customers
-              who click a blocked date see a popup pointing them to email/WhatsApp.
+              Dates in these ranges are disabled on the booking calendars, and
+              customers who click a blocked date see a popup pointing them to
+              email/WhatsApp.
             </p>
           </div>
 
@@ -133,7 +135,8 @@ function RouteComponent() {
               <DialogHeader>
                 <DialogTitle>Block a Date Range</DialogTitle>
                 <DialogDescription>
-                  Customers won&apos;t be able to select these dates when booking.
+                  Customers won&apos;t be able to select these dates when
+                  booking.
                 </DialogDescription>
               </DialogHeader>
 
@@ -143,12 +146,16 @@ function RouteComponent() {
                   <Input
                     id="label"
                     value={form.label}
-                    onChange={(e) => setForm((f) => ({ ...f, label: e.target.value }))}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, label: e.target.value }))
+                    }
                     placeholder="Lisbon Event, Sept 2026"
                     required
                   />
                   {fieldErrors.label && (
-                    <p className="text-xs text-destructive">{fieldErrors.label}</p>
+                    <p className="text-xs text-destructive">
+                      {fieldErrors.label}
+                    </p>
                   )}
                 </div>
 
@@ -165,7 +172,9 @@ function RouteComponent() {
                       required
                     />
                     {fieldErrors.start_date && (
-                      <p className="text-xs text-destructive">{fieldErrors.start_date}</p>
+                      <p className="text-xs text-destructive">
+                        {fieldErrors.start_date}
+                      </p>
                     )}
                   </div>
                   <div className="space-y-1.5">
@@ -181,7 +190,9 @@ function RouteComponent() {
                       required
                     />
                     {fieldErrors.end_date && (
-                      <p className="text-xs text-destructive">{fieldErrors.end_date}</p>
+                      <p className="text-xs text-destructive">
+                        {fieldErrors.end_date}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -191,7 +202,9 @@ function RouteComponent() {
                   <Textarea
                     id="message"
                     value={form.message}
-                    onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, message: e.target.value }))
+                    }
                     placeholder="We're at limited availability for this period due to a special event. Please reach out to us directly by email or WhatsApp to book."
                     rows={3}
                   />
@@ -199,12 +212,18 @@ function RouteComponent() {
                     Leave blank to use the default message shown to customers.
                   </p>
                   {fieldErrors.message && (
-                    <p className="text-xs text-destructive">{fieldErrors.message}</p>
+                    <p className="text-xs text-destructive">
+                      {fieldErrors.message}
+                    </p>
                   )}
                 </div>
 
                 <DialogFooter>
-                  <Button type="submit" disabled={isCreating} className="min-w-[120px]">
+                  <Button
+                    type="submit"
+                    disabled={isCreating}
+                    className="min-w-30"
+                  >
                     {isCreating ? 'Adding...' : 'Add Blocked Range'}
                   </Button>
                 </DialogFooter>
@@ -230,8 +249,12 @@ function RouteComponent() {
               {ranges.map((range) => (
                 <TableRow key={range.id}>
                   <TableCell className="font-medium">{range.label}</TableCell>
-                  <TableCell>{format(parseLocalDate(range.start_date), 'd MMM yyyy')}</TableCell>
-                  <TableCell>{format(parseLocalDate(range.end_date), 'd MMM yyyy')}</TableCell>
+                  <TableCell>
+                    {format(parseLocalDate(range.start_date), 'd MMM yyyy')}
+                  </TableCell>
+                  <TableCell>
+                    {format(parseLocalDate(range.end_date), 'd MMM yyyy')}
+                  </TableCell>
                   <TableCell className="max-w-xs truncate text-muted-foreground">
                     {range.message || 'None'}
                   </TableCell>
@@ -253,7 +276,8 @@ function RouteComponent() {
           </Table>
         ) : (
           <p className="text-sm text-muted-foreground py-8 text-center">
-            No blocked date ranges yet. Add one to close off bookings for a busy period.
+            No blocked date ranges yet. Add one to close off bookings for a busy
+            period.
           </p>
         )}
       </Card>

@@ -91,8 +91,12 @@ function TransferBlock({
 
 export default function TransferServices() {
   const { t } = useTranslation()
-  const airportFeatures = t('transferServices.airport.features', { returnObjects: true }) as string[]
-  const cityFeatures = t('transferServices.cityToCity.features', { returnObjects: true }) as string[]
+  const airportFeatures = t('transferServices.airport.features', {
+    returnObjects: true,
+  }) as Array<string>
+  const cityFeatures = t('transferServices.cityToCity.features', {
+    returnObjects: true,
+  }) as Array<string>
   return (
     <section className="py-16 md:py-24 bg-[#0B0B0B]">
       <div className="container mx-auto px-6 md:px-12 space-y-20 md:space-y-32">

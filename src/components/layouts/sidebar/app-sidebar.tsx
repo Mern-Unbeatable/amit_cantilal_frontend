@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react'
 import { Link } from '@tanstack/react-router'
-import { NavMain } from "./nav-main";
-import { NavUser } from "./nav-user";
+import { ExternalLink } from 'lucide-react'
+import { NavMain } from './nav-main'
+import { NavUser } from './nav-user'
 import {
   Sidebar,
   SidebarContent,
@@ -10,22 +11,23 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import {useSidebarItems} from "@/components/layouts/sidebar/sidebar-items.ts";
-import {useAuthStore} from "@/stores/user.ts";
+} from '@/components/ui/sidebar'
+import { useSidebarItems } from '@/components/layouts/sidebar/sidebar-items.ts'
+import { useAuthStore } from '@/stores/user.ts'
 import ApplicationLogo from '@/components/application-logo.tsx'
-import { ExternalLink } from 'lucide-react'
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
-  
-  const user = useAuthStore(state => state.user);
+  const user = useAuthStore((state) => state.user)
 
-  const sidebarItems = useSidebarItems({user});
+  const sidebarItems = useSidebarItems({ user })
 
   return (
     <Sidebar {...props}>
       <SidebarHeader className="gap-0">
-        <Link to="/admin/dashboard" className="flex items-center justify-center px-2 py-4">
+        <Link
+          to="/admin/dashboard"
+          className="flex items-center justify-center px-2 py-4"
+        >
           <ApplicationLogo width={100} height={56} className="h-14 w-auto" />
         </Link>
         <SidebarMenu className="pt-1 border-t border-sidebar-border">
@@ -44,7 +46,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
       </SidebarContent>
       <SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
     </Sidebar>
-  );
+  )
 }
 
-export default AppSidebar;
+export default AppSidebar

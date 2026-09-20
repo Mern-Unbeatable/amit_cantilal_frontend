@@ -24,7 +24,10 @@ function RouteComponent() {
 
   return (
     <AppWrapper>
-      <PageHeader pageTitle="New User" pageSubtitle="Add a new user to the system" />
+      <PageHeader
+        pageTitle="New User"
+        pageSubtitle="Add a new user to the system"
+      />
       <div className="p-4 md:p-6">
         <Card className="max-w-2xl mx-auto">
           <CardContent className="p-6">
@@ -35,4 +38,3 @@ function RouteComponent() {
     </AppWrapper>
   )
 }
-

@@ -1,12 +1,20 @@
 import { useEffect, useState } from 'react'
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
-import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import {
+  Elements,
+  PaymentElement,
+  useElements,
+  useStripe,
+} from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { Calendar, Car, MapPin, Users, XCircle } from 'lucide-react'
+import type {
+  BookingState,
+  CreateBookingResponse,
+} from '@/features/booking/booking.types.ts'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { useRefreshPaymentIntent } from '@/features/booking/booking.hooks.ts'
-import type { BookingState, CreateBookingResponse } from '@/features/booking/booking.types.ts'
 import { Button } from '@/components/ui/button'
 import { pageHead } from '@/lib/seo.ts'
 
@@ -48,11 +56,16 @@ function PaymentForm({
         confirmParams: {
           return_url: `${window.location.origin}/booking/confirm`,
           payment_method_data: {
-            billing_details: { name: booking.name, email: booking.email, phone: booking.phone },
+            billing_details: {
+              name: booking.name,
+              email: booking.email,
+              phone: booking.phone,
+            },
           },
         },
       })
-      if (stripeError) setError(stripeError.message ?? 'Payment failed. Please try again.')
+      if (stripeError)
+        setError(stripeError.message ?? 'Payment failed. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -98,7 +111,8 @@ function PaymentForm({
       </div>
 
       <p className="text-xs text-[#9A9182]/60 text-center">
-        Your payment is secured by Stripe. By completing payment you agree to our terms of service.
+        Your payment is secured by Stripe. By completing payment you agree to
+        our terms of service.
       </p>
     </div>
   )
@@ -119,23 +133,34 @@ function BookingSummary({ booking }: { booking: BookingState }) {
       <div className="space-y-2 text-xs">
         {details?.pickup_location && (
           <div className="flex items-start gap-2 text-[#9A9182]">
-            <MapPin className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+            <MapPin
+              className="w-3.5 h-3.5 mt-0.5 flex-shrink-0"
+              strokeWidth={1.5}
+            />
             <span>{details.pickup_location}</span>
           </div>
         )}
         {details?.dropoff_location && (
           <div className="flex items-start gap-2 text-[#9A9182]">
-            <MapPin className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-[#C9A84C]" strokeWidth={1.5} />
+            <MapPin
+              className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-[#C9A84C]"
+              strokeWidth={1.5}
+            />
             <span>{details.dropoff_location}</span>
           </div>
         )}
         <div className="flex items-center gap-2 text-[#9A9182]">
           <Calendar className="w-3.5 h-3.5 flex-shrink-0" strokeWidth={1.5} />
-          <span>{booking.date} {booking.pickup_time ? `• ${booking.pickup_time}` : ''}</span>
+          <span>
+            {booking.date}{' '}
+            {booking.pickup_time ? `• ${booking.pickup_time}` : ''}
+          </span>
         </div>
         <div className="flex items-center gap-2 text-[#9A9182]">
           <Users className="w-3.5 h-3.5 flex-shrink-0" strokeWidth={1.5} />
-          <span>{booking.passengers} passenger{booking.passengers !== 1 ? 's' : ''}</span>
+          <span>
+            {booking.passengers} passenger{booking.passengers !== 1 ? 's' : ''}
+          </span>
         </div>
         {details?.vehicle_type && (
           <div className="flex items-center gap-2 text-[#9A9182]">
@@ -168,21 +193,31 @@ function RouteComponent() {
 
   useEffect(() => {
     if (!email) {
-      setLoadError('Missing email. Please use the link from your booking email or try the lookup page.')
+      setLoadError(
+        'Missing email. Please use the link from your booking email or try the lookup page.',
+      )
       return
     }
 
-    refresh.mutateAsync({ reference, email })
+    refresh
+      .mutateAsync({ reference, email })
       .then(setData)
-      .catch(() => setLoadError('Unable to load your booking. Please check your link or use the lookup page.'))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+      .catch(() =>
+        setLoadError(
+          'Unable to load your booking. Please check your link or use the lookup page.',
+        ),
+      )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reference, email])
 
   if (loadError) {
     return (
       <section className="min-h-screen flex items-center justify-center bg-[#0B0B0B]">
         <div className="text-center space-y-5 max-w-sm mx-auto px-4">
-          <XCircle className="w-12 h-12 text-red-400 mx-auto" strokeWidth={1.5} />
+          <XCircle
+            className="w-12 h-12 text-red-400 mx-auto"
+            strokeWidth={1.5}
+          />
           <p className="text-[#9A9182] text-sm">{loadError}</p>
           <Link
             to="/booking/lookup"
@@ -200,7 +235,9 @@ function RouteComponent() {
       <section className="min-h-screen flex items-center justify-center bg-[#0B0B0B]">
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 rounded-full border-2 border-[#C9A84C]/20 border-t-[#C9A84C] animate-spin" />
-          <span className="text-sm text-[#9A9182]">Loading your booking...</span>
+          <span className="text-sm text-[#9A9182]">
+            Loading your booking...
+          </span>
         </div>
       </section>
     )
@@ -211,7 +248,10 @@ function RouteComponent() {
       <section className="relative min-h-screen flex items-center justify-center pt-20 bg-[#0B0B0B] overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 20%, rgba(201,168,76,0.05) 0%, transparent 70%)' }}
+          style={{
+            background:
+              'radial-gradient(ellipse 60% 40% at 50% 20%, rgba(201,168,76,0.05) 0%, transparent 70%)',
+          }}
         />
 
         <div className="container mx-auto px-4 py-20 max-w-lg">

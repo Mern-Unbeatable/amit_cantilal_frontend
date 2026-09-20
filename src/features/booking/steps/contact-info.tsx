@@ -1,8 +1,6 @@
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react'
-import {
-  COUNTRY_CODES
-} from '../booking.types'
-import type {ContactDetails, TripDetails, Vehicle} from '../booking.types';
+import { COUNTRY_CODES } from '../booking.types'
+import type { ContactDetails, TripDetails, Vehicle } from '../booking.types'
 import { getHourlyRate } from '@/features/booking/pricing.ts'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -102,7 +100,8 @@ export default function Step3ContactInfo({
           <div className="flex items-center gap-2 pt-2 mt-1 border-t border-[#C9A84C]/15">
             <span className="text-[#9A9182] min-w-[60px]">Total:</span>
             <span className="font-serif text-lg text-gradient-gold">
-              €{(trip.serviceType === 'hourly'
+              €
+              {(trip.serviceType === 'hourly'
                 ? vehicle.price * (trip.hours ?? 1)
                 : vehicle.price
               ).toFixed(2)}

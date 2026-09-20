@@ -80,10 +80,7 @@ export function TransferLandingCta({ ns, imageSrc }: TransferLandingCtaProps) {
             {INTERNAL_LINKS.map((link, index) => (
               <span key={link.key} className="inline-flex items-center">
                 {index > 0 && (
-                  <span
-                    className="mx-3 h-3 w-px bg-[#C9A84C]/30"
-                    aria-hidden
-                  />
+                  <span className="mx-3 h-3 w-px bg-[#C9A84C]/30" aria-hidden />
                 )}
                 <Link
                   to={link.to}

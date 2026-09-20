@@ -15,7 +15,9 @@ import {
 import { useGetPaginatedConciergeRequests } from '@/features/vip-concierge/concierge-request.hooks.ts'
 import ConciergeRequestTable from '@/features/vip-concierge/concierge-request-table.tsx'
 
-export const Route = createFileRoute('/_authenticated/admin/concierge-requests')({
+export const Route = createFileRoute(
+  '/_authenticated/admin/concierge-requests',
+)({
   component: RouteComponent,
 })
 
@@ -51,7 +53,9 @@ function RouteComponent() {
         <CardHeader className="flex justify-between p-4 gap-6 md:gap-8">
           <Select
             value={status}
-            onValueChange={(v) => setStatus(v as 'all' | ConciergeRequestStatus)}
+            onValueChange={(v) =>
+              setStatus(v as 'all' | ConciergeRequestStatus)
+            }
           >
             <SelectTrigger className="w-full max-w-xs">
               <SelectValue placeholder="Filter by status" />

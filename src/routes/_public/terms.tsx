@@ -12,8 +12,8 @@ import {
   FileText,
   Gavel,
   Luggage,
-  MapPin,
   Mail,
+  MapPin,
   ShieldCheck,
   Ticket,
   Users,
@@ -34,10 +34,10 @@ export const Route = createFileRoute('/_public/terms')({
 })
 
 interface SectionCardProps {
-  icon: React.ReactNode;
-  title: string;
-  children: React.ReactNode;
-  delay?: number;
+  icon: React.ReactNode
+  title: string
+  children: React.ReactNode
+  delay?: number
 }
 
 function SectionCard({ icon, title, children, delay = 0 }: SectionCardProps) {
@@ -77,19 +77,45 @@ function List({ items }: { items: Array<string> }) {
 
 function RouteComponent() {
   const { t } = useTranslation()
-  const insuranceItems = t('terms.insurance.items', { returnObjects: true }) as string[]
-  const servicesItems = t('terms.services.items', { returnObjects: true }) as string[]
-  const servicesIncludes = t('terms.services.includes', { returnObjects: true }) as string[]
-  const servicesExcludes = t('terms.services.excludes', { returnObjects: true }) as string[]
-  const conductItems = t('terms.conduct.items', { returnObjects: true }) as string[]
-  const forceMajeureItems = t('terms.forceMajeure.items', { returnObjects: true }) as string[]
-  const bookingMethods = t('terms.reservations.bookingMethods', { returnObjects: true }) as string[]
-  const confirmationItems = t('terms.reservations.confirmationItems', { returnObjects: true }) as string[]
-  const paymentMethods = t('terms.reservations.paymentMethods', { returnObjects: true }) as string[]
-  const standardServices = t('terms.cancellation.standardServices', { returnObjects: true }) as string[]
-  const standardRules = t('terms.cancellation.standardRules', { returnObjects: true }) as string[]
-  const vehicleDamageItems = t('terms.vehicleDamage.items', { returnObjects: true }) as string[]
-  const amendmentsItems = t('terms.amendments.items', { returnObjects: true }) as string[]
+  const insuranceItems = t('terms.insurance.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const servicesItems = t('terms.services.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const servicesIncludes = t('terms.services.includes', {
+    returnObjects: true,
+  }) as Array<string>
+  const servicesExcludes = t('terms.services.excludes', {
+    returnObjects: true,
+  }) as Array<string>
+  const conductItems = t('terms.conduct.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const forceMajeureItems = t('terms.forceMajeure.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const bookingMethods = t('terms.reservations.bookingMethods', {
+    returnObjects: true,
+  }) as Array<string>
+  const confirmationItems = t('terms.reservations.confirmationItems', {
+    returnObjects: true,
+  }) as Array<string>
+  const paymentMethods = t('terms.reservations.paymentMethods', {
+    returnObjects: true,
+  }) as Array<string>
+  const standardServices = t('terms.cancellation.standardServices', {
+    returnObjects: true,
+  }) as Array<string>
+  const standardRules = t('terms.cancellation.standardRules', {
+    returnObjects: true,
+  }) as Array<string>
+  const vehicleDamageItems = t('terms.vehicleDamage.items', {
+    returnObjects: true,
+  }) as Array<string>
+  const amendmentsItems = t('terms.amendments.items', {
+    returnObjects: true,
+  }) as Array<string>
   return (
     <motion.div {...mainTransitionProps}>
       <section className="py-16 md:py-24 bg-gradient-to-b from-muted/30 to-background">

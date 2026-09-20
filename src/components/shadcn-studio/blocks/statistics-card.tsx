@@ -21,12 +21,7 @@ const StatisticsCard = ({
   sub,
 }: StatisticsCardProps) => {
   return (
-    <Card
-      className={cn(
-        'rounded-md h-[88px] py-2 justify-center',
-        className,
-      )}
-    >
+    <Card className={cn('rounded-md h-[88px] py-2 justify-center', className)}>
       <CardContent className="flex items-center gap-3 px-2">
         {/* Icon */}
         <div

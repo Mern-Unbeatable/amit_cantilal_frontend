@@ -81,7 +81,9 @@ function UpdatePartnershipStatusDialog({
         <div className="flex flex-col gap-2">
           <Select
             value={status}
-            onValueChange={(value) => setStatus(value as PartnershipRequestStatus)}
+            onValueChange={(value) =>
+              setStatus(value as PartnershipRequestStatus)
+            }
           >
             <SelectTrigger>
               <SelectValue placeholder="Select status" />
@@ -95,7 +97,10 @@ function UpdatePartnershipStatusDialog({
         </div>
 
         <DialogFooter showCloseButton>
-          <Button onClick={handleSubmit} disabled={isPending || status === request.status}>
+          <Button
+            onClick={handleSubmit}
+            disabled={isPending || status === request.status}
+          >
             {isPending ? 'Saving...' : 'Save'}
           </Button>
         </DialogFooter>
@@ -164,7 +169,9 @@ export function partnershipRequestColumns(): Array<
     {
       id: 'actions',
       header: '',
-      cell: ({ row }) => <UpdatePartnershipStatusDialog request={row.original} />,
+      cell: ({ row }) => (
+        <UpdatePartnershipStatusDialog request={row.original} />
+      ),
     },
   ]
 }

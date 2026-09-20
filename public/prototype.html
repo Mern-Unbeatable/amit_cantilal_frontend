@@ -1,121 +1,626 @@
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --gold:#C9A84C;--gold-lt:#E2C97E;--black:#0B0B0B;--black2:#141414;--black3:#1C1C1C;
-  --white:#F5F0E8;--white-dim:#9A9182;--serif:'Cormorant Garamond',serif;--sans:'Jost',sans-serif;
-}
-body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
-.gold{color:var(--gold)}
-.tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:5px 14px;margin-bottom:1.5rem}
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  :root {
+    --gold: #c9a84c;
+    --gold-lt: #e2c97e;
+    --black: #0b0b0b;
+    --black2: #141414;
+    --black3: #1c1c1c;
+    --white: #f5f0e8;
+    --white-dim: #9a9182;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Jost', sans-serif;
+  }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  .gold {
+    color: var(--gold);
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    padding: 5px 14px;
+    margin-bottom: 1.5rem;
+  }
 
-/* NAV */
-.nav{background:rgba(11,11,11,.96);border-bottom:1px solid rgba(201,168,76,.12);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99}
-.logo{font-family:var(--serif);font-size:1.4rem;font-weight:300;letter-spacing:.12em;color:var(--gold)}
-.logo span{color:var(--white)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--white-dim);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--gold)}
-.nav-btn{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--black);border:none;padding:.55rem 1.4rem;cursor:pointer;font-family:var(--sans)}
+  /* NAV */
+  .nav {
+    background: rgba(11, 11, 11, 0.96);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+  }
+  .logo span {
+    color: var(--white);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--gold);
+  }
+  .nav-btn {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 0.55rem 1.4rem;
+    cursor: pointer;
+    font-family: var(--sans);
+  }
 
-/* HERO */
-.hero{background:var(--black);padding:5rem 2.5rem 4rem;text-align:center;border-bottom:1px solid rgba(201,168,76,.08);position:relative;overflow:hidden}
-.hero-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(201,168,76,.03) 0,rgba(201,168,76,.03) 1px,transparent 1px,transparent 72px);pointer-events:none}
-.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:500px;height:300px;background:rgba(201,168,76,.05);border-radius:50%;filter:blur(60px);pointer-events:none}
-.hero-content{position:relative;z-index:1;max-width:700px;margin:0 auto}
-.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);font-weight:300;line-height:1.1;letter-spacing:-.01em;margin-bottom:1.2rem}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero p{font-size:.95rem;color:var(--white-dim);max-width:480px;margin:0 auto 2.5rem;letter-spacing:.02em}
-.hero-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
-.btn-gold{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;background:var(--gold);color:var(--black);border:1px solid var(--gold);padding:.8rem 2rem;cursor:pointer;text-decoration:none}
-.btn-ghost{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;background:transparent;color:var(--white);border:1px solid rgba(245,240,232,.25);padding:.8rem 2rem;cursor:pointer;text-decoration:none}
-.hero-stats{display:flex;gap:0;margin-top:3.5rem;border:1px solid rgba(201,168,76,.12)}
-.stat{flex:1;padding:1.2rem;text-align:center;border-right:1px solid rgba(201,168,76,.12)}
-.stat:last-child{border-right:none}
-.stat-num{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--gold);display:block}
-.stat-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--white-dim)}
+  /* HERO */
+  .hero {
+    background: var(--black);
+    padding: 5rem 2.5rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(201, 168, 76, 0.03) 0,
+      rgba(201, 168, 76, 0.03) 1px,
+      transparent 1px,
+      transparent 72px
+    );
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 300px;
+    background: rgba(201, 168, 76, 0.05);
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero p {
+    font-size: 0.95rem;
+    color: var(--white-dim);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-gold {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--black);
+    border: 1px solid var(--gold);
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-ghost {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(245, 240, 232, 0.25);
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    margin-top: 3.5rem;
+    border: 1px solid rgba(201, 168, 76, 0.12);
+  }
+  .stat {
+    flex: 1;
+    padding: 1.2rem;
+    text-align: center;
+    border-right: 1px solid rgba(201, 168, 76, 0.12);
+  }
+  .stat:last-child {
+    border-right: none;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
 
-/* WHY US */
-.section{padding:4rem 2.5rem}
-.section-inner{max-width:900px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:3rem}
-.section-header h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;margin-bottom:.8rem}
-.section-header p{font-size:.9rem;color:var(--white-dim);max-width:440px;margin:0 auto}
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(201,168,76,.1)}
-.feature{background:var(--black2);padding:2rem 1.5rem}
-.feat-icon{width:36px;height:36px;border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
-.feat-icon svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.feature h3{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:.5rem}
-.feature p{font-size:.82rem;color:var(--white-dim);line-height:1.6}
+  /* WHY US */
+  .section {
+    padding: 4rem 2.5rem;
+  }
+  .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .section-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+  }
+  .section-header p {
+    font-size: 0.9rem;
+    color: var(--white-dim);
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(201, 168, 76, 0.1);
+  }
+  .feature {
+    background: var(--black2);
+    padding: 2rem 1.5rem;
+  }
+  .feat-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .feat-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .feature h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  .feature p {
+    font-size: 0.82rem;
+    color: var(--white-dim);
+    line-height: 1.6;
+  }
 
-/* SERVICES */
-.services{background:var(--black2);padding:4rem 2.5rem}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:900px;margin:0 auto}
-.service-card{border:1px solid rgba(201,168,76,.12);padding:2rem 1.5rem;position:relative;overflow:hidden;cursor:pointer;transition:border-color .2s}
-.service-card:hover{border-color:rgba(201,168,76,.4)}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:left}
-.service-card:hover::before{transform:scaleX(1)}
-.svc-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:rgba(201,168,76,.15);line-height:1;margin-bottom:1rem}
-.service-card h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;margin-bottom:.6rem}
-.service-card p{font-size:.82rem;color:var(--white-dim);line-height:1.6}
-.svc-arrow{margin-top:1.2rem;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+  /* SERVICES */
+  .services {
+    background: var(--black2);
+    padding: 4rem 2.5rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .service-card {
+    border: 1px solid rgba(201, 168, 76, 0.12);
+    padding: 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .service-card:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+  .svc-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: rgba(201, 168, 76, 0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+  }
+  .service-card p {
+    font-size: 0.82rem;
+    color: var(--white-dim);
+    line-height: 1.6;
+  }
+  .svc-arrow {
+    margin-top: 1.2rem;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
 
-/* FLEET */
-.fleet{padding:4rem 2.5rem}
-.fleet-inner{max-width:900px;margin:0 auto}
-.fleet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(201,168,76,.1);margin-top:1rem}
-.fleet-card{background:var(--black);padding:0}
-.fleet-img{height:160px;background:var(--black3);display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(201,168,76,.08)}
-.fleet-img svg{width:100px;opacity:.35}
-.fleet-info{padding:1.5rem}
-.fleet-info h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:.3rem}
-.fleet-info .sub{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
-.fleet-specs{display:flex;gap:1rem;font-size:11px;color:var(--white-dim)}
-.fleet-specs span{display:flex;align-items:center;gap:4px}
+  /* FLEET */
+  .fleet {
+    padding: 4rem 2.5rem;
+  }
+  .fleet-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: rgba(201, 168, 76, 0.1);
+    margin-top: 1rem;
+  }
+  .fleet-card {
+    background: var(--black);
+    padding: 0;
+  }
+  .fleet-img {
+    height: 160px;
+    background: var(--black3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  }
+  .fleet-img svg {
+    width: 100px;
+    opacity: 0.35;
+  }
+  .fleet-info {
+    padding: 1.5rem;
+  }
+  .fleet-info h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+  }
+  .fleet-info .sub {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .fleet-specs {
+    display: flex;
+    gap: 1rem;
+    font-size: 11px;
+    color: var(--white-dim);
+  }
+  .fleet-specs span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
 
-/* BOOKING FORM */
-.booking{background:var(--black2);padding:4rem 2.5rem;border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1)}
-.booking-inner{max-width:700px;margin:0 auto}
-.booking-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
-.form-group{display:flex;flex-direction:column;gap:.4rem}
-.form-group.full{grid-column:1/-1}
-.form-group label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--white-dim)}
-.form-group input,.form-group select,.form-group textarea{background:var(--black3);border:1px solid rgba(201,168,76,.15);color:var(--white);padding:.7rem 1rem;font-family:var(--sans);font-size:.85rem;font-weight:300;outline:none;width:100%;transition:border-color .2s}
-.form-group input:focus,.form-group select:focus{border-color:rgba(201,168,76,.5)}
-.form-group select option{background:var(--black3)}
-.form-group textarea{resize:vertical;min-height:80px}
-.form-submit{grid-column:1/-1;margin-top:.5rem}
-.form-submit button{width:100%;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;background:var(--gold);color:var(--black);border:none;padding:1rem;cursor:pointer}
+  /* BOOKING FORM */
+  .booking {
+    background: var(--black2);
+    padding: 4rem 2.5rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  }
+  .booking-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .booking-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .form-group.full {
+    grid-column: 1/-1;
+  }
+  .form-group label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--black3);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    color: var(--white);
+    padding: 0.7rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: rgba(201, 168, 76, 0.5);
+  }
+  .form-group select option {
+    background: var(--black3);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .form-submit {
+    grid-column: 1/-1;
+    margin-top: 0.5rem;
+  }
+  .form-submit button {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+  }
 
-/* TESTIMONIALS */
-.testimonials{padding:4rem 2.5rem;text-align:center}
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(201,168,76,.1);max-width:900px;margin:2rem auto 0}
-.testi{background:var(--black);padding:2rem}
-.testi-quote{font-family:var(--serif);font-size:1.1rem;font-weight:300;font-style:italic;line-height:1.6;margin-bottom:1.2rem;color:var(--white)}
-.testi-stars{color:var(--gold);font-size:12px;letter-spacing:.15em;margin-bottom:.8rem}
-.testi-author{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--white-dim)}
+  /* TESTIMONIALS */
+  .testimonials {
+    padding: 4rem 2.5rem;
+    text-align: center;
+  }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: rgba(201, 168, 76, 0.1);
+    max-width: 900px;
+    margin: 2rem auto 0;
+  }
+  .testi {
+    background: var(--black);
+    padding: 2rem;
+  }
+  .testi-quote {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    color: var(--white);
+  }
+  .testi-stars {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8rem;
+  }
+  .testi-author {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
 
-/* CONTACT */
-.contact{background:var(--black2);padding:4rem 2.5rem}
-.contact-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.contact h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;margin-bottom:1rem}
-.contact p{font-size:.9rem;color:var(--white-dim);margin-bottom:2rem;line-height:1.7}
-.contact-items{display:flex;flex-direction:column;gap:1rem}
-.contact-item{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--white-dim)}
-.contact-item svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;flex-shrink:0}
-.contact-map{background:var(--black3);border:1px solid rgba(201,168,76,.12);height:240px;display:flex;align-items:center;justify-content:center}
-.map-placeholder{text-align:center}
-.map-placeholder svg{width:32px;height:32px;stroke:var(--gold);fill:none;stroke-width:1;margin-bottom:.8rem}
-.map-placeholder p{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--white-dim)}
+  /* CONTACT */
+  .contact {
+    background: var(--black2);
+    padding: 4rem 2.5rem;
+  }
+  .contact-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .contact h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .contact p {
+    font-size: 0.9rem;
+    color: var(--white-dim);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.85rem;
+    color: var(--white-dim);
+  }
+  .contact-item svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    flex-shrink: 0;
+  }
+  .contact-map {
+    background: var(--black3);
+    border: 1px solid rgba(201, 168, 76, 0.12);
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-placeholder {
+    text-align: center;
+  }
+  .map-placeholder svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1;
+    margin-bottom: 0.8rem;
+  }
+  .map-placeholder p {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
 
-/* FOOTER */
-.footer{background:var(--black);border-top:1px solid rgba(201,168,76,.1);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.footer-logo{font-family:var(--serif);font-size:1.1rem;font-weight:300;letter-spacing:.12em;color:var(--gold)}
-.footer-logo span{color:var(--white)}
-.footer-links{display:flex;gap:1.5rem;list-style:none}
-.footer-links a{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--white-dim);text-decoration:none}
-.footer-copy{font-size:11px;color:var(--white-dim);opacity:.5}
+  /* FOOTER */
+  .footer {
+    background: var(--black);
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+  }
+  .footer-logo span {
+    color: var(--white);
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-decoration: none;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: var(--white-dim);
+    opacity: 0.5;
+  }
 </style>
 
 <nav class="nav">
@@ -134,17 +639,32 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
   <div class="hero-glow"></div>
   <div class="hero-content">
     <div class="tag">Luxury Chauffeur Service — Portugal</div>
-    <h1>Travel in <em>absolute</em><br>comfort &amp; style</h1>
-    <p>Premium chauffeur service across Lisbon, Porto and the Algarve. Professional drivers, executive fleet, available 24/7.</p>
+    <h1>Travel in <em>absolute</em><br />comfort &amp; style</h1>
+    <p>
+      Premium chauffeur service across Lisbon, Porto and the Algarve.
+      Professional drivers, executive fleet, available 24/7.
+    </p>
     <div class="hero-btns">
       <a class="btn-gold" href="#booking">Reserve Your Ride</a>
       <a class="btn-ghost" href="#fleet">View Our Fleet</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><span class="stat-num">12+</span><span class="stat-label">Years of Service</span></div>
-      <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Happy Clients</span></div>
-      <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Availability</span></div>
-      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Cities Covered</span></div>
+      <div class="stat">
+        <span class="stat-num">12+</span
+        ><span class="stat-label">Years of Service</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">500+</span
+        ><span class="stat-label">Happy Clients</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">24/7</span
+        ><span class="stat-label">Availability</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span
+        ><span class="stat-label">Cities Covered</span>
+      </div>
     </div>
   </div>
 </section>
@@ -154,36 +674,64 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
     <div class="section-header">
       <div class="tag">Why Choose Us</div>
       <h2>The <em>EliteRide</em> difference</h2>
-      <p>Every journey is crafted with precision, discretion, and uncompromising attention to detail.</p>
+      <p>
+        Every journey is crafted with precision, discretion, and uncompromising
+        attention to detail.
+      </p>
     </div>
     <div class="features-grid">
       <div class="feature">
         <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
         </div>
         <h3>Safety First</h3>
-        <p>Fully licensed, insured vehicles with professional, vetted chauffeurs trained to the highest standards.</p>
+        <p>
+          Fully licensed, insured vehicles with professional, vetted chauffeurs
+          trained to the highest standards.
+        </p>
       </div>
       <div class="feature">
         <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
         </div>
         <h3>Always On Time</h3>
-        <p>Real-time flight tracking and traffic monitoring ensure punctual pickups every single time.</p>
+        <p>
+          Real-time flight tracking and traffic monitoring ensure punctual
+          pickups every single time.
+        </p>
       </div>
       <div class="feature">
         <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
         </div>
         <h3>Multilingual Drivers</h3>
-        <p>English, Portuguese, Spanish and French speaking chauffeurs to serve international clients.</p>
+        <p>
+          English, Portuguese, Spanish and French speaking chauffeurs to serve
+          international clients.
+        </p>
       </div>
       <div class="feature">
         <div class="feat-icon">
-          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <svg viewBox="0 0 24 24">
+            <line x1="12" y1="1" x2="12" y2="23" />
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+          </svg>
         </div>
         <h3>Fixed Pricing</h3>
-        <p>Transparent, upfront rates with no hidden fees or surge pricing. What you see is what you pay.</p>
+        <p>
+          Transparent, upfront rates with no hidden fees or surge pricing. What
+          you see is what you pay.
+        </p>
       </div>
     </div>
   </div>
@@ -194,31 +742,46 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
     <div class="section-header">
       <div class="tag">Our Services</div>
       <h2>Every journey, <em>perfected</em></h2>
-      <p>From airport runs to private tours, we tailor every experience to your exact needs.</p>
+      <p>
+        From airport runs to private tours, we tailor every experience to your
+        exact needs.
+      </p>
     </div>
     <div class="services-grid">
       <div class="service-card">
         <div class="svc-num">01</div>
         <h3>Airport Transfers</h3>
-        <p>Seamless pickups at Lisbon, Porto, and Faro airports. Flight monitoring, meet &amp; greet, 60 min free wait.</p>
+        <p>
+          Seamless pickups at Lisbon, Porto, and Faro airports. Flight
+          monitoring, meet &amp; greet, 60 min free wait.
+        </p>
         <div class="svc-arrow">Book Transfer →</div>
       </div>
       <div class="service-card">
         <div class="svc-num">02</div>
         <h3>Private Tours</h3>
-        <p>Explore Sintra, Douro Valley, Algarve and Fátima with a personal chauffeur at your own pace.</p>
+        <p>
+          Explore Sintra, Douro Valley, Algarve and Fátima with a personal
+          chauffeur at your own pace.
+        </p>
         <div class="svc-arrow">Explore Tours →</div>
       </div>
       <div class="service-card">
         <div class="svc-num">03</div>
         <h3>Hourly Chauffeur</h3>
-        <p>Flexible hourly hire for business meetings, events, or city exploration across Lisbon and Porto.</p>
+        <p>
+          Flexible hourly hire for business meetings, events, or city
+          exploration across Lisbon and Porto.
+        </p>
         <div class="svc-arrow">Book by Hour →</div>
       </div>
       <div class="service-card">
         <div class="svc-num">04</div>
         <h3>Corporate Transport</h3>
-        <p>Dedicated B2B solutions with account management for executives and business delegations.</p>
+        <p>
+          Dedicated B2B solutions with account management for executives and
+          business delegations.
+        </p>
         <div class="svc-arrow">Get a Quote →</div>
       </div>
     </div>
@@ -234,14 +797,60 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
     <div class="fleet-grid">
       <div class="fleet-card">
         <div class="fleet-img">
-          <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="35" width="160" height="28" rx="4" fill="#C9A84C" opacity=".15" stroke="#C9A84C" stroke-width=".5"/>
-            <path d="M40 35 Q50 12 80 12 L120 12 Q150 12 162 35" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".4"/>
-            <circle cx="52" cy="63" r="10" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".5"/>
-            <circle cx="52" cy="63" r="4" fill="#C9A84C" opacity=".2"/>
-            <circle cx="148" cy="63" r="10" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".5"/>
-            <circle cx="148" cy="63" r="4" fill="#C9A84C" opacity=".2"/>
-            <rect x="82" y="16" width="36" height="16" rx="2" fill="#C9A84C" opacity=".08" stroke="#C9A84C" stroke-width=".5"/>
+          <svg
+            viewBox="0 0 200 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="20"
+              y="35"
+              width="160"
+              height="28"
+              rx="4"
+              fill="#C9A84C"
+              opacity=".15"
+              stroke="#C9A84C"
+              stroke-width=".5"
+            />
+            <path
+              d="M40 35 Q50 12 80 12 L120 12 Q150 12 162 35"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".4"
+            />
+            <circle
+              cx="52"
+              cy="63"
+              r="10"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".5"
+            />
+            <circle cx="52" cy="63" r="4" fill="#C9A84C" opacity=".2" />
+            <circle
+              cx="148"
+              cy="63"
+              r="10"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".5"
+            />
+            <circle cx="148" cy="63" r="4" fill="#C9A84C" opacity=".2" />
+            <rect
+              x="82"
+              y="16"
+              width="36"
+              height="16"
+              rx="2"
+              fill="#C9A84C"
+              opacity=".08"
+              stroke="#C9A84C"
+              stroke-width=".5"
+            />
           </svg>
         </div>
         <div class="fleet-info">
@@ -258,14 +867,60 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
       </div>
       <div class="fleet-card">
         <div class="fleet-img">
-          <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="15" y="32" width="170" height="30" rx="4" fill="#C9A84C" opacity=".12" stroke="#C9A84C" stroke-width=".5"/>
-            <path d="M35 32 Q50 8 85 8 L115 8 Q150 8 165 32" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".35"/>
-            <circle cx="48" cy="62" r="11" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".5"/>
-            <circle cx="48" cy="62" r="4" fill="#C9A84C" opacity=".2"/>
-            <circle cx="152" cy="62" r="11" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".5"/>
-            <circle cx="152" cy="62" r="4" fill="#C9A84C" opacity=".2"/>
-            <rect x="78" y="12" width="44" height="18" rx="2" fill="#C9A84C" opacity=".07" stroke="#C9A84C" stroke-width=".5"/>
+          <svg
+            viewBox="0 0 200 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="15"
+              y="32"
+              width="170"
+              height="30"
+              rx="4"
+              fill="#C9A84C"
+              opacity=".12"
+              stroke="#C9A84C"
+              stroke-width=".5"
+            />
+            <path
+              d="M35 32 Q50 8 85 8 L115 8 Q150 8 165 32"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".35"
+            />
+            <circle
+              cx="48"
+              cy="62"
+              r="11"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".5"
+            />
+            <circle cx="48" cy="62" r="4" fill="#C9A84C" opacity=".2" />
+            <circle
+              cx="152"
+              cy="62"
+              r="11"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".5"
+            />
+            <circle cx="152" cy="62" r="4" fill="#C9A84C" opacity=".2" />
+            <rect
+              x="78"
+              y="12"
+              width="44"
+              height="18"
+              rx="2"
+              fill="#C9A84C"
+              opacity=".07"
+              stroke="#C9A84C"
+              stroke-width=".5"
+            />
           </svg>
         </div>
         <div class="fleet-info">
@@ -282,16 +937,78 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
       </div>
       <div class="fleet-card">
         <div class="fleet-img">
-          <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="28" width="180" height="34" rx="5" fill="#C9A84C" opacity=".12" stroke="#C9A84C" stroke-width=".5"/>
-            <path d="M28 28 Q38 10 65 10 L135 10 Q162 10 172 28" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".35"/>
-            <circle cx="42" cy="62" r="11" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".5"/>
-            <circle cx="42" cy="62" r="4" fill="#C9A84C" opacity=".2"/>
-            <circle cx="158" cy="62" r="11" stroke="#C9A84C" stroke-width=".8" fill="none" opacity=".5"/>
-            <circle cx="158" cy="62" r="4" fill="#C9A84C" opacity=".2"/>
-            <rect x="65" y="12" width="70" height="14" rx="2" fill="#C9A84C" opacity=".07" stroke="#C9A84C" stroke-width=".5"/>
-            <line x1="90" y1="28" x2="90" y2="14" stroke="#C9A84C" stroke-width=".4" opacity=".3"/>
-            <line x1="110" y1="28" x2="110" y2="14" stroke="#C9A84C" stroke-width=".4" opacity=".3"/>
+          <svg
+            viewBox="0 0 200 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="10"
+              y="28"
+              width="180"
+              height="34"
+              rx="5"
+              fill="#C9A84C"
+              opacity=".12"
+              stroke="#C9A84C"
+              stroke-width=".5"
+            />
+            <path
+              d="M28 28 Q38 10 65 10 L135 10 Q162 10 172 28"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".35"
+            />
+            <circle
+              cx="42"
+              cy="62"
+              r="11"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".5"
+            />
+            <circle cx="42" cy="62" r="4" fill="#C9A84C" opacity=".2" />
+            <circle
+              cx="158"
+              cy="62"
+              r="11"
+              stroke="#C9A84C"
+              stroke-width=".8"
+              fill="none"
+              opacity=".5"
+            />
+            <circle cx="158" cy="62" r="4" fill="#C9A84C" opacity=".2" />
+            <rect
+              x="65"
+              y="12"
+              width="70"
+              height="14"
+              rx="2"
+              fill="#C9A84C"
+              opacity=".07"
+              stroke="#C9A84C"
+              stroke-width=".5"
+            />
+            <line
+              x1="90"
+              y1="28"
+              x2="90"
+              y2="14"
+              stroke="#C9A84C"
+              stroke-width=".4"
+              opacity=".3"
+            />
+            <line
+              x1="110"
+              y1="28"
+              x2="110"
+              y2="14"
+              stroke="#C9A84C"
+              stroke-width=".4"
+              opacity=".3"
+            />
           </svg>
         </div>
         <div class="fleet-info">
@@ -320,15 +1037,15 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
     <div class="booking-form">
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" placeholder="John Smith">
+        <input type="text" placeholder="John Smith" />
       </div>
       <div class="form-group">
         <label>Phone Number</label>
-        <input type="tel" placeholder="+351 900 000 000">
+        <input type="tel" placeholder="+351 900 000 000" />
       </div>
       <div class="form-group">
         <label>Email Address</label>
-        <input type="email" placeholder="john@example.com">
+        <input type="email" placeholder="john@example.com" />
       </div>
       <div class="form-group">
         <label>Service Type</label>
@@ -341,23 +1058,25 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
       </div>
       <div class="form-group">
         <label>Pickup Location</label>
-        <input type="text" placeholder="Lisbon Airport (LIS)">
+        <input type="text" placeholder="Lisbon Airport (LIS)" />
       </div>
       <div class="form-group">
         <label>Drop-off Location</label>
-        <input type="text" placeholder="Hotel Bairro Alto, Lisbon">
+        <input type="text" placeholder="Hotel Bairro Alto, Lisbon" />
       </div>
       <div class="form-group">
         <label>Date</label>
-        <input type="date">
+        <input type="date" />
       </div>
       <div class="form-group">
         <label>Time</label>
-        <input type="time">
+        <input type="time" />
       </div>
       <div class="form-group full">
         <label>Special Requests</label>
-        <textarea placeholder="Child seat, specific route, extra luggage..."></textarea>
+        <textarea
+          placeholder="Child seat, specific route, extra luggage..."
+        ></textarea>
       </div>
       <div class="form-submit">
         <button type="button">Request Booking →</button>
@@ -375,17 +1094,26 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
     <div class="testi-grid">
       <div class="testi">
         <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"Impeccable service from start to finish. The driver was punctual, professional, and the car was immaculate."</div>
+        <div class="testi-quote">
+          "Impeccable service from start to finish. The driver was punctual,
+          professional, and the car was immaculate."
+        </div>
         <div class="testi-author">James W. — London, UK</div>
       </div>
       <div class="testi">
         <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"Our Sintra tour was absolutely magical. The chauffeur knew every hidden gem and made it truly memorable."</div>
+        <div class="testi-quote">
+          "Our Sintra tour was absolutely magical. The chauffeur knew every
+          hidden gem and made it truly memorable."
+        </div>
         <div class="testi-author">Sophie M. — Paris, France</div>
       </div>
       <div class="testi">
         <div class="testi-stars">★★★★★</div>
-        <div class="testi-quote">"Used for corporate travel across Lisbon for a week. Reliable, discreet, and exactly what we needed."</div>
+        <div class="testi-quote">
+          "Used for corporate travel across Lisbon for a week. Reliable,
+          discreet, and exactly what we needed."
+        </div>
         <div class="testi-author">Carlos R. — Madrid, Spain</div>
       </div>
     </div>
@@ -396,30 +1124,51 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
   <div class="contact-inner">
     <div>
       <div class="tag">Get in Touch</div>
-      <h2>Ready to <em>travel</em><br>in style?</h2>
-      <p>Our team is available around the clock to assist with bookings, quotes, and any special arrangements.</p>
+      <h2>Ready to <em>travel</em><br />in style?</h2>
+      <p>
+        Our team is available around the clock to assist with bookings, quotes,
+        and any special arrangements.
+      </p>
       <div class="contact-items">
         <div class="contact-item">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+            />
+          </svg>
           +351 913 911 013
         </div>
         <div class="contact-item">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
           bookings@eliteride.pt
         </div>
         <div class="contact-item">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
           Available 24 hours, 7 days a week
         </div>
         <div class="contact-item">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
           Lisbon · Porto · Algarve · Portugal
         </div>
       </div>
     </div>
     <div class="contact-map">
       <div class="map-placeholder">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <svg viewBox="0 0 24 24">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
         <p>Lisbon, Portugal</p>
       </div>
     </div>

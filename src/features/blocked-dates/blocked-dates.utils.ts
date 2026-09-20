@@ -19,7 +19,11 @@ export function findBlockedRange(
 ): PublicBlockedDateRange | undefined {
   if (!ranges?.length) return undefined
 
-  const target = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
+  const target = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+  ).getTime()
 
   return ranges.find((range) => {
     const start = parseLocalDate(range.start_date).getTime()
@@ -40,7 +44,9 @@ export function blockedRangeMessage(range: PublicBlockedDateRange): string {
  * clickable and are only styled to look unavailable; onSelect intercepts
  * the click and opens the dialog instead of applying the selection.
  */
-export function toBlockedMatchers(ranges: Array<PublicBlockedDateRange> | undefined) {
+export function toBlockedMatchers(
+  ranges: Array<PublicBlockedDateRange> | undefined,
+) {
   return (ranges ?? []).map((range) => ({
     from: parseLocalDate(range.start_date),
     to: parseLocalDate(range.end_date),

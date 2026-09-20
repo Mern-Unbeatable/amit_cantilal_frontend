@@ -1,7 +1,7 @@
 /* ======AUTH HOOKS =======*/
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import {useNavigate} from '@tanstack/react-router'
-import {toast} from "sonner";
+import { useNavigate } from '@tanstack/react-router'
+import { toast } from 'sonner'
 import type { AxiosError } from 'axios'
 import type {
   ApplyPayload,
@@ -13,7 +13,7 @@ import type {
   VerifyOtpPayload,
 } from '@/@types/user.ts'
 import type { ApiError } from '@/@types/api.ts'
-import {useAuthStore} from '@/stores/user.ts'
+import { useAuthStore } from '@/stores/user.ts'
 import { authService } from '@/features/auth/auth.service.ts'
 
 const ROLE_REDIRECTS: Record<UserRole, string> = {
@@ -36,7 +36,6 @@ export function extractApiErrors(
     {} as Record<string, string>,
   )
 }
-
 
 // =============================================================================
 // useLogin
@@ -63,7 +62,6 @@ export function useLogin() {
       }
 
       navigate({ to: ROLE_REDIRECTS[role] || '/admin/dashboard' })
-
     },
   })
 }
@@ -90,8 +88,6 @@ export function useRegister() {
         window.location.href = redirectTo // hard nav preserves the full path
         return
       }
-
-
     },
   })
 }
@@ -150,13 +146,12 @@ export function useResetPassword() {
 }
 
 export function useChangePassword() {
-
   return useMutation({
     mutationFn: (payload: ChangePasswordPayload) =>
       authService.changePassword(payload),
 
     onSuccess: () => {
-      toast.success("Password changed successfully")
+      toast.success('Password changed successfully')
     },
   })
 }
@@ -178,5 +173,3 @@ export function useUpdateProfile() {
     },
   })
 }
-
-

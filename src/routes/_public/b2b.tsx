@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { Button } from '@/components/ui/button.tsx'
 import { WHATSAPP_MESSAGE, WHATSAPP_NUMBER } from '@/constants'
-import WhyPartnerWithUs from "@/components/sections/why-partner.tsx";
+import WhyPartnerWithUs from '@/components/sections/why-partner.tsx'
 import B2BFeatures from '@/components/sections/features.tsx'
 import FleetSection from '@/components/sections/fleet-sections.tsx'
 import CoverageArea from '@/components/sections/coverage-area.tsx'
@@ -103,15 +103,15 @@ function RouteComponent() {
         </div>
       </section>
 
-      <WhyPartnerWithUs/>
+      <WhyPartnerWithUs />
 
-      <B2BFeatures/>
+      <B2BFeatures />
 
       <FleetSection fleet={fleet} />
 
-      <CoverageArea/>
+      <CoverageArea />
 
-      <B2BRequestForm/>
+      <B2BRequestForm />
     </motion.div>
   )
 }

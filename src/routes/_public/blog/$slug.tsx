@@ -11,7 +11,8 @@ export const Route = createFileRoute('/_public/blog/$slug')({
     const { slug } = params
     return context.queryClient.ensureQueryData({
       queryKey: blogKeys.detail(slug),
-      queryFn: async () => mapToPublicPost(await blogService.getPublicPostBySlug(slug)),
+      queryFn: async () =>
+        mapToPublicPost(await blogService.getPublicPostBySlug(slug)),
     })
   },
   head: ({ loaderData: post, params }) =>

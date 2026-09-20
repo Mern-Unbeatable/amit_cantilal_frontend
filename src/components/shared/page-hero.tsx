@@ -1,5 +1,5 @@
-import { PublicBreadcrumbs } from '@/components/shared/public-breadcrumbs.tsx'
 import type { PublicBreadcrumbItem } from '@/components/shared/public-breadcrumbs.tsx'
+import { PublicBreadcrumbs } from '@/components/shared/public-breadcrumbs.tsx'
 
 interface PageHeroProps {
   image?: string

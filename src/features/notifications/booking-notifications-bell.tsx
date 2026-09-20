@@ -35,7 +35,12 @@ const BookingNotificationsBell = () => {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80" side="bottom" align="end" sideOffset={4}>
+      <DropdownMenuContent
+        className="w-80"
+        side="bottom"
+        align="end"
+        sideOffset={4}
+      >
         <DropdownMenuLabel>Confirmed bookings</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {notifications.length === 0 ? (
@@ -50,7 +55,10 @@ const BookingNotificationsBell = () => {
                   <div className="flex w-full flex-col gap-0.5 py-0.5">
                     <span className="text-sm font-medium">{n.reference}</span>
                     <span className="text-xs text-muted-foreground">
-                      {n.name} · {formatDistanceToNow(new Date(n.updatedAt), { addSuffix: true })}
+                      {n.name} ·{' '}
+                      {formatDistanceToNow(new Date(n.updatedAt), {
+                        addSuffix: true,
+                      })}
                     </span>
                   </div>
                 </Link>

@@ -1,17 +1,20 @@
-import { Award, TrendingDown, TreePine } from 'lucide-react'
+import { Award, TreePine, TrendingDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 const BENEFIT_ICONS = [Award, TrendingDown, TreePine]
 
 export default function CorporateTaxReduction() {
   const { t } = useTranslation()
-  const benefits = (t('taxReduction.benefits', { returnObjects: true }) as Array<{ title: string; description: string }>)
-    .map((b, idx) => ({ ...b, icon: BENEFIT_ICONS[idx] }))
+  const benefits = (
+    t('taxReduction.benefits', { returnObjects: true }) as Array<{
+      title: string
+      description: string
+    }>
+  ).map((b, idx) => ({ ...b, icon: BENEFIT_ICONS[idx] }))
   return (
     <section className="py-10 md:py-16 bg-[#141414]">
       <div className="container mx-auto px-4 md:px-12">
         <div className="max-w-6xl mx-auto">
-
           {/* Header */}
           <div className="mb-6 md:mb-10">
             <div className="tag-gold mb-4">{t('taxReduction.tag')}</div>
@@ -43,7 +46,6 @@ export default function CorporateTaxReduction() {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

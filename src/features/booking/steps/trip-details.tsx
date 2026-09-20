@@ -22,7 +22,10 @@ import type { PublicBlockedDateRange } from '@/features/blocked-dates/blocked-da
 import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
 import { toWhatsAppUrl } from '@/lib/utils.ts'
 import { usePublicBlockedDates } from '@/features/blocked-dates/blocked-dates.hooks.ts'
-import { findBlockedRange, toBlockedMatchers } from '@/features/blocked-dates/blocked-dates.utils.ts'
+import {
+  findBlockedRange,
+  toBlockedMatchers,
+} from '@/features/blocked-dates/blocked-dates.utils.ts'
 import { BlockedDateDialog } from '@/features/blocked-dates/blocked-date-dialog.tsx'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -427,7 +430,8 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
       : null
 
   const isWithin24Hours =
-    !!pickupDateTime && pickupDateTime.getTime() - Date.now() < 24 * 60 * 60 * 1000
+    !!pickupDateTime &&
+    pickupDateTime.getTime() - Date.now() < 24 * 60 * 60 * 1000
 
   const canProceed =
     data.pickup.trim() !== '' &&
@@ -587,20 +591,20 @@ export default function Step1TripDetails({ data, onChange, onNext }: Props) {
           className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#9A9182] pointer-events-none z-10"
           strokeWidth={1.5}
         />
-      <Input
-        type="text"
-        inputMode="numeric"
-        value={data.passengers === 0 ? '' : data.passengers}
-        onChange={(e) => {
-          const raw = e.target.value.replace(/\D/g, '')
-          update({ passengers: raw === '' ? 0 : Math.min(20, Number(raw)) })
-        }}
-        onBlur={() => {
-          if (!data.passengers) update({ passengers: 1 })
-        }}
-        placeholder="Passengers"
-        className="h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50 pl-12"
-      />
+        <Input
+          type="text"
+          inputMode="numeric"
+          value={data.passengers === 0 ? '' : data.passengers}
+          onChange={(e) => {
+            const raw = e.target.value.replace(/\D/g, '')
+            update({ passengers: raw === '' ? 0 : Math.min(20, Number(raw)) })
+          }}
+          onBlur={() => {
+            if (!data.passengers) update({ passengers: 1 })
+          }}
+          placeholder="Passengers"
+          className="h-14 text-base bg-[#0B0B0B] border-[#C9A84C]/20 focus:border-[#C9A84C]/50 rounded-none text-white placeholder:text-[#9A9182]/50 pl-12"
+        />
       </div>
 
       {/* Date + Time */}

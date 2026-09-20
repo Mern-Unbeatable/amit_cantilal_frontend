@@ -5,14 +5,28 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import type { AxiosError } from 'axios'
 import type { ApiError } from '@/@types/api.ts'
-import type { AdminCreateTourPayload, TourCategory } from '@/features/tour/tour.types.ts'
+import type {
+  AdminCreateTourPayload,
+  TourCategory,
+} from '@/features/tour/tour.types.ts'
 import AppWrapper from '@/components/layouts/sidebar/app-wrapper.tsx'
 import PageHeader from '@/components/page-header.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { Field, FieldError, FieldLabel } from '@/components/ui/field.tsx'
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form.tsx'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+} from '@/components/ui/form.tsx'
 import { Input } from '@/components/ui/input.tsx'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.tsx'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select.tsx'
 import { Textarea } from '@/components/ui/textarea.tsx'
 import { extractApiErrors } from '@/features/auth/auth.hooks.ts'
 import { useCreateTour } from '@/features/tour/tour.hooks.ts'
@@ -22,16 +36,26 @@ export const Route = createFileRoute('/_authenticated/admin/tours/create')({
 })
 
 const tourSchema = z.object({
-  title: z.string().min(2, { message: 'Title must be at least 2 characters' }).max(255),
+  title: z
+    .string()
+    .min(2, { message: 'Title must be at least 2 characters' })
+    .max(255),
   excerpt: z.string().max(500).optional(),
   description: z.string().min(1, { message: 'Description is required' }),
   price: z.coerce.number().int().min(0, { message: 'Price must be 0 or more' }),
   duration: z.string().min(1, { message: 'Duration is required' }).max(100),
-  max_guests: z.coerce.number().int().min(1, { message: 'Max guests must be at least 1' }).max(50),
+  max_guests: z.coerce
+    .number()
+    .int()
+    .min(1, { message: 'Max guests must be at least 1' })
+    .max(50),
   category: z.enum(['private', 'on_demand']),
   cover_image: z.string().optional(),
   active: z.boolean(),
-  sort_order: z.coerce.number().int().min(0, { message: 'Sort order must be 0 or more' }),
+  sort_order: z.coerce
+    .number()
+    .int()
+    .min(0, { message: 'Sort order must be 0 or more' }),
   inclusions: z.string().optional(),
   exclusions: z.string().optional(),
 })
@@ -139,12 +163,19 @@ function RouteComponent() {
 
   return (
     <AppWrapper>
-      <PageHeader pageTitle="Create Tour" pageSubtitle="Add a new tour offering" />
+      <PageHeader
+        pageTitle="Create Tour"
+        pageSubtitle="Add a new tour offering"
+      />
 
       <div className="p-4 md:p-6">
         <div className="mx-auto w-full max-w-3xl rounded-lg border bg-card p-4 md:p-6">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" noValidate>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5"
+              noValidate
+            >
               <FormField
                 control={form.control}
                 name="title"
@@ -161,39 +192,159 @@ function RouteComponent() {
                 )}
               />
 
-              <FormField control={form.control} name="excerpt" render={({ field }) => (
-                <FormItem>
-                  <Field>
-                    <FieldLabel htmlFor="excerpt">Excerpt</FieldLabel>
-                    <FormControl><Textarea id="excerpt" rows={3} placeholder="Short summary" {...field} /></FormControl>
-                    <FieldError errors={[form.formState.errors.excerpt]} />
-                  </Field>
-                </FormItem>
-              )} />
+              <FormField
+                control={form.control}
+                name="excerpt"
+                render={({ field }) => (
+                  <FormItem>
+                    <Field>
+                      <FieldLabel htmlFor="excerpt">Excerpt</FieldLabel>
+                      <FormControl>
+                        <Textarea
+                          id="excerpt"
+                          rows={3}
+                          placeholder="Short summary"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FieldError errors={[form.formState.errors.excerpt]} />
+                    </Field>
+                  </FormItem>
+                )}
+              />
 
-              <FormField control={form.control} name="description" render={({ field }) => (
-                <FormItem>
-                  <Field>
-                    <FieldLabel htmlFor="description">Description</FieldLabel>
-                    <FormControl><Textarea id="description" rows={6} placeholder="Detailed description" {...field} /></FormControl>
-                    <FieldError errors={[form.formState.errors.description]} />
-                  </Field>
-                </FormItem>
-              )} />
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem>
+                    <Field>
+                      <FieldLabel htmlFor="description">Description</FieldLabel>
+                      <FormControl>
+                        <Textarea
+                          id="description"
+                          rows={6}
+                          placeholder="Detailed description"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FieldError
+                        errors={[form.formState.errors.description]}
+                      />
+                    </Field>
+                  </FormItem>
+                )}
+              />
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <FormField control={form.control} name="price" render={({ field }) => (
-                  <FormItem><Field><FieldLabel htmlFor="price">Price</FieldLabel><FormControl><Input id="price" type="number" min={0} value={typeof field.value === 'number' ? field.value : 0} onChange={(event) => field.onChange(event.target.value)} onBlur={field.onBlur} name={field.name} ref={field.ref} /></FormControl><FieldError errors={[form.formState.errors.price]} /></Field></FormItem>
-                )} />
-                <FormField control={form.control} name="duration" render={({ field }) => (
-                  <FormItem><Field><FieldLabel htmlFor="duration">Duration</FieldLabel><FormControl><Input id="duration" placeholder="e.g. 2 hours" {...field} /></FormControl><FieldError errors={[form.formState.errors.duration]} /></Field></FormItem>
-                )} />
-                <FormField control={form.control} name="max_guests" render={({ field }) => (
-                  <FormItem><Field><FieldLabel htmlFor="max_guests">Max Guests</FieldLabel><FormControl><Input id="max_guests" type="number" min={1} max={50} value={typeof field.value === 'number' ? field.value : 1} onChange={(event) => field.onChange(event.target.value)} onBlur={field.onBlur} name={field.name} ref={field.ref} /></FormControl><FieldError errors={[form.formState.errors.max_guests]} /></Field></FormItem>
-                )} />
-                <FormField control={form.control} name="sort_order" render={({ field }) => (
-                  <FormItem><Field><FieldLabel htmlFor="sort_order">Sort Order</FieldLabel><FormControl><Input id="sort_order" type="number" min={0} value={typeof field.value === 'number' ? field.value : 0} onChange={(event) => field.onChange(event.target.value)} onBlur={field.onBlur} name={field.name} ref={field.ref} /></FormControl><FieldError errors={[form.formState.errors.sort_order]} /></Field></FormItem>
-                )} />
+                <FormField
+                  control={form.control}
+                  name="price"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Field>
+                        <FieldLabel htmlFor="price">Price</FieldLabel>
+                        <FormControl>
+                          <Input
+                            id="price"
+                            type="number"
+                            min={0}
+                            value={
+                              typeof field.value === 'number' ? field.value : 0
+                            }
+                            onChange={(event) =>
+                              field.onChange(event.target.value)
+                            }
+                            onBlur={field.onBlur}
+                            name={field.name}
+                            ref={field.ref}
+                          />
+                        </FormControl>
+                        <FieldError errors={[form.formState.errors.price]} />
+                      </Field>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="duration"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Field>
+                        <FieldLabel htmlFor="duration">Duration</FieldLabel>
+                        <FormControl>
+                          <Input
+                            id="duration"
+                            placeholder="e.g. 2 hours"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FieldError errors={[form.formState.errors.duration]} />
+                      </Field>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="max_guests"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Field>
+                        <FieldLabel htmlFor="max_guests">Max Guests</FieldLabel>
+                        <FormControl>
+                          <Input
+                            id="max_guests"
+                            type="number"
+                            min={1}
+                            max={50}
+                            value={
+                              typeof field.value === 'number' ? field.value : 1
+                            }
+                            onChange={(event) =>
+                              field.onChange(event.target.value)
+                            }
+                            onBlur={field.onBlur}
+                            name={field.name}
+                            ref={field.ref}
+                          />
+                        </FormControl>
+                        <FieldError
+                          errors={[form.formState.errors.max_guests]}
+                        />
+                      </Field>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="sort_order"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Field>
+                        <FieldLabel htmlFor="sort_order">Sort Order</FieldLabel>
+                        <FormControl>
+                          <Input
+                            id="sort_order"
+                            type="number"
+                            min={0}
+                            value={
+                              typeof field.value === 'number' ? field.value : 0
+                            }
+                            onChange={(event) =>
+                              field.onChange(event.target.value)
+                            }
+                            onBlur={field.onBlur}
+                            name={field.name}
+                            ref={field.ref}
+                          />
+                        </FormControl>
+                        <FieldError
+                          errors={[form.formState.errors.sort_order]}
+                        />
+                      </Field>
+                    </FormItem>
+                  )}
+                />
               </div>
 
               <FormField
@@ -204,7 +355,10 @@ function RouteComponent() {
                     <Field>
                       <FieldLabel>Category</FieldLabel>
                       <FormControl>
-                        <Select value={field.value} onValueChange={field.onChange}>
+                        <Select
+                          value={field.value}
+                          onValueChange={field.onChange}
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Select category" />
                           </SelectTrigger>
@@ -220,17 +374,75 @@ function RouteComponent() {
                 )}
               />
 
-              <FormField control={form.control} name="cover_image" render={({ field }) => (
-                <FormItem><Field><FieldLabel htmlFor="cover_image">Cover Image URL</FieldLabel><FormControl><Input id="cover_image" placeholder="/images/tour.jpg" {...field} /></FormControl><FieldError errors={[form.formState.errors.cover_image]} /></Field></FormItem>
-              )} />
+              <FormField
+                control={form.control}
+                name="cover_image"
+                render={({ field }) => (
+                  <FormItem>
+                    <Field>
+                      <FieldLabel htmlFor="cover_image">
+                        Cover Image URL
+                      </FieldLabel>
+                      <FormControl>
+                        <Input
+                          id="cover_image"
+                          placeholder="/images/tour.jpg"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FieldError
+                        errors={[form.formState.errors.cover_image]}
+                      />
+                    </Field>
+                  </FormItem>
+                )}
+              />
 
-              <FormField control={form.control} name="inclusions" render={({ field }) => (
-                <FormItem><Field><FieldLabel htmlFor="inclusions">Inclusions (one per line)</FieldLabel><FormControl><Textarea id="inclusions" rows={4} placeholder="Hotel pickup" {...field} /></FormControl><FieldError errors={[form.formState.errors.inclusions]} /></Field></FormItem>
-              )} />
+              <FormField
+                control={form.control}
+                name="inclusions"
+                render={({ field }) => (
+                  <FormItem>
+                    <Field>
+                      <FieldLabel htmlFor="inclusions">
+                        Inclusions (one per line)
+                      </FieldLabel>
+                      <FormControl>
+                        <Textarea
+                          id="inclusions"
+                          rows={4}
+                          placeholder="Hotel pickup"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FieldError errors={[form.formState.errors.inclusions]} />
+                    </Field>
+                  </FormItem>
+                )}
+              />
 
-              <FormField control={form.control} name="exclusions" render={({ field }) => (
-                <FormItem><Field><FieldLabel htmlFor="exclusions">Exclusions (one per line)</FieldLabel><FormControl><Textarea id="exclusions" rows={4} placeholder="Lunch" {...field} /></FormControl><FieldError errors={[form.formState.errors.exclusions]} /></Field></FormItem>
-              )} />
+              <FormField
+                control={form.control}
+                name="exclusions"
+                render={({ field }) => (
+                  <FormItem>
+                    <Field>
+                      <FieldLabel htmlFor="exclusions">
+                        Exclusions (one per line)
+                      </FieldLabel>
+                      <FormControl>
+                        <Textarea
+                          id="exclusions"
+                          rows={4}
+                          placeholder="Lunch"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FieldError errors={[form.formState.errors.exclusions]} />
+                    </Field>
+                  </FormItem>
+                )}
+              />
 
               <FormField
                 control={form.control}
@@ -238,13 +450,17 @@ function RouteComponent() {
                 render={({ field }) => (
                   <FormItem>
                     <Field className="flex-row items-center justify-between rounded-md border p-3">
-                      <FieldLabel htmlFor="active" className="mb-0">Active</FieldLabel>
+                      <FieldLabel htmlFor="active" className="mb-0">
+                        Active
+                      </FieldLabel>
                       <FormControl>
                         <Input
                           id="active"
                           type="checkbox"
                           checked={field.value}
-                          onChange={(event) => field.onChange(event.target.checked)}
+                          onChange={(event) =>
+                            field.onChange(event.target.checked)
+                          }
                           className="h-4 w-4"
                         />
                       </FormControl>
@@ -261,9 +477,25 @@ function RouteComponent() {
               )}
 
               <div className="flex justify-end gap-2">
-                <Button type="button" variant="outline" onClick={() => navigate({ to: '/admin/tours' })}>Cancel</Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => navigate({ to: '/admin/tours' })}
+                >
+                  Cancel
+                </Button>
                 <Button type="submit" disabled={isCreating}>
-                  {isCreating ? <><Loader2 className="mr-2 size-4 animate-spin" />Creating...</> : <><Plus className="mr-2 size-4" />Create Tour</>}
+                  {isCreating ? (
+                    <>
+                      <Loader2 className="mr-2 size-4 animate-spin" />
+                      Creating...
+                    </>
+                  ) : (
+                    <>
+                      <Plus className="mr-2 size-4" />
+                      Create Tour
+                    </>
+                  )}
                 </Button>
               </div>
             </form>

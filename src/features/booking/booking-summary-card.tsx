@@ -6,7 +6,11 @@ interface Props {
   amount: number | null
 }
 
-export default function BookingSummaryCard({ state, currentStep, amount }: Props) {
+export default function BookingSummaryCard({
+  state,
+  currentStep,
+  amount,
+}: Props) {
   const { trip, vehicle } = state
 
   return (
@@ -25,13 +29,17 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
         {trip.pickup && (
           <div className="flex justify-between gap-4">
             <span className="text-[#9A9182] flex-shrink-0">From</span>
-            <span className="text-[#F5F0E8] text-right min-w-0">{trip.pickup}</span>
+            <span className="text-[#F5F0E8] text-right min-w-0">
+              {trip.pickup}
+            </span>
           </div>
         )}
         {trip.dropoff && (
           <div className="flex justify-between gap-4">
             <span className="text-[#9A9182] flex-shrink-0">To</span>
-            <span className="text-[#F5F0E8] text-right min-w-0">{trip.dropoff}</span>
+            <span className="text-[#F5F0E8] text-right min-w-0">
+              {trip.dropoff}
+            </span>
           </div>
         )}
 
@@ -40,7 +48,11 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
           <div className="flex justify-between">
             <span className="text-[#9A9182]">Date</span>
             <span className="text-[#F5F0E8]">
-              {trip.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+              {trip.date.toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+              })}
             </span>
           </div>
         )}
@@ -54,7 +66,9 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
         {trip.serviceType === 'transfer' && trip.distanceKm && (
           <div className="flex justify-between">
             <span className="text-[#9A9182]">Distance</span>
-            <span className="text-[#F5F0E8]">{trip.distanceKm.toFixed(1)} km</span>
+            <span className="text-[#F5F0E8]">
+              {trip.distanceKm.toFixed(1)} km
+            </span>
           </div>
         )}
 
@@ -80,7 +94,9 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
             <div className="border-t border-[#C9A84C]/10 pt-2 mt-2">
               <div className="flex justify-between">
                 <span className="text-[#9A9182]">Vehicle</span>
-                <span className="text-[#F5F0E8] text-right">{vehicle.name}</span>
+                <span className="text-[#F5F0E8] text-right">
+                  {vehicle.name}
+                </span>
               </div>
             </div>
           </>
@@ -91,13 +107,17 @@ export default function BookingSummaryCard({ state, currentStep, amount }: Props
       {vehicle && amount && (
         <div className="border-t border-[#C9A84C]/10 pt-3 flex justify-between items-center">
           <span className="text-xs text-[#9A9182]">Total</span>
-          <span className="font-serif text-lg text-gradient-gold">€{amount.toFixed(2)}</span>
+          <span className="font-serif text-lg text-gradient-gold">
+            €{amount.toFixed(2)}
+          </span>
         </div>
       )}
 
       {!vehicle && (
         <div className="border-t border-[#C9A84C]/10 pt-3">
-          <p className="text-xs text-[#9A9182]/60 italic">Select a vehicle to see pricing</p>
+          <p className="text-xs text-[#9A9182]/60 italic">
+            Select a vehicle to see pricing
+          </p>
         </div>
       )}
     </div>
