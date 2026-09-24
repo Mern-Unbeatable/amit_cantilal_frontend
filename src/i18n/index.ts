@@ -22,6 +22,10 @@ import lisbonMadridEn from './locales/landings/lisbon-madrid-private-transfer/en
 import lisbonMadridPt from './locales/landings/lisbon-madrid-private-transfer/pt.json'
 import lisbonMadridEs from './locales/landings/lisbon-madrid-private-transfer/es.json'
 
+import lisbonComportaEn from './locales/landings/lisbon-comporta-private-transfer/en.json'
+import lisbonComportaPt from './locales/landings/lisbon-comporta-private-transfer/pt.json'
+import lisbonComportaEs from './locales/landings/lisbon-comporta-private-transfer/es.json'
+
 export const SUPPORTED_LANGUAGES = ['en', 'pt', 'es'] as const
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number]
 
@@ -47,6 +51,11 @@ export const LANDING_NAMESPACES = {
     pt: lisbonMadridPt,
     es: lisbonMadridEs,
   },
+  lisbonComportaTransfer: {
+    en: lisbonComportaEn,
+    pt: lisbonComportaPt,
+    es: lisbonComportaEs,
+  },
 } as const
 
 i18next
@@ -60,6 +69,7 @@ i18next
         lisbonAlgarveTransfer: LANDING_NAMESPACES.lisbonAlgarveTransfer.en,
         lisbonSevilleTransfer: LANDING_NAMESPACES.lisbonSevilleTransfer.en,
         lisbonMadridTransfer: LANDING_NAMESPACES.lisbonMadridTransfer.en,
+        lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.en,
       },
       pt: {
         translation: pt,
@@ -67,6 +77,7 @@ i18next
         lisbonAlgarveTransfer: LANDING_NAMESPACES.lisbonAlgarveTransfer.pt,
         lisbonSevilleTransfer: LANDING_NAMESPACES.lisbonSevilleTransfer.pt,
         lisbonMadridTransfer: LANDING_NAMESPACES.lisbonMadridTransfer.pt,
+        lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.pt,
       },
       es: {
         translation: es,
@@ -74,6 +85,7 @@ i18next
         lisbonAlgarveTransfer: LANDING_NAMESPACES.lisbonAlgarveTransfer.es,
         lisbonSevilleTransfer: LANDING_NAMESPACES.lisbonSevilleTransfer.es,
         lisbonMadridTransfer: LANDING_NAMESPACES.lisbonMadridTransfer.es,
+        lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.es,
       },
     },
     fallbackLng: 'en',
