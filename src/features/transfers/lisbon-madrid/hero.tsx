@@ -1,11 +1,10 @@
 import { TransferLandingHero } from '@/features/transfers/shared/transfer-landing-hero.tsx'
 
-
-export function LisbonPortoHero() {
+export function LisbonMadridHero() {
   return (
     <TransferLandingHero
-      ns="lisbonPortoTransfer"
-      imageSrc="/transfers/lisbon-porto/lisbon-portoHero.png"
+      ns="lisbonMadridTransfer"
+      imageSrc="/transfers/lisbon-madrid/HERO IMAGE LISBON MADRID.png"
     />
   )
 }

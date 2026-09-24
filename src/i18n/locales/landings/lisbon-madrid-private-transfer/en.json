@@ -1,0 +1,200 @@
+{
+  "seo": {
+    "title": "Lisbon to Madrid Private Transfer | Off We Go Portugal",
+    "description": "Private transfer between Lisbon and Madrid in a premium Mercedes. Door-to-door Portugal-Spain chauffeur service with optional stops along the journey."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Private Transfer Between Lisbon and Madrid",
+    "subtitle": "Travel privately between Portugal and Spain with a premium door-to-door chauffeur service connecting Lisbon and Madrid. Choose a direct transfer or personalise your journey with carefully selected stops along the way.",
+    "primaryCta": "Request Your Private Transfer",
+    "secondaryCta": "WhatsApp Us",
+    "whatsappMessage": "Hello, I would like to request a private transfer between Lisbon and Madrid.",
+    "imageAlt": "Mercedes V-Class private transfer Lisbon Madrid",
+    "benefits": [
+      "Portugal-Spain Door-to-Door",
+      "Premium Mercedes Fleet",
+      "English-Speaking Chauffeurs",
+      "Available Both Directions"
+    ]
+  },
+  "intro": {
+    "title": "A Private Journey Between Lisbon and Madrid",
+    "p1": "Travel between two of the Iberian Peninsula's great capitals without airports, stations, fixed departure schedules or multiple transportation connections.",
+    "p2": "With Off We Go Portugal, your professional chauffeur collects you directly from your hotel, private residence or other agreed location in Lisbon and takes you comfortably to your destination in Madrid or from Madrid back to Lisbon.",
+    "p3": "Your premium Mercedes is reserved exclusively for you and your party, providing privacy, space for your luggage and the flexibility to arrange your departure around your itinerary.",
+    "p4": "For couples, families and private groups combining Portugal and Spain, this long-distance private transfer provides a comfortable and personalised alternative to scheduled transportation.",
+    "imageAlt": "Private Mercedes chauffeur transfer Lisbon Madrid"
+  },
+  "directions": {
+    "title": "Lisbon to Madrid or Madrid to Lisbon",
+    "from": "Lisbon",
+    "to": "Madrid",
+    "body": "Pickup and drop-off can be arranged directly at hotels, private residences or another agreed address."
+  },
+  "stops": {
+    "title": "Make the Journey Part of Your Iberian Experience",
+    "p1": "A private transfer between Lisbon and Madrid doesn't have to be simply a long travel day.",
+    "p2": "If your itinerary allows, carefully selected stops can be incorporated along the route, giving you the opportunity to discover historic destinations in both Portugal and Spain.",
+    "note": "Choose one or more stops according to your interests and available time. Optional stops, route deviations and additional waiting or sightseeing time are quoted separately according to the requested itinerary.",
+    "items": {
+      "evora": {
+        "name": "Évora",
+        "description": "Discover the UNESCO-listed historic centre of one of Portugal's most remarkable cities, known for its Roman heritage, whitewashed streets and centuries of history.",
+        "imageAlt": "Évora stop during Lisbon to Madrid private transfer"
+      },
+      "elvas": {
+        "name": "Elvas",
+        "description": "Explore one of Portugal's great fortified border cities, recognised by UNESCO for its extraordinary defensive walls, fortifications and military heritage.",
+        "imageAlt": "Elvas stop during Lisbon to Madrid private transfer"
+      },
+      "merida": {
+        "name": "Mérida",
+        "description": "Discover one of Spain's most important Roman cities, home to an extraordinary collection of ancient monuments that reveal more than two thousand years of history.",
+        "imageAlt": "Mérida stop during Lisbon to Madrid private transfer"
+      },
+      "caceres": {
+        "name": "Cáceres",
+        "description": "Wander through a beautifully preserved UNESCO-listed old town filled with medieval streets, Renaissance palaces, historic squares and centuries-old architecture.",
+        "imageAlt": "Cáceres stop during Lisbon to Madrid private transfer"
+      },
+      "trujillo": {
+        "name": "Trujillo",
+        "description": "Discover an elegant historic Spanish town known for its impressive Plaza Mayor, medieval castle and remarkable architectural heritage.",
+        "imageAlt": "Trujillo stop during Lisbon to Madrid private transfer"
+      }
+    }
+  },
+  "crossBorder": {
+    "title": "One Private Vehicle from Portugal to Spain",
+    "p1": "Your journey remains private and continuous from your pickup location to your final destination.",
+    "p2": "There is no need to change vehicles at the border or manage luggage between different transportation services. Your chauffeur accompanies you throughout the journey, allowing you to travel between Lisbon and Madrid with privacy, comfort and personalised coordination."
+  },
+  "vehicles": {
+    "title": "Travel in a Premium Mercedes",
+    "note": "Tell us the number of passengers and luggage when requesting your transfer and we'll recommend the most suitable vehicle.",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "An elegant executive sedan, ideal for couples and individual travellers seeking comfort, privacy and refinement.",
+      "imageAlt": "Mercedes E-Class Lisbon Madrid private transfer"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "Our premium sedan choice for travellers seeking an elevated level of comfort, sophistication and discreet chauffeur service.",
+      "imageAlt": "Mercedes S-Class Portugal Spain private chauffeur"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Spacious and comfortable, particularly suitable for families, private groups and travellers carrying additional luggage.",
+      "imageAlt": "Mercedes V-Class Lisbon Madrid private transfer"
+    }
+  },
+  "included": {
+    "title": "Everything You Need for a Comfortable Journey",
+    "items": [
+      {
+        "title": "Professional English-Speaking Chauffeur",
+        "description": "Experienced, discreet and professionally presented."
+      },
+      {
+        "title": "Private Door-to-Door Service",
+        "description": "One continuous private journey between Portugal and Spain."
+      },
+      {
+        "title": "Premium Mercedes Vehicle",
+        "description": "Selected according to your party and luggage requirements."
+      },
+      {
+        "title": "Luggage Assistance",
+        "description": "Assistance with loading and unloading your luggage."
+      },
+      {
+        "title": "Complimentary Bottled Water",
+        "description": "Refreshments available during your journey."
+      },
+      {
+        "title": "Wi-Fi Where Available",
+        "description": "Stay connected while travelling."
+      },
+      {
+        "title": "Standard Tolls Included",
+        "description": "Standard motorway tolls and operating costs are included in the quoted direct transfer."
+      },
+      {
+        "title": "Personalised Coordination",
+        "description": "Your journey is coordinated with you before departure."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "Why Choose a Private Transfer Between Lisbon and Madrid?",
+    "items": [
+      {
+        "title": "Door-to-Door Convenience",
+        "description": "Travel directly between your requested addresses."
+      },
+      {
+        "title": "Travel on Your Schedule",
+        "description": "Choose a departure time that works with your itinerary."
+      },
+      {
+        "title": "Complete Privacy",
+        "description": "Your Mercedes is exclusively for you and your party."
+      },
+      {
+        "title": "Discover More Along the Way",
+        "description": "Turn a long-distance travel day into an opportunity to experience more of Portugal and Spain."
+      }
+    ]
+  },
+  "airport": {
+    "title": "Connecting Lisbon or Madrid Airport?",
+    "p1": "Your journey can begin or end at Lisbon Airport or Madrid-Barajas Airport, allowing you to connect your flight directly with your next destination.",
+    "p2": "Airport collections include flight monitoring and Meet & Greet in the arrivals area with a name sign. Applicable complimentary waiting time is provided according to our booking conditions."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How long does a private transfer between Lisbon and Madrid take?",
+        "answer": "A direct journey generally takes approximately 6 to 7 hours, depending on traffic, road conditions and exact pickup and drop-off locations."
+      },
+      {
+        "question": "Can I book Madrid to Lisbon?",
+        "answer": "Yes. The service is available in both directions."
+      },
+      {
+        "question": "Do we need to change vehicles at the border?",
+        "answer": "No. Your private vehicle takes you directly from your pickup location to your final destination."
+      },
+      {
+        "question": "Can we make sightseeing stops?",
+        "answer": "Yes. Stops can be incorporated according to your itinerary. Additional stops and waiting or sightseeing time are quoted separately."
+      },
+      {
+        "question": "Can you collect us directly from our hotel?",
+        "answer": "Yes. Door-to-door pickup and drop-off can be arranged at hotels, private residences and other agreed locations."
+      },
+      {
+        "question": "Can you provide child seats?",
+        "answer": "Yes. Please provide the child's age in advance so the appropriate seat can be arranged."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Travel Between Lisbon and Madrid in Comfort",
+    "lead": "Travel directly between Lisbon and Madrid or create a personalised Iberian journey with carefully selected stops along the way.",
+    "body": "Tell us your travel date, pickup and drop-off locations, number of passengers, luggage and any stops you would like to include, and we'll arrange your private journey.",
+    "primaryCta": "Request Your Private Transfer",
+    "secondaryCta": "Contact Us on WhatsApp",
+    "whatsappMessage": "Hello, I would like to request a private transfer between Lisbon and Madrid.",
+    "imageAlt": "Off We Go Portugal private transfer Lisbon Madrid",
+    "linksLabel": "Explore more",
+    "links": {
+      "fleet": "Fleet",
+      "transfers": "Airport Transfers",
+      "tours": "Private Tours",
+      "booking": "Contact/Booking"
+    }
+  }
+}
