@@ -1,0 +1,204 @@
+{
+  "seo": {
+    "title": "Transferência Privada Lisboa–Comporta | Off We Go Portugal",
+    "description": "Transferência privada de Lisboa para a Comporta num Mercedes premium. Serviço de chauffeur porta-a-porta para a Comporta, Carvalhal, Melides e arredores."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Transferência Privada Entre Lisboa e a Comporta",
+    "subtitle": "Deixe Lisboa para trás e viaje de forma privada para a Comporta com um serviço premium de chauffeur porta-a-porta. Desde resorts de luxo a moradias privadas, desfrute de uma viagem confortável totalmente planeada à sua medida.",
+    "primaryCta": "Pedir a Sua Transferência Privada",
+    "secondaryCta": "Contacte-nos no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de pedir uma transferência privada entre Lisboa e a Comporta.",
+    "imageAlt": "Mercedes V-Class transferência privada Lisboa Comporta",
+    "benefits": [
+      "Serviço Privado Porta-a-Porta",
+      "Frota Mercedes Premium",
+      "Chauffeurs de Língua Inglesa",
+      "Disponível em Ambas as Direções"
+    ]
+  },
+  "intro": {
+    "title": "De Lisboa para o Luxo Descontraído da Comporta",
+    "p1": "Viaje de Lisboa para um dos destinos costeiros mais distintivos de Portugal com um serviço de chauffeur privado concebido em torno do conforto, privacidade e conveniência.",
+    "p2": "A Off We Go Portugal recolhe-o diretamente no hotel, residência privada, Aeroporto de Lisboa ou outro local combinado e leva-o ao seu hotel, resort ou moradia na região da Comporta.",
+    "p3": "O seu Mercedes premium é reservado exclusivamente para si e o seu grupo, permitindo-lhe viajar confortavelmente com a sua bagagem sem navegar em carros alugados, transportes públicos ou múltiplas ligações.",
+    "p4": "Seja a viajar para uma escapadela na praia, uma estadia numa moradia privada ou uma experiência num resort de luxo, a sua viagem começa a partir do momento em que o seu chauffeur o recolhe.",
+    "imageAlt": "Transferência privada Mercedes chauffeur Lisboa Comporta"
+  },
+  "directions": {
+    "title": "Lisboa para a Comporta ou Comporta para Lisboa",
+    "from": "Lisboa",
+    "to": "Comporta",
+    "body": "A recolha e a entrega podem ser organizadas em hotéis, resorts, moradias, residências privadas, Aeroporto de Lisboa ou outro local combinado."
+  },
+  "destinations": {
+    "title": "Transferências Privadas por Toda a Região da Comporta",
+    "p1": "A Comporta é mais do que apenas uma vila. O nosso serviço de chauffeur privado pode levá-lo diretamente a hotéis, moradias, resorts e outros destinos por toda esta distintiva costa alentejana.",
+    "note": "Se o seu hotel, resort ou moradia estiver localizado noutro local da região, basta fornecer a morada ao pedir a sua transferência e organizaremos o serviço porta-a-porta adequado.",
+    "items": {
+      "comporta": {
+        "name": "Comporta",
+        "description": "Chegue diretamente à Comporta, conhecida pela sua costa intocada, campos de arroz, arquitetura tradicional e ambiente descontraidamente elegante.",
+        "imageAlt": "Destino Comporta durante transferência privada Lisboa Comporta"
+      },
+      "carvalhal": {
+        "name": "Carvalhal",
+        "description": "Viaje de forma privada para o Carvalhal e as suas praias circundantes, vilas e alojamento boutique numa das áreas mais procuradas da região.",
+        "imageAlt": "Destino Carvalhal durante transferência privada Lisboa Comporta"
+      },
+      "melides": {
+        "name": "Melides",
+        "description": "Continue para sul até Melides, onde paisagens imaculadas, cenários lagunares e uma hospitalidade cada vez mais sofisticada encontram a autêntica costa alentejana.",
+        "imageAlt": "Destino Melides durante transferência privada Lisboa Comporta"
+      },
+      "troia": {
+        "name": "Tróia",
+        "description": "Transporte privado para a Península de Tróia, conhecida pelas suas praias atlânticas, marina, resorts e notável cenário natural.",
+        "imageAlt": "Destino Tróia durante transferência privada Lisboa Comporta"
+      }
+    }
+  },
+  "airport": {
+    "title": "Diretamente do Aeroporto de Lisboa para a Comporta",
+    "p1": "Chega a Portugal e viaja diretamente para a costa?",
+    "p2": "Podemos ir buscá-lo ao Aeroporto de Lisboa e levá-lo diretamente ao seu alojamento na Comporta, Carvalhal, Melides, Tróia ou na região envolvente.",
+    "p3": "A recolha no aeroporto inclui monitorização do voo, Meet & Greet na zona de chegadas com uma placa identificativa e até 60 minutos de tempo de espera gratuito.",
+    "cta": "Pedir a Sua Transferência Privada"
+  },
+  "vehicles": {
+    "title": "Viaje num Mercedes Premium",
+    "note": "Indique-nos o número de passageiros e bagagem ao pedir a sua transferência e recomendaremos o veículo mais adequado.",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "Uma elegante berlina executiva para casais e viajantes individuais que procuram conforto, privacidade e refinamento.",
+      "imageAlt": "Mercedes E-Class transferência privada Lisboa Comporta"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "A nossa escolha premium de berlina para viajantes que procuram um elevado nível de conforto e serviço de chauffeur discreto.",
+      "imageAlt": "Mercedes S-Class chauffeur de luxo Portugal Comporta"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Espaçoso e confortável, particularmente adequado para famílias, grupos privados e viajantes com bagagem adicional.",
+      "imageAlt": "Mercedes V-Class transferência privada Lisboa Comporta"
+    }
+  },
+  "included": {
+    "title": "Tudo o Que Precisa para uma Viagem Confortável",
+    "items": [
+      {
+        "title": "Chauffeur Profissional de Língua Inglesa",
+        "description": "Experiente, discreto e com apresentação profissional."
+      },
+      {
+        "title": "Serviço Privado Porta-a-Porta",
+        "description": "Recolha e entrega diretamente nos locais solicitados."
+      },
+      {
+        "title": "Veículo Mercedes Premium",
+        "description": "Selecionado de acordo com o seu grupo e bagagem."
+      },
+      {
+        "title": "Assistência com Bagagem",
+        "description": "Assistência para carregar e descarregar a sua bagagem."
+      },
+      {
+        "title": "Água Engarrafada Gratuita",
+        "description": "Refrigerantes disponíveis durante a sua viagem."
+      },
+      {
+        "title": "Wi-Fi Quando Disponível",
+        "description": "Mantenha-se ligado enquanto viaja."
+      },
+      {
+        "title": "Portagens Padrão Incluídas",
+        "description": "Portagens e custos operacionais padrão estão incluídos."
+      },
+      {
+        "title": "Coordenação Personalizada",
+        "description": "A sua viagem é coordenada consigo antes da partida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "Porquê Escolher uma Transferência Privada para a Comporta?",
+    "items": [
+      {
+        "title": "Direto para o Seu Alojamento",
+        "description": "Viaje de Lisboa diretamente para o seu hotel, resort ou moradia."
+      },
+      {
+        "title": "Viaje no Seu Horário",
+        "description": "Escolha uma hora de partida que se adapte ao seu itinerário."
+      },
+      {
+        "title": "Privacidade & Conforto",
+        "description": "O seu Mercedes é exclusivamente para si e o seu grupo."
+      },
+      {
+        "title": "Ideal para Vilas e Resorts",
+        "description": "Particularmente conveniente para destinos onde o transporte privado oferece maior flexibilidade."
+      }
+    ]
+  },
+  "crossBorder": {
+    "title": "Faça Mais com a Sua Viagem",
+    "p1": "Se a sua agenda permitir, a sua transferência Lisboa-Comporta pode ser personalizada com tempo adicional ou uma paragem pelo caminho.",
+    "p2": "Dependendo do seu itinerário, podemos organizar uma paragem para almoço ou outra experiência solicitada antes de continuar. Paragens e tempos adicionais são orçamentados separadamente."
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      {
+        "question": "Quanto tempo demora a transferência privada de Lisboa para a Comporta?",
+        "answer": "O tempo de viagem é geralmente de 1 hora e 15 minutos a 1 hora e 30 minutos, dependendo do trânsito e dos locais exatos de recolha e entrega."
+      },
+      {
+        "question": "Podem ir buscar-nos diretamente ao Aeroporto de Lisboa?",
+        "answer": "Sim. Podemos ir buscá-lo ao Aeroporto de Lisboa e levá-lo diretamente ao seu alojamento na região da Comporta."
+      },
+      {
+        "question": "Podem levar-nos da Comporta de volta para Lisboa?",
+        "answer": "Sim. O serviço está disponível em ambas as direções."
+      },
+      {
+        "question": "Fornecem transferências para vilas privadas?",
+        "answer": "Sim. O serviço porta-a-porta pode ser organizado para hotéis, resorts, vilas e residências privadas."
+      },
+      {
+        "question": "Fornecem transferências para o Carvalhal e Melides?",
+        "answer": "Sim. Fornecemos transporte privado por toda a grande região da Comporta, incluindo Carvalhal, Melides, Tróia e outros locais."
+      },
+      {
+        "question": "Podemos parar para almoçar durante a viagem?",
+        "answer": "Sim. Uma paragem pode ser incorporada por acordo prévio. O tempo de espera adicional será orçamentado."
+      },
+      {
+        "question": "Podem fornecer cadeiras para crianças?",
+        "answer": "Sim. Indique a idade da criança com antecedência para que a cadeira adequada seja providenciada."
+      },
+      {
+        "question": "Que Mercedes devemos escolher?",
+        "answer": "O veículo adequado depende do número de passageiros e da bagagem. A nossa equipa recomendará a opção mais apropriada."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Comece a Sua Escapadela na Comporta com Conforto",
+    "lead": "De Lisboa para a Comporta ou da costa de volta para a capital, desfrute de uma viagem privada desenhada em torno do seu horário e alojamento.",
+    "body": "Indique-nos a data da viagem, locais de recolha e entrega, número de passageiros e bagagem, e organizaremos o seu serviço de chauffeur privado.",
+    "primaryCta": "Pedir a Sua Transferência Privada",
+    "secondaryCta": "Contacte-nos no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de pedir uma transferência privada entre Lisboa e a Comporta.",
+    "imageAlt": "Off We Go Portugal transferência privada Lisboa Comporta",
+    "linksLabel": "Explorar mais",
+    "links": {
+      "fleet": "Frota",
+      "transfers": "Transferências",
+      "tours": "Tours Privados",
+      "booking": "Reservas"
+    }
+  }
+}
