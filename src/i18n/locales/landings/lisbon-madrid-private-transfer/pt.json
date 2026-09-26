@@ -1,1 +1,200 @@
-{}
+{
+  "seo": {
+    "title": "Transferência Privada Lisboa–Madrid | Off We Go Portugal",
+    "description": "Transferência privada entre Lisboa e Madrid num Mercedes premium. Serviço de chauffeur porta-a-porta Portugal-Espanha com paragens opcionais no percurso."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Transferência Privada Entre Lisboa e Madrid",
+    "subtitle": "Viaje em privado entre Portugal e Espanha com um serviço premium de chauffeur porta-a-porta ligando Lisboa e Madrid. Escolha uma transferência direta ou personalize a sua viagem com paragens cuidadosamente selecionadas no percurso.",
+    "primaryCta": "Pedir a Sua Transferência Privada",
+    "secondaryCta": "Contacte-nos no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de pedir uma transferência privada entre Lisboa e Madrid.",
+    "imageAlt": "Mercedes V-Class transferência privada Lisboa Madrid",
+    "benefits": [
+      "Serviço Porta-a-Porta Portugal-Espanha",
+      "Frota Mercedes Premium",
+      "Chauffeurs de Língua Inglesa",
+      "Disponível em Ambas as Direções"
+    ]
+  },
+  "intro": {
+    "title": "Uma Viagem Privada Entre Lisboa e Madrid",
+    "p1": "Viaje entre duas das grandes capitais da Península Ibérica sem aeroportos, estações, horários fixos ou múltiplas ligações de transporte.",
+    "p2": "Com a Off We Go Portugal, o seu chauffeur profissional recolhe-o diretamente no hotel, residência privada ou outro local combinado em Lisboa e leva-o confortavelmente ao seu destino em Madrid ou de Madrid para Lisboa.",
+    "p3": "O seu Mercedes premium é reservado exclusivamente para si e o seu grupo, proporcionando privacidade, espaço para a sua bagagem e flexibilidade para organizar a partida consoante o seu itinerário.",
+    "p4": "Para casais, famílias e grupos privados que combinam Portugal e Espanha, esta transferência privada de longa distância oferece uma alternativa confortável e personalizada aos transportes regulares.",
+    "imageAlt": "Transferência privada Mercedes chauffeur Lisboa Madrid"
+  },
+  "directions": {
+    "title": "Lisboa para Madrid ou Madrid para Lisboa",
+    "from": "Lisboa",
+    "to": "Madrid",
+    "body": "A recolha e a entrega podem ser organizadas diretamente em hotéis, residências privadas ou noutro endereço combinado."
+  },
+  "stops": {
+    "title": "Faça da Viagem Parte da Sua Experiência Ibérica",
+    "p1": "Uma transferência privada entre Lisboa e Madrid não tem de ser apenas um longo dia de viagem.",
+    "p2": "Se o seu itinerário o permitir, podemos incorporar paragens cuidadosamente selecionadas, dando-lhe a oportunidade de descobrir destinos históricos em Portugal e Espanha.",
+    "note": "Escolha uma ou mais paragens de acordo com os seus interesses e tempo disponível. Paragens opcionais, desvios de rota e tempo adicional são orçamentados separadamente.",
+    "items": {
+      "evora": {
+        "name": "Évora",
+        "description": "Descubra o centro histórico de uma das cidades mais notáveis de Portugal, listada pela UNESCO, conhecida pela sua herança romana e ruas caiadas de branco.",
+        "imageAlt": "Paragem em Évora durante transferência privada Lisboa Madrid"
+      },
+      "elvas": {
+        "name": "Elvas",
+        "description": "Explore uma das grandes cidades fronteiriças fortificadas de Portugal, reconhecida pela UNESCO pelas suas extraordinárias muralhas defensivas.",
+        "imageAlt": "Paragem em Elvas durante transferência privada Lisboa Madrid"
+      },
+      "merida": {
+        "name": "Mérida",
+        "description": "Descubra uma das cidades romanas mais importantes de Espanha, que abriga uma extraordinária coleção de monumentos antigos.",
+        "imageAlt": "Paragem em Mérida durante transferência privada Lisboa Madrid"
+      },
+      "caceres": {
+        "name": "Cáceres",
+        "description": "Passeie por um centro histórico preservado e listado pela UNESCO, repleto de ruas medievais, palácios renascentistas e praças históricas.",
+        "imageAlt": "Paragem em Cáceres durante transferência privada Lisboa Madrid"
+      },
+      "trujillo": {
+        "name": "Trujillo",
+        "description": "Descubra uma elegante cidade histórica espanhola conhecida pela sua impressionante Plaza Mayor, castelo medieval e notável herança arquitetónica.",
+        "imageAlt": "Paragem em Trujillo durante transferência privada Lisboa Madrid"
+      }
+    }
+  },
+  "crossBorder": {
+    "title": "Um Único Veículo Privado de Portugal a Espanha",
+    "p1": "A sua viagem permanece privada e contínua desde o local de recolha até ao destino final.",
+    "p2": "Não há necessidade de mudar de veículo na fronteira ou gerir bagagem entre diferentes serviços. O seu chauffeur acompanha-o durante toda a viagem."
+  },
+  "vehicles": {
+    "title": "Viaje num Mercedes Premium",
+    "note": "Indique-nos o número de passageiros e bagagem ao pedir a sua transferência e recomendaremos o veículo adequado.",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "Uma elegante berlina executiva, ideal para casais e viajantes individuais que procuram conforto, privacidade e refinamento.",
+      "imageAlt": "Mercedes E-Class transferência privada Lisboa Madrid"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "A nossa escolha premium de berlina para viajantes que procuram um nível elevado de conforto, sofisticação e serviço de chauffeur discreto.",
+      "imageAlt": "Mercedes S-Class chauffeur de luxo Portugal Espanha"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Espaçoso e confortável, particularmente adequado para famílias, grupos privados e viajantes com bagagem adicional.",
+      "imageAlt": "Mercedes V-Class transferência privada Lisboa Madrid"
+    }
+  },
+  "included": {
+    "title": "Tudo o Que Precisa para uma Viagem Confortável",
+    "items": [
+      {
+        "title": "Chauffeur Profissional de Língua Inglesa",
+        "description": "Experiente, discreto e com apresentação profissional."
+      },
+      {
+        "title": "Serviço Privado Porta-a-Porta",
+        "description": "Uma viagem privada contínua entre Portugal e Espanha."
+      },
+      {
+        "title": "Veículo Mercedes Premium",
+        "description": "Selecionado de acordo com o seu grupo e bagagem."
+      },
+      {
+        "title": "Assistência com Bagagem",
+        "description": "Assistência para carregar e descarregar a sua bagagem."
+      },
+      {
+        "title": "Água Engarrafada Gratuita",
+        "description": "Refrigerantes disponíveis durante a viagem."
+      },
+      {
+        "title": "Wi-Fi Quando Disponível",
+        "description": "Mantenha-se ligado durante a viagem."
+      },
+      {
+        "title": "Portagens Incluídas",
+        "description": "Portagens de autoestrada e custos operacionais padrão estão incluídos."
+      },
+      {
+        "title": "Coordenação Personalizada",
+        "description": "A sua viagem é coordenada consigo antes da partida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "Porquê Escolher uma Transferência Privada Entre Lisboa e Madrid?",
+    "items": [
+      {
+        "title": "Conveniência Porta-a-Porta",
+        "description": "Viaje diretamente entre os endereços solicitados."
+      },
+      {
+        "title": "Viaje no Seu Horário",
+        "description": "Escolha uma hora de partida que se adeque ao seu itinerário."
+      },
+      {
+        "title": "Privacidade Total",
+        "description": "O seu Mercedes é exclusivamente para si e o seu grupo."
+      },
+      {
+        "title": "Descubra Mais no Percurso",
+        "description": "Transforme a viagem numa oportunidade para explorar Portugal e Espanha."
+      }
+    ]
+  },
+  "airport": {
+    "title": "Ligações com o Aeroporto de Lisboa ou Madrid?",
+    "p1": "A sua viagem pode começar ou terminar no Aeroporto de Lisboa ou no Aeroporto de Madrid-Barajas, permitindo-lhe ligar diretamente ao seu voo.",
+    "p2": "As recolhas no aeroporto incluem monitorização de voo, Meet & Greet na zona de chegadas com placa identificativa e tempo de espera gratuito aplicável."
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      {
+        "question": "Quanto tempo demora uma transferência privada entre Lisboa e Madrid?",
+        "answer": "Uma viagem direta demora geralmente cerca de 6 a 7 horas, dependendo do trânsito e dos locais exatos de recolha e entrega."
+      },
+      {
+        "question": "Posso reservar de Madrid para Lisboa?",
+        "answer": "Sim. O serviço está disponível em ambas as direções."
+      },
+      {
+        "question": "Precisamos de mudar de veículo na fronteira?",
+        "answer": "Não. O seu veículo privado leva-o diretamente desde o local de recolha até ao destino final."
+      },
+      {
+        "question": "Podemos fazer paragens turísticas?",
+        "answer": "Sim. Paragens podem ser incorporadas de acordo com o seu itinerário. Paragens e tempos de espera são orçamentados separadamente."
+      },
+      {
+        "question": "Podem recolher-nos diretamente no hotel?",
+        "answer": "Sim. A recolha e entrega porta-a-porta podem ser organizadas em hotéis, residências privadas e outros locais combinados."
+      },
+      {
+        "question": "Podem fornecer cadeiras para crianças?",
+        "answer": "Sim. Por favor, indique a idade da criança com antecedência."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Viaje Entre Lisboa e Madrid com Conforto",
+    "lead": "Viaje diretamente entre Lisboa e Madrid ou crie uma viagem Ibérica personalizada com paragens cuidadosamente selecionadas no percurso.",
+    "body": "Indique-nos a data de viagem, locais de recolha e entrega, número de passageiros, bagagem e quaisquer paragens que deseje incluir, e organizaremos a sua viagem privada.",
+    "primaryCta": "Pedir a Sua Transferência Privada",
+    "secondaryCta": "Contacte-nos no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de pedir uma transferência privada entre Lisboa e Madrid.",
+    "imageAlt": "Off We Go Portugal transferência privada Lisboa Madrid",
+    "linksLabel": "Explorar mais",
+    "links": {
+      "fleet": "Frota",
+      "transfers": "Transferências",
+      "tours": "Tours Privados",
+      "booking": "Reservas"
+    }
+  }
+}

@@ -1,1 +1,200 @@
-{}
+{
+  "seo": {
+    "title": "Traslado Privado Lisboa a Madrid | Off We Go Portugal",
+    "description": "Traslado privado entre Lisboa y Madrid en un Mercedes premium. Servicio de chófer puerta a puerta Portugal-España con paradas opcionales."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Traslado Privado Entre Lisboa y Madrid",
+    "subtitle": "Viaje de forma privada entre Portugal y España con un servicio de chófer puerta a puerta conectando Lisboa y Madrid. Elija un traslado directo o personalice su viaje con paradas a lo largo de la ruta.",
+    "primaryCta": "Solicitar Su Traslado Privado",
+    "secondaryCta": "Contáctenos por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y Madrid.",
+    "imageAlt": "Mercedes V-Class traslado privado Lisboa Madrid",
+    "benefits": [
+      "Servicio Puerta a Puerta Portugal-España",
+      "Flota Mercedes Premium",
+      "Chóferes de Habla Inglesa",
+      "Disponible en Ambas Direcciones"
+    ]
+  },
+  "intro": {
+    "title": "Un Viaje Privado Entre Lisboa y Madrid",
+    "p1": "Viaje entre dos de las grandes capitales de la Península Ibérica sin aeropuertos, estaciones, horarios fijos ni múltiples conexiones de transporte.",
+    "p2": "Con Off We Go Portugal, su chófer profesional lo recoge directamente en su hotel, residencia privada u otro lugar acordado en Lisboa y lo lleva cómodamente a su destino en Madrid o de Madrid a Lisboa.",
+    "p3": "Su Mercedes premium está reservado exclusivamente para usted y su grupo, brindando privacidad, espacio para su equipaje y flexibilidad.",
+    "p4": "Para parejas, familias y grupos privados que combinan Portugal y España, este traslado privado de larga distancia ofrece una alternativa cómoda y personalizada a los transportes regulares.",
+    "imageAlt": "Traslado privado Mercedes chófer Lisboa Madrid"
+  },
+  "directions": {
+    "title": "Lisboa a Madrid o Madrid a Lisboa",
+    "from": "Lisboa",
+    "to": "Madrid",
+    "body": "La recogida y el regreso pueden organizarse directamente en hoteles, residencias privadas u otra dirección acordada."
+  },
+  "stops": {
+    "title": "Haga Que el Viaje Sea Parte de Su Experiencia Ibérica",
+    "p1": "Un traslado privado entre Lisboa y Madrid no tiene por qué ser simplemente un largo día de viaje.",
+    "p2": "Si su itinerario lo permite, se pueden incorporar paradas cuidadosamente seleccionadas a lo largo de la ruta, brindándole la oportunidad de descubrir destinos históricos en Portugal y España.",
+    "note": "Elija una o más paradas según sus intereses y tiempo disponible. Las paradas opcionales, desvíos de ruta y tiempos de espera se presupuestan por separado.",
+    "items": {
+      "evora": {
+        "name": "Évora",
+        "description": "Descubra el centro histórico de una de las ciudades más notables de Portugal, declarada Patrimonio de la Humanidad por la UNESCO.",
+        "imageAlt": "Parada en Évora durante traslado privado Lisboa Madrid"
+      },
+      "elvas": {
+        "name": "Elvas",
+        "description": "Explore una de las grandes ciudades fronterizas fortificadas de Portugal, reconocida por la UNESCO por sus extraordinarias murallas defensivas.",
+        "imageAlt": "Parada en Elvas durante traslado privado Lisboa Madrid"
+      },
+      "merida": {
+        "name": "Mérida",
+        "description": "Descubra una de las ciudades romanas más importantes de España, hogar de una extraordinaria colección de monumentos antiguos.",
+        "imageAlt": "Parada en Mérida durante traslado privado Lisboa Madrid"
+      },
+      "caceres": {
+        "name": "Cáceres",
+        "description": "Pasee por un hermoso casco antiguo declarado por la UNESCO lleno de calles medievales, palacios renacentistas y plazas históricas.",
+        "imageAlt": "Parada en Cáceres durante traslado privado Lisboa Madrid"
+      },
+      "trujillo": {
+        "name": "Trujillo",
+        "description": "Descubra una elegante ciudad histórica española conocida por su impresionante Plaza Mayor, castillo medieval y notable herencia arquitectónica.",
+        "imageAlt": "Parada en Trujillo durante traslado privado Lisboa Madrid"
+      }
+    }
+  },
+  "crossBorder": {
+    "title": "Un Solo Vehículo Privado de Portugal a España",
+    "p1": "Su viaje se mantiene privado y continuo desde el lugar de recogida hasta su destino final.",
+    "p2": "No hay necesidad de cambiar de vehículo en la frontera o gestionar equipaje entre diferentes servicios. Su chófer lo acompaña durante todo el trayecto."
+  },
+  "vehicles": {
+    "title": "Viaje en un Mercedes Premium",
+    "note": "Díganos el número de pasajeros y equipaje al solicitar su traslado y le recomendaremos el vehículo más adecuado.",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "Un elegante sedán ejecutivo, ideal para parejas y viajeros individuales que buscan confort, privacidad y refinamiento.",
+      "imageAlt": "Mercedes E-Class traslado privado Lisboa Madrid"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "Nuestra elección premium de sedán para viajeros que buscan un elevado nivel de confort, sofisticación y servicio de chófer discreto.",
+      "imageAlt": "Mercedes S-Class chófer de lujo Portugal España"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Espacioso y cómodo, particularmente adecuado para familias, grupos privados y viajeros con equipaje adicional.",
+      "imageAlt": "Mercedes V-Class traslado privado Lisboa Madrid"
+    }
+  },
+  "included": {
+    "title": "Todo lo Que Necesita para un Viaje Cómodo",
+    "items": [
+      {
+        "title": "Chófer Profesional de Habla Inglesa",
+        "description": "Experimentado, discreto y con presentación profesional."
+      },
+      {
+        "title": "Servicio Privado Puerta a Puerta",
+        "description": "Un viaje continuo privado entre Portugal y España."
+      },
+      {
+        "title": "Vehículo Mercedes Premium",
+        "description": "Seleccionado de acuerdo a sus requerimientos de equipaje."
+      },
+      {
+        "title": "Asistencia con Equipaje",
+        "description": "Asistencia para cargar y descargar su equipaje."
+      },
+      {
+        "title": "Agua Embotellada de Cortesía",
+        "description": "Refrescos disponibles durante su viaje."
+      },
+      {
+        "title": "Wi-Fi Donde Esté Disponible",
+        "description": "Manténgase conectado mientras viaja."
+      },
+      {
+        "title": "Peajes Estándar Incluidos",
+        "description": "Los peajes estándar y costos operativos están incluidos."
+      },
+      {
+        "title": "Coordinación Personalizada",
+        "description": "Su viaje es coordinado con usted antes de la salida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "¿Por Qué Elegir un Traslado Privado Entre Lisboa y Madrid?",
+    "items": [
+      {
+        "title": "Conveniencia Puerta a Puerta",
+        "description": "Viaje directamente entre las direcciones solicitadas."
+      },
+      {
+        "title": "Viaje a Su Horario",
+        "description": "Elija una hora de salida que funcione con su itinerario."
+      },
+      {
+        "title": "Privacidad Completa",
+        "description": "Su Mercedes es exclusivamente para usted y su grupo."
+      },
+      {
+        "title": "Descubra Más en el Camino",
+        "description": "Convierta el día de viaje en una oportunidad para experimentar más de Portugal y España."
+      }
+    ]
+  },
+  "airport": {
+    "title": "¿Conectando con el Aeropuerto de Lisboa o Madrid?",
+    "p1": "Su viaje puede comenzar o terminar en el Aeropuerto de Lisboa o en el de Madrid-Barajas, permitiéndole conectar su vuelo directamente con su próximo destino.",
+    "p2": "Las recogidas en el aeropuerto incluyen monitoreo de vuelo, servicio de encuentro y bienvenida con un cartel y tiempo de espera de cortesía."
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "question": "¿Cuánto tiempo dura un traslado privado entre Lisboa y Madrid?",
+        "answer": "Un viaje directo generalmente dura aproximadamente de 6 a 7 horas, dependiendo del tráfico y las ubicaciones exactas."
+      },
+      {
+        "question": "¿Puedo reservar de Madrid a Lisboa?",
+        "answer": "Sí. El servicio está disponible en ambas direcciones."
+      },
+      {
+        "question": "¿Necesitamos cambiar de vehículo en la frontera?",
+        "answer": "No. Su vehículo privado lo lleva directamente desde su ubicación de recogida hasta su destino final."
+      },
+      {
+        "question": "¿Podemos hacer paradas turísticas?",
+        "answer": "Sí. Se pueden incorporar paradas según su itinerario. Tiempos de espera y paradas adicionales se presupuestan por separado."
+      },
+      {
+        "question": "¿Nos pueden recoger directamente en nuestro hotel?",
+        "answer": "Sí. La recogida y regreso puerta a puerta se pueden organizar en hoteles, residencias privadas y otras ubicaciones acordadas."
+      },
+      {
+        "question": "¿Pueden proporcionar asientos para niños?",
+        "answer": "Sí. Proporcione la edad del niño con antelación para organizar el asiento apropiado."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Viaje Entre Lisboa y Madrid con Comodidad",
+    "lead": "Viaje directamente entre Lisboa y Madrid o cree un viaje Ibérico personalizado con paradas cuidadosamente seleccionadas a lo largo de la ruta.",
+    "body": "Díganos su fecha de viaje, ubicaciones de recogida y regreso, número de pasajeros, equipaje y paradas que le gustaría incluir, y organizaremos su viaje privado.",
+    "primaryCta": "Solicitar Su Traslado Privado",
+    "secondaryCta": "Contáctenos por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y Madrid.",
+    "imageAlt": "Off We Go Portugal traslado privado Lisboa Madrid",
+    "linksLabel": "Explorar más",
+    "links": {
+      "fleet": "Flota",
+      "transfers": "Traslados al Aeropuerto",
+      "tours": "Tours Privados",
+      "booking": "Reservas y Contacto"
+    }
+  }
+}
