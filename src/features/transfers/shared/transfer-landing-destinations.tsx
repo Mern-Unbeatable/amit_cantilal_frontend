@@ -15,12 +15,14 @@ interface TransferLandingDestinationsProps {
   ns: string
   destinations: ReadonlyArray<TransferDestinationCard>
   sectionKey?: string
+  gridClassName?: string
 }
 
 export function TransferLandingDestinations({
   ns,
   destinations,
   sectionKey = 'destinations',
+  gridClassName = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6',
 }: TransferLandingDestinationsProps) {
   const { t, i18n } = useTranslation(ns)
   const p2Key = `${sectionKey}.p2`
@@ -45,7 +47,7 @@ export function TransferLandingDestinations({
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className={gridClassName}>
           {destinations.map((destination, index) => (
             <motion.article
               key={destination.key}
