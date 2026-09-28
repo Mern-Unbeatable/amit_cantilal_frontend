@@ -1,0 +1,200 @@
+{
+  "seo": {
+    "title": "Transfer Privado do Porto ao Vale do Douro | Off We Go Portugal",
+    "description": "Transfer privado entre o Porto e o Vale do Douro num Mercedes topo de gama. Serviço de motorista porta a porta para hotéis, quintas vinícolas e alojamentos privados."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Transfer Privado Entre o Porto e o Vale do Douro",
+    "subtitle": "Viaje em privado do Porto até ao coração do Vale do Douro com um serviço de motorista particular porta a porta. Relaxe a bordo do seu Mercedes enquanto cuidamos de todo o percurso até ao seu hotel, quinta vinícola ou alojamento privado.",
+    "primaryCta": "Solicitar Transfer Privado",
+    "secondaryCta": "Fale Connosco no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de solicitar um transfer privado entre o Porto e o Vale do Douro.",
+    "imageAlt": "Transfer privado Mercedes Classe V Porto Vale do Douro",
+    "benefits": [
+      "Serviço Privado Porta a Porta",
+      "Frota Mercedes Premium",
+      "Motoristas Fluentes em Inglês",
+      "Disponível em Ambos os Sentidos"
+    ]
+  },
+  "intro": {
+    "title": "Do Porto ao Coração do Vale do Douro",
+    "p1": "Deixe o Porto para trás e viaje com toda a privacidade rumo a uma das regiões vinícolas mais espetaculares de Portugal.",
+    "p2": "Com a Off We Go Portugal, o seu motorista profissional recolhe-o diretamente no seu hotel, residência privada, Aeroporto do Porto ou outro local combinado, levando-o com o máximo conforto até ao seu hotel, quinta vinícola ou alojamento no Vale do Douro.",
+    "p3": "O seu veículo Mercedes topo de gama é reservado em exclusivo para si e para os seus acompanhantes, permitindo-lhe desfrutar da paisagem sem preocupações com estradas sinuosas, viaturas de aluguer ou transbordo de bagagens.",
+    "p4": "Quer o Douro seja o seu destino de estadia ou parte de um roteiro mais alargado por Portugal, o seu transfer é coordenado à medida dos seus planos.",
+    "imageAlt": "Transfer com motorista privado Mercedes Porto Vale do Douro"
+  },
+  "directions": {
+    "title": "Porto para o Vale do Douro ou Vale do Douro para o Porto",
+    "from": "Porto",
+    "to": "Vale do Douro",
+    "body": "O serviço de recolha e desembarque pode ser agendado em hotéis, quintas vinícolas, alojamentos particulares, no Aeroporto do Porto ou em qualquer outro local previamente acordado."
+  },
+  "destinations": {
+    "title": "Transfers Privados por Todo o Vale do Douro",
+    "p1": "O Vale do Douro abrange uma vasta extensão, com hotéis, quintas históricas e aldeias distribuídas por uma paisagem cénica arrebatadora.",
+    "p2": "Disponibilizamos transporte privado para múltiplos destinos em toda a região, incluindo:",
+    "note": "Se o seu hotel, quinta ou alojamento privado se situar noutra localidade do Vale do Douro, basta indicar a morada ao solicitar o transfer e organizaremos o serviço porta a porta correspondente.",
+    "items": {
+      "regua": {
+        "name": "Peso da Régua",
+        "description": "Uma das principais portas de entrada na região vinícola do Douro, ladeada por encostas em socalcos debruçadas sobre o Rio Douro.",
+        "imageAlt": "Destino Peso da Régua transfer privado Porto Vale do Douro"
+      },
+      "pinhao": {
+        "name": "Pinhão",
+        "description": "Situado no coração da região demarcada, o Pinhão é rodeado pelas quintas e vinhedos mais prestigiados do Douro.",
+        "imageAlt": "Destino Pinhão transfer privado Porto Vale do Douro"
+      },
+      "lamego": {
+        "name": "Lamego",
+        "description": "Conheça uma das cidades mais monumentais e históricas da região, célebre pelo Santuário de Nossa Senhora dos Remédios e património cultural.",
+        "imageAlt": "Cidade histórica de Lamego transfer privado Porto Vale do Douro"
+      },
+      "wineEstates": {
+        "name": "Quintas Vinícolas do Douro",
+        "description": "Viaje diretamente até à sua quinta de eleição, incluindo propriedades exclusivas localizadas para lá dos núcleos urbanos e vilas principais.",
+        "imageAlt": "Quintas vinícolas e vinhedos no Douro transfer privado"
+      }
+    }
+  },
+  "wineExperience": {
+    "title": "Adicione uma Experiência Vinícola no Douro à Sua Viagem",
+    "p1": "O seu transfer pode transformar-se numa parte inesquecível da sua experiência no Douro.",
+    "p2": "Com planeamento prévio, é possível integrar uma visita com prova numa conceituada quinta vinícola ao seu percurso, permitindo-lhe apreciar as seculares tradições do Vinho do Porto e do Douro antes de prosseguir até ao seu hotel ou destino final. As experiências em adegas e quintas dependem de disponibilidade e reserva antecipada. Tempos adicionais de espera, visitas e provas são orçamentados em separado de acordo com o itinerário pretendido."
+  },
+  "airport": {
+    "title": "Do Aeroporto do Porto Diretamente para o Vale do Douro",
+    "p1": "Chega ao Porto e segue viagem diretamente para o Douro?",
+    "p2": "Podemos recebê-lo no Aeroporto do Porto (Francisco Sá Carneiro) e levá-lo diretamente ao seu hotel, quinta vinícola ou alojamento privado na região. O serviço inclui monitorização de voo em tempo real, receção personalizada na área de desembarque com placa identificativa e até 60 minutos de espera cortesia após a aterragem.",
+    "cta": "Solicitar Recolha no Aeroporto"
+  },
+  "vehicles": {
+    "title": "Viaje num Mercedes de Luxo",
+    "note": "Indique-nos o número de passageiros e bagagens ao solicitar o seu transfer e recomendaremos o veículo mais indicado.",
+    "eClass": {
+      "name": "Mercedes-Benz Classe E",
+      "description": "Um elegante sedan executivo, ideal para casais e viajantes individuais que procuram conforto, privacidade e sofisticação.",
+      "imageAlt": "Mercedes-Benz Classe E transfer privado Porto Vale do Douro"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz Classe S",
+      "description": "A nossa escolha de excelência para quem procura um nível superior de conforto, requinte e um serviço de motorista discreto.",
+      "imageAlt": "Mercedes-Benz Classe S motorista privado Porto Vale do Douro"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz Classe V",
+      "description": "Espaçoso e muito confortável, especialmente adequado para famílias, grupos privados e viajantes com bagagem adicional.",
+      "imageAlt": "Mercedes-Benz Classe V transfer privado Porto Vale do Douro"
+    }
+  },
+  "included": {
+    "title": "Tudo o que Precisa para uma Viagem Confortável",
+    "items": [
+      {
+        "title": "Motorista Profissional Fluente em Inglês",
+        "description": "Experiente, discreto e de apresentação profissional irrepreensível."
+      },
+      {
+        "title": "Serviço Privado Porta a Porta",
+        "description": "Recolha e desembarque diretamente nos locais que indicar."
+      },
+      {
+        "title": "Veículo Mercedes de Luxo",
+        "description": "Selecionado à medida do seu grupo e volume de bagagem."
+      },
+      {
+        "title": "Assistência com Bagagem",
+        "description": "Apoio no carregamento e acondicionamento de todas as suas malas."
+      },
+      {
+        "title": "Água Mineral de Cortesia",
+        "description": "Bebidas refrescantes ao seu dispor ao longo de toda a viagem."
+      },
+      {
+        "title": "Wi-Fi a Bordo (Sujeito a Disponibilidade)",
+        "description": "Mantenha-se sempre conectado durante o percurso."
+      },
+      {
+        "title": "Portagens Padrão Incluídas",
+        "description": "Todas as portagens habituais e custos de operação estão incluídos na tarifa do transfer direto."
+      },
+      {
+        "title": "Coordenação Personalizada",
+        "description": "Toda a viagem é articulada diretamente consigo antes da partida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "Porquê Escolher um Transfer Privado para o Vale do Douro?",
+    "items": [
+      {
+        "title": "Direto ao Seu Hotel ou Quinta Vinícola",
+        "description": "Viaje diretamente do Porto até ao seu alojamento sem transbordos ou ligações adicionais."
+      },
+      {
+        "title": "Viaje ao Seu Próprio Ritmo",
+        "description": "Defina o horário de partida que melhor se enquadra nos seus planos."
+      },
+      {
+        "title": "Máximo Conforto na Viagem",
+        "description": "Relaxe a bordo do seu Mercedes privado enquanto o seu motorista profissional conduz com segurança."
+      },
+      {
+        "title": "Experiencie Mais pelo Caminho",
+        "description": "Integre uma visita a uma adega ou outra paragem à sua escolha e transforme o transfer numa experiência única."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      {
+        "question": "Quanto tempo demora o transfer privado do Porto ao Vale do Douro?",
+        "answer": "A duração depende do destino exato. A maioria das localidades do Vale do Douro dista geralmente entre 1h30 e 2h do Porto."
+      },
+      {
+        "question": "Podem recolher-nos diretamente no Aeroporto do Porto?",
+        "answer": "Sim. Podemos recebê-lo no Aeroporto do Porto e levá-lo diretamente ao seu hotel, quinta ou alojamento privado."
+      },
+      {
+        "question": "Posso reservar o trajeto Vale do Douro para o Porto?",
+        "answer": "Sim. O nosso serviço está disponível em ambos os sentidos."
+      },
+      {
+        "question": "Podem levar-nos diretamente à nossa quinta vinícola?",
+        "answer": "Sim. O transporte porta a porta pode ser organizado para hotéis, quintas, herdades vinícolas e residências em todo o Vale do Douro."
+      },
+      {
+        "question": "Podemos visitar uma adega durante o transfer?",
+        "answer": "Sim. Uma visita com prova de vinhos pode ser integrada mediante marcação prévia, sujeita a disponibilidade e confirmação de reserva."
+      },
+      {
+        "question": "Disponibilizam cadeiras de criança?",
+        "answer": "Sim. Agradecemos que informe a idade da criança com antecedência para providenciarmos o dispositivo de retenção adequado."
+      },
+      {
+        "question": "Conseguem transportar bagagem adicional?",
+        "answer": "Sim, dentro da capacidade do veículo escolhido. Indique o número e volume aproximado das malas para sugerirmos a viatura mais indicada."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Inicie a Sua Experiência no Vale do Douro com Conforto",
+    "lead": "Viaje diretamente entre o Porto e o Vale do Douro ou personalize o seu percurso com uma experiência vinícola pelo caminho.",
+    "body": "Indique-nos a data da viagem, os locais de recolha e chegada, o número de passageiros, bagagens e eventuais experiências que pretenda incluir, e organizaremos a sua viagem privada.",
+    "primaryCta": "Solicitar Transfer Privado",
+    "secondaryCta": "Fale Connosco no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de solicitar um transfer privado entre o Porto e o Vale do Douro.",
+    "imageAlt": "Off We Go Portugal transfer privado Porto Vale do Douro",
+    "linksLabel": "Saiba mais",
+    "links": {
+      "fleet": "Frota",
+      "transfers": "Transfers de Aeroporto",
+      "tours": "Tours Privados",
+      "booking": "Contacto / Reservas"
+    }
+  }
+}
