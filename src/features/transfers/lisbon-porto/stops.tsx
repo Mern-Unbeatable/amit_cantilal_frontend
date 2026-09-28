@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { STOP_DESTINATIONS } from '@/features/transfers/lisbon-porto/stops-data.ts'
+import { cn } from '@/lib/utils.ts'
 import {
   fadeUp,
   landingEase,
@@ -27,20 +28,29 @@ export function LisbonPortoStops() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {STOP_DESTINATIONS.map((destination, index) => (
-            <motion.article
-              key={destination.key}
-              className="group bg-black-2 border border-gold/12 hover:border-gold/35 overflow-hidden transition-colors duration-300 flex flex-col"
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={landingViewport}
-              transition={{
-                duration: 0.55,
-                ease: landingEase,
-                delay: index * 0.07,
-              }}
-            >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5 md:gap-6">
+          {STOP_DESTINATIONS.map((destination, index) => {
+            const isFourth = index === 3
+            const isFifth = index === 4
+            return (
+              <motion.article
+                key={destination.key}
+                className={cn(
+                  'group bg-black-2 border border-gold/12 hover:border-gold/35 overflow-hidden transition-colors duration-300 flex flex-col',
+                  'col-span-1 sm:col-span-1 lg:col-span-2',
+                  isFourth && 'lg:col-start-2',
+                  isFifth &&
+                    'sm:col-span-2 sm:w-full sm:max-w-[calc(50%-0.625rem)] sm:mx-auto lg:max-w-none lg:col-span-2',
+                )}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={landingViewport}
+                transition={{
+                  duration: 0.55,
+                  ease: landingEase,
+                  delay: index * 0.07,
+                }}
+              >
               <div className="aspect-4/3 overflow-hidden bg-black-3">
                 <img
                   src={destination.image}
@@ -60,7 +70,7 @@ export function LisbonPortoStops() {
                 </p>
               </div>
             </motion.article>
-          ))}
+          )})}
         </div>
 
         <motion.p

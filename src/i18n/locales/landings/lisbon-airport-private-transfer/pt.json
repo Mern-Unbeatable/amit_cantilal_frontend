@@ -1,0 +1,190 @@
+{
+  "seo": {
+    "title": "Transfer Privado Aeroporto de Lisboa | Off We Go Portugal",
+    "description": "Transfer privado do Aeroporto de Lisboa num Mercedes topo de gama. Meet & Greet, monitorização de voos, motorista profissional e serviço porta a porta em Lisboa e além."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Transfers Privados Aeroporto de Lisboa",
+    "subtitle": "Comece ou termine a sua estadia em Portugal com um serviço de motorista particular a partir do Aeroporto de Lisboa. Desfrute de Meet & Greet, monitorização de voos e transporte cómodo porta a porta a bordo de um Mercedes de luxo.",
+    "primaryCta": "Reservar Transfer de Aeroporto",
+    "secondaryCta": "Fale Connosco no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de reservar um transfer privado a partir do Aeroporto de Lisboa.",
+    "imageAlt": "Transfer privado Mercedes Classe V Aeroporto de Lisboa",
+    "benefits": [
+      "Monitorização de Voos",
+      "Meet & Greet",
+      "60 Minutos de Espera Incluídos",
+      "Frota Mercedes Premium"
+    ]
+  },
+  "intro": {
+    "title": "O Seu Motorista Particular no Aeroporto de Lisboa",
+    "p1": "Após um voo longo, o início da sua viagem deve ser simples e sem contratempos.",
+    "p2": "Com a Off We Go Portugal, o seu motorista monitoriza o seu voo e aguarda por si na área de chegadas do Aeroporto de Lisboa com uma placa de identificação personalizada.",
+    "p3": "A partir desse momento, prestamos todo o apoio com a sua bagagem e acompanhamo-lo até ao seu Mercedes privado, garantindo uma viagem porta a porta cómoda até ao seu hotel, residência ou próximo destino.",
+    "p4": "As chegadas ao aeroporto incluem até 60 minutos de tempo de espera gratuito após a aterragem do voo, proporcionando-lhe tranquilidade para cumprir todas as formalidades habituais de desembarque.",
+    "imageAlt": "Serviço de motorista privado Meet and Greet no Aeroporto de Lisboa"
+  },
+  "directions": {
+    "title": "Chegadas e Partidas",
+    "from": "Aeroporto de Lisboa",
+    "to": "Hotel / Residência / Destino",
+    "body": "Nas partidas, o horário de recolha é coordenado em função do horário do seu voo e da antecedência recomendada para chegada ao aeroporto."
+  },
+  "destinations": {
+    "title": "Do Aeroporto de Lisboa Para o Seu Próximo Destino",
+    "p1": "O seu transfer privado de aeroporto não precisa de terminar em Lisboa.",
+    "p2": "A Off We Go Portugal disponibiliza transporte porta a porta a partir do Aeroporto de Lisboa para destinos em todo o território português e destinos selecionados em Espanha.",
+    "items": {
+      "lisbon": {
+        "name": "Lisboa",
+        "description": "Viaje diretamente do Aeroporto de Lisboa para o seu hotel, apartamento, residência privada ou qualquer outro destino na cidade.",
+        "imageAlt": "Transfer privado do Aeroporto de Lisboa para a cidade de Lisboa"
+      },
+      "cascais": {
+        "name": "Cascais e Estoril",
+        "description": "Transporte privado de aeroporto para a costa atlântica, com destino a hotéis, residências e resorts em Cascais e no Estoril.",
+        "imageAlt": "Transfer privado de aeroporto para Cascais e Estoril"
+      },
+      "algarve": {
+        "name": "Algarve",
+        "description": "Prossiga a viagem após o seu voo diretamente para o seu hotel, resort ou moradia no Algarve através de um transfer privado de longa distância.",
+        "imageAlt": "Transfer privado de longa distância do Aeroporto de Lisboa para o Algarve"
+      },
+      "porto": {
+        "name": "Porto e Norte de Portugal",
+        "description": "Viaje em privado a partir do Aeroporto de Lisboa até ao Porto ou prossiga para outro destino no norte de Portugal conforme o seu itinerário.",
+        "imageAlt": "Transfer privado do Aeroporto de Lisboa para o Porto e Norte de Portugal"
+      }
+    },
+    "note": "Viaja para outro destino? Indique-nos o seu local de destino ao solicitar o seu transfer e a nossa equipa confirmará o serviço mais indicado."
+  },
+  "airportService": {
+    "title": "Uma Chegada ao Aeroporto Tranquila e Sem Preocupações",
+    "items": [
+      {
+        "title": "Monitorização de Voos",
+        "description": "Acompanhamos em tempo real o horário do seu voo para coordenar perfeitamente a sua recolha no aeroporto."
+      },
+      {
+        "title": "Meet & Greet",
+        "description": "O seu motorista recebe-o na zona de chegadas com uma placa de identificação personalizada."
+      },
+      {
+        "title": "60 Minutos de Espera Gratuita",
+        "description": "As chegadas ao aeroporto incluem até 60 minutos de espera gratuita após a aterragem do voo."
+      },
+      {
+        "title": "Apoio com a Bagagem",
+        "description": "O seu motorista auxilia no carregamento e descarregamento das suas malas no encontro e no destino."
+      },
+      {
+        "title": "Veículo Privado",
+        "description": "O seu veículo Mercedes é reservado com total exclusividade para si e para os seus acompanhantes."
+      },
+      {
+        "title": "Serviço Porta a Porta",
+        "description": "Viaje diretamente do aeroporto até ao seu destino pretendido sem transbordos ou transportes intermédios."
+      },
+      {
+        "title": "Coordenação Personalizada",
+        "description": "A nossa equipa coordena todos os detalhes antes da sua chegada e permanece disponível para qualquer apoio operacional."
+      }
+    ]
+  },
+  "vehicles": {
+    "title": "Escolha o Mercedes Ideal Para a Sua Viagem",
+    "eClass": {
+      "name": "Mercedes-Benz Classe E",
+      "description": "Um sedan executivo elegante para passageiros individuais ou casais que procuram um transfer de aeroporto confortável e discreto.",
+      "imageAlt": "Transfer Mercedes Classe E Aeroporto de Lisboa"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz Classe S",
+      "description": "A nossa opção de sedan premium para passageiros que procuram um nível superior de conforto, sofisticação e privacidade.",
+      "imageAlt": "Motorista particular Mercedes Classe S Aeroporto de Lisboa"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz Classe V",
+      "description": "Espaçoso e muito confortável, ideal para famílias, pequenos grupos privados e passageiros com bagagem adicional.",
+      "imageAlt": "Transfer privado Mercedes Classe V Aeroporto de Lisboa"
+    },
+    "note": "Ao solicitar o seu transfer, informe-nos sobre o número de passageiros e a quantidade aproximada de malas. A nossa equipa recomendará o veículo mais adequado."
+  },
+  "whyChoose": {
+    "title": "Porquê Escolher a Off We Go Portugal Para o Seu Transfer de Aeroporto?",
+    "items": [
+      {
+        "title": "Serviço de Motorista Profissional",
+        "description": "Viaje com um motorista experiente, discreto e com apresentação cuidada e profissional."
+      },
+      {
+        "title": "Sem Filas de Táxi",
+        "description": "O seu transfer privado é organizado previamente de acordo com o seu voo e itinerário."
+      },
+      {
+        "title": "Frota Mercedes Premium",
+        "description": "Desfrute de uma viagem confortável num veículo perfeitamente selecionado conforme as suas necessidades."
+      },
+      {
+        "title": "Mais do que um Transfer de Aeroporto",
+        "description": "Prossiga diretamente para outra cidade, hotel, resort ou destino sem necessidade de trocar de transporte."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      {
+        "question": "Onde me irá encontrar o meu motorista no Aeroporto de Lisboa?",
+        "answer": "O seu motorista irá aguardar por si na área de chegadas com uma placa com o seu nome. As instruções detalhadas de encontro serão disponibilizadas nos detalhes do seu serviço."
+      },
+      {
+        "question": "O que acontece se o meu voo se atrasar?",
+        "answer": "Monitorizamos o horário do seu voo em tempo real para que o serviço seja pontualmente coordenado consoante as novas informações de chegada."
+      },
+      {
+        "question": "Quanto tempo de espera está incluído?",
+        "answer": "As chegadas ao Aeroporto de Lisboa incluem até 60 minutos de tempo de espera gratuito após a aterragem do voo."
+      },
+      {
+        "question": "Podem levar-nos diretamente do Aeroporto de Lisboa para outra cidade?",
+        "answer": "Sim. Disponibilizamos transfers privados de longa distância a partir do Aeroporto de Lisboa para destinos em todo o Portugal e destinos selecionados em Espanha."
+      },
+      {
+        "question": "Posso reservar um transfer para o Aeroporto de Lisboa para o meu voo de partida?",
+        "answer": "Sim. Realizamos transfers tanto de chegada como de partida do aeroporto. O seu horário de recolha pode ser coordenado rigorosamente de acordo com o plano do seu voo."
+      },
+      {
+        "question": "Disponibilizam cadeiras de criança?",
+        "answer": "Sim. As cadeiras de criança podem ser solicitadas com antecedência. Agradecemos que nos informe a idade da criança no momento da reserva para que possamos providenciar o assento mais adequado."
+      },
+      {
+        "question": "E se tivermos muita bagagem?",
+        "answer": "Por favor, indique a quantidade e o tamanho aproximado das suas malas na reserva. Recomendaremos o veículo mais apropriado em função do número de passageiros e do volume de bagagem."
+      },
+      {
+        "question": "Podem transportar grupos?",
+        "answer": "Sim. O serviço de transporte pode ser coordenado em função do número de passageiros e da respetiva bagagem, integrando veículos de maior capacidade sempre que necessário."
+      }
+    ]
+  },
+  "cta": {
+    "title": "A Sua Viagem Começa no Momento em que Aterra",
+    "lead": "Chegue a Lisboa com a total tranquilidade de ter o seu motorista privado pronto para cuidar de todo o seu percurso.",
+    "body": "Indique-nos os dados do seu voo, data da viagem, destino pretendido, número de passageiros e bagagem, e organizaremos o transfer de aeroporto ideal para si.",
+    "primaryCta": "Reservar Transfer de Aeroporto",
+    "secondaryCta": "Fale Connosco no WhatsApp",
+    "whatsappMessage": "Olá, gostaria de reservar um transfer privado a partir do Aeroporto de Lisboa.",
+    "imageAlt": "Motorista privado Off We Go Portugal no Aeroporto de Lisboa",
+    "linksLabel": "Descubra mais",
+    "links": {
+      "fleet": "Frota",
+      "lisbonPorto": "Transfer Lisboa - Porto",
+      "lisbonAlgarve": "Transfer Lisboa - Algarve",
+      "tours": "Tours Privados",
+      "booking": "Contacto / Reservas"
+    }
+  }
+}

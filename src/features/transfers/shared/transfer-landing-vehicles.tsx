@@ -9,15 +9,15 @@ import {
 export const TRANSFER_LANDING_VEHICLES = [
   {
     key: 'eClass',
-    image: '/mercedes-e-class-BIO35KIp.webp',
+    image: '/transfers/lisbon-porto/Mercedes E Class.PNG',
   },
   {
     key: 'sClass',
-    image: '/mercedes-s-class-B4viU9i3.webp',
+    image: '/transfers/lisbon-porto/Mercedes S Class.PNG',
   },
   {
     key: 'vClass',
-    image: '/mercedes-v-class-C116sv8v.webp',
+    image: '/transfers/lisbon-porto/Mercedes V Class.PNG',
   },
 ] as const
 

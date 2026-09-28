@@ -34,6 +34,10 @@ import portoDouroEn from './locales/landings/porto-douro-valley-private-transfer
 import portoDouroPt from './locales/landings/porto-douro-valley-private-transfer/pt.json'
 import portoDouroEs from './locales/landings/porto-douro-valley-private-transfer/es.json'
 
+import lisbonAirportEn from './locales/landings/lisbon-airport-private-transfer/en.json'
+import lisbonAirportPt from './locales/landings/lisbon-airport-private-transfer/pt.json'
+import lisbonAirportEs from './locales/landings/lisbon-airport-private-transfer/es.json'
+
 export const SUPPORTED_LANGUAGES = ['en', 'pt', 'es'] as const
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number]
 
@@ -74,6 +78,11 @@ export const LANDING_NAMESPACES = {
     pt: portoDouroPt,
     es: portoDouroEs,
   },
+  lisbonAirportTransfer: {
+    en: lisbonAirportEn,
+    pt: lisbonAirportPt,
+    es: lisbonAirportEs,
+  },
 } as const
 
 i18next
@@ -90,6 +99,7 @@ i18next
         lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.en,
         lisbonEvoraTransfer: LANDING_NAMESPACES.lisbonEvoraTransfer.en,
         portoDouroTransfer: LANDING_NAMESPACES.portoDouroTransfer.en,
+        lisbonAirportTransfer: LANDING_NAMESPACES.lisbonAirportTransfer.en,
       },
       pt: {
         translation: pt,
@@ -100,6 +110,7 @@ i18next
         lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.pt,
         lisbonEvoraTransfer: LANDING_NAMESPACES.lisbonEvoraTransfer.pt,
         portoDouroTransfer: LANDING_NAMESPACES.portoDouroTransfer.pt,
+        lisbonAirportTransfer: LANDING_NAMESPACES.lisbonAirportTransfer.pt,
       },
       es: {
         translation: es,
@@ -110,6 +121,7 @@ i18next
         lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.es,
         lisbonEvoraTransfer: LANDING_NAMESPACES.lisbonEvoraTransfer.es,
         portoDouroTransfer: LANDING_NAMESPACES.portoDouroTransfer.es,
+        lisbonAirportTransfer: LANDING_NAMESPACES.lisbonAirportTransfer.es,
       },
     },
     fallbackLng: 'en',

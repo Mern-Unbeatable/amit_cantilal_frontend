@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { cn } from '@/lib/utils.ts'
 import {
   fadeUp,
   landingEase,
@@ -22,13 +23,20 @@ export function TransferLandingDestinations({
   ns,
   destinations,
   sectionKey = 'destinations',
-  gridClassName = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6',
+  gridClassName,
 }: TransferLandingDestinationsProps) {
   const { t, i18n } = useTranslation(ns)
   const p2Key = `${sectionKey}.p2`
   const noteKey = `${sectionKey}.note`
   const hasP2 = i18n.exists(p2Key, { ns })
   const hasNote = i18n.exists(noteKey, { ns })
+
+  const isFive = destinations.length === 5
+  const resolvedGridClass =
+    gridClassName ??
+    (isFive
+      ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5 md:gap-6'
+      : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6')
 
   return (
     <section className="bg-black py-20 md:py-32 border-t border-gold/10">
@@ -47,20 +55,31 @@ export function TransferLandingDestinations({
           </div>
         </motion.div>
 
-        <div className={gridClassName}>
-          {destinations.map((destination, index) => (
-            <motion.article
-              key={destination.key}
-              className="group bg-black-2 border border-gold/12 hover:border-gold/35 overflow-hidden transition-colors duration-300 flex flex-col"
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={landingViewport}
-              transition={{
-                duration: 0.55,
-                ease: landingEase,
-                delay: index * 0.07,
-              }}
-            >
+        <div className={resolvedGridClass}>
+          {destinations.map((destination, index) => {
+            const isFourth = isFive && index === 3
+            const isFifth = isFive && index === 4
+            return (
+              <motion.article
+                key={destination.key}
+                className={cn(
+                  'group bg-black-2 border border-gold/12 hover:border-gold/35 overflow-hidden transition-colors duration-300 flex flex-col',
+                  isFive && [
+                    'col-span-1 sm:col-span-1 lg:col-span-2',
+                    isFourth && 'lg:col-start-2',
+                    isFifth &&
+                      'sm:col-span-2 sm:w-full sm:max-w-[calc(50%-0.625rem)] sm:mx-auto lg:max-w-none lg:col-span-2',
+                  ],
+                )}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={landingViewport}
+                transition={{
+                  duration: 0.55,
+                  ease: landingEase,
+                  delay: index * 0.07,
+                }}
+              >
               <div className="aspect-4/3 overflow-hidden bg-black-3">
                 <img
                   src={destination.image}
@@ -80,7 +99,7 @@ export function TransferLandingDestinations({
                 </p>
               </div>
             </motion.article>
-          ))}
+          )})}
         </div>
 
         {hasNote && (

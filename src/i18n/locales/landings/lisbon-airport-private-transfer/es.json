@@ -1,0 +1,190 @@
+{
+  "seo": {
+    "title": "Traslado Privado Aeropuerto de Lisboa | Off We Go Portugal",
+    "description": "Traslado privado en el Aeropuerto de Lisboa en un Mercedes de alta gama. Meet & Greet, monitorización de vuelos, chófer profesional y servicio puerta a puerta en Lisboa y alrededores."
+  },
+  "hero": {
+    "tag": "Traslados",
+    "title": "Traslados Privados Aeropuerto de Lisboa",
+    "subtitle": "Comience o finalice su viaje en Portugal con un exclusivo servicio de chófer privado desde el Aeropuerto de Lisboa. Disfrute de servicio Meet & Greet, seguimiento de vuelos y un cómodo traslado puerta a puerta a bordo de un Mercedes de primera clase.",
+    "primaryCta": "Reservar Traslado de Aeropuerto",
+    "secondaryCta": "Contactar por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría reservar un traslado privado desde el Aeropuerto de Lisboa.",
+    "imageAlt": "Traslado privado Mercedes Clase V Aeropuerto de Lisboa",
+    "benefits": [
+      "Monitorización de Vuelos",
+      "Meet & Greet",
+      "60 Minutos de Espera Incluidos",
+      "Flota Mercedes de Alta Gama"
+    ]
+  },
+  "intro": {
+    "title": "Su Chófer Privado en el Aeropuerto de Lisboa",
+    "p1": "Tras un vuelo prolongado, el trayecto hasta su destino debe ser cómodo y sin complicaciones.",
+    "p2": "Con Off We Go Portugal, su chófer monitoriza el estado de su vuelo y le recibe en la zona de llegadas del Aeropuerto de Lisboa con un cartel identificativo personalizado.",
+    "p3": "A continuación, le asistirá con su equipaje y le acompañará hasta su Mercedes privado para un confortable traslado puerta a puerta hasta su hotel, residencia particular o próximo destino.",
+    "p4": "Las llegadas al aeropuerto incluyen hasta 60 minutos de espera de cortesía tras el aterrizaje del avión, brindándole tiempo suficiente para realizar los trámites de llegada sin prisas.",
+    "imageAlt": "Servicio de chófer privado Meet and Greet en el Aeropuerto de Lisboa"
+  },
+  "directions": {
+    "title": "Llegadas y Salidas",
+    "from": "Aeropuerto de Lisboa",
+    "to": "Hotel / Residencia / Destino",
+    "body": "Para los traslados de salida, la hora de recogida se coordina con total precisión según el horario de su vuelo y el tiempo requerido de llegada al aeropuerto."
+  },
+  "destinations": {
+    "title": "Desde el Aeropuerto de Lisboa Hacia Su Próximo Destino",
+    "p1": "Su traslado privado de aeropuerto no tiene por qué limitarse a Lisboa.",
+    "p2": "Off We Go Portugal ofrece transporte puerta a puerta desde el Aeropuerto de Lisboa hacia destinos en todo Portugal y enclaves seleccionados de España.",
+    "items": {
+      "lisbon": {
+        "name": "Lisboa",
+        "description": "Viaje directamente desde el Aeropuerto de Lisboa hasta su hotel, apartamento, residencia privada u otro destino en la ciudad.",
+        "imageAlt": "Traslado privado desde el Aeropuerto de Lisboa hasta el centro de Lisboa"
+      },
+      "cascais": {
+        "name": "Cascais y Estoril",
+        "description": "Transporte privado de aeropuerto hacia la costa atlántica, incluyendo hoteles, residencias y complejos turísticos en Cascais y Estoril.",
+        "imageAlt": "Traslado privado de aeropuerto a Cascais y Estoril"
+      },
+      "algarve": {
+        "name": "Algarve",
+        "description": "Continúe directamente tras su vuelo hacia su hotel, resort o villa en el Algarve mediante un traslado privado de larga distancia.",
+        "imageAlt": "Traslado privado de larga distancia desde el Aeropuerto de Lisboa al Algarve"
+      },
+      "porto": {
+        "name": "Oporto y Norte de Portugal",
+        "description": "Viaje de forma privada desde el Aeropuerto de Lisboa hasta Oporto o continúe hacia otro destino del norte de Portugal según su itinerario.",
+        "imageAlt": "Traslado privado desde el Aeropuerto de Lisboa a Oporto y el norte de Portugal"
+      }
+    },
+    "note": "¿Viaja a otro destino? Indíquenos su lugar de llegada al solicitar su traslado y nuestro equipo le confirmará el servicio más adecuado."
+  },
+  "airportService": {
+    "title": "Una Llegada Impecable al Aeropuerto",
+    "items": [
+      {
+        "title": "Monitorización de Vuelos",
+        "description": "Seguimos la llegada de su vuelo en tiempo real para coordinar su recogida puntualmente en el aeropuerto."
+      },
+      {
+        "title": "Meet & Greet",
+        "description": "Su chófer le esperará en la sala de llegadas con un cartel identificativo con su nombre."
+      },
+      {
+        "title": "60 Minutos de Espera de Cortesía",
+        "description": "Las llegadas al aeropuerto incluyen hasta 60 minutos de tiempo de espera gratuito tras el aterrizaje del vuelo."
+      },
+      {
+        "title": "Asistencia con el Equipaje",
+        "description": "Su chófer le ayudará con sus maletas tanto en la bienvenida como a la llegada a su destino."
+      },
+      {
+        "title": "Vehículo Privado",
+        "description": "Su vehículo Mercedes está reservado de manera estrictamente exclusiva para usted y sus acompañantes."
+      },
+      {
+        "title": "Servicio Puerta a Puerta",
+        "description": "Viaje directamente desde el aeropuerto hasta el destino solicitado sin necesidad de conexiones de transporte adicionales."
+      },
+      {
+        "title": "Coordinación Personalizada",
+        "description": "Nuestro equipo organiza minuciosamente su servicio antes del aterrizaje y permanece a su disposición para cualquier gestión operativa."
+      }
+    ]
+  },
+  "vehicles": {
+    "title": "Elija el Mercedes Adecuado Para Su Viaje",
+    "eClass": {
+      "name": "Mercedes-Benz Clase E",
+      "description": "Una elegante berlina ejecutiva para viajeros individuales y parejas que buscan un traslado de aeropuerto cómodo y discreto.",
+      "imageAlt": "Traslado Mercedes Clase E Aeropuerto de Lisboa"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz Clase S",
+      "description": "Nuestra berlina de máxima categoría para clientes que desean un nivel superior de confort, distinción y privacidad.",
+      "imageAlt": "Chófer Mercedes Clase S Aeropuerto de Lisboa"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz Clase V",
+      "description": "Espacioso y confortable, idóneo para familias, grupos privados y viajeros con equipaje adicional.",
+      "imageAlt": "Traslado privado Mercedes Clase V Aeropuerto de Lisboa"
+    },
+    "note": "Al solicitar su traslado, indíquenos el número de pasajeros y la cantidad y dimensiones aproximadas de sus maletas. Nuestro equipo le recomendará el vehículo idóneo."
+  },
+  "whyChoose": {
+    "title": "¿Por Qué Elegir Off We Go Portugal Para Su Traslado de Aeropuerto?",
+    "items": [
+      {
+        "title": "Servicio de Chófer Profesional",
+        "description": "Viaje con un chófer experimentado, discreto y con una cuidada presentación profesional."
+      },
+      {
+        "title": "Sin Colas de Taxi",
+        "description": "Su traslado privado queda concertado con antelación en función de su vuelo e itinerario."
+      },
+      {
+        "title": "Flota Mercedes de Alta Gama",
+        "description": "Desplácese con total confort en un vehículo adaptado estrictamente a sus necesidades."
+      },
+      {
+        "title": "Más que un Traslado de Aeropuerto",
+        "description": "Continúe directamente a otra ciudad, hotel, resort o destino sin cambiar de medio de transporte."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "question": "¿Dónde me recibirá mi chófer en el Aeropuerto de Lisboa?",
+        "answer": "Su chófer le esperará en la zona de llegadas con un cartel personalizado con su nombre. Las instrucciones finales de encuentro se detallarán junto con la confirmación de su servicio."
+      },
+      {
+        "question": "¿Qué ocurre si mi vuelo se retrasa?",
+        "answer": "Hacemos seguimiento continuo de la llegada de su vuelo para que el servicio se coordine puntualmente conforme al horario actualizado."
+      },
+      {
+        "question": "¿Cuánto tiempo de espera está incluido?",
+        "answer": "Las llegadas al Aeropuerto de Lisboa incluyen hasta 60 minutos de espera de cortesía tras el aterrizaje de su avión."
+      },
+      {
+        "question": "¿Pueden llevarnos directamente desde el Aeropuerto de Lisboa a otra ciudad?",
+        "answer": "Sí. Ofrecemos traslados privados de larga distancia desde el Aeropuerto de Lisboa hacia destinos en todo Portugal y enclaves específicos de España."
+      },
+      {
+        "question": "¿Puedo reservar un traslado hacia el Aeropuerto de Lisboa para mi vuelo de salida?",
+        "answer": "Sí. Realizamos traslados tanto de llegada como de salida del aeropuerto. Su recogida se coordinará con precisión conforme a su horario de vuelo."
+      },
+      {
+        "question": "¿Disponen de sillas para niños?",
+        "answer": "Sí. Puede solicitar sillas infantiles con antelación. Le rogamos nos indique la edad del menor al reservar para disponer del asiento adecuado."
+      },
+      {
+        "question": "¿Qué sucede si viajamos con mucho equipaje?",
+        "answer": "Indíquenos la cantidad y el tamaño aproximado de sus maletas al realizar su reserva. Le recomendaremos el vehículo más idóneo según sus necesidades de pasaje y equipaje."
+      },
+      {
+        "question": "¿Pueden atender grupos?",
+        "answer": "Sí. Coordinamos el transporte adaptándonos al número de viajeros y volumen de equipaje, recurriendo a vehículos de mayor capacidad cuando se requiera."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Su Viaje Comienza en el Mismo Instante en que Aterriza",
+    "lead": "Llegue a Lisboa sabiendo que su chófer privado le está esperando para ocuparse de su trayecto con absoluta comodidad.",
+    "body": "Facilítenos los detalles de su vuelo, fecha de viaje, destino, número de acompañantes y equipaje, y organizaremos su traslado privado de aeropuerto idóneo.",
+    "primaryCta": "Reservar Traslado de Aeropuerto",
+    "secondaryCta": "Contactar por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría reservar un traslado privado desde el Aeropuerto de Lisboa.",
+    "imageAlt": "Chófer privado Off We Go Portugal en el Aeropuerto de Lisboa",
+    "linksLabel": "Descubra más",
+    "links": {
+      "fleet": "Flota",
+      "lisbonPorto": "Traslado Lisboa - Oporto",
+      "lisbonAlgarve": "Traslado Lisboa - Algarve",
+      "tours": "Tours Privados",
+      "booking": "Contacto / Reservas"
+    }
+  }
+}
