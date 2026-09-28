@@ -36,6 +36,7 @@ import { Route as PublicTransfersLisbonMadridPrivateTransferRouteImport } from '
 import { Route as PublicTransfersLisbonEvoraPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-evora-private-transfer'
 import { Route as PublicTransfersLisbonComportaPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-comporta-private-transfer'
 import { Route as PublicTransfersLisbonAlgarvePrivateTransferRouteImport } from './routes/_public/transfers/lisbon-algarve-private-transfer'
+import { Route as PublicTransfersLisbonAirportPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-airport-private-transfer'
 import { Route as PublicToursSlugRouteImport } from './routes/_public/tours/$slug'
 import { Route as PublicBookingLookupRouteImport } from './routes/_public/booking/lookup'
 import { Route as PublicBookingConfirmRouteImport } from './routes/_public/booking/confirm'
@@ -199,6 +200,12 @@ const PublicTransfersLisbonAlgarvePrivateTransferRoute =
   PublicTransfersLisbonAlgarvePrivateTransferRouteImport.update({
     id: '/transfers/lisbon-algarve-private-transfer',
     path: '/transfers/lisbon-algarve-private-transfer',
+    getParentRoute: () => PublicRoute,
+  } as any)
+const PublicTransfersLisbonAirportPrivateTransferRoute =
+  PublicTransfersLisbonAirportPrivateTransferRouteImport.update({
+    id: '/transfers/lisbon-airport-private-transfer',
+    path: '/transfers/lisbon-airport-private-transfer',
     getParentRoute: () => PublicRoute,
   } as any)
 const PublicToursSlugRoute = PublicToursSlugRouteImport.update({
@@ -370,6 +377,7 @@ export interface FileRoutesByFullPath {
   '/booking/confirm': typeof PublicBookingConfirmRoute
   '/booking/lookup': typeof PublicBookingLookupRoute
   '/tours/$slug': typeof PublicToursSlugRoute
+  '/transfers/lisbon-airport-private-transfer': typeof PublicTransfersLisbonAirportPrivateTransferRoute
   '/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/transfers/lisbon-comporta-private-transfer': typeof PublicTransfersLisbonComportaPrivateTransferRoute
   '/transfers/lisbon-evora-private-transfer': typeof PublicTransfersLisbonEvoraPrivateTransferRoute
@@ -421,6 +429,7 @@ export interface FileRoutesByTo {
   '/booking/confirm': typeof PublicBookingConfirmRoute
   '/booking/lookup': typeof PublicBookingLookupRoute
   '/tours/$slug': typeof PublicToursSlugRoute
+  '/transfers/lisbon-airport-private-transfer': typeof PublicTransfersLisbonAirportPrivateTransferRoute
   '/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/transfers/lisbon-comporta-private-transfer': typeof PublicTransfersLisbonComportaPrivateTransferRoute
   '/transfers/lisbon-evora-private-transfer': typeof PublicTransfersLisbonEvoraPrivateTransferRoute
@@ -476,6 +485,7 @@ export interface FileRoutesById {
   '/_public/booking/confirm': typeof PublicBookingConfirmRoute
   '/_public/booking/lookup': typeof PublicBookingLookupRoute
   '/_public/tours/$slug': typeof PublicToursSlugRoute
+  '/_public/transfers/lisbon-airport-private-transfer': typeof PublicTransfersLisbonAirportPrivateTransferRoute
   '/_public/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/_public/transfers/lisbon-comporta-private-transfer': typeof PublicTransfersLisbonComportaPrivateTransferRoute
   '/_public/transfers/lisbon-evora-private-transfer': typeof PublicTransfersLisbonEvoraPrivateTransferRoute
@@ -529,6 +539,7 @@ export interface FileRouteTypes {
     | '/booking/confirm'
     | '/booking/lookup'
     | '/tours/$slug'
+    | '/transfers/lisbon-airport-private-transfer'
     | '/transfers/lisbon-algarve-private-transfer'
     | '/transfers/lisbon-comporta-private-transfer'
     | '/transfers/lisbon-evora-private-transfer'
@@ -580,6 +591,7 @@ export interface FileRouteTypes {
     | '/booking/confirm'
     | '/booking/lookup'
     | '/tours/$slug'
+    | '/transfers/lisbon-airport-private-transfer'
     | '/transfers/lisbon-algarve-private-transfer'
     | '/transfers/lisbon-comporta-private-transfer'
     | '/transfers/lisbon-evora-private-transfer'
@@ -634,6 +646,7 @@ export interface FileRouteTypes {
     | '/_public/booking/confirm'
     | '/_public/booking/lookup'
     | '/_public/tours/$slug'
+    | '/_public/transfers/lisbon-airport-private-transfer'
     | '/_public/transfers/lisbon-algarve-private-transfer'
     | '/_public/transfers/lisbon-comporta-private-transfer'
     | '/_public/transfers/lisbon-evora-private-transfer'
@@ -858,6 +871,13 @@ declare module '@tanstack/react-router' {
       path: '/transfers/lisbon-algarve-private-transfer'
       fullPath: '/transfers/lisbon-algarve-private-transfer'
       preLoaderRoute: typeof PublicTransfersLisbonAlgarvePrivateTransferRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/transfers/lisbon-airport-private-transfer': {
+      id: '/_public/transfers/lisbon-airport-private-transfer'
+      path: '/transfers/lisbon-airport-private-transfer'
+      fullPath: '/transfers/lisbon-airport-private-transfer'
+      preLoaderRoute: typeof PublicTransfersLisbonAirportPrivateTransferRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/tours/$slug': {
@@ -1121,6 +1141,7 @@ interface PublicRouteChildren {
   PublicBookingConfirmRoute: typeof PublicBookingConfirmRoute
   PublicBookingLookupRoute: typeof PublicBookingLookupRoute
   PublicToursSlugRoute: typeof PublicToursSlugRoute
+  PublicTransfersLisbonAirportPrivateTransferRoute: typeof PublicTransfersLisbonAirportPrivateTransferRoute
   PublicTransfersLisbonAlgarvePrivateTransferRoute: typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   PublicTransfersLisbonComportaPrivateTransferRoute: typeof PublicTransfersLisbonComportaPrivateTransferRoute
   PublicTransfersLisbonEvoraPrivateTransferRoute: typeof PublicTransfersLisbonEvoraPrivateTransferRoute
@@ -1151,6 +1172,8 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicBookingConfirmRoute: PublicBookingConfirmRoute,
   PublicBookingLookupRoute: PublicBookingLookupRoute,
   PublicToursSlugRoute: PublicToursSlugRoute,
+  PublicTransfersLisbonAirportPrivateTransferRoute:
+    PublicTransfersLisbonAirportPrivateTransferRoute,
   PublicTransfersLisbonAlgarvePrivateTransferRoute:
     PublicTransfersLisbonAlgarvePrivateTransferRoute,
   PublicTransfersLisbonComportaPrivateTransferRoute:

@@ -1,6 +1,6 @@
 import { TransferLandingVehicles } from '@/features/transfers/shared/transfer-landing-vehicles.tsx'
 
-export const ALGARVE_VEHICLES = [
+export const LISBON_AIRPORT_VEHICLES = [
   {
     key: 'eClass',
     image: '/transfers/lisbon-porto/Mercedes E Class.PNG',
@@ -15,11 +15,11 @@ export const ALGARVE_VEHICLES = [
   },
 ] as const
 
-export function LisbonAlgarveVehicles() {
+export function LisbonAirportVehicles() {
   return (
     <TransferLandingVehicles
-      ns="lisbonAlgarveTransfer"
-      vehicles={ALGARVE_VEHICLES}
+      ns="lisbonAirportTransfer"
+      vehicles={LISBON_AIRPORT_VEHICLES}
     />
   )
 }

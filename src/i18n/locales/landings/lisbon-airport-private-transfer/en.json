@@ -1,0 +1,190 @@
+{
+  "seo": {
+    "title": "Lisbon Airport Private Transfer | Off We Go Portugal",
+    "description": "Private Lisbon Airport transfer in a premium Mercedes. Meet & Greet, flight monitoring, professional chauffeur and door-to-door service in Lisbon and beyond."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Lisbon Airport Private Transfers",
+    "subtitle": "Start or finish your journey in Portugal with a private chauffeur service from Lisbon Airport. Enjoy Meet & Greet, flight monitoring and comfortable door-to-door transportation aboard a premium Mercedes.",
+    "primaryCta": "Book Your Airport Transfer",
+    "secondaryCta": "WhatsApp Us",
+    "whatsappMessage": "Hello, I would like to book a private transfer from Lisbon Airport.",
+    "imageAlt": "Mercedes V-Class Lisbon Airport private transfer",
+    "benefits": [
+      "Flight Monitoring",
+      "Meet & Greet",
+      "60 Minutes Waiting Included",
+      "Premium Mercedes Fleet"
+    ]
+  },
+  "intro": {
+    "title": "Your Private Chauffeur from Lisbon Airport",
+    "p1": "After a long flight, your onward journey should be simple.",
+    "p2": "With Off We Go Portugal, your chauffeur monitors your flight and meets you in the arrivals area at Lisbon Airport with a personalised name sign.",
+    "p3": "From there, we'll assist with your luggage and escort you to your private Mercedes for a comfortable door-to-door journey to your hotel, private residence or next destination.",
+    "p4": "Airport arrivals include up to 60 minutes of complimentary waiting time after flight arrival, giving you time to complete the normal arrival formalities before meeting your chauffeur.",
+    "imageAlt": "Private chauffeur Meet and Greet Lisbon Airport"
+  },
+  "directions": {
+    "title": "Arrivals and Departures",
+    "from": "Lisbon Airport",
+    "to": "Hotel / Residence / Destination",
+    "body": "For departures, your pickup time can be coordinated according to your flight schedule and requested arrival time at the airport."
+  },
+  "destinations": {
+    "title": "From Lisbon Airport to Your Next Destination",
+    "p1": "Your private airport transfer doesn't have to end in Lisbon.",
+    "p2": "Off We Go Portugal provides door-to-door transportation from Lisbon Airport to destinations throughout Portugal and selected destinations in Spain.",
+    "items": {
+      "lisbon": {
+        "name": "Lisbon",
+        "description": "Travel directly from Lisbon Airport to your hotel, apartment, private residence or other destination in the city.",
+        "imageAlt": "Private transfer from Lisbon Airport to Lisbon city center"
+      },
+      "cascais": {
+        "name": "Cascais & Estoril",
+        "description": "Private airport transportation to the Atlantic coast, including hotels, residences and resorts in Cascais and Estoril.",
+        "imageAlt": "Private airport transfer to Cascais and Estoril"
+      },
+      "algarve": {
+        "name": "Algarve",
+        "description": "Continue directly from your flight to your hotel, resort or villa in the Algarve with a private long-distance transfer.",
+        "imageAlt": "Private long-distance airport transfer from Lisbon to the Algarve"
+      },
+      "porto": {
+        "name": "Porto & Northern Portugal",
+        "description": "Travel privately from Lisbon Airport to Porto or continue to another destination in northern Portugal according to your itinerary.",
+        "imageAlt": "Private airport transfer from Lisbon to Porto and Northern Portugal"
+      }
+    },
+    "note": "Travelling somewhere else? Tell us your destination when requesting your transfer and our team will confirm the appropriate service."
+  },
+  "airportService": {
+    "title": "A Seamless Airport Arrival",
+    "items": [
+      {
+        "title": "Flight Monitoring",
+        "description": "We monitor your flight arrival to coordinate your airport pickup."
+      },
+      {
+        "title": "Meet & Greet",
+        "description": "Your chauffeur meets you in the arrivals area with a personalised name sign."
+      },
+      {
+        "title": "60 Minutes Complimentary Waiting",
+        "description": "Airport arrivals include up to 60 minutes of complimentary waiting time after flight arrival."
+      },
+      {
+        "title": "Luggage Assistance",
+        "description": "Your chauffeur assists with your luggage when meeting you and at your destination."
+      },
+      {
+        "title": "Private Vehicle",
+        "description": "Your Mercedes is reserved exclusively for you and your party."
+      },
+      {
+        "title": "Door-to-Door Service",
+        "description": "Travel directly from the airport to your requested destination without additional transportation connections."
+      },
+      {
+        "title": "Personalised Coordination",
+        "description": "Our team coordinates your service before arrival and remains available for operational assistance."
+      }
+    ]
+  },
+  "vehicles": {
+    "title": "Choose the Right Mercedes for Your Journey",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "An elegant executive sedan for individual travellers and couples seeking a comfortable and discreet airport transfer.",
+      "imageAlt": "Mercedes E-Class Lisbon Airport transfer"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "Our premium sedan choice for travellers seeking an elevated level of comfort, sophistication and privacy.",
+      "imageAlt": "Mercedes S-Class Lisbon Airport chauffeur"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Spacious and comfortable, particularly suitable for families, private groups and travellers carrying additional luggage.",
+      "imageAlt": "Mercedes V-Class Lisbon Airport private transfer"
+    },
+    "note": "When requesting your transfer, tell us the number of passengers and the number and approximate size of your bags. Our team will recommend the most appropriate vehicle."
+  },
+  "whyChoose": {
+    "title": "Why Choose Off We Go Portugal for Your Airport Transfer?",
+    "items": [
+      {
+        "title": "Professional Chauffeur Service",
+        "description": "Travel with an experienced, discreet and professionally presented chauffeur."
+      },
+      {
+        "title": "No Taxi Queues",
+        "description": "Your private transfer is arranged in advance around your flight and itinerary."
+      },
+      {
+        "title": "Premium Mercedes Fleet",
+        "description": "Travel comfortably in a vehicle selected according to your requirements."
+      },
+      {
+        "title": "More Than an Airport Transfer",
+        "description": "Continue directly to another city, hotel, resort or destination without changing transportation."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "Where will my chauffeur meet me at Lisbon Airport?",
+        "answer": "Your chauffeur will meet you in the arrivals area with a personalised name sign. Final meeting instructions will be provided with your service details."
+      },
+      {
+        "question": "What happens if my flight is delayed?",
+        "answer": "We monitor your flight arrival so the service can be coordinated according to the updated flight information."
+      },
+      {
+        "question": "How much waiting time is included?",
+        "answer": "Lisbon Airport arrivals include up to 60 minutes of complimentary waiting time after flight arrival."
+      },
+      {
+        "question": "Can you take us directly from Lisbon Airport to another city?",
+        "answer": "Yes. We provide long-distance private transfers from Lisbon Airport to destinations throughout Portugal and selected destinations in Spain."
+      },
+      {
+        "question": "Can I book a transfer to Lisbon Airport for my departure flight?",
+        "answer": "Yes. We provide both airport arrivals and departures. Your pickup can be coordinated according to your flight schedule."
+      },
+      {
+        "question": "Can you provide child seats?",
+        "answer": "Yes. Child seats can be requested in advance. Please provide the child's age when booking so the appropriate seat can be arranged."
+      },
+      {
+        "question": "What if we have a lot of luggage?",
+        "answer": "Please provide the number and approximate size of your bags when booking. We'll recommend the appropriate vehicle according to your passenger and luggage requirements."
+      },
+      {
+        "question": "Can you accommodate groups?",
+        "answer": "Yes. Transportation can be coordinated according to the number of passengers and luggage, including larger vehicle requirements when necessary."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Your Journey Begins the Moment You Arrive",
+    "lead": "Arrive in Lisbon knowing your private chauffeur is ready to take care of your onward journey.",
+    "body": "Tell us your flight details, travel date, destination, number of passengers and luggage, and we'll arrange the appropriate private airport transfer.",
+    "primaryCta": "Book Your Airport Transfer",
+    "secondaryCta": "Contact Us on WhatsApp",
+    "whatsappMessage": "Hello, I would like to book a private transfer from Lisbon Airport.",
+    "imageAlt": "Off We Go Portugal Lisbon Airport private chauffeur",
+    "linksLabel": "Explore More",
+    "links": {
+      "fleet": "Fleet",
+      "lisbonPorto": "Lisbon to Porto Transfer",
+      "lisbonAlgarve": "Lisbon to Algarve Transfer",
+      "tours": "Private Tours",
+      "booking": "Contact / Booking"
+    }
+  }
+}

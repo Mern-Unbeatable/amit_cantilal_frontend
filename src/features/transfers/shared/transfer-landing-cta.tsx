@@ -6,7 +6,12 @@ import { usePublicSettings } from '@/features/settings/settings.hooks.ts'
 import { toWhatsAppUrl } from '@/lib/utils.ts'
 import { fadeUp } from '@/features/transfers/shared/motion.ts'
 
-const INTERNAL_LINKS = [
+export interface TransferLandingCtaLink {
+  key: string
+  to: string
+}
+
+const INTERNAL_LINKS: ReadonlyArray<TransferLandingCtaLink> = [
   { key: 'fleet', to: '/fleet' },
   { key: 'transfers', to: '/transfers' },
   { key: 'tours', to: '/tours' },
@@ -16,9 +21,14 @@ const INTERNAL_LINKS = [
 interface TransferLandingCtaProps {
   ns: string
   imageSrc: string
+  links?: ReadonlyArray<TransferLandingCtaLink>
 }
 
-export function TransferLandingCta({ ns, imageSrc }: TransferLandingCtaProps) {
+export function TransferLandingCta({
+  ns,
+  imageSrc,
+  links = INTERNAL_LINKS,
+}: TransferLandingCtaProps) {
   const { t } = useTranslation(ns)
   const { data: settings } = usePublicSettings()
 
@@ -77,7 +87,7 @@ export function TransferLandingCta({ ns, imageSrc }: TransferLandingCtaProps) {
             {t('cta.linksLabel')}
           </p>
           <nav className="flex flex-wrap items-center justify-center gap-x-2 gap-y-3">
-            {INTERNAL_LINKS.map((link, index) => (
+            {links.map((link, index) => (
               <span key={link.key} className="inline-flex items-center">
                 {index > 0 && (
                   <span className="mx-3 h-3 w-px bg-[#C9A84C]/30" aria-hidden />
