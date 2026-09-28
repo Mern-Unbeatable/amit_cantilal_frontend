@@ -1,0 +1,204 @@
+{
+  "seo": {
+    "title": "Traslado Privado de Lisboa a Évora | Off We Go Portugal",
+    "description": "Traslado privado entre Lisboa y Évora en un Mercedes de alta gama. Servicio de chófer puerta a puerta con paradas opcionales en bodegas y experiencias en el Alentejo."
+  },
+  "hero": {
+    "tag": "Traslados",
+    "title": "Traslado Privado Entre Lisboa y Évora",
+    "subtitle": "Viaje desde Lisboa hasta el corazón del Alentejo con un servicio de chófer privado puerta a puerta. Disfrute de un Mercedes de alta gama y personalice su viaje con una parada enológica, cultural o gastronómica en el camino.",
+    "primaryCta": "Solicitar Traslado Privado",
+    "secondaryCta": "Contactar por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y Évora.",
+    "imageAlt": "Traslado privado Mercedes Clase V Lisboa Évora",
+    "benefits": [
+      "Servicio Privado Puerta a Puerta",
+      "Flota Mercedes de Alta Gama",
+      "Chóferes Hispanohablantes y Angloparlantes",
+      "Disponible en Ambos Sentidos"
+    ]
+  },
+  "intro": {
+    "title": "De Lisboa al Corazón del Alentejo",
+    "p1": "Deje atrás Lisboa y viaje en privado a través del campo portugués hasta Évora, uno de los destinos más históricos y distinguidos del país.",
+    "p2": "Con Off We Go Portugal, su chófer profesional le recogerá directamente en su hotel, residencia privada, Aeropuerto de Lisboa u otra ubicación acordada, llevándole cómodamente a Évora o de regreso a Lisboa.",
+    "p3": "Su Mercedes de primera clase se reserva exclusivamente para usted y sus acompañantes, brindándole un trayecto cómodo puerta a puerta con total flexibilidad según su itinerario.",
+    "p4": "Tanto si Évora es su destino final como si forma parte de un recorrido más amplio por Portugal, su traslado puede personalizarse a la medida de sus planes.",
+    "imageAlt": "Traslado con chófer privado Mercedes Lisboa Évora"
+  },
+  "directions": {
+    "title": "Lisboa a Évora o Évora a Lisboa",
+    "from": "Lisboa",
+    "to": "Évora",
+    "body": "La recogida y el destino pueden organizarse en hoteles, fincas rurales, residencias privadas, el Aeropuerto de Lisboa u otra ubicación convenida."
+  },
+  "experiences": {
+    "title": "Haga del Trayecto Parte de su Experiencia en el Alentejo",
+    "p1": "Su traslado privado no tiene por qué limitarse a un simple desplazamiento de Lisboa a Évora.",
+    "p2": "Con planificación previa, se pueden incorporar experiencias adicionales a su itinerario, permitiéndole descubrir más del Alentejo antes de llegar a su destino final.",
+    "note": "Las experiencias y paradas opcionales se diseñan a la medida de sus intereses y tiempo disponible. Tiempos de espera adicionales, visitas turísticas, entradas y experiencias se cotizan por separado y pueden requerir reserva anticipada.",
+    "items": {
+      "winery": {
+        "name": "Experiencia Enológica en el Alentejo",
+        "description": "Descubra las tradiciones vinícolas de la región con una visita y cata en una bodega seleccionada del Alentejo. Las visitas a bodegas pueden coordinarse previo acuerdo y están sujetas a disponibilidad.",
+        "imageAlt": "Experiencia vinícola en el Alentejo traslado privado Lisboa Évora"
+      },
+      "arraiolos": {
+        "name": "Arraiolos",
+        "description": "Descubra una localidad tradicional del Alentejo famosa por su castillo histórico, calles encaladas y la centenaria tradición de las alfombras de Arraiolos bordadas a mano.",
+        "imageAlt": "Pueblo histórico y castillo de Arraiolos parada Lisboa Évora"
+      },
+      "corkCountryside": {
+        "name": "Alcornoques y Paisajes Rurales del Alentejo",
+        "description": "Disfrute de los paisajes emblemáticos de la región, desde alcornocales y viñedos hasta onduladas llanuras y auténticos paisajes rurales.",
+        "imageAlt": "Bosques de alcornoques y campiña alentejana"
+      },
+      "montemor": {
+        "name": "Montemor-o-Novo",
+        "description": "Añada una parada cultural en este histórico municipio alentejano, presidido por las imponentes ruinas de su castillo medieval y vistas panorámicas de la campiña.",
+        "imageAlt": "Castillo medieval de Montemor-o-Novo y vistas panorámicas"
+      }
+    }
+  },
+  "explore": {
+    "title": "Llegue a Évora Listo para Explorar",
+    "p1": "El centro histórico de Évora, declarado Patrimonio de la Humanidad por la UNESCO, reúne más de dos mil años de historia, desde vestigios romanos hasta calles medievales, iglesias y la arquitectura tradicional del Alentejo.",
+    "p2": "Tanto si pernocta en la ciudad, continúa hacia una finca campestre o visita Évora como parte de un recorrido más amplio por Portugal, podemos coordinar su transporte en función de sus planes."
+  },
+  "vehicles": {
+    "title": "Viaje en un Mercedes de Primera Clase",
+    "note": "Indíquenos el número de pasajeros y equipaje al solicitar su traslado y le recomendaremos el vehículo más adecuado.",
+    "eClass": {
+      "name": "Mercedes-Benz Clase E",
+      "description": "Un elegante sedán ejecutivo, ideal para parejas y viajeros individuales que buscan confort, privacidad y distinción.",
+      "imageAlt": "Mercedes-Benz Clase E traslado privado Lisboa Évora"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz Clase S",
+      "description": "Nuestra opción de máxima distinción para viajeros que desean un nivel superior de confort, sofisticación y un servicio de chófer discreto.",
+      "imageAlt": "Mercedes-Benz Clase S chófer privado de lujo Lisboa Évora"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz Clase V",
+      "description": "Espacioso y confortable, idóneo para familias, grupos privados y viajeros con equipaje adicional.",
+      "imageAlt": "Mercedes-Benz Clase V traslado privado Lisboa Évora"
+    }
+  },
+  "included": {
+    "title": "Todo lo que Necesita para un Viaje Confortable",
+    "items": [
+      {
+        "title": "Chófer Profesional con Inglés Fluido",
+        "description": "Experimentado, discreto y con una presentación impecable."
+      },
+      {
+        "title": "Servicio Privado Puerta a Puerta",
+        "description": "Recogida y llegada directamente en los puntos acordados."
+      },
+      {
+        "title": "Vehículo Mercedes de Alta Gama",
+        "description": "Elegido a la medida de su grupo y necesidades de equipaje."
+      },
+      {
+        "title": "Asistencia con el Equipaje",
+        "description": "Ayuda para cargar y acomodar cómodamente sus maletas."
+      },
+      {
+        "title": "Agua Mineral de Cortesía",
+        "description": "Bebidas disponibles para refrescarse durante el viaje."
+      },
+      {
+        "title": "Wi-Fi a Bordo (Sujeto a Cobertura)",
+        "description": "Permanezca conectado durante todo el trayecto."
+      },
+      {
+        "title": "Peajes Estándar Incluidos",
+        "description": "Los peajes estándar y costes operativos están incluidos en la cotización del traslado directo."
+      },
+      {
+        "title": "Coordinación Personalizada",
+        "description": "Itinerario y detalles coordinados con usted antes de la salida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "¿Por Qué Elegir un Traslado Privado a Évora?",
+    "items": [
+      {
+        "title": "Comodidad Puerta a Puerta",
+        "description": "Viaje directamente entre su alojamiento en Lisboa y su destino en Évora."
+      },
+      {
+        "title": "Viaje a su Propio Ritmo",
+        "description": "Elija el horario de salida que mejor se ajuste a su itinerario."
+      },
+      {
+        "title": "Privacidad y Confort",
+        "description": "Su Mercedes está a disposición exclusiva de usted y sus acompañantes."
+      },
+      {
+        "title": "Descubra el Alentejo en el Camino",
+        "description": "Incorpore experiencias culturales, enológicas o campestres y convierta el trayecto en parte de su viaje."
+      }
+    ]
+  },
+  "airport": {
+    "title": "Del Aeropuerto de Lisboa Directamente a Évora",
+    "p1": "Si Évora es su primer destino en Portugal, le recogemos directamente en el Aeropuerto de Lisboa con rumbo al Alentejo, sin necesidad de desplazarse primero al centro de Lisboa.",
+    "p2": "La recogida en el aeropuerto incluye monitorización de vuelo, servicio Meet & Greet en la zona de llegadas con cartel a su nombre y hasta 60 minutos de cortesía tras el aterrizaje.",
+    "cta": "Solicitar Recogida en el Aeropuerto"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "question": "¿Cuánto dura el traslado privado de Lisboa a Évora?",
+        "answer": "Un trayecto directo suele durar aproximadamente 1 hora y 30 minutos, en función del tráfico y de las ubicaciones exactas de recogida y destino."
+      },
+      {
+        "question": "¿Puedo reservar de Évora a Lisboa?",
+        "answer": "Sí. El servicio está disponible en ambos sentidos."
+      },
+      {
+        "question": "¿Podemos visitar una bodega durante el viaje?",
+        "answer": "Sí. Es posible incorporar una visita o cata en una bodega mediante acuerdo previo, sujeto a disponibilidad y confirmación de reserva."
+      },
+      {
+        "question": "¿Pueden recogernos directamente en el Aeropuerto de Lisboa?",
+        "answer": "Sí. Podemos recibirle en el Aeropuerto de Lisboa y llevarle directamente a Évora o a cualquier otro destino acordado en la región."
+      },
+      {
+        "question": "¿Pueden recogernos en un hotel o finca de campo en el Alentejo?",
+        "answer": "Sí. La recogida puede organizarse en hoteles, fincas rurales, residencias privadas y demás ubicaciones convenidas."
+      },
+      {
+        "question": "¿Podemos hacer paradas adicionales?",
+        "answer": "Sí. Se pueden añadir paradas adicionales según su itinerario; el tiempo extra y los costes asociados se cotizan por separado."
+      },
+      {
+        "question": "¿Disponen de sillas infantiles?",
+        "answer": "Sí. Por favor, indique la edad del menor con antelación para acondicionar el asiento reglamentario correspondiente."
+      },
+      {
+        "question": "¿Qué modelo Mercedes debemos elegir?",
+        "answer": "El vehículo apropiado depende del número de pasajeros, del equipaje y del nivel de confort deseado. Nuestro equipo le orientará sobre la opción óptima."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Descubra el Alentejo con Total Confort",
+    "lead": "Viaje directamente entre Lisboa y Évora o personalice su trayecto con una experiencia enológica, cultural o campestre en el camino.",
+    "body": "Indíquenos su fecha de viaje, lugares de recogida y destino, número de pasajeros, equipaje y las paradas que desee incorporar, y organizaremos su trayecto privado a medida.",
+    "primaryCta": "Solicitar Traslado Privado",
+    "secondaryCta": "Contactar por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Lisboa y Évora.",
+    "imageAlt": "Off We Go Portugal traslado privado Lisboa Évora",
+    "linksLabel": "Explorar más",
+    "links": {
+      "fleet": "Flota",
+      "transfers": "Traslados al Aeropuerto",
+      "tours": "Tours Privados",
+      "booking": "Contacto / Reservas"
+    }
+  }
+}
