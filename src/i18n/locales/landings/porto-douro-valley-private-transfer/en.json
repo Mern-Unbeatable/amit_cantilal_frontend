@@ -1,0 +1,200 @@
+{
+  "seo": {
+    "title": "Porto to Douro Valley Private Transfer | Off We Go Portugal",
+    "description": "Private transfer between Porto and the Douro Valley in a premium Mercedes. Door-to-door chauffeur service to hotels, wine estates and private accommodation."
+  },
+  "hero": {
+    "tag": "Transfers",
+    "title": "Private Transfer Between Porto and the Douro Valley",
+    "subtitle": "Travel privately from Porto to the heart of Portugal's Douro Valley with a premium door-to-door chauffeur service. Relax aboard your Mercedes while we take care of the journey to your hotel, wine estate or private accommodation.",
+    "primaryCta": "Request Your Private Transfer",
+    "secondaryCta": "WhatsApp Us",
+    "whatsappMessage": "Hello, I would like to request a private transfer between Porto and the Douro Valley.",
+    "imageAlt": "Mercedes V-Class private transfer Porto Douro Valley",
+    "benefits": [
+      "Private Door-to-Door Service",
+      "Premium Mercedes Fleet",
+      "English-Speaking Chauffeurs",
+      "Available Both Directions"
+    ]
+  },
+  "intro": {
+    "title": "From Porto to the Heart of the Douro Valley",
+    "p1": "Leave Porto behind and travel privately into one of Portugal's most spectacular wine regions.",
+    "p2": "With Off We Go Portugal, your professional chauffeur collects you directly from your hotel, private residence, Porto Airport or another agreed location and takes you comfortably to your hotel, wine estate or accommodation in the Douro Valley.",
+    "p3": "Your premium Mercedes is reserved exclusively for you and your party, allowing you to enjoy the journey without navigating unfamiliar roads, arranging rental cars or managing your luggage between different transportation services.",
+    "p4": "Whether the Douro is your next overnight destination or part of a wider journey through Portugal, your transfer is coordinated around your itinerary.",
+    "imageAlt": "Private Mercedes chauffeur transfer Porto Douro Valley"
+  },
+  "directions": {
+    "title": "Porto to Douro Valley or Douro Valley to Porto",
+    "from": "Porto",
+    "to": "Douro Valley",
+    "body": "Pickup and drop-off can be arranged at hotels, wine estates, private accommodation, Porto Airport or another agreed location."
+  },
+  "destinations": {
+    "title": "Private Transfers Throughout the Douro Valley",
+    "p1": "The Douro Valley covers a large region, with hotels, wine estates and villages spread throughout its spectacular landscape.",
+    "p2": "We provide private transportation to destinations across the region, including:",
+    "note": "If your hotel, quinta or private accommodation is located elsewhere in the Douro Valley, simply provide the address when requesting your transfer and we'll arrange the appropriate door-to-door service.",
+    "items": {
+      "regua": {
+        "name": "Peso da Régua",
+        "description": "One of the principal gateways to the Douro wine region, surrounded by vineyard-covered hills along the Douro River.",
+        "imageAlt": "Peso da Régua destination during Porto to Douro Valley private transfer"
+      },
+      "pinhao": {
+        "name": "Pinhão",
+        "description": "Located in the heart of the wine country, Pinhão is surrounded by some of the Douro's most celebrated vineyards and estates.",
+        "imageAlt": "Pinhão destination during Porto to Douro Valley private transfer"
+      },
+      "lamego": {
+        "name": "Lamego",
+        "description": "Discover one of the region's most historic towns, known for its cultural heritage and the monumental Sanctuary of Nossa Senhora dos Remédios.",
+        "imageAlt": "Lamego historic town destination Porto to Douro Valley private transfer"
+      },
+      "wineEstates": {
+        "name": "Douro Wine Estates",
+        "description": "Travel directly to your selected quinta or wine estate, including properties located beyond the region's main towns and villages.",
+        "imageAlt": "Douro wine estates and quintas private transfer"
+      }
+    }
+  },
+  "wineExperience": {
+    "title": "Add a Douro Wine Experience to Your Journey",
+    "p1": "Your transfer can become part of your Douro experience.",
+    "p2": "With advance planning, a winery visit and tasting can be incorporated into your journey, allowing you to discover the region's winemaking traditions before continuing to your hotel or final destination. Winery experiences are subject to availability and advance reservation. Additional waiting time, admissions and experiences are quoted separately according to the requested itinerary."
+  },
+  "airport": {
+    "title": "From Porto Airport Directly to the Douro Valley",
+    "p1": "Arriving in Porto and travelling directly to the Douro?",
+    "p2": "We can meet you at Porto Airport and take you directly to your hotel, wine estate or private accommodation in the region. Airport pickup includes flight monitoring, Meet & Greet in the arrivals area with a name sign and up to 60 minutes of complimentary waiting time after flight arrival.",
+    "cta": "Request an Airport Pickup"
+  },
+  "vehicles": {
+    "title": "Travel in a Premium Mercedes",
+    "note": "Tell us the number of passengers and luggage when requesting your transfer and we'll recommend the most suitable vehicle.",
+    "eClass": {
+      "name": "Mercedes-Benz E-Class",
+      "description": "An elegant executive sedan, ideal for couples and individual travellers seeking comfort, privacy and refinement.",
+      "imageAlt": "Mercedes-Benz E-Class private transfer Porto Douro Valley"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz S-Class",
+      "description": "Our premium sedan choice for travellers seeking an elevated level of comfort, sophistication and discreet chauffeur service.",
+      "imageAlt": "Mercedes-Benz S-Class luxury chauffeur Porto Douro Valley"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz V-Class",
+      "description": "Spacious and comfortable, particularly suitable for families, private groups and travellers carrying additional luggage.",
+      "imageAlt": "Mercedes-Benz V-Class private chauffeur Porto Douro Valley"
+    }
+  },
+  "included": {
+    "title": "Everything You Need for a Comfortable Journey",
+    "items": [
+      {
+        "title": "Professional English-Speaking Chauffeur",
+        "description": "Experienced, discreet and professionally presented."
+      },
+      {
+        "title": "Private Door-to-Door Service",
+        "description": "Collection and drop-off directly at your requested locations."
+      },
+      {
+        "title": "Premium Mercedes Vehicle",
+        "description": "Selected according to your party and luggage requirements."
+      },
+      {
+        "title": "Luggage Assistance",
+        "description": "Assistance with loading and unloading your luggage."
+      },
+      {
+        "title": "Complimentary Bottled Water",
+        "description": "Refreshments available during your journey."
+      },
+      {
+        "title": "Wi-Fi Where Available",
+        "description": "Stay connected while travelling."
+      },
+      {
+        "title": "Standard Tolls Included",
+        "description": "Standard tolls and operating costs are included in the quoted direct transfer."
+      },
+      {
+        "title": "Personalised Coordination",
+        "description": "Your journey is coordinated with you before departure."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "Why Choose a Private Transfer to the Douro Valley?",
+    "items": [
+      {
+        "title": "Direct to Your Hotel or Wine Estate",
+        "description": "Travel directly from Porto to your accommodation without additional connections."
+      },
+      {
+        "title": "Travel on Your Schedule",
+        "description": "Choose a departure time arranged around your itinerary."
+      },
+      {
+        "title": "Comfort on the Journey",
+        "description": "Relax in your private Mercedes while your professional chauffeur handles the drive."
+      },
+      {
+        "title": "Experience More Along the Way",
+        "description": "Incorporate a winery or another requested stop and make your transfer part of your Douro experience."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How long does the private transfer from Porto to the Douro Valley take?",
+        "answer": "Journey time depends on your exact destination. Many locations in the Douro Valley can generally be reached from Porto in approximately 1.5 to 2 hours."
+      },
+      {
+        "question": "Can you collect us directly from Porto Airport?",
+        "answer": "Yes. We can meet you at Porto Airport and take you directly to your hotel, quinta or private accommodation."
+      },
+      {
+        "question": "Can I book Douro Valley to Porto?",
+        "answer": "Yes. The service is available in both directions."
+      },
+      {
+        "question": "Can you take us directly to our wine estate?",
+        "answer": "Yes. Door-to-door transportation can be arranged to hotels, quintas, wine estates and private accommodation throughout the Douro Valley."
+      },
+      {
+        "question": "Can we visit a winery during the transfer?",
+        "answer": "Yes. A winery visit and tasting can be incorporated by prior arrangement, subject to availability and reservation confirmation."
+      },
+      {
+        "question": "Can you provide child seats?",
+        "answer": "Yes. Please provide the child's age in advance so the appropriate seat can be arranged."
+      },
+      {
+        "question": "Can you accommodate additional luggage?",
+        "answer": "Yes, subject to vehicle capacity. Please provide the number and approximate size of your bags so we can recommend the appropriate vehicle."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Begin Your Douro Valley Experience in Comfort",
+    "lead": "Travel directly between Porto and the Douro Valley or personalise your journey with a winery experience along the way.",
+    "body": "Tell us your travel date, pickup and drop-off locations, number of passengers, luggage and any experience you would like to include, and we'll arrange your private journey.",
+    "primaryCta": "Request Your Private Transfer",
+    "secondaryCta": "Contact Us on WhatsApp",
+    "whatsappMessage": "Hello, I would like to request a private transfer between Porto and the Douro Valley.",
+    "imageAlt": "Off We Go Portugal private transfer Porto Douro Valley",
+    "linksLabel": "Explore more",
+    "links": {
+      "fleet": "Fleet",
+      "transfers": "Airport Transfers",
+      "tours": "Private Tours",
+      "booking": "Contact/Booking"
+    }
+  }
+}

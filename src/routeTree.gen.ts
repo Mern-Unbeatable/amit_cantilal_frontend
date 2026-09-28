@@ -29,6 +29,7 @@ import { Route as PublicToursIndexRouteImport } from './routes/_public/tours/ind
 import { Route as PublicBookingIndexRouteImport } from './routes/_public/booking/index'
 import { Route as PublicBlogIndexRouteImport } from './routes/_public/blog/index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as PublicTransfersPortoDouroValleyPrivateTransferRouteImport } from './routes/_public/transfers/porto-douro-valley-private-transfer'
 import { Route as PublicTransfersLisbonSevillePrivateTransferRouteImport } from './routes/_public/transfers/lisbon-seville-private-transfer'
 import { Route as PublicTransfersLisbonPortoPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-porto-private-transfer'
 import { Route as PublicTransfersLisbonMadridPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-madrid-private-transfer'
@@ -158,6 +159,12 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const PublicTransfersPortoDouroValleyPrivateTransferRoute =
+  PublicTransfersPortoDouroValleyPrivateTransferRouteImport.update({
+    id: '/transfers/porto-douro-valley-private-transfer',
+    path: '/transfers/porto-douro-valley-private-transfer',
+    getParentRoute: () => PublicRoute,
+  } as any)
 const PublicTransfersLisbonSevillePrivateTransferRoute =
   PublicTransfersLisbonSevillePrivateTransferRouteImport.update({
     id: '/transfers/lisbon-seville-private-transfer',
@@ -369,6 +376,7 @@ export interface FileRoutesByFullPath {
   '/transfers/lisbon-madrid-private-transfer': typeof PublicTransfersLisbonMadridPrivateTransferRoute
   '/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
   '/transfers/lisbon-seville-private-transfer': typeof PublicTransfersLisbonSevillePrivateTransferRoute
+  '/transfers/porto-douro-valley-private-transfer': typeof PublicTransfersPortoDouroValleyPrivateTransferRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/blog': typeof PublicBlogIndexRoute
   '/booking': typeof PublicBookingIndexRoute
@@ -419,6 +427,7 @@ export interface FileRoutesByTo {
   '/transfers/lisbon-madrid-private-transfer': typeof PublicTransfersLisbonMadridPrivateTransferRoute
   '/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
   '/transfers/lisbon-seville-private-transfer': typeof PublicTransfersLisbonSevillePrivateTransferRoute
+  '/transfers/porto-douro-valley-private-transfer': typeof PublicTransfersPortoDouroValleyPrivateTransferRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/blog': typeof PublicBlogIndexRoute
   '/booking': typeof PublicBookingIndexRoute
@@ -473,6 +482,7 @@ export interface FileRoutesById {
   '/_public/transfers/lisbon-madrid-private-transfer': typeof PublicTransfersLisbonMadridPrivateTransferRoute
   '/_public/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
   '/_public/transfers/lisbon-seville-private-transfer': typeof PublicTransfersLisbonSevillePrivateTransferRoute
+  '/_public/transfers/porto-douro-valley-private-transfer': typeof PublicTransfersPortoDouroValleyPrivateTransferRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_public/blog/': typeof PublicBlogIndexRoute
   '/_public/booking/': typeof PublicBookingIndexRoute
@@ -525,6 +535,7 @@ export interface FileRouteTypes {
     | '/transfers/lisbon-madrid-private-transfer'
     | '/transfers/lisbon-porto-private-transfer'
     | '/transfers/lisbon-seville-private-transfer'
+    | '/transfers/porto-douro-valley-private-transfer'
     | '/admin'
     | '/blog'
     | '/booking'
@@ -575,6 +586,7 @@ export interface FileRouteTypes {
     | '/transfers/lisbon-madrid-private-transfer'
     | '/transfers/lisbon-porto-private-transfer'
     | '/transfers/lisbon-seville-private-transfer'
+    | '/transfers/porto-douro-valley-private-transfer'
     | '/admin'
     | '/blog'
     | '/booking'
@@ -628,6 +640,7 @@ export interface FileRouteTypes {
     | '/_public/transfers/lisbon-madrid-private-transfer'
     | '/_public/transfers/lisbon-porto-private-transfer'
     | '/_public/transfers/lisbon-seville-private-transfer'
+    | '/_public/transfers/porto-douro-valley-private-transfer'
     | '/_authenticated/admin/'
     | '/_public/blog/'
     | '/_public/booking/'
@@ -797,6 +810,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin'
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
+    }
+    '/_public/transfers/porto-douro-valley-private-transfer': {
+      id: '/_public/transfers/porto-douro-valley-private-transfer'
+      path: '/transfers/porto-douro-valley-private-transfer'
+      fullPath: '/transfers/porto-douro-valley-private-transfer'
+      preLoaderRoute: typeof PublicTransfersPortoDouroValleyPrivateTransferRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_public/transfers/lisbon-seville-private-transfer': {
       id: '/_public/transfers/lisbon-seville-private-transfer'
@@ -1107,6 +1127,7 @@ interface PublicRouteChildren {
   PublicTransfersLisbonMadridPrivateTransferRoute: typeof PublicTransfersLisbonMadridPrivateTransferRoute
   PublicTransfersLisbonPortoPrivateTransferRoute: typeof PublicTransfersLisbonPortoPrivateTransferRoute
   PublicTransfersLisbonSevillePrivateTransferRoute: typeof PublicTransfersLisbonSevillePrivateTransferRoute
+  PublicTransfersPortoDouroValleyPrivateTransferRoute: typeof PublicTransfersPortoDouroValleyPrivateTransferRoute
   PublicBlogIndexRoute: typeof PublicBlogIndexRoute
   PublicBookingIndexRoute: typeof PublicBookingIndexRoute
   PublicToursIndexRoute: typeof PublicToursIndexRoute
@@ -1142,6 +1163,8 @@ const PublicRouteChildren: PublicRouteChildren = {
     PublicTransfersLisbonPortoPrivateTransferRoute,
   PublicTransfersLisbonSevillePrivateTransferRoute:
     PublicTransfersLisbonSevillePrivateTransferRoute,
+  PublicTransfersPortoDouroValleyPrivateTransferRoute:
+    PublicTransfersPortoDouroValleyPrivateTransferRoute,
   PublicBlogIndexRoute: PublicBlogIndexRoute,
   PublicBookingIndexRoute: PublicBookingIndexRoute,
   PublicToursIndexRoute: PublicToursIndexRoute,

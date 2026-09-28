@@ -30,6 +30,10 @@ import lisbonEvoraEn from './locales/landings/lisbon-evora-private-transfer/en.j
 import lisbonEvoraPt from './locales/landings/lisbon-evora-private-transfer/pt.json'
 import lisbonEvoraEs from './locales/landings/lisbon-evora-private-transfer/es.json'
 
+import portoDouroEn from './locales/landings/porto-douro-valley-private-transfer/en.json'
+import portoDouroPt from './locales/landings/porto-douro-valley-private-transfer/pt.json'
+import portoDouroEs from './locales/landings/porto-douro-valley-private-transfer/es.json'
+
 export const SUPPORTED_LANGUAGES = ['en', 'pt', 'es'] as const
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number]
 
@@ -65,6 +69,11 @@ export const LANDING_NAMESPACES = {
     pt: lisbonEvoraPt,
     es: lisbonEvoraEs,
   },
+  portoDouroTransfer: {
+    en: portoDouroEn,
+    pt: portoDouroPt,
+    es: portoDouroEs,
+  },
 } as const
 
 i18next
@@ -80,6 +89,7 @@ i18next
         lisbonMadridTransfer: LANDING_NAMESPACES.lisbonMadridTransfer.en,
         lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.en,
         lisbonEvoraTransfer: LANDING_NAMESPACES.lisbonEvoraTransfer.en,
+        portoDouroTransfer: LANDING_NAMESPACES.portoDouroTransfer.en,
       },
       pt: {
         translation: pt,
@@ -89,6 +99,7 @@ i18next
         lisbonMadridTransfer: LANDING_NAMESPACES.lisbonMadridTransfer.pt,
         lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.pt,
         lisbonEvoraTransfer: LANDING_NAMESPACES.lisbonEvoraTransfer.pt,
+        portoDouroTransfer: LANDING_NAMESPACES.portoDouroTransfer.pt,
       },
       es: {
         translation: es,
@@ -98,6 +109,7 @@ i18next
         lisbonMadridTransfer: LANDING_NAMESPACES.lisbonMadridTransfer.es,
         lisbonComportaTransfer: LANDING_NAMESPACES.lisbonComportaTransfer.es,
         lisbonEvoraTransfer: LANDING_NAMESPACES.lisbonEvoraTransfer.es,
+        portoDouroTransfer: LANDING_NAMESPACES.portoDouroTransfer.es,
       },
     },
     fallbackLng: 'en',

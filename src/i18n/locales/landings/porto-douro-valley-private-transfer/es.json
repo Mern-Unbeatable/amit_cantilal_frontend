@@ -1,0 +1,200 @@
+{
+  "seo": {
+    "title": "Traslado Privado de Oporto al Valle del Duero | Off We Go Portugal",
+    "description": "Traslado privado entre Oporto y el Valle del Duero en un Mercedes de alta gama. Servicio de chófer puerta a puerta a hoteles, fincas vinícolas y alojamientos privados."
+  },
+  "hero": {
+    "tag": "Traslados",
+    "title": "Traslado Privado Entre Oporto y el Valle del Duero",
+    "subtitle": "Viaje de forma privada desde Oporto hasta el corazón del Valle del Duero con un exclusivo servicio de chófer puerta a puerta. Relájese a bordo de su Mercedes mientras nos ocupamos de su viaje a su hotel, bodega o alojamiento privado.",
+    "primaryCta": "Solicitar Traslado Privado",
+    "secondaryCta": "Contactar por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Oporto y el Valle del Duero.",
+    "imageAlt": "Traslado privado Mercedes Clase V Oporto Valle del Duero",
+    "benefits": [
+      "Servicio Privado Puerta a Puerta",
+      "Flota Mercedes de Alta Gama",
+      "Chóferes Hispanohablantes y Angloparlantes",
+      "Disponible en Ambos Sentidos"
+    ]
+  },
+  "intro": {
+    "title": "De Oporto al Corazón del Valle del Duero",
+    "p1": "Deje atrás Oporto y viaje con total privacidad hacia una de las regiones vinícolas más espectaculares de Portugal.",
+    "p2": "Con Off We Go Portugal, su chófer profesional le recogerá directamente en su hotel, residencia privada, Aeropuerto de Oporto u otra ubicación convenida, trasladándole con máxima comodidad a su hotel, bodega o alojamiento en el Valle del Duero.",
+    "p3": "Su Mercedes de primera clase se reserva en exclusiva para usted y sus acompañantes, permitiéndole deleitarse con el trayecto sin la tensión de conducir por carreteras desconocidas, gestionar coches de alquiler o cargar equipajes entre transportes.",
+    "p4": "Tanto si el Duero es su próximo destino de estancia como si forma parte de un recorrido más amplio por Portugal, su traslado se adapta con exactitud a su itinerario.",
+    "imageAlt": "Traslado con chófer privado Mercedes Oporto Valle del Duero"
+  },
+  "directions": {
+    "title": "Oporto al Valle del Duero o Valle del Duero a Oporto",
+    "from": "Oporto",
+    "to": "Valle del Duero",
+    "body": "La recogida y el destino pueden coordinarse en hoteles, fincas vinícolas, alojamientos privados, el Aeropuerto de Oporto o cualquier otro punto acordado."
+  },
+  "destinations": {
+    "title": "Traslados Privados por Todo el Valle del Duero",
+    "p1": "El Valle del Duero abarca una amplia extensión geográfica, con hoteles, fincas y pintorescos pueblos repartidos a lo largo de un paisaje imponente.",
+    "p2": "Ofrecemos transporte privado a los principales destinos de la región, entre ellos:",
+    "note": "Si su hotel, quinta o alojamiento privado se encuentra en otra zona del Valle del Duero, solo tiene que indicar la dirección al solicitar su traslado y prepararemos el servicio puerta a puerta adecuado.",
+    "items": {
+      "regua": {
+        "name": "Peso da Régua",
+        "description": "Una de las puertas de acceso fundamentales a la región vinícola del Duero, custodiada por colinas repletas de viñedos junto al río Duero.",
+        "imageAlt": "Destino Peso da Régua traslado privado Oporto Valle del Duero"
+      },
+      "pinhao": {
+        "name": "Pinhão",
+        "description": "En pleno corazón vinícola, Pinhão se halla rodeado de algunas de las fincas y viñedos en terrazas más célebres del Duero.",
+        "imageAlt": "Destino Pinhão traslado privado Oporto Valle del Duero"
+      },
+      "lamego": {
+        "name": "Lamego",
+        "description": "Descubra una de las villas históricas más distinguidas de la región, célebre por su riqueza monumental y el Santuario de Nossa Senhora dos Remédios.",
+        "imageAlt": "Villa histórica de Lamego traslado privado Oporto Valle del Duero"
+      },
+      "wineEstates": {
+        "name": "Fincas y Bodegas del Duero",
+        "description": "Viaje directamente hasta su quinta o bodega elegida, incluyendo propiedades y hoteles boutique situados más allá de los municipios principales.",
+        "imageAlt": "Fincas vinícolas y bodegas en el Duero traslado privado"
+      }
+    }
+  },
+  "wineExperience": {
+    "title": "Añada una Experiencia Enológica en el Duero a su Viaje",
+    "p1": "Su traslado puede convertirse en una parte memorable de su estancia en el Duero.",
+    "p2": "Con planificación previa, se puede incorporar una visita y cata en una prestigiosa bodega a su itinerario, permitiéndole descubrir las tradiciones vitivinícolas de la región antes de proseguir hacia su hotel o destino final. Las visitas a bodegas están sujetas a disponibilidad y reserva anticipada. El tiempo de espera adicional, las entradas y las experiencias se cotizan por separado según el itinerario acordado."
+  },
+  "airport": {
+    "title": "Del Aeropuerto de Oporto Directamente al Valle del Duero",
+    "p1": "¿Llega a Oporto y viaja directamente al Duero?",
+    "p2": "Podemos esperarle en el Aeropuerto de Oporto (Francisco Sá Carneiro) y trasladarle directamente a su hotel, finca vinícola o alojamiento privado en la región. La recogida incluye seguimiento del vuelo en tiempo real, bienvenida Meet & Greet en llegadas con cartel personalizado y hasta 60 minutos de espera de cortesía tras el aterrizaje.",
+    "cta": "Solicitar Recogida en el Aeropuerto"
+  },
+  "vehicles": {
+    "title": "Viaje en un Mercedes de Primera Clase",
+    "note": "Indíquenos el número de pasajeros y equipaje al solicitar su traslado y le recomendaremos el vehículo más adecuado.",
+    "eClass": {
+      "name": "Mercedes-Benz Clase E",
+      "description": "Un elegante sedán ejecutivo, ideal para parejas y viajeros individuales que buscan confort, privacidad y distinción.",
+      "imageAlt": "Mercedes-Benz Clase E traslado privado Oporto Valle del Duero"
+    },
+    "sClass": {
+      "name": "Mercedes-Benz Clase S",
+      "description": "Nuestra opción de máxima distinción para viajeros que desean un nivel superior de confort, sofisticación y un servicio de chófer discreto.",
+      "imageAlt": "Mercedes-Benz Clase S chófer privado de lujo Oporto Valle del Duero"
+    },
+    "vClass": {
+      "name": "Mercedes-Benz Clase V",
+      "description": "Espacioso y confortable, idóneo para familias, grupos privados y viajeros con equipaje adicional.",
+      "imageAlt": "Mercedes-Benz Clase V traslado privado Oporto Valle del Duero"
+    }
+  },
+  "included": {
+    "title": "Todo lo que Necesita para un Viaje Confortable",
+    "items": [
+      {
+        "title": "Chófer Profesional con Inglés Fluido",
+        "description": "Experimentado, discreto y con una presentación impecable."
+      },
+      {
+        "title": "Servicio Privado Puerta a Puerta",
+        "description": "Recogida y llegada directamente en los puntos acordados."
+      },
+      {
+        "title": "Vehículo Mercedes de Alta Gama",
+        "description": "Elegido a la medida de su grupo y necesidades de equipaje."
+      },
+      {
+        "title": "Asistencia con el Equipaje",
+        "description": "Ayuda para cargar y acomodar cómodamente sus maletas."
+      },
+      {
+        "title": "Agua Mineral de Cortesía",
+        "description": "Bebidas disponibles para refrescarse durante el viaje."
+      },
+      {
+        "title": "Wi-Fi a Bordo (Sujeto a Cobertura)",
+        "description": "Permanezca conectado durante todo el trayecto."
+      },
+      {
+        "title": "Peajes Estándar Incluidos",
+        "description": "Los peajes estándar y costes operativos están incluidos en la cotización del traslado directo."
+      },
+      {
+        "title": "Coordinación Personalizada",
+        "description": "Itinerario y detalles coordinados con usted antes de la salida."
+      }
+    ]
+  },
+  "whyChoose": {
+    "title": "¿Por Qué Elegir un Traslado Privado al Valle del Duero?",
+    "items": [
+      {
+        "title": "Directo a su Hotel o Finca Vinícola",
+        "description": "Viaje directamente desde Oporto a su alojamiento sin transbordos ni conexiones adicionales."
+      },
+      {
+        "title": "Viaje a su Propio Ritmo",
+        "description": "Elija la hora de salida que mejor se adapte a su itinerario."
+      },
+      {
+        "title": "Confort Absoluto en el Trayecto",
+        "description": "Relájese en su Mercedes privado mientras su chófer profesional se encarga de la conducción."
+      },
+      {
+        "title": "Disfrute de Más Experiencias en el Camino",
+        "description": "Incorpore una visita a una bodega u otra parada a su gusto y convierta el traslado en parte de su viaje."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "items": [
+      {
+        "question": "¿Cuánto dura el traslado privado de Oporto al Valle del Duero?",
+        "answer": "El tiempo de viaje depende del destino exacto. Por lo general, la mayoría de localidades del Valle del Duero se alcanzan desde Oporto en 1,5 a 2 horas."
+      },
+      {
+        "question": "¿Pueden recogernos directamente en el Aeropuerto de Oporto?",
+        "answer": "Sí. Podemos recibirle en el Aeropuerto de Oporto y trasladarle directamente a su hotel, quinta o alojamiento privado."
+      },
+      {
+        "question": "¿Puedo reservar del Valle del Duero a Oporto?",
+        "answer": "Sí. El servicio está disponible en ambos sentidos."
+      },
+      {
+        "question": "¿Pueden llevarnos directamente a nuestra finca vinícola?",
+        "answer": "Sí. El servicio puerta a puerta puede organizarse hasta hoteles, quintas, bodegas y residencias privadas en todo el Valle del Duero."
+      },
+      {
+        "question": "¿Podemos visitar una bodega durante el traslado?",
+        "answer": "Sí. Es posible incorporar una visita y cata en una bodega mediante acuerdo previo, sujeto a disponibilidad y confirmación de reserva."
+      },
+      {
+        "question": "¿Disponen de sillas infantiles?",
+        "answer": "Sí. Indique la edad del menor con antelación para acondicionar el asiento reglamentario correspondiente."
+      },
+      {
+        "question": "¿Pueden transportar equipaje adicional?",
+        "answer": "Sí, sujeto a la capacidad del vehículo. Por favor, indique el número y tamaño aproximado de sus maletas para recomendar el modelo idóneo."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Comience su Experiencia en el Valle del Duero con Total Confort",
+    "lead": "Viaje directamente entre Oporto y el Valle del Duero o personalice su trayecto con una experiencia enológica en el camino.",
+    "body": "Indíquenos su fecha de viaje, lugares de recogida y destino, número de pasajeros, equipaje y las actividades que desee incluir, y organizaremos su traslado privado a medida.",
+    "primaryCta": "Solicitar Traslado Privado",
+    "secondaryCta": "Contactar por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría solicitar un traslado privado entre Oporto y el Valle del Duero.",
+    "imageAlt": "Off We Go Portugal traslado privado Oporto Valle del Duero",
+    "linksLabel": "Explorar más",
+    "links": {
+      "fleet": "Flota",
+      "transfers": "Traslados al Aeropuerto",
+      "tours": "Tours Privados",
+      "booking": "Contacto / Reservas"
+    }
+  }
+}
