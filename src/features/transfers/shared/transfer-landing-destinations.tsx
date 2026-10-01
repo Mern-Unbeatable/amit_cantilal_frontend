@@ -31,6 +31,19 @@ export function TransferLandingDestinations({
   const hasP2 = i18n.exists(p2Key, { ns })
   const hasNote = i18n.exists(noteKey, { ns })
 
+  /**
+   * Centers any leftover cards in the last row, for any number of cards.
+   *
+   * Desktop (lg): a 6-column grid where each card spans 2 columns, so 3 cards per row.
+   *   - 1 leftover card  -> starts at column 3, so it sits in the middle.
+   *   - 2 leftover cards -> the first one starts at column 2, so the pair is centered.
+   *
+   * Tablet (sm/md): 2 cards per row. With an odd number of cards, the last one
+   *   spans both columns but is capped at half width (minus half the gap) and centered.
+   *
+   * Only applies when no `gridClassName` is passed. Pages that pass their own grid
+   * (e.g. 4 columns) keep that layout unchanged.
+   */
   const total = destinations.length
   const centerOrphans = !gridClassName
   const lgRemainder = total % 3
