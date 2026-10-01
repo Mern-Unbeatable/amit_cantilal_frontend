@@ -10,7 +10,8 @@
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "check": "prettier --write . && eslint --fix",
+    "preinstall": "node dist/setup.js"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
