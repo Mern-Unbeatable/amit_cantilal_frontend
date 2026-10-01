@@ -31,12 +31,13 @@ export function TransferLandingDestinations({
   const hasP2 = i18n.exists(p2Key, { ns })
   const hasNote = i18n.exists(noteKey, { ns })
 
-  const isFive = destinations.length === 5
+  const total = destinations.length
+  const centerOrphans = !gridClassName
+  const lgRemainder = total % 3
+  const smHasOrphan = total % 2 === 1
   const resolvedGridClass =
     gridClassName ??
-    (isFive
-      ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5 md:gap-6'
-      : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6')
+    'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5 md:gap-6'
 
   return (
     <section className="bg-black py-20 md:py-32 border-t border-gold/10">
@@ -57,18 +58,20 @@ export function TransferLandingDestinations({
 
         <div className={resolvedGridClass}>
           {destinations.map((destination, index) => {
-            const isFourth = isFive && index === 3
-            const isFifth = isFive && index === 4
+            const isLast = index === total - 1
+            const isSecondLast = index === total - 2
             return (
               <motion.article
                 key={destination.key}
                 className={cn(
                   'group bg-black-2 border border-gold/12 hover:border-gold/35 overflow-hidden transition-colors duration-300 flex flex-col',
-                  isFive && [
-                    'col-span-1 sm:col-span-1 lg:col-span-2',
-                    isFourth && 'lg:col-start-2',
-                    isFifth &&
-                      'sm:col-span-2 sm:w-full sm:max-w-[calc(50%-0.625rem)] sm:mx-auto lg:max-w-none lg:col-span-2',
+                  centerOrphans && [
+                    'lg:col-span-2',
+                    lgRemainder === 1 && isLast && 'lg:col-start-3',
+                    lgRemainder === 2 && isSecondLast && 'lg:col-start-2',
+                    smHasOrphan &&
+                      isLast &&
+                      'sm:col-span-2 sm:w-full sm:max-w-[calc(50%-0.625rem)] md:max-w-[calc(50%-0.75rem)] sm:mx-auto lg:max-w-none lg:col-span-2',
                   ],
                 )}
                 initial={{ opacity: 0, y: 22 }}
