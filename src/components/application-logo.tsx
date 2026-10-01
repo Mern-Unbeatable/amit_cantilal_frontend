@@ -18,7 +18,7 @@ const ApplicationLogo = ({
       layout="constrained"
       width={width}
       height={height}
-      alt="Company Logo"
+      alt="Off We Go Portugal"
       className={cn('h-16 md:h-20 lg:h-24 object-contain', className)}
     />
   )
