@@ -5,12 +5,12 @@
   },
   "hero": {
     "tag": "Transfers",
-    "title": "Transfer Privado Entre o Porto e o Vale do Douro",
-    "subtitle": "Viaje em privado do Porto até ao coração do Vale do Douro com um serviço de motorista particular porta a porta. Relaxe a bordo do seu Mercedes enquanto cuidamos de todo o percurso até ao seu hotel, quinta vinícola ou alojamento privado.",
+    "title": "Transfer Privado Entre Lisboa e o Vale do Douro",
+    "subtitle": "Viaje em privado de Lisboa até ao coração do Vale do Douro com um serviço de motorista particular porta a porta. Relaxe a bordo do seu Mercedes enquanto cuidamos de todo o percurso até ao seu hotel, quinta vinícola ou alojamento privado.",
     "primaryCta": "Solicitar Transfer Privado",
     "secondaryCta": "Fale Connosco no WhatsApp",
-    "whatsappMessage": "Olá, gostaria de solicitar um transfer privado entre o Porto e o Vale do Douro.",
-    "imageAlt": "Transfer privado Mercedes Classe V Porto Vale do Douro",
+    "whatsappMessage": "Olá, gostaria de solicitar um transfer privado entre Lisboa e o Vale do Douro.",
+    "imageAlt": "Transfer privado Mercedes Classe V Lisboa Vale do Douro",
     "benefits": [
       "Serviço Privado Porta a Porta",
       "Frota Mercedes Premium",
@@ -19,56 +19,61 @@
     ]
   },
   "intro": {
-    "title": "Do Porto ao Coração do Vale do Douro",
-    "p1": "Deixe o Porto para trás e viaje com toda a privacidade rumo a uma das regiões vinícolas mais espetaculares de Portugal.",
-    "p2": "Com a Off We Go Portugal, o seu motorista profissional recolhe-o diretamente no seu hotel, residência privada, Aeroporto do Porto ou outro local combinado, levando-o com o máximo conforto até ao seu hotel, quinta vinícola ou alojamento no Vale do Douro.",
-    "p3": "O seu veículo Mercedes topo de gama é reservado em exclusivo para si e para os seus acompanhantes, permitindo-lhe desfrutar da paisagem sem preocupações com estradas sinuosas, viaturas de aluguer ou transbordo de bagagens.",
-    "p4": "Quer o Douro seja o seu destino de estadia ou parte de um roteiro mais alargado por Portugal, o seu transfer é coordenado à medida dos seus planos.",
-    "imageAlt": "Transfer com motorista privado Mercedes Porto Vale do Douro"
+    "title": "De Lisboa ao Coração do Vale do Douro",
+    "p1": "Deixe Lisboa para trás e viaje em privado para norte, através de Portugal, até uma das regiões vinícolas mais espetaculares do país.",
+    "p2": "Com a Off We Go Portugal, o seu motorista profissional recolhe-o diretamente no seu hotel, residência privada, Aeroporto de Lisboa ou outro local combinado, levando-o com todo o conforto até ao seu hotel, quinta vinícola ou alojamento privado no Vale do Douro.",
+    "p3": "O seu Mercedes topo de gama é reservado em exclusivo para si e para os seus acompanhantes, proporcionando uma viagem de longa distância confortável, sem necessidade de conduzir em estradas desconhecidas, gerir ligações de comboio ou transportar bagagem entre diferentes meios de transporte.",
+    "p4": "Quer o Vale do Douro seja o seu próximo destino de estadia ou parte de um roteiro mais alargado por Portugal, o seu transfer pode ser coordenado à medida do seu itinerário.",
+    "imageAlt": "Transfer com motorista privado Mercedes Lisboa Vale do Douro"
   },
   "directions": {
-    "title": "Porto para o Vale do Douro ou Vale do Douro para o Porto",
-    "from": "Porto",
+    "title": "Lisboa para o Vale do Douro ou Vale do Douro para Lisboa",
+    "from": "Lisboa",
     "to": "Vale do Douro",
-    "body": "O serviço de recolha e desembarque pode ser agendado em hotéis, quintas vinícolas, alojamentos particulares, no Aeroporto do Porto ou em qualquer outro local previamente acordado."
+    "body": "A recolha e o desembarque podem ser agendados em hotéis, quintas vinícolas, alojamentos privados, no Aeroporto de Lisboa ou noutro local previamente acordado."
   },
   "destinations": {
     "title": "Transfers Privados por Todo o Vale do Douro",
-    "p1": "O Vale do Douro abrange uma vasta extensão, com hotéis, quintas históricas e aldeias distribuídas por uma paisagem cénica arrebatadora.",
-    "p2": "Disponibilizamos transporte privado para múltiplos destinos em toda a região, incluindo:",
+    "p1": "O Vale do Douro abrange uma região extensa, com hotéis, quintas vinícolas e aldeias distribuídos por uma paisagem espetacular.",
+    "p2": "Disponibilizamos transporte privado porta a porta para destinos em toda a região.",
     "note": "Se o seu hotel, quinta ou alojamento privado se situar noutra localidade do Vale do Douro, basta indicar a morada ao solicitar o transfer e organizaremos o serviço porta a porta correspondente.",
     "items": {
       "regua": {
         "name": "Peso da Régua",
-        "description": "Uma das principais portas de entrada na região vinícola do Douro, ladeada por encostas em socalcos debruçadas sobre o Rio Douro.",
-        "imageAlt": "Destino Peso da Régua transfer privado Porto Vale do Douro"
+        "description": "Uma das principais portas de entrada na região vinícola do Douro, rodeada por encostas cobertas de vinhas ao longo do Rio Douro.",
+        "imageAlt": "Destino Peso da Régua transfer privado Lisboa Vale do Douro"
       },
       "pinhao": {
         "name": "Pinhão",
-        "description": "Situado no coração da região demarcada, o Pinhão é rodeado pelas quintas e vinhedos mais prestigiados do Douro.",
-        "imageAlt": "Destino Pinhão transfer privado Porto Vale do Douro"
+        "description": "Situado no coração da região vinícola, o Pinhão é rodeado por algumas das vinhas e quintas mais célebres do Douro.",
+        "imageAlt": "Destino Pinhão transfer privado Lisboa Vale do Douro"
       },
       "lamego": {
         "name": "Lamego",
-        "description": "Conheça uma das cidades mais monumentais e históricas da região, célebre pelo Santuário de Nossa Senhora dos Remédios e património cultural.",
-        "imageAlt": "Cidade histórica de Lamego transfer privado Porto Vale do Douro"
+        "description": "Descubra uma das cidades mais históricas da região, conhecida pelo seu património cultural e pelo monumental Santuário de Nossa Senhora dos Remédios.",
+        "imageAlt": "Cidade histórica de Lamego transfer privado Lisboa Vale do Douro"
       },
       "wineEstates": {
         "name": "Quintas Vinícolas do Douro",
-        "description": "Viaje diretamente até à sua quinta de eleição, incluindo propriedades exclusivas localizadas para lá dos núcleos urbanos e vilas principais.",
+        "description": "Viaje diretamente até à quinta ou propriedade vinícola escolhida, incluindo propriedades localizadas para lá das principais vilas e aldeias da região.",
         "imageAlt": "Quintas vinícolas e vinhedos no Douro transfer privado"
       }
     }
   },
-  "wineExperience": {
-    "title": "Adicione uma Experiência Vinícola no Douro à Sua Viagem",
-    "p1": "O seu transfer pode transformar-se numa parte inesquecível da sua experiência no Douro.",
-    "p2": "Com planeamento prévio, é possível integrar uma visita com prova numa conceituada quinta vinícola ao seu percurso, permitindo-lhe apreciar as seculares tradições do Vinho do Porto e do Douro antes de prosseguir até ao seu hotel ou destino final. As experiências em adegas e quintas dependem de disponibilidade e reserva antecipada. Tempos adicionais de espera, visitas e provas são orçamentados em separado de acordo com o itinerário pretendido."
+  "journey": {
+    "title": "Aproveite Mais a Sua Viagem até ao Douro",
+    "paragraphs": [
+      "Um transfer privado de Lisboa para o Vale do Douro pode ser muito mais do que um simples transporte entre dois destinos.",
+      "Com planeamento prévio, a viagem pode ser personalizada com uma paragem ou experiência adicional pelo caminho, permitindo-lhe descobrir mais de Portugal enquanto viaja para norte.",
+      "Consoante o seu itinerário e o tempo disponível, a nossa equipa pode ajudar a coordenar uma paragem adequada antes de seguir para o seu alojamento no Vale do Douro.",
+      "Paragens adicionais, desvios de percurso, tempo de espera, entradas e experiências são orçamentados em separado de acordo com o itinerário pretendido."
+    ]
   },
   "airport": {
-    "title": "Do Aeroporto do Porto Diretamente para o Vale do Douro",
-    "p1": "Chega ao Porto e segue viagem diretamente para o Douro?",
-    "p2": "Podemos recebê-lo no Aeroporto do Porto (Francisco Sá Carneiro) e levá-lo diretamente ao seu hotel, quinta vinícola ou alojamento privado na região. O serviço inclui monitorização de voo em tempo real, receção personalizada na área de desembarque com placa identificativa e até 60 minutos de espera cortesia após a aterragem.",
+    "title": "Do Aeroporto de Lisboa Diretamente para o Vale do Douro",
+    "p1": "Chega a Portugal e segue viagem diretamente para o Douro?",
+    "p2": "Podemos recebê-lo no Aeroporto de Lisboa e levá-lo diretamente ao seu hotel, quinta vinícola ou alojamento privado no Vale do Douro, numa viagem privada contínua desde a chegada do seu voo até ao destino final.",
+    "p3": "A recolha no aeroporto inclui monitorização do voo, receção Meet & Greet na área de chegadas com placa identificativa e até 60 minutos de espera de cortesia após a chegada do voo.",
     "cta": "Solicitar Recolha no Aeroporto"
   },
   "vehicles": {
@@ -77,17 +82,17 @@
     "eClass": {
       "name": "Mercedes-Benz Classe E",
       "description": "Um elegante sedan executivo, ideal para casais e viajantes individuais que procuram conforto, privacidade e sofisticação.",
-      "imageAlt": "Mercedes-Benz Classe E transfer privado Porto Vale do Douro"
+      "imageAlt": "Mercedes Classe E transfer privado Lisboa Vale do Douro"
     },
     "sClass": {
       "name": "Mercedes-Benz Classe S",
       "description": "A nossa escolha de excelência para quem procura um nível superior de conforto, requinte e um serviço de motorista discreto.",
-      "imageAlt": "Mercedes-Benz Classe S motorista privado Porto Vale do Douro"
+      "imageAlt": "Mercedes Classe S motorista Lisboa Vale do Douro"
     },
     "vClass": {
       "name": "Mercedes-Benz Classe V",
       "description": "Espaçoso e muito confortável, especialmente adequado para famílias, grupos privados e viajantes com bagagem adicional.",
-      "imageAlt": "Mercedes-Benz Classe V transfer privado Porto Vale do Douro"
+      "imageAlt": "Mercedes Classe V transfer privado Lisboa Vale do Douro"
     }
   },
   "included": {
@@ -95,7 +100,7 @@
     "items": [
       {
         "title": "Motorista Profissional Fluente em Inglês",
-        "description": "Experiente, discreto e de apresentação profissional irrepreensível."
+        "description": "Experiente, discreto e com uma apresentação profissional."
       },
       {
         "title": "Serviço Privado Porta a Porta",
@@ -103,48 +108,48 @@
       },
       {
         "title": "Veículo Mercedes de Luxo",
-        "description": "Selecionado à medida do seu grupo e volume de bagagem."
+        "description": "Selecionado de acordo com o seu grupo e a sua bagagem."
       },
       {
         "title": "Assistência com Bagagem",
-        "description": "Apoio no carregamento e acondicionamento de todas as suas malas."
+        "description": "Apoio no carregamento e descarregamento da sua bagagem."
       },
       {
-        "title": "Água Mineral de Cortesia",
-        "description": "Bebidas refrescantes ao seu dispor ao longo de toda a viagem."
+        "title": "Água Engarrafada de Cortesia",
+        "description": "Bebidas disponíveis durante a viagem."
       },
       {
-        "title": "Wi-Fi a Bordo (Sujeito a Disponibilidade)",
-        "description": "Mantenha-se sempre conectado durante o percurso."
+        "title": "Wi-Fi Sempre que Disponível",
+        "description": "Mantenha-se conectado durante a viagem."
       },
       {
         "title": "Portagens Padrão Incluídas",
-        "description": "Todas as portagens habituais e custos de operação estão incluídos na tarifa do transfer direto."
+        "description": "As portagens de autoestrada padrão e os custos de operação estão incluídos no transfer direto orçamentado."
       },
       {
         "title": "Coordenação Personalizada",
-        "description": "Toda a viagem é articulada diretamente consigo antes da partida."
+        "description": "A sua viagem é coordenada consigo antes da partida."
       }
     ]
   },
   "whyChoose": {
-    "title": "Porquê Escolher um Transfer Privado para o Vale do Douro?",
+    "title": "Porquê Escolher um Transfer Privado Entre Lisboa e o Vale do Douro?",
     "items": [
       {
-        "title": "Direto ao Seu Hotel ou Quinta Vinícola",
-        "description": "Viaje diretamente do Porto até ao seu alojamento sem transbordos ou ligações adicionais."
+        "title": "Viagem Direta Porta a Porta",
+        "description": "Viaje do seu alojamento em Lisboa diretamente até ao seu hotel, quinta ou propriedade vinícola no Vale do Douro."
       },
       {
-        "title": "Viaje ao Seu Próprio Ritmo",
-        "description": "Defina o horário de partida que melhor se enquadra nos seus planos."
+        "title": "Viaje ao Seu Ritmo",
+        "description": "Escolha um horário de partida ajustado ao seu itinerário, em vez de um horário fixo de transportes públicos."
       },
       {
-        "title": "Máximo Conforto na Viagem",
-        "description": "Relaxe a bordo do seu Mercedes privado enquanto o seu motorista profissional conduz com segurança."
+        "title": "Privacidade e Conforto em Longas Distâncias",
+        "description": "O seu Mercedes topo de gama é reservado em exclusivo para si e para os seus acompanhantes durante toda a viagem."
       },
       {
-        "title": "Experiencie Mais pelo Caminho",
-        "description": "Integre uma visita a uma adega ou outra paragem à sua escolha e transforme o transfer numa experiência única."
+        "title": "Sem Ligações de Comboio nem Mudanças de Veículo",
+        "description": "Mantenha a sua bagagem consigo e desfrute de uma viagem privada contínua até ao seu destino."
       }
     ]
   },
@@ -152,47 +157,52 @@
     "title": "Perguntas Frequentes",
     "items": [
       {
-        "question": "Quanto tempo demora o transfer privado do Porto ao Vale do Douro?",
-        "answer": "A duração depende do destino exato. A maioria das localidades do Vale do Douro dista geralmente entre 1h30 e 2h do Porto."
+        "question": "Quanto tempo demora um transfer privado de Lisboa ao Vale do Douro?",
+        "answer": "A duração depende do destino exato no Vale do Douro. Uma viagem direta demora geralmente cerca de 4 a 5 horas, consoante o trânsito, as condições da estrada e os locais exatos de recolha e desembarque."
       },
       {
-        "question": "Podem recolher-nos diretamente no Aeroporto do Porto?",
-        "answer": "Sim. Podemos recebê-lo no Aeroporto do Porto e levá-lo diretamente ao seu hotel, quinta ou alojamento privado."
+        "question": "Posso reservar um transfer do Vale do Douro para Lisboa?",
+        "answer": "Sim. O serviço está disponível em ambos os sentidos, de Lisboa para o Vale do Douro e do Vale do Douro para Lisboa."
       },
       {
-        "question": "Posso reservar o trajeto Vale do Douro para o Porto?",
-        "answer": "Sim. O nosso serviço está disponível em ambos os sentidos."
+        "question": "Podem recolher-nos diretamente no Aeroporto de Lisboa?",
+        "answer": "Sim. Podemos recebê-lo no Aeroporto de Lisboa e levá-lo diretamente ao seu hotel, quinta ou alojamento privado no Vale do Douro."
       },
       {
         "question": "Podem levar-nos diretamente à nossa quinta vinícola?",
-        "answer": "Sim. O transporte porta a porta pode ser organizado para hotéis, quintas, herdades vinícolas e residências em todo o Vale do Douro."
+        "answer": "Sim. O transporte porta a porta pode ser organizado para hotéis, quintas, propriedades vinícolas e alojamentos privados em todo o Vale do Douro."
       },
       {
-        "question": "Podemos visitar uma adega durante o transfer?",
-        "answer": "Sim. Uma visita com prova de vinhos pode ser integrada mediante marcação prévia, sujeita a disponibilidade e confirmação de reserva."
+        "question": "Podemos fazer uma paragem durante a viagem?",
+        "answer": "Sim. Podem ser incluídas paragens adicionais mediante marcação prévia, de acordo com o seu itinerário e o tempo disponível. Qualquer percurso, tempo de espera ou visita adicional será orçamentado em separado."
       },
       {
         "question": "Disponibilizam cadeiras de criança?",
-        "answer": "Sim. Agradecemos que informe a idade da criança com antecedência para providenciarmos o dispositivo de retenção adequado."
+        "answer": "Sim. As cadeiras de criança podem ser solicitadas com antecedência. Indique a idade da criança ao reservar para que possamos preparar a cadeira adequada."
       },
       {
         "question": "Conseguem transportar bagagem adicional?",
-        "answer": "Sim, dentro da capacidade do veículo escolhido. Indique o número e volume aproximado das malas para sugerirmos a viatura mais indicada."
+        "answer": "Sim, de acordo com a capacidade do veículo. Indique o número e o tamanho aproximado das malas para podermos recomendar o veículo mais indicado."
+      },
+      {
+        "question": "Que veículo Mercedes devemos escolher?",
+        "answer": "O veículo mais indicado depende do número de passageiros, da bagagem e do nível de conforto pretendido. A nossa equipa recomendará a opção mais adequada."
       }
     ]
   },
   "cta": {
-    "title": "Inicie a Sua Experiência no Vale do Douro com Conforto",
-    "lead": "Viaje diretamente entre o Porto e o Vale do Douro ou personalize o seu percurso com uma experiência vinícola pelo caminho.",
-    "body": "Indique-nos a data da viagem, os locais de recolha e chegada, o número de passageiros, bagagens e eventuais experiências que pretenda incluir, e organizaremos a sua viagem privada.",
+    "title": "Viaje de Lisboa para o Vale do Douro com Conforto",
+    "lead": "Deixe Lisboa para trás e desfrute de uma viagem privada porta a porta até uma das regiões vinícolas mais notáveis de Portugal.",
+    "body": "Indique-nos a data da viagem, os locais de recolha e desembarque, o número de passageiros, a bagagem e as paragens adicionais que pretende incluir, e organizaremos a sua viagem privada.",
     "primaryCta": "Solicitar Transfer Privado",
     "secondaryCta": "Fale Connosco no WhatsApp",
-    "whatsappMessage": "Olá, gostaria de solicitar um transfer privado entre o Porto e o Vale do Douro.",
-    "imageAlt": "Off We Go Portugal transfer privado Porto Vale do Douro",
+    "whatsappMessage": "Olá, gostaria de solicitar um transfer privado entre Lisboa e o Vale do Douro.",
+    "imageAlt": "Off We Go Portugal transfer privado Lisboa Vale do Douro",
     "linksLabel": "Saiba mais",
     "links": {
       "fleet": "Frota",
-      "transfers": "Transfers de Aeroporto",
+      "lisbonAirport": "Transfers Privados no Aeroporto de Lisboa",
+      "lisbonPorto": "Transfer Privado Lisboa–Porto",
       "tours": "Tours Privados",
       "booking": "Contacto / Reservas"
     }
