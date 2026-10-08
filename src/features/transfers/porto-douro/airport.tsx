@@ -20,6 +20,7 @@ export function PortoDouroAirport() {
         <div className="space-y-5 text-base md:text-lg text-[#F5F0E8]/70 font-light leading-relaxed mb-10">
           <p>{t('airport.p1')}</p>
           <p>{t('airport.p2')}</p>
+          <p>{t('airport.p3')}</p>
         </div>
         <Link
           to="/booking"

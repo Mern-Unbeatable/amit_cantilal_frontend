@@ -1,4 +1,4 @@
-/** Destination card images for Porto ↔ Douro Valley. */
+/** Destination card images for Lisbon ↔ Douro Valley. */
 export const DOURO_DESTINATIONS = [
   {
     key: 'regua',
