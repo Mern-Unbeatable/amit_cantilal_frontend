@@ -5,7 +5,7 @@ import { pageHead } from '@/lib/seo.ts'
 import { PortoDouroHero } from '@/features/transfers/porto-douro/hero.tsx'
 import { PortoDouroIntro } from '@/features/transfers/porto-douro/intro.tsx'
 import { PortoDouroDestinations } from '@/features/transfers/porto-douro/destinations.tsx'
-import { PortoDouroWineExperience } from '@/features/transfers/porto-douro/wine-experience.tsx'
+import { PortoDouroJourney } from '@/features/transfers/porto-douro/journey.tsx'
 import { PortoDouroAirport } from '@/features/transfers/porto-douro/airport.tsx'
 import { PortoDouroVehicles } from '@/features/transfers/porto-douro/vehicles.tsx'
 import { PortoDouroIncluded } from '@/features/transfers/porto-douro/included.tsx'
@@ -34,7 +34,7 @@ function RouteComponent() {
         <PortoDouroHero />
         <PortoDouroIntro />
         <PortoDouroDestinations />
-        <PortoDouroWineExperience />
+        <PortoDouroJourney />
         <PortoDouroAirport />
         <PortoDouroVehicles />
         <PortoDouroIncluded />

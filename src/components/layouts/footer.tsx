@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
             <div>
               <img
                 src="/dec694ac-4884-4c39-b971-6ec08ef86146-1920w.webp"
-                alt="VIP On Wheels"
+                alt="Off We Go Portugal"
                 className="h-20 mb-4"
                 width="180"
                 height="80"
