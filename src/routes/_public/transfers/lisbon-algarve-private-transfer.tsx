@@ -20,6 +20,10 @@ export const Route = createFileRoute(
         'Private transfers between Lisbon and the Algarve in a premium Mercedes. Door-to-door chauffeur service to Lagos, Albufeira, Vilamoura, Quinta do Lago, Faro and more.',
       path: '/transfers/lisbon-algarve-private-transfer',
       image: 'https://offwego.pt/transfers/lisbon-porto/hero.png',
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Transfers', path: '/transfers' },
+      ],
     }),
   component: RouteComponent,
 })

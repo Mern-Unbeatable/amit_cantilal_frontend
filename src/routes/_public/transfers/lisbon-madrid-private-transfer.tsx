@@ -22,6 +22,10 @@ export const Route = createFileRoute(
         'Private transfer between Lisbon and Madrid in a premium Mercedes. Door-to-door Portugal-Spain chauffeur service with optional stops along the journey.',
       path: '/transfers/lisbon-madrid-private-transfer',
       image: 'https://offwego.pt/transfers/lisbon-madrid/HERO%20IMAGE%20LISBON%20MADRID.png',
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Transfers', path: '/transfers' },
+      ],
     }),
   component: RouteComponent,
 })

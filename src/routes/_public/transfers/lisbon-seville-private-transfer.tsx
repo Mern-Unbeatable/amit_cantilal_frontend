@@ -21,6 +21,10 @@ export const Route = createFileRoute(
         'Private Lisbon to Seville and Seville to Lisbon transfers in a premium Mercedes. Door-to-door chauffeur service with optional stops across Portugal and Spain.',
       path: '/transfers/lisbon-seville-private-transfer',
       image: 'https://offwego.pt/transfers/lisbon-seville/hero.png',
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Transfers', path: '/transfers' },
+      ],
     }),
   component: RouteComponent,
 })

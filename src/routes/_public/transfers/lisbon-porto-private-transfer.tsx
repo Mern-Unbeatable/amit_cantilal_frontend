@@ -20,6 +20,10 @@ export const Route = createFileRoute(
         'Private Lisbon to Porto and Porto to Lisbon transfers in a premium Mercedes. Professional chauffeur, door-to-door service and optional stops along the way.',
       path: '/transfers/lisbon-porto-private-transfer',
       image: 'https://offwego.pt/transfers/lisbon-porto/hero.png',
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Transfers', path: '/transfers' },
+      ],
     }),
   component: RouteComponent,
 })

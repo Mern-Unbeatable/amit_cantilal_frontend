@@ -4,6 +4,7 @@ import {
 } from '@/features/transfers/shared/transfer-landing-cta.tsx'
 
 const LISBON_DOURO_LINKS: ReadonlyArray<TransferLandingCtaLink> = [
+  { key: 'home', to: '/' },
   { key: 'fleet', to: '/fleet' },
   { key: 'lisbonAirport', to: '/transfers/lisbon-airport-private-transfer' },
   { key: 'lisbonPorto', to: '/transfers/lisbon-porto-private-transfer' },

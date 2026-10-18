@@ -23,6 +23,10 @@ export const Route = createFileRoute(
       path: '/transfers/porto-douro-valley-private-transfer',
       image:
         'https://offwego.pt/transfers/porto-douro/HERO%20IMAGE%20-%20LISBON%20DOURO%20VALLEY.png',
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Transfers', path: '/transfers' },
+      ],
     }),
   component: RouteComponent,
 })
