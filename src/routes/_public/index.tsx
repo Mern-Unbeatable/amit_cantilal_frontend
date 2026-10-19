@@ -292,7 +292,7 @@ const App: React.FC = () => {
                 ),
                 douroValley: (
                   <Link
-                    to="/transfers/porto-douro-valley-private-transfer"
+                    to="/transfers/lisbon-douro-valley-private-transfer"
                     className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
                   />
                 ),
@@ -386,7 +386,7 @@ const App: React.FC = () => {
                 ),
                 douroValley: (
                   <Link
-                    to="/transfers/porto-douro-valley-private-transfer"
+                    to="/transfers/lisbon-douro-valley-private-transfer"
                     className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
                   />
                 ),

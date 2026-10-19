@@ -34,6 +34,7 @@ import { Route as PublicTransfersLisbonSevillePrivateTransferRouteImport } from 
 import { Route as PublicTransfersLisbonPortoPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-porto-private-transfer'
 import { Route as PublicTransfersLisbonMadridPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-madrid-private-transfer'
 import { Route as PublicTransfersLisbonEvoraPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-evora-private-transfer'
+import { Route as PublicTransfersLisbonDouroValleyPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-douro-valley-private-transfer'
 import { Route as PublicTransfersLisbonComportaPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-comporta-private-transfer'
 import { Route as PublicTransfersLisbonAlgarvePrivateTransferRouteImport } from './routes/_public/transfers/lisbon-algarve-private-transfer'
 import { Route as PublicTransfersLisbonAirportPrivateTransferRouteImport } from './routes/_public/transfers/lisbon-airport-private-transfer'
@@ -188,6 +189,12 @@ const PublicTransfersLisbonEvoraPrivateTransferRoute =
   PublicTransfersLisbonEvoraPrivateTransferRouteImport.update({
     id: '/transfers/lisbon-evora-private-transfer',
     path: '/transfers/lisbon-evora-private-transfer',
+    getParentRoute: () => PublicRoute,
+  } as any)
+const PublicTransfersLisbonDouroValleyPrivateTransferRoute =
+  PublicTransfersLisbonDouroValleyPrivateTransferRouteImport.update({
+    id: '/transfers/lisbon-douro-valley-private-transfer',
+    path: '/transfers/lisbon-douro-valley-private-transfer',
     getParentRoute: () => PublicRoute,
   } as any)
 const PublicTransfersLisbonComportaPrivateTransferRoute =
@@ -380,6 +387,7 @@ export interface FileRoutesByFullPath {
   '/transfers/lisbon-airport-private-transfer': typeof PublicTransfersLisbonAirportPrivateTransferRoute
   '/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/transfers/lisbon-comporta-private-transfer': typeof PublicTransfersLisbonComportaPrivateTransferRoute
+  '/transfers/lisbon-douro-valley-private-transfer': typeof PublicTransfersLisbonDouroValleyPrivateTransferRoute
   '/transfers/lisbon-evora-private-transfer': typeof PublicTransfersLisbonEvoraPrivateTransferRoute
   '/transfers/lisbon-madrid-private-transfer': typeof PublicTransfersLisbonMadridPrivateTransferRoute
   '/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
@@ -432,6 +440,7 @@ export interface FileRoutesByTo {
   '/transfers/lisbon-airport-private-transfer': typeof PublicTransfersLisbonAirportPrivateTransferRoute
   '/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/transfers/lisbon-comporta-private-transfer': typeof PublicTransfersLisbonComportaPrivateTransferRoute
+  '/transfers/lisbon-douro-valley-private-transfer': typeof PublicTransfersLisbonDouroValleyPrivateTransferRoute
   '/transfers/lisbon-evora-private-transfer': typeof PublicTransfersLisbonEvoraPrivateTransferRoute
   '/transfers/lisbon-madrid-private-transfer': typeof PublicTransfersLisbonMadridPrivateTransferRoute
   '/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
@@ -488,6 +497,7 @@ export interface FileRoutesById {
   '/_public/transfers/lisbon-airport-private-transfer': typeof PublicTransfersLisbonAirportPrivateTransferRoute
   '/_public/transfers/lisbon-algarve-private-transfer': typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   '/_public/transfers/lisbon-comporta-private-transfer': typeof PublicTransfersLisbonComportaPrivateTransferRoute
+  '/_public/transfers/lisbon-douro-valley-private-transfer': typeof PublicTransfersLisbonDouroValleyPrivateTransferRoute
   '/_public/transfers/lisbon-evora-private-transfer': typeof PublicTransfersLisbonEvoraPrivateTransferRoute
   '/_public/transfers/lisbon-madrid-private-transfer': typeof PublicTransfersLisbonMadridPrivateTransferRoute
   '/_public/transfers/lisbon-porto-private-transfer': typeof PublicTransfersLisbonPortoPrivateTransferRoute
@@ -542,6 +552,7 @@ export interface FileRouteTypes {
     | '/transfers/lisbon-airport-private-transfer'
     | '/transfers/lisbon-algarve-private-transfer'
     | '/transfers/lisbon-comporta-private-transfer'
+    | '/transfers/lisbon-douro-valley-private-transfer'
     | '/transfers/lisbon-evora-private-transfer'
     | '/transfers/lisbon-madrid-private-transfer'
     | '/transfers/lisbon-porto-private-transfer'
@@ -594,6 +605,7 @@ export interface FileRouteTypes {
     | '/transfers/lisbon-airport-private-transfer'
     | '/transfers/lisbon-algarve-private-transfer'
     | '/transfers/lisbon-comporta-private-transfer'
+    | '/transfers/lisbon-douro-valley-private-transfer'
     | '/transfers/lisbon-evora-private-transfer'
     | '/transfers/lisbon-madrid-private-transfer'
     | '/transfers/lisbon-porto-private-transfer'
@@ -649,6 +661,7 @@ export interface FileRouteTypes {
     | '/_public/transfers/lisbon-airport-private-transfer'
     | '/_public/transfers/lisbon-algarve-private-transfer'
     | '/_public/transfers/lisbon-comporta-private-transfer'
+    | '/_public/transfers/lisbon-douro-valley-private-transfer'
     | '/_public/transfers/lisbon-evora-private-transfer'
     | '/_public/transfers/lisbon-madrid-private-transfer'
     | '/_public/transfers/lisbon-porto-private-transfer'
@@ -857,6 +870,13 @@ declare module '@tanstack/react-router' {
       path: '/transfers/lisbon-evora-private-transfer'
       fullPath: '/transfers/lisbon-evora-private-transfer'
       preLoaderRoute: typeof PublicTransfersLisbonEvoraPrivateTransferRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/transfers/lisbon-douro-valley-private-transfer': {
+      id: '/_public/transfers/lisbon-douro-valley-private-transfer'
+      path: '/transfers/lisbon-douro-valley-private-transfer'
+      fullPath: '/transfers/lisbon-douro-valley-private-transfer'
+      preLoaderRoute: typeof PublicTransfersLisbonDouroValleyPrivateTransferRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/transfers/lisbon-comporta-private-transfer': {
@@ -1144,6 +1164,7 @@ interface PublicRouteChildren {
   PublicTransfersLisbonAirportPrivateTransferRoute: typeof PublicTransfersLisbonAirportPrivateTransferRoute
   PublicTransfersLisbonAlgarvePrivateTransferRoute: typeof PublicTransfersLisbonAlgarvePrivateTransferRoute
   PublicTransfersLisbonComportaPrivateTransferRoute: typeof PublicTransfersLisbonComportaPrivateTransferRoute
+  PublicTransfersLisbonDouroValleyPrivateTransferRoute: typeof PublicTransfersLisbonDouroValleyPrivateTransferRoute
   PublicTransfersLisbonEvoraPrivateTransferRoute: typeof PublicTransfersLisbonEvoraPrivateTransferRoute
   PublicTransfersLisbonMadridPrivateTransferRoute: typeof PublicTransfersLisbonMadridPrivateTransferRoute
   PublicTransfersLisbonPortoPrivateTransferRoute: typeof PublicTransfersLisbonPortoPrivateTransferRoute
@@ -1178,6 +1199,8 @@ const PublicRouteChildren: PublicRouteChildren = {
     PublicTransfersLisbonAlgarvePrivateTransferRoute,
   PublicTransfersLisbonComportaPrivateTransferRoute:
     PublicTransfersLisbonComportaPrivateTransferRoute,
+  PublicTransfersLisbonDouroValleyPrivateTransferRoute:
+    PublicTransfersLisbonDouroValleyPrivateTransferRoute,
   PublicTransfersLisbonEvoraPrivateTransferRoute:
     PublicTransfersLisbonEvoraPrivateTransferRoute,
   PublicTransfersLisbonMadridPrivateTransferRoute:

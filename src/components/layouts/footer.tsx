@@ -185,10 +185,10 @@ const Footer: React.FC = () => {
               </Link>
               <span className="text-border" aria-hidden="true">•</span>
               <Link
-                to="/transfers/porto-douro-valley-private-transfer"
+                to="/transfers/lisbon-douro-valley-private-transfer"
                 className="hover:text-[#C9A84C] transition-colors"
               >
-                {t('footer.transfers.portoDouro', { defaultValue: 'Porto to Douro Valley' })}
+                {t('footer.transfers.lisbonDouro', { defaultValue: 'Lisbon to Douro Valley' })}
               </Link>
               <span className="text-border" aria-hidden="true">•</span>
               <Link
