@@ -25,7 +25,7 @@ export function CorporateCta() {
         </Link>
         <div className="mt-8 text-sm text-white-cream/40">
           <Link
-            to="/vip-concierge"
+            to="/airport-greet-and-assist"
             className="hover:text-gold transition-colors duration-500"
           >
             {t('corporateMobility.cta.concierge')}
