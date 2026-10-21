@@ -31,6 +31,11 @@ export const adminRoutes: Array<NavGroup> = [
         icon: 'material-symbols:calendar-month',
       },
       {
+        title: 'Greet & Assist',
+        url: '/admin/greet-and-assist',
+        icon: 'material-symbols:flight-takeoff-rounded',
+      },
+      {
         title: 'Posts',
         url: '/admin/posts',
         icon: 'material-symbols:article-outline-rounded',

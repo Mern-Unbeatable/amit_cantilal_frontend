@@ -1,5 +1,5 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import {
   AlertTriangle,
@@ -249,6 +249,7 @@ function ActivityTimeline({ bookingId }: { bookingId: number }) {
 
 function RouteComponent() {
   const { id } = Route.useParams()
+  const navigate = useNavigate()
   const { data: booking, isLoading } = useGetBooking(id)
   const { data: settings } = usePublicSettings()
   const { mutate: updateStatus, isPending } = useUpdateBookingStatus()
@@ -256,6 +257,16 @@ function RouteComponent() {
     useResendBookingConfirmation()
   const [status, setStatus] = useState<BookingStatus | ''>('')
   const [stripeDialogOpen, setStripeDialogOpen] = useState(false)
+
+  useEffect(() => {
+    if (booking?.service_type === 'greet_assist') {
+      navigate({
+        to: '/admin/greet-and-assist/$id',
+        params: { id: String(booking.id) },
+        replace: true,
+      })
+    }
+  }, [booking, navigate])
 
   if (isLoading)
     return (

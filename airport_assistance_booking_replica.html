@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Assistance Booking</title>
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Stripe.js for the payment step -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        /* Custom dark theme colors and styling matching the luxury design */
+        body {
+            background-color: #0b0b0b;
+            color: #d1c7b7;
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+        .luxury-card {
+            background-color: #121212;
+            border: 1px solid #2a2a2a;
+        }
+        .gold-border {
+            border: 1px solid #c5a059;
+        }
+        .gold-text {
+            color: #d4af37;
+        }
+        .input-dark {
+            background-color: #171717;
+            border: 1px solid #2e2e2e;
+            color: #f3f4f6;
+        }
+        .input-dark:focus {
+            outline: none;
+            border-color: #c5a059;
+        }
+        .btn-gold {
+            background-color: #c5a059;
+            color: #0b0b0b;
+        }
+        .btn-gold:hover { background-color: #d4af37; }
+        .btn-gold:disabled { opacity: .5; cursor: not-allowed; }
+        .btn-outline {
+            border: 1px solid #2e2e2e;
+            color: #d1c7b7;
+        }
+        .btn-outline:hover { border-color: #c5a059; color: #f3f4f6; }
+        /* Custom styled checkboxes for gold accent */
+        input[type="checkbox"] {
+            accent-color: #c5a059;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        /* Custom scrollbar for clean luxury look */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0b0b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-10">
+
+    <!-- ================= TOP NAVIGATION ================= -->
+    <nav class="border-b border-[#2a2a2a] bg-[#0e0e0e] mb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between font-sans text-sm">
+            <span class="gold-text tracking-widest uppercase text-xs">Off We Go · Greet &amp; Assist</span>
+            <div class="flex items-center gap-2">
+                <a href="#book" data-nav="book" class="nav-link px-3 py-1.5 rounded-sm">Booking</a>
+                <a href="#admin" data-nav="admin" class="nav-link px-3 py-1.5 rounded-sm">Admin</a>
+                <span id="navUser" class="hidden text-xs text-gray-500 pl-2"></span>
+                <button id="logoutBtn" onclick="logout()" class="hidden btn-outline px-3 py-1.5 rounded-sm text-xs">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =================================================== -->
+    <!-- ================= BOOKING VIEW ==================== -->
+    <!-- =================================================== -->
+    <section id="view-book" class="view hidden px-4 sm:px-6 lg:px-8">
+
+    <!-- Top Header Title -->
+    <div class="text-center mb-10">
+        <div class="text-xs uppercase tracking-widest text-[#c5a059] mb-2 font-sans">🛡️ B O O K I N G</div>
+        <h1 class="text-3xl sm:text-4xl font-normal tracking-wide text-[#f3f4f6]" style="font-family: Georgia, serif;">Airport Assistance Booking</h1>
+        <p class="text-sm text-gray-400 mt-2 font-sans">Configure your service, see the final price and pay right away.</p>
+    </div>
+
+    <!-- Main Container Layout -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- LEFT COLUMN: Form Inputs -->
+        <div class="lg:col-span-7 luxury-card p-6 sm:p-8 rounded-sm shadow-2xl space-y-6">
+            
+            <!-- Row 1: Airport & Service Type -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-1.5">Airport</label>
+                    <select id="airport" class="w-full input-dark p-3 rounded-sm text-sm font-sans">
+                        <option value="LIS">Lisbon Airport (LIS)</option>
+                            <option value="OPO">Porto Airport (OPO)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-1.5">Service Type</label>
+                    <select id="serviceType" class="w-full input-dark p-3 rounded-sm text-sm font-sans">
+                            <option value="arrival">Arrival</option>
+                            <option value="departure">Departure</option>
+                            <option value="transit">Transit</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Row 2: Flight Date & Time -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-1.5">Flight Date</label>
+                        <input type="date" id="flightDate" onchange="calculate()" class="w-full input-dark p-3 rounded-sm text-sm font-sans" style="color-scheme: dark;">
+                </div>
+                <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-1.5">Flight Time (Lisbon time)</label>
+                        <input type="time" id="flightTime" onchange="calculate()" class="w-full input-dark p-3 rounded-sm text-sm font-sans" style="color-scheme: dark;">
+                    </div>
+            </div>
+
+            <!-- Row 3: Flight Number & Terminal -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-1.5">Flight Number</label>
+                        <input type="text" id="flightNumber" maxlength="20" placeholder="TP1234" class="w-full input-dark p-3 rounded-sm text-sm font-sans placeholder-gray-600">
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-1.5">Terminal</label>
+                        <input type="text" id="terminal" maxlength="20" placeholder="1" class="w-full input-dark p-3 rounded-sm text-sm font-sans placeholder-gray-600">
+                    </div>
+            </div>
+
+            <!-- PASSENGERS SECTION -->
+            <div>
+                <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-3">Passengers</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    
+                    <!-- Adults -->
+                    <div class="input-dark p-3 rounded-sm flex items-center justify-between">
+                        <span class="text-sm font-sans">Adults</span>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" onclick="adjustCount('adults', -1)" class="w-7 h-7 bg-[#222] text-gray-300 hover:bg-[#333] flex items-center justify-center rounded text-sm">-</button>
+                                <input type="number" id="adults" value="1" min="1" max="20" oninput="calculate()" class="w-8 text-center bg-transparent text-white text-sm font-sans focus:outline-none">
+                            <button type="button" onclick="adjustCount('adults', 1)" class="w-7 h-7 bg-[#222] text-gray-300 hover:bg-[#333] flex items-center justify-center rounded text-sm">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Children -->
+                    <div class="input-dark p-3 rounded-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-sans block leading-tight">Children until</span>
+                            <span class="text-sm font-sans block leading-tight">14 years</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" onclick="adjustCount('children', -1)" class="w-7 h-7 bg-[#222] text-gray-300 hover:bg-[#333] flex items-center justify-center rounded text-sm">-</button>
+                                <input type="number" id="children" value="0" min="0" max="20" oninput="calculate()" class="w-8 text-center bg-transparent text-white text-sm font-sans focus:outline-none">
+                            <button type="button" onclick="adjustCount('children', 1)" class="w-7 h-7 bg-[#222] text-gray-300 hover:bg-[#333] flex items-center justify-center rounded text-sm">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Bags with porter -->
+                    <div class="input-dark p-3 rounded-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-sans block leading-tight">Bags with</span>
+                            <span class="text-sm font-sans block leading-tight">porter</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" onclick="adjustCount('bags', -1)" class="w-7 h-7 bg-[#222] text-gray-300 hover:bg-[#333] flex items-center justify-center rounded text-sm">-</button>
+                                <input type="number" id="bags" value="0" min="0" max="50" oninput="calculate()" class="w-8 text-center bg-transparent text-white text-sm font-sans focus:outline-none">
+                            <button type="button" onclick="adjustCount('bags', 1)" class="w-7 h-7 bg-[#222] text-gray-300 hover:bg-[#333] flex items-center justify-center rounded text-sm">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Pets -->
+                    <div class="input-dark p-3 rounded-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-sm font-sans block leading-tight">Pets (vet</span>
+                            <span class="text-sm font-sans block leading-tight">assistance)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" onclick="adjustCount('pets', -1)" class="w-7 h-7 bg-[#222] text-gray-300 hover:bg-[#333] flex items-center justify-center rounded text-sm">-</button>
+                                <input type="number" id="pets" value="0" min="0" max="10" oninput="calculate()" class="w-8 text-center bg-transparent text-white text-sm font-sans focus:outline-none">
+                            <button type="button" onclick="adjustCount('pets', 1)" class="w-7 h-7 bg-[#222] text-gray-300 hover:bg-[#333] flex items-center justify-center rounded text-sm">+</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ADDITIONAL SERVICES -->
+            <div>
+                <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-3">Additional Services</label>
+                <div class="space-y-3">
+                    
+                        <label class="input-dark p-3.5 rounded-sm flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" id="fastTrack" onchange="calculate()">
+                        <span class="text-sm font-sans text-gray-200">Fast Track Immigration / Passport Control</span>
+                    </label>
+
+                        <label class="input-dark p-3.5 rounded-sm flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" id="securityFast" onchange="calculate()">
+                        <span class="text-sm font-sans text-gray-200">Security fast track (departure)</span>
+                    </label>
+
+                        <label class="input-dark p-3.5 rounded-sm flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" id="boardTransit" onchange="calculate()">
+                        <span class="text-sm font-sans text-gray-200">Board to board (transit)</span>
+                    </label>
+
+                        <label class="input-dark p-3.5 rounded-sm flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" id="taxFree" onchange="calculate()">
+                        <span class="text-sm font-sans text-gray-200">Tax free escort</span>
+                    </label>
+
+                </div>
+                <p class="text-[11px] text-gray-400 italic font-sans mt-2">Fast Track Immigration / Passport Control: charged per group of up to 2 passengers.</p>
+            </div>
+
+            <!-- CONTACT DETAILS -->
+            <div>
+                <label class="block text-[11px] uppercase tracking-wider text-gray-400 font-sans mb-3">Contact Details</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" id="customerName" placeholder="Full name" maxlength="255" class="input-dark p-3 rounded-sm text-sm font-sans placeholder-gray-600">
+                        <input type="email" id="customerEmail" placeholder="Email" maxlength="255" class="input-dark p-3 rounded-sm text-sm font-sans placeholder-gray-600">
+                        <input type="text" id="customerPhone" placeholder="Phone (e.g. +351912345678)" maxlength="20" class="input-dark p-3 rounded-sm text-sm font-sans placeholder-gray-600">
+                        <input type="text" id="customerNotes" placeholder="Additional notes" maxlength="1000" class="input-dark p-3 rounded-sm text-sm font-sans placeholder-gray-600">
+                    </div>
+                </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Price Summary & Conditions -->
+        <div class="lg:col-span-5 space-y-6">
+            
+            <!-- PRICE SUMMARY BOX -->
+            <div class="luxury-card gold-border p-6 sm:p-8 rounded-sm shadow-2xl">
+                <h2 class="text-[11px] uppercase tracking-widest text-[#c5a059] font-sans mb-6">Price Summary</h2>
+                
+                <!-- Dynamic Items Container -->
+                <div id="summaryItems" class="space-y-3 text-sm font-sans border-b border-gray-800 pb-6">
+                    <!-- Injected via JavaScript -->
+                </div>
+
+                <!-- Totals Section -->
+                <div class="pt-6 space-y-3 font-sans">
+                    <div class="flex justify-between text-sm text-gray-300">
+                        <span>Subtotal</span>
+                        <span id="subtotalDisplay">€0.00</span>
+                    </div>
+                        <div id="surchargeRow" class="hidden flex justify-between text-sm text-[#c5a059]">
+                            <span>Late booking surcharge (30%)</span>
+                            <span id="surchargeDisplay">€0.00</span>
+                        </div>
+                    <div class="flex justify-between text-sm text-gray-300">
+                        <span>VAT (23%)</span>
+                        <span id="vatDisplay">€0.00</span>
+                    </div>
+                        <p id="surchargeNotice" class="hidden text-[11px] text-[#c5a059] italic">
+                            Your service is less than 24 hours away, so a 30% late booking surcharge applies (VAT is charged on top).
+                        </p>
+                    
+                    <div class="pt-6 flex justify-between items-baseline border-t border-gray-800 mt-6">
+                        <span class="text-xs uppercase tracking-widest text-gray-400">Total to pay</span>
+                        <span id="grandTotalDisplay" class="text-3xl font-serif gold-text font-normal tracking-wide">€0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SERVICE CONDITIONS BOX -->
+            <div class="luxury-card p-6 sm:p-8 rounded-sm shadow-2xl space-y-4">
+                <h3 class="text-[11px] uppercase tracking-widest text-[#c5a059] font-sans">Service Conditions</h3>
+                <div class="text-[12px] text-gray-400 space-y-3 font-sans leading-relaxed">
+                        <p>Bookings can be made at any time. Bookings made less than 24 hours before the scheduled service are subject to a 30% surcharge.</p>
+                        <p>The 30% surcharge for bookings made less than 24 hours before the scheduled service is an additional charge and does not replace the 23% VAT.</p>
+                    <p>Cancellation less than 48 working hours before service time: 100% charge applies.</p>
+                    <p>Delays or changes are subject to availability and additional charges. A previously confirmed service is non-refundable.</p>
+                    <p>This service is non-refundable in the event of complaints once delivered.</p>
+                </div>
+                
+                <label class="flex items-start space-x-3 pt-2 cursor-pointer font-sans">
+                        <input type="checkbox" id="acceptConditions" class="mt-0.5">
+                    <span class="text-xs text-gray-300">I have read and accept the service conditions.</span>
+                </label>
+
+                    <button id="bookBtn" onclick="submitBooking()" class="w-full btn-gold font-sans text-sm uppercase tracking-widest py-3.5 rounded-sm">
+                        Book &amp; Pay
+                    </button>
+                </div>
+
+                <!-- STATUS BOX -->
+                <div id="statusBox" class="luxury-card p-4 rounded-sm text-center text-xs text-gray-400 font-sans border border-gray-800">
+                    Please complete airport, date, time and your contact details.
+                </div>
+
+                <!-- PAYMENT BOX (shown after the booking is created) -->
+                <div id="paymentBox" class="hidden luxury-card gold-border p-6 sm:p-8 rounded-sm shadow-2xl space-y-4 font-sans">
+                    <h3 class="text-[11px] uppercase tracking-widest text-[#c5a059]">Payment</h3>
+                    <div id="paymentSummary" class="text-sm text-gray-300 space-y-1"></div>
+                    <div id="paymentElement" class="py-2"></div>
+                    <button id="payBtn" onclick="confirmPayment()" class="w-full btn-gold text-sm uppercase tracking-widest py-3.5 rounded-sm">Pay now</button>
+                    <p class="text-[11px] text-gray-500">Stripe test card: 4242 4242 4242 4242 · any future date · any CVC.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================== -->
+    <!-- ================= LOGIN VIEW ====================== -->
+    <!-- =================================================== -->
+    <section id="view-login" class="view hidden px-4">
+        <div class="max-w-md mx-auto luxury-card gold-border p-8 rounded-sm shadow-2xl font-sans">
+            <div class="text-center mb-8">
+                <div class="text-xs uppercase tracking-widest text-[#c5a059] mb-2">Admin</div>
+                <h1 class="text-2xl text-[#f3f4f6]" style="font-family: Georgia, serif;">Sign in</h1>
+            </div>
+            <form onsubmit="login(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1.5">Email or username</label>
+                    <input type="text" id="loginUsername" autocomplete="username" required class="w-full input-dark p-3 rounded-sm text-sm">
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1.5">Password</label>
+                    <input type="password" id="loginPassword" autocomplete="current-password" required minlength="8" class="w-full input-dark p-3 rounded-sm text-sm">
+                </div>
+                <p id="loginError" class="hidden text-xs text-red-400"></p>
+                <button id="loginBtn" type="submit" class="w-full btn-gold text-sm uppercase tracking-widest py-3.5 rounded-sm">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- =================================================== -->
+    <!-- ================= ADMIN LIST VIEW ================= -->
+    <!-- =================================================== -->
+    <section id="view-admin" class="view hidden px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto font-sans">
+            <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+                <div>
+                    <div class="text-xs uppercase tracking-widest text-[#c5a059] mb-1">Admin</div>
+                    <h1 class="text-2xl text-[#f3f4f6]" style="font-family: Georgia, serif;">Bookings</h1>
+                </div>
+                <div class="flex flex-wrap gap-2 text-sm">
+                    <select id="filterServiceType" onchange="loadBookings(1)" class="input-dark p-2 rounded-sm">
+                        <option value="greet_assist">Greet &amp; Assist</option>
+                        <option value="">All services</option>
+                        <option value="transfer">Transfer</option>
+                        <option value="hourly">Hourly</option>
+                        <option value="tour">Tour</option>
+                    </select>
+                    <select id="filterStatus" onchange="loadBookings(1)" class="input-dark p-2 rounded-sm">
+                        <option value="">All statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="payment_failed">Payment failed</option>
+                    </select>
+                    <input type="search" id="filterSearch" placeholder="Reference, name, email" onkeydown="if (event.key === 'Enter') loadBookings(1)" class="input-dark p-2 rounded-sm">
+                    <button onclick="loadBookings(1)" class="btn-outline px-4 py-2 rounded-sm">Refresh</button>
+                </div>
+            </div>
+
+            <div class="luxury-card rounded-sm overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead class="text-[11px] uppercase tracking-wider text-gray-500 border-b border-[#2a2a2a]">
+                        <tr>
+                            <th class="p-3">Reference</th>
+                            <th class="p-3">Customer</th>
+                            <th class="p-3">Service</th>
+                            <th class="p-3">Date / Time</th>
+                            <th class="p-3">Airport / Flight</th>
+                            <th class="p-3 text-center">Pax</th>
+                            <th class="p-3 text-right">Amount</th>
+                            <th class="p-3">Status</th>
+                            <th class="p-3">Created</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsBody"></tbody>
+                </table>
+            </div>
+
+            <div class="flex items-center justify-between mt-4 text-xs text-gray-400">
+                <span id="paginationInfo"></span>
+                <div class="flex gap-2">
+                    <button id="prevPage" onclick="loadBookings(state.page - 1)" class="btn-outline px-3 py-1.5 rounded-sm">Previous</button>
+                    <button id="nextPage" onclick="loadBookings(state.page + 1)" class="btn-outline px-3 py-1.5 rounded-sm">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================================== -->
+    <!-- ================= ADMIN DETAIL VIEW =============== -->
+    <!-- =================================================== -->
+    <section id="view-detail" class="view hidden px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto font-sans">
+            <a href="#admin" class="text-xs text-gray-400 hover:text-[#c5a059]">← Back to bookings</a>
+            <div id="detailContent" class="mt-4"></div>
+    </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        /* ================================================== */
+        /* ================== CONFIG / STATE ================ */
+        /* ================================================== */
+        const API_BASE = 'https://api.offwego.pt/api/v1';
+        const AUTH_STORAGE_KEY = 'offwego_admin_auth';
+
+        const SURCHARGE_RATE = 0.30;
+        const SURCHARGE_WINDOW_HOURS = 24;
+        const VAT_RATE = 0.23;
+        const SERVICE_TIME_ZONE = 'Europe/Lisbon';
+
+        const state = {
+            page: 1,
+            amountCents: 0,
+            stripe: null,
+            elements: null,
+            booking: null,
+        };
+
+        /* ================================================== */
+        /* ================== HELPERS ======================= */
+        /* ================================================== */
+        function escapeHtml(value) {
+            return String(value ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function euro(amount) {
+            return '€' + Number(amount || 0).toFixed(2);
+        }
+
+        function centsToEuro(cents) {
+            return euro((cents || 0) / 100);
+        }
+
+        function formatDateTime(value) {
+            if (!value) return '—';
+            const d = new Date(value);
+            return isNaN(d) ? escapeHtml(value) : d.toLocaleString();
+        }
+
+        function serviceLabel(type) {
+            return { greet_assist: 'Greet & Assist', transfer: 'Transfer', hourly: 'Hourly', tour: 'Tour' }[type] || type;
+        }
+
+        function statusBadge(status) {
+            const colors = {
+                confirmed: 'bg-green-900/40 text-green-300 border-green-800',
+                pending: 'bg-yellow-900/30 text-yellow-300 border-yellow-800',
+                cancelled: 'bg-gray-800 text-gray-400 border-gray-700',
+                payment_failed: 'bg-red-900/40 text-red-300 border-red-800',
+            };
+            const cls = colors[status] || 'bg-gray-800 text-gray-300 border-gray-700';
+            return `<span class="inline-block px-2 py-0.5 text-[11px] rounded-sm border ${cls}">${escapeHtml(status)}</span>`;
+        }
+
+        /* ================================================== */
+        /* ================== AUTH (localStorage) =========== */
+        /* ================================================== */
+        function getAuth() {
+            try {
+                const auth = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEY));
+                if (!auth || !auth.token) return null;
+                if (auth.expiresAt && new Date(auth.expiresAt) <= new Date()) {
+                    localStorage.removeItem(AUTH_STORAGE_KEY);
+                    return null;
+                }
+                return auth;
+            } catch {
+                return null;
+            }
+        }
+
+        function saveAuth(data) {
+            localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({
+                token: data.access_token,
+                expiresAt: data.expires_at,
+                user: data.user,
+            }));
+        }
+
+        function clearAuth() {
+            localStorage.removeItem(AUTH_STORAGE_KEY);
+        }
+
+        /**
+         * fetch() wrapper for the API: JSON in/out, adds the bearer token,
+         * and sends the user back to the login page on 401.
+         */
+        async function api(path, { method = 'GET', body, auth = false } = {}) {
+            const headers = { Accept: 'application/json' };
+            if (body !== undefined) headers['Content-Type'] = 'application/json';
+
+            if (auth) {
+                const session = getAuth();
+                if (!session) {
+                    navigate('#login');
+                    throw new Error('Please log in first.');
+                }
+                headers.Authorization = 'Bearer ' + session.token;
+            }
+
+            const response = await fetch(API_BASE + path, {
+                method,
+                headers,
+                body: body !== undefined ? JSON.stringify(body) : undefined,
+            });
+
+            let json = null;
+            try { json = await response.json(); } catch { /* empty body */ }
+
+            if (response.status === 401 && auth) {
+                clearAuth();
+                updateNav();
+                navigate('#login');
+            }
+
+            return { ok: response.ok, status: response.status, json };
+        }
+
+        async function login(event) {
+            event.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const errorEl = document.getElementById('loginError');
+            errorEl.classList.add('hidden');
+            btn.disabled = true;
+            btn.innerText = 'Signing in...';
+
+            try {
+                const { ok, json } = await api('/auth/login', {
+                    method: 'POST',
+                    body: {
+                        username: document.getElementById('loginUsername').value.trim(),
+                        password: document.getElementById('loginPassword').value,
+                    },
+                });
+
+                if (!ok) {
+                    errorEl.innerText = firstError(json) || 'Login failed.';
+                    errorEl.classList.remove('hidden');
+                    return;
+                }
+
+                saveAuth(json.data);
+                document.getElementById('loginPassword').value = '';
+                updateNav();
+                navigate('#admin');
+            } catch (e) {
+                errorEl.innerText = 'Network error: ' + e.message;
+                errorEl.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Login';
+            }
+        }
+
+        async function logout() {
+            if (getAuth()) {
+                try { await api('/auth/logout', { method: 'POST', auth: true }); } catch { /* ignore */ }
+            }
+            clearAuth();
+            updateNav();
+            navigate('#login');
+        }
+
+        function updateNav() {
+            const auth = getAuth();
+            document.getElementById('logoutBtn').classList.toggle('hidden', !auth);
+            const userEl = document.getElementById('navUser');
+            userEl.classList.toggle('hidden', !auth);
+            userEl.innerText = auth?.user?.email || auth?.user?.username || '';
+        }
+
+        function firstError(json) {
+            if (!json) return null;
+            if (json.errors) {
+                const first = Object.values(json.errors)[0];
+                return Array.isArray(first) ? first[0] : first;
+            }
+            return json.message || null;
+        }
+
+        /* ================================================== */
+        /* ================== ROUTING ======================= */
+        /* ================================================== */
+        function showView(name) {
+            document.querySelectorAll('.view').forEach((el) => el.classList.add('hidden'));
+            document.getElementById('view-' + name).classList.remove('hidden');
+
+            const navKey = name === 'book' ? 'book' : 'admin';
+            document.querySelectorAll('.nav-link').forEach((el) => {
+                const active = el.dataset.nav === navKey;
+                el.classList.toggle('btn-gold', active);
+                el.classList.toggle('text-gray-400', !active);
+            });
+        }
+
+        function route() {
+            const hash = location.hash || '#book';
+
+            if (hash === '#book') {
+                showView('book');
+                return;
+            }
+
+            if (!getAuth()) {
+                showView('login');
+                return;
+            }
+
+            if (hash === '#login') {
+                location.hash = '#admin';
+                return;
+            }
+
+            const detailMatch = hash.match(/^#admin\/bookings\/(\d+)$/);
+            if (detailMatch) {
+                showView('detail');
+                loadBookingDetail(detailMatch[1]);
+                return;
+            }
+
+            showView('admin');
+            loadBookings(state.page);
+        }
+
+        window.addEventListener('hashchange', route);
+
+        /** Navigate to a hash, re-rendering even when the hash is already current. */
+        function navigate(hash) {
+            if (location.hash === hash) {
+                route();
+            } else {
+                location.hash = hash;
+            }
+        }
+
+        /* ================================================== */
+        /* ================== PRICE CALCULATION ============= */
+        /* ================================================== */
+        function adjustCount(id, delta) {
+            const input = document.getElementById(id);
+            let val = parseInt(input.value) || 0;
+            val += delta;
+            const min = parseInt(input.getAttribute('min')) || 0;
+            const max = parseInt(input.getAttribute('max')) || Infinity;
+            if (val < min) val = min;
+            if (val > max) val = max;
+            input.value = val;
+            calculate();
+        }
+
+        function calculate() {
+            // Read inputs
+            const adults = parseInt(document.getElementById('adults').value) || 0;
+            const children = parseInt(document.getElementById('children').value) || 0;
+            const bags = parseInt(document.getElementById('bags').value) || 0;
+            const pets = parseInt(document.getElementById('pets').value) || 0;
+
+            const fastTrackChecked = document.getElementById('fastTrack').checked;
+            const securityChecked = document.getElementById('securityFast').checked;
+            const boardChecked = document.getElementById('boardTransit').checked;
+            const taxFreeChecked = document.getElementById('taxFree').checked;
+
+            const totalPax = adults + children;
+            const extraAdults = Math.max(0, adults - 1);
+
+            let subtotal = 0;
+            let htmlContent = '';
+
+            // 1. Base service (1 PAX)
+            if (adults > 0) {
+                const cost = 195.12;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Base service (1 PAX)</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 2. Per extra PAX
+            if (extraAdults > 0) {
+                const cost = extraAdults * 130.08;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Per extra PAX ${extraAdults} x</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 3. Children until 14 years
+            if (children > 0) {
+                const cost = children * 81.30;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Per PAX until 14 years ${children} x</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 4. Porter per bag
+            if (bags > 0) {
+                const cost = bags * 24.39;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Porter per bag ${bags} x</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 5. Security fast track (DEP) per PAX
+            if (securityChecked && totalPax > 0) {
+                const cost = totalPax * 24.39;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Security fast track (DEP) per PAX ${totalPax} x</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 6. Fast Track Immigration / Passport Control (per group of up to 2 pax)
+            if (fastTrackChecked && totalPax > 0) {
+                const groups = Math.ceil(totalPax / 2);
+                const cost = groups * 101.625;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Fast Track Immigration / Passport Control ${groups} x</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 7. Board to board transit per PAX
+            if (boardChecked && totalPax > 0) {
+                const cost = totalPax * 60.975;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Board to board transit per PAX ${totalPax} x</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 8. Tax free escort per PAX
+            if (taxFreeChecked && totalPax > 0) {
+                const cost = totalPax * 65.04;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Tax free escort per PAX ${totalPax} x</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 9. Vet assistance per pet
+            if (pets > 0) {
+                const cost = pets * 97.56;
+                subtotal += cost;
+                htmlContent += `<div class="flex justify-between"><span>Vet assistance per pet ${pets} x</span><span>€${cost.toFixed(2)}</span></div>`;
+            }
+
+            // 30% late booking surcharge when the service is less than 24 hours away
+            const serviceAt = getServiceTimestamp();
+            const surchargeApplied = serviceAt !== null && (serviceAt - Date.now()) < SURCHARGE_WINDOW_HOURS * 3600 * 1000;
+            const surcharge = surchargeApplied ? subtotal * SURCHARGE_RATE : 0;
+
+            // VAT is charged on subtotal + surcharge
+            const vat = (subtotal + surcharge) * VAT_RATE;
+            const grandTotal = subtotal + surcharge + vat;
+
+            // Amount in cents, sent to the backend as "amount"
+            state.amountCents = Math.round(grandTotal * 100);
+
+            // Update DOM
+            document.getElementById('summaryItems').innerHTML = htmlContent;
+            document.getElementById('subtotalDisplay').innerText = '€' + subtotal.toFixed(2);
+            document.getElementById('surchargeDisplay').innerText = '€' + surcharge.toFixed(2);
+            document.getElementById('surchargeRow').classList.toggle('hidden', !surchargeApplied);
+            document.getElementById('surchargeNotice').classList.toggle('hidden', !surchargeApplied);
+            document.getElementById('vatDisplay').innerText = '€' + vat.toFixed(2);
+            document.getElementById('grandTotalDisplay').innerText = '€' + grandTotal.toFixed(2);
+        }
+
+        /**
+         * Flight date + time are entered in Lisbon (airport) time, regardless of
+         * the visitor's own time zone. Returns a UTC timestamp in ms, or null.
+         */
+        function getServiceTimestamp() {
+            const date = document.getElementById('flightDate').value; // YYYY-MM-DD
+            const time = document.getElementById('flightTime').value; // HH:MM
+            if (!date || !time) return null;
+
+            const [y, m, d] = date.split('-').map(Number);
+            const [hh, mm] = time.split(':').map(Number);
+            const asIfUtc = Date.UTC(y, m - 1, d, hh, mm);
+
+            return asIfUtc - timeZoneOffsetMs(asIfUtc, SERVICE_TIME_ZONE);
+        }
+
+        function timeZoneOffsetMs(timestamp, timeZone) {
+            const parts = new Intl.DateTimeFormat('en-US', {
+                timeZone, hourCycle: 'h23',
+                year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+            }).formatToParts(new Date(timestamp));
+            const get = (type) => Number(parts.find((p) => p.type === type).value);
+            const zonedAsUtc = Date.UTC(get('year'), get('month') - 1, get('day'), get('hour'), get('minute'), get('second'));
+
+            return zonedAsUtc - timestamp;
+        }
+
+        /* ================================================== */
+        /* ================== BOOKING (PUBLIC POST) ========= */
+        /* ================================================== */
+        function setStatus(message, type = 'info') {
+            const box = document.getElementById('statusBox');
+            const colors = {
+                info: 'text-gray-400 border-gray-800',
+                error: 'text-red-300 border-red-900',
+                success: 'text-green-300 border-green-900',
+            };
+            box.className = 'luxury-card p-4 rounded-sm text-left text-xs font-sans border ' + colors[type];
+            box.innerHTML = message;
+        }
+
+        function buildBookingPayload() {
+            calculate();
+
+            return {
+                service_type: 'greet_assist',
+                name: document.getElementById('customerName').value.trim(),
+                email: document.getElementById('customerEmail').value.trim(),
+                phone: document.getElementById('customerPhone').value.trim(),
+                notes: document.getElementById('customerNotes').value.trim() || null,
+
+                airport: document.getElementById('airport').value,
+                greet_service_type: document.getElementById('serviceType').value,
+                date: document.getElementById('flightDate').value,
+                flight_time: document.getElementById('flightTime').value,
+                flight_number: document.getElementById('flightNumber').value.trim(),
+                terminal: document.getElementById('terminal').value.trim() || null,
+
+                adults: parseInt(document.getElementById('adults').value) || 0,
+                children: parseInt(document.getElementById('children').value) || 0,
+                bags: parseInt(document.getElementById('bags').value) || 0,
+                pets: parseInt(document.getElementById('pets').value) || 0,
+
+                services: {
+                    fast_track_immigration: document.getElementById('fastTrack').checked,
+                    security_fast_track: document.getElementById('securityFast').checked,
+                    board_to_board_transit: document.getElementById('boardTransit').checked,
+                    tax_free_escort: document.getElementById('taxFree').checked,
+                },
+
+                accepted_conditions: document.getElementById('acceptConditions').checked,
+                amount: state.amountCents,
+            };
+        }
+
+        async function submitBooking() {
+            const payload = buildBookingPayload();
+
+            if (!payload.accepted_conditions) {
+                setStatus('Please accept the service conditions.', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('bookBtn');
+            btn.disabled = true;
+            btn.innerText = 'Creating booking...';
+            setStatus('Sending booking to the server...');
+
+            try {
+                const { ok, status, json } = await api('/public/bookings', { method: 'POST', body: payload });
+
+                if (status === 422 && json?.data?.pricing) {
+                    // Server-side price differs (e.g. the 24h window was crossed)
+                    const p = json.data.pricing;
+                    setStatus(
+                        `${escapeHtml(json.message)}<br>Server total: <b>${euro(p.total)}</b>` +
+                        (p.surcharge_applied ? ` (includes ${euro(p.surcharge)} late booking surcharge)` : ''),
+                        'error'
+                    );
+                    calculate();
+                    return;
+                }
+
+                if (!ok) {
+                    const errors = json?.errors
+                        ? '<ul class="list-disc pl-4 mt-2 space-y-1">' +
+                            Object.values(json.errors).flat().map((e) => `<li>${escapeHtml(e)}</li>`).join('') +
+                          '</ul>'
+                        : '';
+                    setStatus(escapeHtml(json?.message || 'Booking failed.') + errors, 'error');
+                    return;
+                }
+
+                state.booking = json.data.booking;
+                setStatus(
+                    `Booking created: <b>${escapeHtml(state.booking.reference)}</b> · ${centsToEuro(state.booking.amount)}<br>` +
+                    'Complete the payment below.',
+                    'success'
+                );
+                showPayment(json.data);
+            } catch (e) {
+                setStatus('Network error: ' + escapeHtml(e.message), 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Book & Pay';
+            }
+        }
+
+        /* ================================================== */
+        /* ================== STRIPE PAYMENT ================ */
+        /* ================================================== */
+        function showPayment(data) {
+            const box = document.getElementById('paymentBox');
+            const booking = data.booking;
+
+            document.getElementById('paymentSummary').innerHTML =
+                `<div>Reference: <b>${escapeHtml(booking.reference)}</b></div>` +
+                `<div>Amount: <b>${centsToEuro(booking.amount)}</b></div>`;
+
+            if (!data.publishable_key || !data.client_secret || typeof Stripe === 'undefined') {
+                document.getElementById('paymentElement').innerHTML =
+                    '<p class="text-xs text-red-300">Stripe is not configured on the server (missing publishable key).</p>';
+                document.getElementById('payBtn').classList.add('hidden');
+                box.classList.remove('hidden');
+                return;
+            }
+
+            state.stripe = Stripe(data.publishable_key);
+            state.elements = state.stripe.elements({
+                clientSecret: data.client_secret,
+                appearance: { theme: 'night', variables: { colorPrimary: '#c5a059' } },
+            });
+
+            document.getElementById('paymentElement').innerHTML = '';
+            state.elements.create('payment').mount('#paymentElement');
+            document.getElementById('payBtn').classList.remove('hidden');
+            box.classList.remove('hidden');
+            box.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function confirmPayment() {
+            const btn = document.getElementById('payBtn');
+            btn.disabled = true;
+            btn.innerText = 'Processing...';
+
+            try {
+                const { error, paymentIntent } = await state.stripe.confirmPayment({
+                    elements: state.elements,
+                    redirect: 'if_required',
+                    confirmParams: { return_url: location.href.split('#')[0] + '#book' },
+                });
+
+                if (error) {
+                    setStatus('Payment failed: ' + escapeHtml(error.message), 'error');
+                    return;
+                }
+
+                setStatus(
+                    `Payment ${escapeHtml(paymentIntent.status)} for <b>${escapeHtml(state.booking.reference)}</b>.<br>` +
+                    'The booking is confirmed automatically by the Stripe webhook — check it in the Admin tab.',
+                    'success'
+                );
+                document.getElementById('paymentBox').classList.add('hidden');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Pay now';
+            }
+        }
+
+        /* ================================================== */
+        /* ================== ADMIN: LIST =================== */
+        /* ================================================== */
+        async function loadBookings(page = 1) {
+            if (page < 1) return;
+
+            const body = document.getElementById('bookingsBody');
+            body.innerHTML = '<tr><td colspan="9" class="p-6 text-center text-gray-500">Loading...</td></tr>';
+
+            const params = new URLSearchParams({ page });
+            const serviceType = document.getElementById('filterServiceType').value;
+            const status = document.getElementById('filterStatus').value;
+            const search = document.getElementById('filterSearch').value.trim();
+            if (serviceType) params.set('service_type', serviceType);
+            if (status) params.set('status', status);
+            if (search) params.set('search', search);
+
+            try {
+                const { ok, json } = await api('/admin/bookings?' + params, { auth: true });
+
+                if (!ok) {
+                    body.innerHTML = `<tr><td colspan="9" class="p-6 text-center text-red-300">${escapeHtml(json?.message || 'Failed to load bookings.')}</td></tr>`;
+                    return;
+                }
+
+                const bookings = json.data.data;
+                const pagination = json.data.pagination;
+                state.page = pagination.current_page;
+
+                if (!bookings.length) {
+                    body.innerHTML = '<tr><td colspan="9" class="p-6 text-center text-gray-500">No bookings found.</td></tr>';
+                } else {
+                    body.innerHTML = bookings.map((b) => {
+                        const d = b.details || {};
+                        const time = b.pickup_time ? String(b.pickup_time).slice(0, 5) : '';
+                        const airportFlight = b.service_type === 'greet_assist'
+                            ? `${escapeHtml(d.airport)} · ${escapeHtml(d.flight_number)}`
+                            : escapeHtml(d.flight_number || '—');
+
+                        return `
+                            <tr onclick="location.hash='#admin/bookings/${Number(b.id)}'" class="border-b border-[#1f1f1f] hover:bg-[#181818] cursor-pointer">
+                                <td class="p-3 gold-text whitespace-nowrap">${escapeHtml(b.reference)}</td>
+                                <td class="p-3"><div class="text-gray-200">${escapeHtml(b.name)}</div><div class="text-[11px] text-gray-500">${escapeHtml(b.email)}</div></td>
+                                <td class="p-3 whitespace-nowrap">${escapeHtml(serviceLabel(b.service_type))}${d.greet_service_type ? `<div class="text-[11px] text-gray-500">${escapeHtml(d.greet_service_type)}</div>` : ''}</td>
+                                <td class="p-3 whitespace-nowrap">${escapeHtml(b.date)} ${escapeHtml(time)}</td>
+                                <td class="p-3 whitespace-nowrap">${airportFlight}</td>
+                                <td class="p-3 text-center">${escapeHtml(b.passengers)}</td>
+                                <td class="p-3 text-right whitespace-nowrap">${centsToEuro(b.amount)}</td>
+                                <td class="p-3">${statusBadge(b.status)}</td>
+                                <td class="p-3 text-[11px] text-gray-500 whitespace-nowrap">${formatDateTime(b.created_at)}</td>
+                            </tr>`;
+                    }).join('');
+                }
+
+                document.getElementById('paginationInfo').innerText =
+                    `Showing ${pagination.from || 0}–${pagination.to || 0} of ${pagination.total} · Page ${pagination.current_page} of ${pagination.last_page}`;
+                document.getElementById('prevPage').disabled = pagination.current_page <= 1;
+                document.getElementById('nextPage').disabled = pagination.current_page >= pagination.last_page;
+            } catch (e) {
+                body.innerHTML = `<tr><td colspan="9" class="p-6 text-center text-red-300">${escapeHtml(e.message)}</td></tr>`;
+            }
+        }
+
+        /* ================================================== */
+        /* ================== ADMIN: DETAIL ================= */
+        /* ================================================== */
+        function detailRow(label, value) {
+            return `<div class="flex justify-between gap-4 py-2 border-b border-[#1f1f1f]"><span class="text-gray-500">${escapeHtml(label)}</span><span class="text-gray-200 text-right">${value}</span></div>`;
+        }
+
+        async function loadBookingDetail(id) {
+            const container = document.getElementById('detailContent');
+            container.innerHTML = '<p class="text-gray-500 text-sm">Loading...</p>';
+
+            try {
+                const { ok, json } = await api('/admin/bookings/' + encodeURIComponent(id), { auth: true });
+
+                if (!ok) {
+                    container.innerHTML = `<p class="text-red-300 text-sm">${escapeHtml(json?.message || 'Failed to load booking.')}</p>`;
+                    return;
+                }
+
+                const b = json.data;
+                const d = b.details || {};
+                const pricing = d.pricing || null;
+                const services = d.services || {};
+                const serviceNames = {
+                    fast_track_immigration: 'Fast Track Immigration / Passport Control',
+                    security_fast_track: 'Security fast track (departure)',
+                    board_to_board_transit: 'Board to board (transit)',
+                    tax_free_escort: 'Tax free escort',
+                };
+
+                let html = `
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                        <div>
+                            <div class="text-xs uppercase tracking-widest text-[#c5a059]">${escapeHtml(serviceLabel(b.service_type))}</div>
+                            <h1 class="text-2xl text-[#f3f4f6]" style="font-family: Georgia, serif;">${escapeHtml(b.reference)}</h1>
+                        </div>
+                        <div class="text-right">
+                            ${statusBadge(b.status)}
+                            <div class="text-2xl gold-text mt-1">${centsToEuro(b.amount)}</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        ${b.status !== 'confirmed' && b.status !== 'cancelled' ? `<button data-action="confirm" onclick="bookingAction(${Number(b.id)}, 'confirm', this)" class="px-4 py-2 text-xs uppercase tracking-widest border border-green-700 text-green-300 hover:bg-green-900/30 rounded-sm">Confirm</button>` : ''}
+                        ${b.status !== 'cancelled' ? `<button data-action="cancel" onclick="bookingAction(${Number(b.id)}, 'cancel', this)" class="px-4 py-2 text-xs uppercase tracking-widest border border-yellow-700 text-yellow-300 hover:bg-yellow-900/30 rounded-sm">Cancel</button>` : ''}
+                        <button data-action="delete" onclick="bookingAction(${Number(b.id)}, 'delete', this)" class="px-4 py-2 text-xs uppercase tracking-widest border border-red-700 text-red-300 hover:bg-red-900/30 rounded-sm">Delete</button>
+                    </div>
+                    <p id="actionMessage" class="hidden mb-6 text-sm"></p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        <div class="luxury-card p-6 rounded-sm">
+                            <h3 class="text-[11px] uppercase tracking-widest text-[#c5a059] mb-3">Customer</h3>
+                            ${detailRow('Name', escapeHtml(b.name))}
+                            ${detailRow('Email', escapeHtml(b.email))}
+                            ${detailRow('Phone', escapeHtml(b.phone))}
+                            ${detailRow('Notes', escapeHtml(b.notes || '—'))}
+                        </div>
+
+                        <div class="luxury-card p-6 rounded-sm">
+                            <h3 class="text-[11px] uppercase tracking-widest text-[#c5a059] mb-3">Service</h3>
+                            ${d.airport ? detailRow('Airport', escapeHtml(d.airport)) : ''}
+                            ${d.greet_service_type ? detailRow('Assistance', escapeHtml(d.greet_service_type)) : ''}
+                            ${detailRow('Date', escapeHtml(b.date))}
+                            ${detailRow(b.service_type === 'greet_assist' ? 'Flight time' : 'Pickup time', escapeHtml(b.pickup_time ? String(b.pickup_time).slice(0, 5) : '—'))}
+                            ${d.flight_number ? detailRow('Flight number', escapeHtml(d.flight_number)) : ''}
+                            ${d.terminal ? detailRow('Terminal', escapeHtml(d.terminal)) : ''}
+                            ${d.pickup_location ? detailRow('Pickup', escapeHtml(d.pickup_location)) : ''}
+                            ${d.dropoff_location ? detailRow('Drop-off', escapeHtml(d.dropoff_location)) : ''}
+                            ${detailRow('Passengers', escapeHtml(b.passengers))}
+                            ${d.adults !== undefined ? detailRow('Adults / Children', `${escapeHtml(d.adults)} / ${escapeHtml(d.children)}`) : ''}
+                            ${d.bags !== undefined ? detailRow('Bags / Pets', `${escapeHtml(d.bags)} / ${escapeHtml(d.pets)}`) : ''}
+                        </div>`;
+
+                if (Object.keys(services).length) {
+                    html += `
+                        <div class="luxury-card p-6 rounded-sm">
+                            <h3 class="text-[11px] uppercase tracking-widest text-[#c5a059] mb-3">Additional services</h3>
+                            ${Object.entries(serviceNames).map(([key, label]) => detailRow(label, services[key] ? '<span class="text-green-300">Yes</span>' : '<span class="text-gray-500">No</span>')).join('')}
+                        </div>`;
+                }
+
+                if (pricing) {
+                    html += `
+                        <div class="luxury-card gold-border p-6 rounded-sm">
+                            <h3 class="text-[11px] uppercase tracking-widest text-[#c5a059] mb-3">Price breakdown</h3>
+                            ${(pricing.items || []).map((item) => detailRow(`${item.label} × ${item.quantity}`, euro(item.total))).join('')}
+                            ${detailRow('Subtotal', euro(pricing.subtotal))}
+                            ${pricing.surcharge_applied ? detailRow(`Late booking surcharge (${pricing.surcharge_percent}%)`, `<span class="gold-text">${euro(pricing.surcharge)}</span>`) : ''}
+                            ${detailRow(`VAT (${pricing.vat_percent}%)`, euro(pricing.vat))}
+                            ${detailRow('Total', `<b class="gold-text">${euro(pricing.total)}</b>`)}
+                        </div>`;
+                }
+
+                html += `
+                        <div class="luxury-card p-6 rounded-sm">
+                            <h3 class="text-[11px] uppercase tracking-widest text-[#c5a059] mb-3">Payment</h3>
+                            ${detailRow('Stripe status', escapeHtml(b.stripe_status || '—'))}
+                            ${detailRow('Payment intent', escapeHtml(b.payment?.stripe_payment_intent_id || '—'))}
+                            ${detailRow('Created', formatDateTime(b.created_at))}
+                            ${detailRow('Updated', formatDateTime(b.updated_at))}
+                        </div>
+                    </div>
+
+                    <details class="mt-6 luxury-card p-4 rounded-sm text-xs">
+                        <summary class="cursor-pointer text-gray-400">Raw JSON</summary>
+                        <pre class="mt-3 overflow-x-auto text-gray-400">${escapeHtml(JSON.stringify(b, null, 2))}</pre>
+                    </details>`;
+
+                container.innerHTML = html;
+            } catch (e) {
+                container.innerHTML = `<p class="text-red-300 text-sm">${escapeHtml(e.message)}</p>`;
+            }
+        }
+
+        /**
+         * Confirm, cancel or delete a booking from the detail view.
+         */
+        async function bookingAction(id, action, btn) {
+            const prompts = {
+                confirm: 'Confirm this booking? The customer will get the confirmation email.',
+                cancel: 'Cancel this booking?',
+                delete: 'Delete this booking? It will disappear from the admin list.',
+            };
+            if (!confirm(prompts[action])) return;
+
+            const msg = document.getElementById('actionMessage');
+            const originalText = btn.innerText;
+            btn.disabled = true;
+            btn.innerText = 'Please wait...';
+
+            try {
+                const path = '/admin/bookings/' + encodeURIComponent(id);
+                const { ok, json } = action === 'delete'
+                    ? await api(path, { method: 'DELETE', auth: true })
+                    : await api(path + '/' + action, { method: 'POST', auth: true });
+
+                if (!ok) {
+                    msg.className = 'mb-6 text-sm text-red-300';
+                    msg.innerText = json?.message || 'Action failed.';
+                    return;
+                }
+
+                if (action === 'delete') {
+                    navigate('#admin');
+                    return;
+                }
+
+                await loadBookingDetail(id);
+                const fresh = document.getElementById('actionMessage');
+                fresh.className = 'mb-6 text-sm text-green-300';
+                fresh.innerText = json?.message || 'Done.';
+            } catch (e) {
+                msg.className = 'mb-6 text-sm text-red-300';
+                msg.innerText = 'Network error: ' + e.message;
+            } finally {
+                btn.disabled = false;
+                btn.innerText = originalText;
+            }
+        }
+
+        /* ================================================== */
+        /* ================== INIT ========================== */
+        /* ================================================== */
+        window.onload = function() {
+            calculate();
+            // The surcharge depends on the current time, so keep it up to date
+            setInterval(calculate, 60 * 1000);
+            updateNav();
+            route();
+        };
+    </script>
+</body>
+</html>
