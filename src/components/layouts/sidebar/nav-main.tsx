@@ -216,11 +216,20 @@ export function NavMain({ items }: NavMainProps) {
     if (subItems?.length) {
       return subItems.some((sub) => path.startsWith(sub.url))
     }
-    return path === url
+    return (
+      path === url ||
+      (url !== '/admin' &&
+        url !== '/admin/dashboard' &&
+        path.startsWith(`${url}/`))
+    )
   }
 
   const isSubmenuOpen = (subItems?: NavMainItem['subItems']) => {
-    return subItems?.some((sub) => path.startsWith(sub.url)) ?? false
+    return (
+      subItems?.some(
+        (sub) => path === sub.url || path.startsWith(`${sub.url}/`),
+      ) ?? false
+    )
   }
 
   return (
