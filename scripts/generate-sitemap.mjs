@@ -56,7 +56,7 @@ const STATIC_PATHS = [
   },
   { path: '/hourly-service', priority: '0.8', changefreq: 'monthly' },
   { path: '/fleet', priority: '0.7', changefreq: 'monthly' },
-  { path: '/vip-concierge', priority: '0.7', changefreq: 'monthly' },
+  { path: '/airport-greet-and-assist', priority: '0.8', changefreq: 'monthly' },
   { path: '/special-events', priority: '0.7', changefreq: 'monthly' },
   { path: '/corporate-mobility', priority: '0.7', changefreq: 'monthly' },
   { path: '/b2b', priority: '0.6', changefreq: 'monthly' },

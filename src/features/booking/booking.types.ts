@@ -1,6 +1,6 @@
 import type { FleetVehicle } from '@/features/fleet/fleet.types.ts'
 
-export type ServiceType = 'transfer' | 'hourly' | 'tour'
+export type ServiceType = 'transfer' | 'hourly' | 'tour' | 'greet_assist'
 export type VehicleType = 'sedan' | 'suv' | 'van' | 'sprinter'
 export type BookingStatus = 'pending' | 'confirmed' | 'cancelled'
 

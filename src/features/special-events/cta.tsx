@@ -25,7 +25,7 @@ export function EventsCta() {
         </Link>
         <div className="mt-8 text-sm text-[#F5F0E8]/40">
           <Link
-            to="/vip-concierge"
+            to="/airport-greet-and-assist"
             className="hover:text-[#C9A84C] transition-colors duration-500"
           >
             {t('specialEvents.cta.concierge')}

@@ -23,6 +23,7 @@ import { Route as PublicFleetRouteImport } from './routes/_public/fleet'
 import { Route as PublicFaqRouteImport } from './routes/_public/faq'
 import { Route as PublicCorporateMobilityRouteImport } from './routes/_public/corporate-mobility'
 import { Route as PublicB2bRouteImport } from './routes/_public/b2b'
+import { Route as PublicAirportGreetAndAssistRouteImport } from './routes/_public/airport-greet-and-assist'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as PublicTransfersIndexRouteImport } from './routes/_public/transfers/index'
 import { Route as PublicToursIndexRouteImport } from './routes/_public/tours/index'
@@ -51,12 +52,14 @@ import { Route as AuthenticatedAdminBlockedDatesRouteImport } from './routes/_au
 import { Route as AuthenticatedAdminUsersIndexRouteImport } from './routes/_authenticated/admin/users/index'
 import { Route as AuthenticatedAdminToursIndexRouteImport } from './routes/_authenticated/admin/tours/index'
 import { Route as AuthenticatedAdminPostsIndexRouteImport } from './routes/_authenticated/admin/posts/index'
+import { Route as AuthenticatedAdminGreetAndAssistIndexRouteImport } from './routes/_authenticated/admin/greet-and-assist/index'
 import { Route as AuthenticatedAdminFleetVehicleIndexRouteImport } from './routes/_authenticated/admin/fleet-vehicle/index'
 import { Route as AuthenticatedAdminBookingsIndexRouteImport } from './routes/_authenticated/admin/bookings/index'
 import { Route as PublicBookingPayReferenceRouteImport } from './routes/_public/booking/pay.$reference'
 import { Route as AuthenticatedAdminUsersCreateRouteImport } from './routes/_authenticated/admin/users/create'
 import { Route as AuthenticatedAdminToursCreateRouteImport } from './routes/_authenticated/admin/tours/create'
 import { Route as AuthenticatedAdminPostsCreateRouteImport } from './routes/_authenticated/admin/posts/create'
+import { Route as AuthenticatedAdminGreetAndAssistIdRouteImport } from './routes/_authenticated/admin/greet-and-assist/$id'
 import { Route as AuthenticatedAdminFleetVehicleCreateRouteImport } from './routes/_authenticated/admin/fleet-vehicle/create'
 import { Route as AuthenticatedAdminBookingsIdRouteImport } from './routes/_authenticated/admin/bookings/$id'
 import { Route as AuthenticatedAdminUsersIdEditRouteImport } from './routes/_authenticated/admin/users/$id/edit'
@@ -131,6 +134,12 @@ const PublicB2bRoute = PublicB2bRouteImport.update({
   path: '/b2b',
   getParentRoute: () => PublicRoute,
 } as any)
+const PublicAirportGreetAndAssistRoute =
+  PublicAirportGreetAndAssistRouteImport.update({
+    id: '/airport-greet-and-assist',
+    path: '/airport-greet-and-assist',
+    getParentRoute: () => PublicRoute,
+  } as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -288,6 +297,12 @@ const AuthenticatedAdminPostsIndexRoute =
     path: '/admin/posts/',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
+const AuthenticatedAdminGreetAndAssistIndexRoute =
+  AuthenticatedAdminGreetAndAssistIndexRouteImport.update({
+    id: '/admin/greet-and-assist/',
+    path: '/admin/greet-and-assist/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAdminFleetVehicleIndexRoute =
   AuthenticatedAdminFleetVehicleIndexRouteImport.update({
     id: '/admin/fleet-vehicle/',
@@ -322,6 +337,12 @@ const AuthenticatedAdminPostsCreateRoute =
   AuthenticatedAdminPostsCreateRouteImport.update({
     id: '/admin/posts/create',
     path: '/admin/posts/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAdminGreetAndAssistIdRoute =
+  AuthenticatedAdminGreetAndAssistIdRouteImport.update({
+    id: '/admin/greet-and-assist/$id',
+    path: '/admin/greet-and-assist/$id',
     getParentRoute: () => AuthenticatedRoute,
   } as any)
 const AuthenticatedAdminFleetVehicleCreateRoute =
@@ -363,6 +384,7 @@ const AuthenticatedAdminFleetVehicleFleetIdEditRoute =
 
 export interface FileRoutesByFullPath {
   '/login': typeof AuthLoginRoute
+  '/airport-greet-and-assist': typeof PublicAirportGreetAndAssistRoute
   '/b2b': typeof PublicB2bRoute
   '/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/faq': typeof PublicFaqRoute
@@ -400,12 +422,14 @@ export interface FileRoutesByFullPath {
   '/transfers': typeof PublicTransfersIndexRoute
   '/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
+  '/admin/greet-and-assist/$id': typeof AuthenticatedAdminGreetAndAssistIdRoute
   '/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
   '/admin/tours/create': typeof AuthenticatedAdminToursCreateRoute
   '/admin/users/create': typeof AuthenticatedAdminUsersCreateRoute
   '/booking/pay/$reference': typeof PublicBookingPayReferenceRoute
   '/admin/bookings': typeof AuthenticatedAdminBookingsIndexRoute
   '/admin/fleet-vehicle': typeof AuthenticatedAdminFleetVehicleIndexRoute
+  '/admin/greet-and-assist': typeof AuthenticatedAdminGreetAndAssistIndexRoute
   '/admin/posts': typeof AuthenticatedAdminPostsIndexRoute
   '/admin/tours': typeof AuthenticatedAdminToursIndexRoute
   '/admin/users': typeof AuthenticatedAdminUsersIndexRoute
@@ -416,6 +440,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/login': typeof AuthLoginRoute
+  '/airport-greet-and-assist': typeof PublicAirportGreetAndAssistRoute
   '/b2b': typeof PublicB2bRoute
   '/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/faq': typeof PublicFaqRoute
@@ -453,12 +478,14 @@ export interface FileRoutesByTo {
   '/transfers': typeof PublicTransfersIndexRoute
   '/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
+  '/admin/greet-and-assist/$id': typeof AuthenticatedAdminGreetAndAssistIdRoute
   '/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
   '/admin/tours/create': typeof AuthenticatedAdminToursCreateRoute
   '/admin/users/create': typeof AuthenticatedAdminUsersCreateRoute
   '/booking/pay/$reference': typeof PublicBookingPayReferenceRoute
   '/admin/bookings': typeof AuthenticatedAdminBookingsIndexRoute
   '/admin/fleet-vehicle': typeof AuthenticatedAdminFleetVehicleIndexRoute
+  '/admin/greet-and-assist': typeof AuthenticatedAdminGreetAndAssistIndexRoute
   '/admin/posts': typeof AuthenticatedAdminPostsIndexRoute
   '/admin/tours': typeof AuthenticatedAdminToursIndexRoute
   '/admin/users': typeof AuthenticatedAdminUsersIndexRoute
@@ -473,6 +500,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
   '/_auth/login': typeof AuthLoginRoute
+  '/_public/airport-greet-and-assist': typeof PublicAirportGreetAndAssistRoute
   '/_public/b2b': typeof PublicB2bRoute
   '/_public/corporate-mobility': typeof PublicCorporateMobilityRoute
   '/_public/faq': typeof PublicFaqRoute
@@ -510,12 +538,14 @@ export interface FileRoutesById {
   '/_public/transfers/': typeof PublicTransfersIndexRoute
   '/_authenticated/admin/bookings/$id': typeof AuthenticatedAdminBookingsIdRoute
   '/_authenticated/admin/fleet-vehicle/create': typeof AuthenticatedAdminFleetVehicleCreateRoute
+  '/_authenticated/admin/greet-and-assist/$id': typeof AuthenticatedAdminGreetAndAssistIdRoute
   '/_authenticated/admin/posts/create': typeof AuthenticatedAdminPostsCreateRoute
   '/_authenticated/admin/tours/create': typeof AuthenticatedAdminToursCreateRoute
   '/_authenticated/admin/users/create': typeof AuthenticatedAdminUsersCreateRoute
   '/_public/booking/pay/$reference': typeof PublicBookingPayReferenceRoute
   '/_authenticated/admin/bookings/': typeof AuthenticatedAdminBookingsIndexRoute
   '/_authenticated/admin/fleet-vehicle/': typeof AuthenticatedAdminFleetVehicleIndexRoute
+  '/_authenticated/admin/greet-and-assist/': typeof AuthenticatedAdminGreetAndAssistIndexRoute
   '/_authenticated/admin/posts/': typeof AuthenticatedAdminPostsIndexRoute
   '/_authenticated/admin/tours/': typeof AuthenticatedAdminToursIndexRoute
   '/_authenticated/admin/users/': typeof AuthenticatedAdminUsersIndexRoute
@@ -528,6 +558,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/login'
+    | '/airport-greet-and-assist'
     | '/b2b'
     | '/corporate-mobility'
     | '/faq'
@@ -565,12 +596,14 @@ export interface FileRouteTypes {
     | '/transfers'
     | '/admin/bookings/$id'
     | '/admin/fleet-vehicle/create'
+    | '/admin/greet-and-assist/$id'
     | '/admin/posts/create'
     | '/admin/tours/create'
     | '/admin/users/create'
     | '/booking/pay/$reference'
     | '/admin/bookings'
     | '/admin/fleet-vehicle'
+    | '/admin/greet-and-assist'
     | '/admin/posts'
     | '/admin/tours'
     | '/admin/users'
@@ -581,6 +614,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
+    | '/airport-greet-and-assist'
     | '/b2b'
     | '/corporate-mobility'
     | '/faq'
@@ -618,12 +652,14 @@ export interface FileRouteTypes {
     | '/transfers'
     | '/admin/bookings/$id'
     | '/admin/fleet-vehicle/create'
+    | '/admin/greet-and-assist/$id'
     | '/admin/posts/create'
     | '/admin/tours/create'
     | '/admin/users/create'
     | '/booking/pay/$reference'
     | '/admin/bookings'
     | '/admin/fleet-vehicle'
+    | '/admin/greet-and-assist'
     | '/admin/posts'
     | '/admin/tours'
     | '/admin/users'
@@ -637,6 +673,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/_public'
     | '/_auth/login'
+    | '/_public/airport-greet-and-assist'
     | '/_public/b2b'
     | '/_public/corporate-mobility'
     | '/_public/faq'
@@ -674,12 +711,14 @@ export interface FileRouteTypes {
     | '/_public/transfers/'
     | '/_authenticated/admin/bookings/$id'
     | '/_authenticated/admin/fleet-vehicle/create'
+    | '/_authenticated/admin/greet-and-assist/$id'
     | '/_authenticated/admin/posts/create'
     | '/_authenticated/admin/tours/create'
     | '/_authenticated/admin/users/create'
     | '/_public/booking/pay/$reference'
     | '/_authenticated/admin/bookings/'
     | '/_authenticated/admin/fleet-vehicle/'
+    | '/_authenticated/admin/greet-and-assist/'
     | '/_authenticated/admin/posts/'
     | '/_authenticated/admin/tours/'
     | '/_authenticated/admin/users/'
@@ -793,6 +832,13 @@ declare module '@tanstack/react-router' {
       path: '/b2b'
       fullPath: '/b2b'
       preLoaderRoute: typeof PublicB2bRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/airport-greet-and-assist': {
+      id: '/_public/airport-greet-and-assist'
+      path: '/airport-greet-and-assist'
+      fullPath: '/airport-greet-and-assist'
+      preLoaderRoute: typeof PublicAirportGreetAndAssistRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_auth/login': {
@@ -991,6 +1037,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminPostsIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/greet-and-assist/': {
+      id: '/_authenticated/admin/greet-and-assist/'
+      path: '/admin/greet-and-assist'
+      fullPath: '/admin/greet-and-assist'
+      preLoaderRoute: typeof AuthenticatedAdminGreetAndAssistIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin/fleet-vehicle/': {
       id: '/_authenticated/admin/fleet-vehicle/'
       path: '/admin/fleet-vehicle'
@@ -1031,6 +1084,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/posts/create'
       fullPath: '/admin/posts/create'
       preLoaderRoute: typeof AuthenticatedAdminPostsCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/greet-and-assist/$id': {
+      id: '/_authenticated/admin/greet-and-assist/$id'
+      path: '/admin/greet-and-assist/$id'
+      fullPath: '/admin/greet-and-assist/$id'
+      preLoaderRoute: typeof AuthenticatedAdminGreetAndAssistIdRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/admin/fleet-vehicle/create': {
@@ -1098,11 +1158,13 @@ interface AuthenticatedRouteChildren {
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
   AuthenticatedAdminBookingsIdRoute: typeof AuthenticatedAdminBookingsIdRoute
   AuthenticatedAdminFleetVehicleCreateRoute: typeof AuthenticatedAdminFleetVehicleCreateRoute
+  AuthenticatedAdminGreetAndAssistIdRoute: typeof AuthenticatedAdminGreetAndAssistIdRoute
   AuthenticatedAdminPostsCreateRoute: typeof AuthenticatedAdminPostsCreateRoute
   AuthenticatedAdminToursCreateRoute: typeof AuthenticatedAdminToursCreateRoute
   AuthenticatedAdminUsersCreateRoute: typeof AuthenticatedAdminUsersCreateRoute
   AuthenticatedAdminBookingsIndexRoute: typeof AuthenticatedAdminBookingsIndexRoute
   AuthenticatedAdminFleetVehicleIndexRoute: typeof AuthenticatedAdminFleetVehicleIndexRoute
+  AuthenticatedAdminGreetAndAssistIndexRoute: typeof AuthenticatedAdminGreetAndAssistIndexRoute
   AuthenticatedAdminPostsIndexRoute: typeof AuthenticatedAdminPostsIndexRoute
   AuthenticatedAdminToursIndexRoute: typeof AuthenticatedAdminToursIndexRoute
   AuthenticatedAdminUsersIndexRoute: typeof AuthenticatedAdminUsersIndexRoute
@@ -1124,12 +1186,16 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAdminBookingsIdRoute: AuthenticatedAdminBookingsIdRoute,
   AuthenticatedAdminFleetVehicleCreateRoute:
     AuthenticatedAdminFleetVehicleCreateRoute,
+  AuthenticatedAdminGreetAndAssistIdRoute:
+    AuthenticatedAdminGreetAndAssistIdRoute,
   AuthenticatedAdminPostsCreateRoute: AuthenticatedAdminPostsCreateRoute,
   AuthenticatedAdminToursCreateRoute: AuthenticatedAdminToursCreateRoute,
   AuthenticatedAdminUsersCreateRoute: AuthenticatedAdminUsersCreateRoute,
   AuthenticatedAdminBookingsIndexRoute: AuthenticatedAdminBookingsIndexRoute,
   AuthenticatedAdminFleetVehicleIndexRoute:
     AuthenticatedAdminFleetVehicleIndexRoute,
+  AuthenticatedAdminGreetAndAssistIndexRoute:
+    AuthenticatedAdminGreetAndAssistIndexRoute,
   AuthenticatedAdminPostsIndexRoute: AuthenticatedAdminPostsIndexRoute,
   AuthenticatedAdminToursIndexRoute: AuthenticatedAdminToursIndexRoute,
   AuthenticatedAdminUsersIndexRoute: AuthenticatedAdminUsersIndexRoute,
@@ -1146,6 +1212,7 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 )
 
 interface PublicRouteChildren {
+  PublicAirportGreetAndAssistRoute: typeof PublicAirportGreetAndAssistRoute
   PublicB2bRoute: typeof PublicB2bRoute
   PublicCorporateMobilityRoute: typeof PublicCorporateMobilityRoute
   PublicFaqRoute: typeof PublicFaqRoute
@@ -1178,6 +1245,7 @@ interface PublicRouteChildren {
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
+  PublicAirportGreetAndAssistRoute: PublicAirportGreetAndAssistRoute,
   PublicB2bRoute: PublicB2bRoute,
   PublicCorporateMobilityRoute: PublicCorporateMobilityRoute,
   PublicFaqRoute: PublicFaqRoute,
