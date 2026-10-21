@@ -37,7 +37,7 @@ const navGroups: Array<NavGroup> = [
       { id: 3, nameKey: 'nav.transfers', to: '/transfers' },
       { id: 4, nameKey: 'nav.hourlyService', to: '/hourly-service' },
       { id: 5, nameKey: 'nav.tours', to: '/tours' },
-      { id: 10, nameKey: 'nav.vipConcierge', to: '/vip-concierge' },
+      { id: 10, nameKey: 'nav.greetAssist', to: '/airport-greet-and-assist' },
       { id: 11, nameKey: 'nav.corporateMobility', to: '/corporate-mobility' },
       { id: 12, nameKey: 'nav.specialEvents', to: '/special-events' },
     ],
