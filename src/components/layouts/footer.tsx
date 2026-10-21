@@ -155,6 +155,71 @@ const Footer: React.FC = () => {
               </div>
             </div>
           </div>
+          <div className="border-t border-border pt-6 pb-6">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-[#C9A84C] font-semibold mb-3">
+              {t('footer.transfersTitle', { defaultValue: 'Popular Transfers' })}
+            </h4>
+            <nav
+              aria-label="Popular Transfers"
+              className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-foreground/75"
+            >
+              <Link
+                to="/transfers/lisbon-porto-private-transfer"
+                className="hover:text-[#C9A84C] transition-colors"
+              >
+                {t('footer.transfers.lisbonPorto', { defaultValue: 'Lisbon to Porto' })}
+              </Link>
+              <span className="text-border" aria-hidden="true">•</span>
+              <Link
+                to="/transfers/lisbon-algarve-private-transfer"
+                className="hover:text-[#C9A84C] transition-colors"
+              >
+                {t('footer.transfers.lisbonAlgarve', { defaultValue: 'Lisbon to Algarve' })}
+              </Link>
+              <span className="text-border" aria-hidden="true">•</span>
+              <Link
+                to="/transfers/lisbon-airport-private-transfer"
+                className="hover:text-[#C9A84C] transition-colors"
+              >
+                {t('footer.transfers.lisbonAirport', { defaultValue: 'Lisbon Airport' })}
+              </Link>
+              <span className="text-border" aria-hidden="true">•</span>
+              <Link
+                to="/transfers/lisbon-douro-valley-private-transfer"
+                className="hover:text-[#C9A84C] transition-colors"
+              >
+                {t('footer.transfers.lisbonDouro', { defaultValue: 'Lisbon to Douro Valley' })}
+              </Link>
+              <span className="text-border" aria-hidden="true">•</span>
+              <Link
+                to="/transfers/lisbon-comporta-private-transfer"
+                className="hover:text-[#C9A84C] transition-colors"
+              >
+                {t('footer.transfers.lisbonComporta', { defaultValue: 'Lisbon to Comporta' })}
+              </Link>
+              <span className="text-border" aria-hidden="true">•</span>
+              <Link
+                to="/transfers/lisbon-evora-private-transfer"
+                className="hover:text-[#C9A84C] transition-colors"
+              >
+                {t('footer.transfers.lisbonEvora', { defaultValue: 'Lisbon to Évora' })}
+              </Link>
+              <span className="text-border" aria-hidden="true">•</span>
+              <Link
+                to="/transfers/lisbon-seville-private-transfer"
+                className="hover:text-[#C9A84C] transition-colors"
+              >
+                {t('footer.transfers.lisbonSeville', { defaultValue: 'Lisbon to Seville' })}
+              </Link>
+              <span className="text-border" aria-hidden="true">•</span>
+              <Link
+                to="/transfers/lisbon-madrid-private-transfer"
+                className="hover:text-[#C9A84C] transition-colors"
+              >
+                {t('footer.transfers.lisbonMadrid', { defaultValue: 'Lisbon to Madrid' })}
+              </Link>
+            </nav>
+          </div>
           <div className="border-t border-border pt-6">
             <div className="mb-6 flex flex-wrap gap-4 text-xs text-foreground/60">
               <Link

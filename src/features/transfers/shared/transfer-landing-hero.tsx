@@ -15,10 +15,15 @@ export function TransferLandingHero({
   ns,
   imageSrc,
 }: TransferLandingHeroProps) {
-  const { t } = useTranslation(ns)
+  const { t, i18n } = useTranslation(ns)
   const { data: settings } = usePublicSettings()
   const whatsappMessage = t('hero.whatsappMessage')
   const benefits = t('hero.benefits', { returnObjects: true }) as Array<string>
+  const homeLabel = i18n.language.startsWith('pt')
+    ? 'Início'
+    : i18n.language.startsWith('es')
+      ? 'Inicio'
+      : 'Home'
 
   return (
     <>
@@ -42,12 +47,26 @@ export function TransferLandingHero({
 
         <div className="relative z-10 container mx-auto px-6 md:px-12 pb-16 md:pb-24 pt-32">
           <motion.div className="max-w-4xl" {...heroCopy}>
-            <Link
-              to="/transfers"
-              className="uppercase tracking-[0.4em] md:tracking-[0.5em] text-[10px] md:text-[11px] text-[#C9A84C] mb-6 md:mb-8 block font-medium hover:text-[#E2C97E] transition-colors duration-500"
+            <nav
+              aria-label="Breadcrumb"
+              className="flex items-center gap-2.5 mb-6 md:mb-8 uppercase tracking-[0.4em] md:tracking-[0.5em] text-[10px] md:text-[11px] font-medium text-[#C9A84C]"
             >
-              {t('hero.tag')}
-            </Link>
+              <Link
+                to="/"
+                className="hover:text-[#E2C97E] transition-colors duration-500"
+              >
+                {t('hero.home', { defaultValue: homeLabel })}
+              </Link>
+              <span className="text-[#C9A84C]/40 select-none text-[9px]" aria-hidden="true">
+                /
+              </span>
+              <Link
+                to="/transfers"
+                className="hover:text-[#E2C97E] transition-colors duration-500"
+              >
+                {t('hero.tag', { defaultValue: 'Transfers' })}
+              </Link>
+            </nav>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light leading-[1.05] tracking-tight mb-6 md:mb-10 text-[#F5F0E8]">
               {t('hero.title')}
             </h1>

@@ -12,7 +12,7 @@ import {
   Users,
   Zap,
 } from 'lucide-react'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { pageHead } from '@/lib/seo.ts'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
@@ -245,7 +245,23 @@ const App: React.FC = () => {
             {t('home.airportTransfersTitle')}
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            {t('home.airportTransfersBody')}
+            <Trans
+              i18nKey="home.airportTransfersBody"
+              components={{
+                lisbonAirport: (
+                  <Link
+                    to="/transfers/lisbon-airport-private-transfer"
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+                lisbonAlgarve: (
+                  <Link
+                    to="/transfers/lisbon-algarve-private-transfer"
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+              }}
+            />
           </p>
           <a
             className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 transition-colors"
@@ -262,7 +278,35 @@ const App: React.FC = () => {
             {t('home.privateToursTitle')}
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            {t('home.privateToursBody')}
+            <Trans
+              i18nKey="home.privateToursBody"
+              components={{
+                sintraTour: (
+                  <Link
+                    to="/tours/$slug"
+                    params={{
+                      slug: 'sintra-cascais-full-day-private-experience',
+                    }}
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+                douroValley: (
+                  <Link
+                    to="/transfers/lisbon-douro-valley-private-transfer"
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+                fatimaTour: (
+                  <Link
+                    to="/tours/$slug"
+                    params={{
+                      slug: 'fatima-nazare-obidos-private-full-day-tour-from-lisbon',
+                    }}
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+              }}
+            />
           </p>
           <a
             className="text-primary hover:text-primary/80 font-semibold underline underline-offset-4 transition-colors"
@@ -331,7 +375,41 @@ const App: React.FC = () => {
             </h2>
           </div>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            {t('home.areasWeServeBody')}
+            <Trans
+              i18nKey="home.areasWeServeBody"
+              components={{
+                lisbonPorto: (
+                  <Link
+                    to="/transfers/lisbon-porto-private-transfer"
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+                douroValley: (
+                  <Link
+                    to="/transfers/lisbon-douro-valley-private-transfer"
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+                lisbonAlgarve: (
+                  <Link
+                    to="/transfers/lisbon-algarve-private-transfer"
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+                lisbonEvora: (
+                  <Link
+                    to="/transfers/lisbon-evora-private-transfer"
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+                spainTransfers: (
+                  <Link
+                    to="/transfers/lisbon-seville-private-transfer"
+                    className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+                  />
+                ),
+              }}
+            />
           </p>
         </div>
       </section>

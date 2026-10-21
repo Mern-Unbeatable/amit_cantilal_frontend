@@ -35,11 +35,10 @@ export function VipConciergeHero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <a
-              href="#concierge"
+              href="#book"
               className="inline-flex items-center justify-center gap-3 bg-[#C9A84C] text-[#0B0B0B] px-8 py-4 md:px-10 md:py-5 text-[11px] md:text-xs tracking-[0.3em] uppercase hover:bg-[#E2C97E] transition-all duration-500"
             >
-              {t('vipConcierge.hero.contactButton')}{' '}
-              <ArrowUpRight className="w-4 h-4" />
+              Book Greet &amp; Assist <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
               href={toWhatsAppUrl(settings?.whatsapp_number ?? '+351914578214')}

@@ -12,6 +12,7 @@ export interface TransferLandingCtaLink {
 }
 
 const INTERNAL_LINKS: ReadonlyArray<TransferLandingCtaLink> = [
+  { key: 'home', to: '/' },
   { key: 'fleet', to: '/fleet' },
   { key: 'transfers', to: '/transfers' },
   { key: 'tours', to: '/tours' },
@@ -29,8 +30,13 @@ export function TransferLandingCta({
   imageSrc,
   links = INTERNAL_LINKS,
 }: TransferLandingCtaProps) {
-  const { t } = useTranslation(ns)
+  const { t, i18n } = useTranslation(ns)
   const { data: settings } = usePublicSettings()
+  const homeLabel = i18n.language.startsWith('pt')
+    ? 'Início'
+    : i18n.language.startsWith('es')
+      ? 'Inicio'
+      : 'Home'
 
   return (
     <section className="relative overflow-hidden border-t border-[#C9A84C]/10">
@@ -96,7 +102,9 @@ export function TransferLandingCta({
                   to={link.to}
                   className="text-sm text-[#F5F0E8]/70 hover:text-[#C9A84C] transition-colors duration-500 font-light"
                 >
-                  {t(`cta.links.${link.key}`)}
+                  {t(`cta.links.${link.key}`, {
+                    defaultValue: link.key === 'home' ? homeLabel : undefined,
+                  })}
                 </Link>
               </span>
             ))}

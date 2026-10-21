@@ -22,6 +22,10 @@ export const Route = createFileRoute(
         'Private transfer from Lisbon to Comporta in a premium Mercedes. Door-to-door chauffeur service to Comporta, Carvalhal, Melides and surrounding resorts and villas.',
       path: '/transfers/lisbon-comporta-private-transfer',
       image: 'https://offwego.pt/transfers/lisbon-comporta/HERO%20IMAGE%20_%20LISBON%20COMPORTA.png',
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Transfers', path: '/transfers' },
+      ],
     }),
   component: RouteComponent,
 })

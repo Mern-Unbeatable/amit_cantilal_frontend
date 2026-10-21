@@ -22,6 +22,10 @@ export const Route = createFileRoute(
       path: '/transfers/lisbon-evora-private-transfer',
       image:
         'https://offwego.pt/transfers/lisbon-evora/HERO%20IMAGE%20_%20LISBON%20E%CC%81VORA%20(1).png',
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Transfers', path: '/transfers' },
+      ],
     }),
   component: RouteComponent,
 })
