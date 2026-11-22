@@ -6,6 +6,8 @@ import { BookingPoliciesSection } from '@/components/sections/booking-policy-sec
 import { FaqSection } from '@/components/sections/faq-section.tsx'
 import { PageHero } from '@/components/shared/page-hero.tsx'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
+import { SeoInboundNote } from '@/features/transfers/seo-inbound-link.tsx'
 
 export const Route = createFileRoute('/_public/faq')({
   head: () =>
@@ -29,6 +31,17 @@ function RouteComponent() {
       />
 
       <BookingPoliciesSection />
+
+      <section className="bg-[#0B0B0B] pb-8">
+        <div className="container mx-auto px-6 md:px-12 max-w-4xl">
+          <SeoInboundNote
+            to={TRANSFER_SEO.seville.path}
+            anchorText={TRANSFER_SEO.seville.inbound.anchorText}
+            before="Crossing the border? Book a "
+            after=" in a premium Mercedes with Off We Go Portugal."
+          />
+        </div>
+      </section>
 
       <FaqSection />
     </motion.div>

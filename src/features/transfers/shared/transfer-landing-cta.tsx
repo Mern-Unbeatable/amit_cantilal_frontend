@@ -9,6 +9,9 @@ import { fadeUp } from '@/features/transfers/shared/motion.ts'
 export interface TransferLandingCtaLink {
   key: string
   to: string
+  params?: Record<string, string>
+  /** Exact SEO anchor text (skips i18n label lookup when set) */
+  label?: string
 }
 
 const INTERNAL_LINKS: ReadonlyArray<TransferLandingCtaLink> = [
@@ -100,11 +103,14 @@ export function TransferLandingCta({
                 )}
                 <Link
                   to={link.to}
+                  params={link.params}
                   className="text-sm text-[#F5F0E8]/70 hover:text-[#C9A84C] transition-colors duration-500 font-light"
                 >
-                  {t(`cta.links.${link.key}`, {
-                    defaultValue: link.key === 'home' ? homeLabel : undefined,
-                  })}
+                  {link.label ??
+                    t(`cta.links.${link.key}`, {
+                      defaultValue:
+                        link.key === 'home' ? homeLabel : undefined,
+                    })}
                 </Link>
               </span>
             ))}

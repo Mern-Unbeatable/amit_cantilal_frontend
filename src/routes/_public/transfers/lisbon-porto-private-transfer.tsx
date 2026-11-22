@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
 import { LisbonPortoHero } from '@/features/transfers/lisbon-porto/hero.tsx'
 import { LisbonPortoIntro } from '@/features/transfers/lisbon-porto/intro.tsx'
 import { LisbonPortoStops } from '@/features/transfers/lisbon-porto/stops.tsx'
@@ -10,15 +11,16 @@ import { LisbonPortoIncluded } from '@/features/transfers/lisbon-porto/included.
 import { LisbonPortoAirportFaq } from '@/features/transfers/lisbon-porto/airport-faq.tsx'
 import { LisbonPortoCta } from '@/features/transfers/lisbon-porto/cta.tsx'
 
+const seo = TRANSFER_SEO.porto
+
 export const Route = createFileRoute(
   '/_public/transfers/lisbon-porto-private-transfer',
 )({
   head: () =>
     pageHead({
-      title: 'Lisbon to Porto Private Transfer',
-      description:
-        'Private Lisbon to Porto and Porto to Lisbon transfers in a premium Mercedes. Professional chauffeur, door-to-door service and optional stops along the way.',
-      path: '/transfers/lisbon-porto-private-transfer',
+      title: seo.title,
+      description: seo.description,
+      path: seo.path,
       image: 'https://offwego.pt/transfers/lisbon-porto/hero.png',
       breadcrumbs: [
         { label: 'Home', path: '/' },

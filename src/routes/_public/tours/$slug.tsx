@@ -21,6 +21,8 @@ import { BookingDetailsStep } from '@/features/tour/public/booking-details-step.
 import { StripeCheckoutForm } from '@/features/tour/public/stripe-checkout-form.tsx'
 import { PublicBreadcrumbs } from '@/components/shared/public-breadcrumbs.tsx'
 import { pageHead } from '@/lib/seo.ts'
+import { TOUR_INBOUND_LINKS } from '@/features/transfers/seo-worksheet.ts'
+import { SeoInboundNote } from '@/features/transfers/seo-inbound-link.tsx'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -109,6 +111,31 @@ export const Route = createFileRoute('/_public/tours/$slug')({
   component: RouteComponent,
 })
 
+function TourDescription({
+  description,
+  slug,
+}: {
+  description: string
+  slug: string
+}) {
+  const inbound = TOUR_INBOUND_LINKS[slug as keyof typeof TOUR_INBOUND_LINKS]
+
+  return (
+    <div className="space-y-4">
+      <p>{description}</p>
+      {inbound && (
+        <SeoInboundNote
+          to={inbound.path}
+          anchorText={inbound.inbound.anchorText}
+          before="Need a "
+          after=" with a premium Mercedes chauffeur? Book door-to-door with Off We Go Portugal."
+          className="text-sm text-[#F5F0E8]/70 font-light leading-relaxed"
+        />
+      )}
+    </div>
+  )
+}
+
 // ─── Step indicator ───────────────────────────────────────────────────────────
 
 function StepIndicator({ current }: { current: number }) {
@@ -174,6 +201,8 @@ function StepIndicator({ current }: { current: number }) {
 
 function RouteComponent() {
   const tour = Route.useLoaderData()
+  const { slug: rawSlug } = Route.useParams()
+  const slug = normalizeTourSlug(rawSlug)
   const createBooking = useCreateBooking()
 
   const priceInCents = Number(tour.price)
@@ -308,7 +337,12 @@ function RouteComponent() {
 
             {/* Tab content */}
             <div className="py-6 text-sm text-[#F5F0E8]/70 font-light leading-relaxed">
-              {activeTab === 'description' && <p>{tour.description}</p>}
+              {activeTab === 'description' && (
+                <TourDescription
+                  description={tour.description}
+                  slug={slug}
+                />
+              )}
 
               {activeTab === 'itinerary' && (
                 <div className="space-y-6">

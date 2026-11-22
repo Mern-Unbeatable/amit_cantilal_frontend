@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
 import { LisbonComportaHero } from '@/features/transfers/lisbon-comporta/hero.tsx'
 
 import { LisbonComportaIntro } from '@/features/transfers/lisbon-comporta/intro.tsx'
@@ -12,15 +13,16 @@ import { LisbonComportaStopover } from '@/features/transfers/lisbon-comporta/sto
 import { LisbonComportaAirportFaq } from '@/features/transfers/lisbon-comporta/airport-faq.tsx'
 import { LisbonComportaCta } from '@/features/transfers/lisbon-comporta/cta.tsx'
 
+const seo = TRANSFER_SEO.comporta
+
 export const Route = createFileRoute(
   '/_public/transfers/lisbon-comporta-private-transfer',
 )({
   head: () =>
     pageHead({
-      title: 'Lisbon to Comporta Private Transfer | Off We Go Portugal',
-      description:
-        'Private transfer from Lisbon to Comporta in a premium Mercedes. Door-to-door chauffeur service to Comporta, Carvalhal, Melides and surrounding resorts and villas.',
-      path: '/transfers/lisbon-comporta-private-transfer',
+      title: seo.title,
+      description: seo.description,
+      path: seo.path,
       image: 'https://offwego.pt/transfers/lisbon-comporta/HERO%20IMAGE%20_%20LISBON%20COMPORTA.png',
       breadcrumbs: [
         { label: 'Home', path: '/' },

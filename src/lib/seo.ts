@@ -25,7 +25,10 @@ export function pageHead({
   noindex,
   breadcrumbs,
 }: PageHeadInput) {
-  const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`
+  const fullTitle =
+    title === SITE_NAME || title.includes(SITE_NAME)
+      ? title
+      : `${title} | ${SITE_NAME}`
   const url = `${SITE_URL}${path}`
   const ogImage = image?.startsWith('http')
     ? image

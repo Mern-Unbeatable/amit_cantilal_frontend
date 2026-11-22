@@ -6,6 +6,8 @@ import { mainTransitionProps } from '@/lib/utils.ts'
 import { PageHero } from '@/components/shared/page-hero.tsx'
 import { Button } from '@/components/ui/button.tsx'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
+import { SeoInboundLink } from '@/features/transfers/seo-inbound-link.tsx'
 
 const FEATURE_ICONS = [Clock, Users, CircleCheckBig, Shield]
 
@@ -76,8 +78,15 @@ function RouteComponent() {
                 <p className="text-[#9A9182] leading-relaxed mb-4">
                   {t('hourlyServicePage.body1')}
                 </p>
-                <p className="text-[#9A9182] leading-relaxed mb-8">
+                <p className="text-[#9A9182] leading-relaxed mb-4">
                   {t('hourlyServicePage.body2')}
+                </p>
+                <p className="text-[#9A9182] leading-relaxed mb-8">
+                  Arriving by plane? Pair hourly hire with our{' '}
+                  <SeoInboundLink to={TRANSFER_SEO.airport.path}>
+                    {TRANSFER_SEO.airport.inbound.anchorText}
+                  </SeoInboundLink>{' '}
+                  for a seamless start to your trip.
                 </p>
                 <Button
                   asChild

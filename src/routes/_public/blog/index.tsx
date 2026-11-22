@@ -7,6 +7,8 @@ import BlogCard from '@/features/blogs/blog-card.tsx'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { usePosts } from '@/features/blogs/blog.hooks.ts'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
+import { SeoInboundNote } from '@/features/transfers/seo-inbound-link.tsx'
 
 export const Route = createFileRoute('/_public/blog/')({
   head: () =>
@@ -48,6 +50,14 @@ function RouteComponent() {
             <h2 className="font-serif text-2xl md:text-4xl font-light text-gradient-gold">
               From the <em className="italic">Journal</em>
             </h2>
+            <div className="mt-4 max-w-2xl">
+              <SeoInboundNote
+                to={TRANSFER_SEO.comporta.path}
+                anchorText={TRANSFER_SEO.comporta.inbound.anchorText}
+                before="Planning a coastal escape? Arrange a "
+                after=" with our premium Mercedes chauffeurs."
+              />
+            </div>
           </div>
 
           {/* Grid */}

@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
 import { LisbonSevilleHero } from '@/features/transfers/lisbon-seville/hero.tsx'
 import { LisbonSevilleIntro } from '@/features/transfers/lisbon-seville/intro.tsx'
 import { LisbonSevilleStops } from '@/features/transfers/lisbon-seville/stops.tsx'
@@ -11,15 +12,16 @@ import { LisbonSevilleIncluded } from '@/features/transfers/lisbon-seville/inclu
 import { LisbonSevilleAirportFaq } from '@/features/transfers/lisbon-seville/airport-faq.tsx'
 import { LisbonSevilleCta } from '@/features/transfers/lisbon-seville/cta.tsx'
 
+const seo = TRANSFER_SEO.seville
+
 export const Route = createFileRoute(
   '/_public/transfers/lisbon-seville-private-transfer',
 )({
   head: () =>
     pageHead({
-      title: 'Lisbon to Seville Private Transfer',
-      description:
-        'Private Lisbon to Seville and Seville to Lisbon transfers in a premium Mercedes. Door-to-door chauffeur service with optional stops across Portugal and Spain.',
-      path: '/transfers/lisbon-seville-private-transfer',
+      title: seo.title,
+      description: seo.description,
+      path: seo.path,
       image: 'https://offwego.pt/transfers/lisbon-seville/hero.png',
       breadcrumbs: [
         { label: 'Home', path: '/' },

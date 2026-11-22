@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
 import { PortoDouroHero } from '@/features/transfers/porto-douro/hero.tsx'
 import { PortoDouroIntro } from '@/features/transfers/porto-douro/intro.tsx'
 import { PortoDouroDestinations } from '@/features/transfers/porto-douro/destinations.tsx'
@@ -12,15 +13,16 @@ import { PortoDouroIncluded } from '@/features/transfers/porto-douro/included.ts
 import { PortoDouroFaq } from '@/features/transfers/porto-douro/faq.tsx'
 import { PortoDouroCta } from '@/features/transfers/porto-douro/cta.tsx'
 
+const seo = TRANSFER_SEO.douro
+
 export const Route = createFileRoute(
   '/_public/transfers/lisbon-douro-valley-private-transfer',
 )({
   head: () =>
     pageHead({
-      title: 'Lisbon to Douro Valley Private Transfer | Off We Go Portugal',
-      description:
-        'Private transfer between Lisbon and the Douro Valley in a premium Mercedes. Door-to-door chauffeur service to hotels, wine estates and private accommodation.',
-      path: '/transfers/lisbon-douro-valley-private-transfer',
+      title: seo.title,
+      description: seo.description,
+      path: seo.path,
       image:
         'https://offwego.pt/transfers/porto-douro/HERO%20IMAGE%20-%20LISBON%20DOURO%20VALLEY.png',
       breadcrumbs: [
