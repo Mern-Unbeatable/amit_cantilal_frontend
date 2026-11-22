@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { mainTransitionProps } from '@/lib/utils.ts'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
 import { LisbonMadridHero } from '@/features/transfers/lisbon-madrid/hero.tsx'
 import { LisbonMadridIntro } from '@/features/transfers/lisbon-madrid/intro.tsx'
 
@@ -12,15 +13,16 @@ import { LisbonMadridIncluded } from '@/features/transfers/lisbon-madrid/include
 import { LisbonMadridAirportFaq } from '@/features/transfers/lisbon-madrid/airport-faq.tsx'
 import { LisbonMadridCta } from '@/features/transfers/lisbon-madrid/cta.tsx'
 
+const seo = TRANSFER_SEO.madrid
+
 export const Route = createFileRoute(
   '/_public/transfers/lisbon-madrid-private-transfer',
 )({
   head: () =>
     pageHead({
-      title: 'Lisbon to Madrid Private Transfer | Off We Go Portugal',
-      description:
-        'Private transfer between Lisbon and Madrid in a premium Mercedes. Door-to-door Portugal-Spain chauffeur service with optional stops along the journey.',
-      path: '/transfers/lisbon-madrid-private-transfer',
+      title: seo.title,
+      description: seo.description,
+      path: seo.path,
       image: 'https://offwego.pt/transfers/lisbon-madrid/HERO%20IMAGE%20LISBON%20MADRID.png',
       breadcrumbs: [
         { label: 'Home', path: '/' },

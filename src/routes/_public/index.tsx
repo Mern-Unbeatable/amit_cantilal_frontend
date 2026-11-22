@@ -15,6 +15,8 @@ import {
 import { Trans, useTranslation } from 'react-i18next'
 import { pageHead } from '@/lib/seo.ts'
 import { mainTransitionProps } from '@/lib/utils.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
+import { SeoInboundLink } from '@/features/transfers/seo-inbound-link.tsx'
 import { useFleet } from '@/features/fleet/fleet.hooks.ts'
 import { ReviewsSection } from '@/components/sections/review-section.tsx'
 
@@ -410,6 +412,23 @@ const App: React.FC = () => {
                 ),
               }}
             />
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+            Looking for a{' '}
+            <SeoInboundLink
+              to={TRANSFER_SEO.madrid.path}
+              className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+            >
+              {TRANSFER_SEO.madrid.inbound.anchorText}
+            </SeoInboundLink>{' '}
+            or{' '}
+            <SeoInboundLink
+              to={TRANSFER_SEO.evora.path}
+              className="font-bold text-foreground underline underline-offset-4 decoration-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+            >
+              {TRANSFER_SEO.evora.inbound.anchorText}
+            </SeoInboundLink>
+            ? Travel door-to-door in a premium Mercedes with Off We Go Portugal.
           </p>
         </div>
       </section>

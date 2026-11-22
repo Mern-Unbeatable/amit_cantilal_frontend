@@ -5,6 +5,8 @@ import { PageHero } from '@/components/shared/page-hero.tsx'
 import { ToursSection } from '@/components/sections/tour-section.tsx'
 import { useTours } from '@/features/tour/tour.hooks.ts'
 import { pageHead } from '@/lib/seo.ts'
+import { TRANSFER_SEO } from '@/features/transfers/seo-worksheet.ts'
+import { SeoInboundNote } from '@/features/transfers/seo-inbound-link.tsx'
 
 export const Route = createFileRoute('/_public/tours/')({
   head: () =>
@@ -27,6 +29,17 @@ function RouteComponent() {
         title="Tours"
         subtitle="Discover Portugal through exclusive private experiences designed for comfort, authenticity, and elegance. Travel with our professional chauffeurs in premium Mercedes vehicles and enjoy unforgettable journeys tailored to your pace."
       />
+
+      <section className="bg-[#0B0B0B] pt-8 pb-2">
+        <div className="container mx-auto px-6 md:px-12 max-w-4xl">
+          <SeoInboundNote
+            to={TRANSFER_SEO.douro.path}
+            anchorText={TRANSFER_SEO.douro.inbound.anchorText}
+            before="Travelling to the wine region? Book a "
+            after=" door-to-door in a premium Mercedes."
+          />
+        </div>
+      </section>
 
       {isFetching && (
         <div className="flex items-center justify-center w-full h-screen bg-black">
